@@ -82,24 +82,21 @@ Two tabs add fields that are not present in the others:
 
 | Route | Purpose | First release |
 | --- | --- | --- |
-| `/` | Evaluation catalog with source date, metric, row count, and coverage | Yes |
+| `/` | Master leaderboard first, followed by compact links to individual evaluations | Yes |
 | `/leaderboards/[evaluationSlug]` | Reusable ranking table for one evaluation | Yes |
 | `/about/data` | Definitions, source notes, coverage rules, and update history | Yes, compact version |
 | `/models/[modelSlug]` | One model across all evaluations | Later |
 | `/compare` | Side-by-side model or provider comparison | Later |
 
-### Evaluation catalog
+### Home page and evaluation links
 
-The home page should show one row or card per evaluation with:
+The home page should lead with the master leaderboard so visitors can compare model ranks across evaluations immediately. Place a compact evaluation catalog beneath it for opening individual leaderboards. Each catalog card should include:
 
-- Evaluation name and short description.
-- Metric label and score format.
-- Captured date.
-- Number of ranked rows.
-- Cost label coverage and precise USD coverage.
-- Link to the original Artificial Analysis page.
+- Evaluation name and category.
+- Metric label and number of ranked rows.
+- Link to the individual leaderboard.
 
-The catalog should be generated from database metadata so its counts stay correct when a new snapshot is imported.
+Generate the catalog from database metadata so it stays current when a new snapshot is imported. Keep source, capture date, and coverage details on the individual leaderboard and data notes.
 
 ### Leaderboard page
 

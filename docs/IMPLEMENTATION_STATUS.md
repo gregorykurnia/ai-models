@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | 0: Setup | Next.js / TypeScript shell, local instructions, data dictionary, Firestore project and Singapore region confirmed, read-only rules prepared; Git initialized on main with the owner-specified GitHub remote | Branch protection; security rules not deployed |
 | 1: Import | Workbook parser, deterministic source/snapshot/entry identities, validation report, local dataset, trusted publisher | Trusted credentials and Firestore publication |
-| 2: Catalog | 16 evaluation cards, parsed coverage counts, original source links, definitions page | Switch app to database reads after publication |
+| 2: Catalog | Master leaderboard first on the home page, followed by compact links to all 16 evaluation pages; source and coverage details remain on individual pages | Switch app to database reads after publication |
 | 3: Leaderboards | Adaptive columns, source order, provider filter, model search, numeric sorting, pagination, shareable URL parameters, empty state, horizontally scrollable table | Browser interaction and accessibility review |
 | 4: Models and comparison | Schema preserves exact provider/model variants for later views | Planned later product expansion |
 | 5: Refresh and history | Immutable snapshot publisher and new-workbook CLI; source hashes and ingestion logs | History selector, diff view, automated refresh and alerts |

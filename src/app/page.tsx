@@ -1,7 +1,38 @@
 import Link from "next/link";
-import {getMasterDataset} from "@/lib/data";
-import MasterLeaderboard from "@/components/master-leaderboard";
 import {Suspense} from "react";
+import MasterLeaderboard from "@/components/master-leaderboard";
+import {getMasterDataset} from "@/lib/data";
 import {masterTableRows} from "@/lib/master";
+import styles from "./home.module.css";
+
 export const dynamic="force-dynamic";
-export default async function Home(){const {evaluations,rows}=await getMasterDataset();return <><div className="eyebrow">Artificial Analysis · 29 Sep 2026</div><h1>Find the right benchmark.</h1><p>Explore model performance, source rankings, and cost per task across independent evaluations.</p><div className="stats"><div><strong>{evaluations.length}</strong><span>Evaluations</span></div><div><strong>{evaluations.reduce((n,e)=>n+e.row_count,0).toLocaleString()}</strong><span>Ranked entries</span></div><div><strong>29 Sep 2026</strong><span>Source capture date</span></div></div>{evaluations.length===0?<section className="panel"><h2>No snapshot available yet</h2><p>Import the workbook to populate the evaluation catalog.</p></section>:<section className="catalog" aria-label="Evaluation catalog">{evaluations.map(e=><article className="card" key={e.id}><div className="eyebrow">{e.category.replaceAll("_"," ")}</div><h2><Link href={`/leaderboards/${e.slug}`}>{e.display_name}</Link></h2><p>{e.source_title}</p><div>{e.metric_label} · {e.row_count.toLocaleString()} ranked models</div><div className="coverage">Captured {e.captured_at}<br/>{e.cost_label_count} cost labels · {e.precise_cost_count} precise USD values</div>{e.source_url?<a href={e.source_url} target="_blank" rel="noreferrer">Original source ↗</a>:<span>Source: supplied workbook</span>}<Link className="open" href={`/leaderboards/${e.slug}`}>View leaderboard →</Link></article>)}</section>}<Suspense fallback={<p>Loading master leaderboard…</p>}><MasterLeaderboard rows={masterTableRows(rows)} evaluations={evaluations}/></Suspense><p>Intelligence Index includes workbook estimates and documented provider mapping. <Link href="/about/data">Read the data notes</Link>.</p></>;}
+
+export default async function Home(){
+  const {evaluations,rows}=await getMasterDataset();
+  return <>
+    <div className="eyebrow">Artificial Analysis · 29 Sep 2026</div>
+    <h1>Compare model ranks across evaluations.</h1>
+    <p>See each model’s rank across the benchmarks, then open an individual leaderboard for more detail.</p>
+
+    <Suspense fallback={<p>Loading master leaderboard…</p>}>
+      <MasterLeaderboard rows={masterTableRows(rows)} evaluations={evaluations}/>
+    </Suspense>
+
+    {evaluations.length===0
+      ? <section className="panel"><h2>No snapshot available yet</h2><p>Import the workbook to populate the evaluation catalog.</p></section>
+      : <section className={styles.evaluationSection} aria-labelledby="individual-evaluations">
+          <div className="eyebrow">Browse a single benchmark</div>
+          <h2 id="individual-evaluations">Explore individual evaluations</h2>
+          <div className="catalog">
+            {evaluations.map(e=><article className="card" key={e.id}>
+              <div className="eyebrow">{e.category.replaceAll("_"," ")}</div>
+              <h3><Link href={`/leaderboards/${e.slug}`}>{e.display_name}</Link></h3>
+              <p className="evaluation-meta">{e.metric_label} · {e.row_count.toLocaleString()} ranked models</p>
+              <Link className="open" href={`/leaderboards/${e.slug}`}>View leaderboard →</Link>
+            </article>)}
+          </div>
+        </section>}
+
+    <p className={styles.dataNote}>Intelligence Index includes workbook estimates and documented provider mapping. <Link href="/about/data">Read the data notes</Link>.</p>
+  </>;
+}
