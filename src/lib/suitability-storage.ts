@@ -8,8 +8,8 @@ export type PlannerData = { evaluations: PlannerEvaluation[]; entries: Suitabili
 export const savedComparisonSchema = z.object({
   task: suitabilityTaskSchema,
   evaluations: z.array(plannerEvaluationSchema),
-  entries: z.array(z.object({ id: z.string(), evaluation_id: z.string(), snapshot_id: z.string(), model_id: z.string(), source_rank: z.number().int().positive(), source_row: z.number().int(), identity_key: z.string().optional(), model: z.string().optional(), scoring_status: z.string().nullable().optional() })),
-  candidates: z.array(z.object({ model_id: z.string(), model: z.string(), provider: z.string(), source_model_ids: z.array(z.string()).optional() })),
+  entries: z.array(z.object({ id: z.string(), evaluation_id: z.string(), snapshot_id: z.string(), model_id: z.string(), source_rank: z.number().int().positive(), source_row: z.number().int(), identity_key: z.string().optional(), model: z.string().optional(), scoring_status: z.string().nullable().optional(), cost_usd: z.number().nonnegative().nullable().optional(), cost_display: z.string().nullable().optional(), cost_status: z.enum(["exact", "bound", "missing"]).optional() })),
+  candidates: z.array(z.object({ model_id: z.string(), model: z.string(), provider: z.string(), identity_key: z.string().optional(), source_model_ids: z.array(z.string()).optional(), intelligence_index_cost: z.object({ slug: z.string(), cost_usd: z.number().nonnegative(), url: z.string().url(), captured_at: z.string().min(1) }).nullable().optional() })),
   availableSnapshotIds: z.array(z.string()),
 });
 export type SavedComparison = PlannerData & { task: z.infer<typeof suitabilityTaskSchema> };

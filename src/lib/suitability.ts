@@ -23,13 +23,16 @@ export const suitabilityTaskSchema = z.object({
 });
 export type SuitabilityTask = z.infer<typeof suitabilityTaskSchema>;
 export type EvaluationWeight = z.infer<typeof evaluationWeightSchema>;
-export type SuitabilityCandidate = { model_id: string; model: string; provider: string; source_model_ids?: string[] };
+export type CandidateCostSnapshot = { slug: string; cost_usd: number; url: string; captured_at: string };
+export type SuitabilityCandidate = { model_id: string; model: string; provider: string; identity_key?: string; source_model_ids?: string[]; intelligence_index_cost?: CandidateCostSnapshot | null };
 export type SuitabilityEntry = Pick<Entry, "id" | "evaluation_id" | "snapshot_id" | "model_id" | "source_rank" | "source_row"> & {
   identity_key?: string; model?: string; scoring_status?: string | null;
+  cost_usd?: number | null; cost_display?: string | null; cost_status?: Entry["cost_status"];
 };
 export type SuitabilityBreakdown = EvaluationWeight & {
   source_rank: number | null; cohort_size: number; component_score: number | null;
   source_model: string | null; scoring_status: string | null;
+  cost_usd: number | null; cost_display: string | null; cost_status: Entry["cost_status"] | null;
   /** Score points after renormalizing over this candidate's available weight. */
   contribution: number | null;
 };
@@ -80,6 +83,7 @@ export function calculateSuitability(input: {
       }).sort((a, b) => a.source_rank - b.source_rank || a.source_row - b.source_row || a.id.localeCompare(b.id))[0];
       return { ...weight, source_rank: entry?.source_rank ?? null, cohort_size: accepted.size,
         source_model: entry?.model ?? null, scoring_status: entry?.scoring_status ?? null,
+        cost_usd: entry?.cost_usd ?? null, cost_display: entry?.cost_display ?? null, cost_status: entry?.cost_status ?? null,
         component_score: entry ? rankComponent(entry.source_rank, accepted.size) : null, contribution: null };
     });
     const available = breakdown.filter(b => b.source_rank !== null);

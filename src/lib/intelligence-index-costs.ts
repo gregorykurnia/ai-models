@@ -44,6 +44,10 @@ export function getIntelligenceIndexTaskCost(provider: string, model: string): I
     ?? null;
 }
 
+export function getIntelligenceIndexTaskCostCapturedAt(): string {
+  return snapshot.captured_at;
+}
+
 export function getIntelligenceIndexTaskCostMap(): ReadonlyMap<string, IntelligenceIndexTaskCost | null> {
   const all = new Map(costsByIdentity);
   for (const [key, cost] of costsByModel) all.set(key, cost);

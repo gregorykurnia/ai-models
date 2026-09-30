@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { entrySchema, type Entry, type Evaluation, type IntelligenceIndexTaskCost } from "./contract";
 
-export const masterRowSchema=z.object({model_id:z.string(),provider:z.string(),model:z.string(),cells:z.record(z.string(),z.object({entry:entrySchema,href:z.string()})),source_rank:z.number(),source_entries:z.array(entrySchema),intelligence_index_cost:z.object({slug:z.string(),provider:z.string(),model:z.string(),cost_usd:z.number().nonnegative(),url:z.string().url()}).nullable()});
+export const masterRowSchema=z.object({model_id:z.string(),identity_key:z.string(),provider:z.string(),model:z.string(),cells:z.record(z.string(),z.object({entry:entrySchema,href:z.string()})),source_rank:z.number(),source_entries:z.array(entrySchema),intelligence_index_cost:z.object({slug:z.string(),provider:z.string(),model:z.string(),cost_usd:z.number().nonnegative(),url:z.string().url()}).nullable()});
 export type MasterRow=z.infer<typeof masterRowSchema>;
 export type MasterTableRow=Omit<MasterRow,"source_entries"|"cells"> & {cells:Record<string,{entry:Pick<Entry,"source_rank"|"scoring_status">;href:string}>};
 export function masterTableRows(rows:MasterRow[]):MasterTableRow[]{return rows.map(({source_entries,cells,...row})=>({...row,cells:Object.fromEntries(Object.entries(cells).map(([id,c])=>[id,{...c,entry:{source_rank:c.entry.source_rank,scoring_status:c.entry.scoring_status}}]))}));}
@@ -27,7 +27,7 @@ export function aggregateMaster(evaluations:Evaluation[],entries:Entry[],intelli
     for(const entry of entries.filter(x=>x.evaluation_id===e.id).sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row||a.id.localeCompare(b.id))){
       const identity=masterIdentityKey(entry.provider,entry.model);
       let row=rows.get(identity);
-      if(!row){row={model_id:entry.model_id,provider:entry.provider,model:entry.model,cells:{},source_rank:entry.source_rank,source_entries:[],intelligence_index_cost:intelligenceIndexCosts.get(identity)??intelligenceIndexCosts.get(masterIdentityKey("",entry.model))??null};rows.set(identity,row);}
+      if(!row){row={model_id:entry.model_id,identity_key:identity,provider:entry.provider,model:entry.model,cells:{},source_rank:entry.source_rank,source_entries:[],intelligence_index_cost:intelligenceIndexCosts.get(identity)??intelligenceIndexCosts.get(masterIdentityKey("",entry.model))??null};rows.set(identity,row);}
       row.source_entries.push(entry);row.source_rank=Math.min(row.source_rank,entry.source_rank);
       if(row.cells[e.id]){issues.push({sheet:e.display_name,message:`Duplicate ${entry.model_id}: retained row ${row.cells[e.id].entry.source_row}; discarded row ${entry.source_row}`,severity:"warning"});continue;}
       row.cells[e.id]={entry,href:evaluationLink(e,entry.model)};

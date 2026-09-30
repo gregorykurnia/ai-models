@@ -3,6 +3,8 @@ import { adminDb } from "@/lib/admin";
 import { savedComparisonSchema, type SavedComparison } from "@/lib/suitability-storage";
 import type { SuitabilityEntry } from "@/lib/suitability";
 import { FieldValue, type DocumentReference } from "firebase-admin/firestore";
+import { masterIdentityKey } from "@/lib/master";
+import { getIntelligenceIndexTaskCost, getIntelligenceIndexTaskCostCapturedAt } from "@/lib/intelligence-index-costs";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -31,13 +33,27 @@ export async function GET() {
       const chunks = await snapshot.ref.collection("versions").doc(activeVersion).collection("entryChunks").get();
       const entries = chunks.docs.sort((a, b) => a.id.localeCompare(b.id))
         .flatMap(chunk => chunk.get("entries") as SuitabilityEntry[]);
-      tasks.push(savedComparisonSchema.parse({
+      const comparison = savedComparisonSchema.parse({
         task: data.task,
         evaluations: data.evaluations,
         entries,
         candidates: data.candidates,
         availableSnapshotIds: data.availableSnapshotIds,
-      }));
+      });
+      let migrated = false;
+      comparison.candidates = comparison.candidates.map(candidate => {
+        const identity_key = candidate.identity_key ?? masterIdentityKey(candidate.provider, candidate.model);
+        let intelligence_index_cost = candidate.intelligence_index_cost;
+        if (intelligence_index_cost === undefined) {
+          const cost = getIntelligenceIndexTaskCost(candidate.provider, candidate.model);
+          intelligence_index_cost = cost ? { slug: cost.slug, cost_usd: cost.cost_usd, url: cost.url, captured_at: getIntelligenceIndexTaskCostCapturedAt() } : null;
+          migrated = true;
+        }
+        if (!candidate.identity_key) migrated = true;
+        return { ...candidate, identity_key, intelligence_index_cost };
+      });
+      if (migrated) await snapshot.ref.update({ candidates: comparison.candidates });
+      tasks.push(comparison as SavedComparison);
     }
     tasks.sort((a, b) => b.task.updated_at.localeCompare(a.task.updated_at));
     return Response.json(tasks, { headers: { "Cache-Control": "private, no-store" } });
