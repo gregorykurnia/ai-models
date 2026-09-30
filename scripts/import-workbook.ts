@@ -17,9 +17,41 @@ const text=(c:ExcelJS.Cell)=>c.text.trim();
 const number=(c:ExcelJS.Cell)=>typeof c.value==="number"?c.value:typeof c.value==="object"&&c.value&&"result" in c.value&&typeof c.value.result==="number"?c.value.result:null;
 const dataset:Dataset={sourceAsset:{id:hash,filename:path.basename(filename),content_hash:hash,captured_at:captured,imported_at:new Date().toISOString(),source_kind:"xlsx_snapshot"},evaluations:[],providers:[],models:[],snapshots:[],entries:[],issues:[],report:{}};
 const providers=new Map<string,Record<string,unknown>>(),models=new Map<string,Record<string,unknown>>();
+// Resolve providers only from exact, unambiguous labels in standard sheets.
+const providerMatches=new Map<string,Set<string>>();
+for(const sheet of workbook.worksheets){
+  let modelColumn=0,providerColumn=0;
+  sheet.eachRow(row=>{
+    if(!modelColumn){row.eachCell((c,i)=>{if(text(c)==="Model")modelColumn=i;if(text(c)==="Provider")providerColumn=i;});return;}
+    if(!providerColumn)return;
+    const model=text(row.getCell(modelColumn)),provider=text(row.getCell(providerColumn));
+    if(model&&provider){const matches=providerMatches.get(model)||new Set<string>();matches.add(provider);providerMatches.set(model,matches);}
+  });
+}
 for(const sheet of workbook.worksheets){
   if(sheet.name==="Start Here")continue;
-  if(sheet.name==="Intelligence Index"){dataset.issues.push({sheet:sheet.name,message:"Pending separate adapter: provider mapping and source provenance unavailable.",severity:"warning"});continue;}
+  if(sheet.name==="Intelligence Index"){
+    const evaluationId=slug(sheet.name),snapshotId=`${evaluationId}-${hash.slice(0,16)}`;
+    const notes="Imported from workbook columns A–D. First-row rank ‘Int’ is restored to 1 when followed by rank 2. Providers use exact, unambiguous model matches from other workbook sheets; unmatched or ambiguous providers are Unknown. No source URL or cost data is supplied. Scoring status distinguishes independently scored results from estimates.";
+    const evaluation:Evaluation={id:evaluationId,slug:evaluationId,display_name:sheet.name,source_title:"Intelligence Index workbook snapshot",source_url:null,category:"capability_index",metric_key:"intelligence-index",metric_label:"Intelligence Index",score_kind:"integer_score",score_unit:"points",score_min:null,score_max:null,captured_at:captured,source_asset_id:hash,notes,published_snapshot_id:snapshotId,row_count:0,cost_label_count:0,precise_cost_count:0,has_confidence_interval:false,has_release_date:false,has_scoring_status:true};
+    let previousRank=0,unknown=0;
+    sheet.eachRow((row,n)=>{
+      let rank=number(row.getCell(1));
+      if(n===1&&text(row.getCell(1))==="Int"&&number(sheet.getRow(2).getCell(1))===2){rank=1;dataset.issues.push({sheet:sheet.name,message:"Row 1: rank cell ‘Int’ restored to 1 from its position before rank 2.",severity:"warning"});}
+      const model=text(row.getCell(2)),matches=providerMatches.get(model),provider=matches?.size===1?[...matches][0]:"Unknown";
+      const providerId=id(provider),modelId=id(`${provider}\0${model}`);
+      const parsed=entrySchema.safeParse({id:id(`${snapshotId}:${n}`),evaluation_id:evaluationId,snapshot_id:snapshotId,model_id:modelId,provider_id:providerId,provider,model,source_rank:rank,score_value:number(row.getCell(3)),score_display:text(row.getCell(3)),scoring_status:text(row.getCell(4))||null,confidence_interval_display:null,confidence_interval_low_delta:null,confidence_interval_high_delta:null,release_date_label:null,cost_usd:null,cost_display:null,cost_status:"missing",source_sheet:sheet.name,source_row:n,source_asset_id:hash});
+      if(!parsed.success||rank===null||rank<previousRank){dataset.issues.push({sheet:sheet.name,message:`Row ${n}: invalid Intelligence Index row or decreasing rank`,severity:"error"});return;}
+      previousRank=rank;if(provider==="Unknown")unknown++;
+      dataset.entries.push(parsed.data);evaluation.row_count++;
+      providers.set(providerId,{id:providerId,slug:slug(provider),display_name:provider,aliases:[]});
+      models.set(modelId,{id:modelId,provider_id:providerId,canonical_name:model,display_name:model,release_date_label:null,aliases:[],created_at:captured});
+    });
+    dataset.issues.push({sheet:sheet.name,message:`${unknown} rows have Unknown providers; source URL and costs are absent from the workbook.`,severity:"warning"});
+    dataset.evaluations.push(evaluation);
+    dataset.snapshots.push({id:snapshotId,evaluation_id:evaluationId,source_asset_id:hash,captured_at:captured,status:"validated",row_count:evaluation.row_count,cost_label_count:0,precise_cost_count:0});
+    continue;
+  }
   let header=0;let columns:Record<string,number>={};
   sheet.eachRow((row,n)=>{if(header)return;const labels:Record<string,number>={};row.eachCell((c,i)=>{labels[text(c)]=i;});if(labels.Rank&&labels.Provider&&labels.Model){header=n;columns=labels;}});
   if(!header){dataset.issues.push({sheet:sheet.name,message:"Missing standard Rank/Provider/Model header",severity:"error"});continue;}
@@ -55,7 +87,7 @@ summary?.eachRow(row=>{let found=false;row.eachCell(c=>{if(text(c)==="SciCode")f
 dataset.providers=[...providers.values()];dataset.models=[...models.values()];
 dataset.report={sheet_count:workbook.worksheets.length,evaluation_count:dataset.evaluations.length,row_count:dataset.entries.length,provider_count:providers.size,distinct_raw_model_labels:new Set(dataset.entries.map(e=>e.model)).size,cost_label_count:dataset.entries.filter(e=>e.cost_display!==null).length,precise_cost_count:dataset.entries.filter(e=>e.cost_usd!==null).length,evaluations:dataset.evaluations.map(e=>({name:e.display_name,rows:e.row_count,cost_labels:e.cost_label_count,precise_costs:e.precise_cost_count})),issues:dataset.issues};
 await mkdir("data",{recursive:true});await writeFile("data/validation-report.json",JSON.stringify(dataset.report,null,2));
-if(dataset.issues.some(i=>i.severity==="error")||dataset.evaluations.length!==15)throw new Error("Import rejected; see data/validation-report.json. Previous valid data preserved.");
+if(dataset.issues.some(i=>i.severity==="error")||dataset.evaluations.length!==16)throw new Error("Import rejected; see data/validation-report.json. Previous valid data preserved.");
 await writeFile("data/leaderboards.json.tmp",JSON.stringify(dataset));await rename("data/leaderboards.json.tmp","data/leaderboards.json");
 console.log(JSON.stringify(dataset.report,null,2));
 if(process.argv.includes("--publish")){const {publish}=await import("./publish-firestore");await publish(dataset);}

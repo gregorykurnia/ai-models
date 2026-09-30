@@ -26,6 +26,8 @@ The schema is declared in `src/lib/contract.ts`. All nullable source values rema
 
 Default rank sorting preserves workbook row order for tied ranks. Alternate sorts use source rank then model label and source row as deterministic tie breakers. Null costs remain last in both directions.
 
-The parser locates headers by name and imports numeric rank rows. Missing required values, invalid numeric values, decreasing source ranks, missing provenance, or absent standard sheet structure reject the import. Reports are generated from parsed rows. The initial source should reconcile to 15 evaluations, 4,948 entries, 66 provider labels, 739 raw model labels, 3,239 cost labels, and 2,858 precise costs.
+The parser locates headers by name and imports numeric rank rows. Missing required values, invalid numeric values, decreasing source ranks, missing provenance, or absent standard sheet structure reject the import. Reports are generated from parsed rows. The initial source should reconcile to 15 standard evaluations, 4,948 standard entries, 66 provider labels, 739 raw model labels, 3,239 cost labels, and 2,858 precise costs.
 
 Local data is replaced only after validation succeeds. Firestore publication is atomic across evaluation pointers after staging; published snapshots remain immutable. Re-importing the same file preserves deterministic row IDs.
+
+Intelligence Index uses a dedicated A–D adapter (rank, model, score, scoring status), adding 670 rows and a sixteenth evaluation. Row 1’s “Int” rank is restored to 1 only when row 2 has rank 2. Exact model matches across standard sheets supply providers only when unambiguous; other providers are Unknown. `source_url` is null, costs are missing, and optional `scoring_status` preserves independent scoring versus estimates. The UI displays workbook provenance and the adapter notes.

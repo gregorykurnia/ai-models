@@ -1,9 +1,9 @@
 {
   "sheet_count": 17,
-  "evaluation_count": 15,
-  "row_count": 4948,
-  "provider_count": 66,
-  "distinct_raw_model_labels": 739,
+  "evaluation_count": 16,
+  "row_count": 5618,
+  "provider_count": 67,
+  "distinct_raw_model_labels": 766,
   "cost_label_count": 3239,
   "precise_cost_count": 2858,
   "evaluations": [
@@ -96,12 +96,23 @@
       "rows": 554,
       "cost_labels": 399,
       "precise_costs": 228
+    },
+    {
+      "name": "Intelligence Index",
+      "rows": 670,
+      "cost_labels": 0,
+      "precise_costs": 0
     }
   ],
   "issues": [
     {
       "sheet": "Intelligence Index",
-      "message": "Pending separate adapter: provider mapping and source provenance unavailable.",
+      "message": "Row 1: rank cell ‘Int’ restored to 1 from its position before rank 2.",
+      "severity": "warning"
+    },
+    {
+      "sheet": "Intelligence Index",
+      "message": "68 rows have Unknown providers; source URL and costs are absent from the workbook.",
       "severity": "warning"
     },
     {

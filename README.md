@@ -37,7 +37,7 @@ The publisher uses deterministic IDs for snapshots and entries. Already publishe
 
 See [docs/DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md). The importer and publisher live in `scripts/`; the application reads through `src/lib/data.ts`. Source workbooks remain outside this repository. Generated local data and the validation report are under `data/`.
 
-The catalog excludes Intelligence Index pending provenance and provider mapping. SciCode counts are computed from ranked rows, replacing the inaccurate workbook summary count. Every source model variant remains distinct.
+The catalog includes Intelligence Index through a dedicated adapter. Its 670 rows retain scoring status (including estimates); providers use exact, unambiguous model matches in standard sheets, otherwise Unknown. The first rank cell “Int” is restored to 1 and recorded in the report. Source URL and costs remain absent. SciCode counts are computed from ranked rows, replacing the inaccurate workbook summary count. Every source model variant remains distinct.
 
 ## Implementation scope
 
