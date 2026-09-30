@@ -7,7 +7,8 @@ import {sortMaster,type MasterTableRow} from "@/lib/master";
 export default function MasterLeaderboard({rows,evaluations}:{rows:MasterTableRow[];evaluations:Evaluation[]}){
   const params=useSearchParams(),router=useRouter();
   const q=(params.get("mq")??"").slice(0,200),provider=params.get("mp")??"";
-  const requested=params.get("ms")??"model",sort=["model","provider",...evaluations.map(e=>e.id)].includes(requested)?requested:"model";
+  const defaultSort=evaluations.some(e=>e.id==="intelligence-index")?"intelligence-index":"model";
+  const requested=params.get("ms")??defaultSort,sort=["model","provider",...evaluations.map(e=>e.id)].includes(requested)?requested:defaultSort;
   const direction=params.get("md")==="desc"?"desc":"asc";
   const size=[25,50,100].includes(Number(params.get("mz")))?Number(params.get("mz")):25;
   const sorted=sortMaster(rows.filter(r=>(!provider||r.provider===provider)&&r.model.toLowerCase().includes(q.toLowerCase())),sort,direction);
