@@ -51,7 +51,7 @@ export function rankComponent(rank: number, cohortSize: number): number {
  * Empty cohorts are allowed only when explicitly listed in availableSnapshotIds.
  */
 export function calculateSuitability(input: {
-  evaluations: Evaluation[]; entries: SuitabilityEntry[]; weights: EvaluationWeight[];
+  evaluations: Pick<Evaluation, "id">[]; entries: SuitabilityEntry[]; weights: EvaluationWeight[];
   candidates: SuitabilityCandidate[]; availableSnapshotIds: string[];
 }): SuitabilityResult[] {
   const weights = z.array(evaluationWeightSchema).min(1).parse(input.weights);
