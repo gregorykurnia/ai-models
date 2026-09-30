@@ -2,9 +2,9 @@
 import Link from "next/link";
 import {useSearchParams,useRouter} from "next/navigation";
 import type {Evaluation} from "@/lib/contract";
-import {sortMaster,type MasterRow} from "@/lib/master";
+import {sortMaster,type MasterTableRow} from "@/lib/master";
 
-export default function MasterLeaderboard({rows,evaluations}:{rows:MasterRow[];evaluations:Evaluation[]}){
+export default function MasterLeaderboard({rows,evaluations}:{rows:MasterTableRow[];evaluations:Evaluation[]}){
   const params=useSearchParams(),router=useRouter();
   const q=(params.get("mq")??"").slice(0,200),provider=params.get("mp")??"";
   const requested=params.get("ms")??"mean",sort=["mean","model","provider",...evaluations.map(e=>e.id)].includes(requested)?requested:"mean";

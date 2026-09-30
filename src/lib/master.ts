@@ -24,6 +24,8 @@ export function normalize(entry:Entry,config:ScoringConfig){
 }
 export const masterRowSchema=z.object({model_id:z.string(),provider:z.string(),model:z.string(),cells:z.record(z.string(),z.object({entry:entrySchema,normalized_value:z.number().nullable(),exclusion_reason:z.string().nullable(),href:z.string()})),mean_normalized_score:z.number().nullable(),mean_coverage:z.number().int().nonnegative(),source_rank:z.number(),source_entries:z.array(entrySchema)});
 export type MasterRow=z.infer<typeof masterRowSchema>;
+export type MasterTableRow=Omit<MasterRow,"source_entries"|"cells"> & {cells:Record<string,{entry:Pick<Entry,"score_display"|"source_rank"|"scoring_status">;normalized_value:number|null;exclusion_reason:string|null;href:string}>};
+export function masterTableRows(rows:MasterRow[]):MasterTableRow[]{return rows.map(({source_entries,cells,...row})=>({...row,cells:Object.fromEntries(Object.entries(cells).map(([id,c])=>[id,{...c,entry:{score_display:c.entry.score_display,source_rank:c.entry.source_rank,scoring_status:c.entry.scoring_status}}]))}));}
 export function evaluationLink(e:Evaluation,model:string){return `/leaderboards/${e.slug}?q=${encodeURIComponent(model)}`;}
 export function aggregateMaster(evaluations:Evaluation[],entries:Entry[]){
   const rows=new Map<string,MasterRow>();
@@ -48,8 +50,8 @@ export function aggregateMaster(evaluations:Evaluation[],entries:Entry[]){
   }
   return {rows:sortMaster([...rows.values()],"mean","desc"),issues,configs:Object.fromEntries(evaluations.map(e=>[e.id,scoringConfig(e)]))};
 }
-export function sortMaster(rows:MasterRow[],sort:string,direction:string){return [...rows].sort((a,b)=>{
-  const value=(r:MasterRow)=>sort==="mean"?r.mean_normalized_score:sort==="model"?r.model:sort==="provider"?r.provider:r.cells[sort]?.normalized_value??null;
+export function sortMaster<T extends MasterTableRow>(rows:T[],sort:string,direction:string){return [...rows].sort((a,b)=>{
+  const value=(r:T)=>sort==="mean"?r.mean_normalized_score:sort==="model"?r.model:sort==="provider"?r.provider:r.cells[sort]?.normalized_value??null;
   const av=value(a),bv=value(b);
   if(av===null&&bv!==null)return 1;if(bv===null&&av!==null)return -1;
   const comparison=av===null||bv===null?0:typeof av==="number"&&typeof bv==="number"?av-bv:String(av).localeCompare(String(bv));
