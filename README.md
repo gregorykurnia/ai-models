@@ -15,6 +15,10 @@ Open http://localhost:3000. Local mode reads the validated JSON produced by the 
 
 `npm run build` creates the production build; `npm start` serves it.
 
+## Deployed environment
+
+The app is linked to the Vercel environment at [ai-models-nine-livid.vercel.app](https://ai-models-nine-livid.vercel.app/). Task Suitability saves are still browser-local; opening this URL from another device or browser does not sync them.
+
 ## Trusted Firestore import
 
 Project: `ai-comparison-6b522`. The default database is confirmed as Firestore Native mode in `asia-southeast1` (Singapore).
