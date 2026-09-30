@@ -4,7 +4,7 @@ export async function publish(data:Dataset){
   const db=adminDb(),run=db.collection("ingestionRuns").doc();
   await run.set({source_asset_id:data.sourceAsset.id,started_at:new Date().toISOString(),status:"started",accepted_rows:data.entries.length});
   try{
-    await db.collection("sourceAssets").doc(String(data.sourceAsset.id)).create(data.sourceAsset).catch(e=>{if(e.code!==6)throw e;});
+    for(const sourceAsset of [data.sourceAsset,...(data.sourceAssets??[])])await db.collection("sourceAssets").doc(String(sourceAsset.id)).create(sourceAsset).catch(e=>{if(e.code!==6)throw e;});
     for(const issue of data.issues)await db.collection("ingestionIssues").doc().set({...issue,run_id:run.id});
     for(const collection of ["providers","models"] as const){for(let start=0;start<data[collection].length;start+=400){const batch=db.batch();for(const record of data[collection].slice(start,start+400))batch.set(db.collection(collection).doc(String(record.id)),record,{merge:true});await batch.commit();}}
     for(const snapshot of data.snapshots){

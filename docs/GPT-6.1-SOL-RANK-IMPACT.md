@@ -4,6 +4,8 @@ Artificial Analysis released five GPT-6.1 Sol effort variants on 29 September 20
 
 These are insertion ranks against the captured cohort, rather than a refreshed copy of every live Artificial Analysis leaderboard. Existing source order is preserved for equal captured scores; new rows with equal scores are ordered by model name. Each existing row with a lower score than a new model moves down one place for that insertion. “Existing rows shifted” counts models whose position changes at least once in that evaluation; a model can move down by more than one place when several Sol variants score above it.
 
+**Implementation status:** Applied to the bundled leaderboard snapshot as 80 model/evaluation rows (five effort variants across all 16 evaluations). Existing ranks are shifted to match the positions below. The live data overlay and its Artificial Analysis source profiles are recorded in `data/leaderboards.json`.
+
 | Evaluation | Max | Xhigh | High | Medium | Low | Existing rows shifted |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | [Briefcase v1.1](https://artificialanalysis.ai/evaluations/aa-briefcase) | 20 | 29 | 37 | 51 | 88 | 183 / 202 |
