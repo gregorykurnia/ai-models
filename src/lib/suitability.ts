@@ -23,10 +23,13 @@ export const suitabilityTaskSchema = z.object({
 });
 export type SuitabilityTask = z.infer<typeof suitabilityTaskSchema>;
 export type EvaluationWeight = z.infer<typeof evaluationWeightSchema>;
-export type SuitabilityCandidate = { model_id: string; model: string; provider: string };
-export type SuitabilityEntry = Pick<Entry, "id" | "evaluation_id" | "snapshot_id" | "model_id" | "source_rank" | "source_row">;
+export type SuitabilityCandidate = { model_id: string; model: string; provider: string; source_model_ids?: string[] };
+export type SuitabilityEntry = Pick<Entry, "id" | "evaluation_id" | "snapshot_id" | "model_id" | "source_rank" | "source_row"> & {
+  identity_key?: string; model?: string; scoring_status?: string | null;
+};
 export type SuitabilityBreakdown = EvaluationWeight & {
   source_rank: number | null; cohort_size: number; component_score: number | null;
+  source_model: string | null; scoring_status: string | null;
   /** Score points after renormalizing over this candidate's available weight. */
   contribution: number | null;
 };
@@ -62,13 +65,21 @@ export function calculateSuitability(input: {
     const rows = input.entries.filter(e => e.evaluation_id === weight.evaluation_id && e.snapshot_id === weight.snapshot_id)
       .sort((a, b) => a.source_rank - b.source_rank || a.source_row - b.source_row || a.id.localeCompare(b.id));
     const accepted = new Map<string, SuitabilityEntry>();
-    for (const row of rows) if (!accepted.has(row.model_id)) accepted.set(row.model_id, row);
-    return { weight, accepted };
+    for (const row of rows) {
+      const key = row.identity_key ?? row.model_id;
+      if (!accepted.has(key)) accepted.set(key, row);
+    }
+    const byModelId = new Map<string, SuitabilityEntry>();
+    for (const row of rows) byModelId.set(row.model_id, accepted.get(row.identity_key ?? row.model_id)!);
+    return { weight, accepted, byModelId };
   });
   return input.candidates.map(candidate => {
-    const breakdown: SuitabilityBreakdown[] = cohorts.map(({ weight, accepted }) => {
-      const entry = accepted.get(candidate.model_id);
+    const breakdown: SuitabilityBreakdown[] = cohorts.map(({ weight, accepted, byModelId }) => {
+      const entry = [candidate.model_id, ...(candidate.source_model_ids ?? [])].flatMap(id => {
+        const row = byModelId.get(id); return row ? [row] : [];
+      }).sort((a, b) => a.source_rank - b.source_rank || a.source_row - b.source_row || a.id.localeCompare(b.id))[0];
       return { ...weight, source_rank: entry?.source_rank ?? null, cohort_size: accepted.size,
+        source_model: entry?.model ?? null, scoring_status: entry?.scoring_status ?? null,
         component_score: entry ? rankComponent(entry.source_rank, accepted.size) : null, contribution: null };
     });
     const available = breakdown.filter(b => b.source_rank !== null);

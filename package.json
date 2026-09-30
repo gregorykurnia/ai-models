@@ -25,6 +25,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "import:workbook": "tsx scripts/import-workbook.ts"
+    "import:workbook": "tsx scripts/import-workbook.ts",
+    "audit:suitability": "tsx scripts/audit-suitability.ts"
   }
 }

@@ -31,6 +31,12 @@ try {
   await results.locator("summary").first().click();
   assert(await results.getByText(/Component/).first().isVisible());
   assert((await results.locator("details a").first().getAttribute("href")).startsWith("/leaderboards/"));
+  const sourceHref = await results.locator("details a").first().getAttribute("href");
+  await results.locator("details a").first().click();
+  await page.waitForURL(/leaderboards/);
+  assert.equal(await page.locator("#model-search").inputValue(), new URL(sourceHref, taskUrl).searchParams.get("q"));
+  assert((await page.locator("tbody td.model").count()) > 0, "Source query must match the evaluation's original model label");
+  await page.goBack();
   await page.reload();
   await page.getByLabel("What do you need a model to do?").waitFor();
   await results.locator("tbody tr").first().waitFor();
@@ -46,6 +52,23 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
   await page.screenshot({ path: "/tmp/suitability-mobile.png" });
+  const counters = await page.evaluate(() => JSON.parse(localStorage.getItem("model-benchmarks:planner-events:v1")));
+  assert.deepEqual(Object.keys(counters).sort(), ["counts", "version"]);
+  for (const event of ["planner_opened", "task_saved", "evaluations_selected", "weight_validation_failed", "comparison_calculated", "complete_coverage_filter_used", "result_breakdown_opened", "source_leaderboard_opened"])
+    assert(counters.counts[event] > 0, `Missing event: ${event}`);
+  await page.getByRole("link", { name: "New task", exact: true }).click();
+  await page.waitForURL(/\/suitability$/);
+  await page.waitForFunction(() => document.querySelector("#task-request")?.value === "");
+  await page.getByLabel("What do you need a model to do?").fill("Full catalog comparison");
+  for (const checkbox of await evaluations.getByRole("checkbox").all()) await checkbox.check();
+  await models.getByRole("button", { name: "Select all visible" }).click();
+  await save.click();
+  await page.waitForURL(/suitability\/.+/);
+  await results.locator("tbody tr").first().waitFor();
+  await page.getByLabel("Complete coverage only").uncheck();
+  assert.equal(await results.locator("thead th").count(), 20);
+  assert.equal(await results.locator("tbody tr").count(), count);
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
   assert.deepEqual(errors, []);
-  console.log(JSON.stringify({ taskUrl, candidates: count, reload: true, invalidWeightsBlocked: true, mobileOverflow: false, errors }));
+  console.log(JSON.stringify({ taskUrl, candidates: count, fullCatalogSave: true, reload: true, invalidWeightsBlocked: true, eventCounters: counters.counts, mobileOverflow: false, errors }));
 } finally { await browser.close(); }

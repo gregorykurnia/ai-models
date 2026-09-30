@@ -49,6 +49,8 @@ Open `/suitability` to describe a task, select evaluations and weights, and comp
 
 Browser storage preserves the configuration and full pinned source cohorts, so later imports cannot silently change saved results. No benchmark writes or account setup are required. Storage failures are shown explicitly; saves are limited by the browser's storage capacity. Source links open current leaderboards, which may differ from pinned results. See [the methodology](docs/TASK_SUITABILITY_METHODOLOGY.md).
 
-Run scoring and persistence fixtures with `npx tsx --test tests/suitability.test.ts tests/suitability-storage.test.ts`. With the dev server on port 3180, run `node scripts/check-suitability-browser.mjs` using an installed Playwright module (or set `PLAYWRIGHT_MODULE` to its absolute module path).
+`npm run audit:suitability` verifies the imported snapshot and runs a full-catalog score, identity, source-link, and coverage audit. [Review its findings](docs/TASK_SUITABILITY_DATA_AUDIT.md). Known alternate sheet labels match the same variant; source IDs remain intact. Earlier saved tasks retain their original matching. Planner event counters stay in the browser and are not sent to an analytics service.
+
+Run planner fixtures with `npx tsx --test tests/suitability*.test.ts`. With the dev server on port 3180, run `node scripts/check-suitability-browser.mjs` using an installed Playwright module (or set `PLAYWRIGHT_MODULE` to its absolute module path).
 
 Repository setup, branch protection, and pushes require a known Git repository and configured upstream. This directory initially had no `.git` directory.

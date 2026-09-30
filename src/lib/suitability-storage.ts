@@ -6,8 +6,8 @@ export type PlannerData = { evaluations: Evaluation[]; entries: SuitabilityEntry
 const savedSchema = z.object({
   task: suitabilityTaskSchema,
   evaluations: z.array(z.object({ id: z.string(), slug: z.string(), display_name: z.string(), category: z.string(), metric_label: z.string(), captured_at: z.string(), published_snapshot_id: z.string(), row_count: z.number() }).passthrough()),
-  entries: z.array(z.object({ id: z.string(), evaluation_id: z.string(), snapshot_id: z.string(), model_id: z.string(), source_rank: z.number().int().positive(), source_row: z.number().int() })),
-  candidates: z.array(z.object({ model_id: z.string(), model: z.string(), provider: z.string() })),
+  entries: z.array(z.object({ id: z.string(), evaluation_id: z.string(), snapshot_id: z.string(), model_id: z.string(), source_rank: z.number().int().positive(), source_row: z.number().int(), identity_key: z.string().optional(), model: z.string().optional(), scoring_status: z.string().nullable().optional() })),
+  candidates: z.array(z.object({ model_id: z.string(), model: z.string(), provider: z.string(), source_model_ids: z.array(z.string()).optional() })),
   availableSnapshotIds: z.array(z.string()),
 });
 export type SavedComparison = PlannerData & { task: z.infer<typeof suitabilityTaskSchema> };

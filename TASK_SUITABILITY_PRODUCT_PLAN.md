@@ -2,7 +2,7 @@
 
 Product prompt and rollout plan for letting a user describe a task, choose the evaluations that matter, assign their weights, select any number of candidate models, and compare the resulting suitability scores.
 
-**Status:** Proposed product expansion
+**Status:** Phases 0–3 implemented locally; Phase 3 audit covers the imported 29 Sep 2026 workbook snapshot. Central analytics, refresh, sharing, and accounts remain future work.
 
 **Related plans:** [LEADERBOARD_PRODUCT_PLAN.md](LEADERBOARD_PRODUCT_PLAN.md) · [MASTER_LEADERBOARD_ROLLOUT_PLAN.md](MASTER_LEADERBOARD_ROLLOUT_PLAN.md)
 
