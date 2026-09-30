@@ -2,6 +2,18 @@
 
 ## Feature
 
+## Rollout status — 30 September 2026
+
+- Phase 0: scoring policy v1 implemented and documented. Beta uses source-bounded percentages and signed indices; Elo, unbounded indices, and estimates are excluded pending product review. Product approval of additional scales remains open.
+- Phase 1: shared local/Firestore aggregation, Zod contracts, deterministic duplicate selection, retained provenance, and importer validation issues implemented. Live Firestore behavior and read costs have not been measured.
+- Phase 2: home beta table implemented with all 16 evaluation columns, normalized mean, coverage, dynamic rank, immutable source rank links, filters, pagination, sticky columns, and URL state.
+- Phase 3: importer passed with 5,618 source entries; 850 master rows validated. Ten high-coverage rows reconciled against the original workbook re-import. Focused fixtures, TypeScript, production build, desktop/mobile screenshots, sorting, source navigation, browser return state, keyboard focus, and mobile overflow checks passed. No individual evaluation implementation was changed.
+- Phase 4: guarded release is implemented as a clearly labeled beta and pushed to the configured upstream. Production deployment, live load/read monitoring, user feedback, and promotion remain open; they cannot be validated from local checks.
+
+Verification: `npx tsx scripts/validate-master.ts`, `npx tsc --noEmit`, `npm run build`, and `npm run import:workbook -- <original workbook>`. Browser smoke checks: `BASE_URL=http://localhost:3180 PLAYWRIGHT_MODULE=<installed Playwright module> node scripts/check-master-browser.mjs`.
+
+The compact table payload is 1,295,691 JSON bytes, excluding evaluation metadata and framework overhead. Full source provenance stays server-side. The report contains 302 master warnings for duplicate selection, excluded scales, and low coverage, with no master errors. These are review signals rather than fabricated replacement values.
+
 Add a master leaderboard section to the home page beneath the individual evaluation cards. It should show one row per model and one column for each evaluation, so a visitor can compare a model across the full workbook from one place.
 
 The master table should include:
