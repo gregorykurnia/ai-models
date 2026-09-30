@@ -19,7 +19,7 @@ export async function publish(data:Dataset){
     // Publish every evaluation pointer atomically only after all entries are durable.
     await db.runTransaction(async tx=>{
       const current=await tx.getAll(...data.evaluations.map(e=>db.collection("evaluations").doc(e.id)));
-      if(current.some(doc=>doc.exists&&String(doc.data()?.captured_at)>String(data.sourceAsset.captured_at)))throw new Error("An older capture cannot replace a newer published snapshot");
+      if(current.some((doc,index)=>doc.exists&&String(doc.data()?.captured_at)>String(data.evaluations[index].captured_at)))throw new Error("An older capture cannot replace a newer published snapshot");
       for(const evaluation of data.evaluations){tx.set(db.collection("evaluations").doc(evaluation.id),evaluation);tx.update(db.collection("snapshots").doc(evaluation.published_snapshot_id),{status:"published"});}
       tx.update(run,{status:"published",completed_at:new Date().toISOString()});
     });

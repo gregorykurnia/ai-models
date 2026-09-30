@@ -10,7 +10,7 @@ export const dynamic="force-dynamic";
 export default async function Home(){
   const {evaluations,rows}=await getMasterDataset();
   return <>
-    <div className="eyebrow">Artificial Analysis · 29 Sep 2026</div>
+    <div className="eyebrow">Artificial Analysis · leaderboard snapshots</div>
     <h1>Compare model ranks across evaluations.</h1>
     <p>See each model’s rank across the benchmarks, then open an individual leaderboard for more detail.</p>
     <section className="panel"><div className="eyebrow">Task suitability planner</div><h2>Find the best model for a task</h2><p>Choose evaluations, set your priorities, and compare model suitability with transparent coverage.</p><Link href="/suitability">Create a task comparison →</Link></section>
@@ -28,6 +28,7 @@ export default async function Home(){
             {evaluations.map(e=><article className="card" key={e.id}>
               <div className="eyebrow">{e.category.replaceAll("_"," ")}</div>
               <h3><Link href={`/leaderboards/${e.slug}`}>{e.display_name}</Link></h3>
+              {e.metric_group && <div className="metric-tag"><span className={`metric-indicator metric-indicator--${e.metric_indicator}`} style={{backgroundColor:e.metric_color}} aria-hidden="true"/><span>{e.source_tab}</span></div>}
               <p className="evaluation-meta">{e.metric_label} · {e.row_count.toLocaleString()} ranked models</p>
               <Link className="open" href={`/leaderboards/${e.slug}`}>View leaderboard →</Link>
             </article>)}

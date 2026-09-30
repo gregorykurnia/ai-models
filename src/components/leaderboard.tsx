@@ -8,7 +8,7 @@ export default function Leaderboard({entries,evaluation}:{entries:Entry[];evalua
   const router=useRouter(),pathname=usePathname(),params=useSearchParams();
   const state=querySchema.parse(Object.fromEntries(params.entries()));
   const update=(values:Record<string,string|number>)=>{const next=new URLSearchParams(params.toString());next.set("page","1");for(const [key,value]of Object.entries(values)){if(value==="")next.delete(key);else next.set(key,String(value));}router.replace(`${pathname}?${next.toString()}`,{scroll:false});};
-  const allowedSort=state.sort==="release_date_label"&&!evaluation.has_release_date||state.sort==="confidence_interval_display"&&!evaluation.has_confidence_interval?"source_rank":state.sort;
+  const allowedSort=state.sort==="release_date_label"&&!evaluation.has_release_date||state.sort==="confidence_interval_display"&&!evaluation.has_confidence_interval||state.sort==="cost_usd"&&!evaluation.cost_label_count?"source_rank":state.sort;
   const filtered=useMemo(()=>entries.filter(e=>(!state.provider||e.provider===state.provider)&&e.model.toLowerCase().includes(state.q.toLowerCase())),[entries,state.provider,state.q]);
   const sorted=useMemo(()=>[...filtered].sort((a,b)=>{
     const value=(e:Entry):string|number|null=>allowedSort==="release_date_label"?dateValue(e.release_date_label):allowedSort==="confidence_interval_display"?e.confidence_interval_high_delta:e[allowedSort];
@@ -26,7 +26,7 @@ export default function Leaderboard({entries,evaluation}:{entries:Entry[];evalua
     ...(evaluation.has_scoring_status?[{id:"scoring_status",header:"Scoring status",cell:({row}:{row:{original:Entry}})=>row.original.scoring_status||"—"}]:[]),
     ...(evaluation.has_confidence_interval?[{accessorKey:"confidence_interval_display",header:"Elo CI",cell:({row}:{row:{original:Entry}})=>row.original.confidence_interval_display||"—"}]:[]),
     ...(evaluation.has_release_date?[{accessorKey:"release_date_label",header:"Release date",cell:({row}:{row:{original:Entry}})=>row.original.release_date_label||"—"}]:[]),
-    {accessorKey:"cost_usd",header:"Cost per task",cell:({row})=>row.original.cost_display??(row.original.cost_usd===null?"—":`$${row.original.cost_usd}`)}
+    ...(evaluation.cost_label_count?[{accessorKey:"cost_usd",header:"Cost per task",cell:({row}:{row:{original:Entry}})=>row.original.cost_display??(row.original.cost_usd===null?"—":`$${row.original.cost_usd}`)}]:[])
   ],[evaluation]);
   const table=useReactTable({data:rows,columns,getCoreRowModel:getCoreRowModel()});
   const providers=[...new Set(entries.map(e=>e.provider))].sort();

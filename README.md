@@ -43,6 +43,8 @@ See [docs/DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md). The importer and publish
 
 The catalog includes Intelligence Index through a dedicated adapter. Its 670 rows retain scoring status (including estimates); providers use exact, unambiguous model matches in standard sheets, otherwise Unknown. The first rank cell “Int” is restored to 1 and recorded in the report. Source URL and costs remain absent. SciCode counts are computed from ranked rows, replacing the inaccurate workbook summary count. Every source model variant remains distinct.
 
+AA-Briefcase v1.1 Rubric Score, Analytical Quality Elo, and Presentation Elo are captured separately in `data/aa-briefcase-components.json`, with all 208 source models. `npm run import:briefcase-components` merges these indexes into the local dataset. Workbook imports add the same captured supplement automatically. Firestore mode reads these three indexes from the bundled snapshot until they have published Firestore snapshots. Add `-- --publish` to either import command to publish the combined dataset to Firestore.
+
 ## Implementation scope
 
 Implementation covers the application shell, workbook importer, evaluation catalog, data definitions, reusable leaderboards, and the Task Suitability Planner with shared database saves. Automated refresh remains a later phase. Production launch is outside the product plan's initial implementation scope.

@@ -26,6 +26,7 @@
     "build": "next build",
     "start": "next start",
     "import:workbook": "tsx scripts/import-workbook.ts",
+    "import:briefcase-components": "tsx scripts/import-aa-briefcase-components.ts",
     "audit:suitability": "tsx scripts/audit-suitability.ts"
   }
 }

@@ -4,6 +4,7 @@ import { readFile,mkdir,writeFile,rename } from "node:fs/promises";
 import path from "node:path";
 import { entrySchema,type Dataset,type Evaluation } from "../src/lib/contract";
 import { aggregateMaster } from "../src/lib/master";
+import { mergeBriefcaseComponents,type BriefcaseComponentsSource } from "../src/lib/aa-briefcase";
 
 const filename=process.argv[2];
 if(!filename) throw new Error("Usage: npm run import:workbook -- <xlsx> [--publish]");
@@ -89,8 +90,12 @@ dataset.providers=[...providers.values()];dataset.models=[...models.values()];
 const master=aggregateMaster(dataset.evaluations,dataset.entries);
 dataset.issues.push(...master.issues);
 dataset.report={sheet_count:workbook.worksheets.length,evaluation_count:dataset.evaluations.length,row_count:dataset.entries.length,provider_count:providers.size,distinct_raw_model_labels:new Set(dataset.entries.map(e=>e.model)).size,cost_label_count:dataset.entries.filter(e=>e.cost_display!==null).length,precise_cost_count:dataset.entries.filter(e=>e.cost_usd!==null).length,evaluations:dataset.evaluations.map(e=>({name:e.display_name,rows:e.row_count,cost_labels:e.cost_label_count,precise_costs:e.precise_cost_count})),issues:dataset.issues};
-await mkdir("data",{recursive:true});await writeFile("data/validation-report.json",JSON.stringify(dataset.report,null,2));
+await mkdir("data",{recursive:true});
+await writeFile("data/validation-report.json",JSON.stringify(dataset.report,null,2));
 if(dataset.issues.some(i=>i.severity==="error")||dataset.evaluations.length!==16)throw new Error("Import rejected; see data/validation-report.json. Previous valid data preserved.");
-await writeFile("data/leaderboards.json.tmp",JSON.stringify(dataset));await rename("data/leaderboards.json.tmp","data/leaderboards.json");
-console.log(JSON.stringify(dataset.report,null,2));
-if(process.argv.includes("--publish")){const {publish}=await import("./publish-firestore");await publish(dataset);}
+const componentSource=JSON.parse(await readFile("data/aa-briefcase-components.json","utf8")) as BriefcaseComponentsSource;
+const completeDataset=mergeBriefcaseComponents(dataset,componentSource);
+await writeFile("data/validation-report.json",JSON.stringify(completeDataset.report,null,2));
+await writeFile("data/leaderboards.json.tmp",JSON.stringify(completeDataset));await rename("data/leaderboards.json.tmp","data/leaderboards.json");
+console.log(JSON.stringify(completeDataset.report,null,2));
+if(process.argv.includes("--publish")){const {publish}=await import("./publish-firestore");await publish(completeDataset);}
