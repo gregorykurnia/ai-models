@@ -6,7 +6,7 @@ function adminApp() {
   if (existing) return existing;
 
   const rawServiceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
-  const projectId = process.env.FIREBASE_PROJECT_ID || "ai-comparison-6b522";
+  const projectId = process.env.FIREBASE_PROJECT_ID || "ai-models-72d27";
   if (rawServiceAccount) {
     let serviceAccount: ServiceAccount;
     try {

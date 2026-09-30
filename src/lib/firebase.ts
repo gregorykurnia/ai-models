@@ -2,12 +2,12 @@ import { getApp, getApps, initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDg-VRhlp5Ikk2TDUmx52cAluULwKtC0aE",
-  authDomain: "ai-comparison-6b522.firebaseapp.com",
-  projectId: "ai-comparison-6b522",
-  storageBucket: "ai-comparison-6b522.firebasestorage.app",
-  messagingSenderId: "730294474017",
-  appId: "1:730294474017:web:4d80ed5c14107574fbda60",
+  apiKey: "AIzaSyD4TCskbe6W8ltfBzNgA3XYfyNm5WxOkwk",
+  authDomain: "ai-models-72d27.firebaseapp.com",
+  projectId: "ai-models-72d27",
+  storageBucket: "ai-models-72d27.firebasestorage.app",
+  messagingSenderId: "293751049915",
+  appId: "1:293751049915:web:6c6e93c4022f6a48baa39e",
 };
 
 export const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);

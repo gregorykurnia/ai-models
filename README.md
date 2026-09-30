@@ -21,17 +21,17 @@ The app is linked to the Vercel environment at [ai-models-nine-livid.vercel.app]
 
 ## Trusted Firestore import
 
-Project: `ai-comparison-6b522`. The default database is confirmed as Firestore Native mode in `asia-southeast1` (Singapore).
+Project: `ai-models-72d27`. The default database is confirmed as Firestore Native mode in `asia-southeast1` (Singapore).
 
 Provide Application Default Credentials through `GOOGLE_APPLICATION_CREDENTIALS`, pointing to a service account JSON outside the repository, or your environment's managed identity. Never commit credentials.
 
 ```sh
-FIREBASE_PROJECT_ID=ai-comparison-6b522 npm run import:workbook -- '/path/to/snapshot.xlsx' --publish
+FIREBASE_PROJECT_ID=ai-models-72d27 npm run import:workbook -- '/path/to/snapshot.xlsx' --publish
 ```
 
 For future snapshots specify `CAPTURED_AT=YYYY-MM-DD`. The initial capture defaults to `2026-09-29`.
 
-After successful publishing, set `DATA_SOURCE=firestore` and `FIREBASE_PROJECT_ID=ai-comparison-6b522` in `.env.local`. Server reads use the Admin SDK and credentials. There is no client write path or admin upload screen.
+After successful publishing, set `DATA_SOURCE=firestore` and `FIREBASE_PROJECT_ID=ai-models-72d27` in `.env.local`. Server reads use the Admin SDK and credentials. There is no client write path or admin upload screen.
 
 The publisher uses deterministic IDs for snapshots and entries. Already published snapshots are skipped on re-import. Entries are staged before all evaluation pointers are published in one transaction; a failed staging operation leaves existing published pointers intact. Publication rejects a capture older than the currently visible snapshot. Concurrent staging of the same workbook requires operator coordination.
 
