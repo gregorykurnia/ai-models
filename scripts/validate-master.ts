@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
-import {aggregateMaster,normalize,scoringConfig,sortMaster,masterRowSchema} from "../src/lib/master";
+import {aggregateMaster,normalize,scoringConfig,sortMaster,masterRowSchema,masterTableRows} from "../src/lib/master";
 import type {Dataset,Entry} from "../src/lib/contract";
 const d=JSON.parse(await readFile("data/leaderboards.json","utf8")) as Dataset;
 const percentage=d.evaluations.find(e=>e.score_kind==="percentage")!;
@@ -30,4 +30,4 @@ for(const row of [...result.rows].sort((a,b)=>b.source_entries.length-a.source_e
   for(const dir of ["asc","desc"])assert.equal(sortMaster([row],id,dir)[0].cells[id].entry.source_rank,source.source_rank);
 }
 assert.deepEqual(sortMaster(fixture.rows,"mean","desc"),sortMaster([...fixture.rows].reverse(),"mean","desc"));
-console.log(JSON.stringify({models:result.rows.length,evaluations:d.evaluations.length,issues:result.issues.length,client_rows_bytes:Buffer.byteLength(JSON.stringify(result.rows)),reconciled_rows:10},null,2));
+console.log(JSON.stringify({models:result.rows.length,evaluations:d.evaluations.length,issues:result.issues.length,client_rows_bytes:Buffer.byteLength(JSON.stringify(masterTableRows(result.rows))),reconciled_rows:10},null,2));

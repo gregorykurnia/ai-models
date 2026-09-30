@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { readFile,mkdir,writeFile,rename } from "node:fs/promises";
 import path from "node:path";
 import { entrySchema,type Dataset,type Evaluation } from "../src/lib/contract";
+import { aggregateMaster } from "../src/lib/master";
 
 const filename=process.argv[2];
 if(!filename) throw new Error("Usage: npm run import:workbook -- <xlsx> [--publish]");
@@ -85,6 +86,8 @@ for(const sheet of workbook.worksheets){
 const sci=dataset.evaluations.find(e=>e.display_name==="SciCode"),summary=workbook.getWorksheet("Start Here");
 summary?.eachRow(row=>{let found=false;row.eachCell(c=>{if(text(c)==="SciCode")found=true;});if(found&&sci){const numbers:number[]=[];row.eachCell(c=>{const v=number(c);if(v!==null)numbers.push(v);});if(numbers[0]!==sci.row_count)dataset.issues.push({sheet:"Start Here",message:`SciCode summary reports ${numbers[0]} ranked rows; parsed sheet contains ${sci.row_count}. Parsed rows are authoritative.`,severity:"warning"});}});
 dataset.providers=[...providers.values()];dataset.models=[...models.values()];
+const master=aggregateMaster(dataset.evaluations,dataset.entries);
+dataset.issues.push(...master.issues);
 dataset.report={sheet_count:workbook.worksheets.length,evaluation_count:dataset.evaluations.length,row_count:dataset.entries.length,provider_count:providers.size,distinct_raw_model_labels:new Set(dataset.entries.map(e=>e.model)).size,cost_label_count:dataset.entries.filter(e=>e.cost_display!==null).length,precise_cost_count:dataset.entries.filter(e=>e.cost_usd!==null).length,evaluations:dataset.evaluations.map(e=>({name:e.display_name,rows:e.row_count,cost_labels:e.cost_label_count,precise_costs:e.precise_cost_count})),issues:dataset.issues};
 await mkdir("data",{recursive:true});await writeFile("data/validation-report.json",JSON.stringify(dataset.report,null,2));
 if(dataset.issues.some(i=>i.severity==="error")||dataset.evaluations.length!==16)throw new Error("Import rejected; see data/validation-report.json. Previous valid data preserved.");
