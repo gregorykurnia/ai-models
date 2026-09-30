@@ -26,7 +26,7 @@ export default function Leaderboard({entries,evaluation}:{entries:Entry[];evalua
     ...(evaluation.has_scoring_status?[{id:"scoring_status",header:"Scoring status",cell:({row}:{row:{original:Entry}})=>row.original.scoring_status||"—"}]:[]),
     ...(evaluation.has_confidence_interval?[{accessorKey:"confidence_interval_display",header:"Elo CI",cell:({row}:{row:{original:Entry}})=>row.original.confidence_interval_display||"—"}]:[]),
     ...(evaluation.has_release_date?[{accessorKey:"release_date_label",header:"Release date",cell:({row}:{row:{original:Entry}})=>row.original.release_date_label||"—"}]:[]),
-    ...(evaluation.cost_label_count?[{accessorKey:"cost_usd",header:"Cost per task",cell:({row}:{row:{original:Entry}})=>row.original.cost_display??(row.original.cost_usd===null?"—":`$${row.original.cost_usd}`)}]:[])
+    ...(evaluation.cost_label_count?[{accessorKey:"cost_usd",header:"Cost per Intelligence Index task",cell:({row}:{row:{original:Entry}})=>row.original.cost_display??(row.original.cost_usd===null?"—":`$${row.original.cost_usd}`)}]:[])
   ],[evaluation]);
   const table=useReactTable({data:rows,columns,getCoreRowModel:getCoreRowModel()});
   const providers=[...new Set(entries.map(e=>e.provider))].sort();

@@ -10,7 +10,7 @@ export default function DataPage() {
       <ul>
         <li><strong>Rank:</strong> the source rank. Lower ranks are better. For the three AA-Briefcase component indexes, ranks are ordered by the source score, with tied scores sharing a rank.</li>
         <li><strong>Score:</strong> the source metric value. Elo, percentage, integer index scores, and the signed AA-Omniscience Index are distinct metrics. The master leaderboard shows source ranks.</li>
-        <li><strong>Cost:</strong> the original source label. Labels such as &lt;0.1¢ remain bounds and have no precise USD sorting value. A dash means the source supplied no value.</li>
+        <li><strong>Cost per Intelligence Index task:</strong> the source-provided weighted-average USD cost to complete one Artificial Analysis Intelligence Index task, weighted across its evaluations. The original source label is retained; bounds such as &lt;0.1¢ have no precise USD sorting value, and a dash means the source supplied no value. This is an aggregate Intelligence Index cost, not the cost of the individual evaluation shown on the page. See the <a href="https://artificialanalysis.ai/methodology/" target="_blank" rel="noreferrer">Artificial Analysis methodology</a>.</li>
         <li><strong>Coverage:</strong> cost label count and precise USD count are independently calculated from accepted rank rows.</li>
         <li><strong>Model variants:</strong> reasoning effort and fallback variants stay separate. Known differences in sheet formatting are matched to the same variant.</li>
       </ul>
@@ -25,7 +25,7 @@ export default function DataPage() {
     <p>Rows match provider, model, and reasoning/fallback variant across known label formats. For example, “Adaptive Reasoning, Max Effort, Default Fallback” matches “max with fallback”; Max Effort remains separate from Xhigh, High, Medium, and Low Effort. “Not ranked” means the source has no entry for the matched model and variant in that evaluation. Duplicate entries select the best source rank, then source row and entry ID, and generate validation issues. Sorting an index uses source ranks, best first by default, with missing entries last in either direction. Sorting and filtering never change source ranks.</p>
 
     <h2>Workbook corrections</h2>
-    <p>The workbook summary reports 31 SciCode rows, while its leaderboard contains 207. Counts on this site come from parsed rank rows. The 15 standard workbook evaluations contain 4,948 entries, 3,239 cost labels, and 2,858 precise USD values.</p>
+    <p>The workbook summary reports 31 SciCode rows, while its leaderboard contains 207. Counts on this site come from parsed rank rows. The 15 standard workbook evaluations contain 4,948 entries, 3,239 cost labels, and 2,858 precise USD values. The workbook's Intelligence Index sheet has no cost values, so no cost column is shown there.</p>
     <p>Intelligence Index has a different structure and lacks provider and source metadata. Its dedicated adapter imports the ranked rows, restores the first rank from “Int” to 1, and preserves scoring status, including estimates. Providers come from exact, unambiguous matches in other sheets; remaining providers are Unknown. No source URL or cost values are invented.</p>
 
     <h2>Snapshot history and updates</h2>

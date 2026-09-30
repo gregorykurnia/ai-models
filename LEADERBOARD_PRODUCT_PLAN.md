@@ -117,7 +117,7 @@ The table should start with these columns:
 4. Metric value using the evaluation's display format.
 5. Confidence interval when supplied.
 6. Release date when supplied.
-7. Cost per task using the original source label, with precise USD used for sorting when available.
+7. Cost per Intelligence Index task using the original source label. This is the weighted-average USD cost to complete one Artificial Analysis Intelligence Index task across its evaluations, not the cost of the individual evaluation shown on the page. Use precise USD values for sorting when available; preserve bounded labels without treating them as exact values.
 
 Columns that do not exist for an evaluation should be omitted instead of showing empty placeholder columns.
 
