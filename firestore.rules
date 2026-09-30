@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /evaluations/{id} { allow read: if resource.data.published_snapshot_id is string; allow write: if false; }
+    match /snapshots/{id} {
+      allow read: if resource.data.status == 'published';
+      allow write: if false;
+      match /entries/{entryId} {
+        allow read: if get(/databases/$(database)/documents/snapshots/$(id)).data.status == 'published';
+        allow write: if false;
+      }
+    }
+    match /providers/{id} { allow read: if true; allow write: if false; }
+    match /models/{id} { allow read: if true; allow write: if false; }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

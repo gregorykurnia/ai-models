@@ -1,0 +1,6 @@
+import Link from "next/link";
+import {notFound} from "next/navigation";
+import {getEntries,getEvaluations} from "@/lib/data";
+import Leaderboard from "@/components/leaderboard";
+export const dynamic="force-dynamic";
+export default async function Page({params}:{params:Promise<{evaluationSlug:string}>}){const {evaluationSlug}=await params;const evaluation=(await getEvaluations()).find(e=>e.slug===evaluationSlug);if(!evaluation)notFound();const entries=await getEntries(evaluation);return <><div className="breadcrumb"><Link href="/">Evaluations</Link> / {evaluation.display_name}</div><div className="eyebrow">{evaluation.metric_label} · {evaluation.score_kind.replaceAll("_"," ")}</div><h1>{evaluation.display_name}</h1><p>{evaluation.source_title}</p><p>As of {new Date(`${evaluation.captured_at}T00:00:00Z`).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric",timeZone:"UTC"})} · {evaluation.row_count} ranked rows · <a href={evaluation.source_url} target="_blank" rel="noreferrer">Original source ↗</a></p><p>{evaluation.cost_label_count} cost labels, including {evaluation.precise_cost_count} precise USD values. Bounded costs retain their source label. Missing or bounded costs sort after precise values.</p><Leaderboard entries={entries} evaluation={evaluation}/></>;}

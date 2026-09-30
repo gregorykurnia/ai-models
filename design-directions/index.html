@@ -1,0 +1,1840 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Visual design directions for the Artificial Analysis leaderboard product.">
+  <title>Artificial Analysis — Design directions</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --board-bg: #f2f1ee;
+      --board-ink: #20211f;
+      --board-muted: #6d706b;
+      --board-line: #d9d8d2;
+      --board-panel: #fbfaf7;
+      --board-accent: #1e5eff;
+      --board-radius: 18px;
+      --board-shadow: 0 24px 70px rgba(29, 30, 26, .12);
+      --board-font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { min-width: 320px; }
+
+    body {
+      margin: 0;
+      background: var(--board-bg);
+      color: var(--board-ink);
+      font-family: var(--board-font);
+      font-size: 15px;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button { cursor: pointer; }
+
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 3px solid rgba(30, 94, 255, .3);
+      outline-offset: 2px;
+    }
+
+    .board-shell {
+      width: min(1480px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 28px 0 54px;
+    }
+
+    .board-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 4px 34px;
+    }
+
+    .board-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--board-ink);
+      font-weight: 760;
+      letter-spacing: -.02em;
+    }
+
+    .board-brand-mark {
+      display: grid;
+      width: 29px;
+      height: 29px;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--board-ink);
+      color: var(--board-panel);
+      font-size: 12px;
+      letter-spacing: -.08em;
+    }
+
+    .board-topbar-meta {
+      color: var(--board-muted);
+      font-size: 12px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .board-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      align-items: end;
+      gap: 48px;
+      padding: 16px 4px 38px;
+    }
+
+    .board-kicker,
+    .note-kicker {
+      margin: 0 0 12px;
+      color: var(--board-accent);
+      font-size: 11px;
+      font-weight: 760;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .board-intro h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 650;
+      letter-spacing: -.075em;
+      line-height: .98;
+    }
+
+    .board-intro-copy {
+      max-width: 470px;
+      margin: 0 0 6px;
+      color: var(--board-muted);
+      font-size: 16px;
+    }
+
+    .direction-picker {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .direction-card {
+      position: relative;
+      min-height: 126px;
+      padding: 17px 17px 15px;
+      border: 1px solid var(--board-line);
+      border-radius: 14px;
+      background: color-mix(in srgb, var(--board-panel) 80%, transparent);
+      color: var(--board-ink);
+      text-align: left;
+      transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease, background .18s ease;
+    }
+
+    .direction-card:hover {
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--board-accent) 50%, var(--board-line));
+    }
+
+    .direction-card[aria-pressed="true"] {
+      border-color: var(--board-accent);
+      background: var(--board-panel);
+      box-shadow: 0 10px 28px rgba(29, 30, 26, .08);
+    }
+
+    .direction-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .direction-number {
+      color: var(--board-muted);
+      font-size: 11px;
+      font-weight: 740;
+      letter-spacing: .1em;
+    }
+
+    .swatches {
+      display: flex;
+      gap: 4px;
+    }
+
+    .swatches i {
+      display: block;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .direction-card strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 15px;
+      letter-spacing: -.02em;
+    }
+
+    .direction-card span:last-child {
+      color: var(--board-muted);
+      font-size: 12px;
+    }
+
+    .showcase {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .direction-notes {
+      position: sticky;
+      top: 20px;
+      padding: 18px 2px 12px 4px;
+    }
+
+    .direction-notes h2 {
+      margin: 0 0 11px;
+      font-size: 22px;
+      letter-spacing: -.045em;
+      line-height: 1.05;
+    }
+
+    .direction-notes p {
+      margin: 0 0 22px;
+      color: var(--board-muted);
+      font-size: 13px;
+    }
+
+    .note-list {
+      display: grid;
+      gap: 13px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .note-list li {
+      display: grid;
+      gap: 3px;
+      padding-top: 12px;
+      border-top: 1px solid var(--board-line);
+    }
+
+    .note-list strong {
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .note-list span {
+      color: var(--board-muted);
+      font-size: 13px;
+    }
+
+    .preview-frame {
+      --app-bg: #f7f3ec;
+      --app-surface: #fffdf9;
+      --app-surface-strong: #f0ebe1;
+      --app-text: #20211f;
+      --app-muted: #75766f;
+      --app-line: #ded9cf;
+      --app-accent: #bd5c32;
+      --app-accent-soft: #f4dfd4;
+      --app-good: #2e7159;
+      --app-radius: 16px;
+      overflow: hidden;
+      min-width: 0;
+      border: 1px solid var(--app-line);
+      border-radius: 20px;
+      background: var(--app-bg);
+      box-shadow: var(--board-shadow);
+      color: var(--app-text);
+    }
+
+    .preview-app {
+      min-height: 720px;
+      background: var(--app-bg);
+    }
+
+    .app-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      min-height: 62px;
+      padding: 0 34px;
+      border-bottom: 1px solid var(--app-line);
+      background: var(--app-surface);
+    }
+
+    .app-wordmark {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--app-text);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -.035em;
+      white-space: nowrap;
+    }
+
+    .app-wordmark b {
+      display: grid;
+      width: 22px;
+      height: 22px;
+      place-items: center;
+      border-radius: 7px;
+      background: var(--app-text);
+      color: var(--app-bg);
+      font-size: 9px;
+      letter-spacing: -.07em;
+    }
+
+    .app-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--app-muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .app-nav span:first-child { color: var(--app-text); }
+
+    .app-topbar-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--app-muted);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .source-link {
+      border: 0;
+      background: transparent;
+      color: var(--app-accent);
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .preview-content {
+      padding: 38px 40px 44px;
+    }
+
+    .preview-label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 23px;
+      padding: 0 9px;
+      border-radius: 99px;
+      background: var(--app-accent-soft);
+      color: var(--app-accent);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .preview-title {
+      max-width: 750px;
+      margin: 15px 0 10px;
+      font-size: clamp(34px, 5vw, 62px);
+      font-weight: 620;
+      letter-spacing: -.075em;
+      line-height: .98;
+    }
+
+    .preview-subtitle {
+      max-width: 610px;
+      margin: 0;
+      color: var(--app-muted);
+      font-size: 14px;
+    }
+
+    .preview-rule {
+      height: 1px;
+      margin: 28px 0;
+      background: var(--app-line);
+    }
+
+    .meta-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .meta-stat {
+      display: grid;
+      gap: 2px;
+    }
+
+    .meta-stat span {
+      color: var(--app-muted);
+      font-size: 11px;
+    }
+
+    .meta-stat strong {
+      font-size: 22px;
+      font-weight: 650;
+      letter-spacing: -.045em;
+    }
+
+    .catalog-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(260px, .75fr);
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .section-heading h3 {
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: -.035em;
+    }
+
+    .section-heading span {
+      color: var(--app-muted);
+      font-size: 11px;
+    }
+
+    .evaluation-list {
+      border-top: 1px solid var(--app-line);
+    }
+
+    .evaluation-row {
+      display: grid;
+      grid-template-columns: 36px minmax(0, 1fr) 120px 68px 18px;
+      gap: 14px;
+      align-items: center;
+      min-height: 60px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--app-line);
+    }
+
+    .evaluation-row > span:first-child {
+      color: var(--app-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px;
+    }
+
+    .evaluation-row strong {
+      display: block;
+      overflow: hidden;
+      font-size: 13px;
+      font-weight: 650;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .evaluation-row small {
+      color: var(--app-muted);
+      font-size: 11px;
+    }
+
+    .evaluation-row .eval-metric {
+      color: var(--app-accent);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .row-arrow {
+      color: var(--app-muted);
+      font-size: 18px;
+      text-align: right;
+    }
+
+    .feature-aside {
+      padding: 22px;
+      border-radius: var(--app-radius);
+      background: var(--app-surface-strong);
+    }
+
+    .feature-aside > p {
+      margin: 0 0 24px;
+      color: var(--app-muted);
+      font-size: 12px;
+    }
+
+    .feature-aside h3 {
+      margin: 0 0 5px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: 500;
+      letter-spacing: -.04em;
+    }
+
+    .feature-aside .aside-kicker {
+      color: var(--app-accent);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .score-list {
+      display: grid;
+      gap: 17px;
+    }
+
+    .score-item {
+      display: grid;
+      gap: 6px;
+    }
+
+    .score-item-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 11px;
+    }
+
+    .score-item-header span:last-child {
+      color: var(--app-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .score-track {
+      height: 5px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: color-mix(in srgb, var(--app-bg) 72%, var(--app-line));
+    }
+
+    .score-track i {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--app-accent);
+    }
+
+    .leaderboard-block {
+      margin-top: 42px;
+      padding-top: 28px;
+      border-top: 1px solid var(--app-line);
+    }
+
+    .table-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .table-title {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 650;
+      letter-spacing: -.05em;
+    }
+
+    .table-title small {
+      display: block;
+      margin-top: 4px;
+      color: var(--app-muted);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .table-actions {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .mockup-search {
+      width: 190px;
+      height: 33px;
+      padding: 0 11px;
+      border: 1px solid var(--app-line);
+      border-radius: 7px;
+      background: var(--app-surface);
+      color: var(--app-text);
+      font-size: 12px;
+    }
+
+    .mockup-button,
+    .provider-button {
+      min-height: 33px;
+      padding: 0 11px;
+      border: 1px solid var(--app-line);
+      border-radius: 7px;
+      background: transparent;
+      color: var(--app-muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .mockup-button:hover,
+    .provider-button:hover,
+    .provider-button[aria-pressed="true"] {
+      border-color: var(--app-accent);
+      color: var(--app-accent);
+    }
+
+    .table-wrap {
+      overflow: auto;
+      border-top: 1px solid var(--app-line);
+      border-bottom: 1px solid var(--app-line);
+    }
+
+    .mockup-table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .mockup-table th {
+      padding: 11px 8px;
+      color: var(--app-muted);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: .08em;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    .mockup-table td {
+      padding: 13px 8px;
+      border-top: 1px solid var(--app-line);
+      white-space: nowrap;
+    }
+
+    .mockup-table th:first-child,
+    .mockup-table td:first-child {
+      padding-left: 2px;
+      color: var(--app-muted);
+    }
+
+    .mockup-table th:last-child,
+    .mockup-table td:last-child {
+      padding-right: 2px;
+      text-align: right;
+    }
+
+    .mockup-table .model-name {
+      font-weight: 700;
+    }
+
+    .mockup-table .provider-name,
+    .mockup-table .cost-name {
+      color: var(--app-muted);
+    }
+
+    .table-foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding-top: 12px;
+      color: var(--app-muted);
+      font-size: 11px;
+    }
+
+    .table-foot strong { color: var(--app-text); }
+
+    /* Editorial index */
+    .preview-editorial {
+      --app-bg: #f5f0e8;
+      --app-surface: #fffdf8;
+      --app-surface-strong: #eae2d5;
+      --app-text: #292925;
+      --app-muted: #79766d;
+      --app-line: #d9d1c4;
+      --app-accent: #af5737;
+      --app-accent-soft: #f1ded4;
+    }
+
+    .preview-editorial .preview-title,
+    .preview-editorial .feature-aside h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+    }
+
+    .preview-editorial .app-wordmark b {
+      border-radius: 50%;
+      background: var(--app-accent);
+      color: #fffaf1;
+    }
+
+    /* Precision lab */
+    .preview-lab {
+      --app-bg: #f4f7fb;
+      --app-surface: #ffffff;
+      --app-surface-strong: #e8effa;
+      --app-text: #182338;
+      --app-muted: #66758f;
+      --app-line: #d8e2f0;
+      --app-accent: #5e46e5;
+      --app-accent-soft: #e8e3ff;
+      --app-good: #18966b;
+      --app-radius: 12px;
+    }
+
+    .preview-lab .preview-app {
+      display: grid;
+      grid-template-columns: 185px minmax(0, 1fr);
+    }
+
+    .lab-sidebar {
+      display: flex;
+      flex-direction: column;
+      min-height: 720px;
+      padding: 24px 18px;
+      border-right: 1px solid var(--app-line);
+      background: #ffffff;
+    }
+
+    .lab-sidebar .app-wordmark {
+      margin: 2px 0 48px;
+      color: var(--app-text);
+    }
+
+    .lab-sidebar .app-wordmark b {
+      background: var(--app-accent);
+      color: #ffffff;
+    }
+
+    .lab-nav {
+      display: grid;
+      gap: 6px;
+    }
+
+    .lab-nav button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      min-height: 36px;
+      padding: 0 10px;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--app-muted);
+      font-size: 11px;
+      text-align: left;
+    }
+
+    .lab-nav button[aria-pressed="true"] {
+      background: var(--app-accent-soft);
+      color: var(--app-accent);
+    }
+
+    .lab-nav small {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 9px;
+    }
+
+    .lab-side-bottom {
+      margin-top: auto;
+      color: var(--app-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 9px;
+      line-height: 1.7;
+    }
+
+    .lab-main {
+      min-width: 0;
+    }
+
+    .lab-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 54px;
+      padding: 0 28px;
+      border-bottom: 1px solid var(--app-line);
+      background: var(--app-surface);
+      color: var(--app-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 10px;
+    }
+
+    .live-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin-right: 7px;
+      border-radius: 50%;
+      background: var(--app-accent);
+      box-shadow: 0 0 0 4px rgba(94, 70, 229, .12);
+    }
+
+    .lab-content {
+      padding: 29px 30px 36px;
+    }
+
+    .lab-content .preview-title {
+      margin-top: 13px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: -.08em;
+    }
+
+    .lab-content .preview-subtitle {
+      max-width: 670px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+    }
+
+    .lab-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 30px;
+    }
+
+    .lab-stat {
+      padding: 14px 15px;
+      border: 1px solid var(--app-line);
+      background: var(--app-surface);
+    }
+
+    .lab-stat span {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--app-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 9px;
+      letter-spacing: .08em;
+    }
+
+    .lab-stat strong {
+      color: var(--app-accent);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: -.06em;
+    }
+
+    .lab-content .leaderboard-block {
+      margin-top: 30px;
+      padding-top: 22px;
+    }
+
+    .lab-content .table-title {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 16px;
+      letter-spacing: -.07em;
+    }
+
+    .lab-content .table-title small,
+    .lab-content .mockup-table,
+    .lab-content .mockup-table th,
+    .lab-content .table-foot,
+    .lab-content .mockup-search,
+    .lab-content .mockup-button,
+    .lab-content .provider-button {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .lab-content .mockup-table th {
+      font-size: 9px;
+    }
+
+    .lab-content .mockup-table td {
+      padding-top: 11px;
+      padding-bottom: 11px;
+    }
+
+    .lab-signal {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 130px;
+      gap: 20px;
+      margin-top: 26px;
+    }
+
+    .signal-heading {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: var(--app-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 9px;
+      text-transform: uppercase;
+    }
+
+    .signal-bars {
+      display: grid;
+      gap: 7px;
+    }
+
+    .signal-bar {
+      display: grid;
+      grid-template-columns: 117px minmax(0, 1fr) 38px;
+      gap: 8px;
+      align-items: center;
+      color: var(--app-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 9px;
+    }
+
+    .signal-bar i {
+      display: block;
+      height: 6px;
+      border-radius: 1px;
+      background: var(--app-accent);
+    }
+
+    .signal-bar b {
+      color: var(--app-text);
+      font-weight: 500;
+      text-align: right;
+    }
+
+    .lab-callout {
+      padding: 13px;
+      border-left: 2px solid var(--app-accent);
+      background: var(--app-surface-strong);
+      color: var(--app-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .lab-callout strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--app-text);
+      font-weight: 500;
+    }
+
+    /* Utility grid */
+    .preview-utility {
+      --app-bg: #eef3fb;
+      --app-surface: #ffffff;
+      --app-surface-strong: #e1eafa;
+      --app-text: #172339;
+      --app-muted: #6b7890;
+      --app-line: #d5deeb;
+      --app-accent: #2758d7;
+      --app-accent-soft: #dfe8ff;
+      --app-good: #167a5a;
+      --app-radius: 12px;
+    }
+
+    .utility-topbar {
+      border-bottom: 0;
+      background: var(--app-surface);
+    }
+
+    .utility-topbar .app-wordmark b {
+      border-radius: 5px;
+      background: var(--app-accent);
+      color: #fff;
+    }
+
+    .utility-topbar .app-nav {
+      gap: 17px;
+      letter-spacing: .03em;
+      text-transform: none;
+    }
+
+    .utility-topbar .app-nav span:first-child {
+      color: var(--app-accent);
+    }
+
+    .utility-content {
+      padding: 31px 34px 42px;
+    }
+
+    .utility-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(240px, .8fr);
+      gap: 18px;
+      padding: 24px;
+      border: 1px solid var(--app-line);
+      border-radius: var(--app-radius);
+      background: var(--app-surface);
+    }
+
+    .utility-hero .preview-title {
+      margin-top: 12px;
+      font-size: clamp(31px, 4vw, 50px);
+      letter-spacing: -.08em;
+    }
+
+    .utility-hero-stat {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 175px;
+      padding: 17px;
+      border-radius: 9px;
+      background: var(--app-accent);
+      color: #fff;
+    }
+
+    .utility-hero-stat span {
+      font-size: 11px;
+      opacity: .78;
+    }
+
+    .utility-hero-stat strong {
+      font-size: 52px;
+      font-weight: 650;
+      letter-spacing: -.09em;
+      line-height: .9;
+    }
+
+    .utility-hero-stat small {
+      font-size: 11px;
+      opacity: .82;
+    }
+
+    .utility-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 23px 0 17px;
+    }
+
+    .utility-tabs {
+      display: flex;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 8px;
+      background: var(--app-surface-strong);
+    }
+
+    .utility-tabs button {
+      min-height: 30px;
+      padding: 0 10px;
+      border: 0;
+      border-radius: 5px;
+      background: transparent;
+      color: var(--app-muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .utility-tabs button[aria-pressed="true"] {
+      background: var(--app-surface);
+      color: var(--app-accent);
+      box-shadow: 0 2px 5px rgba(23, 35, 57, .08);
+    }
+
+    .utility-eval-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 9px;
+      margin-bottom: 28px;
+    }
+
+    .utility-eval-card {
+      display: grid;
+      min-height: 100px;
+      padding: 13px;
+      border: 1px solid var(--app-line);
+      border-radius: 9px;
+      background: var(--app-surface);
+    }
+
+    .utility-eval-card small {
+      color: var(--app-muted);
+      font-size: 10px;
+    }
+
+    .utility-eval-card strong {
+      align-self: end;
+      font-size: 13px;
+      letter-spacing: -.025em;
+    }
+
+    .utility-eval-card span {
+      color: var(--app-accent);
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .utility-content .leaderboard-block {
+      margin-top: 0;
+      padding: 20px;
+      border: 1px solid var(--app-line);
+      border-radius: var(--app-radius);
+      background: var(--app-surface);
+    }
+
+    .utility-content .table-toolbar {
+      margin-bottom: 12px;
+    }
+
+    .utility-content .mockup-table th {
+      background: var(--app-surface-strong);
+    }
+
+    /* Signal atlas */
+    .preview-atlas {
+      --app-bg: #f2eee7;
+      --app-surface: #fffdf8;
+      --app-surface-strong: #e6eee9;
+      --app-text: #263b37;
+      --app-muted: #71817c;
+      --app-line: #d5ded8;
+      --app-accent: #e56a43;
+      --app-accent-soft: #f8ded4;
+      --app-good: #367d72;
+      --app-radius: 14px;
+    }
+
+    .atlas-topbar {
+      padding: 0 31px;
+      background: #263b37;
+      color: #f6f1e8;
+      border-bottom: 0;
+    }
+
+    .atlas-topbar .app-wordmark,
+    .atlas-topbar .app-nav span:first-child {
+      color: #f6f1e8;
+    }
+
+    .atlas-topbar .app-wordmark b {
+      background: var(--app-accent);
+      color: #263b37;
+    }
+
+    .atlas-topbar .app-nav,
+    .atlas-topbar .app-topbar-meta {
+      color: #b9c7be;
+    }
+
+    .atlas-topbar .source-link {
+      color: #f7bc6b;
+    }
+
+    .atlas-content {
+      padding: 34px 37px 43px;
+    }
+
+    .atlas-content .preview-title {
+      max-width: 690px;
+      font-size: clamp(36px, 5vw, 61px);
+      letter-spacing: -.09em;
+    }
+
+    .atlas-intro {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .atlas-intro .preview-subtitle {
+      max-width: 560px;
+    }
+
+    .atlas-mark {
+      display: grid;
+      flex: 0 0 120px;
+      height: 120px;
+      place-items: center;
+      border: 1px solid var(--app-accent);
+      border-radius: 50%;
+      color: var(--app-accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 48px;
+      letter-spacing: -.1em;
+      transform: rotate(-8deg);
+    }
+
+    .atlas-strip {
+      display: grid;
+      grid-template-columns: 1.05fr .85fr .8fr;
+      gap: 9px;
+      margin-top: 31px;
+    }
+
+    .atlas-strip-card {
+      min-height: 116px;
+      padding: 15px;
+      border-radius: var(--app-radius);
+      background: var(--app-surface-strong);
+    }
+
+    .atlas-strip-card:nth-child(2) {
+      background: #f7e3ca;
+    }
+
+    .atlas-strip-card:nth-child(3) {
+      background: #dbe8dd;
+    }
+
+    .atlas-strip-card small {
+      display: block;
+      margin-bottom: 27px;
+      color: var(--app-muted);
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .atlas-strip-card strong {
+      display: block;
+      font-size: 29px;
+      font-weight: 600;
+      letter-spacing: -.08em;
+    }
+
+    .atlas-strip-card span {
+      color: var(--app-muted);
+      font-size: 10px;
+    }
+
+    .atlas-content .leaderboard-block {
+      margin-top: 31px;
+    }
+
+    .atlas-content .table-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: 500;
+    }
+
+    .atlas-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0 0 17px;
+    }
+
+    .atlas-filter-row .provider-button {
+      border-radius: 99px;
+      background: var(--app-surface);
+    }
+
+    .atlas-content .mockup-table {
+      border: 1px solid var(--app-line);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .atlas-content .mockup-table th {
+      background: var(--app-surface-strong);
+    }
+
+    .atlas-content .mockup-table td {
+      background: color-mix(in srgb, var(--app-surface) 74%, var(--app-bg));
+    }
+
+    .atlas-content .rank-marker {
+      display: inline-grid;
+      width: 23px;
+      height: 23px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--app-accent-soft);
+      color: var(--app-accent);
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .board-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 24px;
+      padding: 0 4px;
+      color: var(--board-muted);
+      font-size: 11px;
+    }
+
+    .board-footer strong { color: var(--board-ink); }
+
+    [hidden] { display: none !important; }
+
+    @media (max-width: 1050px) {
+      .board-intro {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .direction-notes {
+        position: static;
+        display: grid;
+        grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+        gap: 28px;
+        padding-bottom: 4px;
+      }
+
+      .direction-notes p { margin-bottom: 0; }
+
+      .note-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 790px) {
+      .board-shell {
+        width: min(100% - 28px, 640px);
+        padding-top: 17px;
+      }
+
+      .board-topbar { padding-bottom: 23px; }
+      .board-topbar-meta { display: none; }
+
+      .direction-picker {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .direction-notes {
+        grid-template-columns: 1fr;
+        gap: 17px;
+      }
+
+      .note-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .app-topbar {
+        padding: 0 18px;
+      }
+
+      .app-nav { display: none; }
+      .app-topbar-meta span { display: none; }
+
+      .preview-content,
+      .lab-content,
+      .utility-content,
+      .atlas-content {
+        padding: 25px 20px 30px;
+      }
+
+      .catalog-layout,
+      .utility-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .atlas-intro {
+        display: grid;
+        gap: 24px;
+      }
+
+      .atlas-mark { width: 92px; height: 92px; font-size: 38px; }
+
+      .meta-stat-grid,
+      .lab-stat-grid {
+        gap: 11px;
+      }
+
+      .meta-stat strong { font-size: 19px; }
+
+      .evaluation-row {
+        grid-template-columns: 27px minmax(0, 1fr) 75px 18px;
+        gap: 8px;
+      }
+
+      .evaluation-row small { display: none; }
+
+      .table-toolbar,
+      .utility-controls {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .table-actions {
+        width: 100%;
+      }
+
+      .mockup-search { flex: 1; width: auto; }
+
+      .utility-eval-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .preview-lab .preview-app {
+        display: block;
+      }
+
+      .lab-sidebar {
+        display: none;
+      }
+
+      .lab-signal {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 470px) {
+      .board-intro h1 { font-size: 46px; }
+      .direction-picker { gap: 7px; }
+      .direction-card { min-height: 115px; padding: 13px; }
+      .direction-card-top { margin-bottom: 11px; }
+      .note-list { grid-template-columns: 1fr; }
+      .meta-stat-grid { grid-template-columns: 1fr; gap: 12px; }
+      .preview-title { font-size: 40px; }
+      .utility-eval-grid { gap: 7px; }
+      .utility-eval-card { min-height: 91px; padding: 10px; }
+      .signal-bar { grid-template-columns: 100px minmax(0, 1fr) 32px; }
+      .board-footer { flex-direction: column; gap: 5px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="board-shell">
+    <header class="board-topbar">
+      <div class="board-brand">
+        <span class="board-brand-mark">AA</span>
+        <span>Artificial Analysis / design study</span>
+      </div>
+      <div class="board-topbar-meta">Leaderboard product plan · visual exploration · v0.1</div>
+    </header>
+
+    <main>
+      <section class="board-intro">
+        <div>
+          <p class="board-kicker">Four directions for the first release</p>
+          <h1>Make the rankings feel as clear as the signal.</h1>
+        </div>
+        <p class="board-intro-copy">A visual comparison board for the evaluation catalog and reusable leaderboard page. Choose a direction below to inspect its type, density, navigation, and data-reading posture.</p>
+      </section>
+
+      <section class="direction-picker" aria-label="Design directions">
+        <button class="direction-card" type="button" data-direction="editorial" aria-pressed="true">
+          <span class="direction-card-top"><span class="direction-number">01 / 04</span><span class="swatches" aria-hidden="true"><i style="background:#f5f0e8"></i><i style="background:#af5737"></i><i style="background:#292925"></i></span></span>
+          <strong>Editorial index</strong>
+          <span>Measured, warm, research-led</span>
+        </button>
+        <button class="direction-card" type="button" data-direction="lab" aria-pressed="false">
+          <span class="direction-card-top"><span class="direction-number">02 / 04</span><span class="swatches" aria-hidden="true"><i style="background:#f4f7fb"></i><i style="background:#5e46e5"></i><i style="background:#e8e3ff"></i></span></span>
+          <strong>Precision lab</strong>
+          <span>Bright, instrument-like, fast</span>
+        </button>
+        <button class="direction-card" type="button" data-direction="utility" aria-pressed="false">
+          <span class="direction-card-top"><span class="direction-number">03 / 04</span><span class="swatches" aria-hidden="true"><i style="background:#eef3fb"></i><i style="background:#2758d7"></i><i style="background:#ffffff"></i></span></span>
+          <strong>Utility grid</strong>
+          <span>Bright, practical, comparison-first</span>
+        </button>
+        <button class="direction-card" type="button" data-direction="atlas" aria-pressed="false">
+          <span class="direction-card-top"><span class="direction-number">04 / 04</span><span class="swatches" aria-hidden="true"><i style="background:#f2eee7"></i><i style="background:#e56a43"></i><i style="background:#263b37"></i></span></span>
+          <strong>Signal atlas</strong>
+          <span>Expressive, contextual, category-aware</span>
+        </button>
+      </section>
+
+      <section class="showcase">
+        <aside class="direction-notes" aria-live="polite">
+          <div>
+            <p class="note-kicker" id="noteKicker">01 / 04 · editorial index</p>
+            <h2 id="noteTitle">Editorial index</h2>
+            <p id="noteDescription">A calm research surface that makes source context and rank order feel trustworthy before the user ever filters the table.</p>
+          </div>
+          <ul class="note-list">
+            <li><strong>Best for</strong><span id="noteBestFor">Researchers, writers, and first-time visitors</span></li>
+            <li><strong>Signature move</strong><span id="noteSignature">Editorial hierarchy around a quiet, source-led table</span></li>
+            <li><strong>Tradeoff</strong><span id="noteTradeoff">Less raw density than a power-user dashboard</span></li>
+            <li><strong>Product feeling</strong><span id="noteFeeling">A reliable field guide to model capability</span></li>
+          </ul>
+        </aside>
+
+        <div class="preview-frame preview-editorial" id="previewFrame">
+          <div class="preview-app editorial-app">
+            <header class="app-topbar">
+              <div class="app-wordmark"><b>AA</b><span>Artificial Analysis</span></div>
+              <nav class="app-nav" aria-label="Preview navigation"><span>Evaluations</span><span>Models</span><span>Data notes</span></nav>
+              <div class="app-topbar-meta"><span>Snapshot · 29 Sep 2026</span><button class="source-link" type="button">↗ Source</button></div>
+            </header>
+            <div class="preview-content">
+              <span class="preview-label">Evaluation catalog</span>
+              <h2 class="preview-title">The landscape of capable models.</h2>
+              <p class="preview-subtitle">A single, source-faithful view of benchmark rankings across reasoning, coding, agents, and domain capability.</p>
+              <div class="meta-stat-grid">
+                <div class="meta-stat"><span>Tracked evaluations</span><strong>15</strong></div>
+                <div class="meta-stat"><span>Ranked rows</span><strong>4,948</strong></div>
+                <div class="meta-stat"><span>Provider labels</span><strong>66</strong></div>
+              </div>
+              <div class="catalog-layout">
+                <div>
+                  <div class="section-heading"><h3>Browse evaluations</h3><span>source order</span></div>
+                  <div class="evaluation-list">
+                    <div class="evaluation-row"><span>01</span><div><strong>Briefcase v1.1</strong><small>Agentic task performance · 202 ranked rows</small></div><span class="eval-metric">Elo</span><span>202</span><span class="row-arrow">↗</span></div>
+                    <div class="evaluation-row"><span>02</span><div><strong>GDPval-AA v2.1</strong><small>Knowledge work automation · 261 ranked rows</small></div><span class="eval-metric">Elo</span><span>261</span><span class="row-arrow">↗</span></div>
+                    <div class="evaluation-row"><span>03</span><div><strong>AutomationBench-AA</strong><small>Browser and workflow automation · 198 ranked rows</small></div><span class="eval-metric">Score (%)</span><span>198</span><span class="row-arrow">↗</span></div>
+                    <div class="evaluation-row"><span>04</span><div><strong>Terminal-Bench 4.0</strong><small>Terminal task completion · 194 ranked rows</small></div><span class="eval-metric">Score (%)</span><span>194</span><span class="row-arrow">↗</span></div>
+                    <div class="evaluation-row"><span>05</span><div><strong>Humanity's Last Exam</strong><small>Broad expert knowledge · 642 ranked rows</small></div><span class="eval-metric">Score (%)</span><span>642</span><span class="row-arrow">↗</span></div>
+                  </div>
+                </div>
+                <aside class="feature-aside">
+                  <span class="aside-kicker">Current read</span>
+                  <h3>Briefcase v1.1</h3>
+                  <p>Top-ranked models in the selected snapshot, shown with the source metric intact.</p>
+                  <div class="score-list">
+                    <div class="score-item"><div class="score-item-header"><span>GPT-5 · OpenAI</span><span>77.8</span></div><div class="score-track"><i style="width:94%"></i></div></div>
+                    <div class="score-item"><div class="score-item-header"><span>Claude Opus 4.1 · Anthropic</span><span>75.9</span></div><div class="score-track"><i style="width:87%"></i></div></div>
+                    <div class="score-item"><div class="score-item-header"><span>Gemini 2.5 Pro · Google</span><span>74.6</span></div><div class="score-track"><i style="width:82%"></i></div></div>
+                  </div>
+                </aside>
+              </div>
+              <div class="leaderboard-block">
+                <div class="table-toolbar"><div><h3 class="table-title">Briefcase v1.1<small>Elo · 202 ranked rows · source rank preserved</small></h3></div><div class="table-actions"><input class="mockup-search" data-search placeholder="Search models" aria-label="Search models"><button class="mockup-button" type="button" data-clear>Clear</button></div></div>
+                <div class="table-wrap"><table class="mockup-table"><thead><tr><th>Rank</th><th>Provider</th><th>Model</th><th>Score</th><th>Cost / task</th></tr></thead><tbody>
+                  <tr data-model-row data-model="gpt-5" data-provider="OpenAI"><td>1</td><td class="provider-name">OpenAI</td><td class="model-name">GPT-5</td><td>77.8</td><td class="cost-name">$0.84</td></tr>
+                  <tr data-model-row data-model="claude opus 4.1" data-provider="Anthropic"><td>2</td><td class="provider-name">Anthropic</td><td class="model-name">Claude Opus 4.1</td><td>75.9</td><td class="cost-name">$1.21</td></tr>
+                  <tr data-model-row data-model="gemini 2.5 pro" data-provider="Google"><td>3</td><td class="provider-name">Google</td><td class="model-name">Gemini 2.5 Pro</td><td>74.6</td><td class="cost-name">$0.38</td></tr>
+                  <tr data-model-row data-model="deepseek v3" data-provider="DeepSeek"><td>4</td><td class="provider-name">DeepSeek</td><td class="model-name">DeepSeek-V3</td><td>71.8</td><td class="cost-name">&lt;0.1¢</td></tr>
+                </tbody></table></div>
+                <div class="table-foot"><span data-count><strong>4</strong> preview rows visible</span><span>1–4 of 202</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="board-footer">
+      <span>Concept data is illustrative and grounded in the product plan.</span>
+      <span><strong>Open this file locally</strong> to switch directions and test the sample controls.</span>
+    </footer>
+  </div>
+
+  <template id="tpl-editorial">
+    <div class="preview-app editorial-app">
+      <header class="app-topbar">
+        <div class="app-wordmark"><b>AA</b><span>Artificial Analysis</span></div>
+        <nav class="app-nav" aria-label="Preview navigation"><span>Evaluations</span><span>Models</span><span>Data notes</span></nav>
+        <div class="app-topbar-meta"><span>Snapshot · 29 Sep 2026</span><button class="source-link" type="button">↗ Source</button></div>
+      </header>
+      <div class="preview-content">
+        <span class="preview-label">Evaluation catalog</span>
+        <h2 class="preview-title">The landscape of capable models.</h2>
+        <p class="preview-subtitle">A single, source-faithful view of benchmark rankings across reasoning, coding, agents, and domain capability.</p>
+        <div class="meta-stat-grid">
+          <div class="meta-stat"><span>Tracked evaluations</span><strong>15</strong></div>
+          <div class="meta-stat"><span>Ranked rows</span><strong>4,948</strong></div>
+          <div class="meta-stat"><span>Provider labels</span><strong>66</strong></div>
+        </div>
+        <div class="catalog-layout">
+          <div>
+            <div class="section-heading"><h3>Browse evaluations</h3><span>source order</span></div>
+            <div class="evaluation-list">
+              <div class="evaluation-row"><span>01</span><div><strong>Briefcase v1.1</strong><small>Agentic task performance · 202 ranked rows</small></div><span class="eval-metric">Elo</span><span>202</span><span class="row-arrow">↗</span></div>
+              <div class="evaluation-row"><span>02</span><div><strong>GDPval-AA v2.1</strong><small>Knowledge work automation · 261 ranked rows</small></div><span class="eval-metric">Elo</span><span>261</span><span class="row-arrow">↗</span></div>
+              <div class="evaluation-row"><span>03</span><div><strong>AutomationBench-AA</strong><small>Browser and workflow automation · 198 ranked rows</small></div><span class="eval-metric">Score (%)</span><span>198</span><span class="row-arrow">↗</span></div>
+              <div class="evaluation-row"><span>04</span><div><strong>Terminal-Bench 4.0</strong><small>Terminal task completion · 194 ranked rows</small></div><span class="eval-metric">Score (%)</span><span>194</span><span class="row-arrow">↗</span></div>
+              <div class="evaluation-row"><span>05</span><div><strong>Humanity's Last Exam</strong><small>Broad expert knowledge · 642 ranked rows</small></div><span class="eval-metric">Score (%)</span><span>642</span><span class="row-arrow">↗</span></div>
+            </div>
+          </div>
+          <aside class="feature-aside">
+            <span class="aside-kicker">Current read</span>
+            <h3>Briefcase v1.1</h3>
+            <p>Top-ranked models in the selected snapshot, shown with the source metric intact.</p>
+            <div class="score-list">
+              <div class="score-item"><div class="score-item-header"><span>GPT-5 · OpenAI</span><span>77.8</span></div><div class="score-track"><i style="width:94%"></i></div></div>
+              <div class="score-item"><div class="score-item-header"><span>Claude Opus 4.1 · Anthropic</span><span>75.9</span></div><div class="score-track"><i style="width:87%"></i></div></div>
+              <div class="score-item"><div class="score-item-header"><span>Gemini 2.5 Pro · Google</span><span>74.6</span></div><div class="score-track"><i style="width:82%"></i></div></div>
+            </div>
+          </aside>
+        </div>
+        <div class="leaderboard-block">
+          <div class="table-toolbar"><div><h3 class="table-title">Briefcase v1.1<small>Elo · 202 ranked rows · source rank preserved</small></h3></div><div class="table-actions"><input class="mockup-search" data-search placeholder="Search models" aria-label="Search models"><button class="mockup-button" type="button" data-clear>Clear</button></div></div>
+          <div class="table-wrap"><table class="mockup-table"><thead><tr><th>Rank</th><th>Provider</th><th>Model</th><th>Score</th><th>Cost / task</th></tr></thead><tbody>
+            <tr data-model-row data-model="gpt-5" data-provider="OpenAI"><td>1</td><td class="provider-name">OpenAI</td><td class="model-name">GPT-5</td><td>77.8</td><td class="cost-name">$0.84</td></tr>
+            <tr data-model-row data-model="claude opus 4.1" data-provider="Anthropic"><td>2</td><td class="provider-name">Anthropic</td><td class="model-name">Claude Opus 4.1</td><td>75.9</td><td class="cost-name">$1.21</td></tr>
+            <tr data-model-row data-model="gemini 2.5 pro" data-provider="Google"><td>3</td><td class="provider-name">Google</td><td class="model-name">Gemini 2.5 Pro</td><td>74.6</td><td class="cost-name">$0.38</td></tr>
+            <tr data-model-row data-model="deepseek v3" data-provider="DeepSeek"><td>4</td><td class="provider-name">DeepSeek</td><td class="model-name">DeepSeek-V3</td><td>71.8</td><td class="cost-name">&lt;0.1¢</td></tr>
+          </tbody></table></div>
+          <div class="table-foot"><span data-count><strong>4</strong> preview rows visible</span><span>1–4 of 202</span></div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="tpl-lab">
+    <div class="preview-app">
+      <aside class="lab-sidebar">
+        <div class="app-wordmark"><b>AA</b><span>Artificial Analysis</span></div>
+        <nav class="lab-nav" aria-label="Lab navigation">
+          <button type="button" aria-pressed="true">Overview <small>01</small></button>
+          <button type="button" aria-pressed="false">Evaluations <small>15</small></button>
+          <button type="button" aria-pressed="false">Providers <small>66</small></button>
+          <button type="button" aria-pressed="false">Data notes <small>04</small></button>
+        </nav>
+        <div class="lab-side-bottom">SNAPSHOT_2026_09_29<br>READ_ONLY / PUBLIC<br>INGESTION_STATUS: OK</div>
+      </aside>
+      <div class="lab-main">
+        <div class="lab-topline"><span><i class="live-dot"></i>snapshot verified</span><span>source: artificialanalysis.ai <button class="source-link" type="button">↗ open</button></span></div>
+        <div class="lab-content">
+          <span class="preview-label">Leaderboard console / overview</span>
+          <h2 class="preview-title">Inspect the signal. Find the model.</h2>
+          <p class="preview-subtitle">A high-density operating surface for people who already know what they want to compare.</p>
+          <div class="lab-stat-grid">
+            <div class="lab-stat"><span>ACTIVE EVALUATIONS</span><strong>15</strong></div>
+            <div class="lab-stat"><span>RANKED ENTRIES</span><strong>4,948</strong></div>
+            <div class="lab-stat"><span>PROVIDER LABELS</span><strong>66</strong></div>
+          </div>
+          <div class="lab-signal">
+            <div>
+              <div class="signal-heading"><span>evaluation volume</span><span>rows</span></div>
+              <div class="signal-bars">
+                <div class="signal-bar"><span>Humanity's Last Exam</span><i style="width:100%"></i><b>642</b></div>
+                <div class="signal-bar"><span>CritPt</span><i style="width:87%"></i><b>557</b></div>
+                <div class="signal-bar"><span>AA-LCR v1.1</span><i style="width:86%"></i><b>553</b></div>
+                <div class="signal-bar"><span>MMMU-Pro</span><i style="width:43%"></i><b>279</b></div>
+              </div>
+            </div>
+            <div class="lab-callout"><strong>Data posture</strong>Scores stay source-faithful. Bounds such as &lt;0.1¢ remain labels and are never estimated.</div>
+          </div>
+          <div class="leaderboard-block">
+            <div class="table-toolbar"><div><h3 class="table-title">/eval/briefcase-v1-1<small>sort: rank.asc · snapshot: current · 202 rows</small></h3></div><div class="table-actions"><input class="mockup-search" data-search placeholder="filter model" aria-label="Filter models"><button class="mockup-button" type="button" data-clear>reset</button></div></div>
+            <div class="table-wrap"><table class="mockup-table"><thead><tr><th>rk</th><th>provider</th><th>model</th><th>elo</th><th>cost/task</th></tr></thead><tbody>
+              <tr data-model-row data-model="gpt-5" data-provider="OpenAI"><td>001</td><td class="provider-name">OpenAI</td><td class="model-name">GPT-5</td><td>77.8</td><td class="cost-name">$0.84</td></tr>
+              <tr data-model-row data-model="claude opus 4.1" data-provider="Anthropic"><td>002</td><td class="provider-name">Anthropic</td><td class="model-name">Claude Opus 4.1</td><td>75.9</td><td class="cost-name">$1.21</td></tr>
+              <tr data-model-row data-model="gemini 2.5 pro" data-provider="Google"><td>003</td><td class="provider-name">Google</td><td class="model-name">Gemini 2.5 Pro</td><td>74.6</td><td class="cost-name">$0.38</td></tr>
+              <tr data-model-row data-model="deepseek v3" data-provider="DeepSeek"><td>004</td><td class="provider-name">DeepSeek</td><td class="model-name">DeepSeek-V3</td><td>71.8</td><td class="cost-name">&lt;0.1¢</td></tr>
+            </tbody></table></div>
+            <div class="table-foot"><span data-count><strong>4</strong> rows matched</span><span>page 1 / 51</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="tpl-utility">
+    <div class="preview-app">
+      <header class="app-topbar utility-topbar">
+        <div class="app-wordmark"><b>AA</b><span>Artificial Analysis</span></div>
+        <nav class="app-nav" aria-label="Preview navigation"><span>Leaderboards</span><span>Compare</span><span>About data</span></nav>
+        <div class="app-topbar-meta"><span>Updated Sep 29, 2026</span><button class="source-link" type="button">↗ source</button></div>
+      </header>
+      <div class="utility-content">
+        <div class="utility-hero">
+          <div>
+            <span class="preview-label">Model intelligence, organized</span>
+            <h2 class="preview-title">Choose a benchmark. Compare with confidence.</h2>
+            <p class="preview-subtitle">A practical catalog for quickly moving from evaluation to model shortlist, with the source metric and cost context always in view.</p>
+          </div>
+          <div class="utility-hero-stat"><span>evaluations in this snapshot</span><strong>15</strong><small>4,948 ranked entries / 66 provider labels</small></div>
+        </div>
+        <div class="utility-controls">
+          <div class="utility-tabs" role="group" aria-label="Evaluation categories"><button type="button" data-tab aria-pressed="true">All</button><button type="button" data-tab aria-pressed="false">Benchmarks</button><button type="button" data-tab aria-pressed="false">Indexes</button></div>
+          <div class="table-actions"><input class="mockup-search" data-search placeholder="Search models" aria-label="Search models"><button class="mockup-button" type="button" data-clear>Clear</button></div>
+        </div>
+        <div class="utility-eval-grid">
+          <div class="utility-eval-card"><small>01 / benchmark</small><strong>Briefcase v1.1</strong><span>Elo · 202 rows</span></div>
+          <div class="utility-eval-card"><small>02 / benchmark</small><strong>GDPval-AA v2.1</strong><span>Elo · 261 rows</span></div>
+          <div class="utility-eval-card"><small>03 / benchmark</small><strong>AutomationBench-AA</strong><span>Score (%) · 198 rows</span></div>
+          <div class="utility-eval-card"><small>04 / benchmark</small><strong>Terminal-Bench 4.0</strong><span>Score (%) · 194 rows</span></div>
+        </div>
+        <div class="leaderboard-block">
+          <div class="table-toolbar"><div><h3 class="table-title">Briefcase v1.1<small>Ranked by Elo · cost labels preserved from source</small></h3></div><div class="table-actions"><button class="provider-button" type="button" data-provider="OpenAI" aria-pressed="false">OpenAI</button><button class="provider-button" type="button" data-provider="Anthropic" aria-pressed="false">Anthropic</button><button class="provider-button" type="button" data-provider="Google" aria-pressed="false">Google</button></div></div>
+          <div class="table-wrap"><table class="mockup-table"><thead><tr><th>Rank</th><th>Provider</th><th>Model</th><th>Score</th><th>Cost / task</th></tr></thead><tbody>
+            <tr data-model-row data-model="gpt-5" data-provider="OpenAI"><td>1</td><td class="provider-name">OpenAI</td><td class="model-name">GPT-5</td><td>77.8</td><td class="cost-name">$0.84</td></tr>
+            <tr data-model-row data-model="claude opus 4.1" data-provider="Anthropic"><td>2</td><td class="provider-name">Anthropic</td><td class="model-name">Claude Opus 4.1</td><td>75.9</td><td class="cost-name">$1.21</td></tr>
+            <tr data-model-row data-model="gemini 2.5 pro" data-provider="Google"><td>3</td><td class="provider-name">Google</td><td class="model-name">Gemini 2.5 Pro</td><td>74.6</td><td class="cost-name">$0.38</td></tr>
+            <tr data-model-row data-model="deepseek v3" data-provider="DeepSeek"><td>4</td><td class="provider-name">DeepSeek</td><td class="model-name">DeepSeek-V3</td><td>71.8</td><td class="cost-name">&lt;0.1¢</td></tr>
+          </tbody></table></div>
+          <div class="table-foot"><span data-count><strong>4</strong> preview rows visible</span><span>1–4 of 202</span></div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="tpl-atlas">
+    <div class="preview-app">
+      <header class="app-topbar atlas-topbar">
+        <div class="app-wordmark"><b>AA</b><span>Artificial Analysis / atlas</span></div>
+        <nav class="app-nav" aria-label="Preview navigation"><span>Signal map</span><span>Evaluations</span><span>Method</span></nav>
+        <div class="app-topbar-meta"><span>AS OF 29.09.26</span><button class="source-link" type="button">↗ source</button></div>
+      </header>
+      <div class="atlas-content">
+        <div class="atlas-intro">
+          <div><span class="preview-label">Capability atlas / current snapshot</span><h2 class="preview-title">Every leaderboard is a different lens.</h2><p class="preview-subtitle">A more expressive index that helps people understand the shape of the dataset before they dive into rows.</p></div>
+          <div class="atlas-mark" aria-label="15 evaluations">15</div>
+        </div>
+        <div class="atlas-strip">
+          <div class="atlas-strip-card"><small>benchmark rows</small><strong>4,948</strong><span>across 15 evaluations</span></div>
+          <div class="atlas-strip-card"><small>cost coverage</small><strong>3,239</strong><span>source labels preserved</span></div>
+          <div class="atlas-strip-card"><small>providers</small><strong>66</strong><span>display labels, not guessed</span></div>
+        </div>
+        <div class="leaderboard-block">
+          <div class="table-toolbar"><div><h3 class="table-title">Explore a leaderboard<small>Briefcase v1.1 · Elo · source rank order</small></h3></div><div class="table-actions"><input class="mockup-search" data-search placeholder="Find a model" aria-label="Find a model"><button class="mockup-button" type="button" data-clear>Clear</button></div></div>
+          <div class="atlas-filter-row" role="group" aria-label="Provider filters"><button class="provider-button" type="button" data-provider="OpenAI" aria-pressed="false">OpenAI</button><button class="provider-button" type="button" data-provider="Anthropic" aria-pressed="false">Anthropic</button><button class="provider-button" type="button" data-provider="Google" aria-pressed="false">Google</button><button class="provider-button" type="button" data-provider="DeepSeek" aria-pressed="false">DeepSeek</button></div>
+          <div class="table-wrap"><table class="mockup-table"><thead><tr><th>Rank</th><th>Provider</th><th>Model</th><th>Elo</th><th>Cost / task</th></tr></thead><tbody>
+            <tr data-model-row data-model="gpt-5" data-provider="OpenAI"><td><span class="rank-marker">1</span></td><td class="provider-name">OpenAI</td><td class="model-name">GPT-5</td><td>77.8</td><td class="cost-name">$0.84</td></tr>
+            <tr data-model-row data-model="claude opus 4.1" data-provider="Anthropic"><td><span class="rank-marker">2</span></td><td class="provider-name">Anthropic</td><td class="model-name">Claude Opus 4.1</td><td>75.9</td><td class="cost-name">$1.21</td></tr>
+            <tr data-model-row data-model="gemini 2.5 pro" data-provider="Google"><td><span class="rank-marker">3</span></td><td class="provider-name">Google</td><td class="model-name">Gemini 2.5 Pro</td><td>74.6</td><td class="cost-name">$0.38</td></tr>
+            <tr data-model-row data-model="deepseek v3" data-provider="DeepSeek"><td><span class="rank-marker">4</span></td><td class="provider-name">DeepSeek</td><td class="model-name">DeepSeek-V3</td><td>71.8</td><td class="cost-name">&lt;0.1¢</td></tr>
+          </tbody></table></div>
+          <div class="table-foot"><span data-count><strong>4</strong> preview rows visible</span><span>1–4 of 202</span></div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    const directions = {
+      editorial: {
+        kicker: "01 / 04 · editorial index",
+        title: "Editorial index",
+        description: "A calm research surface that makes source context and rank order feel trustworthy before the user ever filters the table.",
+        bestFor: "Researchers, writers, and first-time visitors",
+        signature: "Editorial hierarchy around a quiet, source-led table",
+        tradeoff: "Less raw density than a power-user dashboard",
+        feeling: "A reliable field guide to model capability"
+      },
+      lab: {
+        kicker: "02 / 04 · precision lab",
+        title: "Precision lab",
+        description: "A focused, bright operating surface for people who already know what they want to compare and value scan speed over ceremony.",
+        bestFor: "Developers, analysts, and repeat visitors",
+        signature: "Monospace metadata, live-state cues, and tight rows",
+        tradeoff: "Higher learning curve for a broad audience",
+        feeling: "A trusted instrument panel for model research"
+      },
+      utility: {
+        kicker: "03 / 04 · utility grid",
+        title: "Utility grid",
+        description: "A bright, familiar workbench that gets users from evaluation to shortlist quickly with strong filters and visible counts.",
+        bestFor: "Model selection and practical comparison",
+        signature: "Category cards plus an immediately usable table",
+        tradeoff: "Feels more like a tool than a publication",
+        feeling: "Clear, efficient, and easy to return to"
+      },
+      atlas: {
+        kicker: "04 / 04 · signal atlas",
+        title: "Signal atlas",
+        description: "A more expressive layer that gives the catalog a point of view and helps people understand what each evaluation measures.",
+        bestFor: "Discovery, storytelling, and public-facing launch",
+        signature: "Contextual metrics and a memorable visual language",
+        tradeoff: "Needs discipline to keep decoration from competing with data",
+        feeling: "A modern map of model capability"
+      }
+    };
+
+    const pickerButtons = Array.from(document.querySelectorAll("[data-direction]"));
+    const previewFrame = document.getElementById("previewFrame");
+    const noteKicker = document.getElementById("noteKicker");
+    const noteTitle = document.getElementById("noteTitle");
+    const noteDescription = document.getElementById("noteDescription");
+    const noteBestFor = document.getElementById("noteBestFor");
+    const noteSignature = document.getElementById("noteSignature");
+    const noteTradeoff = document.getElementById("noteTradeoff");
+    const noteFeeling = document.getElementById("noteFeeling");
+
+    function wirePreview() {
+      const root = previewFrame.querySelector(".preview-app");
+      if (!root) return;
+
+      const search = root.querySelector("[data-search]");
+      const count = root.querySelector("[data-count]");
+      const rows = Array.from(root.querySelectorAll("[data-model-row]"));
+      const providerButtons = Array.from(root.querySelectorAll("[data-provider]"));
+      let activeProvider = "";
+
+      function refreshRows() {
+        const query = search ? search.value.trim().toLowerCase() : "";
+        let visible = 0;
+        rows.forEach((row) => {
+          const matchesQuery = !query || row.dataset.model.includes(query);
+          const matchesProvider = !activeProvider || row.dataset.provider === activeProvider;
+          const isVisible = matchesQuery && matchesProvider;
+          row.hidden = !isVisible;
+          if (isVisible) visible += 1;
+        });
+        if (count) {
+          count.innerHTML = "<strong>" + visible + "</strong> preview rows visible";
+        }
+      }
+
+      if (search) search.addEventListener("input", refreshRows);
+
+      root.querySelectorAll("[data-clear]").forEach((button) => {
+        button.addEventListener("click", () => {
+          if (search) search.value = "";
+          activeProvider = "";
+          providerButtons.forEach((providerButton) => providerButton.setAttribute("aria-pressed", "false"));
+          refreshRows();
+        });
+      });
+
+      providerButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const nextProvider = activeProvider === button.dataset.provider ? "" : button.dataset.provider;
+          activeProvider = nextProvider;
+          providerButtons.forEach((providerButton) => providerButton.setAttribute("aria-pressed", String(providerButton.dataset.provider === activeProvider)));
+          refreshRows();
+        });
+      });
+
+      root.querySelectorAll("[data-tab]").forEach((button) => {
+        button.addEventListener("click", () => {
+          root.querySelectorAll("[data-tab]").forEach((tab) => tab.setAttribute("aria-pressed", "false"));
+          button.setAttribute("aria-pressed", "true");
+        });
+      });
+
+      refreshRows();
+    }
+
+    function selectDirection(key, updateUrl = true) {
+      const direction = directions[key];
+      pickerButtons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.direction === key));
+      });
+      previewFrame.className = "preview-frame preview-" + key;
+      previewFrame.replaceChildren(document.getElementById("tpl-" + key).content.cloneNode(true));
+      noteKicker.textContent = direction.kicker;
+      noteTitle.textContent = direction.title;
+      noteDescription.textContent = direction.description;
+      noteBestFor.textContent = direction.bestFor;
+      noteSignature.textContent = direction.signature;
+      noteTradeoff.textContent = direction.tradeoff;
+      noteFeeling.textContent = direction.feeling;
+      if (updateUrl) {
+        window.history.replaceState(null, "", "#" + key);
+      }
+      wirePreview();
+    }
+
+    pickerButtons.forEach((button) => {
+      button.addEventListener("click", () => selectDirection(button.dataset.direction));
+    });
+
+    window.addEventListener("hashchange", () => {
+      const key = window.location.hash.slice(1);
+      if (directions[key]) selectDirection(key, false);
+    });
+
+    const initialDirection = window.location.hash.slice(1);
+    if (directions[initialDirection]) {
+      selectDirection(initialDirection, false);
+    } else {
+      wirePreview();
+    }
+  </script>
+</body>
+</html>

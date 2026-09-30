@@ -1,0 +1,113 @@
+{
+  "sheet_count": 17,
+  "evaluation_count": 15,
+  "row_count": 4948,
+  "provider_count": 66,
+  "distinct_raw_model_labels": 739,
+  "cost_label_count": 3239,
+  "precise_cost_count": 2858,
+  "evaluations": [
+    {
+      "name": "Briefcase v1.1",
+      "rows": 202,
+      "cost_labels": 176,
+      "precise_costs": 176
+    },
+    {
+      "name": "GDPval-AA v2.1",
+      "rows": 261,
+      "cost_labels": 207,
+      "precise_costs": 207
+    },
+    {
+      "name": "AutomationBench-AA",
+      "rows": 198,
+      "cost_labels": 175,
+      "precise_costs": 175
+    },
+    {
+      "name": "Terminal-Bench 4.0",
+      "rows": 194,
+      "cost_labels": 173,
+      "precise_costs": 173
+    },
+    {
+      "name": "SciCode",
+      "rows": 207,
+      "cost_labels": 30,
+      "precise_costs": 30
+    },
+    {
+      "name": "Humanity's Last Exam",
+      "rows": 642,
+      "cost_labels": 30,
+      "precise_costs": 30
+    },
+    {
+      "name": "GDP.pdf",
+      "rows": 190,
+      "cost_labels": 173,
+      "precise_costs": 173
+    },
+    {
+      "name": "CritPt",
+      "rows": 557,
+      "cost_labels": 399,
+      "precise_costs": 399
+    },
+    {
+      "name": "AA-Omniscience Accuracy",
+      "rows": 554,
+      "cost_labels": 399,
+      "precise_costs": 228
+    },
+    {
+      "name": "AA-LCR v1.1",
+      "rows": 553,
+      "cost_labels": 368,
+      "precise_costs": 368
+    },
+    {
+      "name": "MMMU-Pro",
+      "rows": 279,
+      "cost_labels": 224,
+      "precise_costs": 185
+    },
+    {
+      "name": "Finance & Accounting",
+      "rows": 181,
+      "cost_labels": 167,
+      "precise_costs": 167
+    },
+    {
+      "name": "Economics Index",
+      "rows": 195,
+      "cost_labels": 176,
+      "precise_costs": 176
+    },
+    {
+      "name": "Strategy & Ops Index",
+      "rows": 181,
+      "cost_labels": 143,
+      "precise_costs": 143
+    },
+    {
+      "name": "AA-Omniscience Index",
+      "rows": 554,
+      "cost_labels": 399,
+      "precise_costs": 228
+    }
+  ],
+  "issues": [
+    {
+      "sheet": "Intelligence Index",
+      "message": "Pending separate adapter: provider mapping and source provenance unavailable.",
+      "severity": "warning"
+    },
+    {
+      "sheet": "Start Here",
+      "message": "SciCode summary reports 31 ranked rows; parsed sheet contains 207. Parsed rows are authoritative.",
+      "severity": "warning"
+    }
+  ]
+}
