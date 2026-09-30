@@ -51,7 +51,9 @@ Parsing the numeric rank rows from the 15 standard tabs yields 4,948 leaderboard
 | Strategy & Ops Index | Index Score | 181 | 143 | 143 |
 | AA-Omniscience Index | AA-Omniscience Index | 554 | 399 | 228 |
 
-Across these tabs there are 3,239 displayed cost labels and 2,858 precise numeric USD values. Some source labels such as `<0.1¢` have no precise numeric value. The app must preserve that label, store the numeric value as null, and avoid estimating a cost.
+Across these tabs there are 3,239 source cost labels and 2,858 precise numeric USD values. Some source labels such as `<0.1¢` have no precise numeric value. Preserve that label in the imported record, store the numeric value as null, and avoid estimating a cost.
+
+Those workbook fields describe the cost of a task in each individual evaluation. They remain available as source data, but leaderboard cost columns use the separate Cost per Intelligence Index task metric from Artificial Analysis model profiles.
 
 Two tabs add fields that are not present in the others:
 
@@ -106,7 +108,7 @@ Each page should use the same table shell with evaluation-specific metadata and 
 - Metric name and unit.
 - `As of` date.
 - Source link.
-- Short note about missing or bounded cost values.
+- Cost profile capture date and a note that values may be unavailable for some models.
 - Result count after filters.
 
 The table should start with these columns:
@@ -117,9 +119,11 @@ The table should start with these columns:
 4. Metric value using the evaluation's display format.
 5. Confidence interval when supplied.
 6. Release date when supplied.
-7. Cost per Intelligence Index task using the original source label. This is the weighted-average USD cost to complete one Artificial Analysis Intelligence Index task across its evaluations, not the cost of the individual evaluation shown on the page. Use precise USD values for sorting when available; preserve bounded labels without treating them as exact values.
+7. Cost per Intelligence Index task, sourced from Artificial Analysis model profiles. This is the weighted-average USD cost to complete one Intelligence Index task across its evaluations, not the cost of the individual evaluation shown on the page. Show it in the master table and every individual evaluation table, link each value to its source profile, sort by captured USD, and show a dash when the profile has no published value.
 
 Columns that do not exist for an evaluation should be omitted instead of showing empty placeholder columns.
+
+The shared Cost per Intelligence Index task column is available on every evaluation table, independent of whether that evaluation's workbook sheet contains its own task cost. Keep those evaluation-specific workbook cost fields separate from the displayed Intelligence Index metric.
 
 ### Controls
 
@@ -215,7 +219,7 @@ Do not merge model variants such as different reasoning effort or fallback setti
 - `source_row`
 - `source_asset_id`
 
-`score_value` is used for sorting, while `score_display` preserves the workbook label. Percentage values should remain in their extracted numeric form and be formatted from evaluation metadata. `cost_usd` must remain nullable when the source only gives a bound or no value.
+`score_value` is used for sorting, while `score_display` preserves the workbook label. Percentage values should remain in their extracted numeric form and be formatted from evaluation metadata. Entry `cost_usd` and `cost_display` preserve evaluation-specific workbook costs; the displayed Cost per Intelligence Index task uses the separate model-profile snapshot and is nullable when no profile value is published.
 
 Use collection-group queries on `entries` for model detail pages. Add Firestore composite indexes when server-side filtering combines provider, score, cost, or release date. Keep published snapshots immutable; a new import creates a new snapshot and entries.
 

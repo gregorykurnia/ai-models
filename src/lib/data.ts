@@ -5,6 +5,7 @@ import { adminDb } from "./admin";
 import type { Dataset,Entry,Evaluation } from "./contract";
 import { briefcaseComponentDataset,mergeBriefcaseComponents,type BriefcaseComponentsSource } from "./aa-briefcase";
 import { aggregateMaster } from "./master";
+import { getIntelligenceIndexTaskCostMap,intelligenceIndexCostCapturedAt } from "./intelligence-index-costs";
 const componentSource=aaBriefcaseComponents as unknown as BriefcaseComponentsSource;
 const localComponents=cache(async()=>briefcaseComponentDataset(componentSource));
 const local=cache(async()=>{
@@ -38,5 +39,5 @@ export async function getEntries(evaluation:Evaluation):Promise<Entry[]>{
 export const getMasterDataset=cache(async()=>{
   const evaluations=await getEvaluations();
   const entries=(await Promise.all(evaluations.map(getEntries))).flat();
-  return {evaluations,...aggregateMaster(evaluations,entries)};
+  return {evaluations,...aggregateMaster(evaluations,entries,getIntelligenceIndexTaskCostMap()),intelligenceIndexCostCapturedAt};
 });

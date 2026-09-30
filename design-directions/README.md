@@ -13,6 +13,6 @@ Open [index.html](./index.html) in a browser and switch between the four concept
 
 The preferred direction is **Utility grid**. Keep the visual language bright, modern, and sleek, with clear comparison controls and the leaderboard easy to scan.
 
-The sample rows use illustrative model names and scores so the layouts can be judged visually. The structural details come from the product plan: 15 standard evaluations, 4,948 parsed rows, provider filtering, source-rank preservation, metric labels, and bounded cost labels such as less than 0.1 cent.
+The sample rows use illustrative model names and scores so the layouts can be judged visually. The structural details come from the product plan: 15 standard evaluations, 4,948 parsed rows, provider filtering, source-rank preservation, metric labels, and a Cost per Intelligence Index task column sourced from Artificial Analysis model profiles. Evaluation-specific workbook cost bounds remain provenance data and are not displayed as this shared metric.
 
 The controls in the preview are intentionally lightweight: direction switching, model search, provider filters where shown, and local reset behavior. They are there to make the information architecture easier to evaluate, not to represent the final implementation.

@@ -8,7 +8,7 @@ import styles from "./home.module.css";
 export const dynamic="force-dynamic";
 
 export default async function Home(){
-  const {evaluations,rows}=await getMasterDataset();
+  const {evaluations,rows,intelligenceIndexCostCapturedAt}=await getMasterDataset();
   return <>
     <div className="eyebrow">Artificial Analysis · leaderboard snapshots</div>
     <h1>Compare model ranks across evaluations.</h1>
@@ -16,7 +16,7 @@ export default async function Home(){
     <section className="panel"><div className="eyebrow">Task suitability planner</div><h2>Find the best model for a task</h2><p>Choose evaluations, set your priorities, and compare model suitability with transparent coverage.</p><Link href="/suitability">Create a task comparison →</Link></section>
 
     <Suspense fallback={<p>Loading master leaderboard…</p>}>
-      <MasterLeaderboard rows={masterTableRows(rows)} evaluations={evaluations}/>
+      <MasterLeaderboard rows={masterTableRows(rows)} evaluations={evaluations} costCapturedAt={intelligenceIndexCostCapturedAt}/>
     </Suspense>
 
     {evaluations.length===0

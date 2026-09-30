@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getEntries, getEvaluations } from "@/lib/data";
 import type { Evaluation } from "@/lib/contract";
 import Leaderboard from "@/components/leaderboard";
+import { intelligenceIndexCostsForEntries,intelligenceIndexCostCapturedAt } from "@/lib/intelligence-index-costs";
 
 function ComponentIndexNav({ active, evaluations }: { active: Evaluation; evaluations: Evaluation[] }) {
   const related = evaluations.filter(evaluation => evaluation.metric_group === active.metric_group);
@@ -38,7 +39,11 @@ export default async function Page({ params }: { params: Promise<{ evaluationSlu
   const evaluation = evaluations.find(item => item.slug === evaluationSlug);
   if (!evaluation) notFound();
   const entries = await getEntries(evaluation);
+  const taskCosts = intelligenceIndexCostsForEntries(entries);
   const capturedDate = new Date(`${evaluation.captured_at}T00:00:00Z`).toLocaleDateString("en-GB", {
+    day: "numeric", month: "short", year: "numeric", timeZone: "UTC",
+  });
+  const costCapturedDate = new Date(`${intelligenceIndexCostCapturedAt.slice(0, 10)}T00:00:00Z`).toLocaleDateString("en-GB", {
     day: "numeric", month: "short", year: "numeric", timeZone: "UTC",
   });
 
@@ -50,9 +55,9 @@ export default async function Page({ params }: { params: Promise<{ evaluationSlu
     <p>As of {capturedDate} · {evaluation.row_count.toLocaleString()} ranked rows · {evaluation.source_url
       ? <a href={evaluation.source_url} target="_blank" rel="noreferrer">Original source ↗</a>
       : "Source: supplied workbook"}</p>
-    {evaluation.cost_label_count > 0 && <p>{evaluation.cost_label_count} cost labels, including {evaluation.precise_cost_count} precise USD values. Bounded costs retain their source label; missing or bounded costs sort after precise values.</p>}
+    <p>Cost per Intelligence Index task is the Artificial Analysis profile value captured {costCapturedDate}, weighted across the Index evaluations. Workbook cost values mentioned in the source notes below are evaluation-specific.</p>
     {evaluation.metric_group && <ComponentIndexNav active={evaluation} evaluations={evaluations} />}
     {evaluation.notes && <p>{evaluation.notes}</p>}
-    <Leaderboard entries={entries} evaluation={evaluation} />
+    <Leaderboard entries={entries} evaluation={evaluation} taskCosts={taskCosts} />
   </>;
 }
