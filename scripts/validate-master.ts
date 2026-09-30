@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
-import {aggregateMaster,sortMaster,masterRowSchema,masterTableRows} from "../src/lib/master";
+import {aggregateMaster,sortMaster,masterRowSchema,masterTableRows,masterIdentityKey} from "../src/lib/master";
 import type {Dataset,Entry} from "../src/lib/contract";
 const d=JSON.parse(await readFile("data/leaderboards.json","utf8")) as Dataset;
 const evaluation=d.evaluations[0];
@@ -17,14 +17,16 @@ assert.equal(sortMaster(fixture.rows,evaluation.id,"asc")[0].model_id,"estimate"
 assert.deepEqual(sortMaster(fixture.rows,evaluation.id,"asc"),sortMaster([...fixture.rows].reverse(),evaluation.id,"asc"));
 const result=aggregateMaster(d.evaluations,d.entries);
 assert.deepEqual(result,aggregateMaster(d.evaluations,[...d.entries].reverse()));
+assert.equal(masterIdentityKey("Anthropic","Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)"),masterIdentityKey("Anthropic","Claude Sonnet 5.5 (max with fallback)"));
+assert.notEqual(masterIdentityKey("Anthropic","Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)"),masterIdentityKey("Anthropic","Claude Sonnet 5.5 (xhigh with fallback)"));
 let cells=0;
 for(const row of result.rows){
   masterRowSchema.parse(row);
   assert(!("mean_normalized_score" in row));
   for(const [id,cell] of Object.entries(row.cells)){
-    const source=d.entries.filter(e=>e.model_id===row.model_id&&e.evaluation_id===id).sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row||a.id.localeCompare(b.id))[0];
+    const source=d.entries.filter(e=>masterIdentityKey(e.provider,e.model)===masterIdentityKey(row.provider,row.model)&&e.evaluation_id===id).sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row||a.id.localeCompare(b.id))[0];
     assert.deepEqual(cell.entry,source);
-    assert.equal(new URL(cell.href,"http://localhost").searchParams.get("q"),row.model);
+    assert.equal(new URL(cell.href,"http://localhost").searchParams.get("q"),cell.entry.model);
     assert(!("normalized_value" in cell));
     cells++;
   }

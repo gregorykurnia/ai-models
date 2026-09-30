@@ -26,4 +26,4 @@ Application Default Credentials are not configured for the Admin SDK. The Fireba
 
 ## Master leaderboard correction — 30 September 2026
 
-The master table now shows original source ranks in every evaluation column. The normalized-score policy, mean, coverage score, and dynamic overall position have been removed. Missing exact-variant entries explicitly say “Not ranked”. The corrected requirements are in `MASTER_LEADERBOARD_ROLLOUT_PLAN.md`.
+The master table now shows original source ranks in every evaluation column. The normalized-score policy, mean, coverage score, and dynamic overall position have been removed. Known differences in evaluation sheet labels map to the same model and variant, while effort and fallback variants stay separate. “Not ranked” appears only when no matching entry exists. The corrected requirements are in `MASTER_LEADERBOARD_ROLLOUT_PLAN.md`.

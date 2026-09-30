@@ -17,9 +17,9 @@ The schema is declared in `src/lib/contract.ts`. All nullable source values rema
 
 ## Master comparison policy v1 (beta)
 
-`src/lib/master.ts` groups entries by provider plus exact model identity. Each evaluation cell contains the selected source entry and a link to its evaluation with the exact model query. The master table displays only original source ranks, including Elo, unbounded indices, and estimates. There is no normalization, mean, coverage score, or overall master rank.
+`src/lib/master.ts` groups entries by provider, model, and reasoning/fallback variant. It accounts for known differences in how evaluation sheets format the same variant (for example, “Adaptive Reasoning, Max Effort, Default Fallback” and “max with fallback”). Effort and fallback variants remain distinct. Each evaluation cell contains the selected source entry and a link to its original label in that evaluation. The master table displays only original source ranks, including Elo, unbounded indices, and estimates. There is no normalization, mean, coverage score, or overall master rank.
 
-Duplicate selection uses ascending source rank, source row, then entry ID and emits an issue. Full source entries remain server-side for provenance. Missing entries display “Not ranked”; model variants are not merged or assigned invented ranks. Index sorting uses source rank ascending by default, with missing entries last in both directions. Ties use best source rank, exact model, provider, then model ID. Local JSON and Firestore share the same aggregation.
+Duplicate selection uses ascending source rank, source row, then entry ID and emits an issue. Full source entries remain server-side for provenance. “Not ranked” appears only when there is no entry for the matched model and variant in that evaluation. Index sorting uses source rank ascending by default, with missing entries last in both directions. Ties use best source rank, exact model, provider, then model ID. Local JSON and Firestore share the same aggregation.
 
 Home URL keys `mq`, `mp`, `ms`, `md`, `mi`, and `mz` store search, provider, sort, direction, page, and size. The section anchor is `master-leaderboard`. Beta promotion requires product feedback; runtime performance and Firestore reads should be measured in the deployed environment.
 
