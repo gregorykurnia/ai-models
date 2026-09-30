@@ -6,7 +6,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { masterIdentityKey } from "@/lib/master";
 import { readModelFavorites, subscribeToModelFavorites, writeModelFavorites } from "@/lib/model-favorites";
 import { calculateSuitability, suitabilityTaskSchema, type EvaluationWeight, type SuitabilityTask } from "@/lib/suitability";
-import { pinComparison, readSavedTasks, TASK_STORAGE_KEY, type PlannerData, type SavedComparison } from "@/lib/suitability-storage";
+import { pinComparison, readSavedTasks, savedComparisonSchema, type PlannerData, type SavedComparison } from "@/lib/suitability-storage";
+import { readBrowserTasks, saveBrowserTask, removeBrowserTask } from "@/lib/browser-suitability-tasks";
 import { recordSuitabilityEvent } from "@/lib/suitability-analytics";
 import SuitabilityComparison, { comparisonRows } from "@/components/suitability-comparison";
 import styles from "./suitability-planner.module.css";
@@ -17,6 +18,7 @@ const niceDate = (value: string) => new Date(value).toLocaleDateString("en-GB", 
 async function saveSharedTask(comparison: SavedComparison) {
   const response = await fetch("/api/suitability/tasks", {
     method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(comparison),
+    signal: AbortSignal.timeout(12000),
   });
   const payload = await response.json();
   if (!response.ok) throw new Error(typeof payload.error === "string" ? payload.error : "Task could not be saved to the shared database.");
@@ -33,11 +35,12 @@ function migrateBrowserTask(task: SavedComparison, currentCandidates: PlannerDat
   return { ...task, candidates: migrated };
 }
 
-function writeBrowserTasks(tasks: SavedComparison[]) {
-  try {
-    if (tasks.length) localStorage.setItem(TASK_STORAGE_KEY, JSON.stringify(tasks));
-    else localStorage.removeItem(TASK_STORAGE_KEY);
-  } catch { /* Shared database saves remain available when browser storage is blocked. */ }
+function downloadBackup(comparison: SavedComparison) {
+  const url = URL.createObjectURL(new Blob([JSON.stringify(savedComparisonSchema.parse(comparison), null, 2)], { type: "application/json" }));
+  const link = document.createElement("a");
+  link.href = url; link.download = `task-comparison-${comparison.task.id}.json`;
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 export default function Planner({ data }: { data: PlannerData }) {
@@ -82,24 +85,29 @@ export default function Planner({ data }: { data: PlannerData }) {
     setReady(false); setError(""); setNotice(""); setEditing(false);
     let localTasks: SavedComparison[] = [];
     let localError = "";
-    try {
-      localTasks = readSavedTasks(localStorage.getItem(TASK_STORAGE_KEY)).map(task => migrateBrowserTask(task, data.candidates));
-      writeBrowserTasks(localTasks);
-    } catch { localError = "Browser-saved tasks could not be read. They have been left untouched."; }
-    setBrowserSaved(localTasks);
     const activate = (sharedTasks: SavedComparison[], loadError = "") => {
       if (cancelled) return;
-      const match = taskId ? sharedTasks.find(task => task.task.id === taskId) ?? localTasks.find(task => task.task.id === taskId) : null;
-      const sharedMatch = sharedTasks.some(task => task.task.id === taskId);
+      const localMatch = localTasks.find(task => task.task.id === taskId);
+      const cloudMatch = sharedTasks.find(task => task.task.id === taskId);
+      const match = taskId ? localMatch && (!cloudMatch || localMatch.task.updated_at >= cloudMatch.task.updated_at) ? localMatch : cloudMatch : null;
       setSaved(sharedTasks); setActive(match ?? null); setTitle(match?.task.title ?? ""); setRequest(match?.task.request ?? "");
       setWeights(match?.task.evaluation_weights ?? []); setSelected(match?.task.candidate_model_ids ?? []);
       setError([loadError, localError || (taskId && !match ? "This task is not saved in the shared list or this browser." : "")].filter(Boolean).join(" "));
-      if (!loadError && taskId && match && !sharedMatch) setNotice("This task is only saved in this browser. Saving it will add it to the shared list.");
+      if (localMatch && match === localMatch) setNotice("Saved in this browser. Shared sync is pending. Download a backup to keep a copy outside this browser.");
       setReady(true);
     };
     void (async () => {
       try {
-        const response = await fetch("/api/suitability/tasks", { cache: "no-store" });
+        const original = await readBrowserTasks();
+        localTasks = original.map(task => migrateBrowserTask(task, data.candidates));
+        for (let index = 0; index < localTasks.length; index++) {
+          if (JSON.stringify(original[index]) !== JSON.stringify(localTasks[index])) await saveBrowserTask(localTasks[index]);
+        }
+      } catch { localError = "Some browser-saved tasks could not be read or updated. Existing copies have been left untouched."; }
+      if (cancelled) return;
+      setBrowserSaved(localTasks);
+      try {
+        const response = await fetch("/api/suitability/tasks", { cache: "no-store", signal: AbortSignal.timeout(10000) });
         const payload = await response.json();
         if (!response.ok) throw new Error(typeof payload.error === "string" ? payload.error : "Shared tasks could not be loaded.");
         activate(readSavedTasks(JSON.stringify(payload)));
@@ -175,30 +183,65 @@ export default function Planner({ data }: { data: PlannerData }) {
     if (!browserSaved.length) return;
     setSyncingBrowserSaved(true); setError("");
     try {
-      const existingIds = new Set(saved.map(task => task.task.id));
-      const toUpload = browserSaved.filter(task => !existingIds.has(task.task.id));
-      for (const task of toUpload) await saveSharedTask(task);
-      const synced = [...toUpload, ...saved];
-      setSaved(synced); writeBrowserTasks([]); setBrowserSaved([]);
-      setNotice(`Added ${toUpload.length} browser-saved task${toUpload.length === 1 ? "" : "s"} to the shared list.`);
+      const response = await fetch("/api/suitability/tasks", { cache: "no-store", signal: AbortSignal.timeout(10000) });
+      if (!response.ok) { const payload = await response.json(); throw new Error(payload.error ?? "Shared tasks could not be loaded."); }
+      const current = readSavedTasks(JSON.stringify(await response.json()));
+      const conflicting = browserSaved.filter(task => current.some(shared => shared.task.id === task.task.id && shared.task.updated_at > task.task.updated_at));
+      if (conflicting.length) throw new Error("A shared task has newer settings. Your browser copy is retained; download a backup before resolving the difference.");
+      for (const task of browserSaved) {
+        await saveSharedTask(task);
+        setSaved(previous => [task, ...previous.filter(item => item.task.id !== task.task.id)]);
+        await removeBrowserTask(task);
+        setBrowserSaved(previous => previous.filter(item => item.task.id !== task.task.id));
+      }
+      setNotice("Browser-saved tasks synced to the shared library.");
     } catch (cause) { setError(cause instanceof Error ? cause.message : "Browser-saved tasks could not be added to the shared list."); }
     finally { setSyncingBrowserSaved(false); }
   };
-  const save = async () => {
+  const restoreBackup = async (file: File) => {
+    try {
+      const comparison = migrateBrowserTask(savedComparisonSchema.parse(JSON.parse(await file.text())), data.candidates);
+      comparisonRows(comparison, comparison.task.evaluation_weights, comparison.task.candidate_model_ids);
+      const existing = browserSaved.find(item => item.task.id === comparison.task.id);
+      if (existing && existing.task.updated_at > comparison.task.updated_at) throw new Error("A newer copy is already saved in this browser. The backup was not imported.");
+      await saveBrowserTask(comparison);
+      setBrowserSaved(previous => [comparison, ...previous.filter(item => item.task.id !== comparison.task.id)]);
+      setNotice("Backup imported and saved in this browser. Shared sync is pending."); setError("");
+    } catch (cause) { setError(cause instanceof Error ? cause.message : "The backup could not be imported."); }
+  };
+  const createComparison = () => {
+    const now = new Date().toISOString();
+    const task: SuitabilityTask = suitabilityTaskSchema.parse({ id: active?.task.id ?? crypto.randomUUID(), title: title.trim().slice(0, 80), request: request.trim(),
+      evaluation_weights: weights, candidate_model_ids: selected, score_method: "rank_percentile_v1", missing_policy: "exclude_and_show_coverage",
+      created_at: active?.task.created_at ?? now, updated_at: now, last_calculated_at: now, schema_version: 1 });
+    return pinComparison(task, working);
+  };
+  const save = async (onlyBrowser = false) => {
     if (!valid || result.error) return;
     setSaving(true); setError("");
     try {
-      const now = new Date().toISOString();
-      const task: SuitabilityTask = suitabilityTaskSchema.parse({ id: active?.task.id ?? crypto.randomUUID(), title: title.trim().slice(0, 80), request: request.trim(),
-        evaluation_weights: weights, candidate_model_ids: selected, score_method: "rank_percentile_v1", missing_policy: "exclude_and_show_coverage",
-        created_at: active?.task.created_at ?? now, updated_at: now, last_calculated_at: now, schema_version: 1 });
-      const pinned = pinComparison(task, working);
-      await saveSharedTask(pinned);
-      const tasks = [pinned, ...saved.filter(item => item.task.id !== task.id)];
+      const pinned = createComparison();
+      const task = pinned.task;
+      let locallySaved = false;
+      let browserError = "";
+      try { await saveBrowserTask(pinned); locallySaved = true; }
+      catch (cause) { browserError = cause instanceof Error ? cause.message : "Browser storage is unavailable."; }
+      if (onlyBrowser && !locallySaved) throw new Error(`The task was not saved. ${browserError}`);
+      let sharedSaved = false;
+      let sharedError = "";
+      if (!onlyBrowser) {
+        try { await saveSharedTask(pinned); sharedSaved = true; }
+        catch (cause) { sharedError = cause instanceof Error ? cause.message : "Shared saves are unavailable."; }
+      }
+      if (!locallySaved && !sharedSaved) throw new Error(`The task was not saved. ${browserError} ${sharedError} Your selections are still visible.`);
+      if (sharedSaved) {
+        setSaved(previous => [pinned, ...previous.filter(item => item.task.id !== task.id)]);
+        try { await removeBrowserTask(pinned); locallySaved = false; } catch { /* Retain the browser copy if cleanup fails. */ }
+      }
       recordSuitabilityEvent("task_saved");
-      setSaved(tasks); setActive(pinned); setBrowserSaved(browserSaved.filter(item => item.task.id !== task.id));
-      writeBrowserTasks(browserSaved.filter(item => item.task.id !== task.id));
-      setNotice("Task settings and pinned evaluation and cost snapshots saved to the shared database.");
+      setActive(pinned);
+      setBrowserSaved(previous => locallySaved ? [pinned, ...previous.filter(item => item.task.id !== task.id)] : previous.filter(item => item.task.id !== task.id));
+      setNotice(sharedSaved ? "Saved to the shared library." : "Saved in this browser. Shared sync is pending. Download a backup to keep a copy outside this browser.");
       setEditing(false);
       router.replace(`/suitability/${task.id}`, { scroll: false });
     } catch (cause) { setError(cause instanceof Error ? cause.message : "Task could not be saved to the shared database. Your current selections are still visible."); }
@@ -206,8 +249,12 @@ export default function Planner({ data }: { data: PlannerData }) {
   };
 
   const libraryTasks = useMemo(() => {
-    const sharedIds = new Set(saved.map(task => task.task.id));
-    const all = [...saved.map(task => ({ comparison: task, shared: true })), ...browserSaved.filter(task => !sharedIds.has(task.task.id)).map(comparison => ({ comparison, shared: false }))];
+    const byId = new Map(saved.map(task => [task.task.id, { comparison: task, shared: true }]));
+    for (const comparison of browserSaved) {
+      const cloud = byId.get(comparison.task.id);
+      if (!cloud || comparison.task.updated_at >= cloud.comparison.task.updated_at) byId.set(comparison.task.id, { comparison, shared: false });
+    }
+    const all = [...byId.values()];
     const query = librarySearch.trim().toLowerCase();
     return all.filter(({ comparison }) => !query || `${comparison.task.title} ${comparison.task.request}`.toLowerCase().includes(query))
       .sort((a, b) => b.comparison.task.updated_at.localeCompare(a.comparison.task.updated_at));
@@ -220,7 +267,8 @@ export default function Planner({ data }: { data: PlannerData }) {
     <p>Shared tasks are visible to everyone who visits this site. Favorites stay in this browser. Cost per Intelligence Index task is the Artificial Analysis weighted average for one Index task, not the price of the task description here.</p>
     <div className="toolbar"><Link className={styles.primaryLink} href="/suitability">Create a task</Link><label className={styles.searchField} htmlFor="saved-task-search">Search saved tasks<input id="saved-task-search" type="search" value={librarySearch} onChange={event => setLibrarySearch(event.target.value)} placeholder="Search titles or task descriptions" /></label></div>
     {error && <p role="alert" className="panel error">{error}</p>}
-    {browserSaved.length > 0 && <section className="panel"><p>{browserSaved.length} older task{browserSaved.length === 1 ? " is" : "s are"} saved only in this browser. Add them to the shared library to make them available to everyone.</p><button onClick={syncBrowserTasks} disabled={syncingBrowserSaved}>{syncingBrowserSaved ? "Adding tasks…" : "Add browser-saved tasks to shared list"}</button></section>}
+    <div className="toolbar"><label htmlFor="task-backup">Import a task backup<input id="task-backup" type="file" accept=".json,application/json" onChange={event => { const file = event.target.files?.[0]; if (file) void restoreBackup(file); event.target.value = ""; }} /></label></div>
+    {browserSaved.length > 0 && <section className="panel"><p>{browserSaved.length} task{browserSaved.length === 1 ? " is" : "s are"} saved in this browser with shared sync pending. They reopen here after a reload. Download backups before clearing browser data or switching devices.</p><button onClick={syncBrowserTasks} disabled={syncingBrowserSaved}>{syncingBrowserSaved ? "Syncing tasks…" : "Sync browser tasks to shared library"}</button><p>Syncing makes these tasks visible to everyone who visits the site.</p></section>}
     {libraryTasks.length === 0 ? <section className="panel"><h2>{librarySearch ? "No matching saved tasks" : "No saved tasks yet"}</h2><p>{librarySearch ? "Try another title or description." : "Save a task comparison to return to its pinned model results later."}</p>{!librarySearch && <Link href="/suitability">Create your first task →</Link>}</section> : <div className={styles.savedList}>
       {libraryTasks.map(({ comparison, shared }) => {
         let rows = [] as ReturnType<typeof comparisonRows>;
@@ -233,7 +281,7 @@ export default function Planner({ data }: { data: PlannerData }) {
           <dl className={styles.taskMeta}><div><dt>Last updated</dt><dd>{niceDate(comparison.task.updated_at)}</dd></div><div><dt>Evaluations</dt><dd>{comparison.task.evaluation_weights.length}</dd></div><div><dt>Candidates</dt><dd>{comparison.task.candidate_model_ids.length}</dd></div></dl>
           <p className={styles.captureList}><strong>Pinned captures:</strong> {comparison.task.evaluation_weights.map(weight => `${comparison.evaluations.find(evaluation => evaluation.id === weight.evaluation_id)?.display_name ?? weight.evaluation_id} · ${weight.captured_at}`).join("; ")}</p>
           {leader ? <p><strong>Leading candidate:</strong> {leader.model} · suitability {leader.score === null ? "No score" : leader.score.toFixed(1)} · Cost per Intelligence Index task {leader.intelligence_index_cost ? `$${leader.intelligence_index_cost.cost_usd.toFixed(2)} · captured ${niceDate(leader.intelligence_index_cost.captured_at)}` : "—"}</p> : comparisonError ? <p role="alert">{comparisonError}</p> : <p>No comparison candidates are available.</p>}
-          <div className="toolbar"><Link href={`/suitability/${comparison.task.id}`}>Open comparison</Link></div>
+          <div className="toolbar"><Link href={`/suitability/${comparison.task.id}`}>Open comparison</Link><button onClick={() => downloadBackup(comparison)}>Download backup</button></div>
           <details><summary>Review comparison in place</summary>{comparisonError ? <p role="alert">{comparisonError}</p> : <SuitabilityComparison data={comparison} rows={rows} />}</details>
         </article>;
       })}
@@ -252,6 +300,9 @@ export default function Planner({ data }: { data: PlannerData }) {
       <div className="eyebrow">Saved comparison</div><h1>{active.task.title}</h1><p>{active.task.request}</p>
       <p>{active.task.evaluation_weights.length} evaluations · {active.task.candidate_model_ids.length} candidates · Updated {niceDate(active.task.updated_at)}</p>
       <div className="toolbar"><button onClick={() => setEditing(true)}>Edit settings</button><Link className={styles.primaryLink} href="/suitability">New task</Link><Link href="/suitability/saved">Saved tasks library</Link></div>
+      <p role="status">{browserSaved.some(item => item.task.id === active.task.id && item.task.updated_at >= active.task.updated_at) ? "Saved in this browser · shared sync pending. Keep a backup before clearing browser data or switching devices." : "Saved to the shared library."}</p>
+      <div className="toolbar"><button onClick={() => downloadBackup(active)}>Download backup</button>{browserSaved.some(item => item.task.id === active.task.id) && <button onClick={syncBrowserTasks} disabled={syncingBrowserSaved}>{syncingBrowserSaved ? "Syncing tasks…" : "Sync browser tasks to shared library"}</button>}</div>
+      {notice && <p role="status">{notice}</p>}
       {error && <p role="alert" className="panel error">{error}</p>}
       {comparisonError ? <p role="alert" className="panel error">{comparisonError}</p> : <section className="panel"><h2>Model comparison</h2><SuitabilityComparison data={active} rows={rows} /></section>}
     </div>;
@@ -262,11 +313,11 @@ export default function Planner({ data }: { data: PlannerData }) {
   return <div className={styles.planner}>
     <div className="eyebrow">Task suitability · shared saves</div>
     <h1>{active ? `Edit ${active.task.title}` : "Find the best model for a task."}</h1>
-    <p>Choose source rankings and priorities, then compare models with transparent coverage and pinned cost context.</p>
+    <p>Choose source rankings and priorities, then compare models with transparent coverage and pinned cost context. Browser saves work while shared storage is unavailable and stay on this browser and device.</p>
     <div className="toolbar"><Link href="/suitability/saved">Saved tasks library</Link>{isReview && <button onClick={() => setEditing(false)}>Cancel editing</button>}</div>
     {active?.candidates.some(candidate => !candidate.source_model_ids) && <p className="panel">This saved task keeps its original model matching. <Link href="/suitability">Create a new task</Link> to compare models across known alternate sheet labels.</p>}
     {error && <p role="alert" className="panel error">{error}</p>}
-    {browserSaved.length > 0 && <section className="panel"><h2>Browser-saved tasks</h2><p>{browserSaved.length} older task{browserSaved.length === 1 ? " is" : "s are"} saved only in this browser.</p><button onClick={syncBrowserTasks} disabled={syncingBrowserSaved}>{syncingBrowserSaved ? "Adding tasks…" : "Add browser-saved tasks to shared list"}</button></section>}
+    {browserSaved.length > 0 && <section className="panel"><h2>Browser-saved tasks</h2><p>{browserSaved.length} task{browserSaved.length === 1 ? " is" : "s are"} saved in this browser with shared sync pending.</p><button onClick={syncBrowserTasks} disabled={syncingBrowserSaved}>{syncingBrowserSaved ? "Syncing tasks…" : "Sync browser tasks to shared library"}</button></section>}
     <section className="panel"><h2>1. Describe the task</h2>
       <label htmlFor="task-title">Task title</label><input id="task-title" maxLength={80} value={title} onChange={event => setTitle(event.target.value)} placeholder="e.g. Analyze company financials" />
       <label htmlFor="task-request">Task description</label><textarea id="task-request" value={request} onChange={event => setRequest(event.target.value)} placeholder="Describe what you need a model to do" rows={3} />
@@ -310,7 +361,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       <ul>{weights.map(weight => <li key={weight.evaluation_id}>{working.evaluations.find(evaluation => evaluation.id === weight.evaluation_id)?.display_name}: {Number.isFinite(weight.weight) ? weight.weight.toFixed(2) : "Invalid"}% · snapshot {weight.captured_at}</li>)}</ul>
       {!valid && <p>Enter a title and description, choose at least one evaluation and candidate, and assign nonnegative weights totaling 100%.</p>}
       {result.error && <p role="alert">{result.error}</p>}
-      <button className={styles.primary} onClick={save} disabled={!valid || !!result.error || saving}>{saving ? "Saving to shared database…" : active ? "Save settings and update comparison" : "Save task and compare models"}</button>
+      <div className="toolbar"><button className={styles.primary} onClick={() => void save()} disabled={!valid || !!result.error || saving}>{saving ? "Saving comparison…" : active ? "Save settings and update comparison" : "Save task and compare models"}</button><button onClick={() => void save(true)} disabled={!valid || !!result.error || saving}>Save in this browser</button><button onClick={() => downloadBackup(createComparison())} disabled={!valid || !!result.error || saving}>Download backup</button></div>
       <p role="status">{notice}</p></section>
     {valid && !result.error && <section className="panel"><h2>Model comparison preview</h2><p>{dirty ? "Preview of unsaved settings. Save to keep this configuration." : `Saved comparison · calculated ${active?.task.last_calculated_at}`}</p>
       <SuitabilityComparison data={working} rows={result.rows} completeOnly={completeOnly} onCompleteOnlyChange={setCompleteOnly} />
