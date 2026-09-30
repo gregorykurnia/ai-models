@@ -23,3 +23,7 @@ The optimized Next.js build and TypeScript compilation passed. The development s
 The initial directory had no Git repository. The owner subsequently supplied `https://github.com/gregorykurnia/ai-models`, and Git was initialized on `main` with that remote. The earlier Git setup blocker is resolved. Branch protection remains to be configured.
 
 Application Default Credentials are not configured for the Admin SDK. The Firebase CLI can inspect the selected database, but its existing login does not automatically configure credentials for the trusted Node importer. No data or rules have been published to Firestore.
+
+## Master leaderboard correction — 30 September 2026
+
+The master table now shows original source ranks in every evaluation column. The normalized-score policy, mean, coverage score, and dynamic overall position have been removed. Missing exact-variant entries explicitly say “Not ranked”. The corrected requirements are in `MASTER_LEADERBOARD_ROLLOUT_PLAN.md`.
