@@ -2,12 +2,25 @@ import source from "../../data/intelligence-index-costs.json";
 import type { Entry, IntelligenceIndexTaskCost } from "./contract";
 import { masterIdentityKey } from "./master";
 
-type CostSnapshot = {
+type RawCostSnapshot = {
   captured_at: string;
-  records: IntelligenceIndexTaskCost[];
+  records: Array<{
+    slug: string;
+    name: string;
+    provider: string;
+    cost_usd: number;
+    url: string;
+  }>;
 };
 
-const snapshot = source as CostSnapshot;
+const rawSnapshot = source as RawCostSnapshot;
+const snapshot = {
+  captured_at: rawSnapshot.captured_at,
+  records: rawSnapshot.records.map(({ name, ...record }): IntelligenceIndexTaskCost => ({
+    ...record,
+    model: name,
+  })),
+};
 const costsByIdentity = new Map<string, IntelligenceIndexTaskCost | null>();
 const costsByModel = new Map<string, IntelligenceIndexTaskCost | null>();
 
