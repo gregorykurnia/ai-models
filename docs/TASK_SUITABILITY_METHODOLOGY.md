@@ -1,0 +1,15 @@
+# Task suitability methodology v1
+
+The task request is saved context. Only selected evaluations, weights, and exact candidate model IDs affect the calculation. Suitability belongs to the separate planner; the master leaderboard continues to show original source ranks.
+
+For source rank r in a pinned evaluation with N accepted model rows, the component is `clamp(100 × (1 − (r − 1) / max(1, N − 1)), 0, 100)`. Rank 1 scores 100, including a one-row evaluation. Source ties retain equal components. Duplicate model entries retain the best source rank, then source row, then entry ID, following the existing duplicate priority. Cohort size counts the retained rows, independently of candidate selection.
+
+Suitability is the weighted average of available components, from 0–100; higher is better. Weighted average source rank uses the same available weights; lower is better. With equal weights, ranks 5 and 20 in two 100-row cohorts yield average rank 12.5 and suitability approximately 88.4. Breakdown contributions are score points after normalization over the candidate's available weight; they sum to its suitability.
+
+Missing ranks display “Not ranked” and contribute neither rank nor component. Coverage shows both ranked evaluation count and percentage of selected weight covered. No available positive weight produces “No score”. Zero-weight evaluations remain visible but do not affect scoring or complete weight coverage. Saves require finite nonnegative weights totaling 100%, within 0.000001 percentage points for rounding.
+
+Results sort by complete weight coverage first, suitability descending, coverage descending, weighted average rank ascending, model name, provider, and model ID. Missing scores and averages sort last within their coverage group. The calculation preserves exact model IDs, including reasoning and fallback variants.
+
+Saved tasks use schema version 1, method `rank_percentile_v1`, and policy `exclude_and_show_coverage`. They store task context, evaluation weights, immutable snapshot IDs and capture dates, candidate IDs, and creation/update/calculation timestamps. Results derive from full pinned cohorts. Missing snapshot data must produce an explicit unavailable state, never silently substitute a newer snapshot. The data loader must explicitly identify available snapshots, including empty cohorts.
+
+Implementation progress: Phases 0–1 provide this methodology, runtime task schema, pure scorer, and fixture tests. Phase 2 adds the planner UI and browser persistence; Phase 3 validates published data and aggregate events. This document does not imply the planner is already available.
