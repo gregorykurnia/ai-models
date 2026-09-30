@@ -57,8 +57,11 @@ export async function GET() {
     }
     tasks.sort((a, b) => b.task.updated_at.localeCompare(a.task.updated_at));
     return Response.json(tasks, { headers: { "Cache-Control": "private, no-store" } });
-  } catch {
-    return Response.json({ error: "Saved tasks could not be loaded from the database." }, { status: 503 });
+  } catch (cause) {
+    const quotaExceeded=(cause as {code?:number}).code===8;
+    return Response.json({ error: quotaExceeded
+      ? "Firestore's read quota is exhausted. Shared saved tasks are temporarily unavailable until the quota resets or is increased."
+      : "Saved tasks could not be loaded from the database." }, { status: 503 });
   }
 }
 
@@ -110,7 +113,10 @@ export async function POST(request: Request) {
     }
 
     return Response.json({ taskId }, { headers: { "Cache-Control": "private, no-store" } });
-  } catch {
-    return Response.json({ error: "Task could not be saved to the database. Check the server's Firebase configuration." }, { status: 503 });
+  } catch (cause) {
+    const quotaExceeded=(cause as {code?:number}).code===8;
+    return Response.json({ error: quotaExceeded
+      ? "Firestore's quota is exhausted. Your selections are still visible; shared saves can resume when the quota resets or is increased."
+      : "Task could not be saved to the database. Check the server's Firebase configuration." }, { status: 503 });
   }
 }
