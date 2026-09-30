@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getEntries, getEvaluations } from "@/lib/data";
+import { getEvaluationDataset } from "@/lib/data";
 import type { Evaluation } from "@/lib/contract";
 import Leaderboard from "@/components/leaderboard";
 import { intelligenceIndexCostsForEntries,intelligenceIndexCostCapturedAt } from "@/lib/intelligence-index-costs";
@@ -35,10 +35,9 @@ export const dynamic = "force-dynamic";
 
 export default async function Page({ params }: { params: Promise<{ evaluationSlug: string }> }) {
   const { evaluationSlug } = await params;
-  const evaluations = await getEvaluations();
-  const evaluation = evaluations.find(item => item.slug === evaluationSlug);
-  if (!evaluation) notFound();
-  const entries = await getEntries(evaluation);
+  const dataset = await getEvaluationDataset(evaluationSlug);
+  if (!dataset) notFound();
+  const {evaluations,evaluation,entries} = dataset;
   const taskCosts = intelligenceIndexCostsForEntries(entries);
   const capturedDate = new Date(`${evaluation.captured_at}T00:00:00Z`).toLocaleDateString("en-GB", {
     day: "numeric", month: "short", year: "numeric", timeZone: "UTC",

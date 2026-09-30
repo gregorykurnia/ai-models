@@ -47,8 +47,32 @@ export async function getEntries(evaluation:Evaluation):Promise<Entry[]>{
   }
   return (await local()).entries.filter(e=>e.evaluation_id===evaluation.id).sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row);
 }
-export const getMasterDataset=cache(async()=>{
+export const getPublishedDataset=cache(async()=>{
+  try{
+    const evaluations=await getEvaluations();
+    const entries=(await Promise.all(evaluations.map(getEntries))).flat();
+    return {evaluations,entries};
+  }catch(error){
+    if(![4,8,14].includes((error as {code?:number}).code??-1))throw error;
+    console.warn("Firestore snapshot temporarily unavailable; serving complete bundled dataset");
+    const bundled=await local();
+    return {evaluations:bundled.evaluations,entries:bundled.entries};
+  }
+});
+export const getEvaluationDataset=cache(async(slug:string)=>{
   const evaluations=await getEvaluations();
-  const entries=(await Promise.all(evaluations.map(getEntries))).flat();
+  const evaluation=evaluations.find(item=>item.slug===slug);
+  if(!evaluation)return null;
+  try{return {evaluations,evaluation,entries:await getEntries(evaluation)};}
+  catch(error){
+    if(![4,8,14].includes((error as {code?:number}).code??-1))throw error;
+    const bundled=await local();
+    const fallback=bundled.evaluations.find(item=>item.slug===slug);
+    if(!fallback)throw error;
+    return {evaluations:bundled.evaluations,evaluation:fallback,entries:bundled.entries.filter(entry=>entry.evaluation_id===fallback.id&&entry.snapshot_id===fallback.published_snapshot_id)};
+  }
+});
+export const getMasterDataset=cache(async()=>{
+  const {evaluations,entries}=await getPublishedDataset();
   return {evaluations,...aggregateMaster(evaluations,entries,getIntelligenceIndexTaskCostMap()),intelligenceIndexCostCapturedAt};
 });
