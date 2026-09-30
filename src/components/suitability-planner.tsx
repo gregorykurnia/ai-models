@@ -122,7 +122,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       <textarea id="task-request" value={request} onChange={e => setRequest(e.target.value)} placeholder="Ask for stock analysis" rows={3} />
       <p>Task text is saved as context. Your evaluations and weights control the score.</p></section>
     <section className="panel"><h2>2. Choose evaluations and weights</h2>
-      <label htmlFor="evaluation-search">Search evaluations</label><input id="evaluation-search" value={evaluationSearch} onChange={e => setEvaluationSearch(e.target.value)} />
+      <div className={`${styles.searchField} ${styles.evaluationSearch}`}><label htmlFor="evaluation-search">Search evaluations</label><input id="evaluation-search" type="search" placeholder="Search by evaluation or metric" value={evaluationSearch} onChange={e => setEvaluationSearch(e.target.value)} /></div>
       <div className={styles.picker}>{groups.map(category => <fieldset key={category}><legend>{category.replaceAll("_", " ")}</legend>
         {visibleEvaluations.filter(e => e.category === category).map(e => <label className={styles.option} key={e.id}>
           <input type="checkbox" checked={weights.some(w => w.evaluation_id === e.id)} onChange={() => toggleEvaluation(e.id)} />
@@ -132,12 +132,12 @@ export default function Planner({ data }: { data: PlannerData }) {
       {weights.map(w => <div className={styles.weight} key={w.evaluation_id}><label htmlFor={`weight-${w.evaluation_id}`}>{working.evaluations.find(e => e.id === w.evaluation_id)?.display_name}</label>
         <input id={`weight-${w.evaluation_id}`} type="number" min="0" max="100" step="any" value={Number.isFinite(w.weight) ? w.weight : ""} onChange={e => editWeight(w.evaluation_id, e.target.value)} /><span>%</span></div>)}
       <p>Weights must total 100%. Adding or removing an evaluation resets equal weights.</p></section>
-    <section className="panel"><h2>3. Select candidate models</h2><p>Known alternate sheet labels match the same model. Reasoning effort and fallback variants remain separate.</p><div className="toolbar">
-      <label>Search models<input value={modelSearch} onChange={e => setModelSearch(e.target.value)} /></label>
-      <label>Provider<select value={provider} onChange={e => setProvider(e.target.value)}><option value="">All providers</option>{[...new Set(working.candidates.map(c => c.provider))].sort().map(p => <option key={p}>{p}</option>)}</select></label>
+    <section className="panel"><h2>3. Select candidate models</h2><p>Known alternate sheet labels match the same model. Reasoning effort and fallback variants remain separate.</p><div className={`${styles.modelToolbar} ${styles.toolbarReset}`}>
+      <label className={styles.searchField} htmlFor="model-search">Search models<input id="model-search" type="search" placeholder="Search model names or providers" value={modelSearch} onChange={e => setModelSearch(e.target.value)} /></label>
+      <label className={styles.searchField} htmlFor="provider-filter">Provider<select id="provider-filter" value={provider} onChange={e => setProvider(e.target.value)}><option value="">All providers</option>{[...new Set(working.candidates.map(c => c.provider))].sort().map(p => <option key={p}>{p}</option>)}</select></label>
       <button onClick={() => setSelected([...new Set([...selected, ...visibleModels.map(c => c.model_id)])])}>Select all visible</button>
       <button onClick={() => { const visible = new Set(visibleModels.map(c => c.model_id)); setSelected(selected.filter(id => !visible.has(id))); }}>Clear visible</button>
-      <strong aria-live="polite">{selected.length} selected · {visibleModels.length} visible</strong></div>
+      <strong className={styles.selectionCount} aria-live="polite">{selected.length} selected · {visibleModels.length} visible</strong></div>
       <div className={styles.chips}>{working.candidates.filter(c => selected.includes(c.model_id)).map(c => <button key={c.model_id} aria-label={`Remove ${c.model}, ${c.provider}`} onClick={() => setSelected(selected.filter(id => id !== c.model_id))}>{c.model} · {c.provider} ×</button>)}</div>
       <div className={styles.picker}>{visibleModels.map(c => <label className={styles.option} key={c.model_id}><input type="checkbox" checked={selected.includes(c.model_id)} onChange={e => setSelected(e.target.checked ? [...selected, c.model_id] : selected.filter(id => id !== c.model_id))} /><span>{c.model}<small>{c.provider}</small></span></label>)}{!visibleModels.length && <p>No models match.</p>}</div>
     </section>
