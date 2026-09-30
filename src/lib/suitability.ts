@@ -24,6 +24,7 @@ export const suitabilityTaskSchema = z.object({
 export type SuitabilityTask = z.infer<typeof suitabilityTaskSchema>;
 export type EvaluationWeight = z.infer<typeof evaluationWeightSchema>;
 export type SuitabilityCandidate = { model_id: string; model: string; provider: string };
+export type SuitabilityEntry = Pick<Entry, "id" | "evaluation_id" | "snapshot_id" | "model_id" | "source_rank" | "source_row">;
 export type SuitabilityBreakdown = EvaluationWeight & {
   source_rank: number | null; cohort_size: number; component_score: number | null;
   /** Score points after renormalizing over this candidate's available weight. */
@@ -47,7 +48,7 @@ export function rankComponent(rank: number, cohortSize: number): number {
  * Empty cohorts are allowed only when explicitly listed in availableSnapshotIds.
  */
 export function calculateSuitability(input: {
-  evaluations: Evaluation[]; entries: Entry[]; weights: EvaluationWeight[];
+  evaluations: Evaluation[]; entries: SuitabilityEntry[]; weights: EvaluationWeight[];
   candidates: SuitabilityCandidate[]; availableSnapshotIds: string[];
 }): SuitabilityResult[] {
   const weights = z.array(evaluationWeightSchema).min(1).parse(input.weights);
@@ -60,7 +61,7 @@ export function calculateSuitability(input: {
     if (!input.availableSnapshotIds.includes(weight.snapshot_id)) throw new Error(`Pinned snapshot unavailable: ${weight.snapshot_id}`);
     const rows = input.entries.filter(e => e.evaluation_id === weight.evaluation_id && e.snapshot_id === weight.snapshot_id)
       .sort((a, b) => a.source_rank - b.source_rank || a.source_row - b.source_row || a.id.localeCompare(b.id));
-    const accepted = new Map<string, Entry>();
+    const accepted = new Map<string, SuitabilityEntry>();
     for (const row of rows) if (!accepted.has(row.model_id)) accepted.set(row.model_id, row);
     return { weight, accepted };
   });

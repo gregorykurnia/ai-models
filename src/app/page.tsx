@@ -13,6 +13,7 @@ export default async function Home(){
     <div className="eyebrow">Artificial Analysis · 29 Sep 2026</div>
     <h1>Compare model ranks across evaluations.</h1>
     <p>See each model’s rank across the benchmarks, then open an individual leaderboard for more detail.</p>
+    <section className="panel"><div className="eyebrow">Task suitability planner</div><h2>Find the best model for a task</h2><p>Choose evaluations, set your priorities, and compare model suitability with transparent coverage.</p><Link href="/suitability">Create a task comparison →</Link></section>
 
     <Suspense fallback={<p>Loading master leaderboard…</p>}>
       <MasterLeaderboard rows={masterTableRows(rows)} evaluations={evaluations}/>

@@ -41,6 +41,14 @@ The catalog includes Intelligence Index through a dedicated adapter. Its 670 row
 
 ## Implementation scope
 
-Initial implementation covers the application shell, workbook importer, evaluation catalog, data definitions, and reusable leaderboard. Model comparison and automated refresh are later phases. Production launch is outside the product plan's initial implementation scope.
+Implementation covers the application shell, workbook importer, evaluation catalog, data definitions, reusable leaderboards, and the local Task Suitability Planner beta. Automated refresh and account-backed saves remain later phases. Production launch is outside the product plan's initial implementation scope.
+
+## Task suitability planner beta
+
+Open `/suitability` to describe a task, select evaluations and weights, and compare any number of exact model variants. Saved tasks reopen at `/suitability/[taskId]` in the same browser. Weights must total 100%; missing ranks are excluded and coverage stays visible. The primary suitability score normalizes source ranks, while weighted average source rank provides a secondary comparison.
+
+Browser storage preserves the configuration and full pinned source cohorts, so later imports cannot silently change saved results. No benchmark writes or account setup are required. Storage failures are shown explicitly; saves are limited by the browser's storage capacity. Source links open current leaderboards, which may differ from pinned results. See [the methodology](docs/TASK_SUITABILITY_METHODOLOGY.md).
+
+Run scoring and persistence fixtures with `npx tsx --test tests/suitability.test.ts tests/suitability-storage.test.ts`. With the dev server on port 3180, run `node scripts/check-suitability-browser.mjs` using an installed Playwright module (or set `PLAYWRIGHT_MODULE` to its absolute module path).
 
 Repository setup, branch protection, and pushes require a known Git repository and configured upstream. This directory initially had no `.git` directory.
