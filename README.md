@@ -17,7 +17,7 @@ Open http://localhost:3000. Local mode reads the validated JSON produced by the 
 
 ## Deployed environment
 
-The app is linked to the Vercel environment at [ai-models-nine-livid.vercel.app](https://ai-models-nine-livid.vercel.app/). Task Suitability saves are still browser-local; opening this URL from another device or browser does not sync them.
+The app is linked to the Vercel environment at [ai-models-nine-livid.vercel.app](https://ai-models-nine-livid.vercel.app/). Task Suitability saves use a shared database, so saved tasks appear across browsers and devices without signing in.
 
 ## Trusted Firestore import
 
@@ -35,7 +35,7 @@ After successful publishing, set `DATA_SOURCE=firestore` and `FIREBASE_PROJECT_I
 
 The publisher uses deterministic IDs for snapshots and entries. Already published snapshots are skipped on re-import. Entries are staged before all evaluation pointers are published in one transaction; a failed staging operation leaves existing published pointers intact. Publication rejects a capture older than the currently visible snapshot. Concurrent staging of the same workbook requires operator coordination.
 
-`firestore.rules` permits anonymous reads of published evaluations and snapshots, denies client writes, and keeps ingestion logs private. These files are configuration only until explicitly deployed. No deployment is performed by the importer.
+`firestore.rules` permits anonymous reads of published evaluations and snapshots, denies client writes, and keeps ingestion logs private. Suitability tasks are written by a server route with the Admin SDK to a shared collection. These rules are configuration only until explicitly deployed. No deployment is performed by the importer.
 
 ## Data contract
 
@@ -45,13 +45,13 @@ The catalog includes Intelligence Index through a dedicated adapter. Its 670 row
 
 ## Implementation scope
 
-Implementation covers the application shell, workbook importer, evaluation catalog, data definitions, reusable leaderboards, and the local Task Suitability Planner beta. Automated refresh and account-backed saves remain later phases. Production launch is outside the product plan's initial implementation scope.
+Implementation covers the application shell, workbook importer, evaluation catalog, data definitions, reusable leaderboards, and the Task Suitability Planner with shared database saves. Automated refresh remains a later phase. Production launch is outside the product plan's initial implementation scope.
 
 ## Task suitability planner beta
 
-Open `/suitability` to describe a task, select evaluations and weights, and compare any number of exact model variants. Saved tasks reopen at `/suitability/[taskId]` in the same browser. Weights must total 100%; missing ranks are excluded and coverage stays visible. The primary suitability score normalizes source ranks, while weighted average source rank provides a secondary comparison.
+Open `/suitability` to describe a task, select evaluations and weights, and compare model variants. Saved tasks reopen at `/suitability/[taskId]` across browsers and devices. Weights must total 100%; missing ranks are excluded and coverage stays visible. The primary suitability score normalizes source ranks, while weighted average source rank provides a secondary comparison.
 
-Browser storage preserves the configuration and full pinned source cohorts, so later imports cannot silently change saved results. No benchmark writes or account setup are required. Storage failures are shown explicitly; saves are limited by the browser's storage capacity. Source links open current leaderboards, which may differ from pinned results. See [the methodology](docs/TASK_SUITABILITY_METHODOLOGY.md).
+Saved tasks are shared with everyone who visits the site, and visitors can change them. Existing browser-saved tasks stay local until you choose “Add browser-saved tasks to shared list.” Firestore stores each shared task and its full pinned source cohorts, so later imports cannot silently change saved results. Configure `FIREBASE_SERVICE_ACCOUNT_JSON` and `FIREBASE_PROJECT_ID` in Vercel for the server route. Source links open current leaderboards, which may differ from pinned results. See [the methodology](docs/TASK_SUITABILITY_METHODOLOGY.md).
 
 `npm run audit:suitability` verifies the imported snapshot and runs a full-catalog score, identity, source-link, and coverage audit. [Review its findings](docs/TASK_SUITABILITY_DATA_AUDIT.md). Known alternate sheet labels match the same variant; source IDs remain intact. Earlier saved tasks retain their original matching. Planner event counters stay in the browser and are not sent to an analytics service.
 

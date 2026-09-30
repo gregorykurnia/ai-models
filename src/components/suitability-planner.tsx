@@ -11,11 +11,28 @@ import styles from "./suitability-planner.module.css";
 const number = (value: number | null) => value === null ? "No score" : value.toFixed(1);
 const equal = (weights: EvaluationWeight[]) => weights.map(w => ({ ...w, weight: 100 / weights.length }));
 
+async function saveSharedTask(comparison: SavedComparison) {
+  const response = await fetch("/api/suitability/tasks", {
+    method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(comparison),
+  });
+  const payload = await response.json();
+  if (!response.ok) throw new Error(typeof payload.error === "string" ? payload.error : "Task could not be saved to the shared database.");
+}
+
+function removeBrowserTask(taskId: string) {
+  try {
+    const remaining = readSavedTasks(localStorage.getItem(TASK_STORAGE_KEY)).filter(task => task.task.id !== taskId);
+    if (remaining.length) localStorage.setItem(TASK_STORAGE_KEY, JSON.stringify(remaining));
+    else localStorage.removeItem(TASK_STORAGE_KEY);
+  } catch { /* The shared database save is authoritative. */ }
+}
+
 export default function Planner({ data }: { data: PlannerData }) {
   const router = useRouter();
   const path = usePathname();
   const [ready, setReady] = useState(false);
   const [saved, setSaved] = useState<SavedComparison[]>([]);
+  const [browserSaved, setBrowserSaved] = useState<SavedComparison[]>([]);
   const [active, setActive] = useState<SavedComparison | null>(null);
   const [request, setRequest] = useState("");
   const [weights, setWeights] = useState<EvaluationWeight[]>([]);
@@ -25,23 +42,43 @@ export default function Planner({ data }: { data: PlannerData }) {
   const [provider, setProvider] = useState("");
   const [completeOnly, setCompleteOnly] = useState(false);
   const [error, setError] = useState("");
+  const [saving, setSaving] = useState(false);
+  const [syncingBrowserSaved, setSyncingBrowserSaved] = useState(false);
   const [notice, setNotice] = useState("");
   const openedPath = useRef("");
   const previousComparison = useRef("");
   useEffect(() => {
+    let cancelled = false;
     if (openedPath.current !== path) { recordSuitabilityEvent("planner_opened"); openedPath.current = path; }
-    try {
-      const tasks = readSavedTasks(localStorage.getItem(TASK_STORAGE_KEY));
-      setSaved(tasks);
-      const taskId = path.split("/")[2];
-      const match = tasks.find(t => t.task.id === taskId);
-      setActive(match ?? null); setRequest(match?.task.request ?? "");
+    setReady(false); setError(""); setNotice("");
+    let localTasks: SavedComparison[] = [];
+    try { localTasks = readSavedTasks(localStorage.getItem(TASK_STORAGE_KEY)); }
+    catch { setError("Browser-saved tasks could not be read. They will be left untouched."); }
+    setBrowserSaved(localTasks);
+    const taskId = path.split("/")[2];
+    const activate = (sharedTasks: SavedComparison[], loadError = "") => {
+      if (cancelled) return;
+      const match = sharedTasks.find(t => t.task.id === taskId) ?? localTasks.find(t => t.task.id === taskId);
+      const sharedMatch = sharedTasks.some(t => t.task.id === taskId);
+      setSaved(sharedTasks); setActive(match ?? null); setRequest(match?.task.request ?? "");
       setWeights(match?.task.evaluation_weights ?? []); setSelected(match?.task.candidate_model_ids ?? []);
-      setError(taskId && !match ? "This task is not saved in this browser. You can create a new task below." : "");
-    } catch {
-      setError("Saved tasks could not be read. Browser storage may be unavailable or contain an unsupported task. Existing storage will not be overwritten.");
-    }
-    setReady(true);
+      setError(loadError || (taskId && !match ? "This task is not saved in the shared list or this browser." : ""));
+      if (!loadError && taskId && match && !sharedMatch) setNotice("This task is only saved in this browser. Save it to add it to the shared list.");
+      setReady(true);
+    };
+
+    void (async () => {
+      try {
+        const response = await fetch("/api/suitability/tasks", { cache: "no-store" });
+        const payload = await response.json();
+        if (!response.ok) throw new Error(typeof payload.error === "string" ? payload.error : "Shared tasks could not be loaded.");
+        activate(readSavedTasks(JSON.stringify(payload)));
+      } catch (cause) {
+        const detail = cause instanceof Error ? cause.message : "The database could not be reached.";
+        activate([], `Shared tasks could not be loaded. ${detail}`);
+      }
+    })();
+    return () => { cancelled = true; };
   }, [path]);
 
   const working = useMemo<PlannerData>(() => {
@@ -93,31 +130,56 @@ export default function Planner({ data }: { data: PlannerData }) {
     if (wasValid && becomesInvalid) recordSuitabilityEvent("weight_validation_failed");
     setWeights(next);
   };
-  const save = () => {
-    if (!valid || result.error) return;
+  const syncBrowserTasks = async () => {
+    if (!browserSaved.length) return;
+    setSyncingBrowserSaved(true); setError("");
     try {
-      // Re-read before writing so other tabs' saved tasks are preserved.
-      const existing = readSavedTasks(localStorage.getItem(TASK_STORAGE_KEY));
+      const existingIds = new Set(saved.map(task => task.task.id));
+      const toUpload = browserSaved.filter(task => !existingIds.has(task.task.id));
+      const uploaded: SavedComparison[] = [];
+      for (const task of toUpload) { await saveSharedTask(task); uploaded.push(task); }
+      const synced = [...uploaded, ...saved];
+      setSaved(synced);
+      setActive(current => current ? synced.find(task => task.task.id === current.task.id) ?? current : current);
+      try { localStorage.removeItem(TASK_STORAGE_KEY); } catch { /* Keep the cloud copy even if browser storage is unavailable. */ }
+      setBrowserSaved([]);
+      setNotice(`Added ${browserSaved.length} existing browser-saved task${browserSaved.length === 1 ? "" : "s"} to the shared list.`);
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Browser-saved tasks could not be added to the shared list.");
+    } finally { setSyncingBrowserSaved(false); }
+  };
+  const save = async () => {
+    if (!valid || result.error) return;
+    setSaving(true); setError("");
+    try {
       const now = new Date().toISOString();
       const task: SuitabilityTask = suitabilityTaskSchema.parse({ id: active?.task.id ?? crypto.randomUUID(), title: request.trim().slice(0, 80), request,
         evaluation_weights: weights, candidate_model_ids: selected, score_method: "rank_percentile_v1", missing_policy: "exclude_and_show_coverage",
         created_at: active?.task.created_at ?? now, updated_at: now, last_calculated_at: now, schema_version: 1 });
       const pinned = pinComparison(task, working);
-      const tasks = [pinned, ...existing.filter(t => t.task.id !== task.id)];
-      localStorage.setItem(TASK_STORAGE_KEY, JSON.stringify(tasks));
+      await saveSharedTask(pinned);
+      const tasks = [pinned, ...saved.filter(t => t.task.id !== task.id)];
       recordSuitabilityEvent("task_saved");
-      setSaved(tasks); setActive(pinned); setError(""); setNotice("Task and pinned snapshot data saved in this browser.");
+      removeBrowserTask(task.id);
+      setSaved(tasks); setActive(pinned); setBrowserSaved(browserSaved.filter(t => t.task.id !== task.id));
+      setNotice("Task and pinned snapshot data saved to the shared database.");
       router.replace(`/suitability/${task.id}`, { scroll: false });
-    } catch { setError("Task could not be saved. Browser storage may be full, unavailable, or contain unsupported tasks. Your current selections are still visible."); }
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Task could not be saved to the shared database. Your current selections are still visible.");
+    } finally { setSaving(false); }
   };
   if (!ready) return <p>Loading your saved tasks…</p>;
   return <div className={styles.planner}>
-    <div className="eyebrow">Task suitability · browser beta</div>
+    <div className="eyebrow">Task suitability · shared saves</div>
     <h1>Find the best model for a task.</h1>
-    <p>Choose the source rankings and priorities that matter to you. Saved tasks stay in this browser, with their snapshot data pinned.</p>
+    <p>Choose the source rankings and priorities that matter to you. Saved tasks sync across browsers and devices.</p>
+    <section className="panel"><h2>Shared saved tasks</h2><p>No sign-in is required. Tasks saved here are visible to anyone who visits this site, and changes to a shared task are visible to everyone.</p>
+      {browserSaved.length > 0 && <div className="toolbar"><span>{browserSaved.length} older task{browserSaved.length === 1 ? " is" : "s are"} saved only in this browser.</span><button onClick={syncBrowserTasks} disabled={syncingBrowserSaved}>{syncingBrowserSaved ? "Adding tasks…" : "Add browser-saved tasks to shared list"}</button></div>}
+    </section>
     {active?.candidates.some(c => !c.source_model_ids) && <p className="panel">This saved task keeps its original model matching. <Link href="/suitability">Create a new task</Link> to compare models across known alternate sheet labels.</p>}
     {error && <p role="alert" className="panel error">{error}</p>}
     {saved.length > 0 && <section className="panel"><h2>Saved tasks</h2><div className="toolbar"><Link href="/suitability">New task</Link>{saved.map(s => <Link key={s.task.id} href={`/suitability/${s.task.id}`} aria-current={active?.task.id === s.task.id ? "page" : undefined}>{s.task.title}</Link>)}</div></section>}
+    {browserSaved.some(task => !saved.some(shared => shared.task.id === task.task.id)) && <section className="panel"><h2>Only saved in this browser</h2><div className="toolbar">{browserSaved.filter(task => !saved.some(shared => shared.task.id === task.task.id)).map(s => <Link key={s.task.id} href={`/suitability/${s.task.id}`}>{s.task.title}</Link>)}</div></section>}
     <section className="panel"><h2>1. Describe the task</h2><label htmlFor="task-request">What do you need a model to do?</label>
       <textarea id="task-request" value={request} onChange={e => setRequest(e.target.value)} placeholder="Ask for stock analysis" rows={3} />
       <p>Task text is saved as context. Your evaluations and weights control the score.</p></section>
@@ -145,7 +207,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       <ul>{weights.map(w => <li key={w.evaluation_id}>{working.evaluations.find(e => e.id === w.evaluation_id)?.display_name}: {Number.isFinite(w.weight) ? w.weight.toFixed(2) : "Invalid"}% · snapshot {w.captured_at}</li>)}</ul>
       {!valid && <p>Enter a task, choose at least one evaluation and candidate, and assign nonnegative weights totaling 100%.</p>}
       {result.error && <p role="alert">{result.error}</p>}
-      <button className={styles.primary} onClick={save} disabled={!valid || !!result.error}>Save task and compare models</button>
+      <button className={styles.primary} onClick={save} disabled={!valid || !!result.error || saving}>{saving ? "Saving to shared database…" : "Save task and compare models"}</button>
       <p role="status">{notice}</p></section>
     {valid && !result.error && <section className="panel"><h2>Model comparison</h2><p>{dirty ? "Preview of unsaved changes. Save to keep this configuration." : `Saved comparison · calculated ${active?.task.last_calculated_at}`}</p>
       <label className={styles.option}><input type="checkbox" checked={completeOnly} onChange={e => { setCompleteOnly(e.target.checked); if (e.target.checked) recordSuitabilityEvent("complete_coverage_filter_used"); }} />Complete coverage only</label>
@@ -154,6 +216,6 @@ export default function Planner({ data }: { data: PlannerData }) {
           <td>{number(r.score)}{!r.complete_coverage && <small>partial</small>}</td><td>{r.ranked_evaluations} of {r.selected_evaluations} evaluations · {r.coverage_percent.toFixed(1)}% weight</td><td>{r.weighted_average_rank === null ? "No rank" : number(r.weighted_average_rank)}</td>{r.breakdown.map(b => <td key={b.evaluation_id}>{b.source_rank ?? "Not ranked"}{b.scoring_status && <small>{b.scoring_status}</small>}</td>)}</tr>)}</tbody></table></div>
       {completeOnly && !result.rows.some(r => r.complete_coverage) && <p>No candidates have complete weight coverage.</p>}
     </section>}
-    <section className="panel" id="methodology"><h2>How suitability works</h2><p>Each source rank becomes a 0–100 component: 100 × (1 − (rank − 1) / max(1, cohort size − 1)), clamped to 0–100. Suitability averages these components using your weights. Higher is better. Weighted average source rank uses the same available weights; lower is better.</p><p>Missing entries stay “Not ranked” and are excluded from the average. Coverage shows the selected weight with a rank. Complete weight coverage sorts first. Rank 5 and rank 20 in two 100-row cohorts, equally weighted, yield average rank 12.5 and suitability 88.4.</p><p>Saved tasks preserve their full source cohorts and capture dates in this browser. New imports do not change saved results. Source links open the currently published leaderboards, which may have newer ranks. <Link href="/about/data">Read the data notes</Link>.</p></section>
+    <section className="panel" id="methodology"><h2>How suitability works</h2><p>Each source rank becomes a 0–100 component: 100 × (1 − (rank − 1) / max(1, cohort size − 1)), clamped to 0–100. Suitability averages these components using your weights. Higher is better. Weighted average source rank uses the same available weights; lower is better.</p><p>Missing entries stay “Not ranked” and are excluded from the average. Coverage shows the selected weight with a rank. Complete weight coverage sorts first. Rank 5 and rank 20 in two 100-row cohorts, equally weighted, yield average rank 12.5 and suitability 88.4.</p><p>Saved tasks preserve their full source cohorts and capture dates in the shared database. New imports do not change saved results. Source links open the currently published leaderboards, which may have newer ranks. <Link href="/about/data">Read the data notes</Link>.</p></section>
   </div>;
 }

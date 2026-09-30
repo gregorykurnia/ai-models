@@ -3,7 +3,7 @@ import { suitabilityTaskSchema, type SuitabilityCandidate, type SuitabilityEntry
 import type { Evaluation } from "./contract";
 
 export type PlannerData = { evaluations: Evaluation[]; entries: SuitabilityEntry[]; candidates: SuitabilityCandidate[]; availableSnapshotIds: string[] };
-const savedSchema = z.object({
+export const savedComparisonSchema = z.object({
   task: suitabilityTaskSchema,
   evaluations: z.array(z.object({ id: z.string(), slug: z.string(), display_name: z.string(), category: z.string(), metric_label: z.string(), captured_at: z.string(), published_snapshot_id: z.string(), row_count: z.number() }).passthrough()),
   entries: z.array(z.object({ id: z.string(), evaluation_id: z.string(), snapshot_id: z.string(), model_id: z.string(), source_rank: z.number().int().positive(), source_row: z.number().int(), identity_key: z.string().optional(), model: z.string().optional(), scoring_status: z.string().nullable().optional() })),
@@ -14,7 +14,7 @@ export type SavedComparison = PlannerData & { task: z.infer<typeof suitabilityTa
 export const TASK_STORAGE_KEY = "model-benchmarks:suitability:v1";
 export function readSavedTasks(raw: string | null): SavedComparison[] {
   if (!raw) return [];
-  const parsed = z.array(savedSchema).parse(JSON.parse(raw));
+  const parsed = z.array(savedComparisonSchema).parse(JSON.parse(raw));
   return parsed as SavedComparison[];
 }
 
