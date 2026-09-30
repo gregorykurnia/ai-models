@@ -15,6 +15,16 @@ The schema is declared in `src/lib/contract.ts`. All nullable source values rema
 
 ## Numeric semantics
 
+## Master comparison policy v1 (beta)
+
+`src/lib/master.ts` declares Zod scoring and row contracts. Configuration is explicit by score kind, with source metadata bounds and higher-is-better direction. Percentages and bounded indices normalize as `100 * (score - min) / (max - min)`; percentages therefore retain their values. Signed indices map -100 to 0 and 100 to 100. Elo, unsupported kinds, absent/invalid bounds, out-of-range scores, and estimates are excluded with reasons. Intelligence Index remains visible, including status and Unknown providers, but has no approved source bounds. No empirical scale is invented.
+
+`mean_normalized_score` is the arithmetic mean of included values, or null if none; `mean_coverage` counts contributing evaluations. Missing values never become zero. Equal weights and different coverage limit comparisons; fewer than three dimensions generates a low-coverage warning. Estimates can contribute only when configuration explicitly permits them.
+
+Master rows retain `model_id`, exact provider/model labels, selected per-evaluation entries, source ranks/rows, and every contributing/discarded source entry. Duplicate selection uses ascending source rank, source row, then entry ID and emits an issue. Source links use evaluation slugs and encoded exact model queries. Source rank is immutable; displayed master rank is the position after filtering and sorting, including pagination offset. Null normalized scores sort last in both directions. Ties use best source rank, exact model, provider, then model ID. Local JSON and Firestore use the same aggregation after loading published evaluations.
+
+Home URL keys `mq`, `mp`, `ms`, `md`, `mi`, and `mz` store search, provider, sort, direction, page, and size. The section anchor is `master-leaderboard`. Beta promotion requires product feedback; runtime performance and Firestore reads should be measured in the deployed environment.
+
 - `score_value` stores the workbook's numeric value without cross-evaluation normalization. `score_display` retains the source label.
 - `score_kind` distinguishes Elo, percentage, integer scores, and the signed index. Signed index limits are -100 to 100. Percentage limits are 0 to 100.
 - `cost_usd` is precise only when the numeric workbook cell supplies a value. Bounded cost labels remain display text with null numeric cost. No estimated values are created.
