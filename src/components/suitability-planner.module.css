@@ -23,27 +23,61 @@
   margin: var(--space-1) 0 var(--space-4);
 }
 
-.toolbarReset {
-  margin: 0;
+.modelDescription {
+  max-width: 52rem;
+  margin: 0 0 var(--space-6);
 }
 
 .modelToolbar {
   display: grid;
-  grid-template-columns: minmax(13.75rem, 2fr) minmax(9.375rem, 1fr) minmax(9.375rem, 1fr) max-content max-content minmax(max-content, auto);
-  align-items: end;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.modelFilterFields {
+  display: grid;
+  grid-template-columns: minmax(18rem, 2fr) minmax(12rem, 1fr) minmax(12rem, 1fr);
   gap: var(--space-3);
 }
 
-.modelToolbar > button {
-  white-space: nowrap;
+.modelStatus {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-secondary);
+  font-size: var(--font-size-ui);
+  font-variant-numeric: tabular-nums;
 }
 
-.selectionCount {
-  align-self: center;
-  justify-self: end;
+.modelActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  margin-bottom: var(--space-5);
+  border-top: var(--border-width-default) var(--border-style) var(--border-default);
+  border-bottom: var(--border-width-default) var(--border-style) var(--border-default);
+}
+
+.modelActionGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.modelActionGroupFavorites {
+  justify-content: flex-end;
+}
+
+.modelActionLabel {
+  margin-right: var(--space-1);
   color: var(--text-secondary);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
+  font-size: var(--font-size-caption);
+  font-weight: var(--type-weight-semibold);
 }
 
 .picker {
@@ -266,21 +300,16 @@
 }
 
 @media (max-width: 1100px) {
-  .modelToolbar {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .modelFilterFields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .modelToolbar > .searchField:first-child {
+  .modelSearchField {
     grid-column: span 2;
   }
 
-  .modelToolbar > button {
-    white-space: normal;
-  }
-
-  .selectionCount {
-    grid-column: 1 / -1;
-    justify-self: start;
+  .modelActionGroupFavorites {
+    justify-content: flex-start;
   }
 }
 
@@ -301,24 +330,23 @@
     width: 100%;
   }
 
-  .modelToolbar {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: stretch;
+  .modelFilterFields {
+    grid-template-columns: 1fr;
   }
 
-  .modelToolbar > .searchField:first-child,
-  .modelToolbar > button,
-  .selectionCount {
-    grid-column: 1 / -1;
+  .modelSearchField {
+    grid-column: auto;
   }
 
-  .modelToolbar > button {
+  .modelActionGroup,
+  .modelActionGroupFavorites {
     width: 100%;
-    white-space: normal;
+    justify-content: flex-start;
   }
 
-  .selectionCount {
-    justify-self: start;
+  .modelActionGroup .ui-button {
+    flex: 1 1 auto;
+    width: 100%;
   }
 
   .results td:first-child,

@@ -247,7 +247,6 @@ export default function Planner({ data }: { data: PlannerData }) {
   const unavailableFavorites = favorites.filter(identity => !availableFavoriteKeys.has(identity));
   const matchesPickerFilters = (candidate: PlannerData["candidates"][number]) => (!provider || candidate.provider === provider)
     && `${candidate.model} ${candidate.provider}`.toLowerCase().includes(modelSearch.toLowerCase());
-  const matchingFavorites = data.candidates.filter(candidate => favorites.includes(candidate.identity_key ?? masterIdentityKey(candidate.provider, candidate.model)) && matchesPickerFilters(candidate));
   const visibleModels = data.candidates.filter(candidate => matchesPickerFilters(candidate)
     && (modelMode === "all" || favorites.includes(candidate.identity_key ?? masterIdentityKey(candidate.provider, candidate.model))));
   const visibleEvaluations = working.evaluations.filter(evaluation => `${evaluation.display_name} ${evaluation.category} ${evaluation.metric_label}`.toLowerCase().includes(evaluationSearch.toLowerCase()));
@@ -459,18 +458,21 @@ export default function Planner({ data }: { data: PlannerData }) {
       {weights.map(weight => <div className={styles.weight} key={weight.evaluation_id}><label htmlFor={`weight-${weight.evaluation_id}`}>{working.evaluations.find(evaluation => evaluation.id === weight.evaluation_id)?.display_name}</label>
         <Input id={`weight-${weight.evaluation_id}`} type="number" min="0" max="100" step="any" value={Number.isFinite(weight.weight) ? weight.weight : ""} onChange={event => editWeight(weight.evaluation_id, event.target.value)} /><span>%</span></div>)}
       <p>Weights must total 100%. Adding or removing an evaluation resets equal weights.</p></Section>
-      <Section className="ui-workflow-step"><h2>3. Select candidate models</h2><p>Known alternate sheet labels match the same model. Reasoning effort and fallback variants remain separate.</p>
-      <div className={`${styles.modelToolbar} ${styles.toolbarReset}`}>
-        <label className={styles.searchField} htmlFor="model-search">Search models<Input id="model-search" type="search" placeholder="Search model names or providers" value={modelSearch} onChange={event => setModelSearch(event.target.value)} /></label>
-        <label className={styles.searchField} htmlFor="provider-filter">Provider<Select id="provider-filter" value={provider} onChange={event => setProvider(event.target.value)}><option value="">All providers</option>{[...new Set(working.candidates.map(candidate => candidate.provider))].sort().map(item => <option key={item}>{item}</option>)}</Select></label>
-        <label className={styles.searchField} htmlFor="model-favorites">Candidate view<Select id="model-favorites" value={modelMode} onChange={event => setModelMode(event.target.value as "all" | "favorites")}><option value="all">All models</option><option value="favorites">Favorites</option></Select></label>
-        <Button onClick={() => setSelected([...new Set([...selected, ...visibleModels.map(candidate => candidate.model_id)])])}>Select all visible</Button>
-        <Button variant="quiet" onClick={() => { const visible = new Set(visibleModels.map(candidate => candidate.model_id)); setSelected(selected.filter(id => !visible.has(id))); }}>Clear visible</Button>
-        <strong className={styles.selectionCount} aria-live="polite">{availableFavorites.length} favorites available · {matchingFavorites.length} match filters · {selected.length} candidates selected</strong>
+      <Section className="ui-workflow-step"><h2>3. Select candidate models</h2><p className={styles.modelDescription}>Models are grouped by known alternate labels. Reasoning effort and fallback variants stay separate.</p>
+      <div className={styles.modelToolbar}>
+        <div className={styles.modelFilterFields}>
+          <label className={`${styles.searchField} ${styles.modelSearchField}`} htmlFor="model-search">Search models<Input id="model-search" type="search" placeholder="Search model names or providers" value={modelSearch} onChange={event => setModelSearch(event.target.value)} /></label>
+          <label className={styles.searchField} htmlFor="provider-filter">Provider<Select id="provider-filter" value={provider} onChange={event => setProvider(event.target.value)}><option value="">All providers</option>{[...new Set(working.candidates.map(candidate => candidate.provider))].sort().map(item => <option key={item}>{item}</option>)}</Select></label>
+          <label className={styles.searchField} htmlFor="model-favorites">Show<Select id="model-favorites" value={modelMode} onChange={event => setModelMode(event.target.value as "all" | "favorites")}><option value="all">All models</option><option value="favorites">Favorites</option></Select></label>
+        </div>
+        <div className={styles.modelStatus} aria-live="polite"><span>{visibleModels.length.toLocaleString()} models</span><span aria-hidden="true">·</span><span>{availableFavorites.length} favorites</span><span aria-hidden="true">·</span><span>{selected.length} selected</span></div>
       </div>
-      <div className="toolbar"><Button onClick={() => setSelected([...new Set([...selected, ...availableFavorites.map(candidate => candidate.model_id)])])} disabled={!availableFavorites.length}>Add all favorites</Button>
-        <Button onClick={() => setSelected(availableFavorites.map(candidate => candidate.model_id))} disabled={!availableFavorites.length}>Replace selection with all favorites</Button>
-        <span>{visibleModels.length} models shown</span></div>
+      <div className={styles.modelActions}>
+        <div className={styles.modelActionGroup}><span className={styles.modelActionLabel}>Selection</span><Button onClick={() => setSelected([...new Set([...selected, ...visibleModels.map(candidate => candidate.model_id)])])}>Select visible</Button>
+          <Button variant="quiet" onClick={() => { const visible = new Set(visibleModels.map(candidate => candidate.model_id)); setSelected(selected.filter(id => !visible.has(id))); }}>Deselect visible</Button></div>
+        <div className={`${styles.modelActionGroup} ${styles.modelActionGroupFavorites}`}><span className={styles.modelActionLabel}>Favorites</span><Button onClick={() => setSelected([...new Set([...selected, ...availableFavorites.map(candidate => candidate.model_id)])])} disabled={!availableFavorites.length}>Add favorites</Button>
+          <Button variant="quiet" onClick={() => setSelected(availableFavorites.map(candidate => candidate.model_id))} disabled={!availableFavorites.length}>Replace with favorites</Button></div>
+      </div>
       {unavailableFavorites.length > 0 && <Alert tone="info" role="status">{unavailableFavorites.length} favorited model{unavailableFavorites.length === 1 ? " is" : "s are"} unavailable in the current candidate catalog. They remain in your favorites; no substitute was selected.</Alert>}
       {favoriteNotice && <Alert tone="error" role="status" live="polite">{favoriteNotice}</Alert>}
       <div className={styles.chips}>{working.candidates.filter(candidate => selected.includes(candidate.model_id)).map(candidate => <Button key={candidate.model_id} size="compact" variant="quiet" aria-label={`Remove ${candidate.model}, ${candidate.provider}`} onClick={() => setSelected(selected.filter(id => id !== candidate.model_id))}>{candidate.model} · {candidate.provider} ×</Button>)}</div>
