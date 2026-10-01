@@ -7,7 +7,7 @@
     </filter>
     <style>
       .ui { font-family: "Geist", Inter, Arial, sans-serif; fill: #17211D; }
-      .mono { font-family: "Geist Mono", "SFMono-Regular", Consolas, monospace; fill: #17211D; font-variant-numeric: tabular-nums; }
+      .mono { font-family: "Geist", Inter, Arial, sans-serif; fill: #17211D; font-variant-numeric: tabular-nums; }
       .muted { fill: #59665F; }
       .tertiary { fill: #78837D; }
       .accent { fill: #0B6B53; }

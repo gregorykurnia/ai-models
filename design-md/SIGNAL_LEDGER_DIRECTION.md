@@ -28,7 +28,7 @@ The name combines the product’s role as a signal-finding tool with the trust, 
 
 The current UI has useful accessibility foundations, but its hierarchy relies on many similar white cards, small type, repeated blue links, and locally defined spacing. Signal Ledger gives every layer a clear job: the canvas establishes place, the navigation rail establishes orientation, and one wide evidence sheet holds the active workflow. This removes card-on-card clutter and makes the primary data view feel intentional.
 
-The direction fits researchers, developers, and model buyers who need to compare many close options without losing source context. Controls sit directly above the information they affect. Numeric values use tabular, monospaced figures. Sticky identity columns, visible result counts, capture dates, and quiet provenance labels support trust. The restrained palette also leaves room for benchmark category colors and semantic states without making the interface noisy.
+The direction fits researchers, developers, and model buyers who need to compare many close options without losing source context. Controls sit directly above the information they affect. Numeric values use tabular figures in the same Geist family as the surrounding table text. Sticky identity columns, visible result counts, capture dates, and quiet provenance labels support trust. The restrained palette also leaves room for benchmark category colors and semantic states without making the interface noisy.
 
 The layout scales across the product: the evidence sheet becomes a leaderboard, a task builder, a saved-task library, or a methodology article. The same toolbar, status strip, and section rhythm can serve every major route.
 
@@ -47,7 +47,7 @@ The layout scales across the product: the evidence sheet becomes a leaderboard, 
 - **Surface treatment:** Use a warm mineral page canvas, white working sheets, and a pale sage inset for selected or explanatory areas. Avoid nesting multiple bordered cards.
 - **Borders and shadows:** Use 1px neutral borders for structure. Reserve a soft shadow for floating menus and dialogs; normal sheets and cards remain flat.
 - **Radius feel:** 12px for major sheets, 8px for controls and small interactive surfaces, 6px for compact tags. Pills are reserved for status or removable filters.
-- **Typography feel:** Use Geist for a crisp, modern UI. Use Geist Mono for ranks, costs, percentages, and dates. Headings are sentence case with tight tracking; labels are concise and medium weight.
+- **Typography feel:** Use Geist for a crisp, modern UI, including ranks, costs, percentages, dates, and review comparisons. Use tabular figures when values need alignment. Headings are sentence case with tight tracking; labels are concise and medium weight.
 - **Color usage:** Keep roughly 85% of the screen neutral. Evergreen is the single brand/action color. Amber, red, and blue appear only for warning, error, and information states. Benchmark colors stay small and data-specific.
 - **Iconography:** Use simple 18px outline icons with a consistent 1.75px stroke. Pair unfamiliar icons with text; never use emoji as interface icons.
 - **Motion:** Use 120–180ms ease-out transitions for hover, selection, disclosure, and route feedback. Avoid parallax, bouncing, decorative loading, and large page motion.

@@ -667,6 +667,7 @@ button.primary:active:not(:disabled) {
 table {
   width: 100%;
   border-collapse: collapse;
+  font-family: var(--font-family-sans);
   font-size: var(--font-size-data);
   line-height: var(--line-height-data);
 }
@@ -724,7 +725,7 @@ td.model {
 td.numeric,
 th.numeric {
   text-align: right;
-  font-family: var(--font-family-mono);
+  font-family: var(--font-family-sans);
   font-variant-numeric: tabular-nums;
 }
 
@@ -928,7 +929,7 @@ th.numeric {
 }
 
 .source-rank {
-  font-family: var(--font-family-mono);
+  font-family: var(--font-family-sans);
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }

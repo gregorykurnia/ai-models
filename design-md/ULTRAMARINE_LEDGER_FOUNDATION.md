@@ -53,7 +53,7 @@ Use a 4px base unit. Use this scale unless typography or an external asset requi
 
 ## 3. Typography system
 
-Use **Geist** with `system-ui`, `Segoe UI`, and sans-serif fallbacks. Use **Geist Mono** with tabular figures for ranks, prices, percentages, dates, versions, and aligned numeric columns. Use sentence case.
+Use **Geist** with `system-ui`, `Segoe UI`, and sans-serif fallbacks for all interface, table, and comparison text. Keep numeric alignment with tabular figures in the same Geist family. Reserve **Geist Mono** for code-like content outside tables. Use sentence case.
 
 | Role | Size / line height | Weight | Guidance |
 | --- | --- | ---: | --- |
@@ -68,7 +68,7 @@ Use **Geist** with `system-ui`, `Segoe UI`, and sans-serif fallbacks. Use **Geis
 | Error text | 13px / 18px | 600 | State the problem and recovery action. |
 | Button text | 14px / 20px | 600 | Short action phrase; no letter spacing or all caps. |
 | Navigation text | 14px / 20px | 600 | Current item uses weight plus fill and marker, never weight alone. |
-| Table text | 13px / 18px | 400 | Use 600 for headers and key identities; use mono for numeric cells. |
+| Table text | 13px / 18px | 400 | Use 600 for headers and key identities; use tabular figures for numeric cells. |
 
 - Use primary text for titles, labels, and core data; secondary text for explanations; muted text only for optional metadata.
 - Do not use font sizes below 12px. Avoid uppercase as a structural heading treatment.

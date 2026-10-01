@@ -188,7 +188,7 @@ This light-only specification defines the first shared component layer for Ultra
 | --- | --- |
 | Purpose | Support scanning, sorting, comparing, and acting on structured evidence. Use it instead of card grids for multi-column comparisons. |
 | Variants | **Standard.** **Compact data.** **Selectable.** **Expandable rows** only when expansion preserves comparison context. Optional sticky header and sticky identity column follow page needs. |
-| Sizes | Use 48px rows, or 52px when a cell includes secondary metadata; headers are at least 40px. Use 16px horizontal cell padding, reduced to 12px in compact layouts. Numeric cells use the mono role and tabular figures. |
+| Sizes | Use 48px rows, or 52px when a cell includes secondary metadata; headers are at least 40px. Use 16px horizontal cell padding, reduced to 12px in compact layouts. Numeric cells use the sans role with tabular figures. |
 | Spacing | Align text left and comparable numeric values right. Keep icons 8px from labels. Use dividers between rows; avoid boxed cells and zebra striping unless testing shows a scanning benefit. |
 | States | Row hover, keyboard focus within cells, selected, expanded, sorted, loading, empty, and error. Selected rows use the shared fill, border, marker, and selection control. Skeletons preserve column widths. |
 | Accessibility | Use native table semantics, a caption or accessible name, scoped headers, and `aria-sort`. Selection and expansion controls need row-specific names. Announce result-count changes outside the table. |
