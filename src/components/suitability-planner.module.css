@@ -51,7 +51,7 @@
   overflow: auto;
   margin: var(--space-4) 0;
   padding: var(--space-3);
-  border: var(--border-width-default) solid var(--border-default);
+  border: var(--border-width-default) var(--border-style) var(--border-default);
   border-radius: var(--shape-radius-control);
   background: var(--bg-surface);
 }
@@ -129,7 +129,7 @@
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-2) var(--space-1);
-  border-bottom: var(--border-width-default) solid var(--border-default);
+  border-bottom: var(--border-width-default) var(--border-style) var(--border-default);
 }
 
 .candidateOption > span {
@@ -205,7 +205,7 @@
 .breakdown > div {
   padding-top: var(--space-3);
   margin-top: var(--space-3);
-  border-top: var(--border-width-default) solid var(--border-default);
+  border-top: var(--border-width-default) var(--border-style) var(--border-default);
 }
 
 .breakdown p {

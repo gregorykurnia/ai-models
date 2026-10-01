@@ -59,8 +59,8 @@
   --card-padding-compact: var(--space-4);
 
   /* Typography */
-  --font-family-sans: "Source Sans 3", system-ui, "Segoe UI", sans-serif;
-  --font-family-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-family-sans: var(--font-source-sans-3), system-ui, "Segoe UI", sans-serif;
+  --font-family-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, monospace;
   --font-size-caption: 0.75rem;
   --font-size-data: 0.8125rem;
   --font-size-ui: 0.875rem;
@@ -94,6 +94,7 @@
   --border-width-default: 1px;
   --border-width-strong: 2px;
   --border-width-marker: 3px;
+  --border-style: solid;
   --focus-ring-width: 3px;
   --focus-ring-offset: 2px;
   --elevation-none: none;
@@ -114,11 +115,6 @@
   --transition-interactive: var(--duration-fast) var(--ease-standard);
   --transition-disclosure: var(--duration-standard) var(--ease-standard);
 
-  /* Temporary aliases for the existing CSS modules and components. */
-  --ink: var(--text-primary);
-  --muted: var(--text-secondary);
-  --line: var(--border-default);
-  --accent: var(--primary);
 }
 
 @theme inline {
@@ -252,7 +248,7 @@ textarea:disabled {
 }
 
 :focus-visible {
-  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline: var(--focus-ring-width) var(--border-style) var(--focus-ring);
   outline-offset: var(--focus-ring-offset);
 }
 
@@ -273,7 +269,7 @@ textarea:disabled {
   gap: var(--space-8);
   overflow-y: auto;
   padding: var(--space-6) var(--space-4);
-  border-right: var(--border-width-default) solid var(--border-default);
+  border-right: var(--border-width-default) var(--border-style) var(--border-default);
   background: var(--bg-surface);
 }
 
@@ -283,7 +279,7 @@ textarea:disabled {
   align-items: center;
   gap: var(--space-3);
   color: var(--text-primary);
-  font-size: 1.125rem;
+  font-size: var(--font-size-card-title);
   font-weight: var(--type-weight-bold);
   line-height: var(--line-height-ui);
   white-space: nowrap;
@@ -318,7 +314,7 @@ textarea:disabled {
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-2) var(--space-3);
-  border-left: var(--border-width-marker) solid transparent;
+  border-left: var(--border-width-marker) var(--border-style) transparent;
   border-radius: 0 var(--shape-radius-control) var(--shape-radius-control) 0;
   color: var(--text-secondary);
   font-size: var(--font-size-ui);
@@ -346,7 +342,7 @@ textarea:disabled {
 .app-rail__footer {
   margin-top: auto;
   padding-top: var(--space-4);
-  border-top: var(--border-width-default) solid var(--border-default);
+  border-top: var(--border-width-default) var(--border-style) var(--border-default);
   color: var(--text-secondary);
   font-size: var(--font-size-caption);
   line-height: var(--line-height-ui);
@@ -378,7 +374,7 @@ textarea:disabled {
   flex: 0 0 auto;
   margin-inline: auto;
   padding: var(--space-6) var(--page-padding-desktop);
-  border-top: var(--border-width-default) solid var(--border-default);
+  border-top: var(--border-width-default) var(--border-style) var(--border-default);
   color: var(--text-secondary);
   font-size: var(--font-size-ui);
 }
@@ -389,7 +385,7 @@ textarea:disabled {
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-2) var(--space-3);
-  border: var(--border-width-default) solid var(--border-default);
+  border: var(--border-width-default) var(--border-style) var(--border-default);
   color: var(--text-primary);
 }
 
@@ -433,7 +429,7 @@ textarea:disabled {
   gap: var(--space-6);
   overflow-y: auto;
   padding: var(--space-6);
-  border-right: var(--border-width-default) solid var(--border-strong);
+  border-right: var(--border-width-default) var(--border-style) var(--border-strong);
   background: var(--bg-surface);
   box-shadow: var(--elevation-overlay);
 }
@@ -542,7 +538,7 @@ textarea {
   min-height: 44px;
   max-width: 100%;
   padding: var(--space-2) var(--space-3);
-  border: var(--border-width-default) solid var(--input-border);
+  border: var(--border-width-default) var(--border-style) var(--input-border);
   border-radius: var(--shape-radius-control);
   background: var(--input-bg);
   font-size: var(--font-size-ui);
@@ -587,7 +583,7 @@ input[type="radio"] {
 button {
   min-height: 44px;
   padding: var(--space-2) var(--space-4);
-  border: var(--border-width-default) solid var(--border-strong);
+  border: var(--border-width-default) var(--border-style) var(--border-strong);
   border-radius: var(--shape-radius-control);
   background: var(--bg-surface);
   color: var(--text-primary);
@@ -635,7 +631,7 @@ button.primary:active:not(:disabled) {
   max-width: 100%;
   overflow: auto;
   overscroll-behavior-inline: contain;
-  border: var(--border-width-default) solid var(--border-default);
+  border: var(--border-width-default) var(--border-style) var(--border-default);
   border-radius: var(--shape-radius-control);
   scrollbar-color: var(--border-strong) transparent;
 }
@@ -678,7 +674,7 @@ th button:hover:not(:disabled) {
 
 td {
   padding: var(--space-3);
-  border-bottom: var(--border-width-default) solid var(--border-default);
+  border-bottom: var(--border-width-default) var(--border-style) var(--border-default);
   color: var(--text-primary);
   vertical-align: middle;
 }
@@ -823,7 +819,7 @@ th.numeric {
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-3);
-  border: var(--border-width-default) solid var(--border-default);
+  border: var(--border-width-default) var(--border-style) var(--border-default);
   border-radius: var(--shape-radius-control);
   color: var(--text-primary);
 }
@@ -891,7 +887,7 @@ th.numeric {
 .master-provider {
   left: 15.625rem;
   min-width: 7.5rem;
-  border-right: var(--border-width-default) solid var(--border-default);
+  border-right: var(--border-width-default) var(--border-style) var(--border-default);
 }
 
 .master tbody tr:hover .master-model,
@@ -964,7 +960,7 @@ th.numeric {
     justify-content: space-between;
     gap: var(--space-4);
     padding-inline: var(--page-padding-tablet);
-    border-bottom: var(--border-width-default) solid var(--border-default);
+    border-bottom: var(--border-width-default) var(--border-style) var(--border-default);
     background: var(--bg-surface);
   }
 
@@ -1176,7 +1172,7 @@ a.ui-button:hover {
   height: 24px !important;
   flex: 0 0 auto;
   appearance: none;
-  border: 1px solid var(--border-strong);
+  border: 1px var(--border-style) var(--border-strong);
   border-radius: var(--shape-radius-pill);
   background: var(--bg-muted);
   cursor: pointer;
@@ -1247,8 +1243,8 @@ a.ui-button:hover {
 .ui-helper-text,
 .ui-error-text {
   margin: 0;
-  font-size: 0.8125rem;
-  line-height: 1.125rem;
+  font-size: var(--font-size-data);
+  line-height: var(--line-height-data);
 }
 
 .ui-helper-text {
@@ -1266,7 +1262,7 @@ a.ui-button:hover {
   gap: var(--space-3);
   margin: var(--space-6) 0;
   padding: var(--card-padding);
-  border: var(--border-width-default) solid var(--border-default);
+  border: var(--border-width-default) var(--border-style) var(--border-default);
   border-radius: var(--shape-radius-surface);
   background: var(--bg-surface);
 }
@@ -1290,7 +1286,7 @@ a.ui-button:hover {
   min-height: 24px;
   align-items: center;
   padding: var(--space-1) var(--space-2);
-  border: var(--border-width-default) solid var(--border-default);
+  border: var(--border-width-default) var(--border-style) var(--border-default);
   border-radius: var(--shape-radius-tag);
   background: var(--bg-muted);
   color: var(--text-secondary);
@@ -1302,7 +1298,7 @@ a.ui-button:hover {
   display: grid;
   gap: var(--space-2);
   padding: var(--space-4);
-  border: var(--border-width-default) solid currentColor;
+  border: var(--border-width-default) var(--border-style) currentColor;
   border-radius: var(--shape-radius-control);
   background: var(--bg-surface);
   color: var(--info);
@@ -1368,7 +1364,7 @@ a.ui-button:hover {
   width: 24px;
   height: 24px;
   flex: 0 0 auto;
-  border: 3px solid var(--border-default);
+  border: 3px var(--border-style) var(--border-default);
   border-top-color: var(--primary);
   border-radius: 50%;
   animation: ui-spin 800ms linear infinite;
@@ -1409,7 +1405,7 @@ a.ui-button:hover {
 .ui-workflow-sheet > .ui-workflow-step + .ui-workflow-step {
   padding-top: var(--space-8);
   margin-top: var(--space-8);
-  border-top: var(--border-width-default) solid var(--border-default);
+  border-top: var(--border-width-default) var(--border-style) var(--border-default);
 }
 
 .ui-section-header {
