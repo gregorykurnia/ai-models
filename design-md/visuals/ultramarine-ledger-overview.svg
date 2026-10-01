@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050" role="img" aria-labelledby="title description">
+  <title id="title">Ultramarine Ledger color direction for Model Benchmarks</title>
+  <description id="description">A light mode desktop product mockup with a stable left navigation rail, warm limestone background, white evidence sheet, ultramarine controls, summary metrics, filters, and a dense model leaderboard.</description>
+  <defs>
+    <filter id="menu-shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#191A24" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .ui { font-family: "Source Sans 3", Inter, Arial, sans-serif; fill: #191A24; }
+      .mono { font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace; fill: #191A24; font-variant-numeric: tabular-nums; }
+      .muted { fill: #606371; }
+      .tertiary { fill: #7A7D8B; }
+      .accent { fill: #3D4FD1; }
+      .white { fill: #FFFFFF; }
+      .label { font-size: 12px; font-weight: 650; letter-spacing: .08em; }
+      .body { font-size: 14px; }
+      .small { font-size: 12px; }
+      .nav { font-size: 14px; font-weight: 600; }
+      .th { font-size: 11px; font-weight: 700; letter-spacing: .05em; fill: #606371; }
+      .td { font-size: 13px; }
+      .rank { font-size: 13px; font-weight: 650; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1050" fill="#F4F3EF"/>
+
+  <!-- Stable app rail -->
+  <rect x="0" y="0" width="224" height="1050" fill="#FFFFFF"/>
+  <line x1="223.5" y1="0" x2="223.5" y2="1050" stroke="#DDDDE5"/>
+  <rect x="28" y="30" width="32" height="32" rx="9" fill="#3D4FD1"/>
+  <path d="M38 51V41l6 6 6-6v10" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="72" y="50" class="ui" font-size="16" font-weight="750">Model Ledger</text>
+
+  <text x="28" y="103" class="ui tertiary label">WORKSPACE</text>
+  <rect x="16" y="120" width="192" height="44" rx="8" fill="#EEF0FF"/>
+  <rect x="16" y="120" width="3" height="44" rx="1.5" fill="#3D4FD1"/>
+  <circle cx="39" cy="142" r="6" fill="none" stroke="#3D4FD1" stroke-width="1.8"/>
+  <path d="M39 138v4l3 2" fill="none" stroke="#3D4FD1" stroke-width="1.8" stroke-linecap="round"/>
+  <text x="56" y="147" class="ui accent nav">Overview</text>
+
+  <path d="M33 191h12M33 196h8M33 201h10" fill="none" stroke="#606371" stroke-width="1.8" stroke-linecap="round"/>
+  <text x="56" y="199" class="ui muted nav">Evaluations</text>
+  <rect x="178" y="183" width="24" height="21" rx="6" fill="#F1F4F2"/>
+  <text x="190" y="198" text-anchor="middle" class="mono muted" font-size="10">19</text>
+
+  <path d="M33 242h12M36 238v8M42 238v8" fill="none" stroke="#606371" stroke-width="1.8" stroke-linecap="round"/>
+  <text x="56" y="247" class="ui muted nav">Task fit</text>
+
+  <path d="M34 286h11v13l-5.5-3-5.5 3z" fill="none" stroke="#606371" stroke-width="1.8" stroke-linejoin="round"/>
+  <text x="56" y="295" class="ui muted nav">Saved tasks</text>
+
+  <text x="28" y="358" class="ui tertiary label">REFERENCE</text>
+  <circle cx="39" cy="394" r="7" fill="none" stroke="#606371" stroke-width="1.8"/>
+  <path d="M39 393v5M39 389v.5" fill="none" stroke="#606371" stroke-width="1.8" stroke-linecap="round"/>
+  <text x="56" y="399" class="ui muted nav">Data notes</text>
+
+  <rect x="16" y="939" width="192" height="83" rx="10" fill="#F1F2F7" stroke="#DDDDE5"/>
+  <circle cx="38" cy="963" r="5" fill="#2B8A69"/>
+  <text x="52" y="967" class="ui" font-size="12" font-weight="650">Data current</text>
+  <text x="28" y="990" class="mono tertiary" font-size="10">19 evaluations</text>
+  <text x="28" y="1008" class="mono tertiary" font-size="10">6,322 observations</text>
+
+  <!-- Top utility row -->
+  <text x="278" y="48" class="ui tertiary label">MODEL INTELLIGENCE / OVERVIEW</text>
+  <rect x="1301" y="25" width="122" height="36" rx="8" fill="#FFFFFF" stroke="#DDDDE5"/>
+  <path d="M1322 39v10M1317 44h10" stroke="#606371" stroke-width="1.8" stroke-linecap="round"/>
+  <text x="1336" y="48" class="ui muted small" font-weight="650">Data notes</text>
+  <circle cx="1489" cy="43" r="18" fill="#E4E6FA"/>
+  <text x="1489" y="48" text-anchor="middle" class="ui accent" font-size="12" font-weight="750">GK</text>
+
+  <!-- Page heading -->
+  <text x="278" y="119" class="ui" font-size="42" font-weight="720" letter-spacing="-1.1">Compare models with evidence, not noise.</text>
+  <text x="278" y="151" class="ui muted" font-size="16">Rankings, costs, and benchmark coverage in one traceable view.</text>
+  <rect x="1337" y="101" width="209" height="44" rx="8" fill="#3D4FD1"/>
+  <path d="M1361 118v10M1356 123h10" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+  <text x="1378" y="128" class="ui white" font-size="14" font-weight="700">Create task comparison</text>
+
+  <!-- Summary strip -->
+  <rect x="278" y="192" width="1268" height="112" rx="12" fill="#FFFFFF" stroke="#DDDDE5"/>
+  <text x="306" y="220" class="ui tertiary label">CURRENT DATASET</text>
+  <text x="306" y="258" class="mono" font-size="28" font-weight="650">19</text>
+  <text x="306" y="281" class="ui muted small">evaluations</text>
+  <line x1="448" y1="216" x2="448" y2="280" stroke="#E8E8EF"/>
+  <text x="480" y="258" class="mono" font-size="28" font-weight="650">772</text>
+  <text x="480" y="281" class="ui muted small">model variants</text>
+  <line x1="656" y1="216" x2="656" y2="280" stroke="#E8E8EF"/>
+  <text x="688" y="258" class="mono" font-size="28" font-weight="650">6,322</text>
+  <text x="688" y="281" class="ui muted small">source observations</text>
+  <line x1="907" y1="216" x2="907" y2="280" stroke="#E8E8EF"/>
+  <text x="939" y="242" class="ui" font-size="13" font-weight="650">Coverage is shown per model</text>
+  <text x="939" y="267" class="ui muted small">Missing ranks remain visible and explicit.</text>
+  <rect x="1360" y="230" width="158" height="36" rx="8" fill="#F3F3F8"/>
+  <circle cx="1383" cy="248" r="4" fill="#237A57"/>
+  <text x="1396" y="252" class="ui small" fill="#237A57" font-weight="650">Snapshots healthy</text>
+
+  <!-- Primary evidence sheet -->
+  <rect x="278" y="336" width="1268" height="666" rx="12" fill="#FFFFFF" stroke="#DDDDE5"/>
+  <text x="310" y="376" class="ui" font-size="22" font-weight="720">Master leaderboard</text>
+  <text x="310" y="399" class="ui muted small">Original source rank by evaluation · captured dates stay attached to each column</text>
+  <text x="1478" y="380" text-anchor="end" class="mono tertiary" font-size="11">UPDATED 01 OCT 2026</text>
+
+  <!-- Filters -->
+  <rect x="310" y="425" width="370" height="44" rx="8" fill="#FFFFFF" stroke="#BEC0CC"/>
+  <circle cx="334" cy="447" r="7" fill="none" stroke="#606371" stroke-width="1.6"/>
+  <path d="M339 452l5 5" stroke="#606371" stroke-width="1.6" stroke-linecap="round"/>
+  <text x="355" y="452" class="ui tertiary body">Search model or provider</text>
+
+  <rect x="692" y="425" width="156" height="44" rx="8" fill="#FFFFFF" stroke="#BEC0CC"/>
+  <text x="710" y="452" class="ui muted body">All providers</text>
+  <path d="M824 443l5 5 5-5" fill="none" stroke="#606371" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="860" y="425" width="128" height="44" rx="8" fill="#EEF0FF" stroke="#8995E5"/>
+  <path d="M879 439l2.3 4.7 5.2.8-3.8 3.7.9 5.2-4.6-2.5-4.7 2.5.9-5.2-3.8-3.7 5.2-.8z" fill="none" stroke="#3D4FD1" stroke-width="1.4" stroke-linejoin="round"/>
+  <text x="897" y="452" class="ui accent body" font-weight="650">Favorites</text>
+
+  <rect x="1000" y="425" width="104" height="44" rx="8" fill="#FFFFFF" stroke="#BEC0CC"/>
+  <path d="M1018 444h12M1021 448h9M1025 452h5" stroke="#606371" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="1040" y="452" class="ui muted body">Filters</text>
+
+  <text x="1514" y="451" text-anchor="end" class="mono muted" font-size="12">772 RESULTS</text>
+
+  <!-- Table header -->
+  <rect x="310" y="493" width="1204" height="54" rx="8" fill="#F1F2F7"/>
+  <text x="334" y="524" class="ui th">MODEL</text>
+  <text x="692" y="524" class="ui th">PROVIDER</text>
+  <text x="905" y="515" text-anchor="end" class="ui th">TASK COST</text>
+  <text x="905" y="532" text-anchor="end" class="mono tertiary" font-size="9">USD · AA</text>
+  <text x="1042" y="515" text-anchor="end" class="ui th">INTELLIGENCE</text>
+  <text x="1042" y="532" text-anchor="end" class="mono tertiary" font-size="9">RANK</text>
+  <text x="1191" y="515" text-anchor="end" class="ui th">TERMINAL-BENCH</text>
+  <text x="1191" y="532" text-anchor="end" class="mono tertiary" font-size="9">RANK</text>
+  <text x="1340" y="515" text-anchor="end" class="ui th">HLE</text>
+  <text x="1340" y="532" text-anchor="end" class="mono tertiary" font-size="9">RANK</text>
+  <text x="1487" y="515" text-anchor="end" class="ui th">COVERAGE</text>
+  <text x="1487" y="532" text-anchor="end" class="mono tertiary" font-size="9">OF 19</text>
+
+  <!-- Row 1 selected -->
+  <rect x="310" y="555" width="1204" height="68" rx="8" fill="#EEF0FF"/>
+  <rect x="310" y="555" width="3" height="68" rx="1.5" fill="#3D4FD1"/>
+  <path d="M337 570l2.6 5.3 5.8.9-4.2 4.1 1 5.8-5.2-2.8-5.3 2.8 1-5.8-4.2-4.1 5.8-.9z" fill="#3D4FD1"/>
+  <text x="360" y="581" class="ui td" font-weight="700">Claude Opus 5.5</text>
+  <text x="360" y="601" class="ui tertiary small">Adaptive reasoning · max effort</text>
+  <text x="692" y="594" class="ui muted td">Anthropic</text>
+  <text x="905" y="594" text-anchor="end" class="mono td">$18.42</text>
+  <text x="1042" y="594" text-anchor="end" class="mono accent rank">#01</text>
+  <text x="1191" y="594" text-anchor="end" class="mono rank">#03</text>
+  <text x="1340" y="594" text-anchor="end" class="mono rank">#02</text>
+  <rect x="1412" y="578" width="75" height="20" rx="6" fill="#DDE1FF"/>
+  <text x="1449.5" y="592" text-anchor="middle" class="mono accent" font-size="10" font-weight="700">18 / 19</text>
+
+  <!-- Remaining rows -->
+  <line x1="310" y1="635" x2="1514" y2="635" stroke="#E8E8EF"/>
+  <path d="M337 655l2.6 5.3 5.8.9-4.2 4.1 1 5.8-5.2-2.8-5.3 2.8 1-5.8-4.2-4.1 5.8-.9z" fill="none" stroke="#7A7D8B" stroke-width="1.3"/>
+  <text x="360" y="665" class="ui td" font-weight="650">Claude Sonnet 5.5</text>
+  <text x="360" y="685" class="ui tertiary small">Adaptive reasoning · max effort</text>
+  <text x="692" y="678" class="ui muted td">Anthropic</text>
+  <text x="905" y="678" text-anchor="end" class="mono td">$7.86</text>
+  <text x="1042" y="678" text-anchor="end" class="mono rank">#04</text>
+  <text x="1191" y="678" text-anchor="end" class="mono rank">#01</text>
+  <text x="1340" y="678" text-anchor="end" class="mono rank">#06</text>
+  <text x="1487" y="678" text-anchor="end" class="mono muted td">17 / 19</text>
+
+  <line x1="310" y1="715" x2="1514" y2="715" stroke="#E8E8EF"/>
+  <path d="M337 735l2.6 5.3 5.8.9-4.2 4.1 1 5.8-5.2-2.8-5.3 2.8 1-5.8-4.2-4.1 5.8-.9z" fill="none" stroke="#7A7D8B" stroke-width="1.3"/>
+  <text x="360" y="745" class="ui td" font-weight="650">Grok 4.7</text>
+  <text x="360" y="765" class="ui tertiary small">xhigh reasoning</text>
+  <text x="692" y="758" class="ui muted td">xAI</text>
+  <text x="905" y="758" text-anchor="end" class="mono td">$9.15</text>
+  <text x="1042" y="758" text-anchor="end" class="mono rank">#02</text>
+  <text x="1191" y="758" text-anchor="end" class="mono rank">#08</text>
+  <text x="1340" y="758" text-anchor="end" class="mono rank">#03</text>
+  <text x="1487" y="758" text-anchor="end" class="mono muted td">16 / 19</text>
+
+  <line x1="310" y1="795" x2="1514" y2="795" stroke="#E8E8EF"/>
+  <path d="M337 815l2.6 5.3 5.8.9-4.2 4.1 1 5.8-5.2-2.8-5.3 2.8 1-5.8-4.2-4.1 5.8-.9z" fill="none" stroke="#7A7D8B" stroke-width="1.3"/>
+  <text x="360" y="825" class="ui td" font-weight="650">Claude Opus 5</text>
+  <text x="360" y="845" class="ui tertiary small">Adaptive reasoning · high effort</text>
+  <text x="692" y="838" class="ui muted td">Anthropic</text>
+  <text x="905" y="838" text-anchor="end" class="mono td">$14.03</text>
+  <text x="1042" y="838" text-anchor="end" class="mono rank">#05</text>
+  <text x="1191" y="838" text-anchor="end" class="mono rank">#04</text>
+  <text x="1340" y="838" text-anchor="end" class="mono rank">#07</text>
+  <text x="1487" y="838" text-anchor="end" class="mono muted td">15 / 19</text>
+
+  <!-- Footer and scroll cue -->
+  <line x1="310" y1="878" x2="1514" y2="878" stroke="#DDDDE5"/>
+  <text x="310" y="922" class="ui muted small">Rows per page</text>
+  <rect x="400" y="896" width="68" height="36" rx="8" fill="#FFFFFF" stroke="#BEC0CC"/>
+  <text x="418" y="919" class="mono td">25</text>
+  <path d="M448 910l4 4 4-4" fill="none" stroke="#606371" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1208" y="919" class="mono muted small">PAGE 1 OF 31</text>
+  <rect x="1323" y="896" width="80" height="36" rx="8" fill="#FFFFFF" stroke="#DDDDE5"/>
+  <text x="1363" y="919" text-anchor="middle" class="ui tertiary small" font-weight="650">Previous</text>
+  <rect x="1415" y="896" width="72" height="36" rx="8" fill="#FFFFFF" stroke="#BEC0CC"/>
+  <text x="1451" y="919" text-anchor="middle" class="ui muted small" font-weight="650">Next</text>
+  <rect x="764" y="961" width="296" height="4" rx="2" fill="#E8E8EF"/>
+  <rect x="764" y="961" width="116" height="4" rx="2" fill="#9299B3"/>
+  <text x="912" y="989" text-anchor="middle" class="ui tertiary" font-size="10">SCROLL TO SEE 16 MORE EVALUATIONS →</text>
+
+  <text x="1518" y="1030" text-anchor="end" class="ui tertiary" font-size="10">ULTRAMARINE LEDGER · COLOR STUDY</text>
+</svg>
