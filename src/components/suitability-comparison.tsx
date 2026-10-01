@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { recordSuitabilityEvent } from "@/lib/suitability-analytics";
 import { calculateSuitability, type EvaluationWeight, type SuitabilityResult } from "@/lib/suitability";
 import type { PlannerData } from "@/lib/suitability-storage";
-import { Checkbox, Table, TableScroll } from "@/components/ui/primitives";
+import { Button, Checkbox, Table, TableScroll } from "@/components/ui/primitives";
 import styles from "./suitability-planner.module.css";
 
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -54,9 +54,9 @@ export default function SuitabilityComparison({ data, rows, completeOnly = false
     <TableScroll label="Suitability results, scroll horizontally for all evaluations">
       <Table className={styles.results}>
         <thead><tr><th scope="col">Model / provider</th>
-          <th scope="col" className="numeric" aria-sort={sortBy === "suitability" ? sortDirection === "asc" ? "ascending" : "descending" : "none"}><button onClick={() => chooseSort("suitability")}>Suitability {sortLabel("suitability")}</button></th>
+          <th scope="col" className="numeric" aria-sort={sortBy === "suitability" ? sortDirection === "asc" ? "ascending" : "descending" : "none"}><Button variant="quiet" size="compact" onClick={() => chooseSort("suitability")}>Suitability {sortLabel("suitability")}</Button></th>
           <th scope="col" className="numeric">Coverage</th><th scope="col" className="numeric">Weighted average rank ↓</th>
-          <th scope="col" className="numeric" aria-sort={sortBy === "cost" ? sortDirection === "asc" ? "ascending" : "descending" : "none"}><button onClick={() => chooseSort("cost")}>Cost per Intelligence Index task {sortLabel("cost")}<small>USD · capture date shown per model</small></button></th>
+          <th scope="col" className="numeric" aria-sort={sortBy === "cost" ? sortDirection === "asc" ? "ascending" : "descending" : "none"}><Button variant="quiet" size="compact" onClick={() => chooseSort("cost")}>Cost per Intelligence Index task {sortLabel("cost")}<small>USD · capture date shown per model</small></Button></th>
           {rows[0]?.breakdown.map(item => <th scope="col" className="numeric" key={item.evaluation_id}>{data.evaluations.find(evaluation => evaluation.id === item.evaluation_id)?.display_name ?? item.evaluation_id}</th>)}
         </tr></thead>
         <tbody>{visibleRows.map(row => <tr key={row.model_id}>

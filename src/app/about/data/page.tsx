@@ -1,11 +1,15 @@
+import {Card, PageHeader} from "@/components/ui/primitives";
+
 export default function DataPage() {
   return <article className="prose">
+    <PageHeader>
     <div className="eyebrow">Source and methodology</div>
     <h1>About the data</h1>
     <p>This app presents captured Artificial Analysis leaderboard snapshots, rather than a live feed. The initial workbook was captured on 29 Sep 2026; the AA-Briefcase component results were captured on 30 Sep 2026.</p>
+    </PageHeader>
     <p><a href="/suitability#methodology">Read the Task Suitability scoring methodology</a>.</p>
 
-    <section className="panel">
+    <Card>
       <h2>What each value means</h2>
       <ul>
         <li><strong>Rank:</strong> the source rank. Lower ranks are better. For the three AA-Briefcase component indexes, ranks are ordered by the source score, with tied scores sharing a rank.</li>
@@ -14,7 +18,7 @@ export default function DataPage() {
         <li><strong>Workbook cost fields:</strong> the source workbook also contains costs for individual evaluation tasks. Those original values remain separate from the Intelligence Index task cost in leaderboard and comparison columns; a saved comparison may show them as separate source values in its evaluation breakdown. Workbook cost label and precise USD counts are calculated from accepted rank rows.</li>
         <li><strong>Model variants:</strong> reasoning effort and fallback variants stay separate. Known differences in sheet formatting are matched to the same variant.</li>
       </ul>
-    </section>
+    </Card>
 
     <h2>AA-Briefcase component indexes</h2>
     <p>The 30 Sep 2026 capture contains 208 models for each of three metrics: Rubric Score (%), Analytical Quality Elo, and Presentation Elo. Rubric Score is the share of binary checks passed, converted from a fraction to a percentage. Analytical Quality and Presentation are separate Elo ratings from pairwise comparisons.</p>

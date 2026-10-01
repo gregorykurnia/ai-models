@@ -190,13 +190,15 @@ export type EmptyStateProps = {
   title: ReactNode;
   description?: ReactNode;
   action?: ReactNode;
+  headingLevel?: 1 | 2 | 3;
   className?: string;
 };
 
-export function EmptyState({ title, description, action, className }: EmptyStateProps) {
+export function EmptyState({ title, description, action, headingLevel = 2, className }: EmptyStateProps) {
+  const Heading = `h${headingLevel}` as const;
   return (
     <div className={classes("ui-empty-state", className)}>
-      <h2>{title}</h2>
+      <Heading>{title}</Heading>
       {description && <p>{description}</p>}
       {action && <div className="ui-empty-state__action">{action}</div>}
     </div>

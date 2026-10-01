@@ -495,31 +495,6 @@ p {
   letter-spacing: var(--letter-spacing-normal);
 }
 
-.panel,
-.card {
-  background: var(--bg-surface);
-  border: var(--border-width-default) solid var(--border-default);
-  border-radius: var(--shape-radius-surface);
-}
-
-.panel {
-  margin: var(--space-6) 0;
-  padding: var(--card-padding);
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  padding: var(--card-padding);
-}
-
-.card h2,
-.card h3,
-.card p {
-  margin: 0;
-}
-
 .stats {
   display: flex;
   flex-wrap: wrap;
@@ -547,7 +522,7 @@ p {
   gap: var(--space-4);
 }
 
-.card .open {
+.catalog .open {
   margin-top: auto;
   font-weight: var(--type-weight-semibold);
 }
@@ -745,12 +720,6 @@ th.numeric {
   gap: var(--space-2);
 }
 
-.error {
-  border-color: var(--error);
-  background: var(--error-subtle);
-}
-
-.error p,
 [role="alert"] {
   color: var(--error);
 }
@@ -1069,10 +1038,6 @@ th.numeric {
     line-height: var(--line-height-page-title-mobile);
   }
 
-  .panel {
-    padding: var(--card-padding-compact);
-  }
-
   .stats {
     gap: var(--space-6);
   }
@@ -1296,11 +1261,24 @@ a.ui-button:hover {
 }
 
 .ui-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
   margin: var(--space-6) 0;
   padding: var(--card-padding);
   border: var(--border-width-default) solid var(--border-default);
   border-radius: var(--shape-radius-surface);
   background: var(--bg-surface);
+}
+
+.ui-card > h2,
+.ui-card > h3,
+.ui-card > p {
+  margin: 0;
+}
+
+.catalog > .ui-card {
+  margin: 0;
 }
 
 .ui-card--compact {
@@ -1424,6 +1402,10 @@ a.ui-button:hover {
   margin-block: 0;
 }
 
+.ui-workflow-sheet {
+  gap: 0;
+}
+
 .ui-workflow-sheet > .ui-workflow-step + .ui-workflow-step {
   padding-top: var(--space-8);
   margin-top: var(--space-8);
@@ -1476,6 +1458,17 @@ a.ui-button:hover {
   margin-inline-end: var(--space-2);
   color: var(--text-secondary);
   font-size: var(--font-size-ui);
+}
+
+.ui-table th > .ui-button {
+  width: 100%;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.ui-table th.numeric > .ui-button {
+  justify-content: flex-end;
+  text-align: right;
 }
 
 @media (max-width: 640px) {

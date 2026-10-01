@@ -385,8 +385,8 @@ export default function Planner({ data }: { data: PlannerData }) {
           <p className={styles.captureList}><strong>Pinned captures:</strong> {summary.task.evaluation_weights.map(weight => `${summary.evaluations.find(evaluation => evaluation.id === weight.evaluation_id)?.display_name ?? weight.evaluation_id} · ${weight.captured_at}`).join("; ")}</p>
           {preview ? <p><strong>Leading candidate:</strong> {preview.model} · suitability {preview.score === null ? "No score" : preview.score.toFixed(1)} · Cost per Intelligence Index task {preview.intelligence_index_cost ? `$${preview.intelligence_index_cost.cost_usd.toFixed(2)} · captured ${niceDate(preview.intelligence_index_cost.captured_at)}` : "—"}</p>
             : leader ? <p><strong>Leading candidate:</strong> {leader.model} · suitability {leader.score === null ? "No score" : leader.score.toFixed(1)} · Cost per Intelligence Index task {leader.intelligence_index_cost ? `$${leader.intelligence_index_cost.cost_usd.toFixed(2)} · captured ${niceDate(leader.intelligence_index_cost.captured_at)}` : "—"}</p>
-              : comparisonError ? <p role="alert">{comparisonError}</p> : <p>Open the comparison to load its pinned model results.</p>}
-          {libraryDetailErrors[taskId] && <p role="alert">{libraryDetailErrors[taskId]}</p>}
+              : comparisonError ? <Alert tone="error">{comparisonError}</Alert> : <p>Open the comparison to load its pinned model results.</p>}
+          {libraryDetailErrors[taskId] && <Alert tone="error">{libraryDetailErrors[taskId]}</Alert>}
           <div className="toolbar"><Link href={`/suitability/${taskId}`}>Open comparison</Link><Button disabled={shared && libraryLoading.includes(taskId)} loading={shared && libraryLoading.includes(taskId)} onClick={() => {
             if (comparison) downloadBackup(comparison);
             else void loadLibraryComparison(taskId).then(downloadBackup).catch(() => undefined);
@@ -394,18 +394,18 @@ export default function Planner({ data }: { data: PlannerData }) {
           <details onToggle={event => { if (shared && event.currentTarget.open && !comparison) void loadLibraryComparison(taskId).catch(() => undefined); }}>
             <summary>Review comparison in place</summary>
             {!comparison && (libraryDetailErrors[taskId]
-              ? <div><p role="alert">{libraryDetailErrors[taskId]}</p><Button onClick={() => void loadLibraryComparison(taskId).catch(() => undefined)}>Retry loading comparison</Button></div>
+              ? <Alert tone="error">{libraryDetailErrors[taskId]} <Button size="compact" onClick={() => void loadLibraryComparison(taskId).catch(() => undefined)}>Retry loading comparison</Button></Alert>
               : <p role="status">{libraryLoading.includes(taskId) ? "Loading pinned comparison…" : "Open this section to load the pinned model results."}</p>)}
-            {comparison && (comparisonError ? <p role="alert">{comparisonError}</p> : <SuitabilityComparison data={comparison} rows={rows} />)}
+            {comparison && (comparisonError ? <Alert tone="error">{comparisonError}</Alert> : <SuitabilityComparison data={comparison} rows={rows} />)}
           </details>
         </Card>;
       })}
     </div>}
-    <p role="status">{notice}</p>
+    {notice && <Alert className="workflow-alert" tone="info" role="status" live="polite">{notice}</Alert>}
   </div>;
 
   if (isReview && !editing) {
-    if (!active) return <Card><h1>Saved comparison unavailable</h1>{error && <p role="alert">{error}</p>}<Link href="/suitability/saved">Back to saved tasks</Link></Card>;
+    if (!active) return <Card><h1>Saved comparison unavailable</h1>{error && <Alert tone="error">{error}</Alert>}<Link href="/suitability/saved">Back to saved tasks</Link></Card>;
     let comparisonError = "";
     let rows = [] as ReturnType<typeof comparisonRows>;
     try { rows = comparisonRows(active, active.task.evaluation_weights, active.task.candidate_model_ids); }
@@ -417,15 +417,15 @@ export default function Planner({ data }: { data: PlannerData }) {
       <p>{active.task.evaluation_weights.length} evaluations · {active.task.candidate_model_ids.length} candidates · Updated {niceDate(active.task.updated_at)}</p>
       </PageHeader>
       <div className="toolbar"><Button onClick={() => setEditing(true)}>Edit settings</Button><LinkButton variant="primary" href="/suitability">New task</LinkButton><Link href="/suitability/saved">Saved tasks library</Link></div>
-      <p role="status">{browserSaved.some(item => item.task.id === active.task.id && item.task.updated_at >= active.task.updated_at) ? "Saved in this browser · shared sync pending. Keep a backup before clearing browser data or switching devices." : "Saved to the shared library."}</p>
+      <Alert className="workflow-alert" tone={browserSaved.some(item => item.task.id === active.task.id && item.task.updated_at >= active.task.updated_at) ? "warning" : "success"} role="status" live="polite">{browserSaved.some(item => item.task.id === active.task.id && item.task.updated_at >= active.task.updated_at) ? "Saved in this browser · shared sync pending. Keep a backup before clearing browser data or switching devices." : "Saved to the shared library."}</Alert>
       <div className="toolbar"><Button onClick={() => downloadBackup(active)}>Download backup</Button>{browserSaved.some(item => item.task.id === active.task.id) && <Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync browser tasks to shared library</Button>}</div>
-      {notice && <p role="status">{notice}</p>}
+      {notice && <Alert className="workflow-alert" tone="info" role="status" live="polite">{notice}</Alert>}
       {error && <Alert className="workflow-alert" tone="error">{error}</Alert>}
       {comparisonError ? <Alert className="workflow-alert" tone="error">{comparisonError}</Alert> : <Card><h2>Model comparison</h2><SuitabilityComparison data={active} rows={rows} /></Card>}
     </div>;
   }
 
-  if (isReview && !active) return <Card><h1>Saved comparison unavailable</h1>{error && <p role="alert">{error}</p>}<Link href="/suitability/saved">Back to saved tasks</Link></Card>;
+  if (isReview && !active) return <Card><h1>Saved comparison unavailable</h1>{error && <Alert tone="error">{error}</Alert>}<Link href="/suitability/saved">Back to saved tasks</Link></Card>;
 
   return <div className={styles.planner}>
     <PageHeader>
@@ -471,8 +471,8 @@ export default function Planner({ data }: { data: PlannerData }) {
       <div className="toolbar"><Button onClick={() => setSelected([...new Set([...selected, ...availableFavorites.map(candidate => candidate.model_id)])])} disabled={!availableFavorites.length}>Add all favorites</Button>
         <Button onClick={() => setSelected(availableFavorites.map(candidate => candidate.model_id))} disabled={!availableFavorites.length}>Replace selection with all favorites</Button>
         <span>{visibleModels.length} models shown</span></div>
-      {unavailableFavorites.length > 0 && <p role="status">{unavailableFavorites.length} favorited model{unavailableFavorites.length === 1 ? " is" : "s are"} unavailable in the current candidate catalog. They remain in your favorites; no substitute was selected.</p>}
-      {favoriteNotice && <p role="status">{favoriteNotice}</p>}
+      {unavailableFavorites.length > 0 && <Alert tone="info" role="status">{unavailableFavorites.length} favorited model{unavailableFavorites.length === 1 ? " is" : "s are"} unavailable in the current candidate catalog. They remain in your favorites; no substitute was selected.</Alert>}
+      {favoriteNotice && <Alert tone="error" role="status" live="polite">{favoriteNotice}</Alert>}
       <div className={styles.chips}>{working.candidates.filter(candidate => selected.includes(candidate.model_id)).map(candidate => <Button key={candidate.model_id} size="compact" variant="quiet" aria-label={`Remove ${candidate.model}, ${candidate.provider}`} onClick={() => setSelected(selected.filter(id => id !== candidate.model_id))}>{candidate.model} · {candidate.provider} ×</Button>)}</div>
       <div className={styles.picker}>{visibleModels.map(candidate => {
         const identity = candidate.identity_key ?? masterIdentityKey(candidate.provider, candidate.model);
@@ -488,7 +488,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       {!valid && <p>Enter a title and description, choose at least one evaluation and candidate, and assign nonnegative weights totaling 100%.</p>}
       {result.error && <Alert tone="error">{result.error}</Alert>}
       <div className="toolbar"><Button variant="primary" loading={saving} onClick={() => void save()} disabled={!valid || !!result.error || saving}>{active ? "Save settings and update comparison" : "Save task and compare models"}</Button><Button onClick={() => void save(true)} disabled={!valid || !!result.error || saving}>Save in this browser</Button><Button onClick={() => downloadBackup(createComparison())} disabled={!valid || !!result.error || saving}>Download backup</Button></div>
-      <p role="status">{notice}</p></Section>
+      {notice && <Alert tone="info" role="status" live="polite">{notice}</Alert>}</Section>
     </Card>
     {valid && !result.error && <Card><h2>Model comparison preview</h2><p>{dirty ? "Preview of unsaved settings. Save to keep this configuration." : `Saved comparison · calculated ${active?.task.last_calculated_at}`}</p>
       <SuitabilityComparison data={working} rows={result.rows} completeOnly={completeOnly} onCompleteOnlyChange={setCompleteOnly} />

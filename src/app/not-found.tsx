@@ -1,2 +1,5 @@
-import Link from "next/link";
-export default function NotFound() { return <section className="panel"><h1>Evaluation not found</h1><Link href="/">Browse evaluations</Link></section>; }
+import {Card, EmptyState, LinkButton} from "@/components/ui/primitives";
+
+export default function NotFound() {
+  return <Card><EmptyState headingLevel={1} title="Evaluation not found" action={<LinkButton href="/" variant="primary">Browse evaluations</LinkButton>} /></Card>;
+}
