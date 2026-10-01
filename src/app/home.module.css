@@ -1,53 +1,28 @@
 .evaluationSection {
-  margin-top: 40px;
+  margin-top: var(--space-10);
 }
 
 .evaluationSection :global(.catalog) {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 16px;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
 }
 
 .evaluationSection :global(.card) {
-  gap: 8px;
-  padding: 16px;
-}
-
-.evaluationSection :global(.card) h3 {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.35;
+  gap: var(--space-2);
+  padding: var(--card-padding-compact);
 }
 
 .evaluationSection :global(.evaluation-meta) {
   margin: 0;
-  font-size: 12px;
+  font-size: var(--font-size-caption);
 }
 
 .evaluationSection :global(.open) {
-  margin-top: 2px;
-  font-size: 12px;
+  margin-top: var(--space-1);
+  font-size: var(--font-size-ui);
 }
 
 .dataNote {
-  margin-top: 32px;
-  font-size: 12px;
-}
-
-@media (max-width: 1000px) {
-  .evaluationSection :global(.catalog) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 640px) {
-  .evaluationSection :global(.catalog) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 420px) {
-  .evaluationSection :global(.catalog) {
-    grid-template-columns: 1fr;
-  }
+  margin-top: var(--space-8);
+  font-size: var(--font-size-caption);
 }
