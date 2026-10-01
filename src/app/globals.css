@@ -363,7 +363,7 @@ textarea:disabled {
 }
 
 .page-container {
-  width: min(100%, 1440px);
+  width: min(100%, 90rem);
   flex: 1 0 auto;
   margin-inline: auto;
   padding: var(--space-12) var(--page-padding-desktop);
@@ -403,11 +403,13 @@ textarea:disabled {
   background: currentColor;
 }
 
-.nav-dialog {
+.ui-drawer-dialog {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100dvh;
+  align-items: stretch;
+  justify-content: flex-start;
   max-width: none;
   max-height: none;
   padding: 0;
@@ -417,37 +419,63 @@ textarea:disabled {
   background: transparent;
 }
 
-.nav-dialog::backdrop {
+.ui-drawer-dialog[open] {
+  display: flex;
+  z-index: var(--z-drawer);
+}
+
+.ui-drawer-dialog[data-side="end"] {
+  justify-content: flex-end;
+}
+
+.ui-drawer-dialog::backdrop {
   background: var(--overlay);
 }
 
-.nav-drawer {
+.ui-drawer {
   display: flex;
-  width: min(320px, calc(100vw - 32px));
+  width: min(20rem, calc(100vw - 2rem));
   height: 100%;
   flex-direction: column;
   gap: var(--space-6);
-  overflow-y: auto;
   padding: var(--space-6);
   border-right: var(--border-width-default) var(--border-style) var(--border-strong);
   background: var(--bg-surface);
   box-shadow: var(--elevation-overlay);
+  transform: translateX(-100%);
+  transition: transform var(--transition-disclosure);
 }
 
-.nav-drawer__header {
+.ui-drawer-dialog[data-side="end"] .ui-drawer {
+  border-right: 0;
+  border-left: var(--border-width-default) var(--border-style) var(--border-strong);
+  transform: translateX(100%);
+}
+
+.ui-drawer-dialog[open] .ui-drawer {
+  transform: translateX(0);
+}
+
+.ui-drawer__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
 }
 
-.nav-drawer__header h2 {
+.ui-drawer__header h2 {
   margin: 0;
   font-size: var(--font-size-card-title);
   line-height: var(--line-height-card-title);
 }
 
-.nav-drawer .app-navigation__link {
+.ui-drawer__body {
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.ui-drawer .app-navigation__link {
   min-height: 48px;
 }
 
@@ -976,7 +1004,7 @@ th.numeric {
     padding: var(--space-6) var(--page-padding-tablet);
   }
 
-  .nav-drawer {
+  .ui-drawer {
     padding: var(--space-6);
   }
 }
@@ -1025,7 +1053,7 @@ th.numeric {
     padding: var(--space-6) var(--page-padding-mobile);
   }
 
-  .nav-drawer {
+  .ui-drawer {
     padding: var(--space-4);
   }
 
@@ -1364,7 +1392,7 @@ a.ui-button:hover {
   width: 24px;
   height: 24px;
   flex: 0 0 auto;
-  border: 3px var(--border-style) var(--border-default);
+  border: var(--border-width-marker) var(--border-style) var(--border-default);
   border-top-color: var(--primary);
   border-radius: 50%;
   animation: ui-spin 800ms linear infinite;
@@ -1479,7 +1507,9 @@ a.ui-button:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ui-spinner {
+  .ui-spinner,
+  .ui-drawer {
     animation: none;
+    transition: none;
   }
 }

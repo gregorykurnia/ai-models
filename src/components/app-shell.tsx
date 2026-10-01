@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { createPortal } from "react-dom";
-import { useEffect, useRef, useState } from "react";
-import { IconButton } from "@/components/ui/primitives";
+import { useEffect, useState } from "react";
+import { PageContainer } from "@/components/ui/primitives";
+import {Drawer} from "@/components/ui/drawer";
 
 const links = [
   { href: "/", label: "Evaluations", icon: "evaluations" },
@@ -56,35 +56,11 @@ function Brand() {
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-    const previousOverflow = document.body.style.overflow;
-
-    if (mobileOpen && !dialog.open) {
-      dialog.showModal();
-      document.body.style.overflow = "hidden";
-    } else if (!mobileOpen && dialog.open) {
-      dialog.close();
-    }
-
-    return () => {
-      if (dialog.open) dialog.close();
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [mobileOpen]);
 
   return (
     <div className="app-shell">
@@ -109,30 +85,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       </header>
 
       <main className="app-main" id="main-content">
-        <div className="page-container">{children}</div>
+        <PageContainer>{children}</PageContainer>
         <footer className="app-footer">Artificial Analysis leaderboard snapshots</footer>
       </main>
 
-      {mounted && createPortal(
-        <dialog
-          ref={dialogRef}
-          className="nav-dialog"
-          id="mobile-navigation"
-          aria-labelledby="mobile-navigation-title"
-          onCancel={event => { event.preventDefault(); setMobileOpen(false); }}
-          onClose={() => setMobileOpen(false)}
-          onClick={event => { if (event.target === event.currentTarget) setMobileOpen(false); }}
-        >
-          <div className="nav-drawer">
-            <div className="nav-drawer__header">
-              <h2 id="mobile-navigation-title">Navigation</h2>
-              <IconButton variant="quiet" aria-label="Close navigation" onClick={() => setMobileOpen(false)}>×</IconButton>
-            </div>
-            <Navigation pathname={pathname} onNavigate={() => setMobileOpen(false)} />
-          </div>
-        </dialog>,
-        document.body,
-      )}
+      <Drawer open={mobileOpen} onOpenChange={setMobileOpen} title="Navigation" id="mobile-navigation">
+        <Navigation pathname={pathname} onNavigate={() => setMobileOpen(false)} />
+      </Drawer>
     </div>
   );
 }

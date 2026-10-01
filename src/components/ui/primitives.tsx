@@ -161,6 +161,10 @@ export function Card({ as: Element = "section", density = "default", className, 
   return <Element {...props} className={classes("ui-card", `ui-card--${density}`, className)} />;
 }
 
+export function PageContainer({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
+  return <div {...props} className={classes("page-container", className)} />;
+}
+
 export function Badge({ className, ...props }: HTMLAttributes<HTMLSpanElement>) {
   return <span {...props} className={classes("ui-badge", className)} />;
 }
