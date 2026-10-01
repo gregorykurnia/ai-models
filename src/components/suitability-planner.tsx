@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { masterIdentityKey } from "@/lib/master";
 import { readModelFavorites, subscribeToModelFavorites, writeModelFavorites } from "@/lib/model-favorites";
 import { calculateSuitability, suitabilityTaskSchema, type EvaluationWeight, type SuitabilityTask } from "@/lib/suitability";
-import { pinComparison, readSavedTasks, savedComparisonSchema, type PlannerData, type SavedComparison } from "@/lib/suitability-storage";
+import { pinComparison, readSavedTaskSummaries, readSavedTasks, savedComparisonSchema, type PlannerData, type SavedComparison, type SavedTaskSummary } from "@/lib/suitability-storage";
 import { readBrowserTasks, saveBrowserTask, removeBrowserTask } from "@/lib/browser-suitability-tasks";
 import { recordSuitabilityEvent } from "@/lib/suitability-analytics";
 import SuitabilityComparison, { comparisonRows } from "@/components/suitability-comparison";
@@ -18,10 +18,58 @@ const niceDate = (value: string) => new Date(value).toLocaleDateString("en-GB", 
 async function saveSharedTask(comparison: SavedComparison) {
   const response = await fetch("/api/suitability/tasks", {
     method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(comparison),
-    signal: AbortSignal.timeout(12000),
+    signal: AbortSignal.timeout(30000),
   });
   const payload = await response.json();
   if (!response.ok) throw new Error(typeof payload.error === "string" ? payload.error : "Task could not be saved to the shared database.");
+}
+
+async function fetchSharedTaskSummaries() {
+  const response = await fetch("/api/suitability/tasks", { cache: "no-store", signal: AbortSignal.timeout(30000) });
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(typeof payload?.error === "string" ? payload.error : `Shared task request failed (${response.status}).`);
+  return readSavedTaskSummaries(JSON.stringify(payload));
+}
+
+async function fetchSharedComparison(taskId: string) {
+  const response = await fetch(`/api/suitability/tasks?taskId=${encodeURIComponent(taskId)}`, { cache: "no-store", signal: AbortSignal.timeout(30000) });
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(typeof payload?.error === "string" ? payload.error : `Shared task request failed (${response.status}).`);
+  return readSavedTasks(JSON.stringify([payload]))[0];
+}
+
+function loadErrorMessage(cause: unknown, fallback: string) {
+  const message = cause instanceof Error ? cause.message : "";
+  if (/timed out|timeout/i.test(message)) return "The saved task request took too long. Reload and try again.";
+  if (/abort/i.test(message)) return "The request was interrupted before the saved tasks loaded. Reload and try again.";
+  return message || fallback;
+}
+
+function summarizeComparison(comparison: SavedComparison): SavedTaskSummary {
+  let preview: SavedTaskSummary["preview"] = null;
+  try {
+    const leader = comparisonRows(comparison, comparison.task.evaluation_weights, comparison.task.candidate_model_ids)[0];
+    if (leader) preview = {
+      model_id: leader.model_id,
+      model: leader.model,
+      provider: leader.provider,
+      score: leader.score,
+      intelligence_index_cost: leader.intelligence_index_cost ?? null,
+    };
+  } catch { /* A missing pinned cohort is reported when the comparison is opened. */ }
+  return {
+    task: {
+      id: comparison.task.id,
+      title: comparison.task.title,
+      request: comparison.task.request,
+      evaluation_weights: comparison.task.evaluation_weights,
+      created_at: comparison.task.created_at,
+      updated_at: comparison.task.updated_at,
+    },
+    candidate_count: comparison.task.candidate_model_ids.length,
+    evaluations: comparison.evaluations,
+    preview,
+  };
 }
 
 function migrateBrowserTask(task: SavedComparison, currentCandidates: PlannerData["candidates"]): SavedComparison {
@@ -50,9 +98,13 @@ export default function Planner({ data }: { data: PlannerData }) {
   const isReview = path.startsWith("/suitability/") && !isLibrary;
   const taskId = isReview ? path.split("/")[2] : "";
   const [ready, setReady] = useState(false);
-  const [saved, setSaved] = useState<SavedComparison[]>([]);
+  const [saved, setSaved] = useState<SavedTaskSummary[]>([]);
   const [browserSaved, setBrowserSaved] = useState<SavedComparison[]>([]);
   const [active, setActive] = useState<SavedComparison | null>(null);
+  const [libraryDetails, setLibraryDetails] = useState<Record<string, SavedComparison>>({});
+  const [libraryDetailErrors, setLibraryDetailErrors] = useState<Record<string, string>>({});
+  const [libraryLoading, setLibraryLoading] = useState<string[]>([]);
+  const [libraryRetry, setLibraryRetry] = useState(0);
   const [editing, setEditing] = useState(false);
   const [title, setTitle] = useState("");
   const [request, setRequest] = useState("");
@@ -72,6 +124,7 @@ export default function Planner({ data }: { data: PlannerData }) {
   const [notice, setNotice] = useState("");
   const openedPath = useRef("");
   const previousComparison = useRef("");
+  const libraryDetailRequests = useRef(new Map<string, Promise<SavedComparison>>());
 
   useEffect(() => {
     const refresh = () => setFavorites(readModelFavorites());
@@ -85,15 +138,12 @@ export default function Planner({ data }: { data: PlannerData }) {
     setReady(false); setError(""); setNotice(""); setEditing(false);
     let localTasks: SavedComparison[] = [];
     let localError = "";
-    const activate = (sharedTasks: SavedComparison[], loadError = "") => {
+    const activate = (activeTask: SavedComparison | null, loadError = "") => {
       if (cancelled) return;
-      const localMatch = localTasks.find(task => task.task.id === taskId);
-      const cloudMatch = sharedTasks.find(task => task.task.id === taskId);
-      const match = taskId ? localMatch && (!cloudMatch || localMatch.task.updated_at >= cloudMatch.task.updated_at) ? localMatch : cloudMatch : null;
-      setSaved(sharedTasks); setActive(match ?? null); setTitle(match?.task.title ?? ""); setRequest(match?.task.request ?? "");
-      setWeights(match?.task.evaluation_weights ?? []); setSelected(match?.task.candidate_model_ids ?? []);
-      setError([loadError, localError || (taskId && !match ? "This task is not saved in the shared list or this browser." : "")].filter(Boolean).join(" "));
-      if (localMatch && match === localMatch) setNotice("Saved in this browser. Shared sync is pending. Download a backup to keep a copy outside this browser.");
+      setActive(activeTask); setTitle(activeTask?.task.title ?? ""); setRequest(activeTask?.task.request ?? "");
+      setWeights(activeTask?.task.evaluation_weights ?? []); setSelected(activeTask?.task.candidate_model_ids ?? []);
+      setError([loadError, localError].filter(Boolean).join(" "));
+      if (activeTask && localTasks.some(task => task === activeTask)) setNotice("Saved in this browser. Shared sync is pending. Download a backup to keep a copy outside this browser.");
       setReady(true);
     };
     void (async () => {
@@ -106,18 +156,60 @@ export default function Planner({ data }: { data: PlannerData }) {
       } catch { localError = "Some browser-saved tasks could not be read or updated. Existing copies have been left untouched."; }
       if (cancelled) return;
       setBrowserSaved(localTasks);
+      if (isLibrary) {
+        setLibraryDetails({});
+        setLibraryDetailErrors({});
+        try {
+          const summaries = await fetchSharedTaskSummaries();
+          if (cancelled) return;
+          setSaved(summaries);
+          activate(null);
+        } catch (cause) {
+          if (cancelled) return;
+          setSaved([]);
+          activate(null, `Shared tasks could not be loaded. ${loadErrorMessage(cause, "The database could not be reached.")}`);
+        }
+        return;
+      }
+      if (!taskId) {
+        setSaved([]);
+        activate(null);
+        return;
+      }
+      const localMatch = localTasks.find(task => task.task.id === taskId) ?? null;
       try {
-        const response = await fetch("/api/suitability/tasks", { cache: "no-store", signal: AbortSignal.timeout(10000) });
-        const payload = await response.json();
-        if (!response.ok) throw new Error(typeof payload.error === "string" ? payload.error : "Shared tasks could not be loaded.");
-        activate(readSavedTasks(JSON.stringify(payload)));
+        const cloudMatch = await fetchSharedComparison(taskId);
+        if (cancelled) return;
+        const match = localMatch && localMatch.task.updated_at >= cloudMatch.task.updated_at ? localMatch : cloudMatch;
+        activate(match);
       } catch (cause) {
-        const detail = cause instanceof Error ? cause.message : "The database could not be reached.";
-        activate([], `Shared tasks could not be loaded. ${detail}`);
+        if (cancelled) return;
+        activate(localMatch, `Shared task could not be loaded. ${loadErrorMessage(cause, "The database could not be reached.")}`);
       }
     })();
     return () => { cancelled = true; };
-  }, [path, data.candidates, taskId]);
+  }, [path, data.candidates, taskId, isLibrary, libraryRetry]);
+
+  const loadLibraryComparison = (sharedTaskId: string) => {
+    const existing = libraryDetails[sharedTaskId];
+    if (existing) return Promise.resolve(existing);
+    const pending = libraryDetailRequests.current.get(sharedTaskId);
+    if (pending) return pending;
+    setLibraryLoading(previous => previous.includes(sharedTaskId) ? previous : [...previous, sharedTaskId]);
+    const request = fetchSharedComparison(sharedTaskId).then(comparison => {
+      setLibraryDetails(previous => ({ ...previous, [sharedTaskId]: comparison }));
+      setLibraryDetailErrors(previous => { const next = { ...previous }; delete next[sharedTaskId]; return next; });
+      return comparison;
+    }).catch(cause => {
+      setLibraryDetailErrors(previous => ({ ...previous, [sharedTaskId]: loadErrorMessage(cause, "The saved comparison could not be loaded.") }));
+      throw cause;
+    }).finally(() => {
+      libraryDetailRequests.current.delete(sharedTaskId);
+      setLibraryLoading(previous => previous.filter(id => id !== sharedTaskId));
+    });
+    libraryDetailRequests.current.set(sharedTaskId, request);
+    return request;
+  };
 
   const working = useMemo<PlannerData>(() => {
     if (!active) return data;
@@ -183,19 +275,19 @@ export default function Planner({ data }: { data: PlannerData }) {
     if (!browserSaved.length) return;
     setSyncingBrowserSaved(true); setError("");
     try {
-      const response = await fetch("/api/suitability/tasks", { cache: "no-store", signal: AbortSignal.timeout(10000) });
-      if (!response.ok) { const payload = await response.json(); throw new Error(payload.error ?? "Shared tasks could not be loaded."); }
-      const current = readSavedTasks(JSON.stringify(await response.json()));
+      const current = await fetchSharedTaskSummaries();
       const conflicting = browserSaved.filter(task => current.some(shared => shared.task.id === task.task.id && shared.task.updated_at > task.task.updated_at));
       if (conflicting.length) throw new Error("A shared task has newer settings. Your browser copy is retained; download a backup before resolving the difference.");
       for (const task of browserSaved) {
         await saveSharedTask(task);
-        setSaved(previous => [task, ...previous.filter(item => item.task.id !== task.task.id)]);
+        const summary = summarizeComparison(task);
+        setSaved(previous => [summary, ...previous.filter(item => item.task.id !== task.task.id)]);
+        setLibraryDetails(previous => ({ ...previous, [task.task.id]: task }));
         await removeBrowserTask(task);
         setBrowserSaved(previous => previous.filter(item => item.task.id !== task.task.id));
       }
       setNotice("Browser-saved tasks synced to the shared library.");
-    } catch (cause) { setError(cause instanceof Error ? cause.message : "Browser-saved tasks could not be added to the shared list."); }
+    } catch (cause) { setError(loadErrorMessage(cause, "Browser-saved tasks could not be added to the shared list.")); }
     finally { setSyncingBrowserSaved(false); }
   };
   const restoreBackup = async (file: File) => {
@@ -235,7 +327,8 @@ export default function Planner({ data }: { data: PlannerData }) {
       }
       if (!locallySaved && !sharedSaved) throw new Error(`The task was not saved. ${browserError} ${sharedError} Your selections are still visible.`);
       if (sharedSaved) {
-        setSaved(previous => [pinned, ...previous.filter(item => item.task.id !== task.id)]);
+        setSaved(previous => [summarizeComparison(pinned), ...previous.filter(item => item.task.id !== task.id)]);
+        setLibraryDetails(previous => ({ ...previous, [task.id]: pinned }));
         try { await removeBrowserTask(pinned); locallySaved = false; } catch { /* Retain the browser copy if cleanup fails. */ }
       }
       recordSuitabilityEvent("task_saved");
@@ -249,16 +342,20 @@ export default function Planner({ data }: { data: PlannerData }) {
   };
 
   const libraryTasks = useMemo(() => {
-    const byId = new Map(saved.map(task => [task.task.id, { comparison: task, shared: true }]));
+    const byId = new Map<string, { summary: SavedTaskSummary; shared: boolean; localComparison: SavedComparison | null }>(
+      saved.map(summary => [summary.task.id, { summary, shared: true, localComparison: null }]),
+    );
     for (const comparison of browserSaved) {
       const cloud = byId.get(comparison.task.id);
-      if (!cloud || comparison.task.updated_at >= cloud.comparison.task.updated_at) byId.set(comparison.task.id, { comparison, shared: false });
+      if (!cloud || comparison.task.updated_at >= cloud.summary.task.updated_at)
+        byId.set(comparison.task.id, { summary: summarizeComparison(comparison), shared: false, localComparison: comparison });
     }
     const all = [...byId.values()];
     const query = librarySearch.trim().toLowerCase();
-    return all.filter(({ comparison }) => !query || `${comparison.task.title} ${comparison.task.request}`.toLowerCase().includes(query))
-      .sort((a, b) => b.comparison.task.updated_at.localeCompare(a.comparison.task.updated_at));
+    return all.filter(({ summary }) => !query || `${summary.task.title} ${summary.task.request}`.toLowerCase().includes(query))
+      .sort((a, b) => b.summary.task.updated_at.localeCompare(a.summary.task.updated_at));
   }, [saved, browserSaved, librarySearch]);
+  const sharedListUnavailable = error.startsWith("Shared tasks could not be loaded.");
 
   if (!ready) return <p>Loading saved tasks…</p>;
 
@@ -266,23 +363,38 @@ export default function Planner({ data }: { data: PlannerData }) {
     <div className="eyebrow">Task suitability · saved library</div><h1>Saved tasks</h1>
     <p>Shared tasks are visible to everyone who visits this site. Favorites stay in this browser. Cost per Intelligence Index task is the Artificial Analysis weighted average for one Index task, not the price of the task description here.</p>
     <div className="toolbar"><Link className={styles.primaryLink} href="/suitability">Create a task</Link><label className={styles.searchField} htmlFor="saved-task-search">Search saved tasks<input id="saved-task-search" type="search" value={librarySearch} onChange={event => setLibrarySearch(event.target.value)} placeholder="Search titles or task descriptions" /></label></div>
-    {error && <p role="alert" className="panel error">{error}</p>}
+    {error && <div role="alert" className="panel error"><p>{error}</p>{sharedListUnavailable && <button onClick={() => setLibraryRetry(value => value + 1)}>Reload shared tasks</button>}</div>}
     <div className="toolbar"><label htmlFor="task-backup">Import a task backup<input id="task-backup" type="file" accept=".json,application/json" onChange={event => { const file = event.target.files?.[0]; if (file) void restoreBackup(file); event.target.value = ""; }} /></label></div>
     {browserSaved.length > 0 && <section className="panel"><p>{browserSaved.length} task{browserSaved.length === 1 ? " is" : "s are"} saved in this browser with shared sync pending. They reopen here after a reload. Download backups before clearing browser data or switching devices.</p><button onClick={syncBrowserTasks} disabled={syncingBrowserSaved}>{syncingBrowserSaved ? "Syncing tasks…" : "Sync browser tasks to shared library"}</button><p>Syncing makes these tasks visible to everyone who visits the site.</p></section>}
-    {libraryTasks.length === 0 ? <section className="panel"><h2>{librarySearch ? "No matching saved tasks" : "No saved tasks yet"}</h2><p>{librarySearch ? "Try another title or description." : "Save a task comparison to return to its pinned model results later."}</p>{!librarySearch && <Link href="/suitability">Create your first task →</Link>}</section> : <div className={styles.savedList}>
-      {libraryTasks.map(({ comparison, shared }) => {
+    {libraryTasks.length === 0 ? <section className="panel"><h2>{librarySearch ? "No matching saved tasks" : sharedListUnavailable ? "Shared task list unavailable" : "No saved tasks yet"}</h2><p>{librarySearch ? "Try another title or description." : sharedListUnavailable ? "Try reloading the shared list. Browser-saved copies still appear here when available." : "Save a task comparison to return to its pinned model results later."}</p>{!librarySearch && !error && <Link href="/suitability">Create your first task →</Link>}</section> : <div className={styles.savedList}>
+      {libraryTasks.map(({ summary, shared, localComparison }) => {
+        const taskId = summary.task.id;
+        const comparison = shared ? libraryDetails[taskId] ?? null : localComparison;
         let rows = [] as ReturnType<typeof comparisonRows>;
         let comparisonError = "";
-        try { rows = comparisonRows(comparison, comparison.task.evaluation_weights, comparison.task.candidate_model_ids); }
+        if (comparison) try { rows = comparisonRows(comparison, comparison.task.evaluation_weights, comparison.task.candidate_model_ids); }
         catch (cause) { comparisonError = cause instanceof Error ? cause.message : "Pinned comparison data is unavailable."; }
         const leader = rows[0];
-        return <article className="panel" key={comparison.task.id}>
-          <div className="toolbar"><div><h2>{comparison.task.title}</h2><p>{comparison.task.request}</p></div><span className={styles.badge}>{shared ? "Shared" : "This browser"}</span></div>
-          <dl className={styles.taskMeta}><div><dt>Last updated</dt><dd>{niceDate(comparison.task.updated_at)}</dd></div><div><dt>Evaluations</dt><dd>{comparison.task.evaluation_weights.length}</dd></div><div><dt>Candidates</dt><dd>{comparison.task.candidate_model_ids.length}</dd></div></dl>
-          <p className={styles.captureList}><strong>Pinned captures:</strong> {comparison.task.evaluation_weights.map(weight => `${comparison.evaluations.find(evaluation => evaluation.id === weight.evaluation_id)?.display_name ?? weight.evaluation_id} · ${weight.captured_at}`).join("; ")}</p>
-          {leader ? <p><strong>Leading candidate:</strong> {leader.model} · suitability {leader.score === null ? "No score" : leader.score.toFixed(1)} · Cost per Intelligence Index task {leader.intelligence_index_cost ? `$${leader.intelligence_index_cost.cost_usd.toFixed(2)} · captured ${niceDate(leader.intelligence_index_cost.captured_at)}` : "—"}</p> : comparisonError ? <p role="alert">{comparisonError}</p> : <p>No comparison candidates are available.</p>}
-          <div className="toolbar"><Link href={`/suitability/${comparison.task.id}`}>Open comparison</Link><button onClick={() => downloadBackup(comparison)}>Download backup</button></div>
-          <details><summary>Review comparison in place</summary>{comparisonError ? <p role="alert">{comparisonError}</p> : <SuitabilityComparison data={comparison} rows={rows} />}</details>
+        const preview = summary.preview;
+        return <article className="panel" key={summary.task.id}>
+          <div className="toolbar"><div><h2>{summary.task.title}</h2><p>{summary.task.request}</p></div><span className={styles.badge}>{shared ? "Shared" : "This browser"}</span></div>
+          <dl className={styles.taskMeta}><div><dt>Last updated</dt><dd>{niceDate(summary.task.updated_at)}</dd></div><div><dt>Evaluations</dt><dd>{summary.task.evaluation_weights.length}</dd></div><div><dt>Candidates</dt><dd>{summary.candidate_count}</dd></div></dl>
+          <p className={styles.captureList}><strong>Pinned captures:</strong> {summary.task.evaluation_weights.map(weight => `${summary.evaluations.find(evaluation => evaluation.id === weight.evaluation_id)?.display_name ?? weight.evaluation_id} · ${weight.captured_at}`).join("; ")}</p>
+          {preview ? <p><strong>Leading candidate:</strong> {preview.model} · suitability {preview.score === null ? "No score" : preview.score.toFixed(1)} · Cost per Intelligence Index task {preview.intelligence_index_cost ? `$${preview.intelligence_index_cost.cost_usd.toFixed(2)} · captured ${niceDate(preview.intelligence_index_cost.captured_at)}` : "—"}</p>
+            : leader ? <p><strong>Leading candidate:</strong> {leader.model} · suitability {leader.score === null ? "No score" : leader.score.toFixed(1)} · Cost per Intelligence Index task {leader.intelligence_index_cost ? `$${leader.intelligence_index_cost.cost_usd.toFixed(2)} · captured ${niceDate(leader.intelligence_index_cost.captured_at)}` : "—"}</p>
+              : comparisonError ? <p role="alert">{comparisonError}</p> : <p>Open the comparison to load its pinned model results.</p>}
+          {libraryDetailErrors[taskId] && <p role="alert">{libraryDetailErrors[taskId]}</p>}
+          <div className="toolbar"><Link href={`/suitability/${taskId}`}>Open comparison</Link><button disabled={shared && libraryLoading.includes(taskId)} onClick={() => {
+            if (comparison) downloadBackup(comparison);
+            else void loadLibraryComparison(taskId).then(downloadBackup).catch(() => undefined);
+          }}>{shared && libraryLoading.includes(taskId) ? "Loading backup…" : "Download backup"}</button></div>
+          <details onToggle={event => { if (shared && event.currentTarget.open && !comparison) void loadLibraryComparison(taskId).catch(() => undefined); }}>
+            <summary>Review comparison in place</summary>
+            {!comparison && (libraryDetailErrors[taskId]
+              ? <div><p role="alert">{libraryDetailErrors[taskId]}</p><button onClick={() => void loadLibraryComparison(taskId).catch(() => undefined)}>Retry loading comparison</button></div>
+              : <p role="status">{libraryLoading.includes(taskId) ? "Loading pinned comparison…" : "Open this section to load the pinned model results."}</p>)}
+            {comparison && (comparisonError ? <p role="alert">{comparisonError}</p> : <SuitabilityComparison data={comparison} rows={rows} />)}
+          </details>
         </article>;
       })}
     </div>}

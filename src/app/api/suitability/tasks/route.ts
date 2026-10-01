@@ -1,8 +1,8 @@
 import { randomUUID } from "node:crypto";
 import { adminDb } from "@/lib/admin";
-import { savedComparisonSchema, type SavedComparison } from "@/lib/suitability-storage";
-import type { SuitabilityEntry } from "@/lib/suitability";
-import { FieldValue, type DocumentReference } from "firebase-admin/firestore";
+import { calculateSuitability, suitabilityTaskSchema, type SuitabilityEntry } from "@/lib/suitability";
+import { savedComparisonSchema, savedTaskSummarySchema, type SavedComparison, type SavedTaskSummary } from "@/lib/suitability-storage";
+import { FieldValue, type DocumentReference, type DocumentSnapshot } from "firebase-admin/firestore";
 import { masterIdentityKey } from "@/lib/master";
 import { getIntelligenceIndexTaskCost, getIntelligenceIndexTaskCostCapturedAt } from "@/lib/intelligence-index-costs";
 
@@ -22,38 +22,67 @@ async function removeVersion(taskRef: DocumentReference, version: string) {
   await versionRef.delete();
 }
 
-export async function GET() {
+async function readComparison(snapshot: DocumentSnapshot): Promise<SavedComparison> {
+  const data = snapshot.data()!;
+  const activeVersion = data.active_version;
+  if (typeof activeVersion !== "string") throw new Error("The saved task has no active data version.");
+  const chunks = await snapshot.ref.collection("versions").doc(activeVersion).collection("entryChunks").get();
+  const entries = chunks.docs.sort((a, b) => a.id.localeCompare(b.id))
+    .flatMap(chunk => chunk.get("entries") as SuitabilityEntry[]);
+  const comparison = savedComparisonSchema.parse({
+    task: data.task,
+    evaluations: data.evaluations,
+    entries,
+    candidates: data.candidates,
+    availableSnapshotIds: data.availableSnapshotIds,
+  });
+  let migrated = false;
+  comparison.candidates = comparison.candidates.map(candidate => {
+    const identity_key = candidate.identity_key ?? masterIdentityKey(candidate.provider, candidate.model);
+    let intelligence_index_cost = candidate.intelligence_index_cost;
+    if (intelligence_index_cost === undefined) {
+      const cost = getIntelligenceIndexTaskCost(candidate.provider, candidate.model);
+      intelligence_index_cost = cost ? { slug: cost.slug, cost_usd: cost.cost_usd, url: cost.url, captured_at: getIntelligenceIndexTaskCostCapturedAt() } : null;
+      migrated = true;
+    }
+    if (!candidate.identity_key) migrated = true;
+    return { ...candidate, identity_key, intelligence_index_cost };
+  });
+  if (migrated) await snapshot.ref.update({ candidates: comparison.candidates });
+  return comparison as SavedComparison;
+}
+
+export async function GET(request: Request) {
   try {
+    const taskId = new URL(request.url).searchParams.get("taskId");
+    if (taskId !== null) {
+      if (!/^[A-Za-z0-9_-]{1,128}$/.test(taskId)) return Response.json({ error: "The task ID is invalid." }, { status: 400 });
+      const snapshot = await taskCollection().doc(taskId).get();
+      if (!snapshot.exists || typeof snapshot.data()?.active_version !== "string")
+        return Response.json({ error: "This shared task could not be found." }, { status: 404 });
+      const comparison = await readComparison(snapshot);
+      return Response.json(comparison, { headers: { "Cache-Control": "private, no-store" } });
+    }
+
     const snapshots = await taskCollection().get();
-    const tasks: SavedComparison[] = [];
+    const tasks: SavedTaskSummary[] = [];
     for (const snapshot of snapshots.docs) {
       const data = snapshot.data();
-      const activeVersion = data.active_version;
-      if (typeof activeVersion !== "string") continue;
-      const chunks = await snapshot.ref.collection("versions").doc(activeVersion).collection("entryChunks").get();
-      const entries = chunks.docs.sort((a, b) => a.id.localeCompare(b.id))
-        .flatMap(chunk => chunk.get("entries") as SuitabilityEntry[]);
-      const comparison = savedComparisonSchema.parse({
-        task: data.task,
+      if (typeof data.active_version !== "string") continue;
+      const task = suitabilityTaskSchema.parse(data.task);
+      tasks.push(savedTaskSummarySchema.parse({
+        task: {
+          id: task.id,
+          title: task.title,
+          request: task.request,
+          evaluation_weights: task.evaluation_weights,
+          created_at: task.created_at,
+          updated_at: task.updated_at,
+        },
+        candidate_count: task.candidate_model_ids.length,
         evaluations: data.evaluations,
-        entries,
-        candidates: data.candidates,
-        availableSnapshotIds: data.availableSnapshotIds,
-      });
-      let migrated = false;
-      comparison.candidates = comparison.candidates.map(candidate => {
-        const identity_key = candidate.identity_key ?? masterIdentityKey(candidate.provider, candidate.model);
-        let intelligence_index_cost = candidate.intelligence_index_cost;
-        if (intelligence_index_cost === undefined) {
-          const cost = getIntelligenceIndexTaskCost(candidate.provider, candidate.model);
-          intelligence_index_cost = cost ? { slug: cost.slug, cost_usd: cost.cost_usd, url: cost.url, captured_at: getIntelligenceIndexTaskCostCapturedAt() } : null;
-          migrated = true;
-        }
-        if (!candidate.identity_key) migrated = true;
-        return { ...candidate, identity_key, intelligence_index_cost };
-      });
-      if (migrated) await snapshot.ref.update({ candidates: comparison.candidates });
-      tasks.push(comparison as SavedComparison);
+        preview: data.preview ?? null,
+      }));
     }
     tasks.sort((a, b) => b.task.updated_at.localeCompare(a.task.updated_at));
     return Response.json(tasks, { headers: { "Cache-Control": "private, no-store" } });
@@ -88,6 +117,21 @@ export async function POST(request: Request) {
     for (let start = 0; start < comparison.entries.length; start += 200)
       chunks.push(comparison.entries.slice(start, start + 200));
 
+    const leadingCandidate = calculateSuitability({
+      evaluations: comparison.evaluations,
+      entries: comparison.entries,
+      weights: comparison.task.evaluation_weights,
+      candidates: comparison.candidates.filter(candidate => comparison.task.candidate_model_ids.includes(candidate.model_id)),
+      availableSnapshotIds: comparison.availableSnapshotIds,
+    })[0];
+    const preview = leadingCandidate ? {
+      model_id: leadingCandidate.model_id,
+      model: leadingCandidate.model,
+      provider: leadingCandidate.provider,
+      score: leadingCandidate.score,
+      intelligence_index_cost: leadingCandidate.intelligence_index_cost ?? null,
+    } : null;
+
     await versionRef.set({ created_at: FieldValue.serverTimestamp(), chunk_count: chunks.length });
     for (let start = 0; start < chunks.length; start += 450) {
       const batch = adminDb().batch();
@@ -103,6 +147,7 @@ export async function POST(request: Request) {
       evaluations: comparison.evaluations,
       candidates: comparison.candidates,
       availableSnapshotIds: comparison.availableSnapshotIds,
+      preview,
       active_version: version,
       saved_at: FieldValue.serverTimestamp(),
     });

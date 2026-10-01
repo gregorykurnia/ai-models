@@ -1,10 +1,28 @@
 import { z } from "zod";
-import { suitabilityTaskSchema, type SuitabilityCandidate, type SuitabilityEntry } from "./suitability";
+import { evaluationWeightSchema, suitabilityTaskSchema, type SuitabilityCandidate, type SuitabilityEntry } from "./suitability";
 import type { Evaluation } from "./contract";
 
 const plannerEvaluationSchema = z.object({ id: z.string(), slug: z.string(), display_name: z.string(), category: z.string(), metric_label: z.string(), captured_at: z.string(), published_snapshot_id: z.string(), row_count: z.number() }).passthrough();
 export type PlannerEvaluation = z.infer<typeof plannerEvaluationSchema>;
 export type PlannerData = { evaluations: PlannerEvaluation[]; entries: SuitabilityEntry[]; candidates: SuitabilityCandidate[]; availableSnapshotIds: string[] };
+const savedTaskPreviewSchema = z.object({
+  model_id: z.string(), model: z.string(), provider: z.string(), score: z.number().nullable(),
+  intelligence_index_cost: z.object({ slug: z.string(), cost_usd: z.number().nonnegative(), url: z.string().url(), captured_at: z.string().min(1) }).nullable(),
+});
+export type SavedTaskPreview = z.infer<typeof savedTaskPreviewSchema>;
+const savedTaskSummaryTaskSchema = z.object({
+  id: z.string(), title: z.string(), request: z.string(),
+  evaluation_weights: z.array(evaluationWeightSchema),
+  created_at: z.string().datetime(), updated_at: z.string().datetime(),
+});
+const savedTaskSummaryEvaluationSchema = z.object({ id: z.string(), display_name: z.string() });
+export const savedTaskSummarySchema = z.object({
+  task: savedTaskSummaryTaskSchema,
+  candidate_count: z.number().int().nonnegative(),
+  evaluations: z.array(savedTaskSummaryEvaluationSchema),
+  preview: savedTaskPreviewSchema.nullable().optional(),
+});
+export type SavedTaskSummary = z.infer<typeof savedTaskSummarySchema>;
 export const savedComparisonSchema = z.object({
   task: suitabilityTaskSchema,
   evaluations: z.array(plannerEvaluationSchema),
@@ -18,6 +36,10 @@ export function readSavedTasks(raw: string | null): SavedComparison[] {
   if (!raw) return [];
   const parsed = z.array(savedComparisonSchema).parse(JSON.parse(raw));
   return parsed as SavedComparison[];
+}
+export function readSavedTaskSummaries(raw: string | null): SavedTaskSummary[] {
+  if (!raw) return [];
+  return z.array(savedTaskSummarySchema).parse(JSON.parse(raw));
 }
 
 /** Cache authoritative pinned inputs, not derived scores, for reloads after a dataset update. */

@@ -9,18 +9,45 @@ const base = process.env.BASE_URL || "http://localhost:3191";
 const cloud = [];
 let available = false;
 let posts = 0;
+function summarize(comparison) {
+  return {
+    task: {
+      id: comparison.task.id,
+      title: comparison.task.title,
+      request: comparison.task.request,
+      evaluation_weights: comparison.task.evaluation_weights,
+      created_at: comparison.task.created_at,
+      updated_at: comparison.task.updated_at,
+    },
+    candidate_count: comparison.task.candidate_model_ids.length,
+    evaluations: comparison.evaluations.map(({ id, display_name }) => ({ id, display_name })),
+  };
+}
 async function isolatedContext() {
   const context = await browser.newContext({ acceptDownloads: true });
-  await context.route("**/api/suitability/tasks", async route => {
+  await context.route("**/api/suitability/tasks**", async route => {
     if (route.request().method() === "POST") {
       posts++;
       if (available) {
         const comparison = route.request().postDataJSON();
         cloud.splice(0, cloud.length, comparison);
       }
+      await route.fulfill({ status: available ? 200 : 503, contentType: "application/json",
+        body: JSON.stringify(available ? { taskId: cloud[0].task.id } : { error: "Firestore quota exhausted (fixture)." }) });
+      return;
     }
-    await route.fulfill({ status: available ? 200 : 503, contentType: "application/json",
-      body: JSON.stringify(available ? route.request().method() === "POST" ? { taskId: cloud[0].task.id } : cloud : { error: "Firestore quota exhausted (fixture)." }) });
+    if (!available) {
+      await route.fulfill({ status: 503, contentType: "application/json", body: JSON.stringify({ error: "Firestore quota exhausted (fixture)." }) });
+      return;
+    }
+    const taskId = new URL(route.request().url()).searchParams.get("taskId");
+    const comparison = taskId ? cloud.find(item => item.task.id === taskId) : null;
+    if (taskId && !comparison) {
+      await route.fulfill({ status: 404, contentType: "application/json", body: JSON.stringify({ error: "This shared task could not be found." }) });
+      return;
+    }
+    await route.fulfill({ status: 200, contentType: "application/json",
+      body: JSON.stringify(taskId ? comparison : cloud.map(summarize)) });
   });
   return context;
 }
