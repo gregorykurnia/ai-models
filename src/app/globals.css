@@ -597,7 +597,7 @@ textarea[readonly] {
 textarea {
   display: block;
   width: 100%;
-  min-height: 6rem;
+  min-height: 7.5rem;
   resize: vertical;
 }
 
@@ -1258,6 +1258,27 @@ a.ui-button:hover {
   gap: var(--space-2);
 }
 
+.ui-form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+}
+
+.ui-file-field {
+  width: min(100%, 32rem);
+}
+
+.ui-loading-state {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-secondary);
+}
+
+.workflow-alert {
+  margin-block: var(--space-4);
+}
+
 .ui-helper-text,
 .ui-error-text {
   margin: 0;
@@ -1275,10 +1296,15 @@ a.ui-button:hover {
 }
 
 .ui-card {
+  margin: var(--space-6) 0;
   padding: var(--card-padding);
   border: var(--border-width-default) solid var(--border-default);
   border-radius: var(--shape-radius-surface);
   background: var(--bg-surface);
+}
+
+.ui-card--compact {
+  padding: var(--card-padding-compact);
 }
 
 .ui-badge {
@@ -1394,6 +1420,16 @@ a.ui-button:hover {
   margin-block: var(--space-12);
 }
 
+.ui-workflow-sheet > .ui-workflow-step {
+  margin-block: 0;
+}
+
+.ui-workflow-sheet > .ui-workflow-step + .ui-workflow-step {
+  padding-top: var(--space-8);
+  margin-top: var(--space-8);
+  border-top: var(--border-width-default) solid var(--border-default);
+}
+
 .ui-section-header {
   display: flex;
   flex-wrap: wrap;
@@ -1443,7 +1479,7 @@ a.ui-button:hover {
 }
 
 @media (max-width: 640px) {
-  .ui-card {
+  .ui-card--default {
     padding: var(--card-padding-compact);
   }
 

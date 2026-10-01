@@ -152,8 +152,13 @@ export function FormField({ id, label, helper, error, required = false, children
   );
 }
 
-export function Card({ className, ...props }: HTMLAttributes<HTMLElement>) {
-  return <section {...props} className={classes("ui-card", className)} />;
+export type CardProps = HTMLAttributes<HTMLElement> & {
+  as?: "article" | "div" | "section";
+  density?: "compact" | "default";
+};
+
+export function Card({ as: Element = "section", density = "default", className, ...props }: CardProps) {
+  return <Element {...props} className={classes("ui-card", `ui-card--${density}`, className)} />;
 }
 
 export function Badge({ className, ...props }: HTMLAttributes<HTMLSpanElement>) {

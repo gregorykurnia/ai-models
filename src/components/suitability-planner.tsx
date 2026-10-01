@@ -10,6 +10,7 @@ import { pinComparison, readSavedTaskSummaries, readSavedTasks, savedComparisonS
 import { readBrowserTasks, saveBrowserTask, removeBrowserTask } from "@/lib/browser-suitability-tasks";
 import { recordSuitabilityEvent } from "@/lib/suitability-analytics";
 import SuitabilityComparison, { comparisonRows } from "@/components/suitability-comparison";
+import { Alert, Badge, Button, Card, Checkbox, EmptyState, FormField, IconButton, Input, LinkButton, PageHeader, Section, Select, Spinner, TextArea } from "@/components/ui/primitives";
 import styles from "./suitability-planner.module.css";
 
 const equal = (weights: EvaluationWeight[]) => weights.map(weight => ({ ...weight, weight: 100 / weights.length }));
@@ -357,16 +358,18 @@ export default function Planner({ data }: { data: PlannerData }) {
   }, [saved, browserSaved, librarySearch]);
   const sharedListUnavailable = error.startsWith("Shared tasks could not be loaded.");
 
-  if (!ready) return <p>Loading saved tasks…</p>;
+  if (!ready) return <div className="ui-loading-state"><Spinner label="Loading saved tasks" /><span>Loading saved tasks…</span></div>;
 
   if (isLibrary) return <div className={styles.planner}>
-    <div className="eyebrow">Task suitability · saved library</div><h1>Saved tasks</h1>
-    <p>Shared tasks are visible to everyone who visits this site. Favorites stay in this browser. Cost per Intelligence Index task is the Artificial Analysis weighted average for one Index task, not the price of the task description here.</p>
-    <div className="toolbar"><Link className={styles.primaryLink} href="/suitability">Create a task</Link><label className={styles.searchField} htmlFor="saved-task-search">Search saved tasks<input id="saved-task-search" type="search" value={librarySearch} onChange={event => setLibrarySearch(event.target.value)} placeholder="Search titles or task descriptions" /></label></div>
-    {error && <div role="alert" className="panel error"><p>{error}</p>{sharedListUnavailable && <button onClick={() => setLibraryRetry(value => value + 1)}>Reload shared tasks</button>}</div>}
-    <div className="toolbar"><label htmlFor="task-backup">Import a task backup<input id="task-backup" type="file" accept=".json,application/json" onChange={event => { const file = event.target.files?.[0]; if (file) void restoreBackup(file); event.target.value = ""; }} /></label></div>
-    {browserSaved.length > 0 && <section className="panel"><p>{browserSaved.length} task{browserSaved.length === 1 ? " is" : "s are"} saved in this browser with shared sync pending. They reopen here after a reload. Download backups before clearing browser data or switching devices.</p><button onClick={syncBrowserTasks} disabled={syncingBrowserSaved}>{syncingBrowserSaved ? "Syncing tasks…" : "Sync browser tasks to shared library"}</button><p>Syncing makes these tasks visible to everyone who visits the site.</p></section>}
-    {libraryTasks.length === 0 ? <section className="panel"><h2>{librarySearch ? "No matching saved tasks" : sharedListUnavailable ? "Shared task list unavailable" : "No saved tasks yet"}</h2><p>{librarySearch ? "Try another title or description." : sharedListUnavailable ? "Try reloading the shared list. Browser-saved copies still appear here when available." : "Save a task comparison to return to its pinned model results later."}</p>{!librarySearch && !error && <Link href="/suitability">Create your first task →</Link>}</section> : <div className={styles.savedList}>
+    <PageHeader>
+      <div className="eyebrow">Task suitability · saved library</div><h1>Saved tasks</h1>
+      <p>Shared tasks are visible to everyone who visits this site. Favorites stay in this browser. Cost per Intelligence Index task is the Artificial Analysis weighted average for one Index task, not the price of the task description here.</p>
+    </PageHeader>
+    <div className="toolbar"><LinkButton variant="primary" href="/suitability">Create a task</LinkButton><label className={styles.searchField} htmlFor="saved-task-search">Search saved tasks<Input id="saved-task-search" type="search" value={librarySearch} onChange={event => setLibrarySearch(event.target.value)} placeholder="Search titles or task descriptions" /></label></div>
+    {error && <Alert className="workflow-alert" tone="error"><p>{error}</p>{sharedListUnavailable && <Button onClick={() => setLibraryRetry(value => value + 1)}>Reload shared tasks</Button>}</Alert>}
+    <div className="toolbar"><FormField className="ui-file-field" id="task-backup" label="Import a task backup"><Input type="file" accept=".json,application/json" onChange={event => { const file = event.target.files?.[0]; if (file) void restoreBackup(file); event.target.value = ""; }} /></FormField></div>
+    {browserSaved.length > 0 && <Card><p>{browserSaved.length} task{browserSaved.length === 1 ? " is" : "s are"} saved in this browser with shared sync pending. They reopen here after a reload. Download backups before clearing browser data or switching devices.</p><Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync browser tasks to shared library</Button><p>Syncing makes these tasks visible to everyone who visits the site.</p></Card>}
+    {libraryTasks.length === 0 ? <Card><EmptyState title={librarySearch ? "No matching saved tasks" : sharedListUnavailable ? "Shared task list unavailable" : "No saved tasks yet"} description={librarySearch ? "Try another title or description." : sharedListUnavailable ? "Try reloading the shared list. Browser-saved copies still appear here when available." : "Save a task comparison to return to its pinned model results later."} action={!librarySearch && !error ? <LinkButton variant="primary" href="/suitability">Create your first task</LinkButton> : undefined} /></Card> : <div className={styles.savedList}>
       {libraryTasks.map(({ summary, shared, localComparison }) => {
         const taskId = summary.task.id;
         const comparison = shared ? libraryDetails[taskId] ?? null : localComparison;
@@ -376,108 +379,120 @@ export default function Planner({ data }: { data: PlannerData }) {
         catch (cause) { comparisonError = cause instanceof Error ? cause.message : "Pinned comparison data is unavailable."; }
         const leader = rows[0];
         const preview = summary.preview;
-        return <article className="panel" key={summary.task.id}>
-          <div className="toolbar"><div><h2>{summary.task.title}</h2><p>{summary.task.request}</p></div><span className={styles.badge}>{shared ? "Shared" : "This browser"}</span></div>
+        return <Card as="article" key={summary.task.id}>
+          <div className="toolbar"><div><h2>{summary.task.title}</h2><p>{summary.task.request}</p></div><Badge>{shared ? "Shared" : "This browser"}</Badge></div>
           <dl className={styles.taskMeta}><div><dt>Last updated</dt><dd>{niceDate(summary.task.updated_at)}</dd></div><div><dt>Evaluations</dt><dd>{summary.task.evaluation_weights.length}</dd></div><div><dt>Candidates</dt><dd>{summary.candidate_count}</dd></div></dl>
           <p className={styles.captureList}><strong>Pinned captures:</strong> {summary.task.evaluation_weights.map(weight => `${summary.evaluations.find(evaluation => evaluation.id === weight.evaluation_id)?.display_name ?? weight.evaluation_id} · ${weight.captured_at}`).join("; ")}</p>
           {preview ? <p><strong>Leading candidate:</strong> {preview.model} · suitability {preview.score === null ? "No score" : preview.score.toFixed(1)} · Cost per Intelligence Index task {preview.intelligence_index_cost ? `$${preview.intelligence_index_cost.cost_usd.toFixed(2)} · captured ${niceDate(preview.intelligence_index_cost.captured_at)}` : "—"}</p>
             : leader ? <p><strong>Leading candidate:</strong> {leader.model} · suitability {leader.score === null ? "No score" : leader.score.toFixed(1)} · Cost per Intelligence Index task {leader.intelligence_index_cost ? `$${leader.intelligence_index_cost.cost_usd.toFixed(2)} · captured ${niceDate(leader.intelligence_index_cost.captured_at)}` : "—"}</p>
               : comparisonError ? <p role="alert">{comparisonError}</p> : <p>Open the comparison to load its pinned model results.</p>}
           {libraryDetailErrors[taskId] && <p role="alert">{libraryDetailErrors[taskId]}</p>}
-          <div className="toolbar"><Link href={`/suitability/${taskId}`}>Open comparison</Link><button disabled={shared && libraryLoading.includes(taskId)} onClick={() => {
+          <div className="toolbar"><Link href={`/suitability/${taskId}`}>Open comparison</Link><Button disabled={shared && libraryLoading.includes(taskId)} loading={shared && libraryLoading.includes(taskId)} onClick={() => {
             if (comparison) downloadBackup(comparison);
             else void loadLibraryComparison(taskId).then(downloadBackup).catch(() => undefined);
-          }}>{shared && libraryLoading.includes(taskId) ? "Loading backup…" : "Download backup"}</button></div>
+          }}>Download backup</Button></div>
           <details onToggle={event => { if (shared && event.currentTarget.open && !comparison) void loadLibraryComparison(taskId).catch(() => undefined); }}>
             <summary>Review comparison in place</summary>
             {!comparison && (libraryDetailErrors[taskId]
-              ? <div><p role="alert">{libraryDetailErrors[taskId]}</p><button onClick={() => void loadLibraryComparison(taskId).catch(() => undefined)}>Retry loading comparison</button></div>
+              ? <div><p role="alert">{libraryDetailErrors[taskId]}</p><Button onClick={() => void loadLibraryComparison(taskId).catch(() => undefined)}>Retry loading comparison</Button></div>
               : <p role="status">{libraryLoading.includes(taskId) ? "Loading pinned comparison…" : "Open this section to load the pinned model results."}</p>)}
             {comparison && (comparisonError ? <p role="alert">{comparisonError}</p> : <SuitabilityComparison data={comparison} rows={rows} />)}
           </details>
-        </article>;
+        </Card>;
       })}
     </div>}
     <p role="status">{notice}</p>
   </div>;
 
   if (isReview && !editing) {
-    if (!active) return <section className="panel"><h1>Saved comparison unavailable</h1>{error && <p role="alert">{error}</p>}<Link href="/suitability/saved">Back to saved tasks</Link></section>;
+    if (!active) return <Card><h1>Saved comparison unavailable</h1>{error && <p role="alert">{error}</p>}<Link href="/suitability/saved">Back to saved tasks</Link></Card>;
     let comparisonError = "";
     let rows = [] as ReturnType<typeof comparisonRows>;
     try { rows = comparisonRows(active, active.task.evaluation_weights, active.task.candidate_model_ids); }
     catch (cause) { comparisonError = cause instanceof Error ? cause.message : "Pinned comparison data is unavailable."; }
     return <div className={styles.planner}>
+      <PageHeader>
       <div className="breadcrumb"><Link href="/suitability/saved">Saved tasks</Link> / {active.task.title}</div>
       <div className="eyebrow">Saved comparison</div><h1>{active.task.title}</h1><p>{active.task.request}</p>
       <p>{active.task.evaluation_weights.length} evaluations · {active.task.candidate_model_ids.length} candidates · Updated {niceDate(active.task.updated_at)}</p>
-      <div className="toolbar"><button onClick={() => setEditing(true)}>Edit settings</button><Link className={styles.primaryLink} href="/suitability">New task</Link><Link href="/suitability/saved">Saved tasks library</Link></div>
+      </PageHeader>
+      <div className="toolbar"><Button onClick={() => setEditing(true)}>Edit settings</Button><LinkButton variant="primary" href="/suitability">New task</LinkButton><Link href="/suitability/saved">Saved tasks library</Link></div>
       <p role="status">{browserSaved.some(item => item.task.id === active.task.id && item.task.updated_at >= active.task.updated_at) ? "Saved in this browser · shared sync pending. Keep a backup before clearing browser data or switching devices." : "Saved to the shared library."}</p>
-      <div className="toolbar"><button onClick={() => downloadBackup(active)}>Download backup</button>{browserSaved.some(item => item.task.id === active.task.id) && <button onClick={syncBrowserTasks} disabled={syncingBrowserSaved}>{syncingBrowserSaved ? "Syncing tasks…" : "Sync browser tasks to shared library"}</button>}</div>
+      <div className="toolbar"><Button onClick={() => downloadBackup(active)}>Download backup</Button>{browserSaved.some(item => item.task.id === active.task.id) && <Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync browser tasks to shared library</Button>}</div>
       {notice && <p role="status">{notice}</p>}
-      {error && <p role="alert" className="panel error">{error}</p>}
-      {comparisonError ? <p role="alert" className="panel error">{comparisonError}</p> : <section className="panel"><h2>Model comparison</h2><SuitabilityComparison data={active} rows={rows} /></section>}
+      {error && <Alert className="workflow-alert" tone="error">{error}</Alert>}
+      {comparisonError ? <Alert className="workflow-alert" tone="error">{comparisonError}</Alert> : <Card><h2>Model comparison</h2><SuitabilityComparison data={active} rows={rows} /></Card>}
     </div>;
   }
 
-  if (isReview && !active) return <section className="panel"><h1>Saved comparison unavailable</h1>{error && <p role="alert">{error}</p>}<Link href="/suitability/saved">Back to saved tasks</Link></section>;
+  if (isReview && !active) return <Card><h1>Saved comparison unavailable</h1>{error && <p role="alert">{error}</p>}<Link href="/suitability/saved">Back to saved tasks</Link></Card>;
 
   return <div className={styles.planner}>
+    <PageHeader>
     <div className="eyebrow">Task suitability · shared saves</div>
     <h1>{active ? `Edit ${active.task.title}` : "Find the best model for a task."}</h1>
     <p>Choose source rankings and priorities, then compare models with transparent coverage and pinned cost context. Browser saves work while shared storage is unavailable and stay on this browser and device.</p>
-    <div className="toolbar"><Link href="/suitability/saved">Saved tasks library</Link>{isReview && <button onClick={() => setEditing(false)}>Cancel editing</button>}</div>
-    {active?.candidates.some(candidate => !candidate.source_model_ids) && <p className="panel">This saved task keeps its original model matching. <Link href="/suitability">Create a new task</Link> to compare models across known alternate sheet labels.</p>}
-    {error && <p role="alert" className="panel error">{error}</p>}
-    {browserSaved.length > 0 && <section className="panel"><h2>Browser-saved tasks</h2><p>{browserSaved.length} task{browserSaved.length === 1 ? " is" : "s are"} saved in this browser with shared sync pending.</p><button onClick={syncBrowserTasks} disabled={syncingBrowserSaved}>{syncingBrowserSaved ? "Syncing tasks…" : "Sync browser tasks to shared library"}</button></section>}
-    <section className="panel"><h2>1. Describe the task</h2>
-      <label htmlFor="task-title">Task title</label><input id="task-title" maxLength={80} value={title} onChange={event => setTitle(event.target.value)} placeholder="e.g. Analyze company financials" />
-      <label htmlFor="task-request">Task description</label><textarea id="task-request" value={request} onChange={event => setRequest(event.target.value)} placeholder="Describe what you need a model to do" rows={3} />
-      <p>Task text is saved as context. Your evaluations and weights control the score.</p></section>
-    <section className="panel"><h2>2. Choose evaluations and weights</h2>
-      <div className={`${styles.searchField} ${styles.evaluationSearch}`}><label htmlFor="evaluation-search">Search evaluations</label><input id="evaluation-search" type="search" placeholder="Search by evaluation or metric" value={evaluationSearch} onChange={event => setEvaluationSearch(event.target.value)} /></div>
+    </PageHeader>
+    <div className="toolbar"><Link href="/suitability/saved">Saved tasks library</Link>{isReview && <Button variant="quiet" onClick={() => setEditing(false)}>Cancel editing</Button>}</div>
+    {active?.candidates.some(candidate => !candidate.source_model_ids) && <Alert className="workflow-alert" tone="info">This saved task keeps its original model matching. <Link href="/suitability">Create a new task</Link> to compare models across known alternate sheet labels.</Alert>}
+    {error && <Alert className="workflow-alert" tone="error">{error}</Alert>}
+    {browserSaved.length > 0 && <Card><h2>Browser-saved tasks</h2><p>{browserSaved.length} task{browserSaved.length === 1 ? " is" : "s are"} saved in this browser with shared sync pending.</p><Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync browser tasks to shared library</Button></Card>}
+    <Card className="ui-workflow-sheet">
+      <Section className="ui-workflow-step"><h2>1. Describe the task</h2>
+      <div className="ui-form-grid">
+        <FormField id="task-title" label="Task title" required>
+          <Input maxLength={80} value={title} onChange={event => setTitle(event.target.value)} placeholder="e.g. Analyze company financials" />
+        </FormField>
+        <FormField id="task-request" label="Task description" required helper="Task text is saved as context. Your evaluations and weights control the score.">
+          <TextArea value={request} onChange={event => setRequest(event.target.value)} placeholder="Describe what you need a model to do" rows={3} />
+        </FormField>
+      </div>
+      </Section>
+      <Section className="ui-workflow-step"><h2>2. Choose evaluations and weights</h2>
+      <div className={`${styles.searchField} ${styles.evaluationSearch}`}><label htmlFor="evaluation-search">Search evaluations</label><Input id="evaluation-search" type="search" placeholder="Search by evaluation or metric" value={evaluationSearch} onChange={event => setEvaluationSearch(event.target.value)} /></div>
       <div className={styles.picker}>{groups.map(category => <fieldset key={category}><legend>{category.replaceAll("_", " ")}</legend>
         {visibleEvaluations.filter(evaluation => evaluation.category === category).map(evaluation => <label className={styles.option} key={evaluation.id}>
-          <input type="checkbox" checked={weights.some(weight => weight.evaluation_id === evaluation.id)} onChange={() => toggleEvaluation(evaluation.id)} />
+          <Checkbox checked={weights.some(weight => weight.evaluation_id === evaluation.id)} onChange={() => toggleEvaluation(evaluation.id)} />
           <span><strong>{evaluation.display_name}</strong><small>{evaluation.metric_label} · {evaluation.row_count} ranked rows · {evaluation.captured_at}</small></span></label>)}
       </fieldset>)}{visibleEvaluations.length === 0 && <p>No evaluations match.</p>}</div>
-      <div className="toolbar"><button onClick={() => setWeights(equal(weights))} disabled={!weights.length}>Equal weights</button><strong aria-live="polite">Total: {Number.isFinite(total) ? total.toFixed(2) : "Invalid"}%</strong></div>
+      <div className="toolbar"><Button onClick={() => setWeights(equal(weights))} disabled={!weights.length}>Equal weights</Button><strong aria-live="polite">Total: {Number.isFinite(total) ? total.toFixed(2) : "Invalid"}%</strong></div>
       {weights.map(weight => <div className={styles.weight} key={weight.evaluation_id}><label htmlFor={`weight-${weight.evaluation_id}`}>{working.evaluations.find(evaluation => evaluation.id === weight.evaluation_id)?.display_name}</label>
-        <input id={`weight-${weight.evaluation_id}`} type="number" min="0" max="100" step="any" value={Number.isFinite(weight.weight) ? weight.weight : ""} onChange={event => editWeight(weight.evaluation_id, event.target.value)} /><span>%</span></div>)}
-      <p>Weights must total 100%. Adding or removing an evaluation resets equal weights.</p></section>
-    <section className="panel"><h2>3. Select candidate models</h2><p>Known alternate sheet labels match the same model. Reasoning effort and fallback variants remain separate.</p>
+        <Input id={`weight-${weight.evaluation_id}`} type="number" min="0" max="100" step="any" value={Number.isFinite(weight.weight) ? weight.weight : ""} onChange={event => editWeight(weight.evaluation_id, event.target.value)} /><span>%</span></div>)}
+      <p>Weights must total 100%. Adding or removing an evaluation resets equal weights.</p></Section>
+      <Section className="ui-workflow-step"><h2>3. Select candidate models</h2><p>Known alternate sheet labels match the same model. Reasoning effort and fallback variants remain separate.</p>
       <div className={`${styles.modelToolbar} ${styles.toolbarReset}`}>
-        <label className={styles.searchField} htmlFor="model-search">Search models<input id="model-search" type="search" placeholder="Search model names or providers" value={modelSearch} onChange={event => setModelSearch(event.target.value)} /></label>
-        <label className={styles.searchField} htmlFor="provider-filter">Provider<select id="provider-filter" value={provider} onChange={event => setProvider(event.target.value)}><option value="">All providers</option>{[...new Set(working.candidates.map(candidate => candidate.provider))].sort().map(item => <option key={item}>{item}</option>)}</select></label>
-        <label className={styles.searchField} htmlFor="model-favorites">Candidate view<select id="model-favorites" value={modelMode} onChange={event => setModelMode(event.target.value as "all" | "favorites")}><option value="all">All models</option><option value="favorites">Favorites</option></select></label>
-        <button onClick={() => setSelected([...new Set([...selected, ...visibleModels.map(candidate => candidate.model_id)])])}>Select all visible</button>
-        <button onClick={() => { const visible = new Set(visibleModels.map(candidate => candidate.model_id)); setSelected(selected.filter(id => !visible.has(id))); }}>Clear visible</button>
+        <label className={styles.searchField} htmlFor="model-search">Search models<Input id="model-search" type="search" placeholder="Search model names or providers" value={modelSearch} onChange={event => setModelSearch(event.target.value)} /></label>
+        <label className={styles.searchField} htmlFor="provider-filter">Provider<Select id="provider-filter" value={provider} onChange={event => setProvider(event.target.value)}><option value="">All providers</option>{[...new Set(working.candidates.map(candidate => candidate.provider))].sort().map(item => <option key={item}>{item}</option>)}</Select></label>
+        <label className={styles.searchField} htmlFor="model-favorites">Candidate view<Select id="model-favorites" value={modelMode} onChange={event => setModelMode(event.target.value as "all" | "favorites")}><option value="all">All models</option><option value="favorites">Favorites</option></Select></label>
+        <Button onClick={() => setSelected([...new Set([...selected, ...visibleModels.map(candidate => candidate.model_id)])])}>Select all visible</Button>
+        <Button variant="quiet" onClick={() => { const visible = new Set(visibleModels.map(candidate => candidate.model_id)); setSelected(selected.filter(id => !visible.has(id))); }}>Clear visible</Button>
         <strong className={styles.selectionCount} aria-live="polite">{availableFavorites.length} favorites available · {matchingFavorites.length} match filters · {selected.length} candidates selected</strong>
       </div>
-      <div className="toolbar"><button onClick={() => setSelected([...new Set([...selected, ...availableFavorites.map(candidate => candidate.model_id)])])} disabled={!availableFavorites.length}>Add all favorites</button>
-        <button onClick={() => setSelected(availableFavorites.map(candidate => candidate.model_id))} disabled={!availableFavorites.length}>Replace selection with all favorites</button>
+      <div className="toolbar"><Button onClick={() => setSelected([...new Set([...selected, ...availableFavorites.map(candidate => candidate.model_id)])])} disabled={!availableFavorites.length}>Add all favorites</Button>
+        <Button onClick={() => setSelected(availableFavorites.map(candidate => candidate.model_id))} disabled={!availableFavorites.length}>Replace selection with all favorites</Button>
         <span>{visibleModels.length} models shown</span></div>
       {unavailableFavorites.length > 0 && <p role="status">{unavailableFavorites.length} favorited model{unavailableFavorites.length === 1 ? " is" : "s are"} unavailable in the current candidate catalog. They remain in your favorites; no substitute was selected.</p>}
       {favoriteNotice && <p role="status">{favoriteNotice}</p>}
-      <div className={styles.chips}>{working.candidates.filter(candidate => selected.includes(candidate.model_id)).map(candidate => <button key={candidate.model_id} aria-label={`Remove ${candidate.model}, ${candidate.provider}`} onClick={() => setSelected(selected.filter(id => id !== candidate.model_id))}>{candidate.model} · {candidate.provider} ×</button>)}</div>
+      <div className={styles.chips}>{working.candidates.filter(candidate => selected.includes(candidate.model_id)).map(candidate => <Button key={candidate.model_id} size="compact" variant="quiet" aria-label={`Remove ${candidate.model}, ${candidate.provider}`} onClick={() => setSelected(selected.filter(id => id !== candidate.model_id))}>{candidate.model} · {candidate.provider} ×</Button>)}</div>
       <div className={styles.picker}>{visibleModels.map(candidate => {
         const identity = candidate.identity_key ?? masterIdentityKey(candidate.provider, candidate.model);
         const isFavorite = favorites.includes(identity);
-        return <div className={styles.candidateOption} key={candidate.model_id}><input aria-label={`Select ${candidate.model}, ${candidate.provider}`} type="checkbox" checked={selected.includes(candidate.model_id)} onChange={event => setSelected(event.target.checked ? [...selected, candidate.model_id] : selected.filter(id => id !== candidate.model_id))} />
+        return <div className={styles.candidateOption} key={candidate.model_id}><Checkbox aria-label={`Select ${candidate.model}, ${candidate.provider}`} checked={selected.includes(candidate.model_id)} onChange={event => setSelected(event.target.checked ? [...selected, candidate.model_id] : selected.filter(id => id !== candidate.model_id))} />
           <span><strong>{candidate.model}</strong><small>{candidate.provider}</small></span>
-          <button className={styles.favoriteStar} type="button" aria-pressed={isFavorite} aria-label={`${isFavorite ? "Remove" : "Add"} ${candidate.model} to favorites`} onClick={() => toggleFavorite(identity)}>{isFavorite ? "★" : "☆"}</button>
+          <IconButton className={styles.favoriteStar} variant="quiet" type="button" aria-pressed={isFavorite} aria-label={`${isFavorite ? "Remove" : "Add"} ${candidate.model} to favorites`} onClick={() => toggleFavorite(identity)}>{isFavorite ? "★" : "☆"}</IconButton>
         </div>;
       })}{!visibleModels.length && <p>No models match this view. <Link href="/">Visit the master leaderboard to build a favorites list.</Link></p>}</div>
-    </section>
-    <section className="panel"><h2>4. Save and compare</h2><p>{request.trim() || "Describe your task above."}</p><p>{weights.length} evaluations · {selected.length} candidates · rank_percentile_v1</p>
+      </Section>
+      <Section className="ui-workflow-step"><h2>4. Save and compare</h2><p>{request.trim() || "Describe your task above."}</p><p>{weights.length} evaluations · {selected.length} candidates · rank_percentile_v1</p>
       <ul>{weights.map(weight => <li key={weight.evaluation_id}>{working.evaluations.find(evaluation => evaluation.id === weight.evaluation_id)?.display_name}: {Number.isFinite(weight.weight) ? weight.weight.toFixed(2) : "Invalid"}% · snapshot {weight.captured_at}</li>)}</ul>
       {!valid && <p>Enter a title and description, choose at least one evaluation and candidate, and assign nonnegative weights totaling 100%.</p>}
-      {result.error && <p role="alert">{result.error}</p>}
-      <div className="toolbar"><button className={styles.primary} onClick={() => void save()} disabled={!valid || !!result.error || saving}>{saving ? "Saving comparison…" : active ? "Save settings and update comparison" : "Save task and compare models"}</button><button onClick={() => void save(true)} disabled={!valid || !!result.error || saving}>Save in this browser</button><button onClick={() => downloadBackup(createComparison())} disabled={!valid || !!result.error || saving}>Download backup</button></div>
-      <p role="status">{notice}</p></section>
-    {valid && !result.error && <section className="panel"><h2>Model comparison preview</h2><p>{dirty ? "Preview of unsaved settings. Save to keep this configuration." : `Saved comparison · calculated ${active?.task.last_calculated_at}`}</p>
+      {result.error && <Alert tone="error">{result.error}</Alert>}
+      <div className="toolbar"><Button variant="primary" loading={saving} onClick={() => void save()} disabled={!valid || !!result.error || saving}>{active ? "Save settings and update comparison" : "Save task and compare models"}</Button><Button onClick={() => void save(true)} disabled={!valid || !!result.error || saving}>Save in this browser</Button><Button onClick={() => downloadBackup(createComparison())} disabled={!valid || !!result.error || saving}>Download backup</Button></div>
+      <p role="status">{notice}</p></Section>
+    </Card>
+    {valid && !result.error && <Card><h2>Model comparison preview</h2><p>{dirty ? "Preview of unsaved settings. Save to keep this configuration." : `Saved comparison · calculated ${active?.task.last_calculated_at}`}</p>
       <SuitabilityComparison data={working} rows={result.rows} completeOnly={completeOnly} onCompleteOnlyChange={setCompleteOnly} />
-    </section>}
-    <section className="panel" id="methodology"><h2>How suitability works</h2><p>Each source rank becomes a 0–100 component: 100 × (1 − (rank − 1) / max(1, cohort size − 1)), clamped to 0–100. Suitability averages these components using your weights. Higher is better. Weighted average source rank uses the same available weights; lower is better.</p><p>Missing entries stay “Not ranked” and are excluded from the average. Coverage shows the selected weight with a rank. Complete weight coverage sorts first. Cost is shown as separate context and is not used in the score.</p><p>Saved tasks preserve their full source cohorts and capture dates. New imports do not change saved results or pinned costs. Source links open the currently published leaderboards, which may have newer ranks. <Link href="/about/data">Read the data notes</Link>.</p></section>
+    </Card>}
+    <Section id="methodology" className="prose"><h2>How suitability works</h2><p>Each source rank becomes a 0–100 component: 100 × (1 − (rank − 1) / max(1, cohort size − 1)), clamped to 0–100. Suitability averages these components using your weights. Higher is better. Weighted average source rank uses the same available weights; lower is better.</p><p>Missing entries stay “Not ranked” and are excluded from the average. Coverage shows the selected weight with a rank. Complete weight coverage sorts first. Cost is shown as separate context and is not used in the score.</p><p>Saved tasks preserve their full source cohorts and capture dates. New imports do not change saved results or pinned costs. Source links open the currently published leaderboards, which may have newer ranks. <Link href="/about/data">Read the data notes</Link>.</p></Section>
   </div>;
 }

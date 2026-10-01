@@ -3,6 +3,7 @@ import {Suspense} from "react";
 import MasterLeaderboard from "@/components/master-leaderboard";
 import {getMasterDataset} from "@/lib/data";
 import {masterTableRows} from "@/lib/master";
+import {Card, PageHeader, Section, SectionHeader} from "@/components/ui/primitives";
 import styles from "./home.module.css";
 
 export const dynamic="force-dynamic";
@@ -10,10 +11,12 @@ export const dynamic="force-dynamic";
 export default async function Home(){
   const {evaluations,rows,intelligenceIndexCostCapturedAt}=await getMasterDataset();
   return <>
+    <PageHeader>
     <div className="eyebrow">Artificial Analysis · leaderboard snapshots</div>
     <h1>Compare model ranks across evaluations.</h1>
     <p>See each model’s rank across the benchmarks, then open an individual leaderboard for more detail.</p>
-    <section className="panel"><div className="eyebrow">Task suitability planner</div><h2>Find the best model for a task</h2><p>Choose evaluations, set your priorities, and compare model suitability with transparent coverage.</p><Link href="/suitability">Create a task comparison →</Link></section>
+    </PageHeader>
+    <Card density="compact"><div className="eyebrow">Task suitability planner</div><h2>Find the best model for a task</h2><p>Choose evaluations, set your priorities, and compare model suitability with transparent coverage.</p><Link href="/suitability">Create a task comparison →</Link></Card>
 
     <Suspense fallback={<p>Loading master leaderboard…</p>}>
       <MasterLeaderboard rows={masterTableRows(rows)} evaluations={evaluations} costCapturedAt={intelligenceIndexCostCapturedAt}/>
@@ -21,9 +24,13 @@ export default async function Home(){
 
     {evaluations.length===0
       ? <section className="panel"><h2>No snapshot available yet</h2><p>Import the workbook to populate the evaluation catalog.</p></section>
-      : <section className={styles.evaluationSection} aria-labelledby="individual-evaluations">
+      : <Section className={styles.evaluationSection} aria-labelledby="individual-evaluations">
+          <SectionHeader>
+            <div>
           <div className="eyebrow">Browse a single benchmark</div>
           <h2 id="individual-evaluations">Explore individual evaluations</h2>
+            </div>
+          </SectionHeader>
           <div className="catalog">
             {evaluations.map(e=><article className="card" key={e.id}>
               <div className="eyebrow">{e.category.replaceAll("_"," ")}</div>
@@ -33,7 +40,7 @@ export default async function Home(){
               <Link className="open" href={`/leaderboards/${e.slug}`}>View leaderboard →</Link>
             </article>)}
           </div>
-        </section>}
+        </Section>}
 
     <p className={styles.dataNote}>Intelligence Index includes workbook estimates and documented provider mapping. <Link href="/about/data">Read the data notes</Link>.</p>
   </>;

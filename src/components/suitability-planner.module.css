@@ -1,21 +1,6 @@
-.planner textarea {
-  display: block;
-  width: 100%;
-  margin-top: var(--space-2);
-  padding: var(--space-3);
-  resize: vertical;
-}
-
 .planner label {
   color: var(--text-primary);
-  font-weight: var(--type-weight-medium);
-}
-
-.planner label > input:not([type="checkbox"]),
-.planner label > select {
-  display: block;
-  width: 100%;
-  margin-top: var(--space-2);
+  font-weight: var(--type-weight-semibold);
 }
 
 .searchField {
@@ -134,7 +119,7 @@
 }
 
 .chips button {
-  min-height: 36px;
+  min-height: 40px;
   padding: var(--space-1) var(--space-2);
   font-size: var(--font-size-caption);
 }
@@ -167,38 +152,6 @@
   color: var(--warning-text);
   font-size: 1.125rem;
   line-height: 1;
-}
-
-.primary {
-  border-color: var(--primary);
-  background: var(--primary);
-  color: var(--text-on-primary);
-  font-weight: var(--type-weight-semibold);
-}
-
-.primary:hover:not(:disabled) {
-  border-color: var(--primary-hover);
-  background: var(--primary-hover);
-}
-
-.primaryLink {
-  display: inline-flex;
-  min-height: 44px;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-2) var(--space-4);
-  border: var(--border-width-default) solid var(--primary);
-  border-radius: var(--shape-radius-control);
-  background: var(--primary);
-  color: var(--text-on-primary);
-  font-weight: var(--type-weight-semibold);
-}
-
-.primaryLink:hover {
-  border-color: var(--primary-hover);
-  background: var(--primary-hover);
-  color: var(--text-on-primary);
-  text-decoration: none;
 }
 
 .results {
@@ -305,18 +258,6 @@
   font-size: var(--font-size-caption);
 }
 
-.badge {
-  display: inline-flex;
-  min-height: 28px;
-  align-items: center;
-  padding: var(--space-1) var(--space-2);
-  border: var(--border-width-default) solid var(--border-default);
-  border-radius: var(--shape-radius-tag);
-  color: var(--text-secondary);
-  font-size: var(--font-size-caption);
-  white-space: nowrap;
-}
-
 .savedList details summary {
   padding: var(--space-3) 0;
   color: var(--primary);
@@ -392,5 +333,9 @@
 
   .taskMeta {
     gap: var(--space-4);
+  }
+
+  .chips button {
+    min-height: 44px;
   }
 }

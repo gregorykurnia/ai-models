@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getEvaluationDataset } from "@/lib/data";
 import type { Evaluation } from "@/lib/contract";
 import Leaderboard from "@/components/leaderboard";
+import { PageHeader } from "@/components/ui/primitives";
 import { intelligenceIndexCostsForEntries,intelligenceIndexCostCapturedAt } from "@/lib/intelligence-index-costs";
 
 function ComponentIndexNav({ active, evaluations }: { active: Evaluation; evaluations: Evaluation[] }) {
@@ -47,6 +48,7 @@ export default async function Page({ params }: { params: Promise<{ evaluationSlu
   });
 
   return <>
+    <PageHeader>
     <div className="breadcrumb"><Link href="/">Evaluations</Link> / {evaluation.display_name}</div>
     <div className="eyebrow">{evaluation.metric_label} · {evaluation.score_kind.replaceAll("_", " ")}</div>
     <h1>{evaluation.display_name}</h1>
@@ -55,6 +57,7 @@ export default async function Page({ params }: { params: Promise<{ evaluationSlu
       ? <a href={evaluation.source_url} target="_blank" rel="noreferrer">Original source ↗</a>
       : "Source: supplied workbook"}</p>
     <p>Cost per Intelligence Index task is the Artificial Analysis profile value captured {costCapturedDate}, weighted across the Index evaluations. Workbook cost values mentioned in the source notes below are evaluation-specific.</p>
+    </PageHeader>
     {evaluation.metric_group && <ComponentIndexNav active={evaluation} evaluations={evaluations} />}
     {evaluation.notes && <p>{evaluation.notes}</p>}
     <Leaderboard entries={entries} evaluation={evaluation} taskCosts={taskCosts} />
