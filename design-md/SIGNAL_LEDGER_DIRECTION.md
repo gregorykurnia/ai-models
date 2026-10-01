@@ -47,7 +47,7 @@ The layout scales across the product: the evidence sheet becomes a leaderboard, 
 - **Surface treatment:** Use a warm mineral page canvas, white working sheets, and a pale sage inset for selected or explanatory areas. Avoid nesting multiple bordered cards.
 - **Borders and shadows:** Use 1px neutral borders for structure. Reserve a soft shadow for floating menus and dialogs; normal sheets and cards remain flat.
 - **Radius feel:** 12px for major sheets, 8px for controls and small interactive surfaces, 6px for compact tags. Pills are reserved for status or removable filters.
-- **Typography feel:** Use Source Sans 3 or a comparable humanist sans for readable UI. Use IBM Plex Mono for ranks, costs, percentages, and dates. Headings are sentence case with tight tracking; labels are concise and medium weight.
+- **Typography feel:** Use Geist for a crisp, modern UI. Use Geist Mono for ranks, costs, percentages, and dates. Headings are sentence case with tight tracking; labels are concise and medium weight.
 - **Color usage:** Keep roughly 85% of the screen neutral. Evergreen is the single brand/action color. Amber, red, and blue appear only for warning, error, and information states. Benchmark colors stay small and data-specific.
 - **Iconography:** Use simple 18px outline icons with a consistent 1.75px stroke. Pair unfamiliar icons with text; never use emoji as interface icons.
 - **Motion:** Use 120–180ms ease-out transitions for hover, selection, disclosure, and route feedback. Avoid parallax, bouncing, decorative loading, and large page motion.

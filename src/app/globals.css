@@ -59,8 +59,8 @@
   --card-padding-compact: var(--space-4);
 
   /* Typography */
-  --font-family-sans: var(--font-source-sans-3), system-ui, "Segoe UI", sans-serif;
-  --font-family-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-family-sans: var(--font-geist), system-ui, "Segoe UI", sans-serif;
+  --font-family-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
   --font-size-caption: 0.75rem;
   --font-size-data: 0.8125rem;
   --font-size-ui: 0.875rem;

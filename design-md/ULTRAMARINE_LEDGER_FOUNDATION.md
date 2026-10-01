@@ -53,7 +53,7 @@ Use a 4px base unit. Use this scale unless typography or an external asset requi
 
 ## 3. Typography system
 
-Use **Source Sans 3** with `system-ui`, `Segoe UI`, and sans-serif fallbacks. Use **IBM Plex Mono** with tabular figures for ranks, prices, percentages, dates, versions, and aligned numeric columns. Use sentence case.
+Use **Geist** with `system-ui`, `Segoe UI`, and sans-serif fallbacks. Use **Geist Mono** with tabular figures for ranks, prices, percentages, dates, versions, and aligned numeric columns. Use sentence case.
 
 | Role | Size / line height | Weight | Guidance |
 | --- | --- | ---: | --- |

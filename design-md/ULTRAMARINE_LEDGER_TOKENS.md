@@ -91,8 +91,8 @@ Names describe purpose, not a color or a specific component. Components consume 
   --card-padding-compact: var(--space-4);
 
   /* Typography */
-  --font-family-sans: "Source Sans 3", system-ui, "Segoe UI", sans-serif;
-  --font-family-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-family-sans: "Geist", system-ui, "Segoe UI", sans-serif;
+  --font-family-mono: "Geist Mono", ui-monospace, monospace;
 
   --font-size-caption: 0.75rem;
   --font-size-data: 0.8125rem;
