@@ -36,6 +36,7 @@ export function Button({
   size = "default",
   loading = false,
   disabled,
+  type = "button",
   className,
   children,
   ...props
@@ -43,6 +44,7 @@ export function Button({
   return (
     <button
       {...props}
+      type={type}
       className={actionClass(variant, size, className)}
       disabled={disabled || loading}
       aria-busy={loading || props["aria-busy"]}
