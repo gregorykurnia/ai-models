@@ -23,6 +23,68 @@
   margin: var(--space-1) 0 var(--space-4);
 }
 
+.libraryToolbar {
+  display: grid;
+  grid-template-columns: auto minmax(20rem, 42rem) auto;
+  align-items: end;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.librarySearchField {
+  width: 100%;
+}
+
+.libraryImport {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.libraryImport:focus-within .libraryImportButton {
+  outline: var(--focus-ring-width) var(--border-style) var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.libraryImportButton {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-4);
+  border: var(--border-width-default) var(--border-style) var(--border-strong);
+  border-radius: var(--shape-radius-control);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: var(--font-size-ui);
+  font-weight: var(--type-weight-semibold);
+  line-height: var(--line-height-ui);
+  cursor: pointer;
+  transition: color var(--transition-interactive), background-color var(--transition-interactive), border-color var(--transition-interactive);
+}
+
+.libraryImportButton:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-subtle);
+}
+
+.visuallyHiddenInput {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-width: 1px !important;
+  min-height: 1px !important;
+  max-width: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
 .modelDescription {
   max-width: 52rem;
   margin: 0 0 var(--space-6);
@@ -252,6 +314,35 @@
   gap: var(--space-1);
 }
 
+.browserSyncCard {
+  gap: var(--space-4);
+}
+
+.browserSyncHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.browserSyncHeader > div {
+  min-width: 0;
+}
+
+.browserSyncHeader h2 {
+  margin: 0 0 var(--space-2);
+}
+
+.browserSyncHeader p,
+.browserSyncNote {
+  margin: 0;
+}
+
+.browserSyncNote {
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+}
+
 .savedList > article h2 {
   margin: 0 0 var(--space-2);
 }
@@ -300,6 +391,14 @@
 }
 
 @media (max-width: 1100px) {
+  .libraryToolbar {
+    grid-template-columns: auto minmax(18rem, 1fr);
+  }
+
+  .libraryImport {
+    grid-column: 1 / -1;
+  }
+
   .modelFilterFields {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -314,6 +413,26 @@
 }
 
 @media (max-width: 640px) {
+  .libraryToolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .libraryToolbar > .ui-button,
+  .libraryImport,
+  .libraryImportButton {
+    width: 100%;
+  }
+
+  .browserSyncHeader {
+    align-items: stretch;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .browserSyncHeader .ui-button {
+    width: 100%;
+  }
+
   .weight {
     flex-wrap: wrap;
   }

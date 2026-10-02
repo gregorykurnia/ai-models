@@ -362,12 +362,24 @@ export default function Planner({ data }: { data: PlannerData }) {
   if (isLibrary) return <div className={styles.planner}>
     <PageHeader>
       <div className="eyebrow">Task suitability · saved library</div><h1>Saved tasks</h1>
-      <p>Shared tasks are visible to everyone who visits this site. Favorites stay in this browser. Cost per Intelligence Index task is the Artificial Analysis weighted average for one Index task, not the price of the task description here.</p>
+      <p>Shared tasks are visible to everyone who visits this site. Browser saves stay on this device until you sync or download them.</p>
     </PageHeader>
-    <div className="toolbar"><LinkButton variant="primary" href="/suitability">Create a task</LinkButton><label className={styles.searchField} htmlFor="saved-task-search">Search saved tasks<Input id="saved-task-search" type="search" value={librarySearch} onChange={event => setLibrarySearch(event.target.value)} placeholder="Search titles or task descriptions" /></label></div>
+    <div className={styles.libraryToolbar}>
+      <LinkButton variant="primary" href="/suitability">Create a task</LinkButton>
+      <label className={`${styles.searchField} ${styles.librarySearchField}`} htmlFor="saved-task-search">Search saved tasks<Input id="saved-task-search" type="search" value={librarySearch} onChange={event => setLibrarySearch(event.target.value)} placeholder="Search titles or task descriptions" /></label>
+      <div className={styles.libraryImport}>
+        <label className={styles.libraryImportButton} htmlFor="task-backup">Import backup</label>
+        <Input className={styles.visuallyHiddenInput} id="task-backup" aria-label="Import a task backup" type="file" accept=".json,application/json" onChange={event => { const file = event.target.files?.[0]; if (file) void restoreBackup(file); event.target.value = ""; }} />
+      </div>
+    </div>
     {error && <Alert className="workflow-alert" tone="error"><p>{error}</p>{sharedListUnavailable && <Button onClick={() => setLibraryRetry(value => value + 1)}>Reload shared tasks</Button>}</Alert>}
-    <div className="toolbar"><FormField className="ui-file-field" id="task-backup" label="Import a task backup"><Input type="file" accept=".json,application/json" onChange={event => { const file = event.target.files?.[0]; if (file) void restoreBackup(file); event.target.value = ""; }} /></FormField></div>
-    {browserSaved.length > 0 && <Card><p>{browserSaved.length} task{browserSaved.length === 1 ? " is" : "s are"} saved in this browser with shared sync pending. They reopen here after a reload. Download backups before clearing browser data or switching devices.</p><Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync browser tasks to shared library</Button><p>Syncing makes these tasks visible to everyone who visits the site.</p></Card>}
+    {browserSaved.length > 0 && <Card className={styles.browserSyncCard}>
+      <div className={styles.browserSyncHeader}>
+        <div><h2>{browserSaved.length} task{browserSaved.length === 1 ? "" : "s"} saved in this browser</h2><p>Shared sync is pending. Sync {browserSaved.length === 1 ? "it" : "them"} to make {browserSaved.length === 1 ? "it" : "them"} available to everyone who visits this site.</p></div>
+        <Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync to shared library</Button>
+      </div>
+      <p className={styles.browserSyncNote}>Download a backup before clearing browser data.</p>
+    </Card>}
     {libraryTasks.length === 0 ? <Card><EmptyState title={librarySearch ? "No matching saved tasks" : sharedListUnavailable ? "Shared task list unavailable" : "No saved tasks yet"} description={librarySearch ? "Try another title or description." : sharedListUnavailable ? "Try reloading the shared list. Browser-saved copies still appear here when available." : "Save a task comparison to return to its pinned model results later."} action={!librarySearch && !error ? <LinkButton variant="primary" href="/suitability">Create your first task</LinkButton> : undefined} /></Card> : <div className={styles.savedList}>
       {libraryTasks.map(({ summary, shared, localComparison }) => {
         const taskId = summary.task.id;
