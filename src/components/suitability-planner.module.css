@@ -32,15 +32,16 @@
 }
 
 .categoryFilter,
-.categoryManager {
+.categoryManagerSection {
   position: relative;
 }
 
-.categoryFilter > summary,
-.categoryManager > summary {
+.categoryFilter > summary {
   display: flex;
   min-height: 44px;
   align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
   padding: var(--space-2) var(--space-4);
   border: var(--border-width-default) var(--border-style) var(--border-strong);
   border-radius: var(--shape-radius-control);
@@ -48,10 +49,26 @@
   background: var(--bg-surface);
   cursor: pointer;
   font-weight: var(--type-weight-semibold);
+  list-style: none;
+}
+
+.categoryFilter > summary::-webkit-details-marker {
+  display: none;
+}
+
+.categoryFilter > summary::after {
+  color: var(--text-secondary);
+  content: "⌄";
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.categoryFilter[open] > summary::after {
+  content: "⌃";
 }
 
 .categoryFilter[open] > summary,
-.categoryManager[open] > summary {
+.categoryFilter[open] > summary {
   border-color: var(--primary);
 }
 
@@ -61,7 +78,7 @@
   top: calc(100% + var(--space-2));
   right: 0;
   display: grid;
-  min-width: min(18rem, calc(100vw - 2rem));
+  min-width: min(24rem, calc(100vw - 2rem));
   max-height: min(60vh, 26rem);
   gap: var(--space-2);
   overflow: auto;
@@ -88,19 +105,22 @@
   flex: none;
 }
 
-.categoryManager {
-  margin: calc(-1 * var(--space-3)) 0 var(--space-5);
-}
-
-.categoryManager > summary {
-  width: fit-content;
-  min-height: 40px;
-}
-
-.categoryManager > :global(.ui-card) {
+.categoryManagerSection {
   display: grid;
   gap: var(--space-3);
-  margin-top: var(--space-2);
+  padding-top: var(--space-4);
+  margin-top: var(--space-3);
+  border-top: var(--border-width-default) var(--border-style) var(--border-default);
+}
+
+.categoryManagerSection > h3 {
+  margin: 0;
+  font-size: var(--font-size-card-title);
+  line-height: var(--line-height-card-title);
+}
+
+.categoryManagerSection > p {
+  margin: 0;
 }
 
 .categoryManageRow {
@@ -126,6 +146,12 @@
 
 .categoryCreateForm > .searchField {
   flex: 1;
+}
+
+.planner .librarySearchField {
+  color: var(--text-secondary);
+  font-size: var(--font-size-data);
+  font-weight: var(--type-weight-semibold);
 }
 
 .libraryResultsStatus {
@@ -1008,11 +1034,7 @@
 
 @media (max-width: 1100px) {
   .libraryToolbar {
-    grid-template-columns: auto minmax(15rem, 1fr) auto;
-  }
-
-  .libraryImport {
-    grid-column: 1 / -1;
+    grid-template-columns: auto minmax(15rem, 1fr) auto auto;
   }
 
   .modelFilterFields {

@@ -758,13 +758,29 @@ export default function Planner({ data }: { data: PlannerData }) {
       <LinkButton variant="primary" href={createTaskHref}>Create a task</LinkButton>
       <label className={`${styles.searchField} ${styles.librarySearchField}`} htmlFor="saved-task-search">Search saved tasks<Input id="saved-task-search" type="search" value={librarySearch} onChange={event => updateLibrarySearch(event.target.value)} placeholder="Search titles or task descriptions" /></label>
       <details className={styles.categoryFilter}>
-        <summary>Categories{selectedCategoryIds.length ? ` · ${selectedCategoryIds.length} selected` : " · All"}</summary>
+        <summary>{selectedCategoryIds.length ? `Categories · ${selectedCategoryIds.length} selected` : "All categories"}</summary>
         <fieldset>
           <legend>Filter by task category</legend>
           {[...filterCategories.map(category => ({ id: category.id, name: category.name })), { id: "__uncategorized__", name: "Uncategorized" }].map(category => {
             const checked = selectedCategoryIds.includes(category.id);
             return <label key={category.id} className={styles.categoryFilterOption}><Checkbox checked={checked} onChange={() => replaceLibraryUrl(librarySearch, checked ? selectedCategoryIds.filter(id => id !== category.id) : [...selectedCategoryIds, category.id])} />{category.name}</label>;
           })}
+          <div className={styles.categoryManagerSection} aria-labelledby="manage-categories-heading">
+            <h3 id="manage-categories-heading">Manage categories</h3>
+            {!categoriesLoaded ? <Alert tone="warning"><p>Categories are unavailable. Tasks remain accessible and assignments have been kept.</p><Button onClick={() => void refreshCategories().catch(() => undefined)}>Retry category loading</Button></Alert> : null}
+            {categoriesLoaded && categories.length === 0 && <p>No categories yet. Add one to organize saved tasks.</p>}
+            {categoriesLoaded && categories.map(category => <div className={styles.categoryManageRow} key={category.id}>
+              <Input aria-label={`Rename ${category.name}`} maxLength={60} value={categoryNameEdits[category.id] ?? category.name} onChange={event => setCategoryNameEdits(previous => ({ ...previous, [category.id]: event.target.value }))} />
+              <span>{libraryTasks.filter(item => item.summary.task.category_id === category.id).length} tasks</span>
+              <Button size="compact" disabled={categoryBusy || (categoryNameEdits[category.id] ?? category.name) === category.name} loading={categoryBusy} onClick={() => void handleRenameCategory(category)}>Rename</Button>
+              <Button variant="quiet" size="compact" disabled={categoryBusy} onClick={() => void handleDeleteCategory(category)}>Delete</Button>
+            </div>)}
+            <form className={styles.categoryCreateForm} onSubmit={event => void handleCreateCategory(event)}>
+              <label className={styles.searchField} htmlFor="new-task-category">Add category<Input id="new-task-category" maxLength={60} value={categoryNameDraft} onChange={event => setCategoryNameDraft(event.target.value)} placeholder="e.g. Research" disabled={!categoriesLoaded || categoryBusy} /></label>
+              <Button type="submit" disabled={!categoriesLoaded || !categoryNameDraft.trim() || categoryBusy} loading={categoryBusy}>Add category</Button>
+            </form>
+            {categoryActionError && <Alert className={styles.taskActionError} tone="error">{categoryActionError}</Alert>}
+          </div>
         </fieldset>
       </details>
       <div className={styles.libraryImport}>
@@ -772,24 +788,6 @@ export default function Planner({ data }: { data: PlannerData }) {
         <Input className={styles.visuallyHiddenInput} id="task-backup" aria-label="Import a task backup" type="file" accept=".json,application/json" onChange={event => { const file = event.target.files?.[0]; if (file) void restoreBackup(file); event.target.value = ""; }} />
       </div>
     </div>
-    <details className={styles.categoryManager}>
-      <summary>Manage categories</summary>
-      <Card>
-        {!categoriesLoaded ? <Alert tone="warning"><p>Categories are unavailable. Tasks remain accessible and assignments have been kept.</p><Button onClick={() => void refreshCategories().catch(() => undefined)}>Retry category loading</Button></Alert> : null}
-        {categoriesLoaded && categories.length === 0 && <p>No categories yet. Add one to organize saved tasks.</p>}
-        {categoriesLoaded && categories.map(category => <div className={styles.categoryManageRow} key={category.id}>
-          <Input aria-label={`Rename ${category.name}`} maxLength={60} value={categoryNameEdits[category.id] ?? category.name} onChange={event => setCategoryNameEdits(previous => ({ ...previous, [category.id]: event.target.value }))} />
-          <span>{libraryTasks.filter(item => item.summary.task.category_id === category.id).length} tasks</span>
-          <Button size="compact" disabled={categoryBusy || (categoryNameEdits[category.id] ?? category.name) === category.name} loading={categoryBusy} onClick={() => void handleRenameCategory(category)}>Rename</Button>
-          <Button variant="quiet" size="compact" disabled={categoryBusy} onClick={() => void handleDeleteCategory(category)}>Delete</Button>
-        </div>)}
-        <form className={styles.categoryCreateForm} onSubmit={event => void handleCreateCategory(event)}>
-          <label className={styles.searchField} htmlFor="new-task-category">Add category<Input id="new-task-category" maxLength={60} value={categoryNameDraft} onChange={event => setCategoryNameDraft(event.target.value)} placeholder="e.g. Research" disabled={!categoriesLoaded || categoryBusy} /></label>
-          <Button type="submit" disabled={!categoriesLoaded || !categoryNameDraft.trim() || categoryBusy} loading={categoryBusy}>Add category</Button>
-        </form>
-        {categoryActionError && <Alert className={styles.taskActionError} tone="error">{categoryActionError}</Alert>}
-      </Card>
-    </details>
     {error && <Alert className="workflow-alert" tone="error"><p>{error}</p>{sharedListUnavailable && <Button onClick={() => setLibraryRetry(value => value + 1)}>Reload shared tasks</Button>}</Alert>}
     {categoriesError && <Alert className="workflow-alert" tone="warning"><p>Category information is unavailable. Saved tasks remain accessible, and existing assignments are unchanged.</p><Button onClick={() => void refreshCategories().catch(() => undefined)}>Retry categories</Button></Alert>}
     {browserSaved.length > 0 && <Card className={styles.browserSyncCard}>
