@@ -940,6 +940,81 @@
   min-width: 0;
 }
 
+.modelDetails {
+  display: grid;
+  gap: var(--space-4);
+  margin: var(--space-3) 0 var(--space-6);
+  padding: var(--space-4);
+  border-left: var(--border-width-marker) var(--border-style) var(--border-selected);
+  background: var(--primary-subtle);
+}
+
+.modelDetailsHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem);
+  align-items: end;
+  gap: var(--space-4) var(--space-6);
+}
+
+.modelDetailsHeader h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: var(--font-size-card-title);
+  line-height: var(--line-height-card-title);
+  letter-spacing: var(--letter-spacing-title);
+}
+
+.modelDetailsHint {
+  margin: var(--space-1) 0 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+}
+
+.modelDetailsPicker {
+  display: grid;
+  min-width: 0;
+  gap: var(--space-1);
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+}
+
+.modelDetailsPicker select {
+  width: 100%;
+}
+
+.modelDetailsGrid {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1.45fr) repeat(4, minmax(8rem, 1fr));
+  gap: var(--space-4) var(--space-6);
+}
+
+.modelDetailsGrid > div {
+  min-width: 0;
+}
+
+.modelDetailsIdentity {
+  min-width: 0;
+}
+
+.modelDetailsValue {
+  display: block;
+  overflow-wrap: anywhere;
+  color: var(--text-primary);
+  font-size: var(--font-size-body);
+  font-weight: var(--type-weight-semibold);
+  line-height: var(--line-height-body);
+  font-variant-numeric: tabular-nums;
+}
+
+.modelDetailsMeta {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+}
+
 .taskLabel {
   margin: 0 0 var(--space-1);
   color: var(--text-secondary);
@@ -1049,6 +1124,14 @@
 
   .modelActionGroupFavorites {
     justify-content: flex-start;
+  }
+
+  .modelDetailsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .modelDetailsIdentity {
+    grid-column: 1 / -1;
   }
 }
 
@@ -1172,6 +1255,20 @@
     gap: var(--space-4);
   }
 
+  .modelDetailsHeader {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .modelDetailsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .modelDetailsIdentity {
+    grid-column: 1 / -1;
+  }
+
   .taskLeading {
     grid-column: 1 / -1;
   }
@@ -1197,6 +1294,14 @@
 
   .taskResult {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .modelDetailsGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .modelDetailsIdentity {
+    grid-column: auto;
   }
 
   .taskLeading {

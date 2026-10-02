@@ -160,6 +160,61 @@ function currentCategoryBackup(comparison: SavedComparison, categories: Suitabil
   return { ...comparison, category_id: category?.id ?? null, category_name: category?.name ?? null };
 }
 
+type ComparisonRow = ReturnType<typeof comparisonRows>[number];
+
+function SelectedModelDetails({ rows, selectedModelId, onSelect }: {
+  rows: ComparisonRow[];
+  selectedModelId: string;
+  onSelect: (modelId: string) => void;
+}) {
+  const selected = rows.find(row => row.model_id === selectedModelId) ?? rows[0];
+  if (!selected) return null;
+
+  return <section className={styles.modelDetails} aria-label="Selected model details">
+    <div className={styles.modelDetailsHeader}>
+      <div>
+        <p className={styles.taskLabel}>Selected model</p>
+        <h3>Model details</h3>
+        <p className={styles.modelDetailsHint}>Choose a model to inspect its result and evidence at a glance.</p>
+      </div>
+      <label className={styles.modelDetailsPicker}>Model
+        <Select aria-label="Model details" value={selected.model_id} onChange={event => onSelect(event.target.value)}>
+          {rows.map(row => <option key={row.model_id} value={row.model_id}>{row.model} · {row.provider}</option>)}
+        </Select>
+      </label>
+    </div>
+
+    <div className={styles.modelDetailsGrid} aria-live="polite">
+      <div className={styles.modelDetailsIdentity}>
+        <p className={styles.taskLabel}>Model</p>
+        <strong className={styles.taskModel}>{selected.model}</strong>
+        <span className={styles.taskProvider}>{selected.provider}</span>
+      </div>
+      <div>
+        <p className={styles.taskLabel}>Suitability</p>
+        <strong className={styles.taskNumber}>{selected.score === null ? "No score" : selected.score.toFixed(1)}{selected.score !== null && <span className={styles.taskUnit}> / 100</span>}</strong>
+      </div>
+      <div>
+        <p className={styles.taskLabel}>Coverage</p>
+        <strong className={styles.modelDetailsValue}>{selected.ranked_evaluations} of {selected.selected_evaluations}</strong>
+        <span className={styles.modelDetailsMeta}>{selected.coverage_percent.toFixed(1)}% weight ranked</span>
+      </div>
+      <div>
+        <p className={styles.taskLabel}>Weighted average rank</p>
+        <strong className={styles.modelDetailsValue}>{selected.weighted_average_rank === null ? "No rank" : selected.weighted_average_rank.toFixed(1)}</strong>
+        <span className={styles.modelDetailsMeta}>Lower is better</span>
+      </div>
+      <div>
+        <p className={styles.taskLabel}>Cost per Intelligence Index task</p>
+        {selected.intelligence_index_cost ? <a className={styles.taskCost} href={selected.intelligence_index_cost.url} target="_blank" rel="noreferrer" title={`Artificial Analysis profile for ${selected.model}`}>
+          <strong className={styles.modelDetailsValue}>${selected.intelligence_index_cost.cost_usd.toFixed(2)}</strong> <span className={styles.taskUnit}>USD</span>
+        </a> : <strong className={styles.modelDetailsValue}>Unavailable</strong>}
+        {selected.intelligence_index_cost && <span className={styles.modelDetailsMeta}>Captured {captureDateLabel(selected.intelligence_index_cost.captured_at)}</span>}
+      </div>
+    </div>
+  </section>;
+}
+
 function SavedTaskEntry({
   summary,
   shared,
@@ -199,6 +254,7 @@ function SavedTaskEntry({
     try { return { rows: comparisonRows(comparison, comparison.task.evaluation_weights, comparison.task.candidate_model_ids), error: "" }; }
     catch (cause) { return { rows: [], error: cause instanceof Error ? cause.message : "Pinned comparison data is unavailable." }; }
   }, [comparison, comparisonOpen]);
+  const [selectedModelId, setSelectedModelId] = useState("");
   const leader = comparisonState.rows[0];
   const preview = summary.preview ?? leader;
   const captureItems = summary.task.evaluation_weights.map(weight => ({
@@ -257,7 +313,7 @@ function SavedTaskEntry({
       </details>
     </div>
 
-    {preview ? <div className={styles.taskResult} aria-label="Leading candidate result">
+    {preview && !(comparisonOpen && comparisonState.rows.length > 0) ? <div className={styles.taskResult} aria-label="Leading candidate result">
       <div className={styles.taskLeading}>
         <p className={styles.taskLabel}>Leading candidate</p>
         <strong className={styles.taskModel}>{preview.model}</strong>
@@ -290,7 +346,10 @@ function SavedTaskEntry({
       <summary>Review comparison in place</summary>
       {!comparisonOpen ? null : !comparison && (detailError ? <Alert tone="error"><span>{detailError}</span> <Button size="compact" onClick={() => void onLoadComparison().catch(() => undefined)}>Retry loading comparison</Button></Alert>
         : <p role="status">{loading ? "Loading pinned comparison…" : "Open this section to load the pinned model results."}</p>)}
-      {comparisonOpen && comparison && (comparisonState.error ? <Alert tone="error">{comparisonState.error}</Alert> : <SuitabilityComparison data={comparison} rows={comparisonState.rows} evaluationIds={comparison.task.evaluation_weights.map(weight => weight.evaluation_id)} />)}
+      {comparisonOpen && comparison && (comparisonState.error ? <Alert tone="error">{comparisonState.error}</Alert> : <>
+        <SelectedModelDetails rows={comparisonState.rows} selectedModelId={selectedModelId} onSelect={setSelectedModelId} />
+        <SuitabilityComparison data={comparison} rows={comparisonState.rows} evaluationIds={comparison.task.evaluation_weights.map(weight => weight.evaluation_id)} />
+      </>)}
     </details>
   </Card>;
 }
