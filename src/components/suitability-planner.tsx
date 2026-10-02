@@ -759,8 +759,8 @@ export default function Planner({ data }: { data: PlannerData }) {
       <label className={`${styles.searchField} ${styles.librarySearchField}`} htmlFor="saved-task-search">Search saved tasks<Input id="saved-task-search" type="search" value={librarySearch} onChange={event => updateLibrarySearch(event.target.value)} placeholder="Search titles or task descriptions" /></label>
       <details className={styles.categoryFilter}>
         <summary>{selectedCategoryIds.length ? `Categories · ${selectedCategoryIds.length} selected` : "All categories"}</summary>
-        <fieldset>
-          <legend>Filter by task category</legend>
+        <div className={styles.categoryFilterPanel} role="group" aria-labelledby="category-filter-heading">
+          <p id="category-filter-heading" className={styles.categoryFilterHeading}>Filter by task category</p>
           {[...filterCategories.map(category => ({ id: category.id, name: category.name })), { id: "__uncategorized__", name: "Uncategorized" }].map(category => {
             const checked = selectedCategoryIds.includes(category.id);
             return <label key={category.id} className={styles.categoryFilterOption}><Checkbox checked={checked} onChange={() => replaceLibraryUrl(librarySearch, checked ? selectedCategoryIds.filter(id => id !== category.id) : [...selectedCategoryIds, category.id])} />{category.name}</label>;
@@ -781,7 +781,7 @@ export default function Planner({ data }: { data: PlannerData }) {
             </form>
             {categoryActionError && <Alert className={styles.taskActionError} tone="error">{categoryActionError}</Alert>}
           </div>
-        </fieldset>
+        </div>
       </details>
       <div className={styles.libraryImport}>
         <label className={styles.libraryImportButton} htmlFor="task-backup">Import backup</label>
