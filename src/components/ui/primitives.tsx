@@ -12,7 +12,9 @@ import {
   type TableHTMLAttributes,
   type TextareaHTMLAttributes,
 } from "react";
+import { useId } from "react";
 import Link, { type LinkProps } from "next/link";
+import { StickyTableHeaders } from "@/components/ui/sticky-table-headers";
 
 type Variant = "primary" | "secondary" | "quiet" | "destructive";
 type Size = "compact" | "default" | "large";
@@ -218,9 +220,11 @@ export function Skeleton({ className, ...props }: HTMLAttributes<HTMLDivElement>
 }
 
 export function TableScroll({ label, className, children, ...props }: HTMLAttributes<HTMLDivElement> & { label: string }) {
+  const regionId = useId();
   return (
-    <div {...props} className={classes("table-scroll", className)} role="region" aria-label={label} tabIndex={props.tabIndex ?? 0}>
+    <div {...props} id={regionId} className={classes("table-scroll", className)} role="region" aria-label={label} tabIndex={props.tabIndex ?? 0}>
       {children}
+      <StickyTableHeaders regionId={regionId} />
     </div>
   );
 }

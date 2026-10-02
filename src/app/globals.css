@@ -104,6 +104,7 @@
   /* Shared layer order and motion */
   --z-base: 0;
   --z-sticky-header: 100;
+  --table-sticky-top: 0px;
   --z-dropdown: 200;
   --z-drawer: 300;
   --z-modal: 400;
@@ -664,6 +665,21 @@ button.primary:active:not(:disabled) {
   scrollbar-color: var(--border-strong) transparent;
 }
 
+.table-sticky-header-copy {
+  position: fixed;
+  z-index: calc(var(--z-sticky-header) - 1);
+  display: none;
+  overflow: hidden;
+  border-radius: var(--shape-radius-control) var(--shape-radius-control) 0 0;
+  background: var(--bg-muted);
+  pointer-events: none;
+}
+
+.table-sticky-header-copy button,
+.table-sticky-header-copy a {
+  pointer-events: auto;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -995,6 +1011,10 @@ th.numeric {
 
   .app-main {
     height: calc(100dvh - 56px);
+  }
+
+  :root {
+    --table-sticky-top: 56px;
   }
 
   .page-container {
