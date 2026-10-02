@@ -1,0 +1,186 @@
+<div id="saved-task-entry-proposal" aria-label="Saved task entry design proposal">
+  <style>
+    #saved-task-entry-proposal {
+      --task-ink: #191a24;
+      --task-secondary: #606371;
+      --task-surface: #ffffff;
+      --task-inset: #f1f2f7;
+      --task-border: #dddde5;
+      --task-control-border: #bec0cc;
+      --task-accent: #3d4fd1;
+      --task-padding: 16px;
+      --task-result-fill: var(--task-inset);
+      color-scheme: light;
+      color: var(--task-ink);
+      font-family: Geist, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      width: 100%;
+      background: transparent;
+    }
+    #saved-task-entry-proposal * { box-sizing: border-box; }
+    #saved-task-entry-proposal .task-entry {
+      padding: var(--task-padding);
+      border: 1px solid var(--task-border);
+      border-radius: 12px;
+      background: var(--task-surface);
+    }
+    #saved-task-entry-proposal .task-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: start;
+    }
+    #saved-task-entry-proposal h2 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+    #saved-task-entry-proposal .task-description { margin: 6px 0 0; color: var(--task-secondary); }
+    #saved-task-entry-proposal .task-status {
+      padding: 3px 8px;
+      border: 1px solid var(--task-border);
+      border-radius: 6px;
+      background: var(--task-inset);
+      color: var(--task-secondary);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    #saved-task-entry-proposal .task-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      column-gap: 12px;
+      row-gap: 4px;
+      margin: 8px 0 12px;
+      color: var(--task-secondary);
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+    #saved-task-entry-proposal .task-result {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(90px, 0.55fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: start;
+      padding: 12px;
+      border-radius: 8px;
+      background: var(--task-result-fill);
+    }
+    #saved-task-entry-proposal .task-result > div { min-width: 0; }
+    #saved-task-entry-proposal .task-label { margin: 0 0 5px; color: var(--task-secondary); font-size: 12px; }
+    #saved-task-entry-proposal .task-model { font-size: 16px; font-weight: 500; overflow-wrap: anywhere; }
+    #saved-task-entry-proposal .task-number { font-size: 24px; line-height: 30px; font-weight: 500; font-variant-numeric: tabular-nums; }
+    #saved-task-entry-proposal .task-unit { font-size: 12px; color: var(--task-secondary); font-weight: 400; }
+    #saved-task-entry-proposal .task-capture { margin: 3px 0 0; font-size: 12px; color: var(--task-secondary); }
+    #saved-task-entry-proposal .task-sources { min-width: 0; }
+    #saved-task-entry-proposal .task-sources[open] { flex-basis: 100%; }
+    #saved-task-entry-proposal summary { cursor: pointer; color: var(--task-secondary); font-size: 12px; }
+    #saved-task-entry-proposal .task-source-list { margin: 8px 0 0; padding: 0; list-style: none; }
+    #saved-task-entry-proposal .task-source-list li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 8px 0; border-top: 1px solid var(--task-border); font-size: 12px; }
+    #saved-task-entry-proposal .task-source-list time { color: var(--task-secondary); font-variant-numeric: tabular-nums; }
+    #saved-task-entry-proposal .task-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 12px; }
+    #saved-task-entry-proposal button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 8px 12px; border: 1px solid var(--task-control-border); border-radius: 8px; background: var(--task-surface); color: var(--task-ink); cursor: pointer; font: inherit; font-weight: 500; }
+    #saved-task-entry-proposal .task-open { color: var(--task-accent); border-color: var(--task-accent); }
+    #saved-task-entry-proposal .task-quiet { border-color: transparent; background: transparent; color: var(--task-secondary); }
+    #saved-task-entry-proposal .task-backup { margin-left: auto; }
+    #saved-task-entry-proposal button:hover { background: var(--task-inset); }
+    #saved-task-entry-proposal .task-inline[open] { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--task-border); }
+    #saved-task-entry-proposal .task-inline > summary { color: var(--task-accent); font-size: 14px; min-height: 40px; padding: 10px 0; }
+    #saved-task-entry-proposal .task-inline:not([open]) { display: none; }
+    #saved-task-entry-proposal .task-preview-caption { margin: 4px 0 12px; color: var(--task-secondary); font-size: 12px; }
+    #saved-task-entry-proposal .task-preview-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 16px; padding: 12px 0; border-top: 1px solid var(--task-border); }
+    #saved-task-entry-proposal .task-preview-value { font-variant-numeric: tabular-nums; }
+    @media (max-width: 600px) {
+      #saved-task-entry-proposal .task-entry { padding: 16px; }
+      #saved-task-entry-proposal .task-result { grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr); gap: 16px; }
+      #saved-task-entry-proposal .task-leading { grid-column: 1 / -1; }
+      #saved-task-entry-proposal .task-footer { gap: 8px; }
+      #saved-task-entry-proposal .task-backup { margin-left: 0; }
+    }
+    @media (max-width: 360px) {
+      #saved-task-entry-proposal .task-header { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+      #saved-task-entry-proposal .task-status { justify-self: start; }
+      #saved-task-entry-proposal .task-result { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (pointer: coarse) {
+      #saved-task-entry-proposal button, #saved-task-entry-proposal summary { min-height: 44px; }
+    }
+  </style>
+  <article class="task-entry" aria-labelledby="task-proposal-title">
+    <div class="task-header">
+      <div>
+        <h2 id="task-proposal-title">UI Migration</h2>
+        <p class="task-description">Migrate from old design to new, with existing .md’s</p>
+      </div>
+      <span class="task-status">Shared</span>
+    </div>
+    <div class="task-meta">
+      <span>Updated <time datetime="2026-10-01">1 Oct 2026</time></span>
+      <span>5 evaluations</span>
+      <span>20 candidates</span>
+      <details class="task-sources">
+        <summary>Pinned · 29–30 Sep 2026</summary>
+        <ul class="task-source-list">
+          <li><span>AA-Briefcase Analytical Quality Elo</span><time datetime="2026-09-30">30 Sep 2026</time></li>
+          <li><span>Terminal-Bench 4.0</span><time datetime="2026-09-29">29 Sep 2026</time></li>
+          <li><span>AA-Briefcase Rubric Score (%)</span><time datetime="2026-09-30">30 Sep 2026</time></li>
+          <li><span>AA-Briefcase Presentation Elo</span><time datetime="2026-09-30">30 Sep 2026</time></li>
+          <li><span>AA-LCR v1.1</span><time datetime="2026-09-29">29 Sep 2026</time></li>
+        </ul>
+      </details>
+    </div>
+    <div class="task-result" aria-label="Leading candidate result">
+      <div class="task-leading">
+        <p class="task-label">Leading candidate</p>
+        <div class="task-model">GPT-6.1 Sol (max)</div>
+      </div>
+      <div>
+        <p class="task-label">Suitability</p>
+        <div class="task-number">93.0 <span class="task-unit">/ 100</span></div>
+      </div>
+      <div>
+        <p class="task-label">Cost per Intelligence Index task</p>
+        <div class="task-number">$0.72 <span class="task-unit">USD</span></div>
+        <p class="task-capture">Captured <time datetime="2026-09-30">30 Sep 2026</time></p>
+      </div>
+    </div>
+    <div class="task-footer">
+      <button class="task-open" type="button" data-open-preview><span>Open comparison</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></button>
+      <button class="task-quiet" type="button" data-toggle-preview aria-controls="task-inline-preview" aria-expanded="false">Review inline <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+      <button class="task-quiet task-backup" type="button">Download backup</button>
+    </div>
+    <details class="task-inline" id="task-inline-preview">
+      <summary>Comparison preview</summary>
+      <p class="task-preview-caption">Leading candidate · 1 of 20 candidates</p>
+      <div class="task-preview-row"><span>GPT-6.1 Sol (max)</span><span class="task-preview-value">93.0 / 100</span></div>
+      <div class="task-preview-row"><span>Cost per Intelligence Index task</span><span class="task-preview-value">$0.72 USD</span></div>
+    </details>
+  </article>
+  <script>
+    (() => {
+      const root = document.getElementById("saved-task-entry-proposal");
+      const preview = root.querySelector(".task-inline");
+      const toggle = root.querySelector("[data-toggle-preview]");
+      root.querySelector("[data-open-preview]").addEventListener("click", () => {
+        preview.open = true;
+      });
+      toggle.addEventListener("click", () => { preview.open = !preview.open; });
+      preview.addEventListener("toggle", () => {
+        toggle.setAttribute("aria-expanded", String(preview.open));
+      });
+      const options = { density: "Compact", result: "Subtle inset" };
+      function render() {
+        root.style.setProperty("--task-padding", options.density === "Compact" ? "16px" : "24px");
+        root.style.setProperty("--task-result-fill", options.result === "Subtle inset" ? "var(--task-inset)" : "var(--task-surface)");
+      }
+      render();
+      if (globalThis.Tweak) {
+        const tweak = new Tweak({ container: root, onChange: render });
+        tweak.addSelect(options, "density", { label: "Entry spacing", options: ["Comfortable", "Compact"] });
+        tweak.addSelect(options, "result", { label: "Result grouping", options: ["Subtle inset", "Plain surface"] });
+      }
+    })();
+  </script>
+</div>
