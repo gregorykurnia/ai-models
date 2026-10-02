@@ -15,6 +15,25 @@ import styles from "./suitability-planner.module.css";
 
 const equal = (weights: EvaluationWeight[]) => weights.map(weight => ({ ...weight, weight: 100 / weights.length }));
 const niceDate = (value: string) => new Date(value).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+const captureDateKey = (value: string) => /^\d{4}-\d{2}-\d{2}/.test(value) ? value.slice(0, 10) : value;
+const captureDateLabel = (value: string) => {
+  const key = captureDateKey(value);
+  const date = new Date(`${key}T00:00:00Z`);
+  return Number.isNaN(date.getTime()) ? value : date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+};
+const captureRange = (weights: EvaluationWeight[]) => {
+  const dates = [...new Set(weights.map(weight => captureDateKey(weight.captured_at)))].filter(Boolean).sort();
+  if (!dates.length) return "Capture dates unavailable";
+  if (dates.length === 1) return captureDateLabel(dates[0]);
+  const first = new Date(`${dates[0]}T00:00:00Z`);
+  const last = new Date(`${dates[dates.length - 1]}T00:00:00Z`);
+  if (!Number.isNaN(first.getTime()) && !Number.isNaN(last.getTime())
+    && first.getUTCFullYear() === last.getUTCFullYear() && first.getUTCMonth() === last.getUTCMonth()) {
+    const month = first.toLocaleDateString("en-GB", { month: "short", timeZone: "UTC" });
+    return `${first.getUTCDate()}–${last.getUTCDate()} ${month} ${first.getUTCFullYear()}`;
+  }
+  return `${captureDateLabel(dates[0])}–${captureDateLabel(dates[dates.length - 1])}`;
+};
 
 async function saveSharedTask(comparison: SavedComparison) {
   const response = await fetch("/api/suitability/tasks", {
@@ -90,6 +109,110 @@ function downloadBackup(comparison: SavedComparison) {
   link.href = url; link.download = `task-comparison-${comparison.task.id}.json`;
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function SavedTaskEntry({
+  summary,
+  shared,
+  localComparison,
+  loadedComparison,
+  detailError,
+  loading,
+  onLoadComparison,
+}: {
+  summary: SavedTaskSummary;
+  shared: boolean;
+  localComparison: SavedComparison | null;
+  loadedComparison: SavedComparison | null;
+  detailError?: string;
+  loading: boolean;
+  onLoadComparison: () => Promise<SavedComparison>;
+}) {
+  const [comparisonOpen, setComparisonOpen] = useState(false);
+  const [backupLoading, setBackupLoading] = useState(false);
+  const [backupError, setBackupError] = useState("");
+  const comparison = shared ? loadedComparison : localComparison;
+  const comparisonState = useMemo(() => {
+    if (!comparisonOpen || !comparison) return { rows: [] as ReturnType<typeof comparisonRows>, error: "" };
+    try { return { rows: comparisonRows(comparison, comparison.task.evaluation_weights, comparison.task.candidate_model_ids), error: "" }; }
+    catch (cause) { return { rows: [], error: cause instanceof Error ? cause.message : "Pinned comparison data is unavailable." }; }
+  }, [comparison, comparisonOpen]);
+  const leader = comparisonState.rows[0];
+  const preview = summary.preview ?? leader;
+  const captureItems = summary.task.evaluation_weights.map(weight => ({
+    ...weight,
+    displayName: summary.evaluations.find(evaluation => evaluation.id === weight.evaluation_id)?.display_name ?? weight.evaluation_id,
+  }));
+  const handleOpen = (open: boolean) => {
+    setComparisonOpen(open);
+    if (open && shared && !comparison) void onLoadComparison().catch(() => undefined);
+  };
+  const handleBackup = async () => {
+    setBackupError("");
+    setBackupLoading(true);
+    try {
+      const loaded = comparison ?? await onLoadComparison();
+      downloadBackup(loaded);
+    } catch (cause) {
+      setBackupError(loadErrorMessage(cause, "The backup could not be prepared."));
+    } finally { setBackupLoading(false); }
+  };
+
+  return <Card as="article" className={styles.savedTaskEntry}>
+    <div className={styles.taskHeader}>
+      <div className={styles.taskHeading}>
+        <h2 className={styles.taskTitle}><Link href={`/suitability/${summary.task.id}`}>{summary.task.title}</Link></h2>
+        <details className={styles.taskRequest}>
+          <summary className={styles.taskDescription}>{summary.task.request}</summary>
+        </details>
+      </div>
+      <Badge className={styles.taskStatus}>{shared ? "Shared" : "This browser"}</Badge>
+    </div>
+
+    <div className={styles.taskMeta}>
+      <span>Updated <time dateTime={summary.task.updated_at}>{niceDate(summary.task.updated_at)}</time></span>
+      <span>{summary.task.evaluation_weights.length} evaluations</span>
+      <span>{summary.candidate_count} candidates</span>
+      <details className={styles.captureDisclosure}>
+        <summary>Pinned captures · {captureRange(summary.task.evaluation_weights)}</summary>
+        <ul className={styles.captureList}>
+          {captureItems.map(item => <li key={item.evaluation_id}><span>{item.displayName} · {item.weight.toFixed(1)}%</span><time dateTime={item.captured_at}>{captureDateLabel(item.captured_at)}</time></li>)}
+        </ul>
+      </details>
+    </div>
+
+    {preview ? <div className={styles.taskResult} aria-label="Leading candidate result">
+      <div className={styles.taskLeading}>
+        <p className={styles.taskLabel}>Leading candidate</p>
+        <strong className={styles.taskModel}>{preview.model}</strong>
+        <span className={styles.taskProvider}>{preview.provider}</span>
+      </div>
+      <div>
+        <p className={styles.taskLabel}>Suitability</p>
+        <strong className={styles.taskNumber}>{preview.score === null ? "No score" : preview.score.toFixed(1)}{preview.score !== null && <span className={styles.taskUnit}> / 100</span>}</strong>
+      </div>
+      <div>
+        <p className={styles.taskLabel}>Cost per Intelligence Index task</p>
+        {preview.intelligence_index_cost ? <a className={styles.taskCost} href={preview.intelligence_index_cost.url} target="_blank" rel="noreferrer" title={`Artificial Analysis profile for ${preview.model}`}>
+          <strong className={styles.taskNumber}>${preview.intelligence_index_cost.cost_usd.toFixed(2)}</strong> <span className={styles.taskUnit}>USD</span>
+        </a> : <strong className={styles.taskNumber}>Unavailable</strong>}
+        {preview.intelligence_index_cost && <p className={styles.taskCapture}>Captured {captureDateLabel(preview.intelligence_index_cost.captured_at)}</p>}
+      </div>
+    </div> : <p className={styles.taskMissingPreview}>Pinned model results are unavailable. Open the comparison to inspect the saved task.</p>}
+
+    <div className={styles.taskActions}>
+      <LinkButton variant="secondary" href={`/suitability/${summary.task.id}`}>Open comparison <span aria-hidden="true">↗</span></LinkButton>
+      <Button variant="quiet" size="compact" loading={backupLoading} onClick={() => void handleBackup()}>Download backup</Button>
+    </div>
+    {backupError && <Alert className={styles.taskActionError} tone="error">{backupError}</Alert>}
+
+    <details className={styles.inlineComparison} onToggle={event => handleOpen(event.currentTarget.open)}>
+      <summary>Review comparison in place</summary>
+      {!comparisonOpen ? null : !comparison && (detailError ? <Alert tone="error"><span>{detailError}</span> <Button size="compact" onClick={() => void onLoadComparison().catch(() => undefined)}>Retry loading comparison</Button></Alert>
+        : <p role="status">{loading ? "Loading pinned comparison…" : "Open this section to load the pinned model results."}</p>)}
+      {comparisonOpen && comparison && (comparisonState.error ? <Alert tone="error">{comparisonState.error}</Alert> : <SuitabilityComparison data={comparison} rows={comparisonState.rows} />)}
+    </details>
+  </Card>;
 }
 
 export default function Planner({ data }: { data: PlannerData }) {
@@ -197,6 +320,7 @@ export default function Planner({ data }: { data: PlannerData }) {
     const pending = libraryDetailRequests.current.get(sharedTaskId);
     if (pending) return pending;
     setLibraryLoading(previous => previous.includes(sharedTaskId) ? previous : [...previous, sharedTaskId]);
+    setLibraryDetailErrors(previous => { const next = { ...previous }; delete next[sharedTaskId]; return next; });
     const request = fetchSharedComparison(sharedTaskId).then(comparison => {
       setLibraryDetails(previous => ({ ...previous, [sharedTaskId]: comparison }));
       setLibraryDetailErrors(previous => { const next = { ...previous }; delete next[sharedTaskId]; return next; });
@@ -362,7 +486,7 @@ export default function Planner({ data }: { data: PlannerData }) {
   if (isLibrary) return <div className={styles.planner}>
     <PageHeader>
       <div className="eyebrow">Task suitability · saved library</div><h1>Saved tasks</h1>
-      <p>Shared tasks are visible to everyone who visits this site. Browser saves stay on this device until you sync or download them.</p>
+      <p>Shared tasks are visible to everyone who visits this site. Browser saves stay on this device until you sync or download them. Costs are captured Artificial Analysis Intelligence Index task costs, not quotes for your custom task.</p>
     </PageHeader>
     <div className={styles.libraryToolbar}>
       <LinkButton variant="primary" href="/suitability">Create a task</LinkButton>
@@ -384,32 +508,8 @@ export default function Planner({ data }: { data: PlannerData }) {
       {libraryTasks.map(({ summary, shared, localComparison }) => {
         const taskId = summary.task.id;
         const comparison = shared ? libraryDetails[taskId] ?? null : localComparison;
-        let rows = [] as ReturnType<typeof comparisonRows>;
-        let comparisonError = "";
-        if (comparison) try { rows = comparisonRows(comparison, comparison.task.evaluation_weights, comparison.task.candidate_model_ids); }
-        catch (cause) { comparisonError = cause instanceof Error ? cause.message : "Pinned comparison data is unavailable."; }
-        const leader = rows[0];
-        const preview = summary.preview;
-        return <Card as="article" key={summary.task.id}>
-          <div className="toolbar"><div><h2>{summary.task.title}</h2><p>{summary.task.request}</p></div><Badge>{shared ? "Shared" : "This browser"}</Badge></div>
-          <dl className={styles.taskMeta}><div><dt>Last updated</dt><dd>{niceDate(summary.task.updated_at)}</dd></div><div><dt>Evaluations</dt><dd>{summary.task.evaluation_weights.length}</dd></div><div><dt>Candidates</dt><dd>{summary.candidate_count}</dd></div></dl>
-          <p className={styles.captureList}><strong>Pinned captures:</strong> {summary.task.evaluation_weights.map(weight => `${summary.evaluations.find(evaluation => evaluation.id === weight.evaluation_id)?.display_name ?? weight.evaluation_id} · ${weight.captured_at}`).join("; ")}</p>
-          {preview ? <p><strong>Leading candidate:</strong> {preview.model} · suitability {preview.score === null ? "No score" : preview.score.toFixed(1)} · Cost per Intelligence Index task {preview.intelligence_index_cost ? `$${preview.intelligence_index_cost.cost_usd.toFixed(2)} · captured ${niceDate(preview.intelligence_index_cost.captured_at)}` : "—"}</p>
-            : leader ? <p><strong>Leading candidate:</strong> {leader.model} · suitability {leader.score === null ? "No score" : leader.score.toFixed(1)} · Cost per Intelligence Index task {leader.intelligence_index_cost ? `$${leader.intelligence_index_cost.cost_usd.toFixed(2)} · captured ${niceDate(leader.intelligence_index_cost.captured_at)}` : "—"}</p>
-              : comparisonError ? <Alert tone="error">{comparisonError}</Alert> : <p>Open the comparison to load its pinned model results.</p>}
-          {libraryDetailErrors[taskId] && <Alert tone="error">{libraryDetailErrors[taskId]}</Alert>}
-          <div className="toolbar"><Link href={`/suitability/${taskId}`}>Open comparison</Link><Button disabled={shared && libraryLoading.includes(taskId)} loading={shared && libraryLoading.includes(taskId)} onClick={() => {
-            if (comparison) downloadBackup(comparison);
-            else void loadLibraryComparison(taskId).then(downloadBackup).catch(() => undefined);
-          }}>Download backup</Button></div>
-          <details onToggle={event => { if (shared && event.currentTarget.open && !comparison) void loadLibraryComparison(taskId).catch(() => undefined); }}>
-            <summary>Review comparison in place</summary>
-            {!comparison && (libraryDetailErrors[taskId]
-              ? <Alert tone="error">{libraryDetailErrors[taskId]} <Button size="compact" onClick={() => void loadLibraryComparison(taskId).catch(() => undefined)}>Retry loading comparison</Button></Alert>
-              : <p role="status">{libraryLoading.includes(taskId) ? "Loading pinned comparison…" : "Open this section to load the pinned model results."}</p>)}
-            {comparison && (comparisonError ? <Alert tone="error">{comparisonError}</Alert> : <SuitabilityComparison data={comparison} rows={rows} />)}
-          </details>
-        </Card>;
+        return <SavedTaskEntry key={summary.task.id} summary={summary} shared={shared} localComparison={localComparison} loadedComparison={comparison}
+          detailError={libraryDetailErrors[taskId]} loading={libraryLoading.includes(taskId)} onLoadComparison={() => loadLibraryComparison(taskId)} />;
       })}
     </div>}
     {notice && <Alert className="workflow-alert" tone="info" role="status" live="polite">{notice}</Alert>}

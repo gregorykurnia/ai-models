@@ -311,7 +311,11 @@
 .savedList {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-1);
+  gap: var(--space-4);
+}
+
+.savedList > article {
+  margin: 0;
 }
 
 .browserSyncCard {
@@ -343,51 +347,217 @@
   font-size: var(--font-size-caption);
 }
 
-.savedList > article h2 {
-  margin: 0 0 var(--space-2);
+.savedTaskEntry {
+  gap: 0;
+  padding: var(--space-6);
 }
 
-.savedList > article .toolbar > div {
-  min-width: 12.5rem;
-  flex: 1;
+.taskHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--space-3);
 }
 
-.savedList > article .toolbar p {
+.taskHeading {
+  min-width: 0;
+}
+
+.taskTitle {
   margin: 0;
+  font-size: var(--font-size-card-title);
+  line-height: var(--line-height-card-title);
+  letter-spacing: var(--letter-spacing-title);
+}
+
+.taskTitle a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.taskTitle a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.taskStatus {
+  flex: none;
+}
+
+.taskRequest {
+  margin-top: var(--space-1);
+  color: var(--text-secondary);
+}
+
+.taskRequest summary {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: inherit;
+  cursor: pointer;
+  font-size: var(--font-size-body);
+  font-weight: var(--type-weight-regular);
+  line-height: var(--line-height-body);
+  max-height: calc(var(--line-height-body) * 2);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.taskRequest[open] summary {
+  display: block;
+  max-height: none;
 }
 
 .taskMeta {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-8);
-  margin: var(--space-5) 0;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  margin: var(--space-3) 0 var(--space-4);
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  font-variant-numeric: tabular-nums;
 }
 
-.taskMeta div {
-  min-width: 6.875rem;
+.taskMeta > span {
+  white-space: nowrap;
 }
 
-.taskMeta dt {
+.captureDisclosure {
+  min-width: 0;
+}
+
+.captureDisclosure[open] {
+  flex-basis: 100%;
+}
+
+.captureList {
+  display: grid;
+  gap: 0;
+  padding: 0;
+  margin: var(--space-2) 0 0;
+  list-style: none;
+  color: var(--text-secondary);
+}
+
+.captureDisclosure summary,
+.inlineComparison summary {
+  padding: var(--space-1) 0;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: var(--type-weight-semibold);
+}
+
+.captureList li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-4);
+  padding: var(--space-2) 0;
+  border-top: var(--border-width-default) var(--border-style) var(--border-default);
+}
+
+.captureList time {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.taskResult {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(8rem, 0.55fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: var(--space-6);
+  padding: var(--space-4);
+  border-radius: var(--shape-radius-control);
+  background: var(--bg-muted);
+}
+
+.taskResult > div {
+  min-width: 0;
+}
+
+.taskLabel {
+  margin: 0 0 var(--space-1);
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+}
+
+.taskModel {
+  display: block;
+  overflow-wrap: anywhere;
+  color: var(--text-primary);
+  font-size: var(--font-size-body);
+  font-weight: var(--type-weight-semibold);
+  line-height: var(--line-height-body);
+}
+
+.taskProvider {
+  display: block;
+  margin-top: var(--space-1);
   color: var(--text-secondary);
   font-size: var(--font-size-caption);
 }
 
-.taskMeta dd {
-  margin: var(--space-1) 0 0;
+.taskNumber {
+  display: inline-block;
   color: var(--text-primary);
+  font-size: 1.5rem;
   font-weight: var(--type-weight-semibold);
+  line-height: 1.875rem;
   font-variant-numeric: tabular-nums;
 }
 
-.captureList {
+.taskUnit {
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  font-weight: var(--type-weight-regular);
+}
+
+.taskCost {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.taskCapture {
+  margin: var(--space-1) 0 0;
+  color: var(--text-secondary);
   font-size: var(--font-size-caption);
 }
 
-.savedList details summary {
-  padding: var(--space-3) 0;
-  color: var(--primary);
-  cursor: pointer;
-  font-weight: var(--type-weight-semibold);
+.taskMissingPreview {
+  margin: var(--space-4) 0 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-data);
+}
+
+.taskActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.taskActionError {
+  margin-top: var(--space-3);
+}
+
+.inlineComparison {
+  margin-top: var(--space-4);
+  border-top: var(--border-width-default) var(--border-style) var(--border-default);
+}
+
+.inlineComparison summary {
+  padding: var(--space-3) 0 var(--space-2);
+  font-size: var(--font-size-ui);
+}
+
+.inlineComparison > :global(.ui-alert) {
+  margin-top: var(--space-2);
 }
 
 @media (max-width: 1100px) {
@@ -479,7 +649,47 @@
   }
 
   .taskMeta {
+    gap: var(--space-2) var(--space-3);
+  }
+
+  .savedTaskEntry {
+    padding: var(--space-4);
+  }
+
+  .taskResult {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: var(--space-4);
+  }
+
+  .taskLeading {
+    grid-column: 1 / -1;
+  }
+
+  .taskActions > a {
+    flex: 1 1 auto;
+  }
+
+  .taskActions > button {
+    flex: 0 1 auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .taskHeader {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-2);
+  }
+
+  .taskStatus {
+    justify-self: start;
+  }
+
+  .taskResult {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .taskLeading {
+    grid-column: auto;
   }
 
   .chips button {
