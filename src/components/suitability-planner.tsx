@@ -210,7 +210,7 @@ function SavedTaskEntry({
       <summary>Review comparison in place</summary>
       {!comparisonOpen ? null : !comparison && (detailError ? <Alert tone="error"><span>{detailError}</span> <Button size="compact" onClick={() => void onLoadComparison().catch(() => undefined)}>Retry loading comparison</Button></Alert>
         : <p role="status">{loading ? "Loading pinned comparison…" : "Open this section to load the pinned model results."}</p>)}
-      {comparisonOpen && comparison && (comparisonState.error ? <Alert tone="error">{comparisonState.error}</Alert> : <SuitabilityComparison data={comparison} rows={comparisonState.rows} />)}
+      {comparisonOpen && comparison && (comparisonState.error ? <Alert tone="error">{comparisonState.error}</Alert> : <SuitabilityComparison data={comparison} rows={comparisonState.rows} evaluationIds={comparison.task.evaluation_weights.map(weight => weight.evaluation_id)} />)}
     </details>
   </Card>;
 }
@@ -532,7 +532,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       <div className="toolbar"><Button onClick={() => downloadBackup(active)}>Download backup</Button>{browserSaved.some(item => item.task.id === active.task.id) && <Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync browser tasks to shared library</Button>}</div>
       {notice && <Alert className="workflow-alert" tone="info" role="status" live="polite">{notice}</Alert>}
       {error && <Alert className="workflow-alert" tone="error">{error}</Alert>}
-      {comparisonError ? <Alert className="workflow-alert" tone="error">{comparisonError}</Alert> : <Card><h2>Model comparison</h2><SuitabilityComparison data={active} rows={rows} /></Card>}
+      {comparisonError ? <Alert className="workflow-alert" tone="error">{comparisonError}</Alert> : <Card><h2>Model comparison</h2><SuitabilityComparison data={active} rows={rows} evaluationIds={active.task.evaluation_weights.map(weight => weight.evaluation_id)} /></Card>}
     </div>;
   }
 
@@ -605,7 +605,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       {notice && <Alert tone="info" role="status" live="polite">{notice}</Alert>}</Section>
     </Card>
     {valid && !result.error && <Card><h2>Model comparison preview</h2><p>{dirty ? "Preview of unsaved settings. Save to keep this configuration." : `Saved comparison · calculated ${active?.task.last_calculated_at}`}</p>
-      <SuitabilityComparison data={working} rows={result.rows} completeOnly={completeOnly} onCompleteOnlyChange={setCompleteOnly} />
+      <SuitabilityComparison data={working} rows={result.rows} evaluationIds={weights.map(weight => weight.evaluation_id)} completeOnly={completeOnly} onCompleteOnlyChange={setCompleteOnly} />
     </Card>}
     <Section id="methodology" className="prose"><h2>How suitability works</h2><p>Each source rank becomes a 0–100 component: 100 × (1 − (rank − 1) / max(1, cohort size − 1)), clamped to 0–100. Suitability averages these components using your weights. Higher is better. Weighted average source rank uses the same available weights; lower is better.</p><p>Missing entries stay “Not ranked” and are excluded from the average. Coverage shows the selected weight with a rank. Complete weight coverage sorts first. Cost is shown as separate context and is not used in the score.</p><p>Saved tasks preserve their full source cohorts and capture dates. New imports do not change saved results or pinned costs. Source links open the currently published leaderboards, which may have newer ranks. <Link href="/about/data">Read the data notes</Link>.</p></Section>
   </div>;

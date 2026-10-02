@@ -250,48 +250,288 @@
   line-height: 1;
 }
 
+.resultsIntro {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.resultsToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+
+.resultSummary {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.resultsCount {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-ui);
+  font-variant-numeric: tabular-nums;
+}
+
+.orderNote {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+}
+
+.completeFilter {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-ui);
+}
+
+.costGuidance {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-left: var(--border-width-marker) var(--border-style) var(--border-selected);
+  background: var(--primary-subtle);
+}
+
+.costGuidance > p {
+  flex: 1 1 36rem;
+  margin: 0;
+  color: var(--text-primary);
+  font-size: var(--font-size-ui);
+  line-height: var(--line-height-ui);
+}
+
+.costMethodology {
+  flex: 0 1 auto;
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+}
+
+.costMethodology summary {
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: var(--type-weight-semibold);
+}
+
+.costMethodology p {
+  max-width: 32rem;
+  margin: var(--space-2) 0 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+}
+
+.scrollFrame {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.scrollRegion {
+  border-radius: var(--shape-radius-control);
+}
+
+.scrollHint {
+  margin: var(--space-2) var(--space-3) 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  text-align: right;
+}
+
+.scrollHint span {
+  padding-left: var(--space-1);
+  color: var(--primary);
+}
+
 .results {
+  width: max-content;
+  min-width: 100%;
+  table-layout: fixed;
   border-collapse: separate;
   border-spacing: 0;
 }
 
+.identityColumn {
+  width: 18rem;
+}
+
+.suitabilityColumn {
+  width: 8rem;
+}
+
+.coverageColumn {
+  width: 10rem;
+}
+
+.rankColumn {
+  width: 11rem;
+}
+
+.costColumn {
+  width: 15rem;
+}
+
+.evaluationColumn {
+  width: 12rem;
+}
+
+.results th,
+.results td {
+  min-width: 0;
+}
+
 .results th {
   padding: 0;
-}
-
-.results th > button {
-  padding: var(--space-3);
-}
-
-.results td,
-.results th {
-  min-width: 8.75rem;
+  border-bottom: var(--border-width-default) var(--border-style) var(--border-default);
   vertical-align: top;
+  white-space: normal;
 }
 
-.results td:first-child,
-.results th:first-child {
+.results .headerGroups th {
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-muted);
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  font-weight: var(--type-weight-semibold);
+  line-height: var(--line-height-caption);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.results .columnHeader,
+.results .sortableHeader {
+  padding: 0;
+  background: var(--bg-muted);
+}
+
+.results .columnHeader {
+  padding: var(--space-3) var(--space-4);
+  color: var(--text-primary);
+}
+
+.columnLabel {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--space-1);
+  overflow-wrap: anywhere;
+  line-height: var(--line-height-ui);
+}
+
+.columnLabel small {
+  display: block;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  font-weight: var(--type-weight-regular);
+  line-height: var(--line-height-caption);
+}
+
+.results .sortButton {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  grid-template-columns: minmax(0, 1fr) 1rem;
+  align-items: start;
+  justify-content: stretch;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-primary);
+  text-align: right;
+  white-space: normal;
+}
+
+.results .sortButton:hover:not(:disabled) {
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+}
+
+.results .sortButton:focus-visible {
+  position: relative;
+  z-index: 2;
+  outline-offset: calc(-1 * var(--focus-ring-offset));
+}
+
+.sortButton > span:last-child {
+  display: inline-block;
+  min-width: 1rem;
+  color: var(--primary);
+  text-align: center;
+}
+
+.results .identityHeader {
+  min-width: 18rem;
+  padding: 0 var(--space-4);
+  background: var(--bg-muted);
+}
+
+.results .evaluationGroup,
+.results .evaluationHeaderFirst,
+.results .evaluationCellFirst {
+  border-left: var(--border-width-strong) var(--border-style) var(--border-strong);
+}
+
+.results .evaluationHeader {
+  background: var(--bg-muted);
+}
+
+.results .evaluationGroup {
+  color: var(--primary);
+}
+
+.results .identity {
   position: sticky;
   left: 0;
   z-index: 1;
-  min-width: 16.875rem;
-  max-width: 20rem;
+  min-width: 18rem;
+  max-width: 18rem;
   overflow-wrap: anywhere;
   background: var(--bg-surface);
 }
 
-.results th:first-child {
+.results .identityHeader {
+  position: sticky;
+  left: 0;
+  z-index: 3;
   background: var(--bg-muted);
 }
 
-.results tbody tr:hover td:first-child {
+.results .headerGroups .identityHeader {
+  z-index: 4;
+}
+
+.results tbody tr:hover .identity {
   background: var(--table-hover);
 }
 
-.results summary {
+.results .coverageValue small {
+  margin-top: var(--space-1);
+}
+
+.results td small {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.results td > details > summary {
   margin-top: var(--space-3);
   color: var(--primary);
   cursor: pointer;
+  line-height: var(--line-height-ui);
 }
 
 .breakdown {
@@ -442,7 +682,7 @@
 }
 
 .captureDisclosure summary,
-.inlineComparison summary {
+.inlineComparison > summary {
   padding: var(--space-1) 0;
   color: var(--primary);
   cursor: pointer;
@@ -551,7 +791,10 @@
   border-top: var(--border-width-default) var(--border-style) var(--border-default);
 }
 
-.inlineComparison summary {
+.inlineComparison > summary {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
   padding: var(--space-3) 0 var(--space-2);
   font-size: var(--font-size-ui);
 }
@@ -638,10 +881,14 @@
     width: 100%;
   }
 
-  .results td:first-child,
-  .results th:first-child {
-    min-width: 10.625rem;
-    max-width: 12.5rem;
+  .identityColumn {
+    width: 11.5rem;
+  }
+
+  .results .identityHeader,
+  .results .identity {
+    min-width: 11.5rem;
+    max-width: 11.5rem;
   }
 
   .breakdown {
