@@ -31,6 +31,9 @@ async function readComparison(snapshot: DocumentSnapshot): Promise<SavedComparis
     .flatMap(chunk => chunk.get("entries") as SuitabilityEntry[]);
   const comparison = savedComparisonSchema.parse({
     task: data.task,
+    category_id: data.category_id ?? null,
+    category_name: data.category_name ?? null,
+    category_revision: data.category_revision ?? 0,
     evaluations: data.evaluations,
     entries,
     candidates: data.candidates,
@@ -78,6 +81,9 @@ export async function GET(request: Request) {
           evaluation_weights: task.evaluation_weights,
           created_at: task.created_at,
           updated_at: task.updated_at,
+          category_id: data.category_id ?? null,
+          category_name: data.category_name ?? null,
+          category_revision: data.category_revision ?? 0,
         },
         candidate_count: task.candidate_model_ids.length,
         evaluations: data.evaluations,
@@ -104,13 +110,13 @@ export async function POST(request: Request) {
     const taskId = comparison.task.id;
     if (!/^[A-Za-z0-9_-]{1,128}$/.test(taskId))
       return Response.json({ error: "The task ID is invalid." }, { status: 400 });
+    if (comparison.category_id && !/^[A-Za-z0-9_-]{1,128}$/.test(comparison.category_id))
+      return Response.json({ error: "The category ID is invalid." }, { status: 400 });
     if (comparison.entries.length > 25_000 || comparison.candidates.length > 5_000
       || JSON.stringify(comparison).length > 4_000_000)
       return Response.json({ error: "This task is too large to sync." }, { status: 413 });
 
     const ref = taskCollection().doc(taskId);
-    const previous = await ref.get();
-    const previousVersion = previous.data()?.active_version;
     const version = randomUUID();
     const versionRef = ref.collection("versions").doc(version);
     const chunks: SuitabilityEntry[][] = [];
@@ -142,24 +148,57 @@ export async function POST(request: Request) {
       await batch.commit();
     }
 
-    await ref.set({
-      task: comparison.task,
-      evaluations: comparison.evaluations,
-      candidates: comparison.candidates,
-      availableSnapshotIds: comparison.availableSnapshotIds,
-      preview,
-      active_version: version,
-      saved_at: FieldValue.serverTimestamp(),
-    });
+    let previousVersion: unknown;
+    let savedCategoryRevision = 0;
+    let savedCategoryName: string | null = null;
+    try {
+      await adminDb().runTransaction(async transaction => {
+        const existing = await transaction.get(ref);
+        const previousData = existing.data();
+        const currentRevision = Number(previousData?.category_revision ?? 0);
+        if (existing.exists && currentRevision !== Number(comparison.category_revision ?? 0))
+          throw new Error("This task's category changed while you were editing. Reload the comparison and try again.");
+        const categoryId = comparison.category_id ?? null;
+        const categoryRef = categoryId ? adminDb().collection("sharedSuitabilityCategories").doc(categoryId) : null;
+        let categoryName: string | null = null;
+        if (categoryRef) {
+          const category = await transaction.get(categoryRef);
+          if (!category.exists || category.get("deleted") === true)
+            throw new Error("This category is no longer available. Reload categories and choose again.");
+          categoryName = String(category.get("name"));
+        }
+        previousVersion = previousData?.active_version;
+        const nextRevision = currentRevision + (existing.exists && categoryId === (previousData?.category_id ?? null) ? 0 : 1);
+        savedCategoryRevision = nextRevision;
+        savedCategoryName = categoryName;
+        transaction.set(ref, {
+          task: comparison.task,
+          category_id: categoryId,
+          category_name: categoryName,
+          category_revision: nextRevision,
+          evaluations: comparison.evaluations,
+          candidates: comparison.candidates,
+          availableSnapshotIds: comparison.availableSnapshotIds,
+          preview,
+          active_version: version,
+          saved_at: FieldValue.serverTimestamp(),
+        });
+      });
+    } catch (cause) {
+      try { await removeVersion(ref, version); } catch { /* An orphaned inactive version is safe and can be cleaned later. */ }
+      throw cause;
+    }
 
     if (typeof previousVersion === "string" && previousVersion !== version) {
       try { await removeVersion(ref, previousVersion); }
       catch (cleanupError) { console.error("Could not remove the replaced suitability task version", cleanupError); }
     }
 
-    return Response.json({ taskId }, { headers: { "Cache-Control": "private, no-store" } });
+    return Response.json({ taskId, category_revision: savedCategoryRevision, category_name: savedCategoryName }, { headers: { "Cache-Control": "private, no-store" } });
   } catch (cause) {
     const quotaExceeded=(cause as {code?:number}).code===8;
+    if (cause instanceof Error && /category changed|category is no longer available/.test(cause.message))
+      return Response.json({ error: cause.message }, { status: 409 });
     return Response.json({ error: quotaExceeded
       ? "Firestore's quota is exhausted. Your selections are still visible; shared saves can resume when the quota resets or is increased."
       : "Task could not be saved to the database. Check the server's Firebase configuration." }, { status: 503 });

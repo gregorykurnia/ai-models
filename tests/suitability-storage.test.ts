@@ -18,6 +18,10 @@ test("saved tasks retain full cohorts and results when published data changes", 
     created_at: "2026-09-30T00:00:00Z", updated_at: "2026-09-30T00:00:00Z", last_calculated_at: "2026-09-30T00:00:00Z", schema_version: 1 };
   const pinned = pinComparison(task, data);
   const [restored] = readSavedTasks(JSON.stringify([pinned]));
+  const [categorized] = readSavedTasks(JSON.stringify([{ ...pinned, category_id: "research", category_name: "Research", category_revision: 3 }]));
+  assert.equal(categorized.category_id, "research");
+  assert.equal(categorized.category_name, "Research");
+  assert.equal(categorized.category_revision, 3);
   assert(restored.entries.some(e => e.model_id !== model.model_id), "Full cohort, not just selected candidates, must be cached");
   const run = (value: PlannerData) => calculateSuitability({ ...value, weights: task.evaluation_weights });
   assert.deepEqual(run(restored), run(data));

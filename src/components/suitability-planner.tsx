@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { masterIdentityKey } from "@/lib/master";
 import { readModelFavorites, subscribeToModelFavorites, writeModelFavorites } from "@/lib/model-favorites";
 import { calculateSuitability, suitabilityTaskSchema, type EvaluationWeight, type SuitabilityTask } from "@/lib/suitability";
-import { pinComparison, readSavedTaskSummaries, readSavedTasks, savedComparisonSchema, type PlannerData, type SavedComparison, type SavedTaskSummary } from "@/lib/suitability-storage";
+import { pinComparison, readSavedTaskSummaries, readSavedTasks, savedComparisonSchema, suitabilityCategorySchema, type PlannerData, type SavedComparison, type SavedTaskSummary, type SuitabilityCategory } from "@/lib/suitability-storage";
+import { groupSavedTaskIds, normalizeCategoryName } from "@/lib/suitability-categories";
 import { readBrowserTasks, saveBrowserTask, removeBrowserTask } from "@/lib/browser-suitability-tasks";
 import { recordSuitabilityEvent } from "@/lib/suitability-analytics";
 import SuitabilityComparison, { comparisonRows } from "@/components/suitability-comparison";
@@ -35,13 +36,14 @@ const captureRange = (weights: EvaluationWeight[]) => {
   return `${captureDateLabel(dates[0])}–${captureDateLabel(dates[dates.length - 1])}`;
 };
 
-async function saveSharedTask(comparison: SavedComparison) {
+async function saveSharedTask(comparison: SavedComparison): Promise<{ revision: number; categoryName: string | null }> {
   const response = await fetch("/api/suitability/tasks", {
     method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(comparison),
     signal: AbortSignal.timeout(30000),
   });
   const payload = await response.json();
   if (!response.ok) throw new Error(typeof payload.error === "string" ? payload.error : "Task could not be saved to the shared database.");
+  return { revision: Number(payload.category_revision ?? comparison.category_revision ?? 0), categoryName: typeof payload.category_name === "string" ? payload.category_name : null };
 }
 
 async function fetchSharedTaskSummaries() {
@@ -49,6 +51,43 @@ async function fetchSharedTaskSummaries() {
   const payload = await response.json().catch(() => null);
   if (!response.ok) throw new Error(typeof payload?.error === "string" ? payload.error : `Shared task request failed (${response.status}).`);
   return readSavedTaskSummaries(JSON.stringify(payload));
+}
+
+async function fetchCategories(): Promise<SuitabilityCategory[]> {
+  const response = await fetch("/api/suitability/categories", { cache: "no-store", signal: AbortSignal.timeout(30000) });
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(typeof payload?.error === "string" ? payload.error : `Category request failed (${response.status}).`);
+  return suitabilityCategorySchema.array().parse(payload);
+}
+
+async function createCategory(name: string): Promise<SuitabilityCategory> {
+  const response = await fetch("/api/suitability/categories", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name }) });
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(typeof payload?.error === "string" ? payload.error : "Category could not be created.");
+  return suitabilityCategorySchema.parse(payload);
+}
+
+async function renameCategory(id: string, name: string): Promise<SuitabilityCategory> {
+  const response = await fetch(`/api/suitability/categories/${encodeURIComponent(id)}`, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name }) });
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(typeof payload?.error === "string" ? payload.error : "Category could not be renamed.");
+  return suitabilityCategorySchema.parse(payload);
+}
+
+async function deleteCategory(id: string): Promise<void> {
+  const response = await fetch(`/api/suitability/categories/${encodeURIComponent(id)}`, { method: "DELETE" });
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(typeof payload?.error === "string" ? payload.error : "Category could not be deleted.");
+}
+
+async function assignSharedTaskCategory(taskId: string, categoryId: string | null, expectedRevision: number) {
+  const response = await fetch(`/api/suitability/tasks/${encodeURIComponent(taskId)}/category`, {
+    method: "PATCH", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ category_id: categoryId, expected_revision: expectedRevision }),
+  });
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(typeof payload?.error === "string" ? payload.error : "The task category could not be changed.");
+  return payload as { category_id: string | null; category_name: string | null; category_revision: number; updated_at: string };
 }
 
 async function fetchSharedComparison(taskId: string) {
@@ -85,6 +124,9 @@ function summarizeComparison(comparison: SavedComparison): SavedTaskSummary {
       evaluation_weights: comparison.task.evaluation_weights,
       created_at: comparison.task.created_at,
       updated_at: comparison.task.updated_at,
+      category_id: comparison.category_id ?? null,
+      category_name: comparison.category_name ?? null,
+      category_revision: comparison.category_revision ?? 0,
     },
     candidate_count: comparison.task.candidate_model_ids.length,
     evaluations: comparison.evaluations,
@@ -100,7 +142,8 @@ function migrateBrowserTask(task: SavedComparison, currentCandidates: PlannerDat
       ?? currentCandidates.find(item => item.identity_key === identityKey);
     return { ...candidate, identity_key: identityKey, intelligence_index_cost: current?.intelligence_index_cost ?? null };
   });
-  return { ...task, candidates: migrated };
+  return { ...task, category_id: task.category_id ?? null, category_name: task.category_name ?? null,
+    category_revision: task.category_revision ?? 0, candidates: migrated };
 }
 
 function downloadBackup(comparison: SavedComparison) {
@@ -111,6 +154,12 @@ function downloadBackup(comparison: SavedComparison) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
+function currentCategoryBackup(comparison: SavedComparison, categories: SuitabilityCategory[], categoriesLoaded: boolean): SavedComparison {
+  if (!categoriesLoaded) return comparison;
+  const category = categories.find(item => item.id === comparison.category_id);
+  return { ...comparison, category_id: category?.id ?? null, category_name: category?.name ?? null };
+}
+
 function SavedTaskEntry({
   summary,
   shared,
@@ -119,6 +168,11 @@ function SavedTaskEntry({
   detailError,
   loading,
   onLoadComparison,
+  categories,
+  categoriesLoaded,
+  categoryLabel,
+  onAssignCategory,
+  returnTo,
 }: {
   summary: SavedTaskSummary;
   shared: boolean;
@@ -127,10 +181,18 @@ function SavedTaskEntry({
   detailError?: string;
   loading: boolean;
   onLoadComparison: () => Promise<SavedComparison>;
+  categories: SuitabilityCategory[];
+  categoriesLoaded: boolean;
+  categoryLabel: string;
+  onAssignCategory: (categoryId: string | null) => Promise<void>;
+  returnTo: string;
 }) {
   const [comparisonOpen, setComparisonOpen] = useState(false);
   const [backupLoading, setBackupLoading] = useState(false);
   const [backupError, setBackupError] = useState("");
+  const [categoryId, setCategoryId] = useState(summary.task.category_id ?? "");
+  const [categorySaving, setCategorySaving] = useState(false);
+  const [categoryError, setCategoryError] = useState("");
   const comparison = shared ? loadedComparison : localComparison;
   const comparisonState = useMemo(() => {
     if (!comparisonOpen || !comparison) return { rows: [] as ReturnType<typeof comparisonRows>, error: "" };
@@ -147,21 +209,34 @@ function SavedTaskEntry({
     setComparisonOpen(open);
     if (open && shared && !comparison) void onLoadComparison().catch(() => undefined);
   };
+  useEffect(() => {
+    if (categoriesLoaded) setCategoryId(categories.some(category => category.id === summary.task.category_id) ? summary.task.category_id ?? "" : "");
+  }, [summary.task.category_id, categories, categoriesLoaded]);
   const handleBackup = async () => {
     setBackupError("");
     setBackupLoading(true);
     try {
       const loaded = comparison ?? await onLoadComparison();
-      downloadBackup(loaded);
+      downloadBackup(currentCategoryBackup(loaded, categories, categoriesLoaded));
     } catch (cause) {
       setBackupError(loadErrorMessage(cause, "The backup could not be prepared."));
     } finally { setBackupLoading(false); }
+  };
+  const handleCategoryChange = async (nextId: string) => {
+    setCategoryId(nextId);
+    setCategoryError("");
+    setCategorySaving(true);
+    try { await onAssignCategory(nextId || null); }
+    catch (cause) {
+      setCategoryId(summary.task.category_id ?? "");
+      setCategoryError(cause instanceof Error ? cause.message : "The task category could not be changed.");
+    } finally { setCategorySaving(false); }
   };
 
   return <Card as="article" className={styles.savedTaskEntry}>
     <div className={styles.taskHeader}>
       <div className={styles.taskHeading}>
-        <h2 className={styles.taskTitle}><Link href={`/suitability/${summary.task.id}`}>{summary.task.title}</Link></h2>
+        <h2 className={styles.taskTitle}><Link href={`/suitability/${summary.task.id}?returnTo=${encodeURIComponent(returnTo)}`}>{summary.task.title}</Link></h2>
         <details className={styles.taskRequest}>
           <summary className={styles.taskDescription}>{summary.task.request}</summary>
         </details>
@@ -170,6 +245,7 @@ function SavedTaskEntry({
     </div>
 
     <div className={styles.taskMeta}>
+      <span className={styles.taskCategory}>{categoryLabel}</span>
       <span>Updated <time dateTime={summary.task.updated_at}>{niceDate(summary.task.updated_at)}</time></span>
       <span>{summary.task.evaluation_weights.length} evaluations</span>
       <span>{summary.candidate_count} candidates</span>
@@ -201,9 +277,13 @@ function SavedTaskEntry({
     </div> : <p className={styles.taskMissingPreview}>Pinned model results are unavailable. Open the comparison to inspect the saved task.</p>}
 
     <div className={styles.taskActions}>
-      <LinkButton variant="secondary" href={`/suitability/${summary.task.id}`}>Open comparison <span aria-hidden="true">↗</span></LinkButton>
+      <LinkButton variant="secondary" href={`/suitability/${summary.task.id}?returnTo=${encodeURIComponent(returnTo)}`}>Open comparison <span aria-hidden="true">↗</span></LinkButton>
       <Button variant="quiet" size="compact" loading={backupLoading} onClick={() => void handleBackup()}>Download backup</Button>
+      <label className={styles.categoryPicker}>Change category<Select aria-label={`Category for ${summary.task.title}`} value={categoryId} disabled={categorySaving || !categoriesLoaded} onChange={event => void handleCategoryChange(event.target.value)}>
+        <option value="">Uncategorized</option>{categoryId && !categories.some(category => category.id === categoryId) && <option value={categoryId}>Category unavailable</option>}{categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+      </Select></label>
     </div>
+    {categoryError && <Alert className={styles.taskActionError} tone="error">{categoryError}</Alert>}
     {backupError && <Alert className={styles.taskActionError} tone="error">{backupError}</Alert>}
 
     <details className={styles.inlineComparison} onToggle={event => handleOpen(event.currentTarget.open)}>
@@ -218,11 +298,15 @@ function SavedTaskEntry({
 export default function Planner({ data }: { data: PlannerData }) {
   const router = useRouter();
   const path = usePathname();
+  const searchParams = useSearchParams();
   const isLibrary = path === "/suitability/saved";
   const isReview = path.startsWith("/suitability/") && !isLibrary;
   const taskId = isReview ? path.split("/")[2] : "";
   const [ready, setReady] = useState(false);
   const [saved, setSaved] = useState<SavedTaskSummary[]>([]);
+  const [categories, setCategories] = useState<SuitabilityCategory[]>([]);
+  const [categoriesLoaded, setCategoriesLoaded] = useState(false);
+  const [categoriesError, setCategoriesError] = useState("");
   const [browserSaved, setBrowserSaved] = useState<SavedComparison[]>([]);
   const [active, setActive] = useState<SavedComparison | null>(null);
   const [libraryDetails, setLibraryDetails] = useState<Record<string, SavedComparison>>({});
@@ -232,6 +316,7 @@ export default function Planner({ data }: { data: PlannerData }) {
   const [editing, setEditing] = useState(false);
   const [title, setTitle] = useState("");
   const [request, setRequest] = useState("");
+  const [categoryId, setCategoryId] = useState("");
   const [weights, setWeights] = useState<EvaluationWeight[]>([]);
   const [selected, setSelected] = useState<string[]>([]);
   const [evaluationSearch, setEvaluationSearch] = useState("");
@@ -239,7 +324,12 @@ export default function Planner({ data }: { data: PlannerData }) {
   const [provider, setProvider] = useState("");
   const [modelMode, setModelMode] = useState<"all" | "favorites">("all");
   const [completeOnly, setCompleteOnly] = useState(false);
-  const [librarySearch, setLibrarySearch] = useState("");
+  const [librarySearch, setLibrarySearch] = useState(searchParams.get("q") ?? "");
+  const [categoryNameDraft, setCategoryNameDraft] = useState("");
+  const [showInlineCategoryCreate, setShowInlineCategoryCreate] = useState(false);
+  const [categoryNameEdits, setCategoryNameEdits] = useState<Record<string, string>>({});
+  const [categoryActionError, setCategoryActionError] = useState("");
+  const [categoryBusy, setCategoryBusy] = useState(false);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [favoriteNotice, setFavoriteNotice] = useState("");
   const [error, setError] = useState("");
@@ -247,8 +337,47 @@ export default function Planner({ data }: { data: PlannerData }) {
   const [syncingBrowserSaved, setSyncingBrowserSaved] = useState(false);
   const [notice, setNotice] = useState("");
   const openedPath = useRef("");
+  const appliedCategoryPrefill = useRef("");
   const previousComparison = useRef("");
   const libraryDetailRequests = useRef(new Map<string, Promise<SavedComparison>>());
+  const selectedCategoryIds = searchParams.getAll("category");
+  const returnTo = searchParams.get("returnTo");
+  const libraryReturnPath = returnTo?.startsWith("/suitability/saved") ? returnTo : "/suitability/saved";
+  const currentLibraryPath = `${path}${searchParams.toString() ? `?${searchParams.toString()}` : ""}`;
+  const createTaskHref = isLibrary ? `/suitability?returnTo=${encodeURIComponent(currentLibraryPath)}` : `/suitability?returnTo=${encodeURIComponent(libraryReturnPath)}`;
+  const categoryPrefill = !isLibrary && !isReview ? searchParams.get("category") ?? "" : "";
+
+  const replaceLibraryUrl = (query: string, selected: string[]) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("q"); params.delete("category");
+    if (query.trim()) params.set("q", query);
+    [...new Set(selected)].forEach(id => params.append("category", id));
+    const suffix = params.toString();
+    router.replace(`/suitability/saved${suffix ? `?${suffix}` : ""}`, { scroll: false });
+  };
+
+  const updateLibrarySearch = (value: string) => {
+    setLibrarySearch(value);
+    replaceLibraryUrl(value, selectedCategoryIds);
+  };
+
+  useEffect(() => setLibrarySearch(searchParams.get("q") ?? ""), [searchParams]);
+  useEffect(() => {
+    if (!categoryPrefill) { appliedCategoryPrefill.current = ""; return; }
+    if (!categoriesLoaded || appliedCategoryPrefill.current === categoryPrefill) return;
+    appliedCategoryPrefill.current = categoryPrefill;
+    setCategoryId(categories.some(category => category.id === categoryPrefill) ? categoryPrefill : "");
+  }, [categoryPrefill, categories, categoriesLoaded]);
+  useEffect(() => {
+    if (!categoriesLoaded || !active?.category_id) return;
+    const current = categories.find(category => category.id === active.category_id);
+    if (!current) {
+      setCategoryId("");
+      setActive(previous => previous ? { ...previous, category_id: null, category_name: null } : previous);
+    } else if (active.category_name !== current.name) {
+      setActive(previous => previous ? { ...previous, category_name: current.name } : previous);
+    }
+  }, [categoriesLoaded, categories, active?.category_id, active?.category_name]);
 
   useEffect(() => {
     const refresh = () => setFavorites(readModelFavorites());
@@ -260,11 +389,20 @@ export default function Planner({ data }: { data: PlannerData }) {
     let cancelled = false;
     if (openedPath.current !== path) { recordSuitabilityEvent("planner_opened"); openedPath.current = path; }
     setReady(false); setError(""); setNotice(""); setEditing(false);
+    setCategories([]); setCategoriesLoaded(false); setCategoriesError("");
+    void fetchCategories().then(items => {
+      if (cancelled) return;
+      setCategories(items); setCategoriesLoaded(true); setCategoriesError("");
+    }).catch(cause => {
+      if (cancelled) return;
+      setCategories([]); setCategoriesLoaded(false); setCategoriesError(loadErrorMessage(cause, "Categories are unavailable."));
+    });
     let localTasks: SavedComparison[] = [];
     let localError = "";
     const activate = (activeTask: SavedComparison | null, loadError = "") => {
       if (cancelled) return;
       setActive(activeTask); setTitle(activeTask?.task.title ?? ""); setRequest(activeTask?.task.request ?? "");
+      setCategoryId(activeTask?.category_id ?? "");
       setWeights(activeTask?.task.evaluation_weights ?? []); setSelected(activeTask?.task.candidate_model_ids ?? []);
       setError([loadError, localError].filter(Boolean).join(" "));
       if (activeTask && localTasks.some(task => task === activeTask)) setNotice("Saved in this browser. Shared sync is pending. Download a backup to keep a copy outside this browser.");
@@ -353,6 +491,7 @@ export default function Planner({ data }: { data: PlannerData }) {
     && weights.every(weight => Number.isFinite(weight.weight) && weight.weight >= 0)
     && Math.abs(total - 100) <= 0.000001 && selected.length > 0;
   const dirty = !active || active.task.title !== title || active.task.request !== request
+    || (active.category_id ?? "") !== categoryId
     || JSON.stringify(active.task.evaluation_weights) !== JSON.stringify(weights)
     || JSON.stringify(active.task.candidate_model_ids) !== JSON.stringify(selected);
   const result = useMemo(() => {
@@ -399,18 +538,28 @@ export default function Planner({ data }: { data: PlannerData }) {
     if (!browserSaved.length) return;
     setSyncingBrowserSaved(true); setError("");
     try {
+      const availableCategories = categoriesLoaded ? categories : await refreshCategories();
       const current = await fetchSharedTaskSummaries();
       const conflicting = browserSaved.filter(task => current.some(shared => shared.task.id === task.task.id && shared.task.updated_at > task.task.updated_at));
       if (conflicting.length) throw new Error("A shared task has newer settings. Your browser copy is retained; download a backup before resolving the difference.");
+      let categoriesDropped = 0;
       for (const task of browserSaved) {
-        await saveSharedTask(task);
-        const summary = summarizeComparison(task);
+        const matchedCategory = (task.category_id ? availableCategories.find(item => item.id === task.category_id) : null)
+          ?? (task.category_name ? availableCategories.find(item => normalizeCategoryName(item.name) === normalizeCategoryName(task.category_name!)) : null);
+        const categoryWasLost = !!(task.category_id || task.category_name) && !matchedCategory;
+        if (categoryWasLost) categoriesDropped++;
+        const upload = { ...task, category_id: matchedCategory?.id ?? null, category_name: matchedCategory?.name ?? null };
+        upload.category_revision = task.category_revision ?? 0;
+        const savedCategory = await saveSharedTask(upload);
+        upload.category_revision = savedCategory.revision;
+        upload.category_name = savedCategory.categoryName;
+        const summary = summarizeComparison(upload);
         setSaved(previous => [summary, ...previous.filter(item => item.task.id !== task.task.id)]);
-        setLibraryDetails(previous => ({ ...previous, [task.task.id]: task }));
+        setLibraryDetails(previous => ({ ...previous, [task.task.id]: upload }));
         await removeBrowserTask(task);
         setBrowserSaved(previous => previous.filter(item => item.task.id !== task.task.id));
       }
-      setNotice("Browser-saved tasks synced to the shared library.");
+      setNotice(categoriesDropped ? `Browser-saved tasks synced. ${categoriesDropped} unmatched ${categoriesDropped === 1 ? "category was" : "categories were"} changed to Uncategorized.` : "Browser-saved tasks synced to the shared library.");
     } catch (cause) { setError(loadErrorMessage(cause, "Browser-saved tasks could not be added to the shared list.")); }
     finally { setSyncingBrowserSaved(false); }
   };
@@ -418,11 +567,19 @@ export default function Planner({ data }: { data: PlannerData }) {
     try {
       const comparison = migrateBrowserTask(savedComparisonSchema.parse(JSON.parse(await file.text())), data.candidates);
       comparisonRows(comparison, comparison.task.evaluation_weights, comparison.task.candidate_model_ids);
+      let importedCategoryDropped = false;
+      if (categoriesLoaded && (comparison.category_id || comparison.category_name)) {
+        const match = (comparison.category_id ? categories.find(item => item.id === comparison.category_id) : null)
+          ?? (comparison.category_name ? categories.find(item => normalizeCategoryName(item.name) === normalizeCategoryName(comparison.category_name!)) : null);
+        importedCategoryDropped = !match;
+        comparison.category_id = match?.id ?? null;
+        comparison.category_name = match?.name ?? null;
+      }
       const existing = browserSaved.find(item => item.task.id === comparison.task.id);
       if (existing && existing.task.updated_at > comparison.task.updated_at) throw new Error("A newer copy is already saved in this browser. The backup was not imported.");
       await saveBrowserTask(comparison);
       setBrowserSaved(previous => [comparison, ...previous.filter(item => item.task.id !== comparison.task.id)]);
-      setNotice("Backup imported and saved in this browser. Shared sync is pending."); setError("");
+      setNotice(`Backup imported and saved in this browser. Shared sync is pending.${importedCategoryDropped ? " Its category was not found in this library, so it was imported as Uncategorized." : ""}`); setError("");
     } catch (cause) { setError(cause instanceof Error ? cause.message : "The backup could not be imported."); }
   };
   const createComparison = () => {
@@ -430,7 +587,9 @@ export default function Planner({ data }: { data: PlannerData }) {
     const task: SuitabilityTask = suitabilityTaskSchema.parse({ id: active?.task.id ?? crypto.randomUUID(), title: title.trim().slice(0, 80), request: request.trim(),
       evaluation_weights: weights, candidate_model_ids: selected, score_method: "rank_percentile_v1", missing_policy: "exclude_and_show_coverage",
       created_at: active?.task.created_at ?? now, updated_at: now, last_calculated_at: now, schema_version: 1 });
-    return pinComparison(task, working);
+    return { ...pinComparison(task, working), category_id: categoryId || null,
+      category_name: categories.find(item => item.id === categoryId)?.name ?? null,
+      category_revision: active?.category_revision ?? 0 };
   };
   const save = async (onlyBrowser = false) => {
     if (!valid || result.error) return;
@@ -446,10 +605,18 @@ export default function Planner({ data }: { data: PlannerData }) {
       let sharedSaved = false;
       let sharedError = "";
       if (!onlyBrowser) {
-        try { await saveSharedTask(pinned); sharedSaved = true; }
+        try {
+          const savedCategory = await saveSharedTask(pinned);
+          pinned.category_revision = savedCategory.revision;
+          pinned.category_name = savedCategory.categoryName;
+          sharedSaved = true;
+        }
         catch (cause) { sharedError = cause instanceof Error ? cause.message : "Shared saves are unavailable."; }
       }
       if (!locallySaved && !sharedSaved) throw new Error(`The task was not saved. ${browserError} ${sharedError} Your selections are still visible.`);
+      if (sharedSaved && locallySaved) {
+        try { await saveBrowserTask(pinned); } catch { /* A successful shared save remains complete if the local cache cannot be refreshed. */ }
+      }
       if (sharedSaved) {
         setSaved(previous => [summarizeComparison(pinned), ...previous.filter(item => item.task.id !== task.id)]);
         setLibraryDetails(previous => ({ ...previous, [task.id]: pinned }));
@@ -460,25 +627,124 @@ export default function Planner({ data }: { data: PlannerData }) {
       setBrowserSaved(previous => locallySaved ? [pinned, ...previous.filter(item => item.task.id !== task.id)] : previous.filter(item => item.task.id !== task.id));
       setNotice(sharedSaved ? "Saved to the shared library." : "Saved in this browser. Shared sync is pending. Download a backup to keep a copy outside this browser.");
       setEditing(false);
-      router.replace(`/suitability/${task.id}`, { scroll: false });
+      const backQuery = returnTo?.startsWith("/suitability/saved") ? `?returnTo=${encodeURIComponent(returnTo)}` : "";
+      router.replace(`/suitability/${task.id}${backQuery}`, { scroll: false });
     } catch (cause) { setError(cause instanceof Error ? cause.message : "Task could not be saved to the shared database. Your current selections are still visible."); }
     finally { setSaving(false); }
   };
 
   const libraryTasks = useMemo(() => {
-    const byId = new Map<string, { summary: SavedTaskSummary; shared: boolean; localComparison: SavedComparison | null }>(
-      saved.map(summary => [summary.task.id, { summary, shared: true, localComparison: null }]),
+    const byId = new Map<string, { summary: SavedTaskSummary; shared: boolean; hasShared: boolean; localComparison: SavedComparison | null }>(
+      saved.map(summary => [summary.task.id, { summary, shared: true, hasShared: true, localComparison: null }]),
     );
     for (const comparison of browserSaved) {
       const cloud = byId.get(comparison.task.id);
       if (!cloud || comparison.task.updated_at >= cloud.summary.task.updated_at)
-        byId.set(comparison.task.id, { summary: summarizeComparison(comparison), shared: false, localComparison: comparison });
+        byId.set(comparison.task.id, { summary: summarizeComparison(comparison), shared: false, hasShared: !!cloud, localComparison: comparison });
     }
-    const all = [...byId.values()];
-    const query = librarySearch.trim().toLowerCase();
-    return all.filter(({ summary }) => !query || `${summary.task.title} ${summary.task.request}`.toLowerCase().includes(query))
-      .sort((a, b) => b.summary.task.updated_at.localeCompare(a.summary.task.updated_at));
-  }, [saved, browserSaved, librarySearch]);
+    return [...byId.values()].sort((a, b) => b.summary.task.updated_at.localeCompare(a.summary.task.updated_at) || a.summary.task.id.localeCompare(b.summary.task.id));
+  }, [saved, browserSaved]);
+
+  const refreshCategories = async () => {
+    try {
+      const items = await fetchCategories();
+      setCategories(items); setCategoriesLoaded(true); setCategoriesError("");
+      return items;
+    } catch (cause) {
+      setCategories([]); setCategoriesLoaded(false); setCategoriesError(loadErrorMessage(cause, "Categories are unavailable."));
+      throw cause;
+    }
+  };
+
+  const handleCreateCategory = async (event: FormEvent) => {
+    event.preventDefault(); setCategoryActionError(""); setCategoryBusy(true);
+    try {
+      const created = await createCategory(categoryNameDraft);
+      setCategories(previous => [...previous, created].sort((a, b) => a.name.localeCompare(b.name, "en")));
+      setCategoriesLoaded(true); setCategoriesError(""); setCategoryNameDraft(""); setCategoryId(created.id);
+      setNotice(`Created ${created.name}.`);
+    } catch (cause) { setCategoryActionError(cause instanceof Error ? cause.message : "Category could not be created."); }
+    finally { setCategoryBusy(false); }
+  };
+
+  const handleInlineCreateCategory = async () => {
+    setCategoryActionError(""); setCategoryBusy(true);
+    try {
+      const created = await createCategory(categoryNameDraft);
+      setCategories(previous => [...previous, created].sort((a, b) => a.name.localeCompare(b.name, "en")));
+      setCategoriesLoaded(true); setCategoriesError(""); setCategoryId(created.id); setCategoryNameDraft(""); setShowInlineCategoryCreate(false);
+      setNotice(`Created ${created.name}.`);
+    } catch (cause) { setCategoryActionError(cause instanceof Error ? cause.message : "Category could not be created."); }
+    finally { setCategoryBusy(false); }
+  };
+
+  const handleRenameCategory = async (category: SuitabilityCategory) => {
+    setCategoryActionError(""); setCategoryBusy(true);
+    try {
+      const updated = await renameCategory(category.id, categoryNameEdits[category.id] ?? category.name);
+      setCategories(previous => previous.map(item => item.id === updated.id ? updated : item).sort((a, b) => a.name.localeCompare(b.name, "en")));
+      setCategoryNameEdits(previous => { const next = { ...previous }; delete next[category.id]; return next; });
+      setNotice(`Renamed category to ${updated.name}.`);
+    } catch (cause) { setCategoryActionError(cause instanceof Error ? cause.message : "Category could not be renamed."); }
+    finally { setCategoryBusy(false); }
+  };
+
+  const handleDeleteCategory = async (category: SuitabilityCategory) => {
+    const affected = libraryTasks.filter(item => item.summary.task.category_id === category.id).length;
+    if (!window.confirm(`Delete ${category.name}? Its ${affected} ${affected === 1 ? "task will" : "tasks will"} move to Uncategorized.`)) return;
+    setCategoryActionError(""); setCategoryBusy(true);
+    try {
+      await deleteCategory(category.id);
+      setCategories(previous => previous.filter(item => item.id !== category.id));
+      if (categoryId === category.id) setCategoryId("");
+      replaceLibraryUrl(librarySearch, selectedCategoryIds.filter(id => id !== category.id));
+      setNotice(`Deleted ${category.name}. Its tasks are now Uncategorized.`);
+    } catch (cause) { setCategoryActionError(cause instanceof Error ? cause.message : "Category could not be deleted."); }
+    finally { setCategoryBusy(false); }
+  };
+
+  const handleAssignCategory = async (item: { summary: SavedTaskSummary; shared: boolean; localComparison: SavedComparison | null }, nextCategoryId: string | null) => {
+    const category = categories.find(option => option.id === nextCategoryId) ?? null;
+    if (item.shared) {
+      const updated = await assignSharedTaskCategory(item.summary.task.id, nextCategoryId, item.summary.task.category_revision ?? 0);
+      const summary = { ...item.summary, task: { ...item.summary.task, category_id: updated.category_id, category_name: updated.category_name,
+        category_revision: updated.category_revision, updated_at: updated.updated_at } };
+      setSaved(previous => previous.map(value => value.task.id === summary.task.id ? summary : value));
+      setLibraryDetails(previous => {
+        const comparison = previous[item.summary.task.id];
+        return comparison ? { ...previous, [item.summary.task.id]: { ...comparison, category_id: updated.category_id,
+          category_name: updated.category_name, category_revision: updated.category_revision,
+          task: { ...comparison.task, updated_at: updated.updated_at } } } : previous;
+      });
+      setNotice(`Moved ${item.summary.task.title} to ${category?.name ?? "Uncategorized"}.`);
+      return;
+    }
+    if (!item.localComparison) throw new Error("The browser-saved task could not be loaded.");
+    const now = new Date().toISOString();
+    const updated: SavedComparison = { ...item.localComparison, category_id: nextCategoryId, category_name: category?.name ?? null,
+      category_revision: item.localComparison.category_revision ?? 0, task: { ...item.localComparison.task, updated_at: now } };
+    await saveBrowserTask(updated);
+    setBrowserSaved(previous => previous.map(task => task.task.id === updated.task.id ? updated : task));
+    setNotice(`Moved ${item.summary.task.title} to ${category?.name ?? "Uncategorized"}.`);
+  };
+
+  const unknownCategories = !categoriesLoaded ? libraryTasks.flatMap(item => {
+    const id = item.summary.task.category_id;
+    return id && !categories.some(category => category.id === id) ? [{ id, name: "Category unavailable", normalized_name: "category-unavailable", created_at: new Date(0).toISOString(), updated_at: new Date(0).toISOString() }] : [];
+  }) : [];
+  const filterCategories = [...categories, ...unknownCategories.filter((item, index, all) => all.findIndex(other => other.id === item.id) === index)];
+  const categorizedTasks = libraryTasks.map(item => ({ ...item, task: item.summary.task }));
+  const groupedLibrary = groupSavedTaskIds(categorizedTasks, selectedCategoryIds, filterCategories, librarySearch);
+  const libraryTotal = libraryTasks.length;
+
+  useEffect(() => {
+    if (!isLibrary || !categoriesLoaded) return;
+    const invalid = selectedCategoryIds.filter(id => id !== "__uncategorized__" && !categories.some(category => category.id === id));
+    if (invalid.length) {
+      replaceLibraryUrl(librarySearch, selectedCategoryIds.filter(id => !invalid.includes(id)));
+      setNotice("A selected category was removed. Its tasks are now Uncategorized.");
+    }
+  }, [isLibrary, categoriesLoaded, categories, searchParams]);
   const sharedListUnavailable = error.startsWith("Shared tasks could not be loaded.");
 
   if (!ready) return <div className="ui-loading-state"><Spinner label="Loading saved tasks" /><span>Loading saved tasks…</span></div>;
@@ -489,14 +755,43 @@ export default function Planner({ data }: { data: PlannerData }) {
       <p>Shared tasks are visible to everyone who visits this site. Browser saves stay on this device until you sync or download them. Costs are captured Artificial Analysis Intelligence Index task costs, not quotes for your custom task.</p>
     </PageHeader>
     <div className={styles.libraryToolbar}>
-      <LinkButton variant="primary" href="/suitability">Create a task</LinkButton>
-      <label className={`${styles.searchField} ${styles.librarySearchField}`} htmlFor="saved-task-search">Search saved tasks<Input id="saved-task-search" type="search" value={librarySearch} onChange={event => setLibrarySearch(event.target.value)} placeholder="Search titles or task descriptions" /></label>
+      <LinkButton variant="primary" href={createTaskHref}>Create a task</LinkButton>
+      <label className={`${styles.searchField} ${styles.librarySearchField}`} htmlFor="saved-task-search">Search saved tasks<Input id="saved-task-search" type="search" value={librarySearch} onChange={event => updateLibrarySearch(event.target.value)} placeholder="Search titles or task descriptions" /></label>
+      <details className={styles.categoryFilter}>
+        <summary>Categories{selectedCategoryIds.length ? ` · ${selectedCategoryIds.length} selected` : " · All"}</summary>
+        <fieldset>
+          <legend>Filter by task category</legend>
+          {[...filterCategories.map(category => ({ id: category.id, name: category.name })), { id: "__uncategorized__", name: "Uncategorized" }].map(category => {
+            const checked = selectedCategoryIds.includes(category.id);
+            return <label key={category.id} className={styles.categoryFilterOption}><Checkbox checked={checked} onChange={() => replaceLibraryUrl(librarySearch, checked ? selectedCategoryIds.filter(id => id !== category.id) : [...selectedCategoryIds, category.id])} />{category.name}</label>;
+          })}
+        </fieldset>
+      </details>
       <div className={styles.libraryImport}>
         <label className={styles.libraryImportButton} htmlFor="task-backup">Import backup</label>
         <Input className={styles.visuallyHiddenInput} id="task-backup" aria-label="Import a task backup" type="file" accept=".json,application/json" onChange={event => { const file = event.target.files?.[0]; if (file) void restoreBackup(file); event.target.value = ""; }} />
       </div>
     </div>
+    <details className={styles.categoryManager}>
+      <summary>Manage categories</summary>
+      <Card>
+        {!categoriesLoaded ? <Alert tone="warning"><p>Categories are unavailable. Tasks remain accessible and assignments have been kept.</p><Button onClick={() => void refreshCategories().catch(() => undefined)}>Retry category loading</Button></Alert> : null}
+        {categoriesLoaded && categories.length === 0 && <p>No categories yet. Add one to organize saved tasks.</p>}
+        {categoriesLoaded && categories.map(category => <div className={styles.categoryManageRow} key={category.id}>
+          <Input aria-label={`Rename ${category.name}`} maxLength={60} value={categoryNameEdits[category.id] ?? category.name} onChange={event => setCategoryNameEdits(previous => ({ ...previous, [category.id]: event.target.value }))} />
+          <span>{libraryTasks.filter(item => item.summary.task.category_id === category.id).length} tasks</span>
+          <Button size="compact" disabled={categoryBusy || (categoryNameEdits[category.id] ?? category.name) === category.name} loading={categoryBusy} onClick={() => void handleRenameCategory(category)}>Rename</Button>
+          <Button variant="quiet" size="compact" disabled={categoryBusy} onClick={() => void handleDeleteCategory(category)}>Delete</Button>
+        </div>)}
+        <form className={styles.categoryCreateForm} onSubmit={event => void handleCreateCategory(event)}>
+          <label className={styles.searchField} htmlFor="new-task-category">Add category<Input id="new-task-category" maxLength={60} value={categoryNameDraft} onChange={event => setCategoryNameDraft(event.target.value)} placeholder="e.g. Research" disabled={!categoriesLoaded || categoryBusy} /></label>
+          <Button type="submit" disabled={!categoriesLoaded || !categoryNameDraft.trim() || categoryBusy} loading={categoryBusy}>Add category</Button>
+        </form>
+        {categoryActionError && <Alert className={styles.taskActionError} tone="error">{categoryActionError}</Alert>}
+      </Card>
+    </details>
     {error && <Alert className="workflow-alert" tone="error"><p>{error}</p>{sharedListUnavailable && <Button onClick={() => setLibraryRetry(value => value + 1)}>Reload shared tasks</Button>}</Alert>}
+    {categoriesError && <Alert className="workflow-alert" tone="warning"><p>Category information is unavailable. Saved tasks remain accessible, and existing assignments are unchanged.</p><Button onClick={() => void refreshCategories().catch(() => undefined)}>Retry categories</Button></Alert>}
     {browserSaved.length > 0 && <Card className={styles.browserSyncCard}>
       <div className={styles.browserSyncHeader}>
         <div><h2>{browserSaved.length} task{browserSaved.length === 1 ? "" : "s"} saved in this browser</h2><p>Shared sync is pending. Sync {browserSaved.length === 1 ? "it" : "them"} to make {browserSaved.length === 1 ? "it" : "them"} available to everyone who visits this site.</p></div>
@@ -504,39 +799,57 @@ export default function Planner({ data }: { data: PlannerData }) {
       </div>
       <p className={styles.browserSyncNote}>Download a backup before clearing browser data.</p>
     </Card>}
-    {libraryTasks.length === 0 ? <Card><EmptyState title={librarySearch ? "No matching saved tasks" : sharedListUnavailable ? "Shared task list unavailable" : "No saved tasks yet"} description={librarySearch ? "Try another title or description." : sharedListUnavailable ? "Try reloading the shared list. Browser-saved copies still appear here when available." : "Save a task comparison to return to its pinned model results later."} action={!librarySearch && !error ? <LinkButton variant="primary" href="/suitability">Create your first task</LinkButton> : undefined} /></Card> : <div className={styles.savedList}>
-      {libraryTasks.map(({ summary, shared, localComparison }) => {
-        const taskId = summary.task.id;
-        const comparison = shared ? libraryDetails[taskId] ?? null : localComparison;
-        return <SavedTaskEntry key={summary.task.id} summary={summary} shared={shared} localComparison={localComparison} loadedComparison={comparison}
-          detailError={libraryDetailErrors[taskId]} loading={libraryLoading.includes(taskId)} onLoadComparison={() => loadLibraryComparison(taskId)} />;
-      })}
+    {libraryTasks.length > 0 && <div className={styles.libraryResultsStatus} aria-live="polite"><span>Showing {groupedLibrary.filteredCount} of {libraryTotal} tasks</span>
+      <div className={styles.libraryFilterChips}>
+        {selectedCategoryIds.map(id => <span className={styles.libraryFilterChip} key={id}>{id === "__uncategorized__" ? "Uncategorized" : filterCategories.find(category => category.id === id)?.name ?? "Category unavailable"}
+          <button type="button" aria-label={`Remove ${id === "__uncategorized__" ? "Uncategorized" : filterCategories.find(category => category.id === id)?.name ?? "category"} filter`} onClick={() => replaceLibraryUrl(librarySearch, selectedCategoryIds.filter(selectedId => selectedId !== id))}>×</button>
+        </span>)}
+        {(librarySearch || selectedCategoryIds.length > 0) && <Button variant="quiet" size="compact" onClick={() => { setLibrarySearch(""); replaceLibraryUrl("", []); }}>Clear filters</Button>}
+      </div>
     </div>}
+    {libraryTasks.length === 0 && (librarySearch || selectedCategoryIds.length > 0) ? <Card><EmptyState title="No matching saved tasks" description="Try a different search or category filter." action={selectedCategoryIds.length === 1 && selectedCategoryIds[0] !== "__uncategorized__" && categories.some(category => category.id === selectedCategoryIds[0]) ? <LinkButton variant="primary" href={`/suitability?category=${encodeURIComponent(selectedCategoryIds[0])}&returnTo=${encodeURIComponent(currentLibraryPath)}`}>Create a task in this category</LinkButton> : <Button onClick={() => { setLibrarySearch(""); replaceLibraryUrl("", []); }}>Clear filters</Button>} /></Card>
+      : libraryTasks.length === 0 ? <Card><EmptyState title={sharedListUnavailable ? "Shared task list unavailable" : "No saved tasks yet"} description={sharedListUnavailable ? "Try reloading the shared list. Browser-saved copies still appear here when available." : "Save a task comparison to return to its pinned model results later."} action={!error ? <LinkButton variant="primary" href="/suitability">Create your first task</LinkButton> : undefined} /></Card>
+      : groupedLibrary.groups.length === 0 ? <Card><EmptyState title="No matching saved tasks" description="Try a different search or category filter." action={selectedCategoryIds.length === 1 && categories.some(category => category.id === selectedCategoryIds[0]) ? <LinkButton variant="primary" href={`/suitability?category=${encodeURIComponent(selectedCategoryIds[0])}&returnTo=${encodeURIComponent(currentLibraryPath)}`}>Create a task in this category</LinkButton> : <Button onClick={() => { setLibrarySearch(""); replaceLibraryUrl("", []); }}>Clear filters</Button>} /></Card>
+      : <div className={styles.savedGroups}>{groupedLibrary.groups.map(group => <section className={styles.savedGroup} key={group.id ?? "uncategorized"}>
+        <h2>{group.name}<span>{group.tasks.length} task{group.tasks.length === 1 ? "" : "s"}</span></h2>
+        <div className={styles.savedList}>{group.tasks.map(item => {
+          const { summary, shared, localComparison } = item;
+          const taskId = summary.task.id;
+          const comparison = shared ? libraryDetails[taskId] ?? null : localComparison;
+          const categoryLabel = !categoriesLoaded && summary.task.category_id ? "Category unavailable" : categories.find(category => category.id === summary.task.category_id)?.name ?? "Uncategorized";
+          return <SavedTaskEntry key={taskId} summary={summary} shared={shared} localComparison={localComparison} loadedComparison={comparison}
+            categories={categories} categoriesLoaded={categoriesLoaded} categoryLabel={categoryLabel} returnTo={`${path}${searchParams.toString() ? `?${searchParams.toString()}` : ""}`}
+            onAssignCategory={categoryId => handleAssignCategory(item, categoryId)}
+            detailError={libraryDetailErrors[taskId]} loading={libraryLoading.includes(taskId)} onLoadComparison={() => loadLibraryComparison(taskId)} />;
+        })}</div>
+      </section>)}</div>}
     {notice && <Alert className="workflow-alert" tone="info" role="status" live="polite">{notice}</Alert>}
   </div>;
 
   if (isReview && !editing) {
-    if (!active) return <Card><h1>Saved comparison unavailable</h1>{error && <Alert tone="error">{error}</Alert>}<Link href="/suitability/saved">Back to saved tasks</Link></Card>;
+    if (!active) return <Card><h1>Saved comparison unavailable</h1>{error && <Alert tone="error">{error}</Alert>}<Link href={libraryReturnPath}>Back to saved tasks</Link></Card>;
     let comparisonError = "";
     let rows = [] as ReturnType<typeof comparisonRows>;
     try { rows = comparisonRows(active, active.task.evaluation_weights, active.task.candidate_model_ids); }
     catch (cause) { comparisonError = cause instanceof Error ? cause.message : "Pinned comparison data is unavailable."; }
     return <div className={styles.planner}>
       <PageHeader>
-      <div className="breadcrumb"><Link href="/suitability/saved">Saved tasks</Link> / {active.task.title}</div>
+      <div className="breadcrumb"><Link href={libraryReturnPath}>Saved tasks</Link> / {active.task.title}</div>
       <div className="eyebrow">Saved comparison</div><h1>{active.task.title}</h1><p>{active.task.request}</p>
       <p>{active.task.evaluation_weights.length} evaluations · {active.task.candidate_model_ids.length} candidates · Updated {niceDate(active.task.updated_at)}</p>
+      <p>Category: {!categoriesLoaded && active.category_id ? "Category unavailable" : categories.find(category => category.id === active.category_id)?.name ?? "Uncategorized"}</p>
       </PageHeader>
-      <div className="toolbar"><Button onClick={() => setEditing(true)}>Edit settings</Button><LinkButton variant="primary" href="/suitability">New task</LinkButton><Link href="/suitability/saved">Saved tasks library</Link></div>
+      <div className="toolbar"><Button onClick={() => { setCategoryId(active.category_id ?? ""); setEditing(true); }}>Edit settings</Button><LinkButton variant="primary" href={createTaskHref}>New task</LinkButton><Link href={libraryReturnPath}>Saved tasks library</Link></div>
       <Alert className="workflow-alert" tone={browserSaved.some(item => item.task.id === active.task.id && item.task.updated_at >= active.task.updated_at) ? "warning" : "success"} role="status" live="polite">{browserSaved.some(item => item.task.id === active.task.id && item.task.updated_at >= active.task.updated_at) ? "Saved in this browser · shared sync pending. Keep a backup before clearing browser data or switching devices." : "Saved to the shared library."}</Alert>
-      <div className="toolbar"><Button onClick={() => downloadBackup(active)}>Download backup</Button>{browserSaved.some(item => item.task.id === active.task.id) && <Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync browser tasks to shared library</Button>}</div>
+      {categoriesError && <Alert className="workflow-alert" tone="warning"><p>Category information is unavailable. The saved comparison is still available.</p><Button onClick={() => void refreshCategories().catch(() => undefined)}>Retry categories</Button></Alert>}
+      <div className="toolbar"><Button onClick={() => downloadBackup(currentCategoryBackup(active, categories, categoriesLoaded))}>Download backup</Button>{browserSaved.some(item => item.task.id === active.task.id) && <Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync browser tasks to shared library</Button>}</div>
       {notice && <Alert className="workflow-alert" tone="info" role="status" live="polite">{notice}</Alert>}
       {error && <Alert className="workflow-alert" tone="error">{error}</Alert>}
       {comparisonError ? <Alert className="workflow-alert" tone="error">{comparisonError}</Alert> : <Card><h2>Model comparison</h2><SuitabilityComparison data={active} rows={rows} evaluationIds={active.task.evaluation_weights.map(weight => weight.evaluation_id)} /></Card>}
     </div>;
   }
 
-  if (isReview && !active) return <Card><h1>Saved comparison unavailable</h1>{error && <Alert tone="error">{error}</Alert>}<Link href="/suitability/saved">Back to saved tasks</Link></Card>;
+  if (isReview && !active) return <Card><h1>Saved comparison unavailable</h1>{error && <Alert tone="error">{error}</Alert>}<Link href={libraryReturnPath}>Back to saved tasks</Link></Card>;
 
   return <div className={styles.planner}>
     <PageHeader>
@@ -544,9 +857,10 @@ export default function Planner({ data }: { data: PlannerData }) {
     <h1>{active ? `Edit ${active.task.title}` : "Find the best model for a task."}</h1>
     <p>Choose source rankings and priorities, then compare models with transparent coverage and pinned cost context. Browser saves work while shared storage is unavailable and stay on this browser and device.</p>
     </PageHeader>
-    <div className="toolbar"><Link href="/suitability/saved">Saved tasks library</Link>{isReview && <Button variant="quiet" onClick={() => setEditing(false)}>Cancel editing</Button>}</div>
+    <div className="toolbar"><Link href={isReview ? libraryReturnPath : "/suitability/saved"}>Saved tasks library</Link>{isReview && <Button variant="quiet" onClick={() => { setCategoryId(active?.category_id ?? ""); setEditing(false); }}>Cancel editing</Button>}</div>
     {active?.candidates.some(candidate => !candidate.source_model_ids) && <Alert className="workflow-alert" tone="info">This saved task keeps its original model matching. <Link href="/suitability">Create a new task</Link> to compare models across known alternate sheet labels.</Alert>}
     {error && <Alert className="workflow-alert" tone="error">{error}</Alert>}
+    {categoriesError && <Alert className="workflow-alert" tone="warning"><p>Category information is unavailable. The task can still be edited and saved.</p><Button onClick={() => void refreshCategories().catch(() => undefined)}>Retry categories</Button></Alert>}
     {browserSaved.length > 0 && <Card><h2>Browser-saved tasks</h2><p>{browserSaved.length} task{browserSaved.length === 1 ? " is" : "s are"} saved in this browser with shared sync pending.</p><Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync browser tasks to shared library</Button></Card>}
     <Card className="ui-workflow-sheet">
       <Section className="ui-workflow-step"><h2>1. Describe the task</h2>
@@ -557,6 +871,19 @@ export default function Planner({ data }: { data: PlannerData }) {
         <FormField id="task-request" label="Task description" required helper="Task text is saved as context. Your evaluations and weights control the score.">
           <TextArea value={request} onChange={event => setRequest(event.target.value)} placeholder="Describe what you need a model to do" rows={3} />
         </FormField>
+        <FormField id="task-category" label="Category" helper={categoriesError || "You can change this category later in Saved tasks."}>
+          <Select id="task-category" value={categoryId} onChange={event => setCategoryId(event.target.value)} disabled={!categoriesLoaded}>
+            <option value="">Uncategorized</option>
+            {categoryId && !categories.some(category => category.id === categoryId) && <option value={categoryId}>Category unavailable</option>}
+            {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+          </Select>
+        </FormField>
+      </div>
+      <div className={styles.inlineCategoryCreate}>
+        <Button variant="quiet" size="compact" type="button" disabled={!categoriesLoaded || categoryBusy} onClick={() => { setCategoryNameDraft(""); setCategoryActionError(""); setShowInlineCategoryCreate(value => !value); }}>Create category</Button>
+        {showInlineCategoryCreate && <><Input aria-label="New category name" maxLength={60} value={categoryNameDraft} onChange={event => setCategoryNameDraft(event.target.value)} placeholder="Category name" />
+          <Button size="compact" type="button" disabled={!categoryNameDraft.trim() || categoryBusy} loading={categoryBusy} onClick={() => void handleInlineCreateCategory()}>Save category</Button></>}
+        {categoryActionError && showInlineCategoryCreate && <span role="alert">{categoryActionError}</span>}
       </div>
       </Section>
       <Section className="ui-workflow-step"><h2>2. Choose evaluations and weights</h2>

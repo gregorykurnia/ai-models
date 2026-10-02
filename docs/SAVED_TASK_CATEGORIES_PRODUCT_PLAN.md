@@ -1,6 +1,6 @@
 # Saved Task Categories
 
-**Status:** Proposed product plan; implementation has not started.
+**Status:** Implemented in the initial Saved task categories release.
 
 ## Product goal
 
