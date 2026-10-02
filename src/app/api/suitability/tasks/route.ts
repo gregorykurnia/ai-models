@@ -81,6 +81,7 @@ export async function GET(request: Request) {
           evaluation_weights: task.evaluation_weights,
           created_at: task.created_at,
           updated_at: task.updated_at,
+          implementor_model_id: task.implementor_model_id ?? null,
           category_id: data.category_id ?? null,
           category_name: data.category_name ?? null,
           category_revision: data.category_revision ?? 0,
@@ -123,19 +124,22 @@ export async function POST(request: Request) {
     for (let start = 0; start < comparison.entries.length; start += 200)
       chunks.push(comparison.entries.slice(start, start + 200));
 
-    const leadingCandidate = calculateSuitability({
+    const calculated = calculateSuitability({
       evaluations: comparison.evaluations,
       entries: comparison.entries,
       weights: comparison.task.evaluation_weights,
       candidates: comparison.candidates.filter(candidate => comparison.task.candidate_model_ids.includes(candidate.model_id)),
       availableSnapshotIds: comparison.availableSnapshotIds,
-    })[0];
-    const preview = leadingCandidate ? {
-      model_id: leadingCandidate.model_id,
-      model: leadingCandidate.model,
-      provider: leadingCandidate.provider,
-      score: leadingCandidate.score,
-      intelligence_index_cost: leadingCandidate.intelligence_index_cost ?? null,
+    });
+    const previewCandidate = (comparison.task.implementor_model_id
+      ? calculated.find(candidate => candidate.model_id === comparison.task.implementor_model_id)
+      : null) ?? calculated[0];
+    const preview = previewCandidate ? {
+      model_id: previewCandidate.model_id,
+      model: previewCandidate.model,
+      provider: previewCandidate.provider,
+      score: previewCandidate.score,
+      intelligence_index_cost: previewCandidate.intelligence_index_cost ?? null,
     } : null;
 
     await versionRef.set({ created_at: FieldValue.serverTimestamp(), chunk_count: chunks.length });

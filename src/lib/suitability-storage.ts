@@ -19,6 +19,7 @@ const savedTaskSummaryTaskSchema = z.object({
   id: z.string(), title: z.string(), request: z.string(),
   evaluation_weights: z.array(evaluationWeightSchema),
   created_at: z.string().datetime(), updated_at: z.string().datetime(),
+  implementor_model_id: z.string().min(1).nullable().optional(),
   category_id: z.string().nullable().optional(), category_name: z.string().nullable().optional(),
   category_revision: z.number().int().nonnegative().optional(),
 });

@@ -9,6 +9,7 @@ export const suitabilityTaskSchema = z.object({
   id: z.string().min(1), title: z.string().trim().min(1), request: z.string().trim().min(1),
   evaluation_weights: z.array(evaluationWeightSchema).min(1),
   candidate_model_ids: z.array(z.string().min(1)).min(1),
+  implementor_model_id: z.string().min(1).nullable().optional(),
   score_method: z.literal("rank_percentile_v1"),
   missing_policy: z.literal("exclude_and_show_coverage"),
   created_at: z.string().datetime(), updated_at: z.string().datetime(),
@@ -20,6 +21,8 @@ export const suitabilityTaskSchema = z.object({
     ctx.addIssue({ code: "custom", message: "Evaluations must be unique" });
   if (new Set(task.candidate_model_ids).size !== task.candidate_model_ids.length)
     ctx.addIssue({ code: "custom", message: "Candidates must be unique" });
+  if (task.implementor_model_id && !task.candidate_model_ids.includes(task.implementor_model_id))
+    ctx.addIssue({ code: "custom", path: ["implementor_model_id"], message: "The implementor must be one of the candidate models" });
 });
 export type SuitabilityTask = z.infer<typeof suitabilityTaskSchema>;
 export type EvaluationWeight = z.infer<typeof evaluationWeightSchema>;

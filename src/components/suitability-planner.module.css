@@ -733,6 +733,34 @@
   background: var(--table-hover);
 }
 
+.results tbody tr.implementorRow td {
+  background: var(--selected-bg);
+}
+
+.results tbody tr.implementorRow:hover td,
+.results tbody tr.implementorRow:hover .identity {
+  background: var(--selected-bg);
+}
+
+.results tbody tr.implementorRow .identity {
+  background: var(--selected-bg);
+  box-shadow: inset var(--border-width-marker) 0 0 var(--primary);
+}
+
+.implementorMarker {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  padding: var(--space-1) var(--space-2);
+  margin-top: var(--space-2);
+  border-radius: var(--shape-radius-pill);
+  color: var(--primary);
+  background: var(--primary-subtle);
+  font-size: var(--font-size-caption);
+  font-weight: var(--type-weight-semibold);
+  line-height: var(--line-height-caption);
+}
+
 .results .coverageValue small {
   margin-top: var(--space-1);
 }
@@ -981,6 +1009,18 @@
 
 .modelDetailsPicker select {
   width: 100%;
+}
+
+.modelDetailsActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+
+.modelDetailsActionNote {
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
 }
 
 .modelDetailsGrid {

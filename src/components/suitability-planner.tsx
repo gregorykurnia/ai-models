@@ -107,13 +107,16 @@ function loadErrorMessage(cause: unknown, fallback: string) {
 function summarizeComparison(comparison: SavedComparison): SavedTaskSummary {
   let preview: SavedTaskSummary["preview"] = null;
   try {
-    const leader = comparisonRows(comparison, comparison.task.evaluation_weights, comparison.task.candidate_model_ids)[0];
-    if (leader) preview = {
-      model_id: leader.model_id,
-      model: leader.model,
-      provider: leader.provider,
-      score: leader.score,
-      intelligence_index_cost: leader.intelligence_index_cost ?? null,
+    const rows = comparisonRows(comparison, comparison.task.evaluation_weights, comparison.task.candidate_model_ids);
+    const previewRow = (comparison.task.implementor_model_id
+      ? rows.find(row => row.model_id === comparison.task.implementor_model_id)
+      : null) ?? rows[0];
+    if (previewRow) preview = {
+      model_id: previewRow.model_id,
+      model: previewRow.model,
+      provider: previewRow.provider,
+      score: previewRow.score,
+      intelligence_index_cost: previewRow.intelligence_index_cost ?? null,
     };
   } catch { /* A missing pinned cohort is reported when the comparison is opened. */ }
   return {
@@ -122,6 +125,7 @@ function summarizeComparison(comparison: SavedComparison): SavedTaskSummary {
       title: comparison.task.title,
       request: comparison.task.request,
       evaluation_weights: comparison.task.evaluation_weights,
+      implementor_model_id: comparison.task.implementor_model_id ?? null,
       created_at: comparison.task.created_at,
       updated_at: comparison.task.updated_at,
       category_id: comparison.category_id ?? null,
@@ -162,13 +166,19 @@ function currentCategoryBackup(comparison: SavedComparison, categories: Suitabil
 
 type ComparisonRow = ReturnType<typeof comparisonRows>[number];
 
-function SelectedModelDetails({ rows, selectedModelId, onSelect }: {
+function SelectedModelDetails({ rows, selectedModelId, onSelect, implementorModelId, implementorSaving, onChooseImplementor }: {
   rows: ComparisonRow[];
   selectedModelId: string;
   onSelect: (modelId: string) => void;
+  implementorModelId: string | null;
+  implementorSaving: boolean;
+  onChooseImplementor: () => void;
 }) {
-  const selected = rows.find(row => row.model_id === selectedModelId) ?? rows[0];
+  const selected = rows.find(row => row.model_id === selectedModelId)
+    ?? rows.find(row => row.model_id === implementorModelId)
+    ?? rows[0];
   if (!selected) return null;
+  const isImplementor = selected.model_id === implementorModelId;
 
   return <section className={styles.modelDetails} aria-label="Selected model details">
     <div className={styles.modelDetailsHeader}>
@@ -182,6 +192,13 @@ function SelectedModelDetails({ rows, selectedModelId, onSelect }: {
           {rows.map(row => <option key={row.model_id} value={row.model_id}>{row.model} · {row.provider}</option>)}
         </Select>
       </label>
+    </div>
+
+    <div className={styles.modelDetailsActions}>
+      <Button variant={isImplementor ? "quiet" : "primary"} size="compact" disabled={isImplementor} loading={implementorSaving} aria-pressed={isImplementor} onClick={onChooseImplementor}>
+        {isImplementor ? "Chosen implementor" : "Choose as implementor"}
+      </Button>
+      <span className={styles.modelDetailsActionNote} aria-live="polite">{isImplementor ? "Shown in the saved task card." : "This model will appear in the saved task card."}</span>
     </div>
 
     <div className={styles.modelDetailsGrid} aria-live="polite">
@@ -227,6 +244,7 @@ function SavedTaskEntry({
   categoriesLoaded,
   categoryLabel,
   onAssignCategory,
+  onSetImplementor,
   returnTo,
 }: {
   summary: SavedTaskSummary;
@@ -240,6 +258,7 @@ function SavedTaskEntry({
   categoriesLoaded: boolean;
   categoryLabel: string;
   onAssignCategory: (categoryId: string | null) => Promise<void>;
+  onSetImplementor: (modelId: string) => Promise<void>;
   returnTo: string;
 }) {
   const [comparisonOpen, setComparisonOpen] = useState(false);
@@ -248,6 +267,8 @@ function SavedTaskEntry({
   const [categoryId, setCategoryId] = useState(summary.task.category_id ?? "");
   const [categorySaving, setCategorySaving] = useState(false);
   const [categoryError, setCategoryError] = useState("");
+  const [implementorSaving, setImplementorSaving] = useState(false);
+  const [implementorError, setImplementorError] = useState("");
   const comparison = shared ? loadedComparison : localComparison;
   const comparisonState = useMemo(() => {
     if (!comparisonOpen || !comparison) return { rows: [] as ReturnType<typeof comparisonRows>, error: "" };
@@ -255,8 +276,13 @@ function SavedTaskEntry({
     catch (cause) { return { rows: [], error: cause instanceof Error ? cause.message : "Pinned comparison data is unavailable." }; }
   }, [comparison, comparisonOpen]);
   const [selectedModelId, setSelectedModelId] = useState("");
+  const implementorModelId = comparison?.task.implementor_model_id ?? summary.task.implementor_model_id ?? null;
   const leader = comparisonState.rows[0];
+  const selectedComparisonModel = comparisonState.rows.find(row => row.model_id === selectedModelId)
+    ?? comparisonState.rows.find(row => row.model_id === implementorModelId)
+    ?? leader;
   const preview = summary.preview ?? leader;
+  const previewLabel = implementorModelId ? "Chosen implementor" : "Leading candidate";
   const captureItems = summary.task.evaluation_weights.map(weight => ({
     ...weight,
     displayName: summary.evaluations.find(evaluation => evaluation.id === weight.evaluation_id)?.display_name ?? weight.evaluation_id,
@@ -288,6 +314,15 @@ function SavedTaskEntry({
       setCategoryError(cause instanceof Error ? cause.message : "The task category could not be changed.");
     } finally { setCategorySaving(false); }
   };
+  const handleChooseImplementor = async () => {
+    const modelId = selectedComparisonModel?.model_id;
+    if (!modelId || modelId === implementorModelId) return;
+    setImplementorError("");
+    setImplementorSaving(true);
+    try { await onSetImplementor(modelId); }
+    catch (cause) { setImplementorError(cause instanceof Error ? cause.message : "The implementor could not be saved."); }
+    finally { setImplementorSaving(false); }
+  };
 
   return <Card as="article" className={styles.savedTaskEntry}>
     <div className={styles.taskHeader}>
@@ -313,9 +348,9 @@ function SavedTaskEntry({
       </details>
     </div>
 
-    {preview && !(comparisonOpen && comparisonState.rows.length > 0) ? <div className={styles.taskResult} aria-label="Leading candidate result">
+    {preview && !(comparisonOpen && comparisonState.rows.length > 0) ? <div className={styles.taskResult} aria-label={`${previewLabel} result`}>
       <div className={styles.taskLeading}>
-        <p className={styles.taskLabel}>Leading candidate</p>
+        <p className={styles.taskLabel}>{previewLabel}</p>
         <strong className={styles.taskModel}>{preview.model}</strong>
         <span className={styles.taskProvider}>{preview.provider}</span>
       </div>
@@ -341,14 +376,16 @@ function SavedTaskEntry({
     </div>
     {categoryError && <Alert className={styles.taskActionError} tone="error">{categoryError}</Alert>}
     {backupError && <Alert className={styles.taskActionError} tone="error">{backupError}</Alert>}
+    {implementorError && <Alert className={styles.taskActionError} tone="error">{implementorError}</Alert>}
 
     <details className={styles.inlineComparison} onToggle={event => handleOpen(event.currentTarget.open)}>
       <summary>Review comparison in place</summary>
       {!comparisonOpen ? null : !comparison && (detailError ? <Alert tone="error"><span>{detailError}</span> <Button size="compact" onClick={() => void onLoadComparison().catch(() => undefined)}>Retry loading comparison</Button></Alert>
         : <p role="status">{loading ? "Loading pinned comparison…" : "Open this section to load the pinned model results."}</p>)}
       {comparisonOpen && comparison && (comparisonState.error ? <Alert tone="error">{comparisonState.error}</Alert> : <>
-        <SelectedModelDetails rows={comparisonState.rows} selectedModelId={selectedModelId} onSelect={setSelectedModelId} />
-        <SuitabilityComparison data={comparison} rows={comparisonState.rows} evaluationIds={comparison.task.evaluation_weights.map(weight => weight.evaluation_id)} />
+        <SelectedModelDetails rows={comparisonState.rows} selectedModelId={selectedModelId} onSelect={setSelectedModelId}
+          implementorModelId={implementorModelId} implementorSaving={implementorSaving} onChooseImplementor={() => void handleChooseImplementor()} />
+        <SuitabilityComparison data={comparison} rows={comparisonState.rows} evaluationIds={comparison.task.evaluation_weights.map(weight => weight.evaluation_id)} highlightModelId={implementorModelId} />
       </>)}
     </details>
   </Card>;
@@ -378,6 +415,7 @@ export default function Planner({ data }: { data: PlannerData }) {
   const [categoryId, setCategoryId] = useState("");
   const [weights, setWeights] = useState<EvaluationWeight[]>([]);
   const [selected, setSelected] = useState<string[]>([]);
+  const [implementorModelId, setImplementorModelId] = useState<string | null>(null);
   const [evaluationSearch, setEvaluationSearch] = useState("");
   const [modelSearch, setModelSearch] = useState("");
   const [provider, setProvider] = useState("");
@@ -463,6 +501,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       setActive(activeTask); setTitle(activeTask?.task.title ?? ""); setRequest(activeTask?.task.request ?? "");
       setCategoryId(activeTask?.category_id ?? "");
       setWeights(activeTask?.task.evaluation_weights ?? []); setSelected(activeTask?.task.candidate_model_ids ?? []);
+      setImplementorModelId(activeTask?.task.implementor_model_id ?? null);
       setError([loadError, localError].filter(Boolean).join(" "));
       if (activeTask && localTasks.some(task => task === activeTask)) setNotice("Saved in this browser. Shared sync is pending. Download a backup to keep a copy outside this browser.");
       setReady(true);
@@ -552,7 +591,8 @@ export default function Planner({ data }: { data: PlannerData }) {
   const dirty = !active || active.task.title !== title || active.task.request !== request
     || (active.category_id ?? "") !== categoryId
     || JSON.stringify(active.task.evaluation_weights) !== JSON.stringify(weights)
-    || JSON.stringify(active.task.candidate_model_ids) !== JSON.stringify(selected);
+    || JSON.stringify(active.task.candidate_model_ids) !== JSON.stringify(selected)
+    || (active.task.implementor_model_id ?? null) !== implementorModelId;
   const result = useMemo(() => {
     if (!valid) return { rows: [], error: "" };
     try { return { rows: calculateSuitability({ ...working, weights, candidates: working.candidates.filter(candidate => selected.includes(candidate.model_id)) }), error: "" }; }
@@ -577,6 +617,10 @@ export default function Planner({ data }: { data: PlannerData }) {
     const next = favorites.includes(identity) ? favorites.filter(value => value !== identity) : [...favorites, identity];
     if (writeModelFavorites(next)) { setFavorites(next); setFavoriteNotice(""); }
     else setFavoriteNotice("Favorites could not be saved in this browser.");
+  };
+  const updateSelected = (next: string[]) => {
+    setSelected(next);
+    if (implementorModelId && !next.includes(implementorModelId)) setImplementorModelId(null);
   };
   const toggleEvaluation = (id: string) => {
     const evaluation = working.evaluations.find(item => item.id === id)!;
@@ -644,7 +688,8 @@ export default function Planner({ data }: { data: PlannerData }) {
   const createComparison = () => {
     const now = new Date().toISOString();
     const task: SuitabilityTask = suitabilityTaskSchema.parse({ id: active?.task.id ?? crypto.randomUUID(), title: title.trim().slice(0, 80), request: request.trim(),
-      evaluation_weights: weights, candidate_model_ids: selected, score_method: "rank_percentile_v1", missing_policy: "exclude_and_show_coverage",
+      evaluation_weights: weights, candidate_model_ids: selected, implementor_model_id: implementorModelId && selected.includes(implementorModelId) ? implementorModelId : null,
+      score_method: "rank_percentile_v1", missing_policy: "exclude_and_show_coverage",
       created_at: active?.task.created_at ?? now, updated_at: now, last_calculated_at: now, schema_version: 1 });
     return { ...pinComparison(task, working), category_id: categoryId || null,
       category_name: categories.find(item => item.id === categoryId)?.name ?? null,
@@ -787,6 +832,25 @@ export default function Planner({ data }: { data: PlannerData }) {
     setNotice(`Moved ${item.summary.task.title} to ${category?.name ?? "Uncategorized"}.`);
   };
 
+  const handleSetImplementor = async (item: { summary: SavedTaskSummary; shared: boolean; localComparison: SavedComparison | null }, modelId: string) => {
+    const taskId = item.summary.task.id;
+    const comparison = item.shared ? libraryDetails[taskId] ?? await loadLibraryComparison(taskId) : item.localComparison;
+    if (!comparison) throw new Error("The saved comparison could not be loaded.");
+    if (!comparison.task.candidate_model_ids.includes(modelId)) throw new Error("Choose a model from this saved comparison.");
+    const candidate = comparison.candidates.find(model => model.model_id === modelId);
+    const updated: SavedComparison = { ...comparison, task: { ...comparison.task, implementor_model_id: modelId, updated_at: new Date().toISOString() } };
+    if (item.shared) {
+      const savedCategory = await saveSharedTask(updated);
+      const persisted: SavedComparison = { ...updated, category_revision: savedCategory.revision, category_name: savedCategory.categoryName };
+      setSaved(previous => previous.map(value => value.task.id === taskId ? summarizeComparison(persisted) : value));
+      setLibraryDetails(previous => ({ ...previous, [taskId]: persisted }));
+    } else {
+      await saveBrowserTask(updated);
+      setBrowserSaved(previous => previous.map(value => value.task.id === taskId ? updated : value));
+    }
+    setNotice(`${candidate?.model ?? modelId} is now the implementor for ${comparison.task.title}.`);
+  };
+
   const unknownCategories = !categoriesLoaded ? libraryTasks.flatMap(item => {
     const id = item.summary.task.category_id;
     return id && !categories.some(category => category.id === id) ? [{ id, name: "Category unavailable", normalized_name: "category-unavailable", created_at: new Date(0).toISOString(), updated_at: new Date(0).toISOString() }] : [];
@@ -877,6 +941,7 @@ export default function Planner({ data }: { data: PlannerData }) {
           return <SavedTaskEntry key={taskId} summary={summary} shared={shared} localComparison={localComparison} loadedComparison={comparison}
             categories={categories} categoriesLoaded={categoriesLoaded} categoryLabel={categoryLabel} returnTo={`${path}${searchParams.toString() ? `?${searchParams.toString()}` : ""}`}
             onAssignCategory={categoryId => handleAssignCategory(item, categoryId)}
+            onSetImplementor={modelId => handleSetImplementor(item, modelId)}
             detailError={libraryDetailErrors[taskId]} loading={libraryLoading.includes(taskId)} onLoadComparison={() => loadLibraryComparison(taskId)} />;
         })}</div>
       </section>)}</div>}
@@ -902,7 +967,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       <div className="toolbar"><Button onClick={() => downloadBackup(currentCategoryBackup(active, categories, categoriesLoaded))}>Download backup</Button>{browserSaved.some(item => item.task.id === active.task.id) && <Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync browser tasks to shared library</Button>}</div>
       {notice && <Alert className="workflow-alert" tone="info" role="status" live="polite">{notice}</Alert>}
       {error && <Alert className="workflow-alert" tone="error">{error}</Alert>}
-      {comparisonError ? <Alert className="workflow-alert" tone="error">{comparisonError}</Alert> : <Card><h2>Model comparison</h2><SuitabilityComparison data={active} rows={rows} evaluationIds={active.task.evaluation_weights.map(weight => weight.evaluation_id)} /></Card>}
+      {comparisonError ? <Alert className="workflow-alert" tone="error">{comparisonError}</Alert> : <Card><h2>Model comparison</h2><SuitabilityComparison data={active} rows={rows} evaluationIds={active.task.evaluation_weights.map(weight => weight.evaluation_id)} highlightModelId={active.task.implementor_model_id ?? null} /></Card>}
     </div>;
   }
 
@@ -964,18 +1029,18 @@ export default function Planner({ data }: { data: PlannerData }) {
         <div className={styles.modelStatus} aria-live="polite"><span>{visibleModels.length.toLocaleString()} models</span><span aria-hidden="true">·</span><span>{availableFavorites.length} favorites</span><span aria-hidden="true">·</span><span>{selected.length} selected</span></div>
       </div>
       <div className={styles.modelActions}>
-        <div className={styles.modelActionGroup}><span className={styles.modelActionLabel}>Selection</span><Button onClick={() => setSelected([...new Set([...selected, ...visibleModels.map(candidate => candidate.model_id)])])}>Select visible</Button>
-          <Button variant="quiet" onClick={() => { const visible = new Set(visibleModels.map(candidate => candidate.model_id)); setSelected(selected.filter(id => !visible.has(id))); }}>Deselect visible</Button></div>
-        <div className={`${styles.modelActionGroup} ${styles.modelActionGroupFavorites}`}><span className={styles.modelActionLabel}>Favorites</span><Button onClick={() => setSelected([...new Set([...selected, ...availableFavorites.map(candidate => candidate.model_id)])])} disabled={!availableFavorites.length}>Add favorites</Button>
-          <Button variant="quiet" onClick={() => setSelected(availableFavorites.map(candidate => candidate.model_id))} disabled={!availableFavorites.length}>Replace with favorites</Button></div>
+        <div className={styles.modelActionGroup}><span className={styles.modelActionLabel}>Selection</span><Button onClick={() => updateSelected([...new Set([...selected, ...visibleModels.map(candidate => candidate.model_id)])])}>Select visible</Button>
+          <Button variant="quiet" onClick={() => { const visible = new Set(visibleModels.map(candidate => candidate.model_id)); updateSelected(selected.filter(id => !visible.has(id))); }}>Deselect visible</Button></div>
+        <div className={`${styles.modelActionGroup} ${styles.modelActionGroupFavorites}`}><span className={styles.modelActionLabel}>Favorites</span><Button onClick={() => updateSelected([...new Set([...selected, ...availableFavorites.map(candidate => candidate.model_id)])])} disabled={!availableFavorites.length}>Add favorites</Button>
+          <Button variant="quiet" onClick={() => updateSelected(availableFavorites.map(candidate => candidate.model_id))} disabled={!availableFavorites.length}>Replace with favorites</Button></div>
       </div>
       {unavailableFavorites.length > 0 && <Alert tone="info" role="status">{unavailableFavorites.length} favorited model{unavailableFavorites.length === 1 ? " is" : "s are"} unavailable in the current candidate catalog. They remain in your favorites; no substitute was selected.</Alert>}
       {favoriteNotice && <Alert tone="error" role="status" live="polite">{favoriteNotice}</Alert>}
-      <div className={styles.chips}>{working.candidates.filter(candidate => selected.includes(candidate.model_id)).map(candidate => <Button key={candidate.model_id} size="compact" variant="quiet" aria-label={`Remove ${candidate.model}, ${candidate.provider}`} onClick={() => setSelected(selected.filter(id => id !== candidate.model_id))}>{candidate.model} · {candidate.provider} ×</Button>)}</div>
+      <div className={styles.chips}>{working.candidates.filter(candidate => selected.includes(candidate.model_id)).map(candidate => <Button key={candidate.model_id} size="compact" variant="quiet" aria-label={`Remove ${candidate.model}, ${candidate.provider}`} onClick={() => updateSelected(selected.filter(id => id !== candidate.model_id))}>{candidate.model} · {candidate.provider} ×</Button>)}</div>
       <div className={styles.picker}>{visibleModels.map(candidate => {
         const identity = candidate.identity_key ?? masterIdentityKey(candidate.provider, candidate.model);
         const isFavorite = favorites.includes(identity);
-        return <div className={styles.candidateOption} key={candidate.model_id}><Checkbox aria-label={`Select ${candidate.model}, ${candidate.provider}`} checked={selected.includes(candidate.model_id)} onChange={event => setSelected(event.target.checked ? [...selected, candidate.model_id] : selected.filter(id => id !== candidate.model_id))} />
+        return <div className={styles.candidateOption} key={candidate.model_id}><Checkbox aria-label={`Select ${candidate.model}, ${candidate.provider}`} checked={selected.includes(candidate.model_id)} onChange={event => updateSelected(event.target.checked ? [...selected, candidate.model_id] : selected.filter(id => id !== candidate.model_id))} />
           <span><strong>{candidate.model}</strong><small>{candidate.provider}</small></span>
           <IconButton className={styles.favoriteStar} variant="quiet" type="button" aria-pressed={isFavorite} aria-label={`${isFavorite ? "Remove" : "Add"} ${candidate.model} to favorites`} onClick={() => toggleFavorite(identity)}>{isFavorite ? "★" : "☆"}</IconButton>
         </div>;
@@ -989,7 +1054,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       {notice && <Alert tone="info" role="status" live="polite">{notice}</Alert>}</Section>
     </Card>
     {valid && !result.error && <Card><h2>Model comparison preview</h2><p>{dirty ? "Preview of unsaved settings. Save to keep this configuration." : `Saved comparison · calculated ${active?.task.last_calculated_at}`}</p>
-      <SuitabilityComparison data={working} rows={result.rows} evaluationIds={weights.map(weight => weight.evaluation_id)} completeOnly={completeOnly} onCompleteOnlyChange={setCompleteOnly} />
+      <SuitabilityComparison data={working} rows={result.rows} evaluationIds={weights.map(weight => weight.evaluation_id)} completeOnly={completeOnly} onCompleteOnlyChange={setCompleteOnly} highlightModelId={implementorModelId} />
     </Card>}
     <Section id="methodology" className="prose"><h2>How suitability works</h2><p>Each source rank becomes a 0–100 component: 100 × (1 − (rank − 1) / max(1, cohort size − 1)), clamped to 0–100. Suitability averages these components using your weights. Higher is better. Weighted average source rank uses the same available weights; lower is better.</p><p>Missing entries stay “Not ranked” and are excluded from the average. Coverage shows the selected weight with a rank. Complete weight coverage sorts first. Cost is shown as separate context and is not used in the score.</p><p>Saved tasks preserve their full source cohorts and capture dates. New imports do not change saved results or pinned costs. Source links open the currently published leaderboards, which may have newer ranks. <Link href="/about/data">Read the data notes</Link>.</p></Section>
   </div>;

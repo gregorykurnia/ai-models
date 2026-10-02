@@ -16,8 +16,8 @@ export function comparisonRows(data: PlannerData, weights: EvaluationWeight[], c
   return calculateSuitability({ ...data, weights, candidates: data.candidates.filter(candidate => candidateIds.includes(candidate.model_id)) });
 }
 
-export default function SuitabilityComparison({ data, rows, evaluationIds, completeOnly = false, onCompleteOnlyChange }: {
-  data: PlannerData; rows: SuitabilityResult[]; evaluationIds: string[]; completeOnly?: boolean; onCompleteOnlyChange?: (value: boolean) => void;
+export default function SuitabilityComparison({ data, rows, evaluationIds, completeOnly = false, onCompleteOnlyChange, highlightModelId }: {
+  data: PlannerData; rows: SuitabilityResult[]; evaluationIds: string[]; completeOnly?: boolean; onCompleteOnlyChange?: (value: boolean) => void; highlightModelId?: string | null;
 }) {
   const [sortBy, setSortBy] = useState<"suitability" | "cost">("suitability");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
@@ -143,8 +143,10 @@ export default function SuitabilityComparison({ data, rows, evaluationIds, compl
         </thead>
         <tbody>{visibleRows.map(row => {
           const breakdownByEvaluation = new Map(row.breakdown.map(item => [item.evaluation_id, item]));
-          return <tr key={row.model_id}>
+          const isHighlighted = row.model_id === highlightModelId;
+          return <tr key={row.model_id} className={isHighlighted ? styles.implementorRow : undefined} aria-current={isHighlighted ? "true" : undefined}>
           <td className={styles.identity}><strong>{row.model}</strong><small>{row.provider}</small>
+            {isHighlighted && <span className={styles.implementorMarker}>Chosen implementor</span>}
             <details onToggle={event => { if (event.currentTarget.open) recordSuitabilityEvent("result_breakdown_opened"); }}><summary>Calculation breakdown</summary>
               <div className={styles.breakdown}>{row.breakdown.map(item => {
                 const evaluation = evaluationById.get(item.evaluation_id);
