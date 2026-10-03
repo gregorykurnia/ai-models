@@ -223,7 +223,7 @@
 
 .savedGroups {
   display: grid;
-  gap: var(--space-7);
+  gap: var(--space-8);
 }
 
 .savedGroup {
@@ -1115,8 +1115,8 @@
 .taskActions {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-2) var(--space-3);
+  align-items: flex-end;
+  gap: var(--space-2) var(--space-4);
   margin-top: var(--space-4);
 }
 
@@ -1319,6 +1319,15 @@
 
   .taskActions > button {
     flex: 0 1 auto;
+  }
+
+  .taskActions {
+    align-items: stretch;
+  }
+
+  .categoryPicker {
+    flex: 1 1 100%;
+    min-width: 100%;
   }
 }
 
