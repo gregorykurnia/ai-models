@@ -1,6 +1,6 @@
 # Individual leaderboard filter and navigation freeze
 
-Status: Planned. This document records the proposed fix; application code has not been changed.
+Status: Implemented in commit `6f7abed`; live browser verification remains pending.
 
 ## Reported behavior
 
@@ -39,19 +39,20 @@ References:
 - Installed library: `node_modules/@tanstack/table-core/src/utils/getCoreRowModel.ts`, `node_modules/@tanstack/table-core/src/features/RowPagination.ts`, and `node_modules/@tanstack/react-table/src/index.tsx`.
 - [TanStack Table v8 FAQ: preventing infinite rendering loops](https://tanstack.com/table/v8/docs/faq).
 
-## Proposed implementation
+## Implemented fix
 
-1. Inspect the current individual leaderboard visually before editing. Record the existing search, provider dropdown, sorting controls, pagination, empty state, and sticky header behavior.
-2. Keep the displayed rows stable between relevant changes. Move the `sorted.slice(...)` calculation into `useMemo`, depending on `sorted`, the effective page, and the page size.
-3. Configure TanStack Table for the pagination already performed by the component. Set `manualPagination: true` and explicitly disable `autoResetPageIndex`. The component's URL state and existing pagination controls remain responsible for selecting and resetting the displayed page.
-4. Review the diff to ensure filtering, sorting, page clamping, row rendering, and URL query behavior remain consistent with their current semantics.
-5. Inspect the result visually, then commit and push only the bug fix to the current branch's configured upstream, following `AGENTS.md`.
+- Memoized the visible page slice using the sorted rows, effective page, and page size as dependencies.
+- Set `manualPagination: true` and `autoResetPageIndex: false` because the component already slices and selects the current page from URL state.
+- Kept the existing controls and rendered markup unchanged.
+- Committed and pushed as `6f7abed` (`fix: stop leaderboard filter render loop`).
 
 The root-cause fix does not require a visual redesign. Search debouncing and changing URL synchronization to the native history API are separate potential improvements and are outside this fix's initial scope.
 
 ## Verification
 
-First reproduce the reported sequence on the current application when a browser is available. Capture any console errors and confirm whether repeated renders or pagination resets occur after filtering.
+`./node_modules/.bin/tsc --noEmit` passed after the fix. The bounded TanStack Table diagnostic described above established that unstable row data repeatedly resets pagination and stable row data settles after one reset.
+
+Live browser and visual verification could not be run in this workspace session: the connected browser surface is disabled, and Playwright and local browser executables are unavailable. Complete these checks in a browser:
 
 After the fix, check:
 
@@ -65,7 +66,7 @@ After the fix, check:
 - Repeat the essential filtering and navigation checks on another individual evaluation to confirm the shared component is fixed.
 - Compare the layout before and after at desktop and mobile widths, including the sticky header, table overflow, and mobile navigation drawer.
 
-Use a bounded regression check that exercises a filter change and detects continued render/reset activity. If browser automation is available, cover the actual filter-then-sidebar-navigation sequence with a timeout. Run the relevant TypeScript/build checks and inspect the console for errors.
+Inspect the console during these checks for errors and confirm the page remains responsive after each interaction.
 
 ## Acceptance criteria
 
