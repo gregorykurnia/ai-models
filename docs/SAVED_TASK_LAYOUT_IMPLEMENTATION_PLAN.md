@@ -1,6 +1,6 @@
 # Saved tasks: collapsible categories and task ordering
 
-Status: proposed implementation brief only. No application changes yet.
+Status: implemented.
 
 ## Intended behavior
 

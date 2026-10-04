@@ -8,6 +8,7 @@ import { readModelFavorites, subscribeToModelFavorites, writeModelFavorites } fr
 import { calculateSuitability, suitabilityTaskSchema, type EvaluationWeight, type SuitabilityTask } from "@/lib/suitability";
 import { pinComparison, readSavedTaskSummaries, readSavedTasks, savedComparisonSchema, suitabilityCategorySchema, type PlannerData, type SavedComparison, type SavedTaskSummary, type SuitabilityCategory } from "@/lib/suitability-storage";
 import { groupSavedTaskIds, normalizeCategoryName } from "@/lib/suitability-categories";
+import { emptySavedTaskLayout, SAVED_TASK_LAYOUT_STORAGE_KEY, savedTaskLayoutSchema, type SavedTaskLayout, type SavedTaskLayoutOperation } from "@/lib/suitability-layout";
 import { readBrowserTasks, saveBrowserTask, removeBrowserTask } from "@/lib/browser-suitability-tasks";
 import { recordSuitabilityEvent } from "@/lib/suitability-analytics";
 import SuitabilityComparison, { comparisonRows } from "@/components/suitability-comparison";
@@ -58,6 +59,42 @@ async function fetchCategories(): Promise<SuitabilityCategory[]> {
   const payload = await response.json().catch(() => null);
   if (!response.ok) throw new Error(typeof payload?.error === "string" ? payload.error : `Category request failed (${response.status}).`);
   return suitabilityCategorySchema.array().parse(payload);
+}
+
+async function fetchSharedTaskLayout(): Promise<SavedTaskLayout> {
+  const response = await fetch("/api/suitability/layout", { cache: "no-store", signal: AbortSignal.timeout(30000) });
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(typeof payload?.error === "string" ? payload.error : `Saved task layout request failed (${response.status}).`);
+  return savedTaskLayoutSchema.parse(payload);
+}
+
+async function saveSharedTaskLayout(operation: SavedTaskLayoutOperation): Promise<SavedTaskLayout> {
+  const response = await fetch("/api/suitability/layout", {
+    method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify(operation), signal: AbortSignal.timeout(30000),
+  });
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(typeof payload?.error === "string" ? payload.error : "Saved task layout could not be updated.");
+  return savedTaskLayoutSchema.parse(payload);
+}
+
+function readLocalTaskLayout(): SavedTaskLayout {
+  if (typeof window === "undefined") return emptySavedTaskLayout();
+  try {
+    const raw = localStorage.getItem(SAVED_TASK_LAYOUT_STORAGE_KEY);
+    if (!raw) return emptySavedTaskLayout();
+    const parsed = JSON.parse(raw) as unknown;
+    const result = savedTaskLayoutSchema.safeParse({ revision: 0, categories: (parsed as { categories?: unknown })?.categories ?? parsed });
+    return result.success ? { revision: 0, categories: result.data.categories } : emptySavedTaskLayout();
+  } catch { return emptySavedTaskLayout(); }
+}
+
+function writeLocalTaskLayout(layout: SavedTaskLayout) {
+  try { localStorage.setItem(SAVED_TASK_LAYOUT_STORAGE_KEY, JSON.stringify({ revision: 0, categories: layout.categories })); }
+  catch { /* Browser storage is optional; shared layout remains authoritative when available. */ }
+}
+
+function layoutCategoryId(categoryId: string | null) {
+  return categoryId ?? "__uncategorized__";
 }
 
 async function createCategory(name: string): Promise<SuitabilityCategory> {
@@ -246,6 +283,10 @@ function SavedTaskEntry({
   onAssignCategory,
   onSetImplementor,
   returnTo,
+  canMoveUp,
+  canMoveDown,
+  reorderDisabled,
+  onMove,
 }: {
   summary: SavedTaskSummary;
   shared: boolean;
@@ -260,6 +301,10 @@ function SavedTaskEntry({
   onAssignCategory: (categoryId: string | null) => Promise<void>;
   onSetImplementor: (modelId: string) => Promise<void>;
   returnTo: string;
+  canMoveUp: boolean;
+  canMoveDown: boolean;
+  reorderDisabled: boolean;
+  onMove: (direction: "up" | "down") => void;
 }) {
   const [comparisonOpen, setComparisonOpen] = useState(false);
   const [backupLoading, setBackupLoading] = useState(false);
@@ -373,6 +418,11 @@ function SavedTaskEntry({
       <label className={styles.categoryPicker}>Change category<Select aria-label={`Category for ${summary.task.title}`} value={categoryId} disabled={categorySaving || !categoriesLoaded} onChange={event => void handleCategoryChange(event.target.value)}>
         <option value="">Uncategorized</option>{categoryId && !categories.some(category => category.id === categoryId) && <option value={categoryId}>Category unavailable</option>}{categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
       </Select></label>
+      <div className={styles.taskReorder} aria-label={`Reorder ${summary.task.title}`}>
+        <span>Order</span>
+        <IconButton aria-label={`Move ${summary.task.title} up`} disabled={reorderDisabled || !canMoveUp} onClick={() => onMove("up")}><span aria-hidden="true">↑</span></IconButton>
+        <IconButton aria-label={`Move ${summary.task.title} down`} disabled={reorderDisabled || !canMoveDown} onClick={() => onMove("down")}><span aria-hidden="true">↓</span></IconButton>
+      </div>
     </div>
     {categoryError && <Alert className={styles.taskActionError} tone="error">{categoryError}</Alert>}
     {backupError && <Alert className={styles.taskActionError} tone="error">{backupError}</Alert>}
@@ -409,6 +459,11 @@ export default function Planner({ data }: { data: PlannerData }) {
   const [libraryDetailErrors, setLibraryDetailErrors] = useState<Record<string, string>>({});
   const [libraryLoading, setLibraryLoading] = useState<string[]>([]);
   const [libraryRetry, setLibraryRetry] = useState(0);
+  const [libraryLayout, setLibraryLayout] = useState<SavedTaskLayout | null>(null);
+  const [localLibraryLayout, setLocalLibraryLayout] = useState<SavedTaskLayout>(emptySavedTaskLayout);
+  const [libraryLayoutError, setLibraryLayoutError] = useState("");
+  const [libraryLayoutLoading, setLibraryLayoutLoading] = useState(false);
+  const [libraryLayoutSaving, setLibraryLayoutSaving] = useState(false);
   const [editing, setEditing] = useState(false);
   const [title, setTitle] = useState("");
   const [request, setRequest] = useState("");
@@ -437,6 +492,7 @@ export default function Planner({ data }: { data: PlannerData }) {
   const appliedCategoryPrefill = useRef("");
   const previousComparison = useRef("");
   const libraryDetailRequests = useRef(new Map<string, Promise<SavedComparison>>());
+  const libraryLayoutSavingRef = useRef(false);
   const selectedCategoryIds = searchParams.getAll("category");
   const returnTo = searchParams.get("returnTo");
   const libraryReturnPath = returnTo?.startsWith("/suitability/saved") ? returnTo : "/suitability/saved";
@@ -487,6 +543,9 @@ export default function Planner({ data }: { data: PlannerData }) {
     if (openedPath.current !== path) { recordSuitabilityEvent("planner_opened"); openedPath.current = path; }
     setReady(false); setError(""); setNotice(""); setEditing(false);
     setCategories([]); setCategoriesLoaded(false); setCategoriesError("");
+    setLibraryLayout(null); setLibraryLayoutError(""); setLibraryLayoutLoading(false); setLibraryLayoutSaving(false);
+    libraryLayoutSavingRef.current = false;
+    setLocalLibraryLayout(readLocalTaskLayout());
     void fetchCategories().then(items => {
       if (cancelled) return;
       setCategories(items); setCategoriesLoaded(true); setCategoriesError("");
@@ -524,6 +583,14 @@ export default function Planner({ data }: { data: PlannerData }) {
           if (cancelled) return;
           setSaved(summaries);
           activate(null);
+          setLibraryLayoutLoading(true);
+          void fetchSharedTaskLayout().then(layout => {
+            if (cancelled) return;
+            setLibraryLayout(layout); setLibraryLayoutError(""); setLibraryLayoutLoading(false);
+          }).catch(cause => {
+            if (cancelled) return;
+            setLibraryLayout(null); setLibraryLayoutError(loadErrorMessage(cause, "Saved task layout could not be loaded.")); setLibraryLayoutLoading(false);
+          });
         } catch (cause) {
           if (cancelled) return;
           setSaved([]);
@@ -646,6 +713,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       const conflicting = browserSaved.filter(task => current.some(shared => shared.task.id === task.task.id && shared.task.updated_at > task.task.updated_at));
       if (conflicting.length) throw new Error("A shared task has newer settings. Your browser copy is retained; download a backup before resolving the difference.");
       let categoriesDropped = 0;
+      const syncedLayoutCategories = new Set<string>();
       for (const task of browserSaved) {
         const matchedCategory = (task.category_id ? availableCategories.find(item => item.id === task.category_id) : null)
           ?? (task.category_name ? availableCategories.find(item => normalizeCategoryName(item.name) === normalizeCategoryName(task.category_name!)) : null);
@@ -653,6 +721,7 @@ export default function Planner({ data }: { data: PlannerData }) {
         if (categoryWasLost) categoriesDropped++;
         const upload = { ...task, category_id: matchedCategory?.id ?? null, category_name: matchedCategory?.name ?? null };
         upload.category_revision = task.category_revision ?? 0;
+        syncedLayoutCategories.add(layoutCategoryId(upload.category_id));
         const savedCategory = await saveSharedTask(upload);
         upload.category_revision = savedCategory.revision;
         upload.category_name = savedCategory.categoryName;
@@ -661,6 +730,10 @@ export default function Planner({ data }: { data: PlannerData }) {
         setLibraryDetails(previous => ({ ...previous, [task.task.id]: upload }));
         await removeBrowserTask(task);
         setBrowserSaved(previous => previous.filter(item => item.task.id !== task.task.id));
+      }
+      if (syncedLayoutCategories.size) {
+        const nextCategories = Object.fromEntries(Object.entries(localLibraryLayout.categories).filter(([categoryId]) => !syncedLayoutCategories.has(categoryId)));
+        setLocalLayout({ revision: 0, categories: nextCategories });
       }
       setNotice(categoriesDropped ? `Browser-saved tasks synced. ${categoriesDropped} unmatched ${categoriesDropped === 1 ? "category was" : "categories were"} changed to Uncategorized.` : "Browser-saved tasks synced to the shared library.");
     } catch (cause) { setError(loadErrorMessage(cause, "Browser-saved tasks could not be added to the shared list.")); }
@@ -857,8 +930,123 @@ export default function Planner({ data }: { data: PlannerData }) {
   }) : [];
   const filterCategories = [...categories, ...unknownCategories.filter((item, index, all) => all.findIndex(other => other.id === item.id) === index)];
   const categorizedTasks = libraryTasks.map(item => ({ ...item, task: item.summary.task }));
-  const groupedLibrary = groupSavedTaskIds(categorizedTasks, selectedCategoryIds, filterCategories, librarySearch);
+  const localBrowserTaskIds = useMemo(() => new Set(browserSaved.map(item => item.task.id)), [browserSaved]);
+  const libraryTaskOrder = useMemo(() => {
+    const order: Record<string, readonly string[]> = {};
+    for (const [categoryId, entry] of Object.entries(libraryLayout?.categories ?? {})) order[categoryId] = entry.task_ids;
+    for (const [categoryId, entry] of Object.entries(localLibraryLayout.categories)) {
+      if (entry.task_ids.some(taskId => localBrowserTaskIds.has(taskId))) order[categoryId] = entry.task_ids;
+    }
+    return order;
+  }, [libraryLayout, localBrowserTaskIds, localLibraryLayout]);
+  const groupedLibrary = groupSavedTaskIds(categorizedTasks, selectedCategoryIds, filterCategories, librarySearch, libraryTaskOrder);
   const libraryTotal = libraryTasks.length;
+
+  const setLocalLayout = (next: SavedTaskLayout) => {
+    const normalized = { revision: 0, categories: next.categories };
+    setLocalLibraryLayout(normalized);
+    writeLocalTaskLayout(normalized);
+  };
+
+  const reloadLibraryLayout = async (announce = false) => {
+    setLibraryLayoutLoading(true);
+    try {
+      const latest = await fetchSharedTaskLayout();
+      setLibraryLayout(latest); setLibraryLayoutError("");
+      if (announce) setNotice("Saved task layout loaded.");
+      return latest;
+    } catch (cause) {
+      setLibraryLayoutError(loadErrorMessage(cause, "Saved task layout could not be loaded."));
+      throw cause;
+    } finally { setLibraryLayoutLoading(false); }
+  };
+
+  const persistLayoutOperation = async (
+    operation: SavedTaskLayoutOperation,
+    optimistic: SavedTaskLayout,
+    previous: SavedTaskLayout,
+    previousLocal: SavedTaskLayout,
+  ) => {
+    if (libraryLayoutSavingRef.current) return;
+    libraryLayoutSavingRef.current = true;
+    setLibraryLayoutSaving(true); setLibraryLayoutError(""); setLibraryLayout(optimistic);
+    try {
+      const savedLayout = await saveSharedTaskLayout(operation);
+      setLibraryLayout(savedLayout); setNotice("Saved task layout updated.");
+    } catch (cause) {
+      setLibraryLayout(previous); setLocalLayout(previousLocal);
+      try { await reloadLibraryLayout(); } catch { /* Keep the last confirmed layout when recovery is unavailable. */ }
+      setLibraryLayoutError(loadErrorMessage(cause, "Saved task layout could not be updated. Try again."));
+    } finally {
+      libraryLayoutSavingRef.current = false; setLibraryLayoutSaving(false);
+    }
+  };
+
+  const handleToggleSavedCategory = async (categoryId: string | null) => {
+    if (librarySearch || libraryLayoutSavingRef.current) return;
+    const key = layoutCategoryId(categoryId);
+    const group = groupedLibrary.groups.find(item => layoutCategoryId(item.id) === key);
+    if (!group) return;
+    if (libraryLayoutLoading && group.tasks.some(item => item.hasShared)) return;
+    const serverEntry = libraryLayout?.categories[key];
+    const localEntry = localBrowserTaskIds.size && group.tasks.some(item => localBrowserTaskIds.has(item.task.id)) ? localLibraryLayout.categories[key] : undefined;
+    const collapsed = serverEntry?.collapsed ?? localEntry?.collapsed ?? false;
+    const nextCollapsed = !collapsed;
+    const previousLocal = localLibraryLayout;
+    const groupTaskIds = group.tasks.map(item => item.task.id);
+    const nextLocal = localEntry ? { ...localLibraryLayout, categories: { ...localLibraryLayout.categories, [key]: { ...localEntry, collapsed: nextCollapsed } } }
+      : { ...localLibraryLayout, categories: { ...localLibraryLayout.categories, [key]: { task_ids: groupTaskIds, collapsed: nextCollapsed } } };
+    if (!libraryLayout) {
+      setLocalLayout(nextLocal);
+      setNotice("Saved task layout is unavailable across browsers. This collapse preference is temporary in this browser.");
+      return;
+    }
+    const previous = libraryLayout;
+    const optimistic: SavedTaskLayout = {
+      ...previous,
+      categories: { ...previous.categories, [key]: { task_ids: serverEntry?.task_ids ?? group.tasks.filter(item => item.hasShared).map(item => item.task.id), collapsed: nextCollapsed } },
+    };
+    await persistLayoutOperation({ type: "collapse", category_id: key, collapsed: nextCollapsed, expected_revision: previous.revision }, optimistic, previous, previousLocal);
+  };
+
+  const handleMoveSavedTask = async (categoryId: string | null, taskId: string, direction: "up" | "down") => {
+    if (librarySearch || libraryLayoutSavingRef.current) return;
+    const key = layoutCategoryId(categoryId);
+    const group = groupedLibrary.groups.find(item => layoutCategoryId(item.id) === key);
+    if (!group) return;
+    if (libraryLayoutLoading && group.tasks.some(item => item.hasShared)) return;
+    const index = group.tasks.findIndex(item => item.task.id === taskId);
+    const swapIndex = direction === "up" ? index - 1 : index + 1;
+    if (index < 0 || swapIndex < 0 || swapIndex >= group.tasks.length) return;
+    const nextItems = [...group.tasks];
+    [nextItems[index], nextItems[swapIndex]] = [nextItems[swapIndex], nextItems[index]];
+    const nextTaskIds = nextItems.map(item => item.task.id);
+    const containsLocalTask = group.tasks.some(item => localBrowserTaskIds.has(item.task.id));
+    const previousLocal = localLibraryLayout;
+    const localEntry = localLibraryLayout.categories[key];
+    const serverEntry = libraryLayout?.categories[key];
+    const nextLocal = containsLocalTask
+      ? { ...localLibraryLayout, categories: { ...localLibraryLayout.categories, [key]: { task_ids: nextTaskIds, collapsed: localEntry?.collapsed ?? serverEntry?.collapsed ?? false } } }
+      : localLibraryLayout;
+    const hasSharedTask = group.tasks.some(item => item.hasShared);
+    if (containsLocalTask) setLocalLayout(nextLocal);
+    if (!hasSharedTask) {
+      setNotice("Saved task order updated in this browser.");
+      return;
+    }
+    if (!libraryLayout) {
+      setLibraryLayoutError("Saved task layout is unavailable. Retry layout loading before reordering shared tasks.");
+      if (containsLocalTask) setLocalLayout(previousLocal);
+      return;
+    }
+    const previous = libraryLayout;
+    const sharedTaskIds = nextItems.filter(item => item.hasShared).map(item => item.task.id);
+    const optimistic: SavedTaskLayout = {
+      ...previous,
+      categories: { ...previous.categories, [key]: { task_ids: sharedTaskIds, collapsed: serverEntry?.collapsed ?? false } },
+    };
+    await persistLayoutOperation({ type: "move", category_id: key, task_ids: sharedTaskIds, expected_revision: previous.revision }, optimistic, previous, previousLocal);
+  };
 
   useEffect(() => {
     if (!isLibrary || !categoriesLoaded) return;
@@ -913,6 +1101,7 @@ export default function Planner({ data }: { data: PlannerData }) {
     </div>
     {error && <Alert className="workflow-alert" tone="error"><p>{error}</p>{sharedListUnavailable && <Button onClick={() => setLibraryRetry(value => value + 1)}>Reload shared tasks</Button>}</Alert>}
     {categoriesError && <Alert className="workflow-alert" tone="warning"><p>Category information is unavailable. Saved tasks remain accessible, and existing assignments are unchanged.</p><Button onClick={() => void refreshCategories().catch(() => undefined)}>Retry categories</Button></Alert>}
+    {libraryLayoutError && <Alert className="workflow-alert" tone="warning"><p>{libraryLayoutError} Saved tasks remain accessible; temporary layout changes apply only in this browser.</p><Button onClick={() => void reloadLibraryLayout(true).catch(() => undefined)} disabled={libraryLayoutLoading} loading={libraryLayoutLoading}>Retry layout loading</Button></Alert>}
     {browserSaved.length > 0 && <Card className={styles.browserSyncCard}>
       <div className={styles.browserSyncHeader}>
         <div><h2>{browserSaved.length} task{browserSaved.length === 1 ? "" : "s"} saved in this browser</h2><p>Shared sync is pending. Sync {browserSaved.length === 1 ? "it" : "them"} to make {browserSaved.length === 1 ? "it" : "them"} available to everyone who visits this site.</p></div>
@@ -927,13 +1116,27 @@ export default function Planner({ data }: { data: PlannerData }) {
         </span>)}
         {(librarySearch || selectedCategoryIds.length > 0) && <Button variant="quiet" size="compact" onClick={() => { setLibrarySearch(""); replaceLibraryUrl("", []); }}>Clear filters</Button>}
       </div>
+      {librarySearch && <span className={styles.libraryReorderHint}>Clear search to reorder tasks.</span>}
+      {libraryLayoutSaving && <span className={styles.libraryReorderHint} role="status">Saving layout…</span>}
     </div>}
     {libraryTasks.length === 0 && (librarySearch || selectedCategoryIds.length > 0) ? <Card><EmptyState title="No matching saved tasks" description="Try a different search or category filter." action={selectedCategoryIds.length === 1 && selectedCategoryIds[0] !== "__uncategorized__" && categories.some(category => category.id === selectedCategoryIds[0]) ? <LinkButton variant="primary" href={`/suitability?category=${encodeURIComponent(selectedCategoryIds[0])}&returnTo=${encodeURIComponent(currentLibraryPath)}`}>Create a task in this category</LinkButton> : <Button onClick={() => { setLibrarySearch(""); replaceLibraryUrl("", []); }}>Clear filters</Button>} /></Card>
       : libraryTasks.length === 0 ? <Card><EmptyState title={sharedListUnavailable ? "Shared task list unavailable" : "No saved tasks yet"} description={sharedListUnavailable ? "Try reloading the shared list. Browser-saved copies still appear here when available." : "Save a task comparison to return to its pinned model results later."} action={!error ? <LinkButton variant="primary" href="/suitability">Create your first task</LinkButton> : undefined} /></Card>
       : groupedLibrary.groups.length === 0 ? <Card><EmptyState title="No matching saved tasks" description="Try a different search or category filter." action={selectedCategoryIds.length === 1 && categories.some(category => category.id === selectedCategoryIds[0]) ? <LinkButton variant="primary" href={`/suitability?category=${encodeURIComponent(selectedCategoryIds[0])}&returnTo=${encodeURIComponent(currentLibraryPath)}`}>Create a task in this category</LinkButton> : <Button onClick={() => { setLibrarySearch(""); replaceLibraryUrl("", []); }}>Clear filters</Button>} /></Card>
-      : <div className={styles.savedGroups}>{groupedLibrary.groups.map(group => <section className={styles.savedGroup} key={group.id ?? "uncategorized"}>
-        <h2>{group.name}<span>{group.tasks.length} task{group.tasks.length === 1 ? "" : "s"}</span></h2>
-        <div className={styles.savedList}>{group.tasks.map(item => {
+      : <div className={styles.savedGroups}>{groupedLibrary.groups.map(group => {
+        const groupKey = layoutCategoryId(group.id);
+        const hasLocalTask = group.tasks.some(item => localBrowserTaskIds.has(item.task.id));
+        const localCollapsed = hasLocalTask || !libraryLayout ? localLibraryLayout.categories[groupKey]?.collapsed : undefined;
+        const collapsed = librarySearch ? false : libraryLayout?.categories[groupKey]?.collapsed ?? localCollapsed ?? false;
+        const groupContentId = `saved-tasks-group-${groupKey}`;
+        const hasSharedTasks = group.tasks.some(item => item.hasShared);
+        const layoutBusyForGroup = libraryLayoutSaving || (libraryLayoutLoading && hasSharedTasks);
+        const reorderDisabled = Boolean(librarySearch || layoutBusyForGroup || (hasSharedTasks && !libraryLayout));
+        return <section className={styles.savedGroup} key={groupKey}>
+        <h2 className={styles.savedGroupHeading}><button type="button" className={styles.savedGroupToggle} aria-expanded={!collapsed} aria-controls={groupContentId} disabled={Boolean(librarySearch || layoutBusyForGroup)} onClick={() => void handleToggleSavedCategory(group.id)}>
+          <span className={styles.savedGroupToggleMain}><span className={styles.savedGroupChevron} aria-hidden="true">{collapsed ? "›" : "⌄"}</span><span>{group.name}</span></span>
+          <span className={styles.savedGroupCount}>{group.tasks.length} task{group.tasks.length === 1 ? "" : "s"}</span>
+        </button></h2>
+        {!collapsed && <div className={styles.savedList} id={groupContentId}>{group.tasks.map((item, index) => {
           const { summary, shared, localComparison } = item;
           const taskId = summary.task.id;
           const comparison = shared ? libraryDetails[taskId] ?? null : localComparison;
@@ -942,9 +1145,12 @@ export default function Planner({ data }: { data: PlannerData }) {
             categories={categories} categoriesLoaded={categoriesLoaded} categoryLabel={categoryLabel} returnTo={`${path}${searchParams.toString() ? `?${searchParams.toString()}` : ""}`}
             onAssignCategory={categoryId => handleAssignCategory(item, categoryId)}
             onSetImplementor={modelId => handleSetImplementor(item, modelId)}
+            canMoveUp={index > 0} canMoveDown={index < group.tasks.length - 1} reorderDisabled={reorderDisabled}
+            onMove={direction => void handleMoveSavedTask(group.id, taskId, direction)}
             detailError={libraryDetailErrors[taskId]} loading={libraryLoading.includes(taskId)} onLoadComparison={() => loadLibraryComparison(taskId)} />;
-        })}</div>
-      </section>)}</div>}
+        })}</div>}
+      </section>;
+      })}</div>}
     {notice && <Alert className="workflow-alert" tone="info" role="status" live="polite">{notice}</Alert>}
   </div>;
 

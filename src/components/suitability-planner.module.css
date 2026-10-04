@@ -204,6 +204,11 @@
   background: var(--bg-surface);
 }
 
+.libraryReorderHint {
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+}
+
 .inlineCategoryCreate {
   display: flex;
   align-items: center;
@@ -231,19 +236,66 @@
   gap: var(--space-3);
 }
 
-.savedGroup > h2 {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-3);
+.savedGroupHeading {
   margin: 0;
 }
 
-.savedGroup > h2 > span {
+.savedGroupToggle {
+  display: flex;
+  width: 100%;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border: 0;
+  border-bottom: var(--border-width-default) var(--border-style) var(--border-default);
+  color: var(--text-primary);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--font-size-section-title);
+  font-weight: var(--type-weight-semibold);
+  line-height: var(--line-height-section-title);
+  letter-spacing: var(--letter-spacing-title);
+  text-align: left;
+}
+
+.savedGroupToggle:hover:not(:disabled) {
+  color: var(--primary);
+}
+
+.savedGroupToggle:disabled {
+  cursor: default;
+}
+
+.savedGroupToggleMain {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.savedGroupChevron {
+  display: inline-grid;
+  width: 1.25rem;
+  flex: none;
+  place-items: center;
+  color: var(--primary);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.savedGroupCount {
   color: var(--text-secondary);
   font-size: var(--font-size-caption);
   font-weight: var(--type-weight-regular);
+  letter-spacing: 0;
   white-space: nowrap;
+}
+
+.savedGroupToggle:disabled .savedGroupChevron {
+  color: var(--text-muted);
 }
 
 .librarySearchField {
@@ -1118,6 +1170,19 @@
   align-items: flex-end;
   gap: var(--space-2) var(--space-4);
   margin-top: var(--space-4);
+}
+
+.taskReorder {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  font-weight: var(--type-weight-semibold);
+}
+
+.taskReorder .ui-icon-button {
+  color: var(--text-secondary);
 }
 
 .categoryPicker {

@@ -37,3 +37,19 @@ test("missing category IDs resolve to Uncategorized after the registry loads", (
   assert.equal(grouped.groups[0].name, "Uncategorized");
   assert.equal(grouped.groups[0].tasks.length, 1);
 });
+
+test("saved task order is applied before search and new tasks append after a saved sequence", () => {
+  const categories = [{ id: "coding", name: "Coding" }];
+  const item = (id: string, updated_at: string, title = id) => ({
+    task: { id, title, request: "Useful task", updated_at, category_id: "coding" }, summary: id,
+  });
+  const tasks = [
+    item("first", "2026-01-01T00:00:00Z", "Code first"),
+    item("second", "2026-03-01T00:00:00Z", "Code second"),
+    item("new", "2026-04-01T00:00:00Z", "Code new"),
+  ];
+  const order = { coding: ["second", "first"] };
+  const grouped = groupSavedTaskIds(tasks, [], categories, "code", order);
+  assert.deepEqual(grouped.groups[0].tasks.map(task => task.task.id), ["second", "first", "new"]);
+  assert.deepEqual(groupSavedTaskIds(tasks, [], categories, "new", order).groups[0].tasks.map(task => task.task.id), ["new"]);
+});
