@@ -1,6 +1,6 @@
 # Individual leaderboard filter and navigation freeze
 
-Status: Implemented in commit `6f7abed`; live browser verification remains pending.
+Status: Implemented in commits `6f7abed` and `d053479`; live browser verification remains pending.
 
 ## Reported behavior
 
@@ -33,30 +33,35 @@ A bounded diagnostic against the installed library reproduced this mechanism:
 
 This confirms the library-level feedback loop. The full browser sequence has not yet been reproduced in a connected browser, so that reproduction remains part of verification.
 
+Typing also had a separate performance issue: the individual leaderboard called `router.replace` for every input event. That starts a Next.js navigation on each keystroke. The main leaderboard already avoids this with a local search draft and a 300 ms debounce, then synchronizes the URL with the native History API.
+
 References:
 
 - Application: `src/components/leaderboard.tsx`, particularly the displayed-row calculation and `useReactTable` options.
 - Installed library: `node_modules/@tanstack/table-core/src/utils/getCoreRowModel.ts`, `node_modules/@tanstack/table-core/src/features/RowPagination.ts`, and `node_modules/@tanstack/react-table/src/index.tsx`.
 - [TanStack Table v8 FAQ: preventing infinite rendering loops](https://tanstack.com/table/v8/docs/faq).
+- [Next.js native History API](https://nextjs.org/docs/app/getting-started/linking-and-navigating).
 
 ## Implemented fix
 
 - Memoized the visible page slice using the sorted rows, effective page, and page size as dependencies.
 - Set `manualPagination: true` and `autoResetPageIndex: false` because the component already slices and selects the current page from URL state.
+- Added a local search draft with a 300 ms debounce. It updates visible results after typing pauses and synchronizes the query with `window.history.replaceState`, without routing on each keystroke.
 - Kept the existing controls and rendered markup unchanged.
-- Committed and pushed as `6f7abed` (`fix: stop leaderboard filter render loop`).
+- Commits pushed: `6f7abed` (`fix: stop leaderboard filter render loop`) and `d053479` (`perf: debounce individual leaderboard search`).
 
-The root-cause fix does not require a visual redesign. Search debouncing and changing URL synchronization to the native history API are separate potential improvements and are outside this fix's initial scope.
+The fix does not require a visual redesign. The search input retains the existing styling and updates its text immediately; only result filtering and URL synchronization wait for the debounce.
 
 ## Verification
 
-`./node_modules/.bin/tsc --noEmit` passed after the fix. The bounded TanStack Table diagnostic described above established that unstable row data repeatedly resets pagination and stable row data settles after one reset.
+`./node_modules/.bin/tsc --noEmit` passed after both code changes. The bounded TanStack Table diagnostic described above established that unstable row data repeatedly resets pagination and stable row data settles after one reset.
 
 Live browser and visual verification could not be run in this workspace session: the connected browser surface is disabled, and Playwright and local browser executables are unavailable. Complete these checks in a browser:
 
-After the fix, check:
+Browser checks to complete:
 
 - Search on Presentation Elo, then click **Evaluations** in the sidebar. Navigation completes and the tab remains responsive.
+- Type continuously in the search field. Text entry remains immediate, results update after the 300 ms pause, and the URL query matches the completed search.
 - Select one provider, then click **Evaluations**. Repeat with other sidebar destinations.
 - Combine search and provider filtering, clear filters, and navigate away.
 - Change sorting, page size, and pages, then navigate away.
