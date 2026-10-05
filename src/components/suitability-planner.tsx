@@ -710,32 +710,49 @@ export default function Planner({ data }: { data: PlannerData }) {
     try {
       const availableCategories = categoriesLoaded ? categories : await refreshCategories();
       const current = await fetchSharedTaskSummaries();
-      const conflicting = browserSaved.filter(task => current.some(shared => shared.task.id === task.task.id && shared.task.updated_at > task.task.updated_at));
-      if (conflicting.length) throw new Error("A shared task has newer settings. Your browser copy is retained; download a backup before resolving the difference.");
       let categoriesDropped = 0;
+      let conflictsCopied = 0;
       const syncedLayoutCategories = new Set<string>();
       for (const task of browserSaved) {
+        const newerSharedVersion = current.some(shared => shared.task.id === task.task.id && shared.task.updated_at > task.task.updated_at);
         const matchedCategory = (task.category_id ? availableCategories.find(item => item.id === task.category_id) : null)
           ?? (task.category_name ? availableCategories.find(item => normalizeCategoryName(item.name) === normalizeCategoryName(task.category_name!)) : null);
         const categoryWasLost = !!(task.category_id || task.category_name) && !matchedCategory;
         if (categoryWasLost) categoriesDropped++;
-        const upload = { ...task, category_id: matchedCategory?.id ?? null, category_name: matchedCategory?.name ?? null };
-        upload.category_revision = task.category_revision ?? 0;
+        const upload: SavedComparison = { ...task, task: { ...task.task }, category_id: matchedCategory?.id ?? null, category_name: matchedCategory?.name ?? null };
+        if (newerSharedVersion) {
+          const copySuffix = " (browser copy)";
+          upload.task.id = crypto.randomUUID();
+          upload.task.title = `${upload.task.title.slice(0, 80 - copySuffix.length).trimEnd()}${copySuffix}`;
+          upload.task.updated_at = new Date().toISOString();
+          upload.category_revision = 0;
+          conflictsCopied++;
+        } else {
+          upload.category_revision = task.category_revision ?? 0;
+        }
         syncedLayoutCategories.add(layoutCategoryId(upload.category_id));
         const savedCategory = await saveSharedTask(upload);
         upload.category_revision = savedCategory.revision;
         upload.category_name = savedCategory.categoryName;
         const summary = summarizeComparison(upload);
-        setSaved(previous => [summary, ...previous.filter(item => item.task.id !== task.task.id)]);
-        setLibraryDetails(previous => ({ ...previous, [task.task.id]: upload }));
+        setSaved(previous => [summary, ...previous.filter(item => item.task.id !== upload.task.id)]);
+        setLibraryDetails(previous => ({ ...previous, [upload.task.id]: upload }));
         await removeBrowserTask(task);
         setBrowserSaved(previous => previous.filter(item => item.task.id !== task.task.id));
+        if (newerSharedVersion && active?.task.id === task.task.id) {
+          setActive(upload);
+          const backQuery = returnTo?.startsWith("/suitability/saved") ? `?returnTo=${encodeURIComponent(returnTo)}` : "";
+          router.replace(`/suitability/${upload.task.id}${backQuery}`, { scroll: false });
+        }
       }
       if (syncedLayoutCategories.size) {
         const nextCategories = Object.fromEntries(Object.entries(localLibraryLayout.categories).filter(([categoryId]) => !syncedLayoutCategories.has(categoryId)));
         setLocalLayout({ revision: 0, categories: nextCategories });
       }
-      setNotice(categoriesDropped ? `Browser-saved tasks synced. ${categoriesDropped} unmatched ${categoriesDropped === 1 ? "category was" : "categories were"} changed to Uncategorized.` : "Browser-saved tasks synced to the shared library.");
+      const syncNotes: string[] = [];
+      if (conflictsCopied) syncNotes.push(`${conflictsCopied} browser ${conflictsCopied === 1 ? "copy was" : "copies were"} saved as separate tasks to preserve newer shared versions.`);
+      if (categoriesDropped) syncNotes.push(`${categoriesDropped} unmatched ${categoriesDropped === 1 ? "category was" : "categories were"} changed to Uncategorized.`);
+      setNotice(syncNotes.length ? `Browser-saved tasks synced. ${syncNotes.join(" ")}` : "Browser-saved tasks synced to the shared library.");
     } catch (cause) { setError(loadErrorMessage(cause, "Browser-saved tasks could not be added to the shared list.")); }
     finally { setSyncingBrowserSaved(false); }
   };
