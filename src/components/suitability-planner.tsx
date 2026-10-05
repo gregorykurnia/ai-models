@@ -730,7 +730,7 @@ export default function Planner({ data }: { data: PlannerData }) {
         } else {
           upload.category_revision = task.category_revision ?? 0;
         }
-        syncedLayoutCategories.add(layoutCategoryId(upload.category_id));
+        syncedLayoutCategories.add(layoutCategoryId(upload.category_id ?? null));
         const savedCategory = await saveSharedTask(upload);
         upload.category_revision = savedCategory.revision;
         upload.category_name = savedCategory.categoryName;
