@@ -46,6 +46,11 @@ export type SavedComparison = PlannerData & {
   category_name?: string | null;
   category_revision?: number;
 };
+
+export function browserTaskNeedsSharedCopy(comparison: SavedComparison, shared?: SavedTaskSummary): boolean {
+  return !!shared && (shared.task.updated_at > comparison.task.updated_at
+    || (shared.task.category_revision ?? 0) !== (comparison.category_revision ?? 0));
+}
 export const TASK_STORAGE_KEY = "model-benchmarks:suitability:v1";
 export function readSavedTasks(raw: string | null): SavedComparison[] {
   if (!raw) return [];

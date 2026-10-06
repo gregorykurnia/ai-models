@@ -3,7 +3,7 @@ import { test } from "node:test";
 import { readFile } from "node:fs/promises";
 import type { Dataset } from "../src/lib/contract";
 import { calculateSuitability, type SuitabilityTask } from "../src/lib/suitability";
-import { pinComparison, readSavedTasks, type PlannerData } from "../src/lib/suitability-storage";
+import { browserTaskNeedsSharedCopy, pinComparison, readSavedTasks, type PlannerData } from "../src/lib/suitability-storage";
 
 test("saved tasks retain full cohorts and results when published data changes", async () => {
   const dataset = JSON.parse(await readFile("data/leaderboards.json", "utf8")) as Dataset;
@@ -22,6 +22,13 @@ test("saved tasks retain full cohorts and results when published data changes", 
   assert.equal(categorized.category_id, "research");
   assert.equal(categorized.category_name, "Research");
   assert.equal(categorized.category_revision, 3);
+  const shared = { task: { ...categorized.task, category_revision: categorized.category_revision }, candidate_count: categorized.candidates.length, evaluations: categorized.evaluations };
+  assert.equal(browserTaskNeedsSharedCopy(restored, shared), true, "Legacy browser copy must sync separately when shared category revision advanced, even with identical timestamps");
+  assert.equal(browserTaskNeedsSharedCopy({ ...restored, task: { ...restored.task, updated_at: "2026-10-02T00:00:00Z" } }, shared), true, "Newer browser data must not overwrite a shared category change");
+  assert.equal(browserTaskNeedsSharedCopy(categorized, shared), false);
+  assert.equal(browserTaskNeedsSharedCopy(categorized, undefined), false);
+  assert.equal(browserTaskNeedsSharedCopy(restored, { ...shared, task: restored.task }), false, "Missing category revisions both default to zero");
+  assert.equal(browserTaskNeedsSharedCopy(categorized, { ...shared, task: { ...shared.task, updated_at: "2026-10-02T00:00:00Z" } }), true);
   assert(restored.entries.some(e => e.model_id !== model.model_id), "Full cohort, not just selected candidates, must be cached");
   const run = (value: PlannerData) => calculateSuitability({ ...value, weights: task.evaluation_weights });
   assert.deepEqual(run(restored), run(data));
