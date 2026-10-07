@@ -5,13 +5,12 @@ import aaBriefcaseComponents from "../../data/aa-briefcase-components.json";
 import aaModelProfileOverlays from "../../data/aa-model-profile-overlays.json";
 import { adminDb } from "./admin";
 import type { Dataset,Entry,Evaluation } from "./contract";
-import { briefcaseComponentDataset,mergeBriefcaseComponents,type BriefcaseComponentsSource } from "./aa-briefcase";
+import { mergeBriefcaseComponents,type BriefcaseComponentsSource } from "./aa-briefcase";
 import { mergeAaModelProfileOverlays,type AaModelProfileOverlay } from "./aa-model-profile-overlays";
 import { aggregateMaster } from "./master";
 import { getIntelligenceIndexTaskCostMap,intelligenceIndexCostCaptureLabel } from "./intelligence-index-costs";
 const componentSource=aaBriefcaseComponents as unknown as BriefcaseComponentsSource;
 const profileOverlaySource=aaModelProfileOverlays as unknown as AaModelProfileOverlay;
-const localComponents=cache(async()=>briefcaseComponentDataset(componentSource));
 const local=cache(async()=>mergeAaModelProfileOverlays(mergeBriefcaseComponents(leaderboardSource as unknown as Dataset,componentSource),profileOverlaySource));
 const publishedEvaluations=unstable_cache(async()=>
   (await adminDb().collection("evaluations").get()).docs.map(d=>d.data() as Evaluation).filter(e=>!!e.published_snapshot_id),
@@ -33,8 +32,9 @@ export const getEvaluations=cache(async():Promise<Evaluation[]>=>{
     }
     const byId=new Map(published.map(evaluation=>[evaluation.id,evaluation]));
     try{
-      for(const evaluation of (await localComponents()).evaluations.filter(item=>item.metric_group==="aa-briefcase-components")){
-        if(!byId.has(evaluation.id))byId.set(evaluation.id,evaluation);
+      for(const evaluation of (await local()).evaluations.filter(item=>item.metric_group==="aa-briefcase-components")){
+        const publishedEvaluation=byId.get(evaluation.id);
+        if(!publishedEvaluation||publishedEvaluation.published_snapshot_id===evaluation.published_snapshot_id)byId.set(evaluation.id,evaluation);
       }
     }catch(error){if((error as NodeJS.ErrnoException).code!=="ENOENT")throw error;}
     return [...byId.values()].sort((a,b)=>a.display_name.localeCompare(b.display_name));

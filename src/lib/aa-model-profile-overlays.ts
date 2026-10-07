@@ -33,6 +33,11 @@ function releaseMonth(value: string) {
   return new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric", timeZone: "UTC" }).format(date);
 }
 
+function captureDate(value: string) {
+  return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" })
+    .format(new Date(`${value}T00:00:00Z`));
+}
+
 function rounded(value: number) {
   return String(Math.round(value));
 }
@@ -54,6 +59,10 @@ function scoreDisplay(evaluation: Evaluation, score: number) {
     || evaluation.id === "aa-briefcase-analytical-quality-elo"
     || evaluation.id === "aa-briefcase-presentation-elo") return rounded(score);
   return String(score);
+}
+
+function scoreValue(evaluation: Evaluation, score: number) {
+  return evaluation.id === "aa-briefcase-rubric-score" ? score * 100 : score;
 }
 
 function confidenceInterval(evaluation: Evaluation, score: number, interval?: AaModelProfileScore["confidence_interval"]) {
@@ -92,7 +101,7 @@ function modelEntry(
     provider: profile.provider,
     model: profile.name,
     source_rank: 1,
-    score_value: score.score,
+    score_value: scoreValue(evaluation, score.score),
     score_display: scoreDisplay(evaluation, score.score),
     scoring_status: evaluation.id === "intelligence-index"
       ? profile.metadata.intelligence_index_is_estimated === false ? "Independently scored" : "Estimated"
@@ -201,7 +210,16 @@ export function mergeAaModelProfileOverlays(dataset: Dataset, source: AaModelPro
     const additions = newEntriesByEvaluation.get(evaluation.id) ?? [];
     if (additions.length === 0) return evaluation;
     const previousEntries = baseDataset.entries.filter(entry => entry.evaluation_id === evaluation.id);
-    return { ...evaluation, row_count: previousEntries.length + additions.length };
+    if (evaluation.metric_group !== "aa-briefcase-components") {
+      return { ...evaluation, row_count: previousEntries.length + additions.length };
+    }
+    const baseNotes = evaluation.notes.replace(/\s*Supplemental model-profile results:.*$/, "");
+    const supplementNote = `Supplemental model-profile results: ${additions.length} model entries captured ${captureDate(source.captured_at)}; the base evaluation results were captured ${captureDate(evaluation.captured_at)}.`;
+    return {
+      ...evaluation,
+      row_count: previousEntries.length + additions.length,
+      notes: `${baseNotes} ${supplementNote}`,
+    };
   });
 
   const updatedSnapshots = baseDataset.snapshots.map(snapshot => {
