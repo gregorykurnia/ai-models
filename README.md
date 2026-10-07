@@ -1,4 +1,4 @@
-# Model Benchmarks
+# Model Atlas
 
 Read-only Artificial Analysis leaderboard browser, using the Utility grid design direction. The initial workbook capture is 29 September 2026.
 

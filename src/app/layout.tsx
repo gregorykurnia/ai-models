@@ -16,7 +16,11 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-export const metadata = { title: "Model Benchmarks", description: "Browse Artificial Analysis leaderboard snapshots and model rankings." };
+export const metadata = {
+  title: "Model Atlas",
+  description: "Compare AI model evaluations, rankings, and task suitability.",
+  icons: { icon: "/icon.svg" },
+};
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return <html lang="en" className={`${geist.variable} ${geistMono.variable}`}><body><AppShell>{children}</AppShell></body></html>;

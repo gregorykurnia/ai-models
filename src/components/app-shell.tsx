@@ -51,7 +51,7 @@ function Navigation({ pathname, onNavigate }: { pathname: string; onNavigate?: (
 }
 
 function Brand() {
-  return <Link className="app-brand" href="/"><span className="app-brand__mark" aria-hidden="true">M</span><span>Model Benchmarks</span></Link>;
+  return <Link className="app-brand" href="/"><img className="app-brand__mark" src="/icon.svg" alt="" aria-hidden="true" /><span>Model Atlas</span></Link>;
 }
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
