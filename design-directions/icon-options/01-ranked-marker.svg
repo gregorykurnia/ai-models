@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Ranked marker icon</title>
+  <desc id="desc">Three descending comparison bars with a highlighted marker.</desc>
+  <rect width="64" height="64" rx="14" fill="#3d4fd1"/>
+  <path d="M15 18h34M15 30h25M15 42h16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="48" cy="43" r="5" fill="#fff"/>
+</svg>

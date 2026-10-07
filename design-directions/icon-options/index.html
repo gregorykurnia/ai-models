@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Visual comparison of possible names and icons for the model evaluation app.">
+  <title>Model app name and icon options</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --page: #f4f3ef;
+      --surface: #fff;
+      --subtle: #f5f5fa;
+      --line: #dddde5;
+      --ink: #191a24;
+      --muted: #606371;
+      --accent: #3d4fd1;
+      --accent-subtle: #eef0ff;
+      --radius: 12px;
+      --shadow: 0 10px 28px rgb(25 26 36 / 8%);
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font: 15px/1.5 var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 64px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    p { margin-top: 0; }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 12px;
+      font-size: clamp(34px, 5vw, 56px);
+      letter-spacing: -.055em;
+      line-height: 1;
+    }
+
+    .intro {
+      max-width: 690px;
+      margin-bottom: 36px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .recommendation {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 32px;
+      padding: 18px 20px;
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .recommendation h2 {
+      margin-bottom: 2px;
+      font-size: 18px;
+      letter-spacing: -.02em;
+    }
+
+    .recommendation p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .recommendation-badge {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--accent-subtle);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .recommendation-mark {
+      width: 52px;
+      height: 52px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .card:hover {
+      border-color: #8995e5;
+      box-shadow: var(--shadow);
+    }
+
+    .card-mark {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      min-height: 92px;
+      margin-bottom: 18px;
+    }
+
+    .large-mark {
+      width: 84px;
+      height: 84px;
+    }
+
+    .small-preview {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .small-preview img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .card-number {
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+    }
+
+    .card h2 {
+      margin-bottom: 5px;
+      font-size: 19px;
+      letter-spacing: -.03em;
+    }
+
+    .card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .names {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 34px;
+    }
+
+    .name-chip {
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .name-chip:first-child {
+      border-color: var(--accent);
+      background: var(--accent-subtle);
+      color: var(--accent);
+    }
+
+    .note {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 28px, 560px); padding-top: 32px; }
+      .grid { grid-template-columns: 1fr; }
+      .recommendation { grid-template-columns: auto 1fr; }
+      .recommendation-badge { grid-column: 2; justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="eyebrow">Brand exploration · October 2026</p>
+    <h1>Possible names and icons for the model app.</h1>
+    <p class="intro">These marks are designed for the existing interface: simple outline geometry, an ultramarine accent, and enough contrast to remain recognizable in a sidebar or browser tab.</p>
+
+    <section class="recommendation" aria-label="Recommended direction">
+      <img class="recommendation-mark" src="./01-ranked-marker.svg" alt="">
+      <div>
+        <h2>Recommended: Model Atlas + ranked marker</h2>
+        <p>Broad enough for evaluations, rankings, task suitability, and future model discovery features.</p>
+      </div>
+      <span class="recommendation-badge">Best fit</span>
+    </section>
+
+    <section class="grid" aria-label="Icon options">
+      <article class="card">
+        <div class="card-mark"><img class="large-mark" src="./01-ranked-marker.svg" alt=""><span class="small-preview"><img src="./01-ranked-marker.svg" alt="">20px preview</span></div>
+        <div class="card-number">01 · RANKING</div>
+        <h2>Ranked marker</h2>
+        <p>Three comparison bars plus a selected model. The clearest functional icon for the current product.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-mark"><img class="large-mark" src="./02-compass.svg" alt=""><span class="small-preview"><img src="./02-compass.svg" alt="">20px preview</span></div>
+        <div class="card-number">02 · DISCOVERY</div>
+        <h2>Compass</h2>
+        <p>Pairs naturally with Model Atlas and suggests navigating a large model landscape.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-mark"><img class="large-mark" src="./03-dot-grid.svg" alt=""><span class="small-preview"><img src="./03-dot-grid.svg" alt="">20px preview</span></div>
+        <div class="card-number">03 · CATALOG</div>
+        <h2>Dot grid</h2>
+        <p>A compact model catalog with one highlighted choice. Works well with Model Index.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-mark"><img class="large-mark" src="./04-evaluation-stack.svg" alt=""><span class="small-preview"><img src="./04-evaluation-stack.svg" alt="">20px preview</span></div>
+        <div class="card-number">04 · EVALUATIONS</div>
+        <h2>Evaluation stack</h2>
+        <p>Layered reports emphasize benchmark snapshots, evidence, and source history.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-mark"><img class="large-mark" src="./05-signal-path.svg" alt=""><span class="small-preview"><img src="./05-signal-path.svg" alt="">20px preview</span></div>
+        <div class="card-number">05 · PERFORMANCE</div>
+        <h2>Signal path</h2>
+        <p>A more expressive option for Model Signals, with a clear upward performance cue.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-mark"><img class="large-mark" src="./06-monogram-a.svg" alt=""><span class="small-preview"><img src="./06-monogram-a.svg" alt="">20px preview</span></div>
+        <div class="card-number">06 · MONOGRAM</div>
+        <h2>Atlas A</h2>
+        <p>The simplest mark for a favicon or app launcher, with very little detail to lose at small sizes.</p>
+      </article>
+    </section>
+
+    <div class="names" aria-label="Name options">
+      <span class="name-chip">Model Atlas</span>
+      <span class="name-chip">Model Index</span>
+      <span class="name-chip">Eval Atlas</span>
+      <span class="name-chip">Model Signals</span>
+      <span class="name-chip">Benchmark Ledger</span>
+    </div>
+
+    <p class="note">Each icon is a standalone SVG in this folder. The current app uses inline SVG icons, so these can be integrated without adding an icon dependency.</p>
+  </main>
+</body>
+</html>

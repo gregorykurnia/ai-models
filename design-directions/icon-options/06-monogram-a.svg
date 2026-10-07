@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Atlas monogram icon</title>
+  <desc id="desc">A compact A monogram for Model Atlas.</desc>
+  <rect width="64" height="64" rx="14" fill="#3d4fd1"/>
+  <path d="m17 47 10-30h10l10 30M23 37h18" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
