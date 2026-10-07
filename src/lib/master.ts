@@ -7,6 +7,52 @@ export type MasterTableRow=Omit<MasterRow,"source_entries"|"cells"> & {cells:Rec
 export function masterTableRows(rows:MasterRow[]):MasterTableRow[]{return rows.map(({source_entries,cells,...row})=>({...row,cells:Object.fromEntries(Object.entries(cells).map(([id,c])=>[id,{...c,entry:{source_rank:c.entry.source_rank,scoring_status:c.entry.scoring_status}}]))}));}
 export function evaluationLink(e:Evaluation,model:string){return `/leaderboards/${e.slug}?q=${encodeURIComponent(model)}`;}
 
+const masterEvaluationOrder=[
+  "aa-briefcase-analytical-quality-elo",
+  "aa-omniscience-index",
+  "strategy-ops-index",
+  "aa-briefcase-presentation-elo",
+  "terminal-bench-4-0",
+  "intelligence-index",
+  "aa-briefcase-rubric-score",
+  "finance-accounting",
+  "economics-index",
+  "aa-lcr-v1-1",
+  "briefcase-v1-1",
+  "gdpval-aa-v2-1",
+  "automationbench-aa",
+  "humanity-s-last-exam",
+  "critpt",
+  "mmmu-pro",
+  "scicode",
+  "gdp-pdf",
+  "aa-omniscience-accuracy",
+] as const;
+
+const masterEvaluationLabels:Record<string,string>={
+  "aa-briefcase-analytical-quality-elo":"Analytical Quality Elo",
+  "aa-omniscience-index":"Omniscience Index",
+  "strategy-ops-index":"Strategy and Ops Index",
+  "aa-briefcase-presentation-elo":"Presentation Elo",
+  "terminal-bench-4-0":"Terminal Bench",
+  "intelligence-index":"Intelligence Index",
+  "aa-briefcase-rubric-score":"Rubric Score",
+  "finance-accounting":"Finance and Accounting",
+  "economics-index":"Economics",
+  "aa-lcr-v1-1":"AA LCR",
+};
+
+export function orderMasterEvaluations<T extends Pick<Evaluation,"id">>(evaluations:ReadonlyArray<T>):T[]{
+  const priority=new Map<string,number>(masterEvaluationOrder.map((id,index)=>[id,index]));
+  return evaluations.map((evaluation,index)=>({evaluation,index})).sort((a,b)=>
+    (priority.get(a.evaluation.id)??Number.MAX_SAFE_INTEGER)-(priority.get(b.evaluation.id)??Number.MAX_SAFE_INTEGER)||a.index-b.index,
+  ).map(({evaluation})=>evaluation);
+}
+
+export function masterEvaluationLabel(evaluation:Pick<Evaluation,"id"|"display_name">){
+  return masterEvaluationLabels[evaluation.id]??evaluation.display_name;
+}
+
 const aggregateDimensionIds=[
   "aa-briefcase-analytical-quality-elo",
   "aa-briefcase-presentation-elo",
@@ -33,14 +79,15 @@ function csvCell(value:string|number|null|undefined){
 }
 
 export function masterLeaderboardCsv(rows:ReadonlyArray<MasterTableRow>,evaluations:ReadonlyArray<Pick<Evaluation,"id"|"display_name">>){
-  const header=["Model","Provider","Cost per Intelligence Index task (USD)","Aggregate Score (average rank)","Aggregate Score dimensions used (of 9)",...evaluations.map(e=>e.display_name)];
+  const orderedEvaluations=orderMasterEvaluations(evaluations);
+  const header=["Model","Provider","Cost Per Intelligence Index Task (USD)","Aggregate Score (average rank)","Aggregate Score dimensions used (of 9)",...orderedEvaluations.map(masterEvaluationLabel)];
   const data=rows.map(row=>[
     row.model,
     row.provider,
     row.intelligence_index_cost?.cost_usd,
     averageMasterRank(row)?.score,
     averageMasterRank(row)?.count,
-    ...evaluations.map(e=>row.cells[e.id]?.entry.source_rank),
+    ...orderedEvaluations.map(e=>row.cells[e.id]?.entry.source_rank),
   ]);
   return `\ufeff${[header,...data].map(row=>row.map(csvCell).join(",")).join("\r\n")}\r\n`;
 }
