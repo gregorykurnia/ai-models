@@ -4,7 +4,7 @@
   "metric": "Cost per Intelligence Index task",
   "metric_path": "intelligenceIndexCostPerTask.cost.total",
   "model_count": 686,
-  "cost_count": 173,
+  "cost_count": 176,
   "records": [
     {
       "slug": "qwen3-235b-a22b-instruct-2507-reasoning",
@@ -518,6 +518,14 @@
       "url": "https://artificialanalysis.ai/models/gemini-3-8-flash-medium"
     },
     {
+      "slug": "gemini-4-argon",
+      "name": "Gemini 4 Argon (High)",
+      "provider": "Google",
+      "cost_usd": 1.990322379299008,
+      "url": "https://artificialanalysis.ai/models/gemini-4-argon",
+      "profile_captured_at": "2026-10-07"
+    },
+    {
       "slug": "gemma-3-12b",
       "name": "Gemma 3 12B Instruct",
       "provider": "Google",
@@ -565,6 +573,14 @@
       "provider": "InclusionAI",
       "cost_usd": 0,
       "url": "https://artificialanalysis.ai/models/ling-3-0-tiny"
+    },
+    {
+      "slug": "ling-3-1-flash",
+      "name": "Ling 3.1 Flash",
+      "provider": "InclusionAI",
+      "cost_usd": 0.9856894983836784,
+      "url": "https://artificialanalysis.ai/models/ling-3-1-flash",
+      "profile_captured_at": "2026-10-07"
     },
     {
       "slug": "ring-2-6-1t",
@@ -677,6 +693,14 @@
       "provider": "Mistral",
       "cost_usd": 0.031125992260624492,
       "url": "https://artificialanalysis.ai/models/mistral-large-3"
+    },
+    {
+      "slug": "mistral-large-4",
+      "name": "Mistral Large 4 Preview",
+      "provider": "Mistral",
+      "cost_usd": 1.1317590533008346,
+      "url": "https://artificialanalysis.ai/models/mistral-large-4",
+      "profile_captured_at": "2026-10-07"
     },
     {
       "slug": "mistral-medium-3-5",
@@ -1216,6 +1240,17 @@
       "provider": "Z AI",
       "cost_usd": 2.0056375150449584,
       "url": "https://artificialanalysis.ai/models/glm-5-3"
+    }
+  ],
+  "profile_updates": [
+    {
+      "captured_at": "2026-10-07",
+      "model_count": 3,
+      "source_urls": [
+        "https://artificialanalysis.ai/models/gemini-4-argon",
+        "https://artificialanalysis.ai/models/ling-3-1-flash",
+        "https://artificialanalysis.ai/models/mistral-large-4"
+      ]
     }
   ]
 }

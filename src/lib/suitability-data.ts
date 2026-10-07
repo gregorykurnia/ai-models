@@ -17,7 +17,7 @@ export function buildPlannerData(evaluations: Evaluation[], sourceEntries: Entry
     let candidate = candidates.get(identity);
     if (!candidate) {
       candidate = { model_id: entry.model_id, model: entry.model, provider: entry.provider, identity_key: identity, source_model_ids: [],
-        intelligence_index_cost: (() => { const cost = getIntelligenceIndexTaskCost(entry.provider, entry.model); return cost ? { slug: cost.slug, cost_usd: cost.cost_usd, url: cost.url, captured_at: getIntelligenceIndexTaskCostCapturedAt() } : null; })() };
+        intelligence_index_cost: (() => { const cost = getIntelligenceIndexTaskCost(entry.provider, entry.model); return cost ? { slug: cost.slug, cost_usd: cost.cost_usd, url: cost.url, captured_at: cost.profile_captured_at ?? getIntelligenceIndexTaskCostCapturedAt() } : null; })() };
       candidates.set(identity, candidate);
     }
     if (!candidate.source_model_ids!.includes(entry.model_id)) candidate.source_model_ids!.push(entry.model_id);

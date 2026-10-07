@@ -28,6 +28,7 @@
     "import:workbook": "tsx scripts/import-workbook.ts",
     "import:briefcase-components": "tsx scripts/import-aa-briefcase-components.ts",
     "import:aa-index-costs": "tsx scripts/import-aa-intelligence-index-costs.ts",
+    "import:aa-model-profiles": "tsx scripts/import-aa-model-profiles.ts",
     "audit:suitability": "tsx scripts/audit-suitability.ts"
   }
 }

@@ -51,7 +51,7 @@ export default function Leaderboard({entries,evaluation,taskCosts}:{entries:Entr
     ...(evaluation.has_scoring_status?[{id:"scoring_status",header:"Scoring status",cell:({row}:{row:{original:Entry}})=>row.original.scoring_status||"—"}]:[]),
     ...(evaluation.has_confidence_interval?[{accessorKey:"confidence_interval_display",header:"Elo CI",cell:({row}:{row:{original:Entry}})=>row.original.confidence_interval_display||"—"}]:[]),
     ...(evaluation.has_release_date?[{accessorKey:"release_date_label",header:"Release date",cell:({row}:{row:{original:Entry}})=>row.original.release_date_label||"—"}]:[]),
-    {id:"cost_usd",accessorFn:entry=>taskCosts[entry.id]?.cost_usd??null,header:"Cost per Intelligence Index task",cell:({row}:{row:{original:Entry}})=>{const cost=taskCosts[row.original.id];return cost?<a href={cost.url} target="_blank" rel="noreferrer" title={`Artificial Analysis profile for ${cost.model}`}>{costFormatter.format(cost.cost_usd)}</a>:"—";}}
+    {id:"cost_usd",accessorFn:entry=>taskCosts[entry.id]?.cost_usd??null,header:"Cost per Intelligence Index task",cell:({row}:{row:{original:Entry}})=>{const cost=taskCosts[row.original.id];return cost?<a href={cost.url} target="_blank" rel="noreferrer" title={`Artificial Analysis profile for ${cost.model} · cost captured ${cost.profile_captured_at}`}>{costFormatter.format(cost.cost_usd)}</a>:"—";}}
   ],[evaluation,taskCosts]);
   const table=useReactTable({data:rows,columns,getCoreRowModel:getCoreRowModel(),manualPagination:true,autoResetPageIndex:false});
   const providers=[...new Set(entries.map(e=>e.provider))].sort();

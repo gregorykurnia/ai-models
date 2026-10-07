@@ -2,14 +2,17 @@ import { cache } from "react";
 import { unstable_cache } from "next/cache";
 import leaderboardSource from "../../data/leaderboards.json";
 import aaBriefcaseComponents from "../../data/aa-briefcase-components.json";
+import aaModelProfileOverlays from "../../data/aa-model-profile-overlays.json";
 import { adminDb } from "./admin";
 import type { Dataset,Entry,Evaluation } from "./contract";
 import { briefcaseComponentDataset,mergeBriefcaseComponents,type BriefcaseComponentsSource } from "./aa-briefcase";
+import { mergeAaModelProfileOverlays,type AaModelProfileOverlay } from "./aa-model-profile-overlays";
 import { aggregateMaster } from "./master";
-import { getIntelligenceIndexTaskCostMap,intelligenceIndexCostCapturedAt } from "./intelligence-index-costs";
+import { getIntelligenceIndexTaskCostMap,intelligenceIndexCostCaptureLabel } from "./intelligence-index-costs";
 const componentSource=aaBriefcaseComponents as unknown as BriefcaseComponentsSource;
+const profileOverlaySource=aaModelProfileOverlays as unknown as AaModelProfileOverlay;
 const localComponents=cache(async()=>briefcaseComponentDataset(componentSource));
-const local=cache(async()=>mergeBriefcaseComponents(leaderboardSource as unknown as Dataset,componentSource));
+const local=cache(async()=>mergeAaModelProfileOverlays(mergeBriefcaseComponents(leaderboardSource as unknown as Dataset,componentSource),profileOverlaySource));
 const publishedEvaluations=unstable_cache(async()=>
   (await adminDb().collection("evaluations").get()).docs.map(d=>d.data() as Evaluation).filter(e=>!!e.published_snapshot_id),
   ["published-evaluations"],{revalidate:300});
@@ -43,7 +46,16 @@ export async function getEntries(evaluation:Evaluation):Promise<Entry[]>{
     const bundled=await local();
     if(bundled.evaluations.some(item=>item.id===evaluation.id&&item.published_snapshot_id===evaluation.published_snapshot_id))
       return bundled.entries.filter(entry=>entry.evaluation_id===evaluation.id&&entry.snapshot_id===evaluation.published_snapshot_id).sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row);
-    return remoteEntries(evaluation.published_snapshot_id);
+    const remote=await remoteEntries(evaluation.published_snapshot_id);
+    const localDataset=await local();
+    const base:Dataset={
+      ...localDataset,
+      evaluations:localDataset.evaluations.map(item=>item.id===evaluation.id?evaluation:item),
+      entries:[...localDataset.entries.filter(entry=>entry.evaluation_id!==evaluation.id),...remote],
+    };
+    return mergeAaModelProfileOverlays(base,profileOverlaySource).entries
+      .filter(entry=>entry.evaluation_id===evaluation.id)
+      .sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row);
   }
   return (await local()).entries.filter(e=>e.evaluation_id===evaluation.id).sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row);
 }
@@ -74,5 +86,5 @@ export const getEvaluationDataset=cache(async(slug:string)=>{
 });
 export const getMasterDataset=cache(async()=>{
   const {evaluations,entries}=await getPublishedDataset();
-  return {evaluations,...aggregateMaster(evaluations,entries,getIntelligenceIndexTaskCostMap()),intelligenceIndexCostCapturedAt};
+  return {evaluations,...aggregateMaster(evaluations,entries,getIntelligenceIndexTaskCostMap()),intelligenceIndexCostCaptureLabel};
 });

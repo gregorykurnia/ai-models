@@ -5,6 +5,8 @@ import path from "node:path";
 import { entrySchema,type Dataset,type Evaluation } from "../src/lib/contract";
 import { aggregateMaster } from "../src/lib/master";
 import { mergeBriefcaseComponents,type BriefcaseComponentsSource } from "../src/lib/aa-briefcase";
+import aaModelProfileOverlays from "../data/aa-model-profile-overlays.json";
+import { mergeAaModelProfileOverlays,type AaModelProfileOverlay } from "../src/lib/aa-model-profile-overlays";
 
 const filename=process.argv[2];
 if(!filename) throw new Error("Usage: npm run import:workbook -- <xlsx> [--publish]");
@@ -94,7 +96,10 @@ await mkdir("data",{recursive:true});
 await writeFile("data/validation-report.json",JSON.stringify(dataset.report,null,2));
 if(dataset.issues.some(i=>i.severity==="error")||dataset.evaluations.length!==16)throw new Error("Import rejected; see data/validation-report.json. Previous valid data preserved.");
 const componentSource=JSON.parse(await readFile("data/aa-briefcase-components.json","utf8")) as BriefcaseComponentsSource;
-const completeDataset=mergeBriefcaseComponents(dataset,componentSource);
+const completeDataset=mergeAaModelProfileOverlays(
+  mergeBriefcaseComponents(dataset,componentSource),
+  aaModelProfileOverlays as AaModelProfileOverlay,
+);
 await writeFile("data/validation-report.json",JSON.stringify(completeDataset.report,null,2));
 await writeFile("data/leaderboards.json.tmp",JSON.stringify(completeDataset));await rename("data/leaderboards.json.tmp","data/leaderboards.json");
 console.log(JSON.stringify(completeDataset.report,null,2));

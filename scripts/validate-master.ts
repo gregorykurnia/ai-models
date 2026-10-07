@@ -7,7 +7,7 @@ const evaluation=d.evaluations[0];
 const base=d.entries.find(e=>e.evaluation_id===evaluation.id)!;
 const entry=(changes:Partial<Entry>)=>({...base,...changes});
 const second={...evaluation,id:"fixture-2",slug:"fixture-2"};
-const fixture=aggregateMaster([evaluation,second],[entry({source_rank:2}),entry({evaluation_id:second.id,source_rank:7,id:"second"}),entry({source_rank:3,id:"duplicate"}),entry({model_id:"partial",model:"Partial",source_rank:2}),entry({model_id:"estimate",scoring_status:"Estimated",source_rank:1})]);
+const fixture=aggregateMaster([evaluation,second],[entry({source_rank:2}),entry({evaluation_id:second.id,source_rank:7,id:"second"}),entry({source_rank:3,id:"duplicate"}),entry({model_id:"partial",model:"Partial",source_rank:2}),entry({model_id:"estimate",model:"Estimated",scoring_status:"Estimated",source_rank:1})]);
 assert.equal(fixture.rows.find(r=>r.model_id===base.model_id)!.cells[evaluation.id].entry.source_rank,2);
 assert.equal(fixture.rows.find(r=>r.model_id===base.model_id)!.cells[second.id].entry.source_rank,7);
 assert.equal(fixture.rows.find(r=>r.model_id==="partial")!.cells[second.id],undefined);
@@ -19,12 +19,17 @@ const result=aggregateMaster(d.evaluations,d.entries);
 assert.deepEqual(result,aggregateMaster(d.evaluations,[...d.entries].reverse()));
 assert.equal(masterIdentityKey("Anthropic","Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)"),masterIdentityKey("Anthropic","Claude Sonnet 5.5 (max with fallback)"));
 assert.notEqual(masterIdentityKey("Anthropic","Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)"),masterIdentityKey("Anthropic","Claude Sonnet 5.5 (xhigh with fallback)"));
+const sourceByIdentityAndEvaluation=new Map<string,Entry>();
+for(const source of [...d.entries].sort((a,b)=>a.evaluation_id.localeCompare(b.evaluation_id)||a.source_rank-b.source_rank||a.source_row-b.source_row||a.id.localeCompare(b.id))){
+  const key=`${masterIdentityKey(source.provider,source.model)}\0${source.evaluation_id}`;
+  if(!sourceByIdentityAndEvaluation.has(key))sourceByIdentityAndEvaluation.set(key,source);
+}
 let cells=0;
 for(const row of result.rows){
   masterRowSchema.parse(row);
   assert(!("mean_normalized_score" in row));
   for(const [id,cell] of Object.entries(row.cells)){
-    const source=d.entries.filter(e=>masterIdentityKey(e.provider,e.model)===masterIdentityKey(row.provider,row.model)&&e.evaluation_id===id).sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row||a.id.localeCompare(b.id))[0];
+    const source=sourceByIdentityAndEvaluation.get(`${row.identity_key}\0${id}`);
     assert.deepEqual(cell.entry,source);
     assert.equal(new URL(cell.href,"http://localhost").searchParams.get("q"),cell.entry.model);
     assert(!("normalized_value" in cell));

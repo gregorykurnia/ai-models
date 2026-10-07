@@ -1,14 +1,19 @@
 import { readFile, writeFile, rename } from "node:fs/promises";
 import type { Dataset } from "../src/lib/contract";
 import { mergeBriefcaseComponents, type BriefcaseComponentsSource } from "../src/lib/aa-briefcase";
+import profileSource from "../data/aa-model-profile-overlays.json";
+import { mergeAaModelProfileOverlays, type AaModelProfileOverlay } from "../src/lib/aa-model-profile-overlays";
 
 const [datasetText, sourceText] = await Promise.all([
   readFile("data/leaderboards.json", "utf8"),
   readFile("data/aa-briefcase-components.json", "utf8"),
 ]);
-const dataset = mergeBriefcaseComponents(
-  JSON.parse(datasetText) as Dataset,
-  JSON.parse(sourceText) as BriefcaseComponentsSource,
+const dataset = mergeAaModelProfileOverlays(
+  mergeBriefcaseComponents(
+    JSON.parse(datasetText) as Dataset,
+    JSON.parse(sourceText) as BriefcaseComponentsSource,
+  ),
+  profileSource as AaModelProfileOverlay,
 );
 
 await writeFile("data/leaderboards.json.tmp", JSON.stringify(dataset));

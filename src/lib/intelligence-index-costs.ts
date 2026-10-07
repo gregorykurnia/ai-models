@@ -10,6 +10,7 @@ type RawCostSnapshot = {
     provider: string;
     cost_usd: number;
     url: string;
+    profile_captured_at?: string;
   }>;
 };
 
@@ -19,6 +20,7 @@ const snapshot = {
   records: rawSnapshot.records.map(({ name, ...record }): IntelligenceIndexTaskCost => ({
     ...record,
     model: name,
+    profile_captured_at: record.profile_captured_at ?? rawSnapshot.captured_at.slice(0, 10),
   })),
 };
 const costsByIdentity = new Map<string, IntelligenceIndexTaskCost | null>();
@@ -37,6 +39,14 @@ for (const record of snapshot.records) {
 
 export const intelligenceIndexCostCapturedAt = snapshot.captured_at;
 export const intelligenceIndexCostCount = snapshot.records.length;
+export const intelligenceIndexCostCaptureDates = [...new Set(
+  snapshot.records.map(record => record.profile_captured_at!).filter(Boolean),
+)].sort();
+export const intelligenceIndexCostCaptureLabel = intelligenceIndexCostCaptureDates
+  .map(date => new Date(`${date}T00:00:00Z`).toLocaleDateString("en-GB", {
+    day: "numeric", month: "short", year: "numeric", timeZone: "UTC",
+  }))
+  .join(" + ");
 
 export function getIntelligenceIndexTaskCost(provider: string, model: string): IntelligenceIndexTaskCost | null {
   return costsByIdentity.get(masterIdentityKey(provider, model))

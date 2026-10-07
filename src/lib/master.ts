@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { entrySchema, type Entry, type Evaluation, type IntelligenceIndexTaskCost } from "./contract";
 
-export const masterRowSchema=z.object({model_id:z.string(),identity_key:z.string(),provider:z.string(),model:z.string(),cells:z.record(z.string(),z.object({entry:entrySchema,href:z.string()})),source_rank:z.number(),source_entries:z.array(entrySchema),intelligence_index_cost:z.object({slug:z.string(),provider:z.string(),model:z.string(),cost_usd:z.number().nonnegative(),url:z.string().url()}).nullable()});
+export const masterRowSchema=z.object({model_id:z.string(),identity_key:z.string(),provider:z.string(),model:z.string(),cells:z.record(z.string(),z.object({entry:entrySchema,href:z.string()})),source_rank:z.number(),source_entries:z.array(entrySchema),intelligence_index_cost:z.object({slug:z.string(),provider:z.string(),model:z.string(),cost_usd:z.number().nonnegative(),url:z.string().url(),profile_captured_at:z.string().optional()}).nullable()});
 export type MasterRow=z.infer<typeof masterRowSchema>;
 export type MasterTableRow=Omit<MasterRow,"source_entries"|"cells"> & {cells:Record<string,{entry:Pick<Entry,"source_rank"|"scoring_status">;href:string}>};
 export function masterTableRows(rows:MasterRow[]):MasterTableRow[]{return rows.map(({source_entries,cells,...row})=>({...row,cells:Object.fromEntries(Object.entries(cells).map(([id,c])=>[id,{...c,entry:{source_rank:c.entry.source_rank,scoring_status:c.entry.scoring_status}}]))}));}
