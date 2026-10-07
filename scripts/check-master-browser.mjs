@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 // Supply the path to an installed Playwright module; no production dependency.
 const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||"playwright");
 const browser=await chromium.launch({headless:true});
@@ -8,11 +9,29 @@ try {
   await page.goto(`${process.env.BASE_URL||"http://localhost:3180"}/?mq=GPT#master-leaderboard`);
   const section=page.locator("#master-leaderboard");
   await section.locator("tbody tr").first().waitFor();
+  const resultText=await section.locator("p[aria-live='polite']").first().textContent();
+  const resultCount=Number(resultText?.match(/^[\d,]+/)?.[0].replaceAll(",","")||0);
+  const downloadPromise=page.waitForEvent("download");
+  await section.getByRole("button",{name:"Export CSV"}).click();
+  const download=await downloadPromise;
+  const csv=await readFile(await download.path(),"utf8");
+  assert.equal(csv.split(/\r?\n/).filter(Boolean).length,resultCount+1);
+  assert(csv.includes("Model,Provider,Cost per Intelligence Index task (USD)"));
+  await section.locator("#master-provider").selectOption({label:"OpenAI"});
+  await page.waitForFunction(()=>new URL(location.href).searchParams.get("mp")==="OpenAI");
+  const filteredText=await section.locator("p[aria-live='polite']").first().textContent();
+  const filteredCount=Number(filteredText?.match(/^[\d,]+/)?.[0].replaceAll(",","")||0);
+  const filteredDownloadPromise=page.waitForEvent("download");
+  await section.getByRole("button",{name:"Export CSV"}).click();
+  const filteredDownload=await filteredDownloadPromise;
+  const filteredCsv=await readFile(await filteredDownload.path(),"utf8");
+  assert.equal(filteredCsv.split(/\r?\n/).filter(Boolean).length,filteredCount+1);
+  assert(filteredCsv.split(/\r?\n/).filter(Boolean).slice(1).every(row=>row.includes(",OpenAI,")));
   await section.getByRole("button",{name:/AutomationBench-AA/}).click();
   await page.waitForURL(/ms=automationbench-aa/);
   const link=section.locator("tbody .source-rank").first();
   const href=await link.getAttribute("href");
-  await link.click();await page.waitForURL(/leaderboards/);
+  await Promise.all([page.waitForURL(/leaderboards/),link.click()]);
   assert(await page.locator("#model-search").inputValue());
   await page.goBack();await section.locator("tbody tr").first().waitFor();
   assert(page.url().includes("ms=automationbench-aa"));
@@ -21,5 +40,5 @@ try {
   await page.setViewportSize({width:390,height:844});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
   assert.deepEqual(errors,[]);
-  console.log(JSON.stringify({source_link:href,return_state:page.url(),keyboard_navigation:true,mobile_overflow:false,errors}));
+  console.log(JSON.stringify({source_link:href,search_csv_rows:resultCount,filter_csv_rows:filteredCount,keyboard_navigation:true,mobile_overflow:false,errors}));
 } finally {await browser.close();}

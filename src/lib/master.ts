@@ -7,6 +7,22 @@ export type MasterTableRow=Omit<MasterRow,"source_entries"|"cells"> & {cells:Rec
 export function masterTableRows(rows:MasterRow[]):MasterTableRow[]{return rows.map(({source_entries,cells,...row})=>({...row,cells:Object.fromEntries(Object.entries(cells).map(([id,c])=>[id,{...c,entry:{source_rank:c.entry.source_rank,scoring_status:c.entry.scoring_status}}]))}));}
 export function evaluationLink(e:Evaluation,model:string){return `/leaderboards/${e.slug}?q=${encodeURIComponent(model)}`;}
 
+function csvCell(value:string|number|null|undefined){
+  const text=value===null||value===undefined?"":String(value);
+  return /[",\r\n]/.test(text)?`"${text.replaceAll('"','""')}"`:text;
+}
+
+export function masterLeaderboardCsv(rows:ReadonlyArray<MasterTableRow>,evaluations:ReadonlyArray<Pick<Evaluation,"id"|"display_name">>){
+  const header=["Model","Provider","Cost per Intelligence Index task (USD)",...evaluations.map(e=>e.display_name)];
+  const data=rows.map(row=>[
+    row.model,
+    row.provider,
+    row.intelligence_index_cost?.cost_usd,
+    ...evaluations.map(e=>row.cells[e.id]?.entry.source_rank),
+  ]);
+  return `\ufeff${[header,...data].map(row=>row.map(csvCell).join(",")).join("\r\n")}\r\n`;
+}
+
 // Evaluation sheets use different labels for the same reasoning/fallback variant.
 // Normalize only those known formatting differences; keep the model and variant
 // configuration in the identity so effort levels never get merged together.
