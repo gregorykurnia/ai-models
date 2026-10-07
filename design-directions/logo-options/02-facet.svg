@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Facet logo</title>
+  <desc id="desc">A prism with distinct planes, representing evidence resolved into a decision.</desc>
+  <rect width="64" height="64" rx="16" fill="#3d4fd1"/>
+  <path d="m32 11 20 12-20 11L12 23z" fill="#fff"/>
+  <path d="m12 23 20 11v19L20 46z" fill="#b8c2ff"/>
+  <path d="m32 34 20-11-8 23-12 7z" fill="#7d8bed"/>
+  <path d="m20 46 12 7 12-7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
