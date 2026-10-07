@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Logo background treatments for the model evaluation app.">
+  <title>Logo background explorations</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --page: #f4f3ef;
+      --surface: #fff;
+      --line: #dddde5;
+      --ink: #191a24;
+      --muted: #606371;
+      --accent: #3d4fd1;
+      --accent-subtle: #eef0ff;
+      --radius: 14px;
+      --shadow: 0 10px 28px rgb(25 26 36 / 8%);
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font: 15px/1.5 var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 64px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, p { margin-top: 0; }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 12px;
+      font-size: clamp(34px, 5vw, 56px);
+      letter-spacing: -.055em;
+      line-height: 1;
+    }
+
+    .intro {
+      max-width: 700px;
+      margin-bottom: 36px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .recommendation {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 32px;
+      padding: 20px;
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .recommendation img { width: 72px; height: 72px; }
+
+    .recommendation h2 {
+      margin-bottom: 3px;
+      font-size: 18px;
+      letter-spacing: -.02em;
+    }
+
+    .recommendation p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .card:hover {
+      border-color: #8995e5;
+      box-shadow: var(--shadow);
+    }
+
+    .preview {
+      display: flex;
+      min-height: 116px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .preview > img { width: 104px; height: 104px; }
+
+    .small-previews {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .small-previews img:first-child { width: 32px; height: 32px; }
+    .small-previews img:last-of-type { width: 18px; height: 18px; }
+
+    .number {
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+    }
+
+    .card h2 {
+      margin-bottom: 5px;
+      font-size: 19px;
+      letter-spacing: -.03em;
+    }
+
+    .card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .use {
+      display: inline-flex;
+      margin-top: 13px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--accent-subtle);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .note {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 28px, 560px); padding-top: 32px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="eyebrow">Round three · background treatments</p>
+    <h1>Let the field have a point of view.</h1>
+    <p class="intro">The Contour mark stays constant here. Only its surrounding field changes, so we can decide whether the identity should feel editorial, mapped, layered, compact, or expressive.</p>
+
+    <section class="recommendation" aria-label="Recommended background treatment">
+      <img src="./04-topographic-field.svg" alt="">
+      <div>
+        <h2>My pick for the main brand: Topographic field</h2>
+        <p>It gives the Atlas idea something ownable without adding a loud new color. Use Midnight edge as the compact favicon companion.</p>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Background treatments">
+      <article class="card">
+        <div class="preview"><img src="./01-solid-blue-reference.svg" alt=""><span class="small-previews"><img src="./01-solid-blue-reference.svg" alt=""><img src="./01-solid-blue-reference.svg" alt=""> sizes</span></div>
+        <div class="number">01 · REFERENCE</div>
+        <h2>Solid blue</h2>
+        <p>The current treatment. Clear and usable, but it makes the brand feel like a standard dashboard badge.</p>
+        <span class="use">Keep as accent use</span>
+      </article>
+
+      <article class="card">
+        <div class="preview"><img src="./02-paper-ink.svg" alt=""><span class="small-previews"><img src="./02-paper-ink.svg" alt=""><img src="./02-paper-ink.svg" alt=""> sizes</span></div>
+        <div class="number">02 · EDITORIAL</div>
+        <h2>Paper and ink</h2>
+        <p>A research publication feel with the mark carrying the color. This would sit naturally in the current light UI.</p>
+        <span class="use">Best for wordmark</span>
+      </article>
+
+      <article class="card">
+        <div class="preview"><img src="./03-lavender-field.svg" alt=""><span class="small-previews"><img src="./03-lavender-field.svg" alt=""><img src="./03-lavender-field.svg" alt=""> sizes</span></div>
+        <div class="number">03 · UI NATIVE</div>
+        <h2>Lavender field</h2>
+        <p>Uses the existing selected-state color as a brand field, so the logo feels integrated with the product.</p>
+        <span class="use">Safest refresh</span>
+      </article>
+
+      <article class="card">
+        <div class="preview"><img src="./04-topographic-field.svg" alt=""><span class="small-previews"><img src="./04-topographic-field.svg" alt=""><img src="./04-topographic-field.svg" alt=""> sizes</span></div>
+        <div class="number">04 · ATLAS</div>
+        <h2>Topographic field</h2>
+        <p>Faint terrain lines make the background part of the story. The mark feels more specific and less interchangeable.</p>
+        <span class="use">Strongest identity</span>
+      </article>
+
+      <article class="card">
+        <div class="preview"><img src="./05-offset-window.svg" alt=""><span class="small-previews"><img src="./05-offset-window.svg" alt=""><img src="./05-offset-window.svg" alt=""> sizes</span></div>
+        <div class="number">05 · LAYERED</div>
+        <h2>Offset window</h2>
+        <p>A warm circular window breaks the tile and gives the logo a little depth without using a full gradient.</p>
+        <span class="use">Most ownable</span>
+      </article>
+
+      <article class="card">
+        <div class="preview"><img src="./06-midnight-edge.svg" alt=""><span class="small-previews"><img src="./06-midnight-edge.svg" alt=""><img src="./06-midnight-edge.svg" alt=""> sizes</span></div>
+        <div class="number">06 · COMPACT</div>
+        <h2>Midnight edge</h2>
+        <p>A darker, sharper companion for a favicon, launch screen, or occasional dark surface.</p>
+        <span class="use">Best favicon</span>
+      </article>
+
+      <article class="card">
+        <div class="preview"><img src="./07-soft-gradient.svg" alt=""><span class="small-previews"><img src="./07-soft-gradient.svg" alt=""><img src="./07-soft-gradient.svg" alt=""> sizes</span></div>
+        <div class="number">07 · EXPRESSIVE</div>
+        <h2>Soft gradient</h2>
+        <p>More launch-page or marketing oriented. It adds energy, but I would use it sparingly inside the product.</p>
+        <span class="use">Best campaign use</span>
+      </article>
+
+      <article class="card">
+        <div class="preview"><img src="./08-transparent-ink.svg" alt=""><span class="small-previews"><img src="./08-transparent-ink.svg" alt=""><img src="./08-transparent-ink.svg" alt=""> sizes</span></div>
+        <div class="number">08 · NO CONTAINER</div>
+        <h2>Transparent ink</h2>
+        <p>The mark becomes the identity and the surrounding interface supplies the surface. Best for a wordmark lockup.</p>
+        <span class="use">Best sidebar lockup</span>
+      </article>
+    </section>
+
+    <p class="note">These are all standalone SVGs. The mark can be changed later without redesigning the background system.</p>
+  </main>
+</body>
+</html>
