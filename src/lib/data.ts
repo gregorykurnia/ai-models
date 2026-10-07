@@ -2,16 +2,19 @@ import { cache } from "react";
 import { unstable_cache } from "next/cache";
 import leaderboardSource from "../../data/leaderboards.json";
 import aaBriefcaseComponents from "../../data/aa-briefcase-components.json";
+import aaBriefcaseRubricRefresh from "../../data/aa-briefcase-rubric-refresh.json";
 import aaModelProfileOverlays from "../../data/aa-model-profile-overlays.json";
 import { adminDb } from "./admin";
 import type { Dataset,Entry,Evaluation } from "./contract";
 import { mergeBriefcaseComponents,type BriefcaseComponentsSource } from "./aa-briefcase";
+import { mergeBriefcaseRubricRefresh,type BriefcaseRubricRefreshSource } from "./aa-briefcase-rubric-refresh";
 import { mergeAaModelProfileOverlays,type AaModelProfileOverlay } from "./aa-model-profile-overlays";
 import { aggregateMaster } from "./master";
 import { getIntelligenceIndexTaskCostMap,intelligenceIndexCostCaptureLabel } from "./intelligence-index-costs";
 const componentSource=aaBriefcaseComponents as unknown as BriefcaseComponentsSource;
+const rubricRefreshSource=aaBriefcaseRubricRefresh as unknown as BriefcaseRubricRefreshSource;
 const profileOverlaySource=aaModelProfileOverlays as unknown as AaModelProfileOverlay;
-const local=cache(async()=>mergeAaModelProfileOverlays(mergeBriefcaseComponents(leaderboardSource as unknown as Dataset,componentSource),profileOverlaySource));
+const local=cache(async()=>mergeBriefcaseRubricRefresh(mergeAaModelProfileOverlays(mergeBriefcaseComponents(leaderboardSource as unknown as Dataset,componentSource),profileOverlaySource),rubricRefreshSource));
 const publishedEvaluations=unstable_cache(async()=>
   (await adminDb().collection("evaluations").get()).docs.map(d=>d.data() as Evaluation).filter(e=>!!e.published_snapshot_id),
   ["published-evaluations"],{revalidate:300});
