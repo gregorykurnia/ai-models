@@ -7,17 +7,39 @@ export type MasterTableRow=Omit<MasterRow,"source_entries"|"cells"> & {cells:Rec
 export function masterTableRows(rows:MasterRow[]):MasterTableRow[]{return rows.map(({source_entries,cells,...row})=>({...row,cells:Object.fromEntries(Object.entries(cells).map(([id,c])=>[id,{...c,entry:{source_rank:c.entry.source_rank,scoring_status:c.entry.scoring_status}}]))}));}
 export function evaluationLink(e:Evaluation,model:string){return `/leaderboards/${e.slug}?q=${encodeURIComponent(model)}`;}
 
+const aggregateDimensionIds=[
+  "aa-briefcase-analytical-quality-elo",
+  "aa-briefcase-presentation-elo",
+  "aa-briefcase-rubric-score",
+  "aa-omniscience-index",
+  "economics-index",
+  "finance-accounting",
+  "intelligence-index",
+  "strategy-ops-index",
+  "terminal-bench-4-0",
+] as const;
+
+export function averageMasterRank(row:Pick<MasterTableRow,"cells">){
+  const ranks=aggregateDimensionIds.flatMap(id=>{
+    const rank=row.cells[id]?.entry.source_rank;
+    return rank===undefined?[]:[rank];
+  });
+  return ranks.length?{score:Math.round(ranks.reduce((sum,rank)=>sum+rank,0)/ranks.length*10)/10,count:ranks.length}:null;
+}
+
 function csvCell(value:string|number|null|undefined){
   const text=value===null||value===undefined?"":String(value);
   return /[",\r\n]/.test(text)?`"${text.replaceAll('"','""')}"`:text;
 }
 
 export function masterLeaderboardCsv(rows:ReadonlyArray<MasterTableRow>,evaluations:ReadonlyArray<Pick<Evaluation,"id"|"display_name">>){
-  const header=["Model","Provider","Cost per Intelligence Index task (USD)",...evaluations.map(e=>e.display_name)];
+  const header=["Model","Provider","Cost per Intelligence Index task (USD)","Aggregate Score (average rank)","Aggregate Score dimensions used (of 9)",...evaluations.map(e=>e.display_name)];
   const data=rows.map(row=>[
     row.model,
     row.provider,
     row.intelligence_index_cost?.cost_usd,
+    averageMasterRank(row)?.score,
+    averageMasterRank(row)?.count,
     ...evaluations.map(e=>row.cells[e.id]?.entry.source_rank),
   ]);
   return `\ufeff${[header,...data].map(row=>row.map(csvCell).join(",")).join("\r\n")}\r\n`;
@@ -53,7 +75,7 @@ export function aggregateMaster(evaluations:Evaluation[],entries:Entry[],intelli
 }
 
 export function sortMaster<T extends MasterTableRow>(rows:T[],sort:string,direction:string){return [...rows].sort((a,b)=>{
-  const value=(r:T)=>sort==="model"?r.model:sort==="provider"?r.provider:sort==="intelligence-index-cost"?r.intelligence_index_cost?.cost_usd??null:r.cells[sort]?.entry.source_rank??null;
+  const value=(r:T)=>sort==="model"?r.model:sort==="provider"?r.provider:sort==="intelligence-index-cost"?r.intelligence_index_cost?.cost_usd??null:sort==="aggregate-score"?averageMasterRank(r)?.score??null:r.cells[sort]?.entry.source_rank??null;
   const av=value(a),bv=value(b);
   if(av===null&&bv!==null)return 1;if(bv===null&&av!==null)return -1;
   const comparison=av===null||bv===null?0:typeof av==="number"&&typeof bv==="number"?av-bv:String(av).localeCompare(String(bv));

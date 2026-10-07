@@ -891,6 +891,9 @@ th.numeric {
 
 .master {
   scroll-margin-top: var(--space-6);
+  --master-model-width: 15.625rem;
+  --master-provider-width: 7.5rem;
+  --master-cost-width: 13.75rem;
 }
 
 .master table {
@@ -913,7 +916,8 @@ th.numeric {
 }
 
 .master-model,
-.master-provider {
+.master-provider,
+.master-cost {
   position: sticky;
   z-index: 1;
   background: var(--bg-surface);
@@ -921,20 +925,33 @@ th.numeric {
 
 .master-model {
   left: 0;
-  min-width: 15.625rem;
-  max-width: 15.625rem;
+  width: var(--master-model-width);
+  min-width: var(--master-model-width);
+  max-width: var(--master-model-width);
   white-space: normal !important;
   overflow-wrap: anywhere;
 }
 
 .master-provider {
-  left: 15.625rem;
-  min-width: 7.5rem;
+  left: var(--master-model-width);
+  width: var(--master-provider-width);
+  min-width: var(--master-provider-width);
+  max-width: var(--master-provider-width);
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+
+.master-cost {
+  left: calc(var(--master-model-width) + var(--master-provider-width));
+  width: var(--master-cost-width);
+  min-width: var(--master-cost-width);
+  max-width: var(--master-cost-width);
   border-right: var(--border-width-default) var(--border-style) var(--border-default);
 }
 
 .master tbody tr:hover .master-model,
-.master tbody tr:hover .master-provider {
+.master tbody tr:hover .master-provider,
+.master tbody tr:hover .master-cost {
   background: var(--table-hover);
 }
 
@@ -1085,14 +1102,43 @@ th.numeric {
     gap: var(--space-6);
   }
 
-  .master-model {
-    left: 0;
-    min-width: 10rem;
-    max-width: 10rem;
+  .master {
+    --master-model-width: 5.5rem;
+    --master-provider-width: 4rem;
+    --master-cost-width: 5.75rem;
   }
 
-  .master-provider {
-    position: static;
+  .master th.master-model button,
+  .master th.master-provider button,
+  .master th.master-cost button,
+  .master th.master-aggregate button {
+    min-width: 0;
+  }
+
+  .master th.master-aggregate,
+  .master td.master-aggregate {
+    width: 5rem;
+    min-width: 5rem;
+    max-width: 5rem;
+  }
+
+  .master th.master-aggregate button,
+  .master td.master-aggregate {
+    padding-inline: var(--space-1);
+  }
+
+  .master th.master-provider,
+  .master td.master-provider {
+    padding-inline: var(--space-1);
+    font-size: var(--font-size-caption);
+  }
+
+  .master th.master-cost button {
+    padding-inline: var(--space-1);
+  }
+
+  .master th.master-provider button {
+    padding-inline: var(--space-1);
   }
 
   .master th button {
