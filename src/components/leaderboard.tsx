@@ -3,8 +3,9 @@ import {useCallback,useEffect,useMemo,useState} from "react";
 import {usePathname,useRouter,useSearchParams} from "next/navigation";
 import {flexRender,getCoreRowModel,useReactTable,type ColumnDef} from "@tanstack/react-table";
 import {parseQueryParams,type Entry,type Evaluation,type IntelligenceIndexTaskCost} from "@/lib/contract";
+import {matchesModelSearch,parseModelSearchTerms} from "@/lib/model-search";
 import {ProviderMultiSelect,providerSelectionLabel} from "@/components/ui/provider-multi-select";
-import {Button, Card, Input, Pagination, Table, TableScroll} from "@/components/ui/primitives";
+import {Button, Card, HelperText, Input, Pagination, Table, TableScroll} from "@/components/ui/primitives";
 const dateValue=(label:string|null)=>{if(!label)return null;const date=Date.parse(label);return Number.isNaN(date)?null:date;};
 const costFormatter=new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",minimumFractionDigits:2,maximumFractionDigits:2});
 
@@ -17,7 +18,7 @@ function LeaderboardModelSearch({value,onCommit}:{value:string;onCommit:(value:s
     const timer=window.setTimeout(()=>onCommit(next),300);
     return()=>window.clearTimeout(timer);
   },[draft,value,onCommit]);
-  return <><label className="sr-only" htmlFor="model-search">Search model names</label><Input id="model-search" placeholder="Search model names…" value={draft} onChange={event=>setDraft(event.target.value.slice(0,200))}/></>;
+  return <div className="toolbar-model-search"><label className="sr-only" htmlFor="model-search">Search model names</label><Input id="model-search" aria-describedby="model-search-help" placeholder="Search model names…" value={draft} onChange={event=>setDraft(event.target.value.slice(0,200))}/><HelperText id="model-search-help">Separate keywords with commas, e.g. sol, haiku.</HelperText></div>;
 }
 
 export default function Leaderboard({entries,evaluation,taskCosts}:{entries:Entry[];evaluation:Evaluation;taskCosts:Record<string,IntelligenceIndexTaskCost>}){
@@ -35,7 +36,8 @@ export default function Leaderboard({entries,evaluation,taskCosts}:{entries:Entr
   },[pathname]);
   const allowedSort=state.sort==="release_date_label"&&!evaluation.has_release_date||state.sort==="confidence_interval_display"&&!evaluation.has_confidence_interval?"source_rank":state.sort;
   const selectedProviderSet=useMemo(()=>new Set(state.provider),[state.provider]);
-  const filtered=useMemo(()=>entries.filter(e=>(!selectedProviderSet.size||selectedProviderSet.has(e.provider))&&e.model.toLowerCase().includes(searchTerm.toLowerCase())),[entries,selectedProviderSet,searchTerm]);
+  const searchTerms=useMemo(()=>parseModelSearchTerms(searchTerm),[searchTerm]);
+  const filtered=useMemo(()=>entries.filter(e=>(!selectedProviderSet.size||selectedProviderSet.has(e.provider))&&matchesModelSearch(e.model,searchTerms)),[entries,selectedProviderSet,searchTerms]);
   const sorted=useMemo(()=>[...filtered].sort((a,b)=>{
     const value=(e:Entry):string|number|null=>allowedSort==="release_date_label"?dateValue(e.release_date_label):allowedSort==="confidence_interval_display"?e.confidence_interval_high_delta:allowedSort==="cost_usd"?taskCosts[e.id]?.cost_usd??null:e[allowedSort];
     const av=value(a),bv=value(b);if(av===null&&bv!==null)return 1;if(bv===null&&av!==null)return -1;
