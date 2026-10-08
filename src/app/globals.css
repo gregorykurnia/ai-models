@@ -558,6 +558,19 @@ p {
   margin-bottom: var(--space-5);
 }
 
+.toolbar-model-search {
+  display: grid;
+  min-width: min(100%, 16rem);
+  flex: 1 1 16rem;
+  gap: var(--space-1);
+}
+
+.toolbar-model-search > .ui-input {
+  width: 100%;
+  min-width: 0;
+  flex: none;
+}
+
 input:not([type="checkbox"]):not([type="radio"]),
 select,
 textarea {

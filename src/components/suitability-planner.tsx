@@ -8,11 +8,12 @@ import { readModelFavorites, subscribeToModelFavorites, writeModelFavorites } fr
 import { calculateSuitability, suitabilityTaskSchema, type EvaluationWeight, type SuitabilityTask } from "@/lib/suitability";
 import { browserTaskNeedsSharedCopy, pinComparison, readSavedTaskSummaries, readSavedTasks, savedComparisonSchema, suitabilityCategorySchema, type PlannerData, type SavedComparison, type SavedTaskSummary, type SuitabilityCategory } from "@/lib/suitability-storage";
 import { groupSavedTaskIds, normalizeCategoryName } from "@/lib/suitability-categories";
+import { matchesModelSearch, parseModelSearchTerms } from "@/lib/model-search";
 import { emptySavedTaskLayout, SAVED_TASK_LAYOUT_STORAGE_KEY, savedTaskLayoutSchema, type SavedTaskLayout, type SavedTaskLayoutOperation } from "@/lib/suitability-layout";
 import { readBrowserTasks, saveBrowserTask, removeBrowserTask } from "@/lib/browser-suitability-tasks";
 import { recordSuitabilityEvent } from "@/lib/suitability-analytics";
 import SuitabilityComparison, { comparisonRows } from "@/components/suitability-comparison";
-import { Alert, Badge, Button, Card, Checkbox, EmptyState, FormField, IconButton, Input, LinkButton, PageHeader, Section, Select, Spinner, TextArea } from "@/components/ui/primitives";
+import { Alert, Badge, Button, Card, Checkbox, EmptyState, FormField, HelperText, IconButton, Input, LinkButton, PageHeader, Section, Select, Spinner, TextArea } from "@/components/ui/primitives";
 import styles from "./suitability-planner.module.css";
 
 const equal = (weights: EvaluationWeight[]) => weights.map(weight => ({ ...weight, weight: 100 / weights.length }));
@@ -674,8 +675,9 @@ export default function Planner({ data }: { data: PlannerData }) {
   const availableFavorites = data.candidates.filter(candidate => favorites.includes(candidate.identity_key ?? masterIdentityKey(candidate.provider, candidate.model)));
   const availableFavoriteKeys = new Set(availableFavorites.map(candidate => candidate.identity_key ?? masterIdentityKey(candidate.provider, candidate.model)));
   const unavailableFavorites = favorites.filter(identity => !availableFavoriteKeys.has(identity));
+  const modelSearchTerms = useMemo(() => parseModelSearchTerms(modelSearch), [modelSearch]);
   const matchesPickerFilters = (candidate: PlannerData["candidates"][number]) => (!provider || candidate.provider === provider)
-    && `${candidate.model} ${candidate.provider}`.toLowerCase().includes(modelSearch.toLowerCase());
+    && matchesModelSearch(`${candidate.model} ${candidate.provider}`, modelSearchTerms);
   const visibleModels = data.candidates.filter(candidate => matchesPickerFilters(candidate)
     && (modelMode === "all" || favorites.includes(candidate.identity_key ?? masterIdentityKey(candidate.provider, candidate.model))));
   const visibleEvaluations = working.evaluations.filter(evaluation => `${evaluation.display_name} ${evaluation.category} ${evaluation.metric_label}`.toLowerCase().includes(evaluationSearch.toLowerCase()));
@@ -1245,7 +1247,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       <Section className="ui-workflow-step"><h2>3. Select candidate models</h2><p className={styles.modelDescription}>Models are grouped by known alternate labels. Reasoning effort and fallback variants stay separate.</p>
       <div className={styles.modelToolbar}>
         <div className={styles.modelFilterFields}>
-          <label className={`${styles.searchField} ${styles.modelSearchField}`} htmlFor="model-search">Search models<Input id="model-search" type="search" placeholder="Search model names or providers" value={modelSearch} onChange={event => setModelSearch(event.target.value)} /></label>
+          <div className={`${styles.searchField} ${styles.modelSearchField}`}><label htmlFor="model-search">Search models</label><Input id="model-search" type="search" aria-describedby="model-search-help" placeholder="Search model names or providers" value={modelSearch} onChange={event => setModelSearch(event.target.value)} /><HelperText id="model-search-help">Separate keywords with commas, e.g. sol, haiku.</HelperText></div>
           <label className={styles.searchField} htmlFor="provider-filter">Provider<Select id="provider-filter" value={provider} onChange={event => setProvider(event.target.value)}><option value="">All providers</option>{[...new Set(working.candidates.map(candidate => candidate.provider))].sort().map(item => <option key={item}>{item}</option>)}</Select></label>
           <label className={styles.searchField} htmlFor="model-favorites">Show<Select id="model-favorites" value={modelMode} onChange={event => setModelMode(event.target.value as "all" | "favorites")}><option value="all">All models</option><option value="favorites">Favorites</option></Select></label>
         </div>

@@ -5,7 +5,8 @@ import {useCallback,useEffect,useMemo,useState} from "react";
 import type {Evaluation} from "@/lib/contract";
 import {averageMasterRank,masterEvaluationLabel,masterLeaderboardCsv,orderMasterEvaluations,sortMaster,type MasterTableRow} from "@/lib/master";
 import {readModelFavorites,subscribeToModelFavorites,writeModelFavorites} from "@/lib/model-favorites";
-import {Alert, Button, Card, IconButton, Input, LinkButton, Pagination, Select, Table, TableScroll} from "@/components/ui/primitives";
+import {matchesModelSearch,parseModelSearchTerms} from "@/lib/model-search";
+import {Alert, Button, Card, HelperText, IconButton, Input, LinkButton, Pagination, Select, Table, TableScroll} from "@/components/ui/primitives";
 
 const costFormatter=new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",minimumFractionDigits:2,maximumFractionDigits:2});
 
@@ -18,7 +19,7 @@ function MasterModelSearch({value,onCommit}:{value:string;onCommit:(value:string
     const timer=window.setTimeout(()=>onCommit(next),300);
     return()=>window.clearTimeout(timer);
   },[draft,value,onCommit]);
-  return <><label className="sr-only" htmlFor="master-search">Search master model names</label><Input id="master-search" value={draft} placeholder="Search model names…" onChange={event=>setDraft(event.target.value.slice(0,200))}/></>;
+  return <div className="toolbar-model-search"><label className="sr-only" htmlFor="master-search">Search master model names</label><Input id="master-search" aria-describedby="master-search-help" value={draft} placeholder="Search model names…" onChange={event=>setDraft(event.target.value.slice(0,200))}/><HelperText id="master-search-help">Separate keywords with commas, e.g. sol, haiku.</HelperText></div>;
 }
 
 export default function MasterLeaderboard({rows,evaluations,costCapturedLabel}:{rows:MasterTableRow[];evaluations:Evaluation[];costCapturedLabel:string}){
@@ -33,7 +34,8 @@ export default function MasterLeaderboard({rows,evaluations,costCapturedLabel}:{
   const requested=params.get("ms")??defaultSort,sort=["model","provider","intelligence-index-cost","aggregate-score",...orderedEvaluations.map(e=>e.id)].includes(requested)?requested:defaultSort;
   const direction=params.get("md")==="desc"?"desc":"asc";
   const size=[25,50,100].includes(Number(params.get("mz")))?Number(params.get("mz")):25;
-  const sorted=useMemo(()=>sortMaster(rows.filter(r=>(!provider||r.provider===provider)&&r.model.toLowerCase().includes(searchTerm.toLowerCase())&&(!favoritesOnly||favorites.includes(r.identity_key))),sort,direction),[rows,provider,searchTerm,favoritesOnly,favorites,sort,direction]);
+  const searchTerms=useMemo(()=>parseModelSearchTerms(searchTerm),[searchTerm]);
+  const sorted=useMemo(()=>sortMaster(rows.filter(r=>(!provider||r.provider===provider)&&matchesModelSearch(r.model,searchTerms)&&(!favoritesOnly||favorites.includes(r.identity_key))),sort,direction),[rows,provider,searchTerms,favoritesOnly,favorites,sort,direction]);
   const pages=Math.max(1,Math.ceil(sorted.length/size)),page=Math.min(pages,Math.max(1,Math.floor(Number(params.get("mi"))||1)));
   const update=useCallback((values:Record<string,string|number>)=>{const next=new URLSearchParams(window.location.search);next.set("mi","1");for(const [k,v]of Object.entries(values)){if(v==="")next.delete(k);else next.set(k,String(v));}router.replace(`/?${next}#master-leaderboard`,{scroll:false});},[router]);
   const commitSearch=useCallback((value:string)=>{
