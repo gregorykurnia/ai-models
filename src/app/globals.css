@@ -1250,6 +1250,31 @@ a.ui-button:hover {
   padding-inline: var(--space-3);
 }
 
+.toolbar.master-toolbar > .ui-button {
+  min-height: 44px;
+}
+
+.toolbar.master-toolbar > .master-favorite-count {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: var(--font-size-ui);
+  font-weight: var(--type-weight-semibold);
+  line-height: var(--line-height-ui);
+  white-space: nowrap;
+}
+
+.toolbar.master-toolbar > .master-model-filter {
+  min-height: 44px;
+  padding-right: var(--space-8);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox=%220 0 10 6%22 fill=%22none%22 stroke=%22%23606371%22 stroke-width=%221.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M1 1l4 4 4-4%22%2F%3E%3C%2Fsvg%3E");
+  background-position: calc(100% - 0.75rem) 50%;
+  background-repeat: no-repeat;
+  background-size: 0.625rem 0.375rem;
+}
+
 .ui-button--default {
   min-height: 44px;
   padding-inline: var(--space-4);

@@ -60,15 +60,15 @@ export default function MasterLeaderboard({rows,evaluations,costCapturedLabel}:{
   },[sorted,orderedEvaluations]);
   const header=(key:string,label:string,sticky?:string)=><th scope="col" className={sticky??"numeric"} aria-sort={sort===key?(direction==="asc"?"ascending":"descending"):"none"}><Button variant="quiet" size="compact" onClick={()=>update({ms:key,md:sort===key&&direction==="asc"?"desc":"asc"})}>{label} {sort===key?(direction==="asc"?"↑":"↓"):"↕"}</Button></th>;
   return <Card id="master-leaderboard" className="master"><div className="eyebrow">Ranks by evaluation</div><h2>Master leaderboard</h2><p>Each evaluation column shows the model’s original rank. Aggregate Score is the average of its available ranks across nine dimensions; lower is better. Cost per Intelligence Index task is the source-reported weighted average in USD. All columns can be sorted. <Link href="/about/data">Data notes</Link>.</p>
-    <div className="toolbar filter-toolbar">
+    <div className="toolbar filter-toolbar master-toolbar">
       <MasterModelSearch value={searchTerm} onCommit={commitSearch}/>
       <label className="sr-only" htmlFor="master-provider">Master provider</label>
       <ProviderMultiSelect id="master-provider" label="Master provider" providers={[...new Set(rows.map(r=>r.provider))].sort()} selected={selectedProviders} onChange={providers=>update({mp:providers},"push")}/>
       <label className="sr-only" htmlFor="master-favorites">Favorite filter</label>
-      <Select id="master-favorites" value={favoritesOnly?"favorites":"all"} onChange={e=>update({mf:e.target.value==="favorites"?"1":""})}>
+      <Select className="master-model-filter" id="master-favorites" value={favoritesOnly?"favorites":"all"} onChange={e=>update({mf:e.target.value==="favorites"?"1":""})}>
         <option value="all">All models</option><option value="favorites">Favorites only</option>
       </Select>
-      <strong>{favorites.length} favorite{favorites.length===1?"":"s"}</strong>
+      <strong className="master-favorite-count">{favorites.length} favorite{favorites.length===1?"":"s"}</strong>
       <Button size="compact" variant="quiet" onClick={()=>{setSearchTerm("");update({mq:"",mp:"",mf:"",ms:"",md:"",mi:"",mz:""})}}>Clear filters</Button>
       <LinkButton href={stateHref} variant="quiet" size="compact">Link to this view</LinkButton>
       <Button size="compact" variant="secondary" onClick={exportCsv} disabled={!sorted.length} title={`Export ${sorted.length.toLocaleString()} matching models as CSV`}>Export CSV</Button>

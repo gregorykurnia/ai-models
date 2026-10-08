@@ -42,10 +42,16 @@
 }
 
 .chevron {
+  width: 0.45rem;
+  height: 0.45rem;
   flex: 0 0 auto;
+  margin-top: -0.25rem;
   color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  font-size: 0;
+  line-height: 0;
+  transform: rotate(45deg);
 }
 
 .panel {
