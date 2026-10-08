@@ -1,6 +1,6 @@
 # Provider multi-select plan
 
-Status: Proposed. Planning only; no feature implementation is authorized yet.
+Status: Implemented.
 
 ## Goal
 
@@ -89,4 +89,4 @@ No data import, scoring, or provider identity changes are needed for this featur
 - Keyboard navigation, Escape, outside clicks, labels, focus, and result announcements work correctly.
 - Visual verification on desktop and mobile confirms consistent styling, readable labels, proper alignment, and no overflow or dropdown clipping.
 
-Implementation should begin only after the plan is approved. This document does not implement the feature.
+Implementation was authorized and completed on 2026-10-08.

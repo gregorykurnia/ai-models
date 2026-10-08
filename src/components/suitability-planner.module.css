@@ -18,6 +18,17 @@
   margin: 0;
 }
 
+.providerFilter {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  flex: none;
+}
+
+.providerFilter label {
+  font-weight: var(--type-weight-regular);
+}
+
 .evaluationSearch {
   width: 100%;
   margin: var(--space-1) 0 var(--space-4);

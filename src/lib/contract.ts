@@ -4,4 +4,10 @@ export type Entry=z.infer<typeof entrySchema>;
 export type IntelligenceIndexTaskCost={slug:string;provider:string;model:string;cost_usd:number;url:string;profile_captured_at?:string};
 export type Evaluation={id:string;slug:string;display_name:string;source_title:string;source_url:string|null;category:string;metric_key:string;metric_label:string;score_kind:string;score_unit:string;score_min:number|null;score_max:number|null;captured_at:string;source_asset_id:string;notes:string;published_snapshot_id:string;row_count:number;cost_label_count:number;precise_cost_count:number;has_confidence_interval:boolean;has_release_date:boolean;has_scoring_status?:boolean;metric_group?:string;metric_indicator?:"bar"|"circle"|"diamond";metric_color?:string;source_tab?:string};
 export type Dataset={sourceAsset:Record<string,unknown>;sourceAssets?:Record<string,unknown>[];evaluations:Evaluation[];providers:Record<string,unknown>[];models:Record<string,unknown>[];snapshots:Record<string,unknown>[];entries:Entry[];issues:{sheet:string;message:string;severity:string}[];report:Record<string,unknown>};
-export const querySchema=z.object({provider:z.string().catch(""),q:z.string().max(200).catch(""),sort:z.enum(["source_rank","provider","model","score_value","cost_usd","release_date_label","confidence_interval_display"]).catch("source_rank"),direction:z.enum(["asc","desc"]).catch("asc"),page:z.coerce.number().int().positive().catch(1),size:z.coerce.number().refine(n=>[25,50,100,250].includes(n)).catch(50)});
+export const querySchema=z.object({provider:z.array(z.string().min(1)).catch([]),q:z.string().max(200).catch(""),sort:z.enum(["source_rank","provider","model","score_value","cost_usd","release_date_label","confidence_interval_display"]).catch("source_rank"),direction:z.enum(["asc","desc"]).catch("asc"),page:z.coerce.number().int().positive().catch(1),size:z.coerce.number().refine(n=>[25,50,100,250].includes(n)).catch(50)});
+
+export function parseQueryParams(params:Pick<URLSearchParams,"entries"|"getAll">){
+  const values=Object.fromEntries(params.entries());
+  const providers=[...new Set(params.getAll("provider").filter(Boolean))];
+  return querySchema.parse({...values,provider:providers});
+}

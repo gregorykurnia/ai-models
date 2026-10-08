@@ -1,6 +1,6 @@
 # Comma-separated model search plan
 
-Status: Implemented. This document records the behavior and acceptance criteria.
+Status: Planned. This document does not implement the feature.
 
 ## Intended behavior
 
