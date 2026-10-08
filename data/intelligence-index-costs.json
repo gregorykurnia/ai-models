@@ -4,7 +4,7 @@
   "metric": "Cost per Intelligence Index task",
   "metric_path": "intelligenceIndexCostPerTask.cost.total",
   "model_count": 686,
-  "cost_count": 176,
+  "cost_count": 181,
   "records": [
     {
       "slug": "qwen3-235b-a22b-instruct-2507-reasoning",
@@ -187,6 +187,46 @@
       "provider": "Anthropic",
       "cost_usd": 5.978304247388257,
       "url": "https://artificialanalysis.ai/models/claude-fable-5-1-xhigh"
+    },
+    {
+      "slug": "claude-haiku-5-5-high",
+      "name": "Claude Haiku 5.5 (Adaptive Reasoning, High Effort, Default Fallback)",
+      "provider": "Anthropic",
+      "cost_usd": 0.07942671568737021,
+      "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-high",
+      "profile_captured_at": "2026-10-08"
+    },
+    {
+      "slug": "claude-haiku-5-5-low",
+      "name": "Claude Haiku 5.5 (Adaptive Reasoning, Low Effort, Default Fallback)",
+      "provider": "Anthropic",
+      "cost_usd": 0.02445936101890973,
+      "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-low",
+      "profile_captured_at": "2026-10-08"
+    },
+    {
+      "slug": "claude-haiku-5-5",
+      "name": "Claude Haiku 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "provider": "Anthropic",
+      "cost_usd": 0.21276971216992022,
+      "url": "https://artificialanalysis.ai/models/claude-haiku-5-5",
+      "profile_captured_at": "2026-10-08"
+    },
+    {
+      "slug": "claude-haiku-5-5-medium",
+      "name": "Claude Haiku 5.5 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+      "provider": "Anthropic",
+      "cost_usd": 0.04703084793955566,
+      "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-medium",
+      "profile_captured_at": "2026-10-08"
+    },
+    {
+      "slug": "claude-haiku-5-5-xhigh",
+      "name": "Claude Haiku 5.5 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
+      "provider": "Anthropic",
+      "cost_usd": 0.12378561092096102,
+      "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-xhigh",
+      "profile_captured_at": "2026-10-08"
     },
     {
       "slug": "claude-opus-4-8",
@@ -1250,6 +1290,17 @@
         "https://artificialanalysis.ai/models/gemini-4-argon",
         "https://artificialanalysis.ai/models/ling-3-1-flash",
         "https://artificialanalysis.ai/models/mistral-large-4"
+      ]
+    },
+    {
+      "captured_at": "2026-10-08",
+      "model_count": 5,
+      "source_urls": [
+        "https://artificialanalysis.ai/models/claude-haiku-5-5-low",
+        "https://artificialanalysis.ai/models/claude-haiku-5-5-medium",
+        "https://artificialanalysis.ai/models/claude-haiku-5-5-high",
+        "https://artificialanalysis.ai/models/claude-haiku-5-5-xhigh",
+        "https://artificialanalysis.ai/models/claude-haiku-5-5"
       ]
     }
   ]

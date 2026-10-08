@@ -44,11 +44,19 @@ export function mergeBriefcaseRubricRefresh(dataset: Dataset, source: BriefcaseR
     models.set(key, model);
   }
 
-  if (models.size !== entries.length) {
-    throw new Error(`AA-Briefcase rubric refresh has ${models.size} models for ${entries.length} existing entries`);
+  const sourceEntries: Entry[] = [];
+  const supplementalEntries: Entry[] = [];
+  for (const entry of entries) {
+    if (models.has(modelKey(entry.provider, entry.model))) sourceEntries.push(entry);
+    else if (entry.source_sheet === "Artificial Analysis model profile") supplementalEntries.push(entry);
+    else throw new Error(`AA-Briefcase rubric refresh cannot match ${entry.provider} / ${entry.model}`);
+  }
+
+  if (models.size !== sourceEntries.length) {
+    throw new Error(`AA-Briefcase rubric refresh has ${models.size} models for ${sourceEntries.length} source entries`);
   }
   const existingKeys = new Set<string>();
-  for (const entry of entries) {
+  for (const entry of sourceEntries) {
     const key = modelKey(entry.provider, entry.model);
     if (existingKeys.has(key) || !models.has(key)) {
       throw new Error(`AA-Briefcase rubric refresh cannot match ${entry.provider} / ${entry.model}`);
@@ -58,7 +66,7 @@ export function mergeBriefcaseRubricRefresh(dataset: Dataset, source: BriefcaseR
 
   const sourceAssetId = hash(JSON.stringify(source));
   const snapshotId = `${evaluationId}-${sourceAssetId.slice(0, 16)}`;
-  const refreshed = entries.map(entry => {
+  const refreshed = sourceEntries.map(entry => {
     const model = models.get(modelKey(entry.provider, entry.model))!;
     return {
       ...entry,
@@ -74,16 +82,27 @@ export function mergeBriefcaseRubricRefresh(dataset: Dataset, source: BriefcaseR
       source_row: model.source_row,
       source_asset_id: sourceAssetId,
     } satisfies Entry;
-  }).sort((a, b) => b.score_value - a.score_value || a.source_row - b.source_row || a.model.localeCompare(b.model));
+  });
 
   let previousValue: number | null = null;
   let previousRank = 0;
-  const ranked = refreshed.map((entry, index) => {
+  const ranked = [...refreshed, ...supplementalEntries]
+    .sort((a, b) => b.score_value - a.score_value || a.source_row - b.source_row || a.model.localeCompare(b.model))
+    .map((entry, index) => {
     const rank = entry.score_value === previousValue ? previousRank : index + 1;
     previousValue = entry.score_value;
     previousRank = rank;
     return { ...entry, source_rank: rank };
   });
+  const captureDates = new Map<string, number>();
+  for (const entry of supplementalEntries) {
+    const asset = dataset.sourceAssets?.find(item => item.id === entry.source_asset_id);
+    const capturedAt = typeof asset?.captured_at === "string" ? asset.captured_at : "unknown date";
+    captureDates.set(capturedAt, (captureDates.get(capturedAt) ?? 0) + 1);
+  }
+  const supplementalNote = [...captureDates].sort(([a], [b]) => a.localeCompare(b))
+    .map(([date, count]) => `${count} supplemental model-profile ${count === 1 ? "entry" : "entries"} captured ${date}`)
+    .join("; ");
   const refreshedEvaluation: Evaluation = {
     ...evaluation,
     source_title: source.source_title,
@@ -92,7 +111,7 @@ export function mergeBriefcaseRubricRefresh(dataset: Dataset, source: BriefcaseR
     source_asset_id: sourceAssetId,
     published_snapshot_id: snapshotId,
     row_count: ranked.length,
-    notes: `The share of binary rubric checks passed across AA-Briefcase tasks. Scores are refreshed from Artificial Analysis data captured ${source.captured_at}; ${ranked.length} existing leaderboard configurations were matched by provider and model identity. ${source.source_model_count - ranked.length} additional source models were not added.`,
+    notes: `The share of binary rubric checks passed across AA-Briefcase tasks. Scores are refreshed from Artificial Analysis data captured ${source.captured_at}; ${sourceEntries.length} existing leaderboard configurations were matched by provider and model identity.${supplementalNote ? ` ${supplementalNote}.` : ""} ${source.source_model_count - sourceEntries.length} additional source models were not added.`,
   };
   const snapshot = {
     id: snapshotId,
@@ -112,7 +131,7 @@ export function mergeBriefcaseRubricRefresh(dataset: Dataset, source: BriefcaseR
     imported_at: source.captured_at,
     source_kind: "artificial_analysis_evaluation_snapshot",
     source_urls: [source.source_url],
-    notes: `Official rubric scores matched to ${ranked.length} existing model configurations. The source had ${source.source_model_count} rubric-scored models; unlisted leaderboard rows were not added.`,
+    notes: `Official rubric scores matched to ${sourceEntries.length} existing model configurations. The source had ${source.source_model_count} rubric-scored models; unlisted leaderboard rows were not added. Supplemental profile results were retained separately.`,
   };
   const reportEvaluations = Array.isArray(dataset.report.evaluations)
     ? dataset.report.evaluations.map((row: Record<string, unknown>) => row.name === evaluation.display_name

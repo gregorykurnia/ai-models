@@ -221,12 +221,15 @@ export function mergeBriefcaseComponents(
   }
 
   const sourceAssetId = hash(JSON.stringify(source));
+  const existingSourceAsset = dataset.sourceAssets?.find(asset => asset.id === sourceAssetId);
   const sourceAsset = {
     id: sourceAssetId,
     filename: "aa-briefcase-components.json",
     content_hash: sourceAssetId,
     captured_at: source.captured_at,
-    imported_at: new Date().toISOString(),
+    imported_at: typeof existingSourceAsset?.imported_at === "string"
+      ? existingSourceAsset.imported_at
+      : new Date().toISOString(),
     source_kind: "artificial_analysis_evaluation_snapshot",
     source_urls: [source.source_url, `${briefcaseSourceBase}?results=quality-elos`],
     notes: "Public AA-Briefcase results capture. Includes rubric pass rate, analytical quality Elo, and presentation Elo for all 208 listed models.",

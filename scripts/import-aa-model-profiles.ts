@@ -44,21 +44,31 @@ for (const profile of profileSource.models) {
   }
   const slug = new URL(profile.profile_url).pathname.split("/").filter(Boolean).at(-1);
   if (!slug) throw new Error(`Could not determine profile slug for ${profile.name}`);
+  const profileCapturedAt = profile.captured_at ?? profileSource.captured_at;
   costsBySlug.set(slug, {
     slug,
     name: profile.name,
     provider: profile.provider,
     cost_usd: cost,
     url: profile.profile_url,
-    profile_captured_at: profileSource.captured_at,
+    profile_captured_at: profileCapturedAt,
   });
 }
 const profileUpdates = new Map((costSnapshot.profile_updates ?? []).map(update => [update.captured_at, update]));
-profileUpdates.set(profileSource.captured_at, {
-  captured_at: profileSource.captured_at,
-  model_count: profileSource.models.length,
-  source_urls: profileSource.models.map(profile => profile.profile_url),
-});
+const profilesByCaptureDate = new Map<string, AaModelProfileOverlay["models"]>();
+for (const profile of profileSource.models) {
+  const capturedAt = profile.captured_at ?? profileSource.captured_at;
+  const profiles = profilesByCaptureDate.get(capturedAt) ?? [];
+  profiles.push(profile);
+  profilesByCaptureDate.set(capturedAt, profiles);
+}
+for (const [capturedAt, profiles] of profilesByCaptureDate) {
+  profileUpdates.set(capturedAt, {
+    captured_at: capturedAt,
+    model_count: profiles.length,
+    source_urls: profiles.map(profile => profile.profile_url),
+  });
+}
 const updatedCosts: CostSnapshot = {
   ...costSnapshot,
   cost_count: costsBySlug.size,
@@ -70,10 +80,13 @@ await writeFile("data/leaderboards.json.tmp", JSON.stringify(dataset));
 await rename("data/leaderboards.json.tmp", "data/leaderboards.json");
 await writeFile("data/intelligence-index-costs.json.tmp", `${JSON.stringify(updatedCosts, null, 2)}\n`);
 await rename("data/intelligence-index-costs.json.tmp", "data/intelligence-index-costs.json");
+const profileSourceAssetIds = new Set((dataset.sourceAssets ?? [])
+  .filter(asset => asset.source_kind === "artificial_analysis_model_profile_overlay")
+  .map(asset => String(asset.id)));
 console.log(JSON.stringify({
   profiles: profileSource.models.map(profile => profile.name),
   evaluation_count: dataset.evaluations.length,
   row_count: dataset.entries.length,
-  profile_entries: dataset.entries.filter(entry => entry.source_asset_id === dataset.sourceAssets?.find(asset => asset.filename === "aa-model-profile-overlays.json")?.id).length,
+  profile_entries: dataset.entries.filter(entry => profileSourceAssetIds.has(entry.source_asset_id)).length,
   task_cost_count: updatedCosts.cost_count,
 }, null, 2));

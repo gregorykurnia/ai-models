@@ -4,6 +4,7 @@ import { masterIdentityKey } from "./master";
 
 export type AaModelProfileScore = {
   score: number | null;
+  cost_usd?: number | null;
   confidence_interval?: { lower95ci: number; upper95ci: number } | null;
 };
 
@@ -13,6 +14,7 @@ export type AaModelProfile = {
   provider: string;
   name: string;
   release_date: string;
+  captured_at?: string;
   scores: Record<string, AaModelProfileScore>;
   metadata: Record<string, unknown> & { intelligence_index_is_estimated?: boolean };
 };
@@ -40,6 +42,12 @@ function captureDate(value: string) {
 
 function rounded(value: number) {
   return String(Math.round(value));
+}
+
+function costDisplay(value: number) {
+  if (value >= 1) return `$${value.toFixed(2)}`;
+  const cents = value * 100;
+  return `${Number(cents.toPrecision(cents < 1 ? 2 : 3))}¢`;
 }
 
 function signed(value: number, places: number) {
@@ -90,8 +98,12 @@ function modelEntry(
 ): Entry | null {
   if (score.score === null) return null;
   if (!Number.isFinite(score.score)) throw new Error(`Invalid ${evaluation.display_name} score for ${profile.name}`);
+  if (score.cost_usd != null && (!Number.isFinite(score.cost_usd) || score.cost_usd < 0)) {
+    throw new Error(`Invalid ${evaluation.display_name} cost for ${profile.name}`);
+  }
   const providerId = id(profile.provider);
   const modelId = id(`${profile.provider}\0${profile.name}`);
+  const cost = score.cost_usd ?? null;
   return entrySchema.parse({
     id: id(`${evaluation.published_snapshot_id}:${profile.profile_id}:${evaluation.id}`),
     evaluation_id: evaluation.id,
@@ -108,9 +120,9 @@ function modelEntry(
       : null,
     ...confidenceInterval(evaluation, score.score, score.confidence_interval),
     release_date_label: releaseMonth(profile.release_date),
-    cost_usd: null,
-    cost_display: null,
-    cost_status: "missing",
+    cost_usd: cost,
+    cost_display: cost === null ? null : costDisplay(cost),
+    cost_status: cost === null ? "missing" : "exact",
     source_sheet: "Artificial Analysis model profile",
     source_row: sourceRow,
     source_asset_id: sourceAssetId,
@@ -138,8 +150,46 @@ export function mergeAaModelProfileOverlays(dataset: Dataset, source: AaModelPro
   if (!/^\d{4}-\d{2}-\d{2}$/.test(source.captured_at) || Number.isNaN(Date.parse(source.captured_at))) {
     throw new Error(`Invalid Artificial Analysis profile capture date: ${source.captured_at}`);
   }
-  const assetId = hash(JSON.stringify(source));
   const profileIds = new Set(source.models.map(profile => profile.profile_id));
+  const profileCapturedAt = new Map<string, string>();
+  const profilesByCaptureDate = new Map<string, AaModelProfile[]>();
+  const profileById = new Map<string, AaModelProfile>();
+  for (const profile of source.models) {
+    if (!profile.profile_id || !profile.profile_url.startsWith("https://artificialanalysis.ai/models/")) {
+      throw new Error(`Invalid Artificial Analysis profile source for ${profile.name || "unnamed model"}`);
+    }
+    if (profileById.has(profile.profile_id)) throw new Error(`Duplicate Artificial Analysis profile id: ${profile.profile_id}`);
+    profileById.set(profile.profile_id, profile);
+    releaseMonth(profile.release_date);
+    const capturedAt = profile.captured_at ?? source.captured_at;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(capturedAt) || Number.isNaN(Date.parse(capturedAt))) {
+      throw new Error(`Invalid Artificial Analysis profile capture date for ${profile.name}: ${capturedAt}`);
+    }
+    profileCapturedAt.set(profile.profile_id, capturedAt);
+    const group = profilesByCaptureDate.get(capturedAt) ?? [];
+    group.push(profile);
+    profilesByCaptureDate.set(capturedAt, group);
+  }
+
+  const assetIdByProfileId = new Map<string, string>();
+  const captureDateByAssetId = new Map<string, string>();
+  const profileAssets = new Map<string, Record<string, unknown>>();
+  for (const [capturedAt, profiles] of profilesByCaptureDate) {
+    const assetId = hash(JSON.stringify({ captured_at: capturedAt, profiles }));
+    for (const profile of profiles) assetIdByProfileId.set(profile.profile_id, assetId);
+    captureDateByAssetId.set(assetId, capturedAt);
+    profileAssets.set(assetId, {
+      id: assetId,
+      filename: "aa-model-profile-overlays.json",
+      content_hash: assetId,
+      captured_at: capturedAt,
+      imported_at: capturedAt,
+      source_kind: "artificial_analysis_model_profile_overlay",
+      source_urls: profiles.map(profile => profile.profile_url),
+      profile_ids: profiles.map(profile => profile.profile_id),
+      notes: `${source.notes} Profiles captured ${captureDate(capturedAt)}: ${profiles.map(profile => profile.name).join(", ")}.`,
+    });
+  }
   const sourceAssets = dataset.sourceAssets ?? [];
   const replacedAssetIds = new Set(sourceAssets.flatMap(asset => {
     const ids = asset.profile_ids;
@@ -176,29 +226,20 @@ export function mergeAaModelProfileOverlays(dataset: Dataset, source: AaModelPro
   const evaluationById = new Map(baseDataset.evaluations.map(evaluation => [evaluation.id, evaluation]));
   const existingIdentities = new Set(baseDataset.entries.map(entry => `${entry.evaluation_id}\0${masterIdentityKey(entry.provider, entry.model)}`));
   const newEntries: Entry[] = [];
-  const profileById = new Map<string, AaModelProfile>();
 
   for (const profile of source.models) {
-    if (!profile.profile_id || !profile.profile_url.startsWith("https://artificialanalysis.ai/models/")) {
-      throw new Error(`Invalid Artificial Analysis profile source for ${profile.name || "unnamed model"}`);
-    }
-    if (profileById.has(profile.profile_id)) throw new Error(`Duplicate Artificial Analysis profile id: ${profile.profile_id}`);
-    profileById.set(profile.profile_id, profile);
-    releaseMonth(profile.release_date);
     for (const [evaluationId, score] of Object.entries(profile.scores)) {
       const evaluation = evaluationById.get(evaluationId);
       if (!evaluation) throw new Error(`Unknown evaluation ${evaluationId} in ${profile.name} profile overlay`);
       const key = `${evaluation.id}\0${masterIdentityKey(profile.provider, profile.name)}`;
       if (existingIdentities.has(key)) continue;
-      const entry = modelEntry(profile, evaluation, score, assetId, newEntries.length + 1);
+      const entry = modelEntry(profile, evaluation, score, assetIdByProfileId.get(profile.profile_id)!, newEntries.length + 1);
       if (entry) {
         newEntries.push(entry);
         existingIdentities.add(key);
       }
     }
   }
-
-  if (newEntries.length === 0) return baseDataset;
 
   const newEntriesByEvaluation = new Map<string, Entry[]>();
   for (const entry of newEntries) {
@@ -214,7 +255,14 @@ export function mergeAaModelProfileOverlays(dataset: Dataset, source: AaModelPro
       return { ...evaluation, row_count: previousEntries.length + additions.length };
     }
     const baseNotes = evaluation.notes.replace(/\s*Supplemental model-profile results:.*$/, "");
-    const supplementNote = `Supplemental model-profile results: ${additions.length} model entries captured ${captureDate(source.captured_at)}; the base evaluation results were captured ${captureDate(evaluation.captured_at)}.`;
+    const captures = new Map<string, number>();
+    for (const entry of additions) {
+      const date = captureDateByAssetId.get(entry.source_asset_id) ?? source.captured_at;
+      captures.set(date, (captures.get(date) ?? 0) + 1);
+    }
+    const captureNote = [...captures].sort(([a], [b]) => a.localeCompare(b))
+      .map(([date, count]) => `${count} model entries captured ${captureDate(date)}`).join("; ");
+    const supplementNote = `Supplemental model-profile results: ${captureNote}; the base evaluation results were captured ${captureDate(evaluation.captured_at)}.`;
     return {
       ...evaluation,
       row_count: previousEntries.length + additions.length,
@@ -253,7 +301,7 @@ export function mergeAaModelProfileOverlays(dataset: Dataset, source: AaModelPro
   const providers = new Map(baseDataset.providers.map(provider => [String(provider.id), provider]));
   const models = new Map(baseDataset.models.map(model => [String(model.id), model]));
   for (const profile of profileById.values()) {
-    const record = profileModelRecord(profile, source.captured_at);
+    const record = profileModelRecord(profile, profileCapturedAt.get(profile.profile_id)!);
     const providerId = String(record.provider_id);
     if (!providers.has(providerId)) providers.set(providerId, {
       id: providerId,
@@ -265,17 +313,7 @@ export function mergeAaModelProfileOverlays(dataset: Dataset, source: AaModelPro
   }
 
   const updatedSourceAssets = new Map((baseDataset.sourceAssets ?? []).map(asset => [String(asset.id), asset]));
-  updatedSourceAssets.set(assetId, {
-    id: assetId,
-    filename: "aa-model-profile-overlays.json",
-    content_hash: assetId,
-    captured_at: source.captured_at,
-    imported_at: source.captured_at,
-    source_kind: "artificial_analysis_model_profile_overlay",
-    source_urls: source.models.map(profile => profile.profile_url),
-    profile_ids: source.models.map(profile => profile.profile_id),
-    notes: source.notes,
-  });
+  for (const [assetId, asset] of profileAssets) updatedSourceAssets.set(assetId, asset);
 
   const updatedReports = Array.isArray(baseDataset.report.evaluations)
     ? baseDataset.report.evaluations.map((row: Record<string, unknown>) => {

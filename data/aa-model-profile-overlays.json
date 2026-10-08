@@ -1,7 +1,7 @@
 {
-  "captured_at": "2026-10-07",
+  "captured_at": "2026-10-08",
   "source_title": "Artificial Analysis model profile overlay",
-  "notes": "Exact scores and model metadata captured from the public Artificial Analysis profile payloads. Scores are inserted into the repository's 2026-09-29 leaderboard cohort using its existing source ordering and insertion-rank rules. Artificial Analysis comparison-class ranks are not used.",
+  "notes": "Exact scores and model metadata captured from public Artificial Analysis profile payloads. Scores are inserted into the project 2026-09-29 leaderboard cohort using existing source ordering and insertion-rank rules; comparison-class ranks are not used. Individual profile capture dates are retained and grouped into matching provenance assets.",
   "models": [
     {
       "profile_id": "d366dfa1-d940-4788-aa73-d298c45699b3",
@@ -10,25 +10,75 @@
       "name": "Gemini 4 Argon (High)",
       "release_date": "2026-09-30",
       "scores": {
-        "briefcase-v1-1": { "score": 1489.88, "confidence_interval": { "lower95ci": 1478.76, "upper95ci": 1500.96 } },
-        "gdpval-aa-v2-1": { "score": 1626.19 },
-        "automationbench-aa": { "score": 0.7751346945899195 },
-        "terminal-bench-4-0": { "score": 0.570707070707071 },
-        "scicode": { "score": 0.618055555555556 },
-        "humanity-s-last-exam": { "score": 0.570898980537535 },
-        "gdp-pdf": { "score": 0.218 },
-        "critpt": { "score": 0.271428571428571 },
-        "aa-omniscience-accuracy": { "score": 0.499 },
-        "aa-lcr-v1-1": { "score": 0.796666666666667 },
-        "mmmu-pro": { "score": null },
-        "finance-accounting": { "score": 53.7918313752975 },
-        "economics-index": { "score": 60.4193601521471 },
-        "strategy-ops-index": { "score": 56.2412007125334 },
-        "aa-omniscience-index": { "score": 42.35 },
-        "intelligence-index": { "score": 52.5605655745982 },
-        "aa-briefcase-rubric-score": { "score": 0.6463414634146342 },
-        "aa-briefcase-analytical-quality-elo": { "score": 1565.17, "confidence_interval": { "lower95ci": 1542.94, "upper95ci": 1587.11 } },
-        "aa-briefcase-presentation-elo": { "score": 1307.34, "confidence_interval": { "lower95ci": 1288.73, "upper95ci": 1325.62 } }
+        "briefcase-v1-1": {
+          "score": 1489.88,
+          "confidence_interval": {
+            "lower95ci": 1478.76,
+            "upper95ci": 1500.96
+          }
+        },
+        "gdpval-aa-v2-1": {
+          "score": 1626.19
+        },
+        "automationbench-aa": {
+          "score": 0.7751346945899195
+        },
+        "terminal-bench-4-0": {
+          "score": 0.570707070707071
+        },
+        "scicode": {
+          "score": 0.618055555555556
+        },
+        "humanity-s-last-exam": {
+          "score": 0.570898980537535
+        },
+        "gdp-pdf": {
+          "score": 0.218
+        },
+        "critpt": {
+          "score": 0.271428571428571
+        },
+        "aa-omniscience-accuracy": {
+          "score": 0.499
+        },
+        "aa-lcr-v1-1": {
+          "score": 0.796666666666667
+        },
+        "mmmu-pro": {
+          "score": null
+        },
+        "finance-accounting": {
+          "score": 53.7918313752975
+        },
+        "economics-index": {
+          "score": 60.4193601521471
+        },
+        "strategy-ops-index": {
+          "score": 56.2412007125334
+        },
+        "aa-omniscience-index": {
+          "score": 42.35
+        },
+        "intelligence-index": {
+          "score": 52.5605655745982
+        },
+        "aa-briefcase-rubric-score": {
+          "score": 0.6463414634146342
+        },
+        "aa-briefcase-analytical-quality-elo": {
+          "score": 1565.17,
+          "confidence_interval": {
+            "lower95ci": 1542.94,
+            "upper95ci": 1587.11
+          }
+        },
+        "aa-briefcase-presentation-elo": {
+          "score": 1307.34,
+          "confidence_interval": {
+            "lower95ci": 1288.73,
+            "upper95ci": 1325.62
+          }
+        }
       },
       "metadata": {
         "reasoning": true,
@@ -40,8 +90,13 @@
         "active_parameters_billions": null,
         "context_window_tokens": 1000000,
         "context_window_display": "1M",
-        "input_modalities": ["text", "image"],
-        "output_modalities": ["text"],
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
         "input_price_per_million_tokens_usd": 2,
         "output_price_per_million_tokens_usd": 10,
         "cache_hit_price_per_million_tokens_usd": 0.1,
@@ -52,7 +107,8 @@
         "intelligence_index_output_tokens": 112847057,
         "output_speed_tokens_per_second": null,
         "output_speed_status": "Not publicly available on the profile"
-      }
+      },
+      "captured_at": "2026-10-07"
     },
     {
       "profile_id": "a6043b9b-628a-4a76-a021-2834e0627d05",
@@ -61,25 +117,75 @@
       "name": "Ling 3.1 Flash",
       "release_date": "2026-10-01",
       "scores": {
-        "briefcase-v1-1": { "score": 1400.35, "confidence_interval": { "lower95ci": 1390.61, "upper95ci": 1410.08 } },
-        "gdpval-aa-v2-1": { "score": 1621.75 },
-        "automationbench-aa": { "score": 0.6174373352506193 },
-        "terminal-bench-4-0": { "score": 0.333333333333333 },
-        "scicode": { "score": 0.540509259259259 },
-        "humanity-s-last-exam": { "score": 0.394346617238183 },
-        "gdp-pdf": { "score": 0.1 },
-        "critpt": { "score": 0.18 },
-        "aa-omniscience-accuracy": { "score": 0.29083333333333333 },
-        "aa-lcr-v1-1": { "score": 0.83 },
-        "mmmu-pro": { "score": null },
-        "finance-accounting": { "score": 41.9279103149 },
-        "economics-index": { "score": 47.7362566033364 },
-        "strategy-ops-index": { "score": 45.0998149014848 },
-        "aa-omniscience-index": { "score": 2.216666666666667 },
-        "intelligence-index": { "score": 41.0906200397391 },
-        "aa-briefcase-rubric-score": { "score": 0.46464646464646464 },
-        "aa-briefcase-analytical-quality-elo": { "score": 1563.89, "confidence_interval": { "lower95ci": 1545.47, "upper95ci": 1582.32 } },
-        "aa-briefcase-presentation-elo": { "score": 1316.94, "confidence_interval": { "lower95ci": 1299.8, "upper95ci": 1334.08 } }
+        "briefcase-v1-1": {
+          "score": 1400.35,
+          "confidence_interval": {
+            "lower95ci": 1390.61,
+            "upper95ci": 1410.08
+          }
+        },
+        "gdpval-aa-v2-1": {
+          "score": 1621.75
+        },
+        "automationbench-aa": {
+          "score": 0.6174373352506193
+        },
+        "terminal-bench-4-0": {
+          "score": 0.333333333333333
+        },
+        "scicode": {
+          "score": 0.540509259259259
+        },
+        "humanity-s-last-exam": {
+          "score": 0.394346617238183
+        },
+        "gdp-pdf": {
+          "score": 0.1
+        },
+        "critpt": {
+          "score": 0.18
+        },
+        "aa-omniscience-accuracy": {
+          "score": 0.29083333333333333
+        },
+        "aa-lcr-v1-1": {
+          "score": 0.83
+        },
+        "mmmu-pro": {
+          "score": null
+        },
+        "finance-accounting": {
+          "score": 41.9279103149
+        },
+        "economics-index": {
+          "score": 47.7362566033364
+        },
+        "strategy-ops-index": {
+          "score": 45.0998149014848
+        },
+        "aa-omniscience-index": {
+          "score": 2.216666666666667
+        },
+        "intelligence-index": {
+          "score": 41.0906200397391
+        },
+        "aa-briefcase-rubric-score": {
+          "score": 0.46464646464646464
+        },
+        "aa-briefcase-analytical-quality-elo": {
+          "score": 1563.89,
+          "confidence_interval": {
+            "lower95ci": 1545.47,
+            "upper95ci": 1582.32
+          }
+        },
+        "aa-briefcase-presentation-elo": {
+          "score": 1316.94,
+          "confidence_interval": {
+            "lower95ci": 1299.8,
+            "upper95ci": 1334.08
+          }
+        }
       },
       "metadata": {
         "reasoning": true,
@@ -90,8 +196,12 @@
         "active_parameters_billions": 25,
         "context_window_tokens": 1000000,
         "context_window_display": "1M",
-        "input_modalities": ["text"],
-        "output_modalities": ["text"],
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
         "input_price_per_million_tokens_usd": 0.3,
         "output_price_per_million_tokens_usd": 0.9,
         "cache_hit_price_per_million_tokens_usd": 0.06,
@@ -102,7 +212,8 @@
         "intelligence_index_output_tokens": 217613455,
         "output_speed_tokens_per_second": 210.2,
         "output_speed_status": "Profile-reported speed"
-      }
+      },
+      "captured_at": "2026-10-07"
     },
     {
       "profile_id": "34fc646a-0174-470e-9e62-d8df452210b3",
@@ -111,25 +222,75 @@
       "name": "Mistral Large 4 Preview",
       "release_date": "2026-10-06",
       "scores": {
-        "briefcase-v1-1": { "score": 1392.53, "confidence_interval": { "lower95ci": 1382.9, "upper95ci": 1402.17 } },
-        "gdpval-aa-v2-1": { "score": 1423.91 },
-        "automationbench-aa": { "score": 0.5990136246808686 },
-        "terminal-bench-4-0": { "score": 0.267676767676768 },
-        "scicode": { "score": 0.541666666666667 },
-        "humanity-s-last-exam": { "score": 0.35032437442076 },
-        "gdp-pdf": { "score": 0.186 },
-        "critpt": { "score": 0.105714285714286 },
-        "aa-omniscience-accuracy": { "score": 0.25816666666666666 },
-        "aa-lcr-v1-1": { "score": 0.813333333333333 },
-        "mmmu-pro": { "score": 0.764161849710983 },
-        "finance-accounting": { "score": 38.262600132251 },
-        "economics-index": { "score": 43.5568947713933 },
-        "strategy-ops-index": { "score": 42.2092826635119 },
-        "aa-omniscience-index": { "score": -5.3 },
-        "intelligence-index": { "score": 38.3770408917494 },
-        "aa-briefcase-rubric-score": { "score": 0.45151515151515154 },
-        "aa-briefcase-analytical-quality-elo": { "score": 1515.38, "confidence_interval": { "lower95ci": 1497.61, "upper95ci": 1533.15 } },
-        "aa-briefcase-presentation-elo": { "score": 1354.54, "confidence_interval": { "lower95ci": 1337.13, "upper95ci": 1371.96 } }
+        "briefcase-v1-1": {
+          "score": 1392.53,
+          "confidence_interval": {
+            "lower95ci": 1382.9,
+            "upper95ci": 1402.17
+          }
+        },
+        "gdpval-aa-v2-1": {
+          "score": 1423.91
+        },
+        "automationbench-aa": {
+          "score": 0.5990136246808686
+        },
+        "terminal-bench-4-0": {
+          "score": 0.267676767676768
+        },
+        "scicode": {
+          "score": 0.541666666666667
+        },
+        "humanity-s-last-exam": {
+          "score": 0.35032437442076
+        },
+        "gdp-pdf": {
+          "score": 0.186
+        },
+        "critpt": {
+          "score": 0.105714285714286
+        },
+        "aa-omniscience-accuracy": {
+          "score": 0.25816666666666666
+        },
+        "aa-lcr-v1-1": {
+          "score": 0.813333333333333
+        },
+        "mmmu-pro": {
+          "score": 0.764161849710983
+        },
+        "finance-accounting": {
+          "score": 38.262600132251
+        },
+        "economics-index": {
+          "score": 43.5568947713933
+        },
+        "strategy-ops-index": {
+          "score": 42.2092826635119
+        },
+        "aa-omniscience-index": {
+          "score": -5.3
+        },
+        "intelligence-index": {
+          "score": 38.3770408917494
+        },
+        "aa-briefcase-rubric-score": {
+          "score": 0.45151515151515154
+        },
+        "aa-briefcase-analytical-quality-elo": {
+          "score": 1515.38,
+          "confidence_interval": {
+            "lower95ci": 1497.61,
+            "upper95ci": 1533.15
+          }
+        },
+        "aa-briefcase-presentation-elo": {
+          "score": 1354.54,
+          "confidence_interval": {
+            "lower95ci": 1337.13,
+            "upper95ci": 1371.96
+          }
+        }
       },
       "metadata": {
         "reasoning": true,
@@ -140,8 +301,13 @@
         "active_parameters_billions": 49,
         "context_window_tokens": 524288,
         "context_window_display": "520k",
-        "input_modalities": ["text", "image"],
-        "output_modalities": ["text"],
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
         "input_price_per_million_tokens_usd": 1.36,
         "output_price_per_million_tokens_usd": 4.18,
         "cache_hit_price_per_million_tokens_usd": 0.14,
@@ -152,6 +318,672 @@
         "intelligence_index_output_tokens": 199803890,
         "output_speed_tokens_per_second": 116.1,
         "output_speed_status": "Profile-reported speed"
+      },
+      "captured_at": "2026-10-07"
+    },
+    {
+      "profile_id": "42908ae3-d3bd-4934-be19-fbff93d3fde8",
+      "profile_url": "https://artificialanalysis.ai/models/claude-haiku-5-5-low",
+      "provider": "Anthropic",
+      "name": "Claude Haiku 5.5 (Adaptive Reasoning, Low Effort, Default Fallback)",
+      "release_date": "2026-10-07",
+      "captured_at": "2026-10-08",
+      "scores": {
+        "briefcase-v1-1": {
+          "score": 1111.58,
+          "confidence_interval": {
+            "lower95ci": 1101.58,
+            "upper95ci": 1121.59
+          },
+          "cost_usd": 0.047208133531405856
+        },
+        "gdpval-aa-v2-1": {
+          "score": 1124.94,
+          "cost_usd": 0.01036732378882185
+        },
+        "automationbench-aa": {
+          "score": 0.22910812181110643,
+          "cost_usd": 0.015280525566503717
+        },
+        "terminal-bench-4-0": {
+          "score": 0.126262626262626,
+          "cost_usd": 0.1185604005507249
+        },
+        "scicode": {
+          "score": 0.491898148148148,
+          "cost_usd": 0.0009499020833333334
+        },
+        "humanity-s-last-exam": {
+          "score": 0.270157553290083,
+          "cost_usd": 0.0018893202965708992
+        },
+        "gdp-pdf": {
+          "score": 0.112,
+          "cost_usd": 0.019278698
+        },
+        "critpt": {
+          "score": 0.0914285714285714,
+          "cost_usd": 0.007311545714285715
+        },
+        "aa-omniscience-accuracy": {
+          "score": 0.3325,
+          "cost_usd": 0.00026630011666666664
+        },
+        "aa-lcr-v1-1": {
+          "score": 0.72,
+          "cost_usd": 0.014769013
+        },
+        "mmmu-pro": {
+          "score": null
+        },
+        "finance-accounting": {
+          "score": 28.7822173180696
+        },
+        "economics-index": {
+          "score": 37.4612643651529
+        },
+        "strategy-ops-index": {
+          "score": 27.9750207106805
+        },
+        "aa-omniscience-index": {
+          "score": 3.25,
+          "cost_usd": 0.00026630011666666664
+        },
+        "intelligence-index": {
+          "score": 29.4494981304947
+        },
+        "aa-briefcase-rubric-score": {
+          "score": 0.3383838383838384,
+          "cost_usd": 0.047208133531405856
+        },
+        "aa-briefcase-analytical-quality-elo": {
+          "score": 1225.1,
+          "confidence_interval": {
+            "lower95ci": 1206.18,
+            "upper95ci": 1244.02
+          },
+          "cost_usd": 0.047208133531405856
+        },
+        "aa-briefcase-presentation-elo": {
+          "score": 990.32,
+          "confidence_interval": {
+            "lower95ci": 972.51,
+            "upper95ci": 1008.12
+          },
+          "cost_usd": 0.047208133531405856
+        }
+      },
+      "metadata": {
+        "reasoning": true,
+        "reasoning_type": "Adaptive Reasoning",
+        "effort": {
+          "slug": "low",
+          "label": "low",
+          "level": 20
+        },
+        "fallback_configuration": "Default Fallback",
+        "default_fallback": true,
+        "source_profile_name": "Claude Haiku 5.5 (Low)",
+        "source_profile_short_name": "Claude Haiku 5.5 (low)",
+        "intelligence_index_is_estimated": false,
+        "open_weights": false,
+        "open_source_categorization": "proprietary",
+        "parameters_billions": null,
+        "parameter_count_status": "Not disclosed by Anthropic",
+        "active_parameters_billions": null,
+        "context_window_tokens": 1000000,
+        "context_window_display": "1M",
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "input_price_per_million_tokens_usd": 0.1,
+        "output_price_per_million_tokens_usd": 0.5,
+        "cache_hit_price_per_million_tokens_usd": 0.01,
+        "cache_discount_percent": 90,
+        "cache_write_price_per_million_tokens_usd": 0.125,
+        "blended_price_7_2_1_usd": 0.077,
+        "intelligence_index_cost_per_task_usd": 0.02445936101890973,
+        "intelligence_index_total_cost_usd": 34.30614811843952,
+        "intelligence_index_output_tokens": 32289694,
+        "output_speed_tokens_per_second": 178.216201483806,
+        "output_speed_status": "Profile-reported speed",
+        "benchmark_suite_version": "Artificial Analysis Intelligence Index v4.3.2"
+      }
+    },
+    {
+      "profile_id": "af26fff4-8120-41be-a5f0-86aaea023f20",
+      "profile_url": "https://artificialanalysis.ai/models/claude-haiku-5-5-medium",
+      "provider": "Anthropic",
+      "name": "Claude Haiku 5.5 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+      "release_date": "2026-10-07",
+      "captured_at": "2026-10-08",
+      "scores": {
+        "briefcase-v1-1": {
+          "score": 1371.7,
+          "confidence_interval": {
+            "lower95ci": 1363.36,
+            "upper95ci": 1380.05
+          },
+          "cost_usd": 0.13300242193709352
+        },
+        "gdpval-aa-v2-1": {
+          "score": 1276.84,
+          "cost_usd": 0.0207415439572033
+        },
+        "automationbench-aa": {
+          "score": 0.2858961481429316,
+          "cost_usd": 0.0191398777523888
+        },
+        "terminal-bench-4-0": {
+          "score": 0.151515151515152,
+          "cost_usd": 0.19378303790411755
+        },
+        "scicode": {
+          "score": 0.489583333333333,
+          "cost_usd": 0.0011676524305555553
+        },
+        "humanity-s-last-exam": {
+          "score": 0.337812789620019,
+          "cost_usd": 0.0034846164504170525
+        },
+        "gdp-pdf": {
+          "score": 0.152,
+          "cost_usd": 0.020572298
+        },
+        "critpt": {
+          "score": 0.128571428571429,
+          "cost_usd": 0.013565408571428572
+        },
+        "aa-omniscience-accuracy": {
+          "score": 0.3403333333333333,
+          "cost_usd": 0.0003300642
+        },
+        "aa-lcr-v1-1": {
+          "score": 0.773333333333333,
+          "cost_usd": 0.014850508
+        },
+        "mmmu-pro": {
+          "score": null
+        },
+        "finance-accounting": {
+          "score": 35.4471752244645
+        },
+        "economics-index": {
+          "score": 43.2746768033673
+        },
+        "strategy-ops-index": {
+          "score": 33.5360066238334
+        },
+        "aa-omniscience-index": {
+          "score": 4.466666666666667,
+          "cost_usd": 0.0003300642
+        },
+        "intelligence-index": {
+          "score": 34.4646519474657
+        },
+        "aa-briefcase-rubric-score": {
+          "score": 0.4494949494949495,
+          "cost_usd": 0.13300242193709352
+        },
+        "aa-briefcase-analytical-quality-elo": {
+          "score": 1598.98,
+          "confidence_interval": {
+            "lower95ci": 1583.19,
+            "upper95ci": 1614.77
+          },
+          "cost_usd": 0.13300242193709352
+        },
+        "aa-briefcase-presentation-elo": {
+          "score": 1220.84,
+          "confidence_interval": {
+            "lower95ci": 1208.11,
+            "upper95ci": 1233.57
+          },
+          "cost_usd": 0.13300242193709352
+        }
+      },
+      "metadata": {
+        "reasoning": true,
+        "reasoning_type": "Adaptive Reasoning",
+        "effort": {
+          "slug": "medium",
+          "label": "medium",
+          "level": 30
+        },
+        "fallback_configuration": "Default Fallback",
+        "default_fallback": true,
+        "source_profile_name": "Claude Haiku 5.5 (Medium)",
+        "source_profile_short_name": "Claude Haiku 5.5 (medium)",
+        "intelligence_index_is_estimated": false,
+        "open_weights": false,
+        "open_source_categorization": "proprietary",
+        "parameters_billions": null,
+        "parameter_count_status": "Not disclosed by Anthropic",
+        "active_parameters_billions": null,
+        "context_window_tokens": 1000000,
+        "context_window_display": "1M",
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "input_price_per_million_tokens_usd": 0.1,
+        "output_price_per_million_tokens_usd": 0.5,
+        "cache_hit_price_per_million_tokens_usd": 0.01,
+        "cache_discount_percent": 90,
+        "cache_write_price_per_million_tokens_usd": 0.125,
+        "blended_price_7_2_1_usd": 0.077,
+        "intelligence_index_cost_per_task_usd": 0.04703084793955566,
+        "intelligence_index_total_cost_usd": 56.359270851851434,
+        "intelligence_index_output_tokens": 53785057,
+        "output_speed_tokens_per_second": 137.050817833707,
+        "output_speed_status": "Profile-reported speed",
+        "benchmark_suite_version": "Artificial Analysis Intelligence Index v4.3.2"
+      }
+    },
+    {
+      "profile_id": "20829974-af06-497e-9f42-77fb958d43b9",
+      "profile_url": "https://artificialanalysis.ai/models/claude-haiku-5-5-high",
+      "provider": "Anthropic",
+      "name": "Claude Haiku 5.5 (Adaptive Reasoning, High Effort, Default Fallback)",
+      "release_date": "2026-10-07",
+      "captured_at": "2026-10-08",
+      "scores": {
+        "briefcase-v1-1": {
+          "score": 1442.55,
+          "confidence_interval": {
+            "lower95ci": 1432.83,
+            "upper95ci": 1452.27
+          },
+          "cost_usd": 0.22294368661924832
+        },
+        "gdpval-aa-v2-1": {
+          "score": 1420.03,
+          "cost_usd": 0.04359841732015027
+        },
+        "automationbench-aa": {
+          "score": 0.3372685311767238,
+          "cost_usd": 0.0226877278836208
+        },
+        "terminal-bench-4-0": {
+          "score": 0.217171717171717,
+          "cost_usd": 0.3314793370029226
+        },
+        "scicode": {
+          "score": 0.487268518518519,
+          "cost_usd": 0.0015008180555555555
+        },
+        "humanity-s-last-exam": {
+          "score": 0.3725671918443,
+          "cost_usd": 0.008477391056533827
+        },
+        "gdp-pdf": {
+          "score": 0.172,
+          "cost_usd": 0.022568573
+        },
+        "critpt": {
+          "score": 0.185714285714286,
+          "cost_usd": 0.032742587142857146
+        },
+        "aa-omniscience-accuracy": {
+          "score": 0.3478333333333333,
+          "cost_usd": 0.00043867861666666664
+        },
+        "aa-lcr-v1-1": {
+          "score": 0.773333333333333,
+          "cost_usd": 0.014965243
+        },
+        "mmmu-pro": {
+          "score": null
+        },
+        "finance-accounting": {
+          "score": 37.6782515170274
+        },
+        "economics-index": {
+          "score": 45.8402683812172
+        },
+        "strategy-ops-index": {
+          "score": 37.4933078688108
+        },
+        "aa-omniscience-index": {
+          "score": 5.75,
+          "cost_usd": 0.00043867861666666664
+        },
+        "intelligence-index": {
+          "score": 37.8240211671094
+        },
+        "aa-briefcase-rubric-score": {
+          "score": 0.4696969696969697,
+          "cost_usd": 0.22294368661924832
+        },
+        "aa-briefcase-analytical-quality-elo": {
+          "score": 1702.38,
+          "confidence_interval": {
+            "lower95ci": 1684.44,
+            "upper95ci": 1720.31
+          },
+          "cost_usd": 0.22294368661924832
+        },
+        "aa-briefcase-presentation-elo": {
+          "score": 1303.45,
+          "confidence_interval": {
+            "lower95ci": 1286.54,
+            "upper95ci": 1320.36
+          },
+          "cost_usd": 0.22294368661924832
+        }
+      },
+      "metadata": {
+        "reasoning": true,
+        "reasoning_type": "Adaptive Reasoning",
+        "effort": {
+          "slug": "high",
+          "label": "high",
+          "level": 40
+        },
+        "fallback_configuration": "Default Fallback",
+        "default_fallback": true,
+        "source_profile_name": "Claude Haiku 5.5 (High)",
+        "source_profile_short_name": "Claude Haiku 5.5 (high)",
+        "intelligence_index_is_estimated": false,
+        "open_weights": false,
+        "open_source_categorization": "proprietary",
+        "parameters_billions": null,
+        "parameter_count_status": "Not disclosed by Anthropic",
+        "active_parameters_billions": null,
+        "context_window_tokens": 1000000,
+        "context_window_display": "1M",
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "input_price_per_million_tokens_usd": 0.1,
+        "output_price_per_million_tokens_usd": 0.5,
+        "cache_hit_price_per_million_tokens_usd": 0.01,
+        "cache_discount_percent": 90,
+        "cache_write_price_per_million_tokens_usd": 0.125,
+        "blended_price_7_2_1_usd": 0.077,
+        "intelligence_index_cost_per_task_usd": 0.07942671568737021,
+        "intelligence_index_total_cost_usd": 94.06688065451641,
+        "intelligence_index_output_tokens": 97096318,
+        "output_speed_tokens_per_second": 160.189974136809,
+        "output_speed_status": "Profile-reported speed",
+        "benchmark_suite_version": "Artificial Analysis Intelligence Index v4.3.2"
+      }
+    },
+    {
+      "profile_id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
+      "profile_url": "https://artificialanalysis.ai/models/claude-haiku-5-5-xhigh",
+      "provider": "Anthropic",
+      "name": "Claude Haiku 5.5 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
+      "release_date": "2026-10-07",
+      "captured_at": "2026-10-08",
+      "scores": {
+        "briefcase-v1-1": {
+          "score": 1532.67,
+          "confidence_interval": {
+            "lower95ci": 1521.87,
+            "upper95ci": 1543.42
+          },
+          "cost_usd": 0.3658051701766453
+        },
+        "gdpval-aa-v2-1": {
+          "score": 1510.76,
+          "cost_usd": 0.0920705014249463
+        },
+        "automationbench-aa": {
+          "score": 0.35953889773428194,
+          "cost_usd": 0.027615228884196024
+        },
+        "terminal-bench-4-0": {
+          "score": 0.292929292929293,
+          "cost_usd": 0.46029073807682436
+        },
+        "scicode": {
+          "score": 0.517361111111111,
+          "cost_usd": 0.0026774409722222225
+        },
+        "humanity-s-last-exam": {
+          "score": 0.42678405931418,
+          "cost_usd": 0.019091161121408715
+        },
+        "gdp-pdf": {
+          "score": 0.182,
+          "cost_usd": 0.027258909999999997
+        },
+        "critpt": {
+          "score": 0.225714285714286,
+          "cost_usd": 0.06511042285714286
+        },
+        "aa-omniscience-accuracy": {
+          "score": 0.3495,
+          "cost_usd": 0.0007873557000000001
+        },
+        "aa-lcr-v1-1": {
+          "score": 0.783333333333333,
+          "cost_usd": 0.015321063
+        },
+        "mmmu-pro": {
+          "score": null
+        },
+        "finance-accounting": {
+          "score": 40.7857632782172
+        },
+        "economics-index": {
+          "score": 48.704358742663
+        },
+        "strategy-ops-index": {
+          "score": 39.281621532151
+        },
+        "aa-omniscience-index": {
+          "score": 6.05,
+          "cost_usd": 0.0007873557000000001
+        },
+        "intelligence-index": {
+          "score": 41.2489304677024
+        },
+        "aa-briefcase-rubric-score": {
+          "score": 0.5141414141414141,
+          "cost_usd": 0.3658051701766453
+        },
+        "aa-briefcase-analytical-quality-elo": {
+          "score": 1812.7,
+          "confidence_interval": {
+            "lower95ci": 1792.96,
+            "upper95ci": 1834.31
+          },
+          "cost_usd": 0.3658051701766453
+        },
+        "aa-briefcase-presentation-elo": {
+          "score": 1393.42,
+          "confidence_interval": {
+            "lower95ci": 1374.55,
+            "upper95ci": 1411.63
+          },
+          "cost_usd": 0.3658051701766453
+        }
+      },
+      "metadata": {
+        "reasoning": true,
+        "reasoning_type": "Adaptive Reasoning",
+        "effort": {
+          "slug": "xhigh",
+          "label": "xhigh",
+          "level": 50
+        },
+        "fallback_configuration": "Default Fallback",
+        "default_fallback": true,
+        "source_profile_name": "Claude Haiku 5.5 (Xhigh)",
+        "source_profile_short_name": "Claude Haiku 5.5 (xhigh)",
+        "intelligence_index_is_estimated": false,
+        "open_weights": false,
+        "open_source_categorization": "proprietary",
+        "parameters_billions": null,
+        "parameter_count_status": "Not disclosed by Anthropic",
+        "active_parameters_billions": null,
+        "context_window_tokens": 1000000,
+        "context_window_display": "1M",
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "input_price_per_million_tokens_usd": 0.1,
+        "output_price_per_million_tokens_usd": 0.5,
+        "cache_hit_price_per_million_tokens_usd": 0.01,
+        "cache_discount_percent": 90,
+        "cache_write_price_per_million_tokens_usd": 0.125,
+        "blended_price_7_2_1_usd": 0.077,
+        "intelligence_index_cost_per_task_usd": 0.12378561092096102,
+        "intelligence_index_total_cost_usd": 157.5758646895501,
+        "intelligence_index_output_tokens": 179986858,
+        "output_speed_tokens_per_second": 187.17016978754,
+        "output_speed_status": "Profile-reported speed",
+        "benchmark_suite_version": "Artificial Analysis Intelligence Index v4.3.2"
+      }
+    },
+    {
+      "profile_id": "7d064a11-6e78-4030-b535-cdf940615041",
+      "profile_url": "https://artificialanalysis.ai/models/claude-haiku-5-5",
+      "provider": "Anthropic",
+      "name": "Claude Haiku 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "release_date": "2026-10-07",
+      "captured_at": "2026-10-08",
+      "scores": {
+        "briefcase-v1-1": {
+          "score": 1577.72,
+          "confidence_interval": {
+            "lower95ci": 1567.67,
+            "upper95ci": 1587.77
+          },
+          "cost_usd": 0.6748641672669411
+        },
+        "gdpval-aa-v2-1": {
+          "score": 1620.05,
+          "cost_usd": 0.22229297310982066
+        },
+        "automationbench-aa": {
+          "score": 0.35411015132783624,
+          "cost_usd": 0.04231589574649746
+        },
+        "terminal-bench-4-0": {
+          "score": 0.328282828282828,
+          "cost_usd": 0.6518847460144606
+        },
+        "scicode": {
+          "score": 0.549768518518518,
+          "cost_usd": 0.010939723611111112
+        },
+        "humanity-s-last-exam": {
+          "score": 0.443929564411492,
+          "cost_usd": 0.04385731621872104
+        },
+        "gdp-pdf": {
+          "score": 0.208,
+          "cost_usd": 0.052690258
+        },
+        "critpt": {
+          "score": 0.188571428571429,
+          "cost_usd": 0.09352919857142858
+        },
+        "aa-omniscience-accuracy": {
+          "score": 0.36383333333333334,
+          "cost_usd": 0.006261468933333334
+        },
+        "aa-lcr-v1-1": {
+          "score": 0.826666666666667,
+          "cost_usd": 0.019313008
+        },
+        "mmmu-pro": {
+          "score": null
+        },
+        "finance-accounting": {
+          "score": 43.899544721027
+        },
+        "economics-index": {
+          "score": 51.2271805877356
+        },
+        "strategy-ops-index": {
+          "score": 40.3835291326876
+        },
+        "aa-omniscience-index": {
+          "score": 10.666666666666666,
+          "cost_usd": 0.006261468933333334
+        },
+        "intelligence-index": {
+          "score": 43.3950199670746
+        },
+        "aa-briefcase-rubric-score": {
+          "score": 0.5232323232323233,
+          "cost_usd": 0.6748641672669411
+        },
+        "aa-briefcase-analytical-quality-elo": {
+          "score": 1907.63,
+          "confidence_interval": {
+            "lower95ci": 1887.43,
+            "upper95ci": 1927.82
+          },
+          "cost_usd": 0.6748641672669411
+        },
+        "aa-briefcase-presentation-elo": {
+          "score": 1429.1,
+          "confidence_interval": {
+            "lower95ci": 1412.13,
+            "upper95ci": 1446.07
+          },
+          "cost_usd": 0.6748641672669411
+        }
+      },
+      "metadata": {
+        "reasoning": true,
+        "reasoning_type": "Adaptive Reasoning",
+        "effort": {
+          "slug": "max",
+          "label": "max",
+          "level": 60
+        },
+        "fallback_configuration": "Default Fallback",
+        "default_fallback": true,
+        "source_profile_name": "Claude Haiku 5.5 (Max)",
+        "source_profile_short_name": "Claude Haiku 5.5 (max)",
+        "intelligence_index_is_estimated": false,
+        "open_weights": false,
+        "open_source_categorization": "proprietary",
+        "parameters_billions": null,
+        "parameter_count_status": "Not disclosed by Anthropic",
+        "active_parameters_billions": null,
+        "context_window_tokens": 1000000,
+        "context_window_display": "1M",
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "input_price_per_million_tokens_usd": 0.1,
+        "output_price_per_million_tokens_usd": 0.5,
+        "cache_hit_price_per_million_tokens_usd": 0.01,
+        "cache_discount_percent": 90,
+        "cache_write_price_per_million_tokens_usd": 0.125,
+        "blended_price_7_2_1_usd": 0.077,
+        "intelligence_index_cost_per_task_usd": 0.21276971216992022,
+        "intelligence_index_total_cost_usd": 330.2539429478554,
+        "intelligence_index_output_tokens": 435183286,
+        "output_speed_tokens_per_second": 241.913830264623,
+        "output_speed_status": "Profile-reported speed",
+        "benchmark_suite_version": "Artificial Analysis Intelligence Index v4.3.2"
       }
     }
   ]
