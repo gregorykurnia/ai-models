@@ -60,7 +60,7 @@ export default function MasterLeaderboard({rows,evaluations,costCapturedLabel}:{
   },[sorted,orderedEvaluations]);
   const header=(key:string,label:string,sticky?:string)=><th scope="col" className={sticky??"numeric"} aria-sort={sort===key?(direction==="asc"?"ascending":"descending"):"none"}><Button variant="quiet" size="compact" onClick={()=>update({ms:key,md:sort===key&&direction==="asc"?"desc":"asc"})}>{label} {sort===key?(direction==="asc"?"↑":"↓"):"↕"}</Button></th>;
   return <Card id="master-leaderboard" className="master"><div className="eyebrow">Ranks by evaluation</div><h2>Master leaderboard</h2><p>Each evaluation column shows the model’s original rank. Aggregate Score is the average of its available ranks across nine dimensions; lower is better. Cost per Intelligence Index task is the source-reported weighted average in USD. All columns can be sorted. <Link href="/about/data">Data notes</Link>.</p>
-    <div className="toolbar">
+    <div className="toolbar filter-toolbar">
       <MasterModelSearch value={searchTerm} onCommit={commitSearch}/>
       <label className="sr-only" htmlFor="master-provider">Master provider</label>
       <ProviderMultiSelect id="master-provider" label="Master provider" providers={[...new Set(rows.map(r=>r.provider))].sort()} selected={selectedProviders} onChange={providers=>update({mp:providers},"push")}/>

@@ -558,6 +558,10 @@ p {
   margin-bottom: var(--space-5);
 }
 
+.toolbar.filter-toolbar {
+  align-items: flex-start;
+}
+
 .toolbar-model-search {
   display: grid;
   min-width: min(100%, 16rem);
