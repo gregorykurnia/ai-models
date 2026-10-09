@@ -92,7 +92,8 @@ export function mergeBriefcaseRubricRefresh(dataset: Dataset, source: BriefcaseR
     const rank = entry.score_value === previousValue ? previousRank : index + 1;
     previousValue = entry.score_value;
     previousRank = rank;
-    return { ...entry, source_rank: rank };
+    // Supplemental profile rows join the published snapshot so planner and master read the same cohort.
+    return { ...entry, source_rank: rank, snapshot_id: snapshotId };
   });
   const captureDates = new Map<string, number>();
   for (const entry of supplementalEntries) {
