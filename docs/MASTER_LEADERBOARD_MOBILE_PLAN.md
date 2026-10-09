@@ -1,6 +1,6 @@
 # Master leaderboard mobile plan
 
-Status: plan only. Nothing in this document has been implemented.
+Status: implemented in the working tree. See "Implementation notes" at the end for deviations from this plan.
 
 Scope: the master leaderboard on the home page (`#master-leaderboard`) at viewports of 767px and narrower. Tablet and desktop keep the current table.
 
@@ -114,3 +114,16 @@ Make only Model sticky at about 9rem, show the provider as a caption under the m
 - Any change to ranking data, aggregate calculation, cost data, or the CSV export contents.
 - Tablet and desktop table design.
 - The other leaderboard pages and the suitability planner.
+
+## Implementation notes
+
+Built as planned, with these differences:
+
+- **Metric labels:** the card's aggregate tile is labelled "Aggregate" rather than "Aggregate Score" to keep it on one line.
+- **Sorted-column tile:** shown only when sorting by an evaluation. Sorting by Model, Provider, Cost or Aggregate Score omits it, because those values already appear elsewhere on the card.
+- **Sort direction:** a single button labelled "Asc ↑" or "Desc ↓" instead of an arrow-only toggle.
+- **Intro:** the first sentence stays visible; the rest moves into an "About these ranks" disclosure on phones. Desktop text is unchanged.
+- **Card height:** collapsed cards measure about 306px when model names wrap to three lines. The 150px target was not met; the names drive the height.
+- **Browser check:** `scripts/check-master-browser.mjs` was already failing before this change (stale CSV header text and a provider step that used a `<select>` API on a button). Both are fixed, and the script now covers the phone view.
+
+Verification: TypeScript check, `next build`, `scripts/validate-master.ts` (0 issues), the updated browser check, and a byte-identical desktop screenshot at 1280px against the pre-change capture.
