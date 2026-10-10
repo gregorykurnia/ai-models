@@ -57,6 +57,6 @@ Saved tasks are shared with everyone who visits the site, and visitors can chang
 
 `npm run audit:suitability` verifies the imported snapshot and runs a full-catalog score, identity, source-link, and coverage audit. [Review its findings](docs/TASK_SUITABILITY_DATA_AUDIT.md). Known alternate sheet labels match the same variant; source IDs remain intact. Earlier saved tasks retain their original matching. Planner event counters stay in the browser and are not sent to an analytics service.
 
-Run planner fixtures with `npx tsx --test tests/suitability*.test.ts`. With the dev server on port 3180, run `node scripts/check-suitability-browser.mjs` using an installed Playwright module (or set `PLAYWRIGHT_MODULE` to its absolute module path).
+Run planner fixtures with `npx tsx --test tests/suitability*.test.ts`. The shared saved-task routes (save, delete, tombstones, purge) run against the Firestore emulator with `FIRESTORE_EMULATOR_HOST=127.0.0.1:8080 npx tsx scripts/check-suitability-emulator.ts`, after starting it with `firebase emulators:start --only firestore --project demo-ai-models` (needs a Java runtime). With the dev server on port 3180, run `node scripts/check-suitability-browser.mjs` using an installed Playwright module (or set `PLAYWRIGHT_MODULE` to its absolute module path).
 
 Repository setup, branch protection, and pushes require a known Git repository and configured upstream. This directory initially had no `.git` directory.
