@@ -2,7 +2,7 @@
 
 Date: 10 October 2026. Scope: the Saved tasks library (`/suitability/saved`), the saved-task review page (`/suitability/[taskId]`), and the create/edit form (`/suitability`).
 
-Status: decisions recorded. This is still a plan. No implementation has started, and no application code, stored data, or API behavior has been changed. Line references are to `src/components/suitability-planner.tsx` unless another file is named.
+Status: Phases 1–3 are implemented and pushed to `main`. Phase 4 is parked (decision 4). Line references describe the code before this work and may have moved. Shipping record and open issues are at the end of this document.
 
 ## Problems and current paths
 
@@ -137,3 +137,30 @@ Recorded 10 October 2026.
 2. **Implementor default for new tasks: none.** The form starts with "None: show leading candidate." A stored default would turn a computed guess into a permanent choice, and the card would keep saying "Chosen implementor" even though nobody chose it. When no implementor is set, the saved preview falls back to the leader (`src/app/api/suitability/tasks/route.ts:134-136`).
 3. **Browser copies of a deleted task on another device: keep local-only, with a notice.** Required behavior is listed under risk 5.
 4. **Card-level implementor picker: parked.** Revisit after phases 1–3 ship. It needs candidate options in the library summary and a backfill for existing tasks, and Edit settings already covers the job from the card.
+
+## Shipped
+
+| Change | Commit |
+| --- | --- |
+| Phase 1: implementor select in the editor | `16c9110` |
+| Phase 2: Edit settings from the library, with return and notice | `68d4e59` |
+| Phase 3, shared side: DELETE route, tombstone guard, layout exclusion | `e8363b1` |
+| Phase 3, local side and UI: deleteBrowserTask, per-copy sync, kept copies, delete controls | `abc54f2` |
+| Sync: a failed copy is reported by title and the rest still sync; a 503 stops the run | `b4248de` |
+| Inline category error uses the defined `--error` token | `2035970` |
+| Emulator check for the shared saved-task routes | `89a1e42` |
+| Planner browser check updated; saves stay in this browser | `a6cb6bc` |
+
+Verification:
+- Unit tests: `npx tsx --test tests/suitability*.test.ts` (28 pass).
+- `npm run build` passes.
+- Firestore emulator (`scripts/check-suitability-emulator.ts`): 9 checks pass, covering save, library and layout membership, stale and current delete, tombstone guard, repeated delete, and purge of active and leftover versions and their chunks.
+- Browser checks run with shared writes mocked, so no shared data was written.
+- Not yet run against the live database.
+
+## Open issues found while shipping
+
+- **Uncategorized layout writes fail.** The layout document stores the Uncategorized group under the key `__uncategorized__`. Firestore reserves field names that begin and end with double underscores, so reordering or collapsing the Uncategorized group returns 503 (`INVALID_ARGUMENT`). Fixing it means changing the stored key format, so it's not done.
+- **Category assignment on a deleted or missing task returns 503, not 404.** The route throws "could not be found", and its status mapping matches "not found". The refusal is correct; only the status code is wrong.
+- **Sync still has a long wait on network failure.** A network failure is recorded per copy, so an outage runs through every copy, each up to the 30-second request timeout.
+- **Phase 4 (card-level implementor picker)** remains parked.
