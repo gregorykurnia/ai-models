@@ -51,7 +51,7 @@ Soft-delete on the shared side, plus an unconditional local removal.
 
 **UI:**
 
-- Add **Delete** to each card and to the review page toolbar. Use the existing `destructive` button variant, compact size. Put it in its own footer row, never next to Edit settings.
+- Add **Delete** to each card and to the review page toolbar. Style and placement follow "Design guidelines" below: quiet compact with danger text on cards, the shared `destructive` variant on the review page. Never put it next to Edit settings.
 - Confirm with `window.confirm`, matching the category delete at `:892`. Copy: `Delete "{title}"? Its shared copy and any copy saved in this browser will be removed. This cannot be undone.`
 - On the review page, go to the library after delete and show "Deleted {title}." On the library, remove the card immediately.
 
@@ -72,11 +72,47 @@ Soft-delete on the shared side, plus an unconditional local removal.
    - Out of scope for phase 3: a "Save as new shared task" action. The existing copy-on-conflict path (`:727-733`, " (browser copy)" suffix) could support it later.
 6. **Layout depends on `active_version`.** Layout membership checks that field (`layout/route.ts:44`). Soft-delete relies on this. Changing the field name or its check requires updating `collectMembership` too.
 
-## Visual and interaction consistency (AGENTS.md)
+## Design guidelines (AGENTS.md UI rule)
 
-- Use only existing components: `secondary` for Edit settings, `destructive` for Delete, `quiet` for Download backup, and `Select` for the implementor. Add no new patterns.
-- The card already has five action controls. Adding Edit settings and Delete makes spacing and wrapping important. Check against `design-md/SAVED_TASK_ENTRY_AUDIT.md`, which makes Open comparison the principal action. Edit settings sits beside it at the same weight, not above it (decision 1).
-- Verify at 320, 375, 768, and 1024 px. Check for horizontal overflow, that buttons wrap cleanly, and that touch targets are at least 44 px.
+Sources: `design-md/ULTRAMARINE_LEDGER_FOUNDATION.md`, `ULTRAMARINE_LEDGER_COMPONENTS.md`, `SAVED_TASK_ENTRY_AUDIT.md`, and the existing card CSS (`src/components/suitability-planner.module.css`, `.taskActions` at ~1178). The goal is that every new control looks like it was always part of the card. Inspect the current screen before each phase, and stop and propose an alternative if a change weakens the layout.
+
+**General rules**
+- Reuse existing components and tokens only. No new colors, radii, shadows, or type sizes; use `var(--space-*)`, `var(--text-*)`, `var(--danger-text)`, and the shared font-size tokens already used in the module.
+- No new patterns: no modal, menu, or toast component. Confirmations use `window.confirm` (as for categories), and messages use the existing `Alert`.
+- Cards stay white, 1px border, 12px radius, no shadow, with no nested cards.
+- Button text is a short verb phrase, 14px/20px, no capitals styling. One emphasis level per action group.
+
+**Card action area (library)**
+- Keep the existing `.taskActions` flex-wrap row (gap `--space-2` / `--space-4`). Order: Edit settings, Open comparison, Download backup, then Change category and Order, as today.
+- Edit settings and Open comparison are both `secondary` at the default 44px size. Download backup stays `quiet`, compact. Do not add a primary button to the card (decision 1).
+- Delete goes in its own row below the actions, separated by the card's normal 16px gap, aligned to the end. A filled red `destructive` button repeated on every card would be loud, so use a `quiet` compact button with `--danger-text` colour, the same token the inline category error uses. The review-page toolbar may use the shared `destructive` variant because it appears once. If the quiet red looks weak or off-style when checked in the browser, fall back to `destructive` rather than inventing a style.
+- Keep the card compact. The audit targets roughly 260–320px collapsed height on desktop; adding a row must not push it far past that. If it does, drop the separate Delete row and place Delete at the end of the existing action row instead.
+- Errors (failed delete or save) use the existing `.taskActionError` Alert directly under the actions, never a second copy elsewhere in the card.
+- Loading uses the button's own `loading` state, which preserves width. Disable the card's other actions while a delete is pending.
+
+**Implementor select (form, step 3)**
+- Use `FormField` with a persistent label "Implementor" and helper text "Optional. Shown on the saved task card." Place it directly under the selected-model chips with 16px between fields.
+- Default `Select` height 44px, full field width, with options "None: show leading candidate" and then selected models as "Model · Provider", matching the Model select in `SelectedModelDetails`.
+- Disable it, with helper text "Select at least one model first", when no model is selected. Never show an empty chooser.
+- In step 4 (the summary), add one line "Implementor: {model or leading candidate}" in the same style as the existing evaluation and candidate count line.
+
+**Edit entry and return flow**
+- The editor opened from the library keeps its current layout. Change only the top toolbar link to "Back to saved tasks" and have Cancel editing use the same destination.
+- After Save from the library flow, the confirmation is the existing `Alert` (tone success, `role="status"`) at the top of the library list, above the results status row. It disappears on the next navigation; no new toast.
+- Preserve focus: after returning, focus lands on the edited task's title link, so keyboard users keep their place.
+
+**Kept-local copy (risk 5)**
+- Use the existing neutral `Badge` in the card header in place of "This browser", reading "Kept in this browser", with an info `Alert` line in the card explaining it was deleted from the shared library. Do not use warning/error tones for a state the user chose.
+
+**Responsive and accessibility checks**
+- Verify at 320, 375, 768, 1024, and wide desktop, and at 200% zoom. No page-wide horizontal overflow; actions wrap onto new lines rather than shrinking.
+- Touch targets stay at least 44px (compact 40px only with enough spacing, as on desktop). On phones, stack the action row and let Edit settings and Open comparison fill the row width.
+- Every new control has a task-specific accessible name, for example "Edit settings for {title}" and "Delete {title}", since many cards share the same labels.
+- Keyboard order follows visual order; focus rings are the shared ones; announce results of edit, implementor change, and delete through the existing `role="status"` alert.
+- Check light-mode contrast for the danger-text colour on the white card.
+
+**Visual verification before each phase is called done**
+- Screenshot the library, review page, and editor before and after at the widths above, and compare against the current design: spacing, alignment, button sizes, and card height. Fix any drift before committing.
 
 ## Phases
 
