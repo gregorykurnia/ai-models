@@ -7,6 +7,7 @@ import {
   markDeletedCopy,
   planSharedTaskDelete,
   SHARED_TASK_DELETED_MESSAGE,
+  SharedServiceUnavailableError,
   SharedTaskDeletedError,
   syncEachBrowserCopy,
   withoutDeletedMarker,
@@ -71,16 +72,27 @@ test("a deleted browser copy is kept and skipped while later copies still sync",
 
   assert.deepEqual(uploaded, ["first", "third"]);
   assert.deepEqual(kept, ["deleted"]);
-  assert.deepEqual(result, { synced: 2, deleted: 1 });
+  assert.deepEqual(result, { synced: 2, deleted: 1, failed: [] });
 });
 
-test("other sync errors still stop the run and are reported", async () => {
+test("a failed copy is reported and later copies still sync", async () => {
   const uploaded: string[] = [];
-  await assert.rejects(syncEachBrowserCopy(["first", "broken", "third"], async id => {
-    if (id === "broken") throw new Error("Network unavailable");
+  const result = await syncEachBrowserCopy(["first", "broken", "third"], async id => {
+    if (id === "broken") throw new Error("The saved task data is invalid.");
     uploaded.push(id);
-  }, async () => { assert.fail("only deleted copies are kept"); }), /Network unavailable/);
-  assert.deepEqual(uploaded, ["first"]);
+  }, async () => { assert.fail("only deleted copies are kept"); });
+
+  assert.deepEqual(uploaded, ["first", "third"]);
+  assert.deepEqual(result, { synced: 2, deleted: 0, failed: [{ copy: "broken", message: "The saved task data is invalid." }] });
+});
+
+test("a service-unavailable error stops the run, so later copies are not attempted", async () => {
+  const attempted: string[] = [];
+  await assert.rejects(syncEachBrowserCopy(["first", "outage", "third"], async id => {
+    attempted.push(id);
+    if (id === "outage") throw new SharedServiceUnavailableError("Firestore's quota is exhausted.");
+  }, async () => { assert.fail("only deleted copies are kept"); }), SharedServiceUnavailableError);
+  assert.deepEqual(attempted, ["first", "outage"]);
 });
 
 test("the kept-local marker stays on the browser copy and never reaches a backup", () => {

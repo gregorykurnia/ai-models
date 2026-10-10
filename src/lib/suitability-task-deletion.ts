@@ -58,26 +58,43 @@ export function withoutDeletedMarker<T extends object>(comparison: T): Omit<T, "
   return portable;
 }
 
+/** The shared service cannot take writes right now (quota or configuration). Retrying each copy would only repeat the failure. */
+export class SharedServiceUnavailableError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "SharedServiceUnavailableError";
+  }
+}
+
+export type BrowserSyncFailure<T> = { copy: T; message: string };
+
 /**
- * Syncs each browser copy on its own. A copy whose shared task was deleted goes to `onDeleted`,
- * and the loop continues. Any other error still stops the run and is rethrown.
+ * Syncs each browser copy on its own. A copy whose shared task was deleted goes to `onDeleted`.
+ * Any other failed copy is recorded and the loop continues, so one bad copy cannot leave the rest unsynced.
+ * A service-unavailable error stops the run, because each further copy would hit the same failure.
  */
 export async function syncEachBrowserCopy<T>(
   copies: readonly T[],
   upload: (copy: T) => Promise<void>,
   onDeleted: (copy: T) => Promise<void>,
-): Promise<{ synced: number; deleted: number }> {
+): Promise<{ synced: number; deleted: number; failed: BrowserSyncFailure<T>[] }> {
   let synced = 0;
   let deleted = 0;
+  const failed: BrowserSyncFailure<T>[] = [];
   for (const copy of copies) {
     try {
       await upload(copy);
       synced++;
     } catch (cause) {
-      if (!(cause instanceof SharedTaskDeletedError)) throw cause;
-      await onDeleted(copy);
-      deleted++;
+      if (cause instanceof SharedTaskDeletedError) {
+        await onDeleted(copy);
+        deleted++;
+      } else if (cause instanceof SharedServiceUnavailableError) {
+        throw cause;
+      } else {
+        failed.push({ copy, message: cause instanceof Error ? cause.message : "The browser copy could not be synced." });
+      }
     }
   }
-  return { synced, deleted };
+  return { synced, deleted, failed };
 }

@@ -11,7 +11,7 @@ import { groupSavedTaskIds, normalizeCategoryName } from "@/lib/suitability-cate
 import { matchesModelSearch, parseModelSearchTerms } from "@/lib/model-search";
 import { emptySavedTaskLayout, SAVED_TASK_LAYOUT_STORAGE_KEY, savedTaskLayoutSchema, type SavedTaskLayout, type SavedTaskLayoutOperation } from "@/lib/suitability-layout";
 import { deleteBrowserTask, readBrowserTasks, saveBrowserTask, removeBrowserTask } from "@/lib/browser-suitability-tasks";
-import { markDeletedCopy, SHARED_TASK_DELETED_CODE, SharedTaskDeletedError, syncEachBrowserCopy, withoutDeletedMarker } from "@/lib/suitability-task-deletion";
+import { markDeletedCopy, SHARED_TASK_DELETED_CODE, SharedServiceUnavailableError, SharedTaskDeletedError, syncEachBrowserCopy, withoutDeletedMarker } from "@/lib/suitability-task-deletion";
 import { recordSuitabilityEvent } from "@/lib/suitability-analytics";
 import SuitabilityComparison, { comparisonRows } from "@/components/suitability-comparison";
 import { ProviderMultiSelect, providerSelectionLabel } from "@/components/ui/provider-multi-select";
@@ -46,8 +46,10 @@ async function saveSharedTask(comparison: SavedComparison): Promise<{ revision: 
     signal: AbortSignal.timeout(30000),
   });
   const payload = await response.json();
+  const message = typeof payload.error === "string" ? payload.error : "Task could not be saved to the shared database.";
   if (response.status === 409 && payload.code === SHARED_TASK_DELETED_CODE) throw new SharedTaskDeletedError();
-  if (!response.ok) throw new Error(typeof payload.error === "string" ? payload.error : "Task could not be saved to the shared database.");
+  if (response.status === 503) throw new SharedServiceUnavailableError(message);
+  if (!response.ok) throw new Error(message);
   return { revision: Number(payload.category_revision ?? comparison.category_revision ?? 0), categoryName: typeof payload.category_name === "string" ? payload.category_name : null };
 }
 
@@ -853,8 +855,18 @@ export default function Planner({ data }: { data: PlannerData }) {
       if (conflictsCopied) syncNotes.push(`${conflictsCopied} browser ${conflictsCopied === 1 ? "copy was" : "copies were"} saved as separate tasks to preserve shared versions with newer data or category changes.`);
       if (categoriesDropped) syncNotes.push(`${categoriesDropped} unmatched ${categoriesDropped === 1 ? "category was" : "categories were"} changed to Uncategorized.`);
       if (keptTotal) syncNotes.push(`${keptTotal} browser ${keptTotal === 1 ? "copy was" : "copies were"} kept in this browser because ${keptTotal === 1 ? "its shared task was" : "their shared tasks were"} deleted from the shared library.`);
-      const lead = outcome.synced ? "Browser-saved tasks synced." : "";
-      setNotice(syncNotes.length ? [lead, ...syncNotes].filter(Boolean).join(" ") : "Browser-saved tasks synced to the shared library.");
+      const syncedLead = outcome.synced
+        ? (syncNotes.length ? "Browser-saved tasks synced." : "Browser-saved tasks synced to the shared library.")
+        : "";
+      setNotice([syncedLead, ...syncNotes].filter(Boolean).join(" "));
+      if (outcome.failed.length) {
+        // Failed copies stay in this browser untouched, so the same sync can be retried.
+        const titles = outcome.failed.map(item => `"${item.copy.task.title}"`);
+        const shown = titles.slice(0, 3).join(", ");
+        const more = titles.length > 3 ? ` and ${titles.length - 3} more` : "";
+        const count = outcome.failed.length;
+        setError(`Could not sync ${count} browser ${count === 1 ? "copy" : "copies"}: ${shown}${more}. ${count === 1 ? "It stays" : "They stay"} in this browser and can be synced again. Reason: ${outcome.failed[0].message}`);
+      }
     } catch (cause) { setError(loadErrorMessage(cause, "Browser-saved tasks could not be added to the shared library.")); }
     finally { setSyncingBrowserSaved(false); }
   };
