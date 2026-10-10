@@ -2,7 +2,7 @@
 
 Date: 10 October 2026. Scope: the Saved tasks library (`/suitability/saved`), the saved-task review page (`/suitability/[taskId]`), and the create/edit form (`/suitability`).
 
-This is a plan only. No application code, stored data, or API behavior has been changed. Line references are to `src/components/suitability-planner.tsx` unless another file is named.
+Status: decisions recorded. This is still a plan. No implementation has started, and no application code, stored data, or API behavior has been changed. Line references are to `src/components/suitability-planner.tsx` unless another file is named.
 
 ## Problems and current paths
 
@@ -18,7 +18,7 @@ Also, the card has three routes to one comparison table: the title link (`:377`)
 
 ### A. Edit settings from the library card
 
-- Add an **Edit settings** button to each library card, beside Open comparison. It links to `/suitability/{id}?edit=1&returnTo={libraryPath}`. This works for browser-only tasks too.
+- Add an **Edit settings** button to each library card, beside Open comparison at the same weight (decision 1). It links to `/suitability/{id}?edit=1&returnTo={libraryPath}`. This works for browser-only tasks too.
 - The planner opens the editor when `edit=1` is present. The mount effect at `:546` calls `setEditing(false)` on every path change, so the flag must be applied after that effect runs. Setting it only in the initial `useState` value is overwritten.
 - When the editor was opened from the library, Save returns to `returnTo` (the library with its search and category filters), not to the review page. The confirmation appears there (see risk 1).
 - Cancel editing returns to the library when that is where the user came from.
@@ -28,13 +28,13 @@ Result: Edit settings → change → Save, with the user back in the library. Th
 
 ### B. Implementor: set it while creating and editing
 
-**Phase 1 (recommended, UI only):** add an **Implementor** select in step 3, under the selected-model chips. Options: "None: show leading candidate", then each currently selected model. Deselecting the chosen model already clears it (`:694`).
+**Phase 1 (recommended, UI only):** add an **Implementor** select in step 3, under the selected-model chips. The first option is "None: show leading candidate", which is the default (decision 2). The other options are each currently selected model. Deselecting the chosen model already clears it (`:694`).
 
 - The state (`:475`), dirty check (`:664`), and save payload (`:785`) already handle the implementor. Only the control is missing.
 - Use a select, not a radio on each chip. The chips are compact buttons with a × control, and a select matches the Model select in `SelectedModelDetails`.
 - Keep the in-place "Choose as implementor" path working unchanged.
 
-**Phase 2 (optional):** a card-level picker. This needs candidate options in the library summary (`savedTaskSummarySchema` in `src/lib/suitability-storage.ts`), written by POST. Legacy tasks without that field would fall back to loading the comparison. Until this exists, Edit settings is the card's route to a new implementor.
+**Card-level picker (parked, decision 4):** a picker on the card itself. It would need candidate options in the library summary (`savedTaskSummarySchema` in `src/lib/suitability-storage.ts`), written by POST. Legacy tasks without that field would fall back to loading the comparison. Until this exists, Edit settings is the card's route to a new implementor.
 
 ### C. Delete a saved task
 
@@ -63,33 +63,41 @@ Soft-delete on the shared side, plus an unconditional local removal.
 2. **Sync stops at the first error.** `syncBrowserTasks` (`:711-762`) wraps the whole loop in one try. If one task is rejected, every later browser copy is left unsynced. Sync must handle a per-task "deleted" response: skip that copy and report it.
 3. **Deleted tasks can come back.** POST writes the whole document when none exists (`tasks/route.ts:178`), and nothing checks for a deleted task. Two paths would recreate one: a browser copy from another device syncing later, and an editor open in another tab that saves. POST should return 409 when `deleted_at` is set, and the editor should say "This task was deleted from the shared library."
 4. **Save writes a browser copy before the shared POST.** `save()` writes locally first (`:800`), then calls the shared save (`:807`). If the shared save returns 409, the current message would still read "Saved in this browser · shared sync pending." The 409 path must remove the copy just written, or report the deletion clearly.
-5. **Browser copies of deleted tasks on other devices.** They cannot sync (risk 2). Plan: they stay as "This browser" with a notice and a Delete action that removes them locally. Whether to discard them automatically is an open question below.
+5. **Browser copies of deleted tasks on other devices (decision 3: keep local-only, with a notice).** The copy cannot sync (risk 2). It is never discarded automatically, since it may hold edits. Required behavior:
+   - Sync skips these copies instead of failing. The sync notice reports how many were kept because they were deleted from the shared library.
+   - The sync result (409 "deleted") must mark the local copy, and the marker must survive reloads. The shared list alone cannot tell a deleted copy from one that has never synced.
+   - The library labels the card "Deleted from shared library · kept in this browser," not "Sync pending."
+   - Its actions are Download backup and Delete. Delete removes only this browser's copy and makes no server call.
+   - Editing it keeps it local. The save message must say so and must not promise a shared sync.
+   - Out of scope for phase 3: a "Save as new shared task" action. The existing copy-on-conflict path (`:727-733`, " (browser copy)" suffix) could support it later.
 6. **Layout depends on `active_version`.** Layout membership checks that field (`layout/route.ts:44`). Soft-delete relies on this. Changing the field name or its check requires updating `collectMembership` too.
 
 ## Visual and interaction consistency (AGENTS.md)
 
 - Use only existing components: `secondary` for Edit settings, `destructive` for Delete, `quiet` for Download backup, and `Select` for the implementor. Add no new patterns.
-- The card already has five action controls. Adding Edit settings and Delete makes spacing and wrapping important. Check against `design-md/SAVED_TASK_ENTRY_AUDIT.md`, which makes Open comparison the principal action. Edit settings should sit beside it at the same weight, not above it.
+- The card already has five action controls. Adding Edit settings and Delete makes spacing and wrapping important. Check against `design-md/SAVED_TASK_ENTRY_AUDIT.md`, which makes Open comparison the principal action. Edit settings sits beside it at the same weight, not above it (decision 1).
 - Verify at 320, 375, 768, and 1024 px. Check for horizontal overflow, that buttons wrap cleanly, and that touch targets are at least 44 px.
 
 ## Phases
 
 1. **Implementor select in the editor.** UI only; the data path already exists.
 2. **Edit settings from the library**, including return to the library and a notice that survives navigation.
-3. **Delete.** Add the DELETE route, the tombstone guard on POST and GET, the local delete helper, per-task sync handling, and the card and review-page controls.
-4. **Optional:** card-level implementor picker, with candidate options in the summary.
+3. **Delete.** Add the DELETE route, the tombstone guard on POST and GET, the local delete helper, per-task sync handling, the local-only label for kept copies (risk 5), and the card and review-page controls.
+4. **Parked:** card-level implementor picker (decision 4). Revisit after phases 1–3 ship.
 
 Phases 1 and 2 do not touch the server. Each phase can ship on its own.
 
 ## Verification
 
 - **Unit tests** (`node:test`, in `tests/`, matching the existing suites): the tombstone guard in POST; per-task handling in sync; `deleteBrowserTask` removing both IndexedDB and localStorage copies; deleted tasks excluded from layout membership.
-- **Manual flows:** edit from the library, then Save returns to the library with the notice; set the implementor during create and during edit; delete with and without a browser copy; delete a task that is open in another tab; sync with a tombstoned browser copy; download backup still works.
+- **Manual flows:** edit from the library, then Save returns to the library with the notice; set the implementor during create and during edit; delete with and without a browser copy; delete a task that is open in another tab; sync with a tombstoned browser copy, which should be skipped, labeled, and kept; download backup still works.
 - **Regression:** pinned ranks and costs are unchanged after an edit or implementor change, which both go through `saveSharedTask`. Category revision conflicts still return 409.
 
-## Decisions for you
+## Decisions
 
-1. **Edit settings weight:** equal to Open comparison (recommended), or the primary action?
-2. **Implementor default for new tasks:** none, which keeps the "Leading candidate" label (recommended), or the leader?
-3. **Browser copies of a deleted task on another device:** keep them as local-only with a notice (recommended), or discard them automatically?
-4. **Phase 4 (card-level picker):** build now, or later?
+Recorded 10 October 2026.
+
+1. **Edit settings weight: equal to Open comparison.** Both are `secondary`, with Edit settings beside Open comparison. The card's main job is showing the result, and the entry audit makes Open comparison the principal action. Equal weight still gives one-click access from the first screen.
+2. **Implementor default for new tasks: none.** The form starts with "None: show leading candidate." A stored default would turn a computed guess into a permanent choice, and the card would keep saying "Chosen implementor" even though nobody chose it. When no implementor is set, the saved preview falls back to the leader (`src/app/api/suitability/tasks/route.ts:134-136`).
+3. **Browser copies of a deleted task on another device: keep local-only, with a notice.** Required behavior is listed under risk 5.
+4. **Card-level implementor picker: parked.** Revisit after phases 1–3 ship. It needs candidate options in the library summary and a backfill for existing tasks, and Edit settings already covers the job from the card.
