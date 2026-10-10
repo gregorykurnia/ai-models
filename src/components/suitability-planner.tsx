@@ -684,6 +684,8 @@ export default function Planner({ data }: { data: PlannerData }) {
     && (modelMode === "all" || favorites.includes(candidate.identity_key ?? masterIdentityKey(candidate.provider, candidate.model))));
   const visibleEvaluations = working.evaluations.filter(evaluation => `${evaluation.display_name} ${evaluation.category} ${evaluation.metric_label}`.toLowerCase().includes(evaluationSearch.toLowerCase()));
   const groups = [...new Set(visibleEvaluations.map(evaluation => evaluation.category))].sort();
+  const implementorCandidates = working.candidates.filter(candidate => selected.includes(candidate.model_id));
+  const implementorCandidate = implementorCandidates.find(candidate => candidate.model_id === implementorModelId) ?? null;
   const toggleFavorite = (identity: string) => {
     const next = favorites.includes(identity) ? favorites.filter(value => value !== identity) : [...favorites, identity];
     if (writeModelFavorites(next)) { setFavorites(next); setFavoriteNotice(""); }
@@ -1264,6 +1266,12 @@ export default function Planner({ data }: { data: PlannerData }) {
       {unavailableFavorites.length > 0 && <Alert tone="info" role="status">{unavailableFavorites.length} favorited model{unavailableFavorites.length === 1 ? " is" : "s are"} unavailable in the current candidate catalog. They remain in your favorites; no substitute was selected.</Alert>}
       {favoriteNotice && <Alert tone="error" role="status" live="polite">{favoriteNotice}</Alert>}
       <div className={styles.chips}>{working.candidates.filter(candidate => selected.includes(candidate.model_id)).map(candidate => <Button key={candidate.model_id} size="compact" variant="quiet" aria-label={`Remove ${candidate.model}, ${candidate.provider}`} onClick={() => updateSelected(selected.filter(id => id !== candidate.model_id))}>{candidate.model} · {candidate.provider} ×</Button>)}</div>
+      <FormField id="task-implementor" label="Implementor" className={styles.implementorField} helper={implementorCandidates.length ? "Optional. Shown on the saved task card." : "Select at least one model first"}>
+        <Select value={implementorCandidate?.model_id ?? ""} disabled={!implementorCandidates.length} onChange={event => setImplementorModelId(event.target.value || null)}>
+          <option value="">None: show leading candidate</option>
+          {implementorCandidates.map(candidate => <option key={candidate.model_id} value={candidate.model_id}>{candidate.model} · {candidate.provider}</option>)}
+        </Select>
+      </FormField>
       <div className={styles.picker}>{visibleModels.map(candidate => {
         const identity = candidate.identity_key ?? masterIdentityKey(candidate.provider, candidate.model);
         const isFavorite = favorites.includes(identity);
@@ -1274,6 +1282,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       })}{!visibleModels.length && <p>No models match this view. <Link href="/">Visit the master leaderboard to build a favorites list.</Link></p>}</div>
       </Section>
       <Section className="ui-workflow-step"><h2>4. Save and compare</h2><p>{request.trim() || "Describe your task above."}</p><p>{weights.length} evaluations · {selected.length} candidates · rank_percentile_v1</p>
+      <p>Implementor: {implementorCandidate ? `${implementorCandidate.model} · ${implementorCandidate.provider}` : "Leading candidate"}</p>
       <ul>{weights.map(weight => <li key={weight.evaluation_id}>{working.evaluations.find(evaluation => evaluation.id === weight.evaluation_id)?.display_name}: {Number.isFinite(weight.weight) ? weight.weight.toFixed(2) : "Invalid"}% · snapshot {weight.captured_at}</li>)}</ul>
       {!valid && <p>Enter a title and description, choose at least one evaluation and candidate, and assign nonnegative weights totaling 100%.</p>}
       {result.error && <Alert tone="error">{result.error}</Alert>}

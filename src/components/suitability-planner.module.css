@@ -498,6 +498,10 @@
   font-size: var(--font-size-caption);
 }
 
+.implementorField {
+  margin-top: var(--space-4);
+}
+
 .candidateOption {
   display: flex;
   align-items: center;
