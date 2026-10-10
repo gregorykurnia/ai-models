@@ -76,3 +76,33 @@ export async function removeBrowserTask(comparison: SavedComparison): Promise<vo
     else localStorage.removeItem(TASK_STORAGE_KEY);
   }
 }
+
+/** Removes one task from the legacy localStorage JSON. Returns null when nothing remains. Throws on malformed data, so nothing is deleted half-way. */
+export function withoutLegacyTask(raw: string | null, taskId: string): string | null {
+  if (!raw) return null;
+  const records = JSON.parse(raw) as Array<{ task?: { id?: unknown } } | null>;
+  if (!Array.isArray(records)) throw new Error("Browser-saved tasks could not be read.");
+  const remaining = records.filter(record => record?.task?.id !== taskId);
+  return remaining.length ? JSON.stringify(remaining) : null;
+}
+
+/**
+ * Deletes this browser's copy of a task, including a copy kept after its shared task was deleted.
+ * Unlike removeBrowserTask there is no updated_at guard, because the user asked for this delete.
+ * Makes no server call.
+ */
+export async function deleteBrowserTask(taskId: string): Promise<void> {
+  const raw = localStorage.getItem(TASK_STORAGE_KEY);
+  const remaining = withoutLegacyTask(raw, taskId);
+  if (remaining !== raw) {
+    if (remaining) localStorage.setItem(TASK_STORAGE_KEY, remaining);
+    else localStorage.removeItem(TASK_STORAGE_KEY);
+  }
+  const database = await openDatabase();
+  await new Promise<void>((resolve, reject) => {
+    const transaction = database.transaction(storeName, "readwrite");
+    transaction.objectStore(storeName).delete(taskId);
+    transaction.oncomplete = () => { database.close(); resolve(); };
+    transaction.onabort = () => { database.close(); reject(transaction.error ?? new Error("Browser copy could not be removed.")); };
+  });
+}

@@ -35,6 +35,8 @@ export const savedComparisonSchema = z.object({
   task: suitabilityTaskSchema,
   category_id: z.string().nullable().optional(), category_name: z.string().nullable().optional(),
   category_revision: z.number().int().nonnegative().optional(),
+  /** Set on a browser copy whose shared task was deleted. Local only; never exported or uploaded. */
+  shared_deleted_at: z.string().min(1).optional(),
   evaluations: z.array(plannerEvaluationSchema),
   entries: z.array(z.object({ id: z.string(), evaluation_id: z.string(), snapshot_id: z.string(), model_id: z.string(), source_rank: z.number().int().positive(), source_row: z.number().int(), identity_key: z.string().optional(), model: z.string().optional(), scoring_status: z.string().nullable().optional(), cost_usd: z.number().nonnegative().nullable().optional(), cost_display: z.string().nullable().optional(), cost_status: z.enum(["exact", "bound", "missing"]).optional() })),
   candidates: z.array(z.object({ model_id: z.string(), model: z.string(), provider: z.string(), identity_key: z.string().optional(), source_model_ids: z.array(z.string()).optional(), intelligence_index_cost: z.object({ slug: z.string(), cost_usd: z.number().nonnegative(), url: z.string().url(), captured_at: z.string().min(1) }).nullable().optional() })),
@@ -45,6 +47,7 @@ export type SavedComparison = PlannerData & {
   category_id?: string | null;
   category_name?: string | null;
   category_revision?: number;
+  shared_deleted_at?: string;
 };
 
 export function browserTaskNeedsSharedCopy(comparison: SavedComparison, shared?: SavedTaskSummary): boolean {

@@ -10,7 +10,8 @@ import { browserTaskNeedsSharedCopy, pinComparison, readSavedTaskSummaries, read
 import { groupSavedTaskIds, normalizeCategoryName } from "@/lib/suitability-categories";
 import { matchesModelSearch, parseModelSearchTerms } from "@/lib/model-search";
 import { emptySavedTaskLayout, SAVED_TASK_LAYOUT_STORAGE_KEY, savedTaskLayoutSchema, type SavedTaskLayout, type SavedTaskLayoutOperation } from "@/lib/suitability-layout";
-import { readBrowserTasks, saveBrowserTask, removeBrowserTask } from "@/lib/browser-suitability-tasks";
+import { deleteBrowserTask, readBrowserTasks, saveBrowserTask, removeBrowserTask } from "@/lib/browser-suitability-tasks";
+import { markDeletedCopy, SHARED_TASK_DELETED_CODE, SharedTaskDeletedError, syncEachBrowserCopy, withoutDeletedMarker } from "@/lib/suitability-task-deletion";
 import { recordSuitabilityEvent } from "@/lib/suitability-analytics";
 import SuitabilityComparison, { comparisonRows } from "@/components/suitability-comparison";
 import { ProviderMultiSelect, providerSelectionLabel } from "@/components/ui/provider-multi-select";
@@ -45,8 +46,19 @@ async function saveSharedTask(comparison: SavedComparison): Promise<{ revision: 
     signal: AbortSignal.timeout(30000),
   });
   const payload = await response.json();
+  if (response.status === 409 && payload.code === SHARED_TASK_DELETED_CODE) throw new SharedTaskDeletedError();
   if (!response.ok) throw new Error(typeof payload.error === "string" ? payload.error : "Task could not be saved to the shared database.");
   return { revision: Number(payload.category_revision ?? comparison.category_revision ?? 0), categoryName: typeof payload.category_name === "string" ? payload.category_name : null };
+}
+
+/** Soft-deletes the shared copy. `expectedUpdatedAt` is the version the card showed, so a newer edit in another tab blocks the delete. */
+async function deleteSharedTask(taskId: string, expectedUpdatedAt: string): Promise<void> {
+  const response = await fetch(`/api/suitability/tasks/${encodeURIComponent(taskId)}`, {
+    method: "DELETE", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ expected_updated_at: expectedUpdatedAt }), signal: AbortSignal.timeout(30000),
+  });
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(typeof payload?.error === "string" ? payload.error : "The saved task could not be deleted.");
 }
 
 async function fetchSharedTaskSummaries() {
@@ -157,11 +169,16 @@ function pathWithParams(path: string, params: Record<string, string | null>) {
   return `${url.pathname}${url.search}`;
 }
 
-/** Fixed copy for the `notice` query parameter the library reads after an edit. */
-const libraryNotices = {
+/** Fixed copy for the `notice` query parameter. The URL only selects an entry, so it cannot inject text. */
+const saveNotices = {
   saved: { tone: "success", message: "Saved to the shared library." },
   "browser-saved": { tone: "warning", message: "Saved in this browser. Shared sync is pending. Download a backup to keep a copy outside this browser." },
+  "kept-local": { tone: "info", message: "Saved in this browser only. This task was deleted from the shared library. Download a backup to keep a copy outside this browser." },
 } as const;
+
+function saveNoticeCode(sharedSaved: boolean, deletedFromShared: boolean) {
+  return sharedSaved ? "saved" : deletedFromShared ? "kept-local" : "browser-saved";
+}
 
 function summarizeComparison(comparison: SavedComparison): SavedTaskSummary {
   let preview: SavedTaskSummary["preview"] = null;
@@ -210,7 +227,7 @@ function migrateBrowserTask(task: SavedComparison, currentCandidates: PlannerDat
 }
 
 function downloadBackup(comparison: SavedComparison) {
-  const url = URL.createObjectURL(new Blob([JSON.stringify(savedComparisonSchema.parse(comparison), null, 2)], { type: "application/json" }));
+  const url = URL.createObjectURL(new Blob([JSON.stringify(withoutDeletedMarker(savedComparisonSchema.parse(comparison)), null, 2)], { type: "application/json" }));
   const link = document.createElement("a");
   link.href = url; link.download = `task-comparison-${comparison.task.id}.json`;
   link.click();
@@ -309,6 +326,8 @@ function SavedTaskEntry({
   canMoveDown,
   reorderDisabled,
   onMove,
+  keptLocal,
+  onDelete,
 }: {
   summary: SavedTaskSummary;
   shared: boolean;
@@ -327,8 +346,12 @@ function SavedTaskEntry({
   canMoveDown: boolean;
   reorderDisabled: boolean;
   onMove: (direction: "up" | "down") => void;
+  keptLocal: boolean;
+  onDelete: () => Promise<void>;
 }) {
   const [comparisonOpen, setComparisonOpen] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState("");
   const [backupLoading, setBackupLoading] = useState(false);
   const [backupError, setBackupError] = useState("");
   const [categoryId, setCategoryId] = useState(summary.task.category_id ?? "");
@@ -391,6 +414,19 @@ function SavedTaskEntry({
     finally { setImplementorSaving(false); }
   };
 
+  const handleDelete = async () => {
+    const title = summary.task.title;
+    const message = keptLocal
+      ? `Delete "${title}"? The copy saved in this browser will be removed. This cannot be undone.`
+      : `Delete "${title}"? Its shared copy and any copy saved in this browser will be removed. This cannot be undone.`;
+    if (!window.confirm(message)) return;
+    setDeleteError("");
+    setDeleting(true);
+    try { await onDelete(); }
+    catch (cause) { setDeleteError(cause instanceof Error ? cause.message : "The saved task could not be deleted."); }
+    finally { setDeleting(false); }
+  };
+
   return <Card as="article" className={styles.savedTaskEntry}>
     <div className={styles.taskHeader}>
       <div className={styles.taskHeading}>
@@ -399,8 +435,9 @@ function SavedTaskEntry({
           <summary className={styles.taskDescription}>{summary.task.request}</summary>
         </details>
       </div>
-      <Badge className={styles.taskStatus}>{shared ? "Shared" : "This browser"}</Badge>
+      <Badge className={styles.taskStatus}>{keptLocal ? "Kept in this browser" : shared ? "Shared" : "This browser"}</Badge>
     </div>
+    {keptLocal && <Alert className={styles.taskKeptNotice} tone="info">Deleted from the shared library. This copy is kept in this browser only.</Alert>}
 
     <div className={styles.taskMeta}>
       <span className={styles.taskCategory}>{categoryLabel}</span>
@@ -435,21 +472,25 @@ function SavedTaskEntry({
     </div> : <p className={styles.taskMissingPreview}>Pinned model results are unavailable. Open the comparison to inspect the saved task.</p>}
 
     <div className={styles.taskActions}>
-      <LinkButton variant="secondary" href={`/suitability/${summary.task.id}?edit=1&returnTo=${encodeURIComponent(returnTo)}`} aria-label={`Edit settings for ${summary.task.title}`}>Edit settings</LinkButton>
-      <LinkButton variant="secondary" href={`/suitability/${summary.task.id}?returnTo=${encodeURIComponent(returnTo)}`}>Open comparison <span aria-hidden="true">↗</span></LinkButton>
-      <Button variant="quiet" size="compact" loading={backupLoading} onClick={() => void handleBackup()}>Download backup</Button>
-      <label className={styles.categoryPicker}>Change category<Select aria-label={`Category for ${summary.task.title}`} value={categoryId} disabled={categorySaving || !categoriesLoaded} onChange={event => void handleCategoryChange(event.target.value)}>
+      {!keptLocal && <LinkButton variant="secondary" href={`/suitability/${summary.task.id}?edit=1&returnTo=${encodeURIComponent(returnTo)}`} aria-label={`Edit settings for ${summary.task.title}`}>Edit settings</LinkButton>}
+      {!keptLocal && <LinkButton variant="secondary" href={`/suitability/${summary.task.id}?returnTo=${encodeURIComponent(returnTo)}`}>Open comparison <span aria-hidden="true">↗</span></LinkButton>}
+      <Button variant="quiet" size="compact" loading={backupLoading} disabled={deleting} onClick={() => void handleBackup()}>Download backup</Button>
+      {!keptLocal && <label className={styles.categoryPicker}>Change category<Select aria-label={`Category for ${summary.task.title}`} value={categoryId} disabled={categorySaving || !categoriesLoaded || deleting} onChange={event => void handleCategoryChange(event.target.value)}>
         <option value="">Uncategorized</option>{categoryId && !categories.some(category => category.id === categoryId) && <option value={categoryId}>Category unavailable</option>}{categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-      </Select></label>
-      <div className={styles.taskReorder} aria-label={`Reorder ${summary.task.title}`}>
+      </Select></label>}
+      {!keptLocal && <div className={styles.taskReorder} aria-label={`Reorder ${summary.task.title}`}>
         <span>Order</span>
-        <IconButton aria-label={`Move ${summary.task.title} up`} disabled={reorderDisabled || !canMoveUp} onClick={() => onMove("up")}><span aria-hidden="true">↑</span></IconButton>
-        <IconButton aria-label={`Move ${summary.task.title} down`} disabled={reorderDisabled || !canMoveDown} onClick={() => onMove("down")}><span aria-hidden="true">↓</span></IconButton>
-      </div>
+        <IconButton aria-label={`Move ${summary.task.title} up`} disabled={reorderDisabled || deleting || !canMoveUp} onClick={() => onMove("up")}><span aria-hidden="true">↑</span></IconButton>
+        <IconButton aria-label={`Move ${summary.task.title} down`} disabled={reorderDisabled || deleting || !canMoveDown} onClick={() => onMove("down")}><span aria-hidden="true">↓</span></IconButton>
+      </div>}
     </div>
     {categoryError && <Alert className={styles.taskActionError} tone="error">{categoryError}</Alert>}
     {backupError && <Alert className={styles.taskActionError} tone="error">{backupError}</Alert>}
     {implementorError && <Alert className={styles.taskActionError} tone="error">{implementorError}</Alert>}
+    {deleteError && <Alert className={styles.taskActionError} tone="error">{deleteError}</Alert>}
+    <div className={styles.taskDeleteRow}>
+      <Button variant="quiet" size="compact" className={styles.taskDeleteButton} aria-label={`Delete ${summary.task.title}`} loading={deleting} disabled={deleting} onClick={() => void handleDelete()}>Delete</Button>
+    </div>
 
     <details className={styles.inlineComparison} onToggle={event => handleOpen(event.currentTarget.open)}>
       <summary>Review comparison in place</summary>
@@ -511,9 +552,13 @@ export default function Planner({ data }: { data: PlannerData }) {
   const [saving, setSaving] = useState(false);
   const [syncingBrowserSaved, setSyncingBrowserSaved] = useState(false);
   const [notice, setNotice] = useState("");
-  const [libraryNotice, setLibraryNotice] = useState<{ tone: "success" | "warning"; message: string } | null>(null);
+  const [libraryNotice, setLibraryNotice] = useState<{ tone: "success" | "info" | "warning"; message: string } | null>(null);
+  const [reviewDeleting, setReviewDeleting] = useState(false);
+  const [reviewDeleteError, setReviewDeleteError] = useState("");
   const openedPath = useRef("");
   const editedTaskToFocus = useRef("");
+  // The shared version the review page loaded, which a delete must match. Empty when no shared copy exists.
+  const sharedUpdatedAt = useRef("");
   const appliedCategoryPrefill = useRef("");
   const previousComparison = useRef("");
   const libraryDetailRequests = useRef(new Map<string, Promise<SavedComparison>>());
@@ -570,6 +615,7 @@ export default function Planner({ data }: { data: PlannerData }) {
     let cancelled = false;
     if (openedPath.current !== path) { recordSuitabilityEvent("planner_opened"); openedPath.current = path; }
     setReady(false); setError(""); setNotice(""); setLibraryNotice(null); setEditing(false);
+    setReviewDeleteError("");
     setCategories([]); setCategoriesLoaded(false); setCategoriesError("");
     setLibraryLayout(null); setLibraryLayoutError(""); setLibraryLayoutLoading(false); setLibraryLayoutSaving(false);
     libraryLayoutSavingRef.current = false;
@@ -590,7 +636,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       setWeights(activeTask?.task.evaluation_weights ?? []); setSelected(activeTask?.task.candidate_model_ids ?? []);
       setImplementorModelId(activeTask?.task.implementor_model_id ?? null);
       setError([loadError, localError].filter(Boolean).join(" "));
-      if (activeTask && localTasks.some(task => task === activeTask)) setNotice("Saved in this browser. Shared sync is pending. Download a backup to keep a copy outside this browser.");
+      if (activeTask && !activeTask.shared_deleted_at && localTasks.some(task => task === activeTask)) setNotice("Saved in this browser. Shared sync is pending. Download a backup to keep a copy outside this browser.");
       setReady(true);
     };
     void (async () => {
@@ -635,11 +681,17 @@ export default function Planner({ data }: { data: PlannerData }) {
       try {
         const cloudMatch = await fetchSharedComparison(taskId);
         if (cancelled) return;
+        sharedUpdatedAt.current = cloudMatch.task.updated_at;
         const match = localMatch && localMatch.task.updated_at >= cloudMatch.task.updated_at ? localMatch : cloudMatch;
         activate(match);
       } catch (cause) {
         if (cancelled) return;
-        if (localMatch && cause instanceof SharedTaskNotFoundError) { activate(localMatch); return; }
+        sharedUpdatedAt.current = "";
+        if (cause instanceof SharedTaskNotFoundError) {
+          if (localMatch) activate(localMatch);
+          else activate(null, "This saved task could not be found. It may have been deleted from the shared library.");
+          return;
+        }
         activate(localMatch, `Shared task could not be loaded. ${loadErrorMessage(cause, "The database could not be reached.")}`);
       }
     })();
@@ -743,7 +795,8 @@ export default function Planner({ data }: { data: PlannerData }) {
     setWeights(next);
   };
   const syncBrowserTasks = async () => {
-    if (!browserSaved.length) return;
+    const pending = browserSaved.filter(task => !task.shared_deleted_at);
+    if (!pending.length) return;
     setSyncingBrowserSaved(true); setError("");
     try {
       const availableCategories = categoriesLoaded ? categories : await refreshCategories();
@@ -751,7 +804,8 @@ export default function Planner({ data }: { data: PlannerData }) {
       let categoriesDropped = 0;
       let conflictsCopied = 0;
       const syncedLayoutCategories = new Set<string>();
-      for (const task of browserSaved) {
+      const keptBefore = browserSaved.length - pending.length;
+      const outcome = await syncEachBrowserCopy(pending, async task => {
         const needsSharedCopy = browserTaskNeedsSharedCopy(task, current.find(shared => shared.task.id === task.task.id));
         const matchedCategory = (task.category_id ? availableCategories.find(item => item.id === task.category_id) : null)
           ?? (task.category_name ? availableCategories.find(item => normalizeCategoryName(item.name) === normalizeCategoryName(task.category_name!)) : null);
@@ -782,21 +836,31 @@ export default function Planner({ data }: { data: PlannerData }) {
           const backQuery = returnTo?.startsWith("/suitability/saved") ? `?returnTo=${encodeURIComponent(returnTo)}` : "";
           router.replace(`/suitability/${upload.task.id}${backQuery}`, { scroll: false });
         }
-      }
+      }, async task => {
+        // The shared task was deleted after this copy was saved. Keep the copy in this browser, mark it, and continue with the next copy.
+        const kept = markDeletedCopy(task, new Date().toISOString());
+        await saveBrowserTask(kept);
+        setBrowserSaved(previous => previous.map(item => item.task.id === task.task.id ? kept : item));
+        setSaved(previous => previous.filter(item => item.task.id !== task.task.id));
+        setLibraryDetails(previous => { const next = { ...previous }; delete next[task.task.id]; return next; });
+      });
       if (syncedLayoutCategories.size) {
         const nextCategories = Object.fromEntries(Object.entries(localLibraryLayout.categories).filter(([categoryId]) => !syncedLayoutCategories.has(categoryId)));
         setLocalLayout({ revision: 0, categories: nextCategories });
       }
+      const keptTotal = keptBefore + outcome.deleted;
       const syncNotes: string[] = [];
       if (conflictsCopied) syncNotes.push(`${conflictsCopied} browser ${conflictsCopied === 1 ? "copy was" : "copies were"} saved as separate tasks to preserve shared versions with newer data or category changes.`);
       if (categoriesDropped) syncNotes.push(`${categoriesDropped} unmatched ${categoriesDropped === 1 ? "category was" : "categories were"} changed to Uncategorized.`);
-      setNotice(syncNotes.length ? `Browser-saved tasks synced. ${syncNotes.join(" ")}` : "Browser-saved tasks synced to the shared library.");
-    } catch (cause) { setError(loadErrorMessage(cause, "Browser-saved tasks could not be added to the shared list.")); }
+      if (keptTotal) syncNotes.push(`${keptTotal} browser ${keptTotal === 1 ? "copy was" : "copies were"} kept in this browser because ${keptTotal === 1 ? "its shared task was" : "their shared tasks were"} deleted from the shared library.`);
+      const lead = outcome.synced ? "Browser-saved tasks synced." : "";
+      setNotice(syncNotes.length ? [lead, ...syncNotes].filter(Boolean).join(" ") : "Browser-saved tasks synced to the shared library.");
+    } catch (cause) { setError(loadErrorMessage(cause, "Browser-saved tasks could not be added to the shared library.")); }
     finally { setSyncingBrowserSaved(false); }
   };
   const restoreBackup = async (file: File) => {
     try {
-      const comparison = migrateBrowserTask(savedComparisonSchema.parse(JSON.parse(await file.text())), data.candidates);
+      const comparison = migrateBrowserTask(withoutDeletedMarker(savedComparisonSchema.parse(JSON.parse(await file.text()))), data.candidates);
       comparisonRows(comparison, comparison.task.evaluation_weights, comparison.task.candidate_model_ids);
       let importedCategoryDropped = false;
       if (categoriesLoaded && (comparison.category_id || comparison.category_name)) {
@@ -821,7 +885,8 @@ export default function Planner({ data }: { data: PlannerData }) {
       created_at: active?.task.created_at ?? now, updated_at: now, last_calculated_at: now, schema_version: 1 });
     return { ...pinComparison(task, working), category_id: categoryId || null,
       category_name: categories.find(item => item.id === categoryId)?.name ?? null,
-      category_revision: active?.category_revision ?? 0 };
+      category_revision: active?.category_revision ?? 0,
+      ...(active?.shared_deleted_at ? { shared_deleted_at: active.shared_deleted_at } : {}) };
   };
   const save = async (onlyBrowser = false) => {
     if (!valid || result.error) return;
@@ -836,14 +901,28 @@ export default function Planner({ data }: { data: PlannerData }) {
       if (onlyBrowser && !locallySaved) throw new Error(`The task was not saved. ${browserError}`);
       let sharedSaved = false;
       let sharedError = "";
-      if (!onlyBrowser) {
+      // A kept copy is already known to be deleted from the shared library, so the request that would fail is skipped.
+      let deletedFromShared = !!pinned.shared_deleted_at;
+      if (!onlyBrowser && !deletedFromShared) {
         try {
           const savedCategory = await saveSharedTask(pinned);
           pinned.category_revision = savedCategory.revision;
           pinned.category_name = savedCategory.categoryName;
           sharedSaved = true;
+          sharedUpdatedAt.current = pinned.task.updated_at;
         }
-        catch (cause) { sharedError = cause instanceof Error ? cause.message : "Shared saves are unavailable."; }
+        catch (cause) {
+          if (cause instanceof SharedTaskDeletedError) deletedFromShared = true;
+          else sharedError = cause instanceof Error ? cause.message : "Shared saves are unavailable.";
+        }
+      }
+      if (deletedFromShared) {
+        // The shared task was deleted. Keep these edits in this browser instead of dropping them, and say so.
+        if (!locallySaved) throw new Error("This task was deleted from the shared library, and this browser could not keep a copy. Download a backup to keep your changes.");
+        if (!pinned.shared_deleted_at) pinned.shared_deleted_at = new Date().toISOString();
+        try { await saveBrowserTask(pinned); } catch { /* The unmarked copy holds the same edits; the next sync marks it. */ }
+        setSaved(previous => previous.filter(item => item.task.id !== task.id));
+        setLibraryDetails(previous => { const next = { ...previous }; delete next[task.id]; return next; });
       }
       if (!locallySaved && !sharedSaved) throw new Error(`The task was not saved. ${browserError} ${sharedError} Your selections are still visible.`);
       if (sharedSaved && locallySaved) {
@@ -857,10 +936,11 @@ export default function Planner({ data }: { data: PlannerData }) {
       recordSuitabilityEvent("task_saved");
       setActive(pinned);
       setBrowserSaved(previous => locallySaved ? [pinned, ...previous.filter(item => item.task.id !== task.id)] : previous.filter(item => item.task.id !== task.id));
-      setNotice(sharedSaved ? "Saved to the shared library." : "Saved in this browser. Shared sync is pending. Download a backup to keep a copy outside this browser.");
+      const noticeCode = saveNoticeCode(sharedSaved, deletedFromShared);
+      setNotice(saveNotices[noticeCode].message);
       setEditing(false);
       if (editFromLibrary) {
-        router.replace(pathWithParams(libraryReturnPath, { notice: sharedSaved ? "saved" : "browser-saved", edited: task.id }), { scroll: false });
+        router.replace(pathWithParams(libraryReturnPath, { notice: noticeCode, edited: task.id }), { scroll: false });
         return;
       }
       const backQuery = returnTo?.startsWith("/suitability/saved") ? `?returnTo=${encodeURIComponent(returnTo)}` : "";
@@ -983,6 +1063,37 @@ export default function Planner({ data }: { data: PlannerData }) {
     setNotice(`${candidate?.model ?? modelId} is now the implementor for ${comparison.task.title}.`);
   };
 
+  // Library card delete: the shared copy first, then this browser's copy. A kept copy has no shared copy, so it makes no server call.
+  const handleDeleteTask = async (item: { summary: SavedTaskSummary; localComparison: SavedComparison | null }) => {
+    const taskId = item.summary.task.id;
+    const shared = saved.find(entry => entry.task.id === taskId);
+    if (shared) await deleteSharedTask(taskId, shared.task.updated_at);
+    setSaved(previous => previous.filter(entry => entry.task.id !== taskId));
+    setLibraryDetails(previous => { const next = { ...previous }; delete next[taskId]; return next; });
+    await deleteBrowserTask(taskId);
+    setBrowserSaved(previous => previous.filter(entry => entry.task.id !== taskId));
+    setLibraryNotice({ tone: "success", message: `Deleted ${item.summary.task.title}.` });
+  };
+
+  // Review delete: the shared version this page loaded must still match. Then the library shows the confirmation.
+  const handleDeleteReviewed = async () => {
+    if (!active) return;
+    const title = active.task.title;
+    const kept = !!active.shared_deleted_at;
+    const message = kept
+      ? `Delete "${title}"? The copy saved in this browser will be removed. This cannot be undone.`
+      : `Delete "${title}"? Its shared copy and any copy saved in this browser will be removed. This cannot be undone.`;
+    if (!window.confirm(message)) return;
+    setReviewDeleteError(""); setReviewDeleting(true);
+    try {
+      if (!kept && sharedUpdatedAt.current) await deleteSharedTask(active.task.id, sharedUpdatedAt.current);
+      await deleteBrowserTask(active.task.id);
+      router.replace(pathWithParams(libraryReturnPath, { notice: "deleted", title: title.slice(0, 80) }), { scroll: false });
+    } catch (cause) {
+      setReviewDeleteError(cause instanceof Error ? cause.message : "The saved task could not be deleted.");
+    } finally { setReviewDeleting(false); }
+  };
+
   const unknownCategories = !categoriesLoaded ? libraryTasks.flatMap(item => {
     const id = item.summary.task.category_id;
     return id && !categories.some(category => category.id === id) ? [{ id, name: "Category unavailable", normalized_name: "category-unavailable", created_at: new Date(0).toISOString(), updated_at: new Date(0).toISOString() }] : [];
@@ -1000,6 +1111,8 @@ export default function Planner({ data }: { data: PlannerData }) {
   }, [libraryLayout, localBrowserTaskIds, localLibraryLayout]);
   const groupedLibrary = groupSavedTaskIds(categorizedTasks, selectedCategoryIds, filterCategories, librarySearch, libraryTaskOrder);
   const libraryTotal = libraryTasks.length;
+  // Copies deleted from the shared library stay local and are not waiting to sync.
+  const pendingBrowserSaved = browserSaved.filter(task => !task.shared_deleted_at);
 
   const setLocalLayout = (next: SavedTaskLayout) => {
     const normalized = { revision: 0, categories: next.categories };
@@ -1122,10 +1235,15 @@ export default function Planner({ data }: { data: PlannerData }) {
     const notice = searchParams.get("notice");
     const edited = searchParams.get("edited");
     if (!notice && !edited) return;
-    const known = notice !== null && Object.prototype.hasOwnProperty.call(libraryNotices, notice);
-    setLibraryNotice(known ? libraryNotices[notice as keyof typeof libraryNotices] : null);
+    if (notice === "deleted") {
+      const title = (searchParams.get("title") ?? "").trim().slice(0, 80);
+      setLibraryNotice({ tone: "success", message: `Deleted ${title || "the saved task"}.` });
+    } else {
+      const known = notice !== null && Object.prototype.hasOwnProperty.call(saveNotices, notice);
+      setLibraryNotice(known ? saveNotices[notice as keyof typeof saveNotices] : null);
+    }
     editedTaskToFocus.current = edited ?? "";
-    window.history.replaceState(window.history.state, "", pathWithParams(currentLibraryPath, { notice: null, edited: null }));
+    window.history.replaceState(window.history.state, "", pathWithParams(currentLibraryPath, { notice: null, edited: null, title: null }));
   }, [isLibrary, currentLibraryPath]);
   // Keyboard users keep their place: after an edit, focus returns to that task's title link.
   useEffect(() => {
@@ -1180,9 +1298,9 @@ export default function Planner({ data }: { data: PlannerData }) {
     {error && <Alert className="workflow-alert" tone="error"><p>{error}</p>{sharedListUnavailable && <Button onClick={() => setLibraryRetry(value => value + 1)}>Reload shared tasks</Button>}</Alert>}
     {categoriesError && <Alert className="workflow-alert" tone="warning"><p>Category information is unavailable. Saved tasks remain accessible, and existing assignments are unchanged.</p><Button onClick={() => void refreshCategories().catch(() => undefined)}>Retry categories</Button></Alert>}
     {libraryLayoutError && <Alert className="workflow-alert" tone="warning"><p>{libraryLayoutError} Saved tasks remain accessible; temporary layout changes apply only in this browser.</p><Button onClick={() => void reloadLibraryLayout(true).catch(() => undefined)} disabled={libraryLayoutLoading} loading={libraryLayoutLoading}>Retry layout loading</Button></Alert>}
-    {browserSaved.length > 0 && <Card className={styles.browserSyncCard}>
+    {pendingBrowserSaved.length > 0 && <Card className={styles.browserSyncCard}>
       <div className={styles.browserSyncHeader}>
-        <div><h2>{browserSaved.length} task{browserSaved.length === 1 ? "" : "s"} saved in this browser</h2><p>Shared sync is pending. Sync {browserSaved.length === 1 ? "it" : "them"} to make {browserSaved.length === 1 ? "it" : "them"} available to everyone who visits this site.</p></div>
+        <div><h2>{pendingBrowserSaved.length} task{pendingBrowserSaved.length === 1 ? "" : "s"} saved in this browser</h2><p>Shared sync is pending. Sync {pendingBrowserSaved.length === 1 ? "it" : "them"} to make {pendingBrowserSaved.length === 1 ? "it" : "them"} available to everyone who visits this site.</p></div>
         <Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync to shared library</Button>
       </div>
       <p className={styles.browserSyncNote}>Download a backup before clearing browser data.</p>
@@ -1226,7 +1344,8 @@ export default function Planner({ data }: { data: PlannerData }) {
             onSetImplementor={modelId => handleSetImplementor(item, modelId)}
             canMoveUp={index > 0} canMoveDown={index < group.tasks.length - 1} reorderDisabled={reorderDisabled}
             onMove={direction => void handleMoveSavedTask(group.id, taskId, direction)}
-            detailError={libraryDetailErrors[taskId]} loading={libraryLoading.includes(taskId)} onLoadComparison={() => loadLibraryComparison(taskId)} />;
+            detailError={libraryDetailErrors[taskId]} loading={libraryLoading.includes(taskId)} onLoadComparison={() => loadLibraryComparison(taskId)}
+            keptLocal={!!localComparison?.shared_deleted_at} onDelete={() => handleDeleteTask(item)} />;
         })}</div>}
       </section>;
       })}</div>}
@@ -1247,9 +1366,10 @@ export default function Planner({ data }: { data: PlannerData }) {
       <p>Category: {!categoriesLoaded && active.category_id ? "Category unavailable" : categories.find(category => category.id === active.category_id)?.name ?? "Uncategorized"}</p>
       </PageHeader>
       <div className="toolbar"><Button onClick={() => { setCategoryId(active.category_id ?? ""); setEditing(true); }}>Edit settings</Button><LinkButton variant="primary" href={createTaskHref}>New task</LinkButton><Link href={libraryReturnPath}>Saved tasks library</Link></div>
-      <Alert className="workflow-alert" tone={browserSaved.some(item => item.task.id === active.task.id && item.task.updated_at >= active.task.updated_at) ? "warning" : "success"} role="status" live="polite">{browserSaved.some(item => item.task.id === active.task.id && item.task.updated_at >= active.task.updated_at) ? "Saved in this browser · shared sync pending. Keep a backup before clearing browser data or switching devices." : "Saved to the shared library."}</Alert>
+      <Alert className="workflow-alert" tone={active.shared_deleted_at ? "info" : browserSaved.some(item => item.task.id === active.task.id && item.task.updated_at >= active.task.updated_at) ? "warning" : "success"} role="status" live="polite">{active.shared_deleted_at ? "Deleted from the shared library. This copy is kept in this browser only. Download a backup to keep a copy outside this browser." : browserSaved.some(item => item.task.id === active.task.id && item.task.updated_at >= active.task.updated_at) ? "Saved in this browser · shared sync pending. Keep a backup before clearing browser data or switching devices." : "Saved to the shared library."}</Alert>
       {categoriesError && <Alert className="workflow-alert" tone="warning"><p>Category information is unavailable. The saved comparison is still available.</p><Button onClick={() => void refreshCategories().catch(() => undefined)}>Retry categories</Button></Alert>}
-      <div className="toolbar"><Button onClick={() => downloadBackup(currentCategoryBackup(active, categories, categoriesLoaded))}>Download backup</Button>{browserSaved.some(item => item.task.id === active.task.id) && <Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync browser tasks to shared library</Button>}</div>
+      <div className="toolbar"><Button onClick={() => downloadBackup(currentCategoryBackup(active, categories, categoriesLoaded))} disabled={reviewDeleting}>Download backup</Button>{pendingBrowserSaved.some(item => item.task.id === active.task.id) && <Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved || reviewDeleting} loading={syncingBrowserSaved}>Sync browser tasks to shared library</Button>}<Button variant="destructive" aria-label={`Delete ${active.task.title}`} disabled={reviewDeleting} loading={reviewDeleting} onClick={() => void handleDeleteReviewed()}>Delete</Button></div>
+      {reviewDeleteError && <Alert className={styles.taskActionError} tone="error">{reviewDeleteError}</Alert>}
       {notice && <Alert className="workflow-alert" tone="info" role="status" live="polite">{notice}</Alert>}
       {error && <Alert className="workflow-alert" tone="error">{error}</Alert>}
       {comparisonError ? <Alert className="workflow-alert" tone="error">{comparisonError}</Alert> : <Card><h2>Model comparison</h2><SuitabilityComparison data={active} rows={rows} evaluationIds={active.task.evaluation_weights.map(weight => weight.evaluation_id)} highlightModelId={active.task.implementor_model_id ?? null} /></Card>}
@@ -1268,7 +1388,7 @@ export default function Planner({ data }: { data: PlannerData }) {
     {active?.candidates.some(candidate => !candidate.source_model_ids) && <Alert className="workflow-alert" tone="info">This saved task keeps its original model matching. <Link href="/suitability">Create a new task</Link> to compare models across known alternate sheet labels.</Alert>}
     {error && <Alert className="workflow-alert" tone="error">{error}</Alert>}
     {categoriesError && <Alert className="workflow-alert" tone="warning"><p>Category information is unavailable. The task can still be edited and saved.</p><Button onClick={() => void refreshCategories().catch(() => undefined)}>Retry categories</Button></Alert>}
-    {browserSaved.length > 0 && <Card><h2>Browser-saved tasks</h2><p>{browserSaved.length} task{browserSaved.length === 1 ? " is" : "s are"} saved in this browser with shared sync pending.</p><Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync browser tasks to shared library</Button></Card>}
+    {pendingBrowserSaved.length > 0 && <Card><h2>Browser-saved tasks</h2><p>{pendingBrowserSaved.length} task{pendingBrowserSaved.length === 1 ? " is" : "s are"} saved in this browser with shared sync pending.</p><Button onClick={syncBrowserTasks} disabled={syncingBrowserSaved} loading={syncingBrowserSaved}>Sync browser tasks to shared library</Button></Card>}
     <Card className="ui-workflow-sheet">
       <Section className="ui-workflow-step"><h2>1. Describe the task</h2>
       <div className="ui-form-grid">

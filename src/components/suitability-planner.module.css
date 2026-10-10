@@ -1212,6 +1212,20 @@
   margin-top: var(--space-3);
 }
 
+.taskKeptNotice {
+  margin-top: var(--space-4);
+}
+
+.taskDeleteRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-4);
+}
+
+.taskDeleteRow > .taskDeleteButton {
+  color: var(--error);
+}
+
 .inlineComparison {
   margin-top: var(--space-4);
   border-top: var(--border-width-default) var(--border-style) var(--border-default);
