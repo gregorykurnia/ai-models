@@ -129,9 +129,13 @@ async function assignSharedTaskCategory(taskId: string, categoryId: string | nul
   return payload as { category_id: string | null; category_name: string | null; category_revision: number; updated_at: string };
 }
 
+/** No shared copy exists yet, which is expected for a browser-only task. */
+class SharedTaskNotFoundError extends Error {}
+
 async function fetchSharedComparison(taskId: string) {
   const response = await fetch(`/api/suitability/tasks?taskId=${encodeURIComponent(taskId)}`, { cache: "no-store", signal: AbortSignal.timeout(30000) });
   const payload = await response.json().catch(() => null);
+  if (response.status === 404) throw new SharedTaskNotFoundError(typeof payload?.error === "string" ? payload.error : "This shared task could not be found.");
   if (!response.ok) throw new Error(typeof payload?.error === "string" ? payload.error : `Shared task request failed (${response.status}).`);
   return readSavedTasks(JSON.stringify([payload]))[0];
 }
@@ -142,6 +146,22 @@ function loadErrorMessage(cause: unknown, fallback: string) {
   if (/abort/i.test(message)) return "The request was interrupted before the saved tasks loaded. Reload and try again.";
   return message || fallback;
 }
+
+/** Sets or removes (null) query parameters on an internal path. */
+function pathWithParams(path: string, params: Record<string, string | null>) {
+  const url = new URL(path, "http://localhost");
+  for (const [key, value] of Object.entries(params)) {
+    if (value === null) url.searchParams.delete(key);
+    else url.searchParams.set(key, value);
+  }
+  return `${url.pathname}${url.search}`;
+}
+
+/** Fixed copy for the `notice` query parameter the library reads after an edit. */
+const libraryNotices = {
+  saved: { tone: "success", message: "Saved to the shared library." },
+  "browser-saved": { tone: "warning", message: "Saved in this browser. Shared sync is pending. Download a backup to keep a copy outside this browser." },
+} as const;
 
 function summarizeComparison(comparison: SavedComparison): SavedTaskSummary {
   let preview: SavedTaskSummary["preview"] = null;
@@ -374,7 +394,7 @@ function SavedTaskEntry({
   return <Card as="article" className={styles.savedTaskEntry}>
     <div className={styles.taskHeader}>
       <div className={styles.taskHeading}>
-        <h2 className={styles.taskTitle}><Link href={`/suitability/${summary.task.id}?returnTo=${encodeURIComponent(returnTo)}`}>{summary.task.title}</Link></h2>
+        <h2 className={styles.taskTitle}><Link id={`saved-task-title-${summary.task.id}`} href={`/suitability/${summary.task.id}?returnTo=${encodeURIComponent(returnTo)}`}>{summary.task.title}</Link></h2>
         <details className={styles.taskRequest}>
           <summary className={styles.taskDescription}>{summary.task.request}</summary>
         </details>
@@ -415,6 +435,7 @@ function SavedTaskEntry({
     </div> : <p className={styles.taskMissingPreview}>Pinned model results are unavailable. Open the comparison to inspect the saved task.</p>}
 
     <div className={styles.taskActions}>
+      <LinkButton variant="secondary" href={`/suitability/${summary.task.id}?edit=1&returnTo=${encodeURIComponent(returnTo)}`} aria-label={`Edit settings for ${summary.task.title}`}>Edit settings</LinkButton>
       <LinkButton variant="secondary" href={`/suitability/${summary.task.id}?returnTo=${encodeURIComponent(returnTo)}`}>Open comparison <span aria-hidden="true">↗</span></LinkButton>
       <Button variant="quiet" size="compact" loading={backupLoading} onClick={() => void handleBackup()}>Download backup</Button>
       <label className={styles.categoryPicker}>Change category<Select aria-label={`Category for ${summary.task.title}`} value={categoryId} disabled={categorySaving || !categoriesLoaded} onChange={event => void handleCategoryChange(event.target.value)}>
@@ -490,7 +511,9 @@ export default function Planner({ data }: { data: PlannerData }) {
   const [saving, setSaving] = useState(false);
   const [syncingBrowserSaved, setSyncingBrowserSaved] = useState(false);
   const [notice, setNotice] = useState("");
+  const [libraryNotice, setLibraryNotice] = useState<{ tone: "success" | "warning"; message: string } | null>(null);
   const openedPath = useRef("");
+  const editedTaskToFocus = useRef("");
   const appliedCategoryPrefill = useRef("");
   const previousComparison = useRef("");
   const libraryDetailRequests = useRef(new Map<string, Promise<SavedComparison>>());
@@ -498,11 +521,14 @@ export default function Planner({ data }: { data: PlannerData }) {
   const selectedCategoryIds = searchParams.getAll("category");
   const returnTo = searchParams.get("returnTo");
   const libraryReturnPath = returnTo?.startsWith("/suitability/saved") ? returnTo : "/suitability/saved";
+  const editRequested = isReview && searchParams.get("edit") === "1";
+  const editFromLibrary = editRequested && !!returnTo?.startsWith("/suitability/saved");
   const currentLibraryPath = `${path}${searchParams.toString() ? `?${searchParams.toString()}` : ""}`;
   const createTaskHref = isLibrary ? `/suitability?returnTo=${encodeURIComponent(currentLibraryPath)}` : `/suitability?returnTo=${encodeURIComponent(libraryReturnPath)}`;
   const categoryPrefill = !isLibrary && !isReview ? searchParams.get("category") ?? "" : "";
 
   const replaceLibraryUrl = (query: string, selected: string[]) => {
+    setLibraryNotice(null);
     const params = new URLSearchParams(searchParams.toString());
     params.delete("q"); params.delete("category");
     if (query.trim()) params.set("q", query);
@@ -543,7 +569,7 @@ export default function Planner({ data }: { data: PlannerData }) {
   useEffect(() => {
     let cancelled = false;
     if (openedPath.current !== path) { recordSuitabilityEvent("planner_opened"); openedPath.current = path; }
-    setReady(false); setError(""); setNotice(""); setEditing(false);
+    setReady(false); setError(""); setNotice(""); setLibraryNotice(null); setEditing(false);
     setCategories([]); setCategoriesLoaded(false); setCategoriesError("");
     setLibraryLayout(null); setLibraryLayoutError(""); setLibraryLayoutLoading(false); setLibraryLayoutSaving(false);
     libraryLayoutSavingRef.current = false;
@@ -613,11 +639,17 @@ export default function Planner({ data }: { data: PlannerData }) {
         activate(match);
       } catch (cause) {
         if (cancelled) return;
+        if (localMatch && cause instanceof SharedTaskNotFoundError) { activate(localMatch); return; }
         activate(localMatch, `Shared task could not be loaded. ${loadErrorMessage(cause, "The database could not be reached.")}`);
       }
     })();
     return () => { cancelled = true; };
   }, [path, data.candidates, taskId, isLibrary, libraryRetry]);
+
+  // Declared after the mount effect, which resets editing on every path change, so edit=1 wins.
+  useEffect(() => {
+    if (editRequested) setEditing(true);
+  }, [path, editRequested]);
 
   const loadLibraryComparison = (sharedTaskId: string) => {
     const existing = libraryDetails[sharedTaskId];
@@ -827,6 +859,10 @@ export default function Planner({ data }: { data: PlannerData }) {
       setBrowserSaved(previous => locallySaved ? [pinned, ...previous.filter(item => item.task.id !== task.id)] : previous.filter(item => item.task.id !== task.id));
       setNotice(sharedSaved ? "Saved to the shared library." : "Saved in this browser. Shared sync is pending. Download a backup to keep a copy outside this browser.");
       setEditing(false);
+      if (editFromLibrary) {
+        router.replace(pathWithParams(libraryReturnPath, { notice: sharedSaved ? "saved" : "browser-saved", edited: task.id }), { scroll: false });
+        return;
+      }
       const backQuery = returnTo?.startsWith("/suitability/saved") ? `?returnTo=${encodeURIComponent(returnTo)}` : "";
       router.replace(`/suitability/${task.id}${backQuery}`, { scroll: false });
     } catch (cause) { setError(cause instanceof Error ? cause.message : "Task could not be saved to the shared database. Your current selections are still visible."); }
@@ -1079,6 +1115,25 @@ export default function Planner({ data }: { data: PlannerData }) {
       setNotice("A selected category was removed. Its tasks are now Uncategorized.");
     }
   }, [isLibrary, categoriesLoaded, categories, searchParams]);
+  // Reads the confirmation after an edit returns here, then strips it so a refresh does not repeat it.
+  // replaceState, not router.replace: a router navigation reloads the page data and would clear the notice.
+  useEffect(() => {
+    if (!isLibrary) return;
+    const notice = searchParams.get("notice");
+    const edited = searchParams.get("edited");
+    if (!notice && !edited) return;
+    const known = notice !== null && Object.prototype.hasOwnProperty.call(libraryNotices, notice);
+    setLibraryNotice(known ? libraryNotices[notice as keyof typeof libraryNotices] : null);
+    editedTaskToFocus.current = edited ?? "";
+    window.history.replaceState(window.history.state, "", pathWithParams(currentLibraryPath, { notice: null, edited: null }));
+  }, [isLibrary, currentLibraryPath]);
+  // Keyboard users keep their place: after an edit, focus returns to that task's title link.
+  useEffect(() => {
+    if (!isLibrary || !ready || !editedTaskToFocus.current) return;
+    const title = document.getElementById(`saved-task-title-${editedTaskToFocus.current}`);
+    editedTaskToFocus.current = "";
+    title?.focus();
+  }, [isLibrary, ready, libraryTasks]);
   const sharedListUnavailable = error.startsWith("Shared tasks could not be loaded.");
 
   if (!ready) return <div className="ui-loading-state"><Spinner label="Loading saved tasks" /><span>Loading saved tasks…</span></div>;
@@ -1132,6 +1187,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       </div>
       <p className={styles.browserSyncNote}>Download a backup before clearing browser data.</p>
     </Card>}
+    {libraryNotice && <Alert className="workflow-alert" tone={libraryNotice.tone} role="status" live="polite">{libraryNotice.message}</Alert>}
     {libraryTasks.length > 0 && <div className={styles.libraryResultsStatus} aria-live="polite"><span>Showing {groupedLibrary.filteredCount} of {libraryTotal} tasks</span>
       <div className={styles.libraryFilterChips}>
         {selectedCategoryIds.map(id => <span className={styles.libraryFilterChip} key={id}>{id === "__uncategorized__" ? "Uncategorized" : filterCategories.find(category => category.id === id)?.name ?? "Category unavailable"}
@@ -1208,7 +1264,7 @@ export default function Planner({ data }: { data: PlannerData }) {
     <h1>{active ? `Edit ${active.task.title}` : "Find the best model for a task."}</h1>
     <p>Choose source rankings and priorities, then compare models with transparent coverage and pinned cost context. Browser saves work while shared storage is unavailable and stay on this browser and device.</p>
     </PageHeader>
-    <div className="toolbar"><Link href={isReview ? libraryReturnPath : "/suitability/saved"}>Saved tasks library</Link>{isReview && <Button variant="quiet" onClick={() => { setCategoryId(active?.category_id ?? ""); setEditing(false); }}>Cancel editing</Button>}</div>
+    <div className="toolbar"><Link href={isReview ? libraryReturnPath : "/suitability/saved"}>{editFromLibrary ? "Back to saved tasks" : "Saved tasks library"}</Link>{isReview && <Button variant="quiet" onClick={() => { setCategoryId(active?.category_id ?? ""); if (editFromLibrary) router.replace(libraryReturnPath, { scroll: false }); else setEditing(false); }}>Cancel editing</Button>}</div>
     {active?.candidates.some(candidate => !candidate.source_model_ids) && <Alert className="workflow-alert" tone="info">This saved task keeps its original model matching. <Link href="/suitability">Create a new task</Link> to compare models across known alternate sheet labels.</Alert>}
     {error && <Alert className="workflow-alert" tone="error">{error}</Alert>}
     {categoriesError && <Alert className="workflow-alert" tone="warning"><p>Category information is unavailable. The task can still be edited and saved.</p><Button onClick={() => void refreshCategories().catch(() => undefined)}>Retry categories</Button></Alert>}
