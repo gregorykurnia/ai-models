@@ -2,25 +2,16 @@ import { randomUUID } from "node:crypto";
 import { adminDb } from "@/lib/admin";
 import { calculateSuitability, suitabilityTaskSchema, type SuitabilityEntry } from "@/lib/suitability";
 import { savedComparisonSchema, savedTaskSummarySchema, type SavedComparison, type SavedTaskSummary } from "@/lib/suitability-storage";
-import { FieldValue, type DocumentReference, type DocumentSnapshot } from "firebase-admin/firestore";
+import { FieldValue, type DocumentSnapshot } from "firebase-admin/firestore";
 import { masterIdentityKey } from "@/lib/master";
 import { getIntelligenceIndexTaskCost, getIntelligenceIndexTaskCostCapturedAt } from "@/lib/intelligence-index-costs";
+import { assertSharedTaskAcceptsWrites, isLiveSharedTask, SHARED_TASK_DELETED_CODE, SharedTaskDeletedError } from "@/lib/suitability-task-deletion";
+import { removeVersion } from "@/lib/suitability-shared-versions";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const taskCollection = () => adminDb().collection("sharedSuitabilityTasks");
-
-async function removeVersion(taskRef: DocumentReference, version: string) {
-  const versionRef = taskRef.collection("versions").doc(version);
-  const chunks = await versionRef.collection("entryChunks").get();
-  for (let start = 0; start < chunks.docs.length; start += 450) {
-    const batch = adminDb().batch();
-    chunks.docs.slice(start, start + 450).forEach(doc => batch.delete(doc.ref));
-    await batch.commit();
-  }
-  await versionRef.delete();
-}
 
 async function readComparison(snapshot: DocumentSnapshot): Promise<SavedComparison> {
   const data = snapshot.data()!;
@@ -61,7 +52,7 @@ export async function GET(request: Request) {
     if (taskId !== null) {
       if (!/^[A-Za-z0-9_-]{1,128}$/.test(taskId)) return Response.json({ error: "The task ID is invalid." }, { status: 400 });
       const snapshot = await taskCollection().doc(taskId).get();
-      if (!snapshot.exists || typeof snapshot.data()?.active_version !== "string")
+      if (!snapshot.exists || !isLiveSharedTask(snapshot.data()))
         return Response.json({ error: "This shared task could not be found." }, { status: 404 });
       const comparison = await readComparison(snapshot);
       return Response.json(comparison, { headers: { "Cache-Control": "private, no-store" } });
@@ -71,7 +62,7 @@ export async function GET(request: Request) {
     const tasks: SavedTaskSummary[] = [];
     for (const snapshot of snapshots.docs) {
       const data = snapshot.data();
-      if (typeof data.active_version !== "string") continue;
+      if (!isLiveSharedTask(data)) continue;
       const task = suitabilityTaskSchema.parse(data.task);
       tasks.push(savedTaskSummarySchema.parse({
         task: {
@@ -159,6 +150,7 @@ export async function POST(request: Request) {
       await adminDb().runTransaction(async transaction => {
         const existing = await transaction.get(ref);
         const previousData = existing.data();
+        assertSharedTaskAcceptsWrites(previousData);
         const currentRevision = Number(previousData?.category_revision ?? 0);
         if (existing.exists && currentRevision !== Number(comparison.category_revision ?? 0))
           throw new Error("This task's category changed while you were editing. Reload the comparison and try again.");
@@ -201,6 +193,8 @@ export async function POST(request: Request) {
     return Response.json({ taskId, category_revision: savedCategoryRevision, category_name: savedCategoryName }, { headers: { "Cache-Control": "private, no-store" } });
   } catch (cause) {
     const quotaExceeded=(cause as {code?:number}).code===8;
+    if (cause instanceof SharedTaskDeletedError)
+      return Response.json({ error: cause.message, code: SHARED_TASK_DELETED_CODE }, { status: 409 });
     if (cause instanceof Error && /category changed|category is no longer available/.test(cause.message))
       return Response.json({ error: cause.message }, { status: 409 });
     return Response.json({ error: quotaExceeded

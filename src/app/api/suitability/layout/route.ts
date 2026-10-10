@@ -1,11 +1,14 @@
 import { FieldValue } from "firebase-admin/firestore";
 import { adminDb } from "@/lib/admin";
 import {
+  collectSavedTaskMembership,
   emptySavedTaskLayout,
   savedTaskLayoutOperationSchema,
   savedTaskLayoutSchema,
+  type CategoryMembership,
   type SavedTaskLayout,
   type SavedTaskLayoutEntry,
+  type TaskInfo,
   UNCATEGORIZED_LAYOUT_ID,
 } from "@/lib/suitability-layout";
 
@@ -16,9 +19,6 @@ const layoutDocument = () => adminDb().collection("sharedSuitabilityLayouts").do
 const taskCollection = () => adminDb().collection("sharedSuitabilityTasks");
 const categoryCollection = () => adminDb().collection("sharedSuitabilityCategories");
 
-type TaskInfo = { id: string; updatedAt: string; categoryId: string };
-type CategoryMembership = Map<string, TaskInfo[]>;
-
 function readStoredLayout(snapshot: FirebaseFirestore.DocumentSnapshot): SavedTaskLayout {
   const parsed = savedTaskLayoutSchema.safeParse({
     revision: snapshot.get("revision") ?? 0,
@@ -27,30 +27,14 @@ function readStoredLayout(snapshot: FirebaseFirestore.DocumentSnapshot): SavedTa
   return parsed.success ? parsed.data : emptySavedTaskLayout();
 }
 
-function taskOrder(a: TaskInfo, b: TaskInfo) {
-  return b.updatedAt.localeCompare(a.updatedAt) || a.id.localeCompare(b.id);
-}
-
 function collectMembership(
   taskSnapshots: FirebaseFirestore.QuerySnapshot,
   categorySnapshots: FirebaseFirestore.QuerySnapshot,
 ): CategoryMembership {
-  const activeCategoryIds = new Set(categorySnapshots.docs.map(snapshot => snapshot.id));
-  const membership: CategoryMembership = new Map(
-    [...activeCategoryIds, UNCATEGORIZED_LAYOUT_ID].map(id => [id, []]),
+  return collectSavedTaskMembership(
+    taskSnapshots.docs.map(snapshot => ({ id: snapshot.id, data: snapshot.data() })),
+    categorySnapshots.docs.map(snapshot => snapshot.id),
   );
-  for (const snapshot of taskSnapshots.docs) {
-    const data = snapshot.data();
-    if (typeof data.active_version !== "string") continue;
-    const task = data.task as { updated_at?: unknown } | undefined;
-    if (typeof task?.updated_at !== "string") continue;
-    const requestedCategory = typeof data.category_id === "string" ? data.category_id : null;
-    const categoryId = requestedCategory && activeCategoryIds.has(requestedCategory)
-      ? requestedCategory : UNCATEGORIZED_LAYOUT_ID;
-    membership.get(categoryId)!.push({ id: snapshot.id, updatedAt: task.updated_at, categoryId });
-  }
-  for (const tasks of membership.values()) tasks.sort(taskOrder);
-  return membership;
 }
 
 function reconcileEntry(entry: SavedTaskLayoutEntry | undefined, members: TaskInfo[]): SavedTaskLayoutEntry {

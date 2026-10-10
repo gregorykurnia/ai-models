@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { isLiveSharedTask } from "./suitability-task-deletion";
 
 export const UNCATEGORIZED_LAYOUT_ID = "__uncategorized__";
 export const SAVED_TASK_LAYOUT_STORAGE_KEY = "model-benchmarks:suitability:layout:v1";
@@ -38,4 +39,36 @@ export type SavedTaskLayoutOperation = z.infer<typeof savedTaskLayoutOperationSc
 
 export function emptySavedTaskLayout(): SavedTaskLayout {
   return { revision: 0, categories: {} };
+}
+
+export type TaskInfo = { id: string; updatedAt: string; categoryId: string };
+export type CategoryMembership = Map<string, TaskInfo[]>;
+
+function taskOrder(a: TaskInfo, b: TaskInfo) {
+  return b.updatedAt.localeCompare(a.updatedAt) || a.id.localeCompare(b.id);
+}
+
+/**
+ * Groups live shared tasks under their active category, most recently updated first.
+ * Tombstoned, unversioned, and unknown-category tasks are handled here, so the layout route and tests share one rule.
+ */
+export function collectSavedTaskMembership(
+  tasks: ReadonlyArray<{ id: string; data: Record<string, unknown> | undefined }>,
+  activeCategoryIds: readonly string[],
+): CategoryMembership {
+  const activeCategories = new Set(activeCategoryIds);
+  const membership: CategoryMembership = new Map(
+    [...activeCategories, UNCATEGORIZED_LAYOUT_ID].map(id => [id, []]),
+  );
+  for (const { id, data } of tasks) {
+    if (!data || !isLiveSharedTask(data)) continue;
+    const task = data.task as { updated_at?: unknown } | undefined;
+    if (typeof task?.updated_at !== "string") continue;
+    const requestedCategory = typeof data.category_id === "string" ? data.category_id : null;
+    const categoryId = requestedCategory && activeCategories.has(requestedCategory)
+      ? requestedCategory : UNCATEGORIZED_LAYOUT_ID;
+    membership.get(categoryId)!.push({ id, updatedAt: task.updated_at, categoryId });
+  }
+  for (const members of membership.values()) members.sort(taskOrder);
+  return membership;
 }
