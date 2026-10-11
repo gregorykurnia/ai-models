@@ -57,11 +57,6 @@ const evaluationConfigs: EvaluationConfig[] = [
   { id: "gdpval-aa-v2-1", capture: "gdpval-aa", chart: "GDPval-AA v2.1 Leaderboard", costChart: "GDPval-AA v2.1: Cost per Task", eloSeries: true },
   { id: "automationbench-aa", capture: "automationbench-aa", chart: "AutomationBench-AA: Score", costChart: "AutomationBench-AA: Cost per Task" },
   { id: "terminal-bench-4-0", capture: "terminalbench-4-0", chart: "Terminal-Bench 4.0: Score", costChart: "Terminal-Bench 4.0: Cost per Task" },
-  // AA publishes these Terminal-Bench variants as separate leaderboards with their own model sets, so a model
-  // missing from 4.0 can still have a score on one of them.
-  { id: "terminal-bench-2-1", capture: "terminalbench-2-1", chart: "Terminal-Bench 2.1: Score", costChart: "Terminal-Bench 2.1: Cost per Task", definition: percentageEvaluation("terminal-bench-2-1", "Terminal-Bench 2.1", "https://artificialanalysis.ai/evaluations/terminalbench-2-1") },
-  { id: "terminal-bench-hard", capture: "terminalbench-hard", chart: "Terminal-Bench Hard: Score", costChart: "Terminal-Bench Hard: Cost per Task", definition: percentageEvaluation("terminal-bench-hard", "Terminal-Bench Hard", "https://artificialanalysis.ai/evaluations/terminalbench-hard") },
-  { id: "terminal-bench-science-0-1", capture: "terminal-bench-science", chart: "Terminal-Bench-Science 0.1: Score", costChart: "Terminal-Bench-Science 0.1: Score vs. Cost per Task", definition: percentageEvaluation("terminal-bench-science-0-1", "Terminal-Bench-Science 0.1", "https://artificialanalysis.ai/evaluations/terminal-bench-science") },
   { id: "scicode", capture: "scicode", chart: "SciCode: Score", costChart: "SciCode: Cost per Task" },
   { id: "humanity-s-last-exam", capture: "humanitys-last-exam", chart: "Humanity's Last Exam: Score", costChart: "Humanity's Last Exam: Cost per Task" },
   { id: "gdp-pdf", capture: "gdp-pdf", chart: "GDP.pdf: All-pass Rate", costChart: "GDP.pdf: Cost per Task" },
