@@ -357,7 +357,7 @@
     {
       "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
       "provider": "Z AI",
-      "name": "GLM 5.3 Flash",
+      "name": "GLM-5.3-Flash",
       "rubric_score": 0.4635897435897436,
       "source_row": 50
     },
@@ -637,7 +637,7 @@
     {
       "id": "46f11cdf-1725-4abb-b39b-bd6bd948149c",
       "provider": "China Mobile",
-      "name": "JT-4.1 Flash 236B A21B",
+      "name": "JT-4.1 Flash 236B A21B (Reasoning)",
       "rubric_score": 0.26565656565656565,
       "source_row": 117
     },
@@ -861,7 +861,7 @@
     {
       "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
       "provider": "Kimi",
-      "name": "Kimi K2.6",
+      "name": "Kimi K2.6 (Reasoning)",
       "rubric_score": 0.20606060606060606,
       "source_row": 142
     },
@@ -903,7 +903,7 @@
     {
       "id": "00f1248e-78e3-4230-8dc8-5e13ba8645e2",
       "provider": "Xiaomi",
-      "name": "MiMo-V2.5-Pro",
+      "name": "MiMo-V2.5-Pro (Reasoning)",
       "rubric_score": 0.21414141414141413,
       "source_row": 138
     },
@@ -1569,7 +1569,7 @@
       "id": "9e9fb958-87f5-4835-a761-26102ef25898",
       "provider": "Institute of Foundation Models",
       "name": "K2 Horizon 0.9B",
-      "rubric_score": 0.0,
+      "rubric_score": 0,
       "source_row": 224
     }
   ]

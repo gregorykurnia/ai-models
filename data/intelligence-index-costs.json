@@ -1,208 +1,146 @@
 {
-  "source_url": "https://artificialanalysis.ai/models/gpt-6-1-sol-high",
-  "captured_at": "2026-09-30T15:54:13.218Z",
+  "source_url": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
+  "captured_at": "2026-10-11T00:00:00.000Z",
   "metric": "Cost per Intelligence Index task",
-  "metric_path": "intelligenceIndexCostPerTask.cost.total",
-  "model_count": 686,
-  "cost_count": 181,
+  "metric_path": "intelligenceIndexCostPerTask",
+  "model_count": 687,
+  "cost_count": 186,
   "records": [
     {
-      "slug": "qwen3-235b-a22b-instruct-2507-reasoning",
-      "name": "Qwen3 235B A22B 2507 (Reasoning)",
-      "provider": "Alibaba",
-      "cost_usd": 0.08055542892015415,
-      "url": "https://artificialanalysis.ai/models/qwen3-235b-a22b-instruct-2507-reasoning"
-    },
-    {
-      "slug": "qwen3-30b-a3b-2507-reasoning",
-      "name": "Qwen3 30B A3B 2507 (Reasoning)",
-      "provider": "Alibaba",
-      "cost_usd": 0.0765560533905436,
-      "url": "https://artificialanalysis.ai/models/qwen3-30b-a3b-2507-reasoning"
-    },
-    {
-      "slug": "qwen3-coder-next",
-      "name": "Qwen3 Coder Next",
-      "provider": "Alibaba",
-      "cost_usd": 0.5518041274940361,
-      "url": "https://artificialanalysis.ai/models/qwen3-coder-next"
-    },
-    {
-      "slug": "qwen3-5-122b-a10b",
-      "name": "Qwen3.5 122B A10B (Reasoning)",
-      "provider": "Alibaba",
-      "cost_usd": 0.3247468637357143,
-      "url": "https://artificialanalysis.ai/models/qwen3-5-122b-a10b"
-    },
-    {
-      "slug": "qwen3-5-397b-a17b",
-      "name": "Qwen3.5 397B A17B (Reasoning)",
-      "provider": "Alibaba",
-      "cost_usd": 0.47457695829894075,
-      "url": "https://artificialanalysis.ai/models/qwen3-5-397b-a17b"
-    },
-    {
-      "slug": "qwen3-5-9b",
-      "name": "Qwen3.5 9B (Reasoning)",
-      "provider": "Alibaba",
-      "cost_usd": 0.21258346272934256,
-      "url": "https://artificialanalysis.ai/models/qwen3-5-9b"
-    },
-    {
-      "slug": "qwen3-6-27b",
-      "name": "Qwen3.6 27B (Reasoning)",
-      "provider": "Alibaba",
-      "cost_usd": 0.621236893699357,
-      "url": "https://artificialanalysis.ai/models/qwen3-6-27b"
-    },
-    {
-      "slug": "qwen3-6-35b-a3b",
-      "name": "Qwen3.6 35B A3B (Reasoning)",
-      "provider": "Alibaba",
-      "cost_usd": 0.4750534562511306,
-      "url": "https://artificialanalysis.ai/models/qwen3-6-35b-a3b"
-    },
-    {
-      "slug": "qwen3-7-max",
-      "name": "Qwen3.7 Max",
-      "provider": "Alibaba",
-      "cost_usd": 1.1472961597972207,
-      "url": "https://artificialanalysis.ai/models/qwen3-7-max"
-    },
-    {
-      "slug": "qwen3-7-plus",
-      "name": "Qwen3.7 Plus",
-      "provider": "Alibaba",
-      "cost_usd": 0.21702592259078568,
-      "url": "https://artificialanalysis.ai/models/qwen3-7-plus"
-    },
-    {
-      "slug": "qwen3-8-2-4t-a95b",
-      "name": "Qwen3.8 2.4T A95B",
-      "provider": "Alibaba",
-      "cost_usd": 2.1559170502434677,
-      "url": "https://artificialanalysis.ai/models/qwen3-8-2-4t-a95b"
-    },
-    {
-      "slug": "qwen3-8-27b-low",
-      "name": "Qwen3.8 27B (low)",
-      "provider": "Alibaba",
-      "cost_usd": 1.0482225365160391,
-      "url": "https://artificialanalysis.ai/models/qwen3-8-27b-low"
-    },
-    {
-      "slug": "qwen3-8-27b-medium",
-      "name": "Qwen3.8 27B (medium)",
-      "provider": "Alibaba",
-      "cost_usd": 1.133063774030521,
-      "url": "https://artificialanalysis.ai/models/qwen3-8-27b-medium"
-    },
-    {
-      "slug": "qwen3-8-27b-non-reasoning",
-      "name": "Qwen3.8 27B (Non-reasoning)",
-      "provider": "Alibaba",
-      "cost_usd": 2.487757391889078,
-      "url": "https://artificialanalysis.ai/models/qwen3-8-27b-non-reasoning"
-    },
-    {
-      "slug": "qwen3-8-27b",
-      "name": "Qwen3.8 27B (xhigh)",
-      "provider": "Alibaba",
-      "cost_usd": 1.0073149536565944,
-      "url": "https://artificialanalysis.ai/models/qwen3-8-27b"
-    },
-    {
-      "slug": "qwen3-8-max-0803",
-      "name": "Qwen3.8 Max",
-      "provider": "Alibaba",
-      "cost_usd": 2.6699848505343478,
-      "url": "https://artificialanalysis.ai/models/qwen3-8-max-0803"
-    },
-    {
-      "slug": "qwen3-8-max",
-      "name": "Qwen3.8 Max (0902)",
-      "provider": "Alibaba",
-      "cost_usd": 5.408509428374016,
-      "url": "https://artificialanalysis.ai/models/qwen3-8-max"
-    },
-    {
-      "slug": "qwen3-8-flash-next",
-      "name": "Qwen3.8-Flash-Next",
-      "provider": "Alibaba",
-      "cost_usd": 0.3721760025302965,
-      "url": "https://artificialanalysis.ai/models/qwen3-8-flash-next"
-    },
-    {
-      "slug": "claude-4-5-haiku-reasoning",
-      "name": "Claude 4.5 Haiku (Reasoning)",
+      "slug": "claude-opus-5-5",
+      "name": "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
       "provider": "Anthropic",
-      "cost_usd": 0.27682075830176456,
-      "url": "https://artificialanalysis.ai/models/claude-4-5-haiku-reasoning"
+      "cost_usd": 5.982012019521066,
+      "url": "https://artificialanalysis.ai/models/claude-opus-5-5",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "claude-4-5-sonnet-thinking",
-      "name": "Claude 4.5 Sonnet (Reasoning)",
+      "slug": "claude-sonnet-5-5",
+      "name": "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
       "provider": "Anthropic",
-      "cost_usd": 0.5565810659988739,
-      "url": "https://artificialanalysis.ai/models/claude-4-5-sonnet-thinking"
+      "cost_usd": 5.4608525948098325,
+      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "claude-fable-5",
-      "name": "Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback)",
+      "slug": "claude-opus-5-5-xhigh",
+      "name": "Claude Opus 5.5 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
       "provider": "Anthropic",
-      "cost_usd": 8.745961651687406,
-      "url": "https://artificialanalysis.ai/models/claude-fable-5"
+      "cost_usd": 3.459110175822289,
+      "url": "https://artificialanalysis.ai/models/claude-opus-5-5-xhigh",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "claude-fable-5-1-high",
-      "name": "Claude Fable 5.1 (Adaptive Reasoning, High Effort, Default Fallback)",
+      "slug": "claude-opus-5-5-high",
+      "name": "Claude Opus 5.5 (Adaptive Reasoning, High Effort, Default Fallback)",
       "provider": "Anthropic",
-      "cost_usd": 3.912526554325558,
-      "url": "https://artificialanalysis.ai/models/claude-fable-5-1-high"
-    },
-    {
-      "slug": "claude-fable-5-1-low",
-      "name": "Claude Fable 5.1 (Adaptive Reasoning, Low Effort, Default Fallback)",
-      "provider": "Anthropic",
-      "cost_usd": 2.371025320183763,
-      "url": "https://artificialanalysis.ai/models/claude-fable-5-1-low"
+      "cost_usd": 1.822504718771704,
+      "url": "https://artificialanalysis.ai/models/claude-opus-5-5-high",
+      "profile_captured_at": "2026-10-11"
     },
     {
       "slug": "claude-fable-5-1",
       "name": "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
       "provider": "Anthropic",
       "cost_usd": 7.629706364004841,
-      "url": "https://artificialanalysis.ai/models/claude-fable-5-1"
-    },
-    {
-      "slug": "claude-fable-5-1-medium",
-      "name": "Claude Fable 5.1 (Adaptive Reasoning, Medium Effort, Default Fallback)",
-      "provider": "Anthropic",
-      "cost_usd": 2.982597436096585,
-      "url": "https://artificialanalysis.ai/models/claude-fable-5-1-medium"
+      "url": "https://artificialanalysis.ai/models/claude-fable-5-1",
+      "profile_captured_at": "2026-10-11"
     },
     {
       "slug": "claude-fable-5-1-xhigh",
       "name": "Claude Fable 5.1 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
       "provider": "Anthropic",
       "cost_usd": 5.978304247388257,
-      "url": "https://artificialanalysis.ai/models/claude-fable-5-1-xhigh"
+      "url": "https://artificialanalysis.ai/models/claude-fable-5-1-xhigh",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "claude-haiku-5-5-high",
-      "name": "Claude Haiku 5.5 (Adaptive Reasoning, High Effort, Default Fallback)",
+      "slug": "claude-sonnet-5-5-xhigh",
+      "name": "Claude Sonnet 5.5 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
       "provider": "Anthropic",
-      "cost_usd": 0.07942671568737021,
-      "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-high",
-      "profile_captured_at": "2026-10-08"
+      "cost_usd": 2.0120345801545785,
+      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-xhigh",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "claude-haiku-5-5-low",
-      "name": "Claude Haiku 5.5 (Adaptive Reasoning, Low Effort, Default Fallback)",
+      "slug": "claude-opus-5-5-medium",
+      "name": "Claude Opus 5.5 (Adaptive Reasoning, Medium Effort, Default Fallback)",
       "provider": "Anthropic",
-      "cost_usd": 0.02445936101890973,
-      "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-low",
-      "profile_captured_at": "2026-10-08"
+      "cost_usd": 1.3360093438976588,
+      "url": "https://artificialanalysis.ai/models/claude-opus-5-5-medium",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "claude-fable-5-1-high",
+      "name": "Claude Fable 5.1 (Adaptive Reasoning, High Effort, Default Fallback)",
+      "provider": "Anthropic",
+      "cost_usd": 3.912526554325558,
+      "url": "https://artificialanalysis.ai/models/claude-fable-5-1-high",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "claude-opus-5",
+      "name": "Claude Opus 5 (Max)",
+      "provider": "Anthropic",
+      "cost_usd": 5.858396237036018,
+      "url": "https://artificialanalysis.ai/models/claude-opus-5",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "claude-opus-5-xhigh",
+      "name": "Claude Opus 5 (Xhigh)",
+      "provider": "Anthropic",
+      "cost_usd": 4.877843772646787,
+      "url": "https://artificialanalysis.ai/models/claude-opus-5-xhigh",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "claude-fable-5",
+      "name": "Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback)",
+      "provider": "Anthropic",
+      "cost_usd": 8.745961651687406,
+      "url": "https://artificialanalysis.ai/models/claude-fable-5",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "claude-fable-5-1-medium",
+      "name": "Claude Fable 5.1 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+      "provider": "Anthropic",
+      "cost_usd": 2.982597436096585,
+      "url": "https://artificialanalysis.ai/models/claude-fable-5-1-medium",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "claude-opus-5-high",
+      "name": "Claude Opus 5 (High)",
+      "provider": "Anthropic",
+      "cost_usd": 3.6132670078004714,
+      "url": "https://artificialanalysis.ai/models/claude-opus-5-high",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "claude-fable-5-1-low",
+      "name": "Claude Fable 5.1 (Adaptive Reasoning, Low Effort, Default Fallback)",
+      "provider": "Anthropic",
+      "cost_usd": 2.371025320183763,
+      "url": "https://artificialanalysis.ai/models/claude-fable-5-1-low",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "claude-sonnet-5-5-high",
+      "name": "Claude Sonnet 5.5 (Adaptive Reasoning, High Effort, Default Fallback)",
+      "provider": "Anthropic",
+      "cost_usd": 0.8844498581005511,
+      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-high",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "claude-opus-5-medium",
+      "name": "Claude Opus 5 (Medium)",
+      "provider": "Anthropic",
+      "cost_usd": 2.1894793086538695,
+      "url": "https://artificialanalysis.ai/models/claude-opus-5-medium",
+      "profile_captured_at": "2026-10-11"
     },
     {
       "slug": "claude-haiku-5-5",
@@ -210,15 +148,23 @@
       "provider": "Anthropic",
       "cost_usd": 0.21276971216992022,
       "url": "https://artificialanalysis.ai/models/claude-haiku-5-5",
-      "profile_captured_at": "2026-10-08"
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "claude-haiku-5-5-medium",
-      "name": "Claude Haiku 5.5 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+      "slug": "claude-opus-5-5-low",
+      "name": "Claude Opus 5.5 (Adaptive Reasoning, Low Effort, Default Fallback)",
       "provider": "Anthropic",
-      "cost_usd": 0.04703084793955566,
-      "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-medium",
-      "profile_captured_at": "2026-10-08"
+      "cost_usd": 0.551180473909146,
+      "url": "https://artificialanalysis.ai/models/claude-opus-5-5-low",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "claude-opus-4-8",
+      "name": "Claude Opus 4.8 (Max)",
+      "provider": "Anthropic",
+      "cost_usd": 4.080976976477826,
+      "url": "https://artificialanalysis.ai/models/claude-opus-4-8",
+      "profile_captured_at": "2026-10-11"
     },
     {
       "slug": "claude-haiku-5-5-xhigh",
@@ -226,336 +172,503 @@
       "provider": "Anthropic",
       "cost_usd": 0.12378561092096102,
       "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-xhigh",
-      "profile_captured_at": "2026-10-08"
-    },
-    {
-      "slug": "claude-opus-4-8",
-      "name": "Claude Opus 4.8 (Adaptive Reasoning, Max Effort)",
-      "provider": "Anthropic",
-      "cost_usd": 4.080976976477826,
-      "url": "https://artificialanalysis.ai/models/claude-opus-4-8"
-    },
-    {
-      "slug": "claude-opus-5-high",
-      "name": "Claude Opus 5 (Adaptive Reasoning, High Effort)",
-      "provider": "Anthropic",
-      "cost_usd": 3.6132670078004714,
-      "url": "https://artificialanalysis.ai/models/claude-opus-5-high"
-    },
-    {
-      "slug": "claude-opus-5-low",
-      "name": "Claude Opus 5 (Adaptive Reasoning, Low Effort)",
-      "provider": "Anthropic",
-      "cost_usd": 1.098302324514437,
-      "url": "https://artificialanalysis.ai/models/claude-opus-5-low"
-    },
-    {
-      "slug": "claude-opus-5",
-      "name": "Claude Opus 5 (Adaptive Reasoning, Max Effort)",
-      "provider": "Anthropic",
-      "cost_usd": 5.858396237036018,
-      "url": "https://artificialanalysis.ai/models/claude-opus-5"
-    },
-    {
-      "slug": "claude-opus-5-medium",
-      "name": "Claude Opus 5 (Adaptive Reasoning, Medium Effort)",
-      "provider": "Anthropic",
-      "cost_usd": 2.1894793086538695,
-      "url": "https://artificialanalysis.ai/models/claude-opus-5-medium"
-    },
-    {
-      "slug": "claude-opus-5-xhigh",
-      "name": "Claude Opus 5 (Adaptive Reasoning, Xhigh Effort)",
-      "provider": "Anthropic",
-      "cost_usd": 4.877843772646787,
-      "url": "https://artificialanalysis.ai/models/claude-opus-5-xhigh"
-    },
-    {
-      "slug": "claude-opus-5-5-high",
-      "name": "Claude Opus 5.5 (Adaptive Reasoning, High Effort, Default Fallback)",
-      "provider": "Anthropic",
-      "cost_usd": 1.822504718771704,
-      "url": "https://artificialanalysis.ai/models/claude-opus-5-5-high"
-    },
-    {
-      "slug": "claude-opus-5-5-low",
-      "name": "Claude Opus 5.5 (Adaptive Reasoning, Low Effort, Default Fallback)",
-      "provider": "Anthropic",
-      "cost_usd": 0.551180473909146,
-      "url": "https://artificialanalysis.ai/models/claude-opus-5-5-low"
-    },
-    {
-      "slug": "claude-opus-5-5",
-      "name": "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
-      "provider": "Anthropic",
-      "cost_usd": 5.982012019521066,
-      "url": "https://artificialanalysis.ai/models/claude-opus-5-5"
-    },
-    {
-      "slug": "claude-opus-5-5-medium",
-      "name": "Claude Opus 5.5 (Adaptive Reasoning, Medium Effort, Default Fallback)",
-      "provider": "Anthropic",
-      "cost_usd": 1.3360093438976588,
-      "url": "https://artificialanalysis.ai/models/claude-opus-5-5-medium"
-    },
-    {
-      "slug": "claude-opus-5-5-xhigh",
-      "name": "Claude Opus 5.5 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
-      "provider": "Anthropic",
-      "cost_usd": 3.459110175822289,
-      "url": "https://artificialanalysis.ai/models/claude-opus-5-5-xhigh"
-    },
-    {
-      "slug": "claude-sonnet-4-6-adaptive",
-      "name": "Claude Sonnet 4.6 (Adaptive Reasoning, Max Effort)",
-      "provider": "Anthropic",
-      "cost_usd": 2.4858655963942224,
-      "url": "https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive"
-    },
-    {
-      "slug": "claude-sonnet-5-high",
-      "name": "Claude Sonnet 5 (Adaptive Reasoning, High Effort)",
-      "provider": "Anthropic",
-      "cost_usd": 1.7924692244111728,
-      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-high"
-    },
-    {
-      "slug": "claude-sonnet-5-low",
-      "name": "Claude Sonnet 5 (Adaptive Reasoning, Low Effort)",
-      "provider": "Anthropic",
-      "cost_usd": 0.5087545600633299,
-      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-low"
-    },
-    {
-      "slug": "claude-sonnet-5",
-      "name": "Claude Sonnet 5 (Adaptive Reasoning, Max Effort)",
-      "provider": "Anthropic",
-      "cost_usd": 5.091163584815694,
-      "url": "https://artificialanalysis.ai/models/claude-sonnet-5"
-    },
-    {
-      "slug": "claude-sonnet-5-medium",
-      "name": "Claude Sonnet 5 (Adaptive Reasoning, Medium Effort)",
-      "provider": "Anthropic",
-      "cost_usd": 0.9991061406688175,
-      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-medium"
-    },
-    {
-      "slug": "claude-sonnet-5-xhigh",
-      "name": "Claude Sonnet 5 (Adaptive Reasoning, Xhigh Effort)",
-      "provider": "Anthropic",
-      "cost_usd": 2.8720437784323134,
-      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-xhigh"
-    },
-    {
-      "slug": "claude-sonnet-5-5-high",
-      "name": "Claude Sonnet 5.5 (Adaptive Reasoning, High Effort, Default Fallback)",
-      "provider": "Anthropic",
-      "cost_usd": 1.079758672715514,
-      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-high"
-    },
-    {
-      "slug": "claude-sonnet-5-5",
-      "name": "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
-      "provider": "Anthropic",
-      "cost_usd": 7.602633532969859,
-      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5"
+      "profile_captured_at": "2026-10-11"
     },
     {
       "slug": "claude-sonnet-5-5-medium",
       "name": "Claude Sonnet 5.5 (Adaptive Reasoning, Medium Effort, Default Fallback)",
       "provider": "Anthropic",
-      "cost_usd": 0.5861822401191022,
-      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-medium"
+      "cost_usd": 0.48326378260543096,
+      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-medium",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "claude-sonnet-5-5-xhigh",
-      "name": "Claude Sonnet 5.5 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
+      "slug": "claude-opus-5-low",
+      "name": "Claude Opus 5 (Low)",
       "provider": "Anthropic",
-      "cost_usd": 2.742576603824205,
-      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-xhigh"
+      "cost_usd": 1.098302324514437,
+      "url": "https://artificialanalysis.ai/models/claude-opus-5-low",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "apodex-1-1",
-      "name": "Apodex 1.1",
-      "provider": "Apodex",
-      "cost_usd": 0.4637245706928438,
-      "url": "https://artificialanalysis.ai/models/apodex-1-1"
+      "slug": "claude-sonnet-5",
+      "name": "Claude Sonnet 5 (Max)",
+      "provider": "Anthropic",
+      "cost_usd": 5.091163584815694,
+      "url": "https://artificialanalysis.ai/models/claude-sonnet-5",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "trinity-large-thinking",
-      "name": "Trinity Large Thinking",
-      "provider": "Arcee AI",
-      "cost_usd": 0.11883788334567012,
-      "url": "https://artificialanalysis.ai/models/trinity-large-thinking"
+      "slug": "claude-haiku-5-5-high",
+      "name": "Claude Haiku 5.5 (Adaptive Reasoning, High Effort, Default Fallback)",
+      "provider": "Anthropic",
+      "cost_usd": 0.07942671568737021,
+      "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-high",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "celeris-1",
-      "name": "Celeris-1",
-      "provider": "Celeris",
-      "cost_usd": 0.05015755586591194,
-      "url": "https://artificialanalysis.ai/models/celeris-1"
+      "slug": "claude-sonnet-5-5-low",
+      "name": "Claude Sonnet 5.5 (Adaptive Reasoning, Low Effort, Default Fallback)",
+      "provider": "Anthropic",
+      "cost_usd": 0.3451610270666562,
+      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-low",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "command-a-plus",
-      "name": "Command A+",
-      "provider": "Cohere",
-      "cost_usd": 0,
-      "url": "https://artificialanalysis.ai/models/command-a-plus"
+      "slug": "claude-haiku-5-5-medium",
+      "name": "Claude Haiku 5.5 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+      "provider": "Anthropic",
+      "cost_usd": 0.04703084793955566,
+      "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-medium",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "north-mini-code",
-      "name": "North Mini Code",
-      "provider": "Cohere",
-      "cost_usd": 0,
-      "url": "https://artificialanalysis.ai/models/north-mini-code"
+      "slug": "claude-sonnet-5-xhigh",
+      "name": "Claude Sonnet 5 (Xhigh)",
+      "provider": "Anthropic",
+      "cost_usd": 2.8720437784323134,
+      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-xhigh",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "deepseek-r1-0120",
-      "name": "DeepSeek R1 (Jan '25)",
-      "provider": "DeepSeek",
-      "cost_usd": 0.2617212405141733,
-      "url": "https://artificialanalysis.ai/models/deepseek-r1-0120"
+      "slug": "claude-sonnet-5-high",
+      "name": "Claude Sonnet 5 (High)",
+      "provider": "Anthropic",
+      "cost_usd": 1.7924692244111728,
+      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-high",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "deepseek-v3",
-      "name": "DeepSeek V3 (Dec '24)",
-      "provider": "DeepSeek",
-      "cost_usd": 0.019751793975774472,
-      "url": "https://artificialanalysis.ai/models/deepseek-v3"
+      "slug": "claude-sonnet-4-6-adaptive",
+      "name": "Claude Sonnet 4.6 (Max)",
+      "provider": "Anthropic",
+      "cost_usd": 2.4858655963942224,
+      "url": "https://artificialanalysis.ai/models/claude-sonnet-4-6-adaptive",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "deepseek-v3-0324",
-      "name": "DeepSeek V3 0324",
-      "provider": "DeepSeek",
-      "cost_usd": 0.020199039576443884,
-      "url": "https://artificialanalysis.ai/models/deepseek-v3-0324"
+      "slug": "claude-haiku-5-5-low",
+      "name": "Claude Haiku 5.5 (Adaptive Reasoning, Low Effort, Default Fallback)",
+      "provider": "Anthropic",
+      "cost_usd": 0.02445936101890973,
+      "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-low",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "deepseek-v4-flash-0420-high",
-      "name": "DeepSeek V4 Flash 0420 (Reasoning, High Effort)",
-      "provider": "DeepSeek",
-      "cost_usd": 0.12711665874155298,
-      "url": "https://artificialanalysis.ai/models/deepseek-v4-flash-0420-high"
+      "slug": "claude-sonnet-5-medium",
+      "name": "Claude Sonnet 5 (Medium)",
+      "provider": "Anthropic",
+      "cost_usd": 0.9991061406688175,
+      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-medium",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "deepseek-v4-flash-0420",
-      "name": "DeepSeek V4 Flash 0420 (Reasoning, Max Effort)",
-      "provider": "DeepSeek",
-      "cost_usd": 0.1074631228275786,
-      "url": "https://artificialanalysis.ai/models/deepseek-v4-flash-0420"
+      "slug": "claude-sonnet-5-low",
+      "name": "Claude Sonnet 5 (Low)",
+      "provider": "Anthropic",
+      "cost_usd": 0.5087545600633299,
+      "url": "https://artificialanalysis.ai/models/claude-sonnet-5-low",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "deepseek-v4-flash",
-      "name": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)",
-      "provider": "DeepSeek",
-      "cost_usd": 0.21964484501171036,
-      "url": "https://artificialanalysis.ai/models/deepseek-v4-flash"
+      "slug": "claude-4-5-sonnet-thinking",
+      "name": "Claude 4.5 Sonnet (Reasoning)",
+      "provider": "Anthropic",
+      "cost_usd": 0.5565810659988739,
+      "url": "https://artificialanalysis.ai/models/claude-4-5-sonnet-thinking",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "deepseek-v4-flash-vision",
-      "name": "DeepSeek V4 Flash Vision (Reasoning, Max Effort)",
-      "provider": "DeepSeek",
-      "cost_usd": 0.314372044499279,
-      "url": "https://artificialanalysis.ai/models/deepseek-v4-flash-vision"
+      "slug": "claude-4-5-haiku-reasoning",
+      "name": "Claude 4.5 Haiku (Reasoning)",
+      "provider": "Anthropic",
+      "cost_usd": 0.27682075830176456,
+      "url": "https://artificialanalysis.ai/models/claude-4-5-haiku-reasoning",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "deepseek-v4-pro-0424",
-      "name": "DeepSeek V4 Pro 0424 (Reasoning, Max Effort)",
-      "provider": "DeepSeek",
-      "cost_usd": 0.12152059767597723,
-      "url": "https://artificialanalysis.ai/models/deepseek-v4-pro-0424"
+      "slug": "gpt-6-astra",
+      "name": "GPT-6 Astra (Max)",
+      "provider": "OpenAI",
+      "cost_usd": 3.2575003134834164,
+      "url": "https://artificialanalysis.ai/models/gpt-6-astra",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "deepseek-v4-pro-non-reasoning",
-      "name": "DeepSeek V4 Pro 0813 (Non-reasoning)",
-      "provider": "DeepSeek",
-      "cost_usd": 0.47742401619163854,
-      "url": "https://artificialanalysis.ai/models/deepseek-v4-pro-non-reasoning"
+      "slug": "gpt-6-astra-xhigh",
+      "name": "GPT-6 Astra (Xhigh)",
+      "provider": "OpenAI",
+      "cost_usd": 2.308795912269076,
+      "url": "https://artificialanalysis.ai/models/gpt-6-astra-xhigh",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "deepseek-v4-pro",
-      "name": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)",
-      "provider": "DeepSeek",
-      "cost_usd": 0.6740219040435134,
-      "url": "https://artificialanalysis.ai/models/deepseek-v4-pro"
+      "slug": "gpt-6-1-sol",
+      "name": "GPT-6.1 Sol (Max)",
+      "provider": "OpenAI",
+      "cost_usd": 0.7241670655535033,
+      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "deepseek-v4-1-flash-non-reasoning",
-      "name": "DeepSeek V4.1 Flash (Non-Reasoning)",
-      "provider": "DeepSeek",
-      "cost_usd": 0.14670039195227308,
-      "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-non-reasoning"
+      "slug": "gpt-6-1-sol-xhigh",
+      "name": "GPT-6.1 Sol (Xhigh)",
+      "provider": "OpenAI",
+      "cost_usd": 0.39286117158850653,
+      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-xhigh",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "deepseek-v4-1-flash",
-      "name": "DeepSeek V4.1 Flash (Reasoning, Max Effort)",
-      "provider": "DeepSeek",
-      "cost_usd": 0.26522527009606844,
-      "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash"
+      "slug": "gpt-6-astra-high",
+      "name": "GPT-6 Astra (High)",
+      "provider": "OpenAI",
+      "cost_usd": 1.7252530861048456,
+      "url": "https://artificialanalysis.ai/models/gpt-6-astra-high",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "gemini-2-5-pro",
-      "name": "Gemini 2.5 Pro",
-      "provider": "Google",
-      "cost_usd": 0.23166603200256353,
-      "url": "https://artificialanalysis.ai/models/gemini-2-5-pro"
+      "slug": "gpt-6-1-sol-high",
+      "name": "GPT-6.1 Sol (High)",
+      "provider": "OpenAI",
+      "cost_usd": 0.31914442375664703,
+      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-high",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "gemini-3-1-flash-lite-preview",
-      "name": "Gemini 3.1 Flash-Lite",
-      "provider": "Google",
-      "cost_usd": 0.03940671951220252,
-      "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview"
+      "slug": "gpt-6-astra-medium",
+      "name": "GPT-6 Astra (Medium)",
+      "provider": "OpenAI",
+      "cost_usd": 1.5406493220021167,
+      "url": "https://artificialanalysis.ai/models/gpt-6-astra-medium",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "gemini-3-1-pro-preview",
-      "name": "Gemini 3.1 Pro Preview",
-      "provider": "Google",
-      "cost_usd": 0.6747317275695374,
-      "url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview"
+      "slug": "gpt-6-1-sol-medium",
+      "name": "GPT-6.1 Sol (Medium)",
+      "provider": "OpenAI",
+      "cost_usd": 0.21370088267875537,
+      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-medium",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "gemini-3-5-flash",
-      "name": "Gemini 3.5 Flash (high)",
-      "provider": "Google",
-      "cost_usd": 1.5625413241435933,
-      "url": "https://artificialanalysis.ai/models/gemini-3-5-flash"
+      "slug": "gpt-6-sol",
+      "name": "GPT-6 Sol (Max)",
+      "provider": "OpenAI",
+      "cost_usd": 1.0446616686054255,
+      "url": "https://artificialanalysis.ai/models/gpt-6-sol",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "gemini-3-5-flash-lite",
-      "name": "Gemini 3.5 Flash-Lite",
-      "provider": "Google",
-      "cost_usd": 0.12352689651593446,
-      "url": "https://artificialanalysis.ai/models/gemini-3-5-flash-lite"
+      "slug": "gpt-5-6-sol",
+      "name": "GPT-5.6 Sol (Max)",
+      "provider": "OpenAI",
+      "cost_usd": 1.98845538085375,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-sol",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "gemini-3-6-flash",
-      "name": "Gemini 3.6 Flash (high)",
-      "provider": "Google",
-      "cost_usd": 0.9288448964661649,
-      "url": "https://artificialanalysis.ai/models/gemini-3-6-flash"
+      "slug": "gpt-6-astra-low",
+      "name": "GPT-6 Astra (Low)",
+      "provider": "OpenAI",
+      "cost_usd": 0.8175139285656057,
+      "url": "https://artificialanalysis.ai/models/gpt-6-astra-low",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "gemini-3-7-flash",
-      "name": "Gemini 3.7 Flash (high)",
-      "provider": "Google",
-      "cost_usd": 0.9253359372385677,
-      "url": "https://artificialanalysis.ai/models/gemini-3-7-flash"
+      "slug": "gpt-6-sol-xhigh",
+      "name": "GPT-6 Sol (Xhigh)",
+      "provider": "OpenAI",
+      "cost_usd": 0.5208098524368193,
+      "url": "https://artificialanalysis.ai/models/gpt-6-sol-xhigh",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "gemini-3-8-flash",
-      "name": "Gemini 3.8 Flash (high)",
-      "provider": "Google",
-      "cost_usd": 1.2427947606950427,
-      "url": "https://artificialanalysis.ai/models/gemini-3-8-flash"
+      "slug": "gpt-5-6-sol-xhigh",
+      "name": "GPT-5.6 Sol (Xhigh)",
+      "provider": "OpenAI",
+      "cost_usd": 1.1843629381907275,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-sol-xhigh",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "gemini-3-8-flash-medium",
-      "name": "Gemini 3.8 Flash (medium)",
-      "provider": "Google",
-      "cost_usd": 0.9310379374376306,
-      "url": "https://artificialanalysis.ai/models/gemini-3-8-flash-medium"
+      "slug": "gpt-6-sol-high",
+      "name": "GPT-6 Sol (High)",
+      "provider": "OpenAI",
+      "cost_usd": 0.3728406839161857,
+      "url": "https://artificialanalysis.ai/models/gpt-6-sol-high",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-sol-high",
+      "name": "GPT-5.6 Sol (High)",
+      "provider": "OpenAI",
+      "cost_usd": 0.807982690134498,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-sol-high",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-6-1-sol-low",
+      "name": "GPT-6.1 Sol (Low)",
+      "provider": "OpenAI",
+      "cost_usd": 0.13075190869859377,
+      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-low",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-terra",
+      "name": "GPT-5.6 Terra (Max)",
+      "provider": "OpenAI",
+      "cost_usd": 1.3987235612691513,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-terra",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-6-sol-medium",
+      "name": "GPT-6 Sol (Medium)",
+      "provider": "OpenAI",
+      "cost_usd": 0.24728577052042386,
+      "url": "https://artificialanalysis.ai/models/gpt-6-sol-medium",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-sol-medium",
+      "name": "GPT-5.6 Sol (Medium)",
+      "provider": "OpenAI",
+      "cost_usd": 0.5049926304382959,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-sol-medium",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-5",
+      "name": "GPT-5.5 (Xhigh)",
+      "provider": "OpenAI",
+      "cost_usd": 2.6339796841243297,
+      "url": "https://artificialanalysis.ai/models/gpt-5-5",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-6-luna",
+      "name": "GPT-6 Luna (Max)",
+      "provider": "OpenAI",
+      "cost_usd": 0.06782295669812205,
+      "url": "https://artificialanalysis.ai/models/gpt-6-luna",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-terra-xhigh",
+      "name": "GPT-5.6 Terra (Xhigh)",
+      "provider": "OpenAI",
+      "cost_usd": 0.6317911346924275,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-terra-xhigh",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-luna",
+      "name": "GPT-5.6 Luna (Max)",
+      "provider": "OpenAI",
+      "cost_usd": 0.17829726152289094,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-luna",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-5-high",
+      "name": "GPT-5.5 (High)",
+      "provider": "OpenAI",
+      "cost_usd": 1.541289049705234,
+      "url": "https://artificialanalysis.ai/models/gpt-5-5-high",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-6-luna-xhigh",
+      "name": "GPT-6 Luna (Xhigh)",
+      "provider": "OpenAI",
+      "cost_usd": 0.042183547923951084,
+      "url": "https://artificialanalysis.ai/models/gpt-6-luna-xhigh",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-luna-xhigh",
+      "name": "GPT-5.6 Luna (Xhigh)",
+      "provider": "OpenAI",
+      "cost_usd": 0.085342806135728,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-luna-xhigh",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-terra-high",
+      "name": "GPT-5.6 Terra (High)",
+      "provider": "OpenAI",
+      "cost_usd": 0.3378727947949101,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-terra-high",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-6-sol-low",
+      "name": "GPT-6 Sol (Low)",
+      "provider": "OpenAI",
+      "cost_usd": 0.1327768361714764,
+      "url": "https://artificialanalysis.ai/models/gpt-6-sol-low",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-5-medium",
+      "name": "GPT-5.5 (Medium)",
+      "provider": "OpenAI",
+      "cost_usd": 0.9016588021523384,
+      "url": "https://artificialanalysis.ai/models/gpt-5-5-medium",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-sol-low",
+      "name": "GPT-5.6 Sol (Low)",
+      "provider": "OpenAI",
+      "cost_usd": 0.2606419442090313,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-sol-low",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-6-luna-high",
+      "name": "GPT-6 Luna (High)",
+      "provider": "OpenAI",
+      "cost_usd": 0.02903157640372802,
+      "url": "https://artificialanalysis.ai/models/gpt-6-luna-high",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-luna-high",
+      "name": "GPT-5.6 Luna (High)",
+      "provider": "OpenAI",
+      "cost_usd": 0.043981552251920096,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-luna-high",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-terra-medium",
+      "name": "GPT-5.6 Terra (Medium)",
+      "provider": "OpenAI",
+      "cost_usd": 0.18337295992969213,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-terra-medium",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-6-luna-medium",
+      "name": "GPT-6 Luna (Medium)",
+      "provider": "OpenAI",
+      "cost_usd": 0.017476906067835942,
+      "url": "https://artificialanalysis.ai/models/gpt-6-luna-medium",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-6-sol-non-reasoning",
+      "name": "GPT-6 Sol (Non-reasoning)",
+      "provider": "OpenAI",
+      "cost_usd": 0.33365590023828273,
+      "url": "https://artificialanalysis.ai/models/gpt-6-sol-non-reasoning",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-terra-low",
+      "name": "GPT-5.6 Terra (Low)",
+      "provider": "OpenAI",
+      "cost_usd": 0.1444617614290821,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-terra-low",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-5-instant-06-26",
+      "name": "GPT-5.5 Instant (June 2026)",
+      "provider": "OpenAI",
+      "cost_usd": 0.6914853678439488,
+      "url": "https://artificialanalysis.ai/models/gpt-5-5-instant-06-26",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-luna-medium",
+      "name": "GPT-5.6 Luna (Medium)",
+      "provider": "OpenAI",
+      "cost_usd": 0.015598049609820011,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-luna-medium",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-4-mini",
+      "name": "GPT-5.4 mini (Xhigh)",
+      "provider": "OpenAI",
+      "cost_usd": 0.4473810333705224,
+      "url": "https://artificialanalysis.ai/models/gpt-5-4-mini",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-6-luna-low",
+      "name": "GPT-6 Luna (Low)",
+      "provider": "OpenAI",
+      "cost_usd": 0.004516607569410252,
+      "url": "https://artificialanalysis.ai/models/gpt-6-luna-low",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-luna-low",
+      "name": "GPT-5.6 Luna (Low)",
+      "provider": "OpenAI",
+      "cost_usd": 0.009827249754655997,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-luna-low",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-terra-non-reasoning",
+      "name": "GPT-5.6 Terra (Non-reasoning)",
+      "provider": "OpenAI",
+      "cost_usd": 0.13972397093498629,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-terra-non-reasoning",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-4-nano",
+      "name": "GPT-5.4 nano (Xhigh)",
+      "provider": "OpenAI",
+      "cost_usd": 0.1830802502922872,
+      "url": "https://artificialanalysis.ai/models/gpt-5-4-nano",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-6-luna-non-reasoning",
+      "name": "GPT-6 Luna (Non-reasoning)",
+      "provider": "OpenAI",
+      "cost_usd": 0.011345057120527267,
+      "url": "https://artificialanalysis.ai/models/gpt-6-luna-non-reasoning",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-mini",
+      "name": "GPT-5 mini (High)",
+      "provider": "OpenAI",
+      "cost_usd": 0.05349965791130692,
+      "url": "https://artificialanalysis.ai/models/gpt-5-mini",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-5-6-luna-non-reasoning",
+      "name": "GPT-5.6 Luna (Non-reasoning)",
+      "provider": "OpenAI",
+      "cost_usd": 0.010091821810180262,
+      "url": "https://artificialanalysis.ai/models/gpt-5-6-luna-non-reasoning",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "name": "gpt-oss-120b (High)",
+      "provider": "OpenAI",
+      "cost_usd": 0.10728975304606923,
+      "url": "https://artificialanalysis.ai/models/gpt-oss-120b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gpt-oss-20b",
+      "name": "gpt-oss-20b (High)",
+      "provider": "OpenAI",
+      "cost_usd": 0.012460640242179213,
+      "url": "https://artificialanalysis.ai/models/gpt-oss-20b",
+      "profile_captured_at": "2026-10-11"
     },
     {
       "slug": "gemini-4-argon",
@@ -563,176 +676,591 @@
       "provider": "Google",
       "cost_usd": 1.990322379299008,
       "url": "https://artificialanalysis.ai/models/gemini-4-argon",
-      "profile_captured_at": "2026-10-07"
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "gemma-3-12b",
-      "name": "Gemma 3 12B Instruct",
+      "slug": "gemini-3-8-flash",
+      "name": "Gemini 3.8 Flash (High)",
       "provider": "Google",
-      "cost_usd": 0,
-      "url": "https://artificialanalysis.ai/models/gemma-3-12b"
+      "cost_usd": 1.2427947606950427,
+      "url": "https://artificialanalysis.ai/models/gemini-3-8-flash",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "gemma-3-27b",
-      "name": "Gemma 3 27B Instruct",
+      "slug": "gemini-3-8-flash-medium",
+      "name": "Gemini 3.8 Flash (Medium)",
       "provider": "Google",
-      "cost_usd": 0,
-      "url": "https://artificialanalysis.ai/models/gemma-3-27b"
+      "cost_usd": 0.9310379374376306,
+      "url": "https://artificialanalysis.ai/models/gemini-3-8-flash-medium",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gemini-3-7-flash",
+      "name": "Gemini 3.7 Flash (High)",
+      "provider": "Google",
+      "cost_usd": 0.9253359372385677,
+      "url": "https://artificialanalysis.ai/models/gemini-3-7-flash",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gemini-3-6-flash",
+      "name": "Gemini 3.6 Flash (High)",
+      "provider": "Google",
+      "cost_usd": 1.600530533263267,
+      "url": "https://artificialanalysis.ai/models/gemini-3-6-flash",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gemini-3-5-flash",
+      "name": "Gemini 3.5 Flash (High)",
+      "provider": "Google",
+      "cost_usd": 3.6936902127611133,
+      "url": "https://artificialanalysis.ai/models/gemini-3-5-flash",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gemini-3-1-pro-preview",
+      "name": "Gemini 3.1 Pro Preview",
+      "provider": "Google",
+      "cost_usd": 1.2985855086120641,
+      "url": "https://artificialanalysis.ai/models/gemini-3-1-pro-preview",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gemini-3-5-flash-lite",
+      "name": "Gemini 3.5 Flash-Lite",
+      "provider": "Google",
+      "cost_usd": 0.1927430131409478,
+      "url": "https://artificialanalysis.ai/models/gemini-3-5-flash-lite",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gemini-2-5-pro",
+      "name": "Gemini 2.5 Pro",
+      "provider": "Google",
+      "cost_usd": 0.33028590601998487,
+      "url": "https://artificialanalysis.ai/models/gemini-2-5-pro",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "gemini-3-1-flash-lite-preview",
+      "name": "Gemini 3.1 Flash-Lite",
+      "provider": "Google",
+      "cost_usd": 0.06018072627659897,
+      "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview",
+      "profile_captured_at": "2026-10-11"
     },
     {
       "slug": "gemma-4-31b",
       "name": "Gemma 4 31B (Reasoning)",
       "provider": "Google",
       "cost_usd": 0,
-      "url": "https://artificialanalysis.ai/models/gemma-4-31b"
+      "url": "https://artificialanalysis.ai/models/gemma-4-31b",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "granite-4-2-3b",
-      "name": "Granite 4.2 3B",
-      "provider": "IBM",
-      "cost_usd": 0.005980247671024821,
-      "url": "https://artificialanalysis.ai/models/granite-4-2-3b"
-    },
-    {
-      "slug": "granite-4-2-8b",
-      "name": "Granite 4.2 8B",
-      "provider": "IBM",
-      "cost_usd": 0.023596091491929188,
-      "url": "https://artificialanalysis.ai/models/granite-4-2-8b"
-    },
-    {
-      "slug": "mercury-2-5",
-      "name": "Mercury 2.5",
-      "provider": "Inception",
-      "cost_usd": 0.11668472036336801,
-      "url": "https://artificialanalysis.ai/models/mercury-2-5"
-    },
-    {
-      "slug": "ling-3-0-tiny",
-      "name": "Ling 3.0 Tiny",
-      "provider": "InclusionAI",
+      "slug": "gemma-3-27b",
+      "name": "Gemma 3 27B Instruct",
+      "provider": "Google",
       "cost_usd": 0,
-      "url": "https://artificialanalysis.ai/models/ling-3-0-tiny"
+      "url": "https://artificialanalysis.ai/models/gemma-3-27b",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "ling-3-1-flash",
-      "name": "Ling 3.1 Flash",
-      "provider": "InclusionAI",
-      "cost_usd": 0.9856894983836784,
-      "url": "https://artificialanalysis.ai/models/ling-3-1-flash",
-      "profile_captured_at": "2026-10-07"
+      "slug": "gemma-3-12b",
+      "name": "Gemma 3 12B Instruct",
+      "provider": "Google",
+      "cost_usd": 0,
+      "url": "https://artificialanalysis.ai/models/gemma-3-12b",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "ring-2-6-1t",
-      "name": "Ring-2.6-1T",
-      "provider": "InclusionAI",
-      "cost_usd": 0.2871573189066596,
-      "url": "https://artificialanalysis.ai/models/ring-2-6-1t"
+      "slug": "muse-spark-1-3",
+      "name": "Muse Spark 1.3 (Max)",
+      "provider": "Meta",
+      "cost_usd": 1.6048932100125866,
+      "url": "https://artificialanalysis.ai/models/muse-spark-1-3",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "muse-spark-1-3-xhigh",
+      "name": "Muse Spark 1.3 (Xhigh)",
+      "provider": "Meta",
+      "cost_usd": 1.3677936514692752,
+      "url": "https://artificialanalysis.ai/models/muse-spark-1-3-xhigh",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "muse-spark-1-2",
+      "name": "Muse Spark 1.2 (Xhigh)",
+      "provider": "Meta",
+      "cost_usd": 0.9746948879931989,
+      "url": "https://artificialanalysis.ai/models/muse-spark-1-2",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "muse-spark-1-1",
+      "name": "Muse Spark 1.1 (Xhigh)",
+      "provider": "Meta",
+      "cost_usd": 1.3802453886670354,
+      "url": "https://artificialanalysis.ai/models/muse-spark-1-1",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "muse-glimmer",
+      "name": "Muse Glimmer (High)",
+      "provider": "Meta",
+      "cost_usd": 0.05670634665029995,
+      "url": "https://artificialanalysis.ai/models/muse-glimmer",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "grok-4-7",
+      "name": "Grok 4.7 (Xhigh)",
+      "provider": "SpaceXAI",
+      "cost_usd": 3.738325952106939,
+      "url": "https://artificialanalysis.ai/models/grok-4-7",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "grok-4-7-high",
+      "name": "Grok 4.7 (High)",
+      "provider": "SpaceXAI",
+      "cost_usd": 2.726106691786027,
+      "url": "https://artificialanalysis.ai/models/grok-4-7-high",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "grok-4-6",
+      "name": "Grok 4.6 (High)",
+      "provider": "SpaceXAI",
+      "cost_usd": 1.4848449196688633,
+      "url": "https://artificialanalysis.ai/models/grok-4-6",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "grok-4-6-xhigh",
+      "name": "Grok 4.6 (Xhigh)",
+      "provider": "SpaceXAI",
+      "cost_usd": 1.7523145158282367,
+      "url": "https://artificialanalysis.ai/models/grok-4-6-xhigh",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "grok-4-6-medium",
+      "name": "Grok 4.6 (Medium)",
+      "provider": "SpaceXAI",
+      "cost_usd": 1.14381661681713,
+      "url": "https://artificialanalysis.ai/models/grok-4-6-medium",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "grok-4-7-low",
+      "name": "Grok 4.7 (Low)",
+      "provider": "SpaceXAI",
+      "cost_usd": 1.2479664056943975,
+      "url": "https://artificialanalysis.ai/models/grok-4-7-low",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "grok-4-5",
+      "name": "Grok 4.5 (High)",
+      "provider": "SpaceXAI",
+      "cost_usd": 0.8806608417078763,
+      "url": "https://artificialanalysis.ai/models/grok-4-5",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "grok-4-6-low",
+      "name": "Grok 4.6 (Low)",
+      "provider": "SpaceXAI",
+      "cost_usd": 0.37578773607022314,
+      "url": "https://artificialanalysis.ai/models/grok-4-6-low",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "grok-4-3",
+      "name": "Grok 4.3 (High)",
+      "provider": "SpaceXAI",
+      "cost_usd": 0.20537871205068303,
+      "url": "https://artificialanalysis.ai/models/grok-4-3",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "grok-4-3-non-reasoning",
+      "name": "Grok 4.3 (Non-reasoning)",
+      "provider": "SpaceXAI",
+      "cost_usd": 0.16974590796834474,
+      "url": "https://artificialanalysis.ai/models/grok-4-3-non-reasoning",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "mimo-v2-6-pro",
+      "name": "MiMo-V2.6-Pro",
+      "provider": "Xiaomi",
+      "cost_usd": 0.13322318937213493,
+      "url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "mimo-v2-6-flash",
+      "name": "MiMo-V2.6-Flash",
+      "provider": "Xiaomi",
+      "cost_usd": 0.06237567475410205,
+      "url": "https://artificialanalysis.ai/models/mimo-v2-6-flash",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "mimo-v2-5-pro",
+      "name": "MiMo-V2.5-Pro (Reasoning)",
+      "provider": "Xiaomi",
+      "cost_usd": 0.054072740415336835,
+      "url": "https://artificialanalysis.ai/models/mimo-v2-5-pro",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-8-max",
+      "name": "Qwen3.8 Max (0902)",
+      "provider": "Alibaba",
+      "cost_usd": 5.408509428374016,
+      "url": "https://artificialanalysis.ai/models/qwen3-8-max",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-8-max-0803",
+      "name": "Qwen3.8 Max",
+      "provider": "Alibaba",
+      "cost_usd": 2.6699848505343478,
+      "url": "https://artificialanalysis.ai/models/qwen3-8-max-0803",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-8-2-4t-a95b",
+      "name": "Qwen3.8 2.4T A95B",
+      "provider": "Alibaba",
+      "cost_usd": 2.1559170502434677,
+      "url": "https://artificialanalysis.ai/models/qwen3-8-2-4t-a95b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-8-flash-next",
+      "name": "Qwen3.8-Flash-Next",
+      "provider": "Alibaba",
+      "cost_usd": 0.3721760025302965,
+      "url": "https://artificialanalysis.ai/models/qwen3-8-flash-next",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-8-27b",
+      "name": "Qwen3.8 27B (Xhigh)",
+      "provider": "Alibaba",
+      "cost_usd": 1.0073149536565944,
+      "url": "https://artificialanalysis.ai/models/qwen3-8-27b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-7-max",
+      "name": "Qwen3.7 Max",
+      "provider": "Alibaba",
+      "cost_usd": 1.1472961597972207,
+      "url": "https://artificialanalysis.ai/models/qwen3-7-max",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-8-27b-medium",
+      "name": "Qwen3.8 27B (Medium)",
+      "provider": "Alibaba",
+      "cost_usd": 1.133063774030521,
+      "url": "https://artificialanalysis.ai/models/qwen3-8-27b-medium",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-8-27b-low",
+      "name": "Qwen3.8 27B (Low)",
+      "provider": "Alibaba",
+      "cost_usd": 1.0482225365160391,
+      "url": "https://artificialanalysis.ai/models/qwen3-8-27b-low",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-7-plus",
+      "name": "Qwen3.7 Plus",
+      "provider": "Alibaba",
+      "cost_usd": 0.21702592259078568,
+      "url": "https://artificialanalysis.ai/models/qwen3-7-plus",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-6-27b",
+      "name": "Qwen3.6 27B (Reasoning)",
+      "provider": "Alibaba",
+      "cost_usd": 0.621236893699357,
+      "url": "https://artificialanalysis.ai/models/qwen3-6-27b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-8-27b-non-reasoning",
+      "name": "Qwen3.8 27B (Non-reasoning)",
+      "provider": "Alibaba",
+      "cost_usd": 2.487757391889078,
+      "url": "https://artificialanalysis.ai/models/qwen3-8-27b-non-reasoning",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-5-397b-a17b",
+      "name": "Qwen3.5 397B A17B (Reasoning)",
+      "provider": "Alibaba",
+      "cost_usd": 0.47457695829894075,
+      "url": "https://artificialanalysis.ai/models/qwen3-5-397b-a17b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-6-35b-a3b",
+      "name": "Qwen3.6 35B A3B (Reasoning)",
+      "provider": "Alibaba",
+      "cost_usd": 0.4750534562511306,
+      "url": "https://artificialanalysis.ai/models/qwen3-6-35b-a3b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-5-122b-a10b",
+      "name": "Qwen3.5 122B A10B (Reasoning)",
+      "provider": "Alibaba",
+      "cost_usd": 0.3247468637357143,
+      "url": "https://artificialanalysis.ai/models/qwen3-5-122b-a10b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-235b-a22b-instruct-2507-reasoning",
+      "name": "Qwen3 235B A22B 2507 (Reasoning)",
+      "provider": "Alibaba",
+      "cost_usd": 0.08055542892015415,
+      "url": "https://artificialanalysis.ai/models/qwen3-235b-a22b-instruct-2507-reasoning",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-5-9b",
+      "name": "Qwen3.5 9B (Reasoning)",
+      "provider": "Alibaba",
+      "cost_usd": 0.21258346272934256,
+      "url": "https://artificialanalysis.ai/models/qwen3-5-9b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-30b-a3b-2507-reasoning",
+      "name": "Qwen3 30B A3B 2507 (Reasoning)",
+      "provider": "Alibaba",
+      "cost_usd": 0.0765560533905436,
+      "url": "https://artificialanalysis.ai/models/qwen3-30b-a3b-2507-reasoning",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "qwen3-coder-next",
+      "name": "Qwen3 Coder Next",
+      "provider": "Alibaba",
+      "cost_usd": 0.7805028420975578,
+      "url": "https://artificialanalysis.ai/models/qwen3-coder-next",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "glm-5-3",
+      "name": "GLM-5.3 (Max)",
+      "provider": "Z AI",
+      "cost_usd": 2.0056375150449584,
+      "url": "https://artificialanalysis.ai/models/glm-5-3",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "glm-5-3-flash",
+      "name": "GLM-5.3-Flash",
+      "provider": "Z AI",
+      "cost_usd": 0.2532595604307378,
+      "url": "https://artificialanalysis.ai/models/glm-5-3-flash",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "glm-5-3-low",
+      "name": "GLM-5.3 (Low)",
+      "provider": "Z AI",
+      "cost_usd": 0.8522174973386498,
+      "url": "https://artificialanalysis.ai/models/glm-5-3-low",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "glm-5-2",
+      "name": "GLM-5.2 (Max)",
+      "provider": "Z AI",
+      "cost_usd": 1.4726179494034382,
+      "url": "https://artificialanalysis.ai/models/glm-5-2",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "glm-5-1",
+      "name": "GLM-5.1 (Reasoning)",
+      "provider": "Z AI",
+      "cost_usd": 1.0192564984972659,
+      "url": "https://artificialanalysis.ai/models/glm-5-1",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "step-5",
+      "name": "Step 5 Preview",
+      "provider": "StepFun",
+      "cost_usd": 1.0264068637684054,
+      "url": "https://artificialanalysis.ai/models/step-5",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "kimi-k3",
+      "name": "Kimi K3 (Max)",
+      "provider": "Kimi",
+      "cost_usd": 2.0001323004425493,
+      "url": "https://artificialanalysis.ai/models/kimi-k3",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "kimi-k3-low",
+      "name": "Kimi K3 (Low)",
+      "provider": "Kimi",
+      "cost_usd": 1.1463056165227514,
+      "url": "https://artificialanalysis.ai/models/kimi-k3-low",
+      "profile_captured_at": "2026-10-11"
     },
     {
       "slug": "kimi-k2-6",
-      "name": "Kimi K2.6",
+      "name": "Kimi K2.6 (Reasoning)",
       "provider": "Kimi",
       "cost_usd": 0.799769615295709,
-      "url": "https://artificialanalysis.ai/models/kimi-k2-6"
+      "url": "https://artificialanalysis.ai/models/kimi-k2-6",
+      "profile_captured_at": "2026-10-11"
     },
     {
       "slug": "kimi-k2-7-code",
       "name": "Kimi K2.7 Code",
       "provider": "Kimi",
       "cost_usd": 0.541190247118529,
-      "url": "https://artificialanalysis.ai/models/kimi-k2-7-code"
+      "url": "https://artificialanalysis.ai/models/kimi-k2-7-code",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "kimi-k3-low",
-      "name": "Kimi K3 (low)",
-      "provider": "Kimi",
-      "cost_usd": 1.1463056165227514,
-      "url": "https://artificialanalysis.ai/models/kimi-k3-low"
+      "slug": "ling-3-1-flash",
+      "name": "Ling 3.1 Flash",
+      "provider": "InclusionAI",
+      "cost_usd": 1.00160288019986,
+      "url": "https://artificialanalysis.ai/models/ling-3-1-flash",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "kimi-k3",
-      "name": "Kimi K3 (max)",
-      "provider": "Kimi",
-      "cost_usd": 2.0001323004425493,
-      "url": "https://artificialanalysis.ai/models/kimi-k3"
+      "slug": "ring-2-6-1t",
+      "name": "Ring-2.6-1T",
+      "provider": "InclusionAI",
+      "cost_usd": 0.2871573189066596,
+      "url": "https://artificialanalysis.ai/models/ring-2-6-1t",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "longcat-2-0",
-      "name": "LongCat 2.0",
-      "provider": "LongCat",
-      "cost_usd": 0.05898990881433253,
-      "url": "https://artificialanalysis.ai/models/longcat-2-0"
+      "slug": "ling-3-0-tiny",
+      "name": "Ling 3.0 Tiny",
+      "provider": "InclusionAI",
+      "cost_usd": 0,
+      "url": "https://artificialanalysis.ai/models/ling-3-0-tiny",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "muse-glimmer",
-      "name": "Muse Glimmer (high)",
-      "provider": "Meta",
-      "cost_usd": 0.05670634665029995,
-      "url": "https://artificialanalysis.ai/models/muse-glimmer"
+      "slug": "deepseek-v4-1-flash",
+      "name": "DeepSeek V4.1 Flash (Max)",
+      "provider": "DeepSeek",
+      "cost_usd": 0.26522527009606844,
+      "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "muse-spark-1-1",
-      "name": "Muse Spark 1.1 (xhigh)",
-      "provider": "Meta",
-      "cost_usd": 1.3802453886670354,
-      "url": "https://artificialanalysis.ai/models/muse-spark-1-1"
+      "slug": "deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro 0813 (Max)",
+      "provider": "DeepSeek",
+      "cost_usd": 0.6740219040435134,
+      "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "muse-spark-1-2",
-      "name": "Muse Spark 1.2 (xhigh)",
-      "provider": "Meta",
-      "cost_usd": 0.9746948879931989,
-      "url": "https://artificialanalysis.ai/models/muse-spark-1-2"
+      "slug": "deepseek-v4-flash-vision",
+      "name": "DeepSeek V4 Flash Vision (Max)",
+      "provider": "DeepSeek",
+      "cost_usd": 0.314372044499279,
+      "url": "https://artificialanalysis.ai/models/deepseek-v4-flash-vision",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "muse-spark-1-3",
-      "name": "Muse Spark 1.3 (max)",
-      "provider": "Meta",
-      "cost_usd": 1.6048932100125866,
-      "url": "https://artificialanalysis.ai/models/muse-spark-1-3"
+      "slug": "deepseek-v4-flash",
+      "name": "DeepSeek V4 Flash 0731 (Max)",
+      "provider": "DeepSeek",
+      "cost_usd": 0.21964484501171036,
+      "url": "https://artificialanalysis.ai/models/deepseek-v4-flash",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "muse-spark-1-3-xhigh",
-      "name": "Muse Spark 1.3 (xhigh)",
-      "provider": "Meta",
-      "cost_usd": 1.3677936514692752,
-      "url": "https://artificialanalysis.ai/models/muse-spark-1-3-xhigh"
+      "slug": "deepseek-v4-pro-0424",
+      "name": "DeepSeek V4 Pro 0424 (Max)",
+      "provider": "DeepSeek",
+      "cost_usd": 0.12152059767597723,
+      "url": "https://artificialanalysis.ai/models/deepseek-v4-pro-0424",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "minimax-m3",
-      "name": "MiniMax-M3",
-      "provider": "MiniMax",
-      "cost_usd": 0.5076126905781733,
-      "url": "https://artificialanalysis.ai/models/minimax-m3"
+      "slug": "deepseek-v4-1-flash-non-reasoning",
+      "name": "DeepSeek V4.1 Flash (Non-reasoning)",
+      "provider": "DeepSeek",
+      "cost_usd": 0.14670039195227308,
+      "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-non-reasoning",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "ministral-3-14b",
-      "name": "Ministral 3 14B",
-      "provider": "Mistral",
-      "cost_usd": 0.01943640228162961,
-      "url": "https://artificialanalysis.ai/models/ministral-3-14b"
+      "slug": "deepseek-v4-flash-0420-high",
+      "name": "DeepSeek V4 Flash 0420 (High)",
+      "provider": "DeepSeek",
+      "cost_usd": 0.12313084891092088,
+      "url": "https://artificialanalysis.ai/models/deepseek-v4-flash-0420-high",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "ministral-3-3b",
-      "name": "Ministral 3 3B",
-      "provider": "Mistral",
-      "cost_usd": 0.007846860809830004,
-      "url": "https://artificialanalysis.ai/models/ministral-3-3b"
+      "slug": "deepseek-v4-flash-0420",
+      "name": "DeepSeek V4 Flash 0420 (Max)",
+      "provider": "DeepSeek",
+      "cost_usd": 0.1074631228275786,
+      "url": "https://artificialanalysis.ai/models/deepseek-v4-flash-0420",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "ministral-3-8b",
-      "name": "Ministral 3 8B",
-      "provider": "Mistral",
-      "cost_usd": 0.011086416592507111,
-      "url": "https://artificialanalysis.ai/models/ministral-3-8b"
+      "slug": "deepseek-v4-pro-non-reasoning",
+      "name": "DeepSeek V4 Pro 0813 (Non-reasoning)",
+      "provider": "DeepSeek",
+      "cost_usd": 0.35547065335335964,
+      "url": "https://artificialanalysis.ai/models/deepseek-v4-pro-non-reasoning",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "mistral-large-3",
-      "name": "Mistral Large 3",
-      "provider": "Mistral",
-      "cost_usd": 0.031125992260624492,
-      "url": "https://artificialanalysis.ai/models/mistral-large-3"
+      "slug": "deepseek-r1-0120",
+      "name": "DeepSeek R1 (Jan '25)",
+      "provider": "DeepSeek",
+      "cost_usd": 0.2617212405141733,
+      "url": "https://artificialanalysis.ai/models/deepseek-r1-0120",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "deepseek-v3-0324",
+      "name": "DeepSeek V3 0324",
+      "provider": "DeepSeek",
+      "cost_usd": 0.02113171101787361,
+      "url": "https://artificialanalysis.ai/models/deepseek-v3-0324",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "deepseek-v3",
+      "name": "DeepSeek V3 (Dec '24)",
+      "provider": "DeepSeek",
+      "cost_usd": 0.019751793975774472,
+      "url": "https://artificialanalysis.ai/models/deepseek-v3",
+      "profile_captured_at": "2026-10-11"
     },
     {
       "slug": "mistral-large-4",
@@ -740,568 +1268,231 @@
       "provider": "Mistral",
       "cost_usd": 1.1317590533008346,
       "url": "https://artificialanalysis.ai/models/mistral-large-4",
-      "profile_captured_at": "2026-10-07"
+      "profile_captured_at": "2026-10-11"
     },
     {
       "slug": "mistral-medium-3-5",
       "name": "Mistral Medium 3.5",
       "provider": "Mistral",
       "cost_usd": 0.5020382394983653,
-      "url": "https://artificialanalysis.ai/models/mistral-medium-3-5"
-    },
-    {
-      "slug": "mistral-small-3-1",
-      "name": "Mistral Small 3.1",
-      "provider": "Mistral",
-      "cost_usd": 0.03502860053476431,
-      "url": "https://artificialanalysis.ai/models/mistral-small-3-1"
+      "url": "https://artificialanalysis.ai/models/mistral-medium-3-5",
+      "profile_captured_at": "2026-10-11"
     },
     {
       "slug": "mistral-small-4",
       "name": "Mistral Small 4 (Reasoning)",
       "provider": "Mistral",
       "cost_usd": 0.01504679036588765,
-      "url": "https://artificialanalysis.ai/models/mistral-small-4"
-    },
-    {
-      "slug": "quasar-438b",
-      "name": "Quasar 438B (max, based on GLM-5.2)",
-      "provider": "Multiverse Computing",
-      "cost_usd": 2.024611832657714,
-      "url": "https://artificialanalysis.ai/models/quasar-438b"
-    },
-    {
-      "slug": "nvidia-nemotron-3-super-120b-a12b",
-      "name": "Nemotron 3 Super 120B A12B (Reasoning)",
-      "provider": "NVIDIA",
-      "cost_usd": 1.6390663672616101,
-      "url": "https://artificialanalysis.ai/models/nvidia-nemotron-3-super-120b-a12b"
-    },
-    {
-      "slug": "nvidia-nemotron-3-ultra-550b-a55b",
-      "name": "Nemotron 3 Ultra 550B A55B (Reasoning)",
-      "provider": "NVIDIA",
-      "cost_usd": 0.5975984799533358,
-      "url": "https://artificialanalysis.ai/models/nvidia-nemotron-3-ultra-550b-a55b"
-    },
-    {
-      "slug": "nemotron-3-5-lightning",
-      "name": "Nemotron 3.5 Lightning",
-      "provider": "NVIDIA",
-      "cost_usd": 0.10037244756930194,
-      "url": "https://artificialanalysis.ai/models/nemotron-3-5-lightning"
-    },
-    {
-      "slug": "nvidia-nemotron-3-nano-30b-a3b-reasoning",
-      "name": "NVIDIA Nemotron 3 Nano 30B A3B (Reasoning)",
-      "provider": "NVIDIA",
-      "cost_usd": 0.01675160944475661,
-      "url": "https://artificialanalysis.ai/models/nvidia-nemotron-3-nano-30b-a3b-reasoning"
-    },
-    {
-      "slug": "gpt-5-mini",
-      "name": "GPT-5 mini (high)",
-      "provider": "OpenAI",
-      "cost_usd": 0.05349965791130692,
-      "url": "https://artificialanalysis.ai/models/gpt-5-mini"
-    },
-    {
-      "slug": "gpt-5-4-mini",
-      "name": "GPT-5.4 mini (xhigh)",
-      "provider": "OpenAI",
-      "cost_usd": 0.4473810333705224,
-      "url": "https://artificialanalysis.ai/models/gpt-5-4-mini"
-    },
-    {
-      "slug": "gpt-5-4-nano",
-      "name": "GPT-5.4 nano (xhigh)",
-      "provider": "OpenAI",
-      "cost_usd": 0.1830802502922872,
-      "url": "https://artificialanalysis.ai/models/gpt-5-4-nano"
-    },
-    {
-      "slug": "gpt-5-5-high",
-      "name": "GPT-5.5 (high)",
-      "provider": "OpenAI",
-      "cost_usd": 1.541289049705234,
-      "url": "https://artificialanalysis.ai/models/gpt-5-5-high"
-    },
-    {
-      "slug": "gpt-5-5-medium",
-      "name": "GPT-5.5 (medium)",
-      "provider": "OpenAI",
-      "cost_usd": 0.9016588021523384,
-      "url": "https://artificialanalysis.ai/models/gpt-5-5-medium"
-    },
-    {
-      "slug": "gpt-5-5",
-      "name": "GPT-5.5 (xhigh)",
-      "provider": "OpenAI",
-      "cost_usd": 2.6339796841243297,
-      "url": "https://artificialanalysis.ai/models/gpt-5-5"
-    },
-    {
-      "slug": "gpt-5-5-instant-06-26",
-      "name": "GPT-5.5 Instant (June 2026)",
-      "provider": "OpenAI",
-      "cost_usd": 0.6914853678439488,
-      "url": "https://artificialanalysis.ai/models/gpt-5-5-instant-06-26"
-    },
-    {
-      "slug": "gpt-5-6-luna-high",
-      "name": "GPT-5.6 Luna (high)",
-      "provider": "OpenAI",
-      "cost_usd": 0.043981552251920096,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-luna-high"
-    },
-    {
-      "slug": "gpt-5-6-luna-low",
-      "name": "GPT-5.6 Luna (low)",
-      "provider": "OpenAI",
-      "cost_usd": 0.009827249754655997,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-luna-low"
-    },
-    {
-      "slug": "gpt-5-6-luna",
-      "name": "GPT-5.6 Luna (max)",
-      "provider": "OpenAI",
-      "cost_usd": 0.17829726152289094,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-luna"
-    },
-    {
-      "slug": "gpt-5-6-luna-medium",
-      "name": "GPT-5.6 Luna (medium)",
-      "provider": "OpenAI",
-      "cost_usd": 0.015598049609820011,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-luna-medium"
-    },
-    {
-      "slug": "gpt-5-6-luna-non-reasoning",
-      "name": "GPT-5.6 Luna (Non-reasoning)",
-      "provider": "OpenAI",
-      "cost_usd": 0.010091821810180262,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-luna-non-reasoning"
-    },
-    {
-      "slug": "gpt-5-6-luna-xhigh",
-      "name": "GPT-5.6 Luna (xhigh)",
-      "provider": "OpenAI",
-      "cost_usd": 0.085342806135728,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-luna-xhigh"
-    },
-    {
-      "slug": "gpt-5-6-sol-high",
-      "name": "GPT-5.6 Sol (high)",
-      "provider": "OpenAI",
-      "cost_usd": 0.807982690134498,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-sol-high"
-    },
-    {
-      "slug": "gpt-5-6-sol-low",
-      "name": "GPT-5.6 Sol (low)",
-      "provider": "OpenAI",
-      "cost_usd": 0.2606419442090313,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-sol-low"
-    },
-    {
-      "slug": "gpt-5-6-sol",
-      "name": "GPT-5.6 Sol (max)",
-      "provider": "OpenAI",
-      "cost_usd": 1.98845538085375,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-sol"
-    },
-    {
-      "slug": "gpt-5-6-sol-medium",
-      "name": "GPT-5.6 Sol (medium)",
-      "provider": "OpenAI",
-      "cost_usd": 0.5049926304382959,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-sol-medium"
-    },
-    {
-      "slug": "gpt-5-6-sol-xhigh",
-      "name": "GPT-5.6 Sol (xhigh)",
-      "provider": "OpenAI",
-      "cost_usd": 1.1843629381907275,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-sol-xhigh"
-    },
-    {
-      "slug": "gpt-5-6-terra-high",
-      "name": "GPT-5.6 Terra (high)",
-      "provider": "OpenAI",
-      "cost_usd": 0.3378727947949101,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-terra-high"
-    },
-    {
-      "slug": "gpt-5-6-terra-low",
-      "name": "GPT-5.6 Terra (low)",
-      "provider": "OpenAI",
-      "cost_usd": 0.1444617614290821,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-terra-low"
-    },
-    {
-      "slug": "gpt-5-6-terra",
-      "name": "GPT-5.6 Terra (max)",
-      "provider": "OpenAI",
-      "cost_usd": 1.3987235612691513,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-terra"
-    },
-    {
-      "slug": "gpt-5-6-terra-medium",
-      "name": "GPT-5.6 Terra (medium)",
-      "provider": "OpenAI",
-      "cost_usd": 0.18337295992969213,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-terra-medium"
-    },
-    {
-      "slug": "gpt-5-6-terra-non-reasoning",
-      "name": "GPT-5.6 Terra (Non-reasoning)",
-      "provider": "OpenAI",
-      "cost_usd": 0.13972397093498629,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-terra-non-reasoning"
-    },
-    {
-      "slug": "gpt-5-6-terra-xhigh",
-      "name": "GPT-5.6 Terra (xhigh)",
-      "provider": "OpenAI",
-      "cost_usd": 0.6317911346924275,
-      "url": "https://artificialanalysis.ai/models/gpt-5-6-terra-xhigh"
-    },
-    {
-      "slug": "gpt-6-astra-high",
-      "name": "GPT-6 Astra (high)",
-      "provider": "OpenAI",
-      "cost_usd": 1.7252530861048456,
-      "url": "https://artificialanalysis.ai/models/gpt-6-astra-high"
-    },
-    {
-      "slug": "gpt-6-astra-low",
-      "name": "GPT-6 Astra (low)",
-      "provider": "OpenAI",
-      "cost_usd": 0.8175139285656057,
-      "url": "https://artificialanalysis.ai/models/gpt-6-astra-low"
-    },
-    {
-      "slug": "gpt-6-astra",
-      "name": "GPT-6 Astra (max)",
-      "provider": "OpenAI",
-      "cost_usd": 3.2575003134834164,
-      "url": "https://artificialanalysis.ai/models/gpt-6-astra"
-    },
-    {
-      "slug": "gpt-6-astra-medium",
-      "name": "GPT-6 Astra (medium)",
-      "provider": "OpenAI",
-      "cost_usd": 1.5406493220021167,
-      "url": "https://artificialanalysis.ai/models/gpt-6-astra-medium"
-    },
-    {
-      "slug": "gpt-6-astra-xhigh",
-      "name": "GPT-6 Astra (xhigh)",
-      "provider": "OpenAI",
-      "cost_usd": 2.308795912269076,
-      "url": "https://artificialanalysis.ai/models/gpt-6-astra-xhigh"
-    },
-    {
-      "slug": "gpt-6-luna-high",
-      "name": "GPT-6 Luna (high)",
-      "provider": "OpenAI",
-      "cost_usd": 0.029067566599182932,
-      "url": "https://artificialanalysis.ai/models/gpt-6-luna-high"
-    },
-    {
-      "slug": "gpt-6-luna-low",
-      "name": "GPT-6 Luna (low)",
-      "provider": "OpenAI",
-      "cost_usd": 0.0045215478273067,
-      "url": "https://artificialanalysis.ai/models/gpt-6-luna-low"
-    },
-    {
-      "slug": "gpt-6-luna",
-      "name": "GPT-6 Luna (max)",
-      "provider": "OpenAI",
-      "cost_usd": 0.06792906856485216,
-      "url": "https://artificialanalysis.ai/models/gpt-6-luna"
-    },
-    {
-      "slug": "gpt-6-luna-medium",
-      "name": "GPT-6 Luna (medium)",
-      "provider": "OpenAI",
-      "cost_usd": 0.01756122553820397,
-      "url": "https://artificialanalysis.ai/models/gpt-6-luna-medium"
-    },
-    {
-      "slug": "gpt-6-luna-non-reasoning",
-      "name": "GPT-6 Luna (Non-reasoning)",
-      "provider": "OpenAI",
-      "cost_usd": 0.01146983124544933,
-      "url": "https://artificialanalysis.ai/models/gpt-6-luna-non-reasoning"
-    },
-    {
-      "slug": "gpt-6-luna-xhigh",
-      "name": "GPT-6 Luna (xhigh)",
-      "provider": "OpenAI",
-      "cost_usd": 0.04208218646439018,
-      "url": "https://artificialanalysis.ai/models/gpt-6-luna-xhigh"
-    },
-    {
-      "slug": "gpt-6-sol-high",
-      "name": "GPT-6 Sol (high)",
-      "provider": "OpenAI",
-      "cost_usd": 0.3753396394543572,
-      "url": "https://artificialanalysis.ai/models/gpt-6-sol-high"
-    },
-    {
-      "slug": "gpt-6-sol-low",
-      "name": "GPT-6 Sol (low)",
-      "provider": "OpenAI",
-      "cost_usd": 0.1326186130291875,
-      "url": "https://artificialanalysis.ai/models/gpt-6-sol-low"
-    },
-    {
-      "slug": "gpt-6-sol",
-      "name": "GPT-6 Sol (max)",
-      "provider": "OpenAI",
-      "cost_usd": 1.049410804880785,
-      "url": "https://artificialanalysis.ai/models/gpt-6-sol"
-    },
-    {
-      "slug": "gpt-6-sol-medium",
-      "name": "GPT-6 Sol (medium)",
-      "provider": "OpenAI",
-      "cost_usd": 0.24721927010382636,
-      "url": "https://artificialanalysis.ai/models/gpt-6-sol-medium"
-    },
-    {
-      "slug": "gpt-6-sol-non-reasoning",
-      "name": "GPT-6 Sol (Non-reasoning)",
-      "provider": "OpenAI",
-      "cost_usd": 0.333379364253275,
-      "url": "https://artificialanalysis.ai/models/gpt-6-sol-non-reasoning"
-    },
-    {
-      "slug": "gpt-6-sol-xhigh",
-      "name": "GPT-6 Sol (xhigh)",
-      "provider": "OpenAI",
-      "cost_usd": 0.523567515784736,
-      "url": "https://artificialanalysis.ai/models/gpt-6-sol-xhigh"
-    },
-    {
-      "slug": "gpt-6-1-sol-high",
-      "name": "GPT-6.1 Sol (high)",
-      "provider": "OpenAI",
-      "cost_usd": 0.31914442375664703,
-      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-high"
-    },
-    {
-      "slug": "gpt-6-1-sol-low",
-      "name": "GPT-6.1 Sol (low)",
-      "provider": "OpenAI",
-      "cost_usd": 0.13075190869859377,
-      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-low"
-    },
-    {
-      "slug": "gpt-6-1-sol",
-      "name": "GPT-6.1 Sol (max)",
-      "provider": "OpenAI",
-      "cost_usd": 0.7241670655535033,
-      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol"
-    },
-    {
-      "slug": "gpt-6-1-sol-medium",
-      "name": "GPT-6.1 Sol (medium)",
-      "provider": "OpenAI",
-      "cost_usd": 0.21370088267875537,
-      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-medium"
-    },
-    {
-      "slug": "gpt-6-1-sol-xhigh",
-      "name": "GPT-6.1 Sol (xhigh)",
-      "provider": "OpenAI",
-      "cost_usd": 0.39286117158850653,
-      "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-xhigh"
-    },
-    {
-      "slug": "gpt-oss-120b",
-      "name": "gpt-oss-120b (high)",
-      "provider": "OpenAI",
-      "cost_usd": 0.10742452290394947,
-      "url": "https://artificialanalysis.ai/models/gpt-oss-120b"
-    },
-    {
-      "slug": "gpt-oss-20b",
-      "name": "gpt-oss-20b (high)",
-      "provider": "OpenAI",
-      "cost_usd": 0.012460640242179213,
-      "url": "https://artificialanalysis.ai/models/gpt-oss-20b"
-    },
-    {
-      "slug": "grok-4-3",
-      "name": "Grok 4.3 (high)",
-      "provider": "SpaceXAI",
-      "cost_usd": 0.20537871205068303,
-      "url": "https://artificialanalysis.ai/models/grok-4-3"
-    },
-    {
-      "slug": "grok-4-3-non-reasoning",
-      "name": "Grok 4.3 (Non-reasoning)",
-      "provider": "SpaceXAI",
-      "cost_usd": 0.16974590796834474,
-      "url": "https://artificialanalysis.ai/models/grok-4-3-non-reasoning"
-    },
-    {
-      "slug": "grok-4-5",
-      "name": "Grok 4.5 (high)",
-      "provider": "SpaceXAI",
-      "cost_usd": 1.0364552526545159,
-      "url": "https://artificialanalysis.ai/models/grok-4-5"
-    },
-    {
-      "slug": "grok-4-6",
-      "name": "Grok 4.6 (high)",
-      "provider": "SpaceXAI",
-      "cost_usd": 1.8589423352127492,
-      "url": "https://artificialanalysis.ai/models/grok-4-6"
-    },
-    {
-      "slug": "grok-4-6-low",
-      "name": "Grok 4.6 (low)",
-      "provider": "SpaceXAI",
-      "cost_usd": 0.47528534374531,
-      "url": "https://artificialanalysis.ai/models/grok-4-6-low"
-    },
-    {
-      "slug": "grok-4-6-medium",
-      "name": "Grok 4.6 (medium)",
-      "provider": "SpaceXAI",
-      "cost_usd": 1.4963233956114492,
-      "url": "https://artificialanalysis.ai/models/grok-4-6-medium"
-    },
-    {
-      "slug": "grok-4-6-xhigh",
-      "name": "Grok 4.6 (xhigh)",
-      "provider": "SpaceXAI",
-      "cost_usd": 2.323692124283027,
-      "url": "https://artificialanalysis.ai/models/grok-4-6-xhigh"
-    },
-    {
-      "slug": "grok-4-7-high",
-      "name": "Grok 4.7 (high)",
-      "provider": "SpaceXAI",
-      "cost_usd": 2.726106691786027,
-      "url": "https://artificialanalysis.ai/models/grok-4-7-high"
-    },
-    {
-      "slug": "grok-4-7",
-      "name": "Grok 4.7 (xhigh)",
-      "provider": "SpaceXAI",
-      "cost_usd": 3.738325952106939,
-      "url": "https://artificialanalysis.ai/models/grok-4-7"
-    },
-    {
-      "slug": "step-5",
-      "name": "Step 5 Preview",
-      "provider": "StepFun",
-      "cost_usd": 0.7174901509283937,
-      "url": "https://artificialanalysis.ai/models/step-5"
-    },
-    {
-      "slug": "hy3",
-      "name": "Hy3",
-      "provider": "Tencent",
-      "cost_usd": 0.07179763081859954,
-      "url": "https://artificialanalysis.ai/models/hy3"
-    },
-    {
-      "slug": "inkling-small",
-      "name": "Inkling Small",
-      "provider": "Thinking Machines",
-      "cost_usd": 0.0894649973284348,
-      "url": "https://artificialanalysis.ai/models/inkling-small"
+      "url": "https://artificialanalysis.ai/models/mistral-small-4",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "mistral-large-3",
+      "name": "Mistral Large 3",
+      "provider": "Mistral",
+      "cost_usd": 0.031125992260624492,
+      "url": "https://artificialanalysis.ai/models/mistral-large-3",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "mistral-small-3-1",
+      "name": "Mistral Small 3.1",
+      "provider": "Mistral",
+      "cost_usd": 0.02554707330972973,
+      "url": "https://artificialanalysis.ai/models/mistral-small-3-1",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "ministral-3-14b",
+      "name": "Ministral 3 14B",
+      "provider": "Mistral",
+      "cost_usd": 0.01943640228162961,
+      "url": "https://artificialanalysis.ai/models/ministral-3-14b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "ministral-3-8b",
+      "name": "Ministral 3 8B",
+      "provider": "Mistral",
+      "cost_usd": 0.011086416592507111,
+      "url": "https://artificialanalysis.ai/models/ministral-3-8b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "ministral-3-3b",
+      "name": "Ministral 3 3B",
+      "provider": "Mistral",
+      "cost_usd": 0.007846860809830004,
+      "url": "https://artificialanalysis.ai/models/ministral-3-3b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "k2-horizon-375b-a23b",
+      "name": "K2 Horizon 375B A23B",
+      "provider": "Institute of Foundation Models",
+      "cost_usd": 0,
+      "url": "https://artificialanalysis.ai/models/k2-horizon-375b-a23b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "minimax-m3",
+      "name": "MiniMax-M3",
+      "provider": "MiniMax",
+      "cost_usd": 0.5076126905781733,
+      "url": "https://artificialanalysis.ai/models/minimax-m3",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "solar-mini4",
+      "name": "Solar Mini 4",
+      "provider": "Upstage",
+      "cost_usd": 0.3655852120863359,
+      "url": "https://artificialanalysis.ai/models/solar-mini4",
+      "profile_captured_at": "2026-10-11"
     },
     {
       "slug": "solar-pro-3",
       "name": "Solar Pro 3",
       "provider": "Upstage",
       "cost_usd": 0.07942705217350178,
-      "url": "https://artificialanalysis.ai/models/solar-pro-3"
+      "url": "https://artificialanalysis.ai/models/solar-pro-3",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "mimo-v2-5-pro",
-      "name": "MiMo-V2.5-Pro",
-      "provider": "Xiaomi",
-      "cost_usd": 0.054072740415336835,
-      "url": "https://artificialanalysis.ai/models/mimo-v2-5-pro"
+      "slug": "quasar-438b",
+      "name": "Quasar 438B (Max, Based on GLM-5.2)",
+      "provider": "Multiverse Computing",
+      "cost_usd": 2.024611832657714,
+      "url": "https://artificialanalysis.ai/models/quasar-438b",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "mimo-v2-6-flash",
-      "name": "MiMo-V2.6-Flash",
-      "provider": "Xiaomi",
-      "cost_usd": 0.0621899731897297,
-      "url": "https://artificialanalysis.ai/models/mimo-v2-6-flash"
+      "slug": "apodex-1-1",
+      "name": "Apodex 1.1",
+      "provider": "Apodex",
+      "cost_usd": 0.4637245706928438,
+      "url": "https://artificialanalysis.ai/models/apodex-1-1",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "mimo-v2-6-pro",
-      "name": "MiMo-V2.6-Pro",
-      "provider": "Xiaomi",
-      "cost_usd": 0.13322318937213493,
-      "url": "https://artificialanalysis.ai/models/mimo-v2-6-pro"
+      "slug": "inkling-small",
+      "name": "Inkling Small",
+      "provider": "Thinking Machines",
+      "cost_usd": 0.0894649973284348,
+      "url": "https://artificialanalysis.ai/models/inkling-small",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "glm-5-3-flash",
-      "name": "GLM 5.3 Flash",
-      "provider": "Z AI",
-      "cost_usd": 0.2532595604307378,
-      "url": "https://artificialanalysis.ai/models/glm-5-3-flash"
+      "slug": "hy3",
+      "name": "Hy3",
+      "provider": "Tencent",
+      "cost_usd": 0.07179763081859954,
+      "url": "https://artificialanalysis.ai/models/hy3",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "glm-5-1",
-      "name": "GLM-5.1 (Reasoning)",
-      "provider": "Z AI",
-      "cost_usd": 1.0192564984972659,
-      "url": "https://artificialanalysis.ai/models/glm-5-1"
+      "slug": "nvidia-nemotron-3-ultra-550b-a55b",
+      "name": "Nemotron 3 Ultra 550B A55B (Reasoning)",
+      "provider": "NVIDIA",
+      "cost_usd": 0.5975984799533358,
+      "url": "https://artificialanalysis.ai/models/nvidia-nemotron-3-ultra-550b-a55b",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "glm-5-2",
-      "name": "GLM-5.2 (max)",
-      "provider": "Z AI",
-      "cost_usd": 1.4726179494034382,
-      "url": "https://artificialanalysis.ai/models/glm-5-2"
+      "slug": "nemotron-3-5-lightning",
+      "name": "Nemotron 3.5 Lightning",
+      "provider": "NVIDIA",
+      "cost_usd": 0.09309918417597017,
+      "url": "https://artificialanalysis.ai/models/nemotron-3-5-lightning",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "glm-5-3-low",
-      "name": "GLM-5.3 (low)",
-      "provider": "Z AI",
-      "cost_usd": 0.8522174973386498,
-      "url": "https://artificialanalysis.ai/models/glm-5-3-low"
+      "slug": "nvidia-nemotron-3-super-120b-a12b",
+      "name": "Nemotron 3 Super 120B A12B (Reasoning)",
+      "provider": "NVIDIA",
+      "cost_usd": 1.6390663672616101,
+      "url": "https://artificialanalysis.ai/models/nvidia-nemotron-3-super-120b-a12b",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "slug": "glm-5-3",
-      "name": "GLM-5.3 (max)",
-      "provider": "Z AI",
-      "cost_usd": 2.0056375150449584,
-      "url": "https://artificialanalysis.ai/models/glm-5-3"
-    }
-  ],
-  "profile_updates": [
-    {
-      "captured_at": "2026-10-07",
-      "model_count": 3,
-      "source_urls": [
-        "https://artificialanalysis.ai/models/gemini-4-argon",
-        "https://artificialanalysis.ai/models/ling-3-1-flash",
-        "https://artificialanalysis.ai/models/mistral-large-4"
-      ]
+      "slug": "nvidia-nemotron-3-nano-30b-a3b-reasoning",
+      "name": "NVIDIA Nemotron 3 Nano 30B A3B (Reasoning)",
+      "provider": "NVIDIA",
+      "cost_usd": 0.01675160944475661,
+      "url": "https://artificialanalysis.ai/models/nvidia-nemotron-3-nano-30b-a3b-reasoning",
+      "profile_captured_at": "2026-10-11"
     },
     {
-      "captured_at": "2026-10-08",
-      "model_count": 5,
-      "source_urls": [
-        "https://artificialanalysis.ai/models/claude-haiku-5-5-low",
-        "https://artificialanalysis.ai/models/claude-haiku-5-5-medium",
-        "https://artificialanalysis.ai/models/claude-haiku-5-5-high",
-        "https://artificialanalysis.ai/models/claude-haiku-5-5-xhigh",
-        "https://artificialanalysis.ai/models/claude-haiku-5-5"
-      ]
+      "slug": "longcat-2-0",
+      "name": "LongCat 2.0",
+      "provider": "LongCat",
+      "cost_usd": 0.14624850952440743,
+      "url": "https://artificialanalysis.ai/models/longcat-2-0",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "mercury-2-5",
+      "name": "Mercury 2.5",
+      "provider": "Inception",
+      "cost_usd": 0.11668472036336801,
+      "url": "https://artificialanalysis.ai/models/mercury-2-5",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "command-a-plus",
+      "name": "Command A+",
+      "provider": "Cohere",
+      "cost_usd": 0,
+      "url": "https://artificialanalysis.ai/models/command-a-plus",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "north-mini-code",
+      "name": "North Mini Code",
+      "provider": "Cohere",
+      "cost_usd": 0,
+      "url": "https://artificialanalysis.ai/models/north-mini-code",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "granite-4-2-30b",
+      "name": "Granite 4.2 30B",
+      "provider": "IBM",
+      "cost_usd": 0.0716641484962871,
+      "url": "https://artificialanalysis.ai/models/granite-4-2-30b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "granite-4-2-8b",
+      "name": "Granite 4.2 8B",
+      "provider": "IBM",
+      "cost_usd": 0.023596091491929188,
+      "url": "https://artificialanalysis.ai/models/granite-4-2-8b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "granite-4-2-3b",
+      "name": "Granite 4.2 3B",
+      "provider": "IBM",
+      "cost_usd": 0.005985262336744139,
+      "url": "https://artificialanalysis.ai/models/granite-4-2-3b",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "trinity-large-thinking",
+      "name": "Trinity Large Thinking",
+      "provider": "Arcee AI",
+      "cost_usd": 0.11883788334567012,
+      "url": "https://artificialanalysis.ai/models/trinity-large-thinking",
+      "profile_captured_at": "2026-10-11"
+    },
+    {
+      "slug": "celeris-1",
+      "name": "Celeris-1",
+      "provider": "Celeris",
+      "cost_usd": 0.05015755586591194,
+      "url": "https://artificialanalysis.ai/models/celeris-1",
+      "profile_captured_at": "2026-10-11"
     }
   ]
 }
