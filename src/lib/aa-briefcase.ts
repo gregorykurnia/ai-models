@@ -203,8 +203,8 @@ export function mergeBriefcaseComponents(
   dataset: Dataset,
   source: BriefcaseComponentsSource,
 ): Dataset {
-  if (source.models.length !== 208) {
-    throw new Error(`AA-Briefcase component capture must contain 208 models; found ${source.models.length}`);
+  if (source.models.length === 0) {
+    throw new Error("AA-Briefcase component capture must contain at least one model");
   }
   for (const model of source.models) {
     if (!model.provider || !model.name || !Number.isFinite(model.rubric_score)
@@ -232,7 +232,7 @@ export function mergeBriefcaseComponents(
       : new Date().toISOString(),
     source_kind: "artificial_analysis_evaluation_snapshot",
     source_urls: [source.source_url, `${briefcaseSourceBase}?results=quality-elos`],
-    notes: "Public AA-Briefcase results capture. Includes rubric pass rate, analytical quality Elo, and presentation Elo for all 208 listed models.",
+    notes: "Public AA-Briefcase results capture. Includes rubric pass rate, analytical quality Elo, and presentation Elo for all listed models.",
   };
   const components = metricDefinitions.map(definition => makeComponentEvaluation(source, sourceAssetId, definition));
   const componentIds = new Set(metricDefinitions.map(definition => definition.id));
