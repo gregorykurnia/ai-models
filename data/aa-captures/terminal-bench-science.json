@@ -1,0 +1,1483 @@
+{
+ "key": "terminal-bench-science",
+ "source_url": "https://artificialanalysis.ai/evaluations/terminal-bench-science",
+ "captured_at": "2026-10-11",
+ "selectors": 7,
+ "charts": [
+  {
+   "title": "Terminal-Bench-Science 0.1: Score",
+   "items": [
+    {
+     "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
+     "label": "GPT-6 Astra (max)",
+     "tooltipLabel": "GPT-6 Astra (Max)",
+     "value": 0.633333333333333,
+     "displayValue": "63.3%",
+     "url": "/models/gpt-6-astra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "df5bf99d-d228-4715-b41b-19ca86118777",
+     "label": "Claude Opus 5.5 (xhigh with fallback)",
+     "tooltipLabel": "Claude Opus 5.5 (Xhigh, Default Fallback)",
+     "value": 0.619047619047619,
+     "displayValue": "61.9%",
+     "url": "/models/claude-opus-5-5-xhigh",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
+     "label": "Claude Opus 5.5 (max with fallback)",
+     "tooltipLabel": "Claude Opus 5.5 (Max, Default Fallback)",
+     "value": 0.59047619047619,
+     "displayValue": "59.0%",
+     "url": "/models/claude-opus-5-5",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
+     "label": "GPT-6.1 Sol (max)",
+     "tooltipLabel": "GPT-6.1 Sol (Max)",
+     "value": 0.580952380952381,
+     "displayValue": "58.1%",
+     "url": "/models/gpt-6-1-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
+     "label": "Claude Sonnet 5.5 (max with fallback)",
+     "tooltipLabel": "Claude Sonnet 5.5 (Max, Default Fallback)",
+     "value": 0.533333333333333,
+     "displayValue": "53.3%",
+     "url": "/models/claude-sonnet-5-5",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
+     "label": "Claude Sonnet 5.5 (xhigh with fallback)",
+     "tooltipLabel": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
+     "value": 0.523809523809524,
+     "displayValue": "52.4%",
+     "url": "/models/claude-sonnet-5-5-xhigh",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
+     "label": "Claude Opus 5.5 (high with fallback)",
+     "tooltipLabel": "Claude Opus 5.5 (High, Default Fallback)",
+     "value": 0.49047619047619,
+     "displayValue": "49.0%",
+     "url": "/models/claude-opus-5-5-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "3e87c73e-a257-495e-9730-367a66229811",
+     "label": "Claude Fable 5.1 (max with fallback)",
+     "tooltipLabel": "Claude Fable 5.1 (Max, Default Fallback)",
+     "value": 0.433333333333333,
+     "displayValue": "43.3%",
+     "url": "/models/claude-fable-5-1",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
+     "label": "Claude Opus 5.5 (medium with fallback)",
+     "tooltipLabel": "Claude Opus 5.5 (Medium, Default Fallback)",
+     "value": 0.433333333333333,
+     "displayValue": "43.3%",
+     "url": "/models/claude-opus-5-5-medium",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
+     "label": "Claude Sonnet 5.5 (high with fallback)",
+     "tooltipLabel": "Claude Sonnet 5.5 (High, Default Fallback)",
+     "value": 0.342857142857143,
+     "displayValue": "34.3%",
+     "url": "/models/claude-sonnet-5-5-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+     "label": "GPT-6 Sol (max)",
+     "tooltipLabel": "GPT-6 Sol (Max)",
+     "value": 0.3,
+     "displayValue": "30.0%",
+     "url": "/models/gpt-6-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+     "label": "Claude Opus 5 (max)",
+     "tooltipLabel": "Claude Opus 5 (Max)",
+     "value": 0.285714285714286,
+     "displayValue": "28.6%",
+     "url": "/models/claude-opus-5",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
+     "label": "Claude Opus 5.5 (low with fallback)",
+     "tooltipLabel": "Claude Opus 5.5 (Low, Default Fallback)",
+     "value": 0.242857142857143,
+     "displayValue": "24.3%",
+     "url": "/models/claude-opus-5-5-low",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "d93edfe8-bf35-49ad-b56e-b18116142a1c",
+     "label": "GPT-5.6 Sol (max)",
+     "tooltipLabel": "GPT-5.6 Sol (Max)",
+     "value": 0.223809523809524,
+     "displayValue": "22.4%",
+     "url": "/models/gpt-5-6-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "7d064a11-6e78-4030-b535-cdf940615041",
+     "label": "Claude Haiku 5.5 (max)",
+     "tooltipLabel": "Claude Haiku 5.5 (Max)",
+     "value": 0.2,
+     "displayValue": "20.0%",
+     "url": "/models/claude-haiku-5-5",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
+     "label": "Claude Haiku 5.5 (xhigh)",
+     "tooltipLabel": "Claude Haiku 5.5 (Xhigh)",
+     "value": 0.180952380952381,
+     "displayValue": "18.1%",
+     "url": "/models/claude-haiku-5-5-xhigh",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "da2642fe-9f73-4788-b5af-24edcd55b37e",
+     "label": "GPT-6 Sol (xhigh)",
+     "tooltipLabel": "GPT-6 Sol (Xhigh)",
+     "value": 0.176190476190476,
+     "displayValue": "17.6%",
+     "url": "/models/gpt-6-sol-xhigh",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "52eebe3e-6ede-4e46-92db-c5dea49fc410",
+     "label": "GPT-6 Sol (high)",
+     "tooltipLabel": "GPT-6 Sol (High)",
+     "value": 0.171428571428571,
+     "displayValue": "17.1%",
+     "url": "/models/gpt-6-sol-high",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
+     "label": "Claude Sonnet 5.5 (medium with fallback)",
+     "tooltipLabel": "Claude Sonnet 5.5 (Medium, Default Fallback)",
+     "value": 0.161904761904762,
+     "displayValue": "16.2%",
+     "url": "/models/claude-sonnet-5-5-medium",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
+     "label": "GPT-5.6 Terra (max)",
+     "tooltipLabel": "GPT-5.6 Terra (Max)",
+     "value": 0.138095238095238,
+     "displayValue": "13.8%",
+     "url": "/models/gpt-5-6-terra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "b112af07-3bd5-4647-b09f-b23204361bb2",
+     "label": "Qwen3.8 Max (0902)",
+     "tooltipLabel": "Qwen3.8 Max (0902)",
+     "value": 0.119047619047619,
+     "displayValue": "11.9%",
+     "url": "/models/qwen3-8-max",
+     "logo": "/img/logos/alibaba.svg"
+    },
+    {
+     "id": "9999672c-b687-4026-9c15-5cef02ff53bb",
+     "label": "Muse Spark 1.3 (max)",
+     "tooltipLabel": "Muse Spark 1.3 (Max)",
+     "value": 0.10952380952381,
+     "displayValue": "11.0%",
+     "url": "/models/muse-spark-1-3",
+     "logo": "/img/logos/meta.svg"
+    },
+    {
+     "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
+     "label": "Claude Sonnet 5.5 (low with fallback)",
+     "tooltipLabel": "Claude Sonnet 5.5 (Low, Default Fallback)",
+     "value": 0.104761904761905,
+     "displayValue": "10.5%",
+     "url": "/models/claude-sonnet-5-5-low",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "20829974-af06-497e-9f42-77fb958d43b9",
+     "label": "Claude Haiku 5.5 (high)",
+     "tooltipLabel": "Claude Haiku 5.5 (High)",
+     "value": 0.1,
+     "displayValue": "10.0%",
+     "url": "/models/claude-haiku-5-5-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+     "label": "Gemini 3.8 Flash (high)",
+     "tooltipLabel": "Gemini 3.8 Flash (High)",
+     "value": 0.1,
+     "displayValue": "10.0%",
+     "url": "/models/gemini-3-8-flash",
+     "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "cd684ea4-b475-4269-b001-d469d06d8a7a",
+     "label": "GLM-5.3 (max)",
+     "tooltipLabel": "GLM-5.3 (Max)",
+     "value": 0.0952380952380952,
+     "displayValue": "9.5%",
+     "url": "/models/glm-5-3",
+     "logo": "/img/logos/zai.svg"
+    },
+    {
+     "id": "dbe7c625-3100-4463-b479-a228c41f75dd",
+     "label": "DeepSeek V4.1 Flash (max)",
+     "tooltipLabel": "DeepSeek V4.1 Flash (Max)",
+     "value": 0.0904761904761905,
+     "displayValue": "9.0%",
+     "url": "/models/deepseek-v4-1-flash",
+     "logo": "/img/logos/deepseek.svg"
+    },
+    {
+     "id": "780a4a85-17ff-4175-a8dd-ebca4823e61b",
+     "label": "GPT-6 Sol (medium)",
+     "tooltipLabel": "GPT-6 Sol (Medium)",
+     "value": 0.0857142857142857,
+     "displayValue": "8.6%",
+     "url": "/models/gpt-6-sol-medium",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
+     "label": "GPT-6 Luna (max)",
+     "tooltipLabel": "GPT-6 Luna (Max)",
+     "value": 0.0857142857142857,
+     "displayValue": "8.6%",
+     "url": "/models/gpt-6-luna",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "af26fff4-8120-41be-a5f0-86aaea023f20",
+     "label": "Claude Haiku 5.5 (medium)",
+     "tooltipLabel": "Claude Haiku 5.5 (Medium)",
+     "value": 0.0714285714285714,
+     "displayValue": "7.1%",
+     "url": "/models/claude-haiku-5-5-medium",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "c8adc5cf-fd5a-407b-af51-dc3bede3e49c",
+     "label": "Grok 4.6 (high)",
+     "tooltipLabel": "Grok 4.6 (High)",
+     "value": 0.0619047619047619,
+     "displayValue": "6.2%",
+     "url": "/models/grok-4-6",
+     "logo": "/img/logos/spacexai.svg"
+    },
+    {
+     "id": "d3e20e76-9e1a-45b6-b809-ad6aa37430cf",
+     "label": "GPT-6 Sol (non-reasoning)",
+     "tooltipLabel": "GPT-6 Sol (Non-reasoning)",
+     "value": 0.0571428571428571,
+     "displayValue": "5.7%",
+     "url": "/models/gpt-6-sol-non-reasoning",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "24d8fdfe-6241-424e-b7b7-1b6efb06e4fb",
+     "label": "MiMo-V2.6-Pro",
+     "tooltipLabel": "MiMo-V2.6-Pro",
+     "value": 0.0571428571428571,
+     "displayValue": "5.7%",
+     "url": "/models/mimo-v2-6-pro",
+     "logo": "/img/logos/xiaomi.svg"
+    },
+    {
+     "id": "83173329-c09a-41f1-a028-a282a5f908d7",
+     "label": "DeepSeek V4 Pro 0813 (max)",
+     "tooltipLabel": "DeepSeek V4 Pro 0813 (Max)",
+     "value": 0.0571428571428571,
+     "displayValue": "5.7%",
+     "url": "/models/deepseek-v4-pro",
+     "logo": "/img/logos/deepseek.svg"
+    },
+    {
+     "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
+     "label": "GLM-5.3-Flash",
+     "tooltipLabel": "GLM-5.3-Flash",
+     "value": 0.0476190476190476,
+     "displayValue": "4.8%",
+     "url": "/models/glm-5-3-flash",
+     "logo": "/img/logos/zai.svg"
+    },
+    {
+     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+     "label": "GPT-5.6 Luna (max)",
+     "tooltipLabel": "GPT-5.6 Luna (Max)",
+     "value": 0.0333333333333333,
+     "displayValue": "3.3%",
+     "url": "/models/gpt-5-6-luna",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "01459872-433a-4ab2-8e99-7083162172eb",
+     "label": "GPT-6 Sol (low)",
+     "tooltipLabel": "GPT-6 Sol (Low)",
+     "value": 0.0333333333333333,
+     "displayValue": "3.3%",
+     "url": "/models/gpt-6-sol-low",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
+     "label": "Step 5 Preview",
+     "tooltipLabel": "Step 5 Preview",
+     "value": 0.0238095238095238,
+     "displayValue": "2.4%",
+     "url": "/models/step-5",
+     "logo": "/img/logos/stepfun.svg"
+    },
+    {
+     "id": "42908ae3-d3bd-4934-be19-fbff93d3fde8",
+     "label": "Claude Haiku 5.5 (low)",
+     "tooltipLabel": "Claude Haiku 5.5 (Low)",
+     "value": 0.019047619047619,
+     "displayValue": "1.9%",
+     "url": "/models/claude-haiku-5-5-low",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "b01dee41-c62b-48ed-8d16-984adc405e5c",
+     "label": "Qwen3.8 27B (xhigh)",
+     "tooltipLabel": "Qwen3.8 27B (Xhigh)",
+     "value": 0.00476190476190476,
+     "displayValue": "0.5%",
+     "url": "/models/qwen3-8-27b",
+     "logo": "/img/logos/alibaba.svg"
+    },
+    {
+     "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
+     "label": "MiniMax-M3",
+     "tooltipLabel": "MiniMax-M3",
+     "value": 0.00476190476190476,
+     "displayValue": "0.5%",
+     "url": "/models/minimax-m3",
+     "logo": "/img/logos/minimax.svg"
+    },
+    {
+     "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
+     "label": "Muse Glimmer (high)",
+     "tooltipLabel": "Muse Glimmer (High)",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/muse-glimmer",
+     "logo": "/img/logos/meta.svg"
+    },
+    {
+     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+     "label": "Gemini 3.5 Flash-Lite",
+     "tooltipLabel": "Gemini 3.5 Flash-Lite",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/gemini-3-5-flash-lite",
+     "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "7261504e-503c-4a66-a9d3-a3272cdf9ad6",
+     "label": "Inkling Small",
+     "tooltipLabel": "Inkling Small",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/inkling-small",
+     "logo": "/img/logos/thinking-machines.svg"
+    },
+    {
+     "id": "0de09623-2b1a-4c8d-86ef-7f5245d4e24b",
+     "label": "Inkling (xhigh)",
+     "tooltipLabel": "Inkling (Xhigh)",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/inkling",
+     "logo": "/img/logos/thinking-machines.svg"
+    }
+   ]
+  },
+  {
+   "title": "Terminal-Bench-Science 0.1: Score vs. Cost per Task",
+   "items": [
+    {
+     "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
+     "slug": "claude-opus-5-5",
+     "name": "Claude Opus 5.5 (Max, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (max with fallback)",
+     "creatorName": "Anthropic",
+     "costPerTask": 19.970984026619043
+    },
+    {
+     "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
+     "slug": "claude-sonnet-5-5",
+     "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (max with fallback)",
+     "creatorName": "Anthropic",
+     "costPerTask": 23.76070504582413
+    },
+    {
+     "id": "df5bf99d-d228-4715-b41b-19ca86118777",
+     "slug": "claude-opus-5-5-xhigh",
+     "name": "Claude Opus 5.5 (Xhigh, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (xhigh with fallback)",
+     "creatorName": "Anthropic",
+     "costPerTask": 14.116266813917727
+    },
+    {
+     "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
+     "slug": "claude-opus-5-5-high",
+     "name": "Claude Opus 5.5 (High, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (high with fallback)",
+     "creatorName": "Anthropic",
+     "costPerTask": 10.023226012190579
+    },
+    {
+     "id": "3e87c73e-a257-495e-9730-367a66229811",
+     "slug": "claude-fable-5-1",
+     "name": "Claude Fable 5.1 (Max, Default Fallback)",
+     "shortName": "Claude Fable 5.1 (max with fallback)",
+     "creatorName": "Anthropic",
+     "costPerTask": 28.111476435464848
+    },
+    {
+     "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
+     "slug": "claude-sonnet-5-5-xhigh",
+     "name": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (xhigh with fallback)",
+     "creatorName": "Anthropic",
+     "costPerTask": 12.77163567351847
+    },
+    {
+     "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
+     "slug": "claude-opus-5-5-medium",
+     "name": "Claude Opus 5.5 (Medium, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (medium with fallback)",
+     "creatorName": "Anthropic",
+     "costPerTask": 6.797476245941156
+    },
+    {
+     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+     "slug": "claude-opus-5",
+     "name": "Claude Opus 5 (Max)",
+     "shortName": "Claude Opus 5 (max)",
+     "creatorName": "Anthropic",
+     "costPerTask": 32.37374632237934
+    },
+    {
+     "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
+     "slug": "claude-sonnet-5-5-high",
+     "name": "Claude Sonnet 5.5 (High, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (high with fallback)",
+     "creatorName": "Anthropic",
+     "costPerTask": 4.9812713074419
+    },
+    {
+     "id": "7d064a11-6e78-4030-b535-cdf940615041",
+     "slug": "claude-haiku-5-5",
+     "name": "Claude Haiku 5.5 (Max)",
+     "shortName": "Claude Haiku 5.5 (max)",
+     "creatorName": "Anthropic",
+     "costPerTask": 1.0337096548566398
+    },
+    {
+     "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
+     "slug": "claude-opus-5-5-low",
+     "name": "Claude Opus 5.5 (Low, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (low with fallback)",
+     "creatorName": "Anthropic",
+     "costPerTask": 2.8105121459449705
+    },
+    {
+     "id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
+     "slug": "claude-haiku-5-5-xhigh",
+     "name": "Claude Haiku 5.5 (Xhigh)",
+     "shortName": "Claude Haiku 5.5 (xhigh)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.6520166839581321
+    },
+    {
+     "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
+     "slug": "claude-sonnet-5-5-medium",
+     "name": "Claude Sonnet 5.5 (Medium, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (medium with fallback)",
+     "creatorName": "Anthropic",
+     "costPerTask": 2.135445979673252
+    },
+    {
+     "id": "20829974-af06-497e-9f42-77fb958d43b9",
+     "slug": "claude-haiku-5-5-high",
+     "name": "Claude Haiku 5.5 (High)",
+     "shortName": "Claude Haiku 5.5 (high)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.42757181880221934
+    },
+    {
+     "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
+     "slug": "claude-sonnet-5-5-low",
+     "name": "Claude Sonnet 5.5 (Low, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (low with fallback)",
+     "creatorName": "Anthropic",
+     "costPerTask": 1.2344354493850858
+    },
+    {
+     "id": "af26fff4-8120-41be-a5f0-86aaea023f20",
+     "slug": "claude-haiku-5-5-medium",
+     "name": "Claude Haiku 5.5 (Medium)",
+     "shortName": "Claude Haiku 5.5 (medium)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.24578642678767365
+    },
+    {
+     "id": "42908ae3-d3bd-4934-be19-fbff93d3fde8",
+     "slug": "claude-haiku-5-5-low",
+     "name": "Claude Haiku 5.5 (Low)",
+     "shortName": "Claude Haiku 5.5 (low)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.10815546548156492
+    },
+    {
+     "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
+     "slug": "gpt-6-astra",
+     "name": "GPT-6 Astra (Max)",
+     "shortName": "GPT-6 Astra (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 17.47623317094791
+    },
+    {
+     "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
+     "slug": "gpt-6-1-sol",
+     "name": "GPT-6.1 Sol (Max)",
+     "shortName": "GPT-6.1 Sol (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 3.338933695895609
+    },
+    {
+     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+     "slug": "gpt-6-sol",
+     "name": "GPT-6 Sol (Max)",
+     "shortName": "GPT-6 Sol (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 8.14237740011373
+    },
+    {
+     "id": "d93edfe8-bf35-49ad-b56e-b18116142a1c",
+     "slug": "gpt-5-6-sol",
+     "name": "GPT-5.6 Sol (Max)",
+     "shortName": "GPT-5.6 Sol (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 15.626198005235068
+    },
+    {
+     "id": "da2642fe-9f73-4788-b5af-24edcd55b37e",
+     "slug": "gpt-6-sol-xhigh",
+     "name": "GPT-6 Sol (Xhigh)",
+     "shortName": "GPT-6 Sol (xhigh)",
+     "creatorName": "OpenAI",
+     "costPerTask": 4.614306399218028
+    },
+    {
+     "id": "52eebe3e-6ede-4e46-92db-c5dea49fc410",
+     "slug": "gpt-6-sol-high",
+     "name": "GPT-6 Sol (High)",
+     "shortName": "GPT-6 Sol (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 3.450246941566219
+    },
+    {
+     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
+     "slug": "gpt-5-6-terra",
+     "name": "GPT-5.6 Terra (Max)",
+     "shortName": "GPT-5.6 Terra (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 12.922122297552685
+    },
+    {
+     "id": "780a4a85-17ff-4175-a8dd-ebca4823e61b",
+     "slug": "gpt-6-sol-medium",
+     "name": "GPT-6 Sol (Medium)",
+     "shortName": "GPT-6 Sol (medium)",
+     "creatorName": "OpenAI",
+     "costPerTask": 3.6211771002953546
+    },
+    {
+     "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
+     "slug": "gpt-6-luna",
+     "name": "GPT-6 Luna (Max)",
+     "shortName": "GPT-6 Luna (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.45408419406726913
+    },
+    {
+     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+     "slug": "gpt-5-6-luna",
+     "name": "GPT-5.6 Luna (Max)",
+     "shortName": "GPT-5.6 Luna (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.7320133991428966
+    },
+    {
+     "id": "01459872-433a-4ab2-8e99-7083162172eb",
+     "slug": "gpt-6-sol-low",
+     "name": "GPT-6 Sol (Low)",
+     "shortName": "GPT-6 Sol (low)",
+     "creatorName": "OpenAI",
+     "costPerTask": 1.0781154045578762
+    },
+    {
+     "id": "d3e20e76-9e1a-45b6-b809-ad6aa37430cf",
+     "slug": "gpt-6-sol-non-reasoning",
+     "name": "GPT-6 Sol (Non-reasoning)",
+     "shortName": "GPT-6 Sol (non-reasoning)",
+     "creatorName": "OpenAI",
+     "costPerTask": 2.4461098533713783
+    },
+    {
+     "id": "9999672c-b687-4026-9c15-5cef02ff53bb",
+     "slug": "muse-spark-1-3",
+     "name": "Muse Spark 1.3 (Max)",
+     "shortName": "Muse Spark 1.3 (max)",
+     "creatorName": "Meta",
+     "costPerTask": 6.537333078214285
+    },
+    {
+     "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
+     "slug": "muse-glimmer",
+     "name": "Muse Glimmer (High)",
+     "shortName": "Muse Glimmer (high)",
+     "creatorName": "Meta",
+     "costPerTask": 0.26180363723214284
+    },
+    {
+     "id": "24d8fdfe-6241-424e-b7b7-1b6efb06e4fb",
+     "slug": "mimo-v2-6-pro",
+     "name": "MiMo-V2.6-Pro",
+     "shortName": "MiMo-V2.6-Pro",
+     "creatorName": "Xiaomi",
+     "costPerTask": 0.630775924576595
+    },
+    {
+     "id": "b112af07-3bd5-4647-b09f-b23204361bb2",
+     "slug": "qwen3-8-max",
+     "name": "Qwen3.8 Max (0902)",
+     "shortName": "Qwen3.8 Max (0902)",
+     "creatorName": "Alibaba",
+     "costPerTask": 26.5256352827258
+    },
+    {
+     "id": "b01dee41-c62b-48ed-8d16-984adc405e5c",
+     "slug": "qwen3-8-27b",
+     "name": "Qwen3.8 27B (Xhigh)",
+     "shortName": "Qwen3.8 27B (xhigh)",
+     "creatorName": "Alibaba",
+     "costPerTask": 10.482113067885717
+    },
+    {
+     "id": "cd684ea4-b475-4269-b001-d469d06d8a7a",
+     "slug": "glm-5-3",
+     "name": "GLM-5.3 (Max)",
+     "shortName": "GLM-5.3 (max)",
+     "creatorName": "Z AI",
+     "costPerTask": 14.906654559890919
+    },
+    {
+     "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
+     "slug": "glm-5-3-flash",
+     "name": "GLM-5.3-Flash",
+     "shortName": "GLM-5.3-Flash",
+     "creatorName": "Z AI",
+     "costPerTask": 1.4130168884540346
+    },
+    {
+     "id": "c8adc5cf-fd5a-407b-af51-dc3bede3e49c",
+     "slug": "grok-4-6",
+     "name": "Grok 4.6 (High)",
+     "shortName": "Grok 4.6 (high)",
+     "creatorName": "SpaceXAI",
+     "costPerTask": 11.080936010097089
+    },
+    {
+     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
+     "slug": "step-5",
+     "name": "Step 5 Preview",
+     "shortName": "Step 5 Preview",
+     "creatorName": "StepFun",
+     "costPerTask": 7.278976314831998
+    },
+    {
+     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+     "slug": "gemini-3-8-flash",
+     "name": "Gemini 3.8 Flash (High)",
+     "shortName": "Gemini 3.8 Flash (high)",
+     "creatorName": "Google",
+     "costPerTask": 5.225214954010232
+    },
+    {
+     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+     "slug": "gemini-3-5-flash-lite",
+     "name": "Gemini 3.5 Flash-Lite",
+     "shortName": "Gemini 3.5 Flash-Lite",
+     "creatorName": "Google",
+     "costPerTask": 1.215362660141506
+    },
+    {
+     "id": "dbe7c625-3100-4463-b479-a228c41f75dd",
+     "slug": "deepseek-v4-1-flash",
+     "name": "DeepSeek V4.1 Flash (Max)",
+     "shortName": "DeepSeek V4.1 Flash (max)",
+     "creatorName": "DeepSeek",
+     "costPerTask": 1.8551746470165613
+    },
+    {
+     "id": "83173329-c09a-41f1-a028-a282a5f908d7",
+     "slug": "deepseek-v4-pro",
+     "name": "DeepSeek V4 Pro 0813 (Max)",
+     "shortName": "DeepSeek V4 Pro 0813 (max)",
+     "creatorName": "DeepSeek",
+     "costPerTask": 5.626695765444846
+    },
+    {
+     "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
+     "slug": "minimax-m3",
+     "name": "MiniMax-M3",
+     "shortName": "MiniMax-M3",
+     "creatorName": "MiniMax",
+     "costPerTask": 4.008951215804856
+    },
+    {
+     "id": "7261504e-503c-4a66-a9d3-a3272cdf9ad6",
+     "slug": "inkling-small",
+     "name": "Inkling Small",
+     "shortName": "Inkling Small",
+     "creatorName": "Thinking Machines",
+     "costPerTask": 0.3773942079493714
+    }
+   ]
+  },
+  {
+   "title": "Terminal-Bench-Science 0.1: Cost per Task",
+   "items": [
+    {
+     "id": "42908ae3-d3bd-4934-be19-fbff93d3fde8",
+     "label": "Claude Haiku 5.5 (low)",
+     "tooltipLabel": "Claude Haiku 5.5 (Low)",
+     "url": "/models/claude-haiku-5-5-low",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "af26fff4-8120-41be-a5f0-86aaea023f20",
+     "label": "Claude Haiku 5.5 (medium)",
+     "tooltipLabel": "Claude Haiku 5.5 (Medium)",
+     "url": "/models/claude-haiku-5-5-medium",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
+     "label": "Muse Glimmer (high)",
+     "tooltipLabel": "Muse Glimmer (High)",
+     "url": "/models/muse-glimmer",
+     "logo": "/img/logos/meta.svg"
+    },
+    {
+     "id": "7261504e-503c-4a66-a9d3-a3272cdf9ad6",
+     "label": "Inkling Small",
+     "tooltipLabel": "Inkling Small",
+     "url": "/models/inkling-small",
+     "logo": "/img/logos/thinking-machines.svg"
+    },
+    {
+     "id": "20829974-af06-497e-9f42-77fb958d43b9",
+     "label": "Claude Haiku 5.5 (high)",
+     "tooltipLabel": "Claude Haiku 5.5 (High)",
+     "url": "/models/claude-haiku-5-5-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
+     "label": "GPT-6 Luna (max)",
+     "tooltipLabel": "GPT-6 Luna (Max)",
+     "url": "/models/gpt-6-luna",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "24d8fdfe-6241-424e-b7b7-1b6efb06e4fb",
+     "label": "MiMo-V2.6-Pro",
+     "tooltipLabel": "MiMo-V2.6-Pro",
+     "url": "/models/mimo-v2-6-pro",
+     "logo": "/img/logos/xiaomi.svg"
+    },
+    {
+     "id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
+     "label": "Claude Haiku 5.5 (xhigh)",
+     "tooltipLabel": "Claude Haiku 5.5 (Xhigh)",
+     "url": "/models/claude-haiku-5-5-xhigh",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+     "label": "GPT-5.6 Luna (max)",
+     "tooltipLabel": "GPT-5.6 Luna (Max)",
+     "url": "/models/gpt-5-6-luna",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "7d064a11-6e78-4030-b535-cdf940615041",
+     "label": "Claude Haiku 5.5 (max)",
+     "tooltipLabel": "Claude Haiku 5.5 (Max)",
+     "url": "/models/claude-haiku-5-5",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "01459872-433a-4ab2-8e99-7083162172eb",
+     "label": "GPT-6 Sol (low)",
+     "tooltipLabel": "GPT-6 Sol (Low)",
+     "url": "/models/gpt-6-sol-low",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+     "label": "Gemini 3.5 Flash-Lite",
+     "tooltipLabel": "Gemini 3.5 Flash-Lite",
+     "url": "/models/gemini-3-5-flash-lite",
+     "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
+     "label": "Claude Sonnet 5.5 (low with fallback)",
+     "tooltipLabel": "Claude Sonnet 5.5 (Low, Default Fallback)",
+     "url": "/models/claude-sonnet-5-5-low",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
+     "label": "GLM-5.3-Flash",
+     "tooltipLabel": "GLM-5.3-Flash",
+     "url": "/models/glm-5-3-flash",
+     "logo": "/img/logos/zai.svg"
+    },
+    {
+     "id": "dbe7c625-3100-4463-b479-a228c41f75dd",
+     "label": "DeepSeek V4.1 Flash (max)",
+     "tooltipLabel": "DeepSeek V4.1 Flash (Max)",
+     "url": "/models/deepseek-v4-1-flash",
+     "logo": "/img/logos/deepseek.svg"
+    },
+    {
+     "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
+     "label": "Claude Sonnet 5.5 (medium with fallback)",
+     "tooltipLabel": "Claude Sonnet 5.5 (Medium, Default Fallback)",
+     "url": "/models/claude-sonnet-5-5-medium",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "d3e20e76-9e1a-45b6-b809-ad6aa37430cf",
+     "label": "GPT-6 Sol (non-reasoning)",
+     "tooltipLabel": "GPT-6 Sol (Non-reasoning)",
+     "url": "/models/gpt-6-sol-non-reasoning",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
+     "label": "Claude Opus 5.5 (low with fallback)",
+     "tooltipLabel": "Claude Opus 5.5 (Low, Default Fallback)",
+     "url": "/models/claude-opus-5-5-low",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
+     "label": "GPT-6.1 Sol (max)",
+     "tooltipLabel": "GPT-6.1 Sol (Max)",
+     "url": "/models/gpt-6-1-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "52eebe3e-6ede-4e46-92db-c5dea49fc410",
+     "label": "GPT-6 Sol (high)",
+     "tooltipLabel": "GPT-6 Sol (High)",
+     "url": "/models/gpt-6-sol-high",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "780a4a85-17ff-4175-a8dd-ebca4823e61b",
+     "label": "GPT-6 Sol (medium)",
+     "tooltipLabel": "GPT-6 Sol (Medium)",
+     "url": "/models/gpt-6-sol-medium",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
+     "label": "MiniMax-M3",
+     "tooltipLabel": "MiniMax-M3",
+     "url": "/models/minimax-m3",
+     "logo": "/img/logos/minimax.svg"
+    },
+    {
+     "id": "da2642fe-9f73-4788-b5af-24edcd55b37e",
+     "label": "GPT-6 Sol (xhigh)",
+     "tooltipLabel": "GPT-6 Sol (Xhigh)",
+     "url": "/models/gpt-6-sol-xhigh",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
+     "label": "Claude Sonnet 5.5 (high with fallback)",
+     "tooltipLabel": "Claude Sonnet 5.5 (High, Default Fallback)",
+     "url": "/models/claude-sonnet-5-5-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+     "label": "Gemini 3.8 Flash (high)",
+     "tooltipLabel": "Gemini 3.8 Flash (High)",
+     "url": "/models/gemini-3-8-flash",
+     "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "83173329-c09a-41f1-a028-a282a5f908d7",
+     "label": "DeepSeek V4 Pro 0813 (max)",
+     "tooltipLabel": "DeepSeek V4 Pro 0813 (Max)",
+     "url": "/models/deepseek-v4-pro",
+     "logo": "/img/logos/deepseek.svg"
+    },
+    {
+     "id": "9999672c-b687-4026-9c15-5cef02ff53bb",
+     "label": "Muse Spark 1.3 (max)",
+     "tooltipLabel": "Muse Spark 1.3 (Max)",
+     "url": "/models/muse-spark-1-3",
+     "logo": "/img/logos/meta.svg"
+    },
+    {
+     "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
+     "label": "Claude Opus 5.5 (medium with fallback)",
+     "tooltipLabel": "Claude Opus 5.5 (Medium, Default Fallback)",
+     "url": "/models/claude-opus-5-5-medium",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
+     "label": "Step 5 Preview",
+     "tooltipLabel": "Step 5 Preview",
+     "url": "/models/step-5",
+     "logo": "/img/logos/stepfun.svg"
+    },
+    {
+     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+     "label": "GPT-6 Sol (max)",
+     "tooltipLabel": "GPT-6 Sol (Max)",
+     "url": "/models/gpt-6-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
+     "label": "Claude Opus 5.5 (high with fallback)",
+     "tooltipLabel": "Claude Opus 5.5 (High, Default Fallback)",
+     "url": "/models/claude-opus-5-5-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "b01dee41-c62b-48ed-8d16-984adc405e5c",
+     "label": "Qwen3.8 27B (xhigh)",
+     "tooltipLabel": "Qwen3.8 27B (Xhigh)",
+     "url": "/models/qwen3-8-27b",
+     "logo": "/img/logos/alibaba.svg"
+    },
+    {
+     "id": "c8adc5cf-fd5a-407b-af51-dc3bede3e49c",
+     "label": "Grok 4.6 (high)",
+     "tooltipLabel": "Grok 4.6 (High)",
+     "url": "/models/grok-4-6",
+     "logo": "/img/logos/spacexai.svg"
+    },
+    {
+     "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
+     "label": "Claude Sonnet 5.5 (xhigh with fallback)",
+     "tooltipLabel": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
+     "url": "/models/claude-sonnet-5-5-xhigh",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
+     "label": "GPT-5.6 Terra (max)",
+     "tooltipLabel": "GPT-5.6 Terra (Max)",
+     "url": "/models/gpt-5-6-terra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "df5bf99d-d228-4715-b41b-19ca86118777",
+     "label": "Claude Opus 5.5 (xhigh with fallback)",
+     "tooltipLabel": "Claude Opus 5.5 (Xhigh, Default Fallback)",
+     "url": "/models/claude-opus-5-5-xhigh",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "cd684ea4-b475-4269-b001-d469d06d8a7a",
+     "label": "GLM-5.3 (max)",
+     "tooltipLabel": "GLM-5.3 (Max)",
+     "url": "/models/glm-5-3",
+     "logo": "/img/logos/zai.svg"
+    },
+    {
+     "id": "d93edfe8-bf35-49ad-b56e-b18116142a1c",
+     "label": "GPT-5.6 Sol (max)",
+     "tooltipLabel": "GPT-5.6 Sol (Max)",
+     "url": "/models/gpt-5-6-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
+     "label": "GPT-6 Astra (max)",
+     "tooltipLabel": "GPT-6 Astra (Max)",
+     "url": "/models/gpt-6-astra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
+     "label": "Claude Opus 5.5 (max with fallback)",
+     "tooltipLabel": "Claude Opus 5.5 (Max, Default Fallback)",
+     "url": "/models/claude-opus-5-5",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
+     "label": "Claude Sonnet 5.5 (max with fallback)",
+     "tooltipLabel": "Claude Sonnet 5.5 (Max, Default Fallback)",
+     "url": "/models/claude-sonnet-5-5",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "b112af07-3bd5-4647-b09f-b23204361bb2",
+     "label": "Qwen3.8 Max (0902)",
+     "tooltipLabel": "Qwen3.8 Max (0902)",
+     "url": "/models/qwen3-8-max",
+     "logo": "/img/logos/alibaba.svg"
+    },
+    {
+     "id": "3e87c73e-a257-495e-9730-367a66229811",
+     "label": "Claude Fable 5.1 (max with fallback)",
+     "tooltipLabel": "Claude Fable 5.1 (Max, Default Fallback)",
+     "url": "/models/claude-fable-5-1",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+     "label": "Claude Opus 5 (max)",
+     "tooltipLabel": "Claude Opus 5 (Max)",
+     "url": "/models/claude-opus-5",
+     "logo": "/img/logos/anthropic.svg"
+    }
+   ]
+  },
+  {
+   "title": "Terminal-Bench-Science 0.1: Score vs. Release Date",
+   "items": [
+    {
+     "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
+     "slug": "claude-opus-5-5",
+     "name": "Claude Opus 5.5 (Max, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (max with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
+     "slug": "claude-sonnet-5-5",
+     "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (max with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-28"
+    },
+    {
+     "id": "df5bf99d-d228-4715-b41b-19ca86118777",
+     "slug": "claude-opus-5-5-xhigh",
+     "name": "Claude Opus 5.5 (Xhigh, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (xhigh with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
+     "slug": "claude-opus-5-5-high",
+     "name": "Claude Opus 5.5 (High, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (high with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "3e87c73e-a257-495e-9730-367a66229811",
+     "slug": "claude-fable-5-1",
+     "name": "Claude Fable 5.1 (Max, Default Fallback)",
+     "shortName": "Claude Fable 5.1 (max with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-01"
+    },
+    {
+     "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
+     "slug": "claude-sonnet-5-5-xhigh",
+     "name": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (xhigh with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-28"
+    },
+    {
+     "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
+     "slug": "claude-opus-5-5-medium",
+     "name": "Claude Opus 5.5 (Medium, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (medium with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+     "slug": "claude-opus-5",
+     "name": "Claude Opus 5 (Max)",
+     "shortName": "Claude Opus 5 (max)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-07-24"
+    },
+    {
+     "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
+     "slug": "claude-sonnet-5-5-high",
+     "name": "Claude Sonnet 5.5 (High, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (high with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-28"
+    },
+    {
+     "id": "7d064a11-6e78-4030-b535-cdf940615041",
+     "slug": "claude-haiku-5-5",
+     "name": "Claude Haiku 5.5 (Max)",
+     "shortName": "Claude Haiku 5.5 (max)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-10-07"
+    },
+    {
+     "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
+     "slug": "claude-opus-5-5-low",
+     "name": "Claude Opus 5.5 (Low, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (low with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
+     "slug": "claude-haiku-5-5-xhigh",
+     "name": "Claude Haiku 5.5 (Xhigh)",
+     "shortName": "Claude Haiku 5.5 (xhigh)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-10-07"
+    },
+    {
+     "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
+     "slug": "claude-sonnet-5-5-medium",
+     "name": "Claude Sonnet 5.5 (Medium, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (medium with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-28"
+    },
+    {
+     "id": "20829974-af06-497e-9f42-77fb958d43b9",
+     "slug": "claude-haiku-5-5-high",
+     "name": "Claude Haiku 5.5 (High)",
+     "shortName": "Claude Haiku 5.5 (high)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-10-07"
+    },
+    {
+     "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
+     "slug": "claude-sonnet-5-5-low",
+     "name": "Claude Sonnet 5.5 (Low, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (low with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-28"
+    },
+    {
+     "id": "af26fff4-8120-41be-a5f0-86aaea023f20",
+     "slug": "claude-haiku-5-5-medium",
+     "name": "Claude Haiku 5.5 (Medium)",
+     "shortName": "Claude Haiku 5.5 (medium)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-10-07"
+    },
+    {
+     "id": "42908ae3-d3bd-4934-be19-fbff93d3fde8",
+     "slug": "claude-haiku-5-5-low",
+     "name": "Claude Haiku 5.5 (Low)",
+     "shortName": "Claude Haiku 5.5 (low)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-10-07"
+    },
+    {
+     "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
+     "slug": "gpt-6-astra",
+     "name": "GPT-6 Astra (Max)",
+     "shortName": "GPT-6 Astra (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-03"
+    },
+    {
+     "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
+     "slug": "gpt-6-1-sol",
+     "name": "GPT-6.1 Sol (Max)",
+     "shortName": "GPT-6.1 Sol (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-29"
+    },
+    {
+     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+     "slug": "gpt-6-sol",
+     "name": "GPT-6 Sol (Max)",
+     "shortName": "GPT-6 Sol (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "d93edfe8-bf35-49ad-b56e-b18116142a1c",
+     "slug": "gpt-5-6-sol",
+     "name": "GPT-5.6 Sol (Max)",
+     "shortName": "GPT-5.6 Sol (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "da2642fe-9f73-4788-b5af-24edcd55b37e",
+     "slug": "gpt-6-sol-xhigh",
+     "name": "GPT-6 Sol (Xhigh)",
+     "shortName": "GPT-6 Sol (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "52eebe3e-6ede-4e46-92db-c5dea49fc410",
+     "slug": "gpt-6-sol-high",
+     "name": "GPT-6 Sol (High)",
+     "shortName": "GPT-6 Sol (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
+     "slug": "gpt-5-6-terra",
+     "name": "GPT-5.6 Terra (Max)",
+     "shortName": "GPT-5.6 Terra (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "780a4a85-17ff-4175-a8dd-ebca4823e61b",
+     "slug": "gpt-6-sol-medium",
+     "name": "GPT-6 Sol (Medium)",
+     "shortName": "GPT-6 Sol (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
+     "slug": "gpt-6-luna",
+     "name": "GPT-6 Luna (Max)",
+     "shortName": "GPT-6 Luna (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+     "slug": "gpt-5-6-luna",
+     "name": "GPT-5.6 Luna (Max)",
+     "shortName": "GPT-5.6 Luna (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "01459872-433a-4ab2-8e99-7083162172eb",
+     "slug": "gpt-6-sol-low",
+     "name": "GPT-6 Sol (Low)",
+     "shortName": "GPT-6 Sol (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "d3e20e76-9e1a-45b6-b809-ad6aa37430cf",
+     "slug": "gpt-6-sol-non-reasoning",
+     "name": "GPT-6 Sol (Non-reasoning)",
+     "shortName": "GPT-6 Sol (non-reasoning)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "9999672c-b687-4026-9c15-5cef02ff53bb",
+     "slug": "muse-spark-1-3",
+     "name": "Muse Spark 1.3 (Max)",
+     "shortName": "Muse Spark 1.3 (max)",
+     "creatorName": "Meta",
+     "releaseDate": "2026-09-02"
+    },
+    {
+     "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
+     "slug": "muse-glimmer",
+     "name": "Muse Glimmer (High)",
+     "shortName": "Muse Glimmer (high)",
+     "creatorName": "Meta",
+     "releaseDate": "2026-08-10"
+    },
+    {
+     "id": "24d8fdfe-6241-424e-b7b7-1b6efb06e4fb",
+     "slug": "mimo-v2-6-pro",
+     "name": "MiMo-V2.6-Pro",
+     "shortName": "MiMo-V2.6-Pro",
+     "creatorName": "Xiaomi",
+     "releaseDate": "2026-09-21"
+    },
+    {
+     "id": "b112af07-3bd5-4647-b09f-b23204361bb2",
+     "slug": "qwen3-8-max",
+     "name": "Qwen3.8 Max (0902)",
+     "shortName": "Qwen3.8 Max (0902)",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-09-02"
+    },
+    {
+     "id": "b01dee41-c62b-48ed-8d16-984adc405e5c",
+     "slug": "qwen3-8-27b",
+     "name": "Qwen3.8 27B (Xhigh)",
+     "shortName": "Qwen3.8 27B (xhigh)",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-08-14"
+    },
+    {
+     "id": "cd684ea4-b475-4269-b001-d469d06d8a7a",
+     "slug": "glm-5-3",
+     "name": "GLM-5.3 (Max)",
+     "shortName": "GLM-5.3 (max)",
+     "creatorName": "Z AI",
+     "releaseDate": "2026-08-18"
+    },
+    {
+     "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
+     "slug": "glm-5-3-flash",
+     "name": "GLM-5.3-Flash",
+     "shortName": "GLM-5.3-Flash",
+     "creatorName": "Z AI",
+     "releaseDate": "2026-08-26"
+    },
+    {
+     "id": "c8adc5cf-fd5a-407b-af51-dc3bede3e49c",
+     "slug": "grok-4-6",
+     "name": "Grok 4.6 (High)",
+     "shortName": "Grok 4.6 (high)",
+     "creatorName": "SpaceXAI",
+     "releaseDate": "2026-08-12"
+    },
+    {
+     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
+     "slug": "step-5",
+     "name": "Step 5 Preview",
+     "shortName": "Step 5 Preview",
+     "creatorName": "StepFun",
+     "releaseDate": "2026-09-18"
+    },
+    {
+     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+     "slug": "gemini-3-8-flash",
+     "name": "Gemini 3.8 Flash (High)",
+     "shortName": "Gemini 3.8 Flash (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-09-02"
+    },
+    {
+     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+     "slug": "gemini-3-5-flash-lite",
+     "name": "Gemini 3.5 Flash-Lite",
+     "shortName": "Gemini 3.5 Flash-Lite",
+     "creatorName": "Google",
+     "releaseDate": "2026-07-21"
+    },
+    {
+     "id": "dbe7c625-3100-4463-b479-a228c41f75dd",
+     "slug": "deepseek-v4-1-flash",
+     "name": "DeepSeek V4.1 Flash (Max)",
+     "shortName": "DeepSeek V4.1 Flash (max)",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2026-09-10"
+    },
+    {
+     "id": "83173329-c09a-41f1-a028-a282a5f908d7",
+     "slug": "deepseek-v4-pro",
+     "name": "DeepSeek V4 Pro 0813 (Max)",
+     "shortName": "DeepSeek V4 Pro 0813 (max)",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2026-08-13"
+    },
+    {
+     "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
+     "slug": "minimax-m3",
+     "name": "MiniMax-M3",
+     "shortName": "MiniMax-M3",
+     "creatorName": "MiniMax",
+     "releaseDate": "2026-06-01"
+    },
+    {
+     "id": "7261504e-503c-4a66-a9d3-a3272cdf9ad6",
+     "slug": "inkling-small",
+     "name": "Inkling Small",
+     "shortName": "Inkling Small",
+     "creatorName": "Thinking Machines",
+     "releaseDate": "2026-07-30"
+    },
+    {
+     "id": "0de09623-2b1a-4c8d-86ef-7f5245d4e24b",
+     "slug": "inkling",
+     "name": "Inkling (Xhigh)",
+     "shortName": "Inkling (xhigh)",
+     "creatorName": "Thinking Machines",
+     "releaseDate": "2026-07-15"
+    }
+   ]
+  }
+ ],
+ "tables": [
+  {
+   "headers": [
+    "outcome",
+    "meaning"
+   ],
+   "rows": [
+    [
+     "divided",
+     "it divides into two daughters"
+    ],
+    [
+     "left_field",
+     "it moves out across the border of the frame and does not come back"
+    ],
+    [
+     "died",
+     "it rounds up and does not split; it stays one body, its bright rounded appearance dulls, and nothing spreads out of it again"
+    ],
+    [
+     "fused",
+     "it merges with another cell"
+    ],
+    [
+     "still_present",
+     "it is on screen as an intact single cell on frame 799"
+    ]
+   ]
+  }
+ ]
+}

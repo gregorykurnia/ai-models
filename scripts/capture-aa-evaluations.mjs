@@ -10,6 +10,9 @@ const pages = [
   { key: "gdpval-aa", url: "https://artificialanalysis.ai/evaluations/gdpval-aa" },
   { key: "automationbench-aa", url: "https://artificialanalysis.ai/evaluations/automationbench-aa" },
   { key: "terminalbench-4-0", url: "https://artificialanalysis.ai/evaluations/terminalbench-4-0" },
+  { key: "terminalbench-2-1", url: "https://artificialanalysis.ai/evaluations/terminalbench-2-1" },
+  { key: "terminalbench-hard", url: "https://artificialanalysis.ai/evaluations/terminalbench-hard" },
+  { key: "terminal-bench-science", url: "https://artificialanalysis.ai/evaluations/terminal-bench-science" },
   { key: "scicode", url: "https://artificialanalysis.ai/evaluations/scicode" },
   { key: "humanitys-last-exam", url: "https://artificialanalysis.ai/evaluations/humanitys-last-exam" },
   { key: "gdp-pdf", url: "https://artificialanalysis.ai/evaluations/gdp-pdf" },
@@ -63,7 +66,11 @@ async function expandSelectors(page) {
   return count;
 }
 
-for (const target of pages) {
+// AA_CAPTURE_ONLY=key1,key2 limits the run to those pages; by default every page is captured.
+const only = process.env.AA_CAPTURE_ONLY?.split(",");
+const selected = only ? pages.filter(target => only.includes(target.key)) : pages;
+
+for (const target of selected) {
   const page = await browser.newPage({ viewport: { width: 1600, height: 1000 } });
   await page.goto(target.url, { waitUntil: "networkidle", timeout: 120000 });
   await page.waitForTimeout(1000);

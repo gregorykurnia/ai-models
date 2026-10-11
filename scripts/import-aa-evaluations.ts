@@ -28,7 +28,28 @@ type EvaluationConfig = {
   eloSeries?: boolean;
   // The chart reports the benchmark's total cost; the leaderboard stores the cost per task.
   costDivisor?: number;
+  // Metadata for an evaluation the dataset doesn't hold yet. Existing evaluations keep their stored record.
+  definition?: NewEvaluation;
 };
+
+// The fields the import fills in on every rebuild; a new evaluation starts with them empty.
+type NewEvaluation = Omit<Evaluation, "captured_at" | "source_asset_id" | "published_snapshot_id" | "row_count" | "cost_label_count" | "precise_cost_count" | "has_confidence_interval" | "has_release_date">;
+
+const percentageEvaluation = (id: string, displayName: string, sourceUrl: string): NewEvaluation => ({
+  id,
+  slug: id,
+  display_name: displayName,
+  source_title: `${displayName} Benchmark Leaderboard`,
+  source_url: sourceUrl,
+  category: "benchmark",
+  metric_key: "score",
+  metric_label: "Score (%)",
+  score_kind: "percentage",
+  score_unit: "%",
+  score_min: 0,
+  score_max: 100,
+  notes: "",
+});
 
 const evaluationConfigs: EvaluationConfig[] = [
   // AA-Briefcase lists 91 tasks; its cost series is the total for the run, so divide to get cost per task.
@@ -36,6 +57,11 @@ const evaluationConfigs: EvaluationConfig[] = [
   { id: "gdpval-aa-v2-1", capture: "gdpval-aa", chart: "GDPval-AA v2.1 Leaderboard", costChart: "GDPval-AA v2.1: Cost per Task", eloSeries: true },
   { id: "automationbench-aa", capture: "automationbench-aa", chart: "AutomationBench-AA: Score", costChart: "AutomationBench-AA: Cost per Task" },
   { id: "terminal-bench-4-0", capture: "terminalbench-4-0", chart: "Terminal-Bench 4.0: Score", costChart: "Terminal-Bench 4.0: Cost per Task" },
+  // AA publishes these Terminal-Bench variants as separate leaderboards with their own model sets, so a model
+  // missing from 4.0 can still have a score on one of them.
+  { id: "terminal-bench-2-1", capture: "terminalbench-2-1", chart: "Terminal-Bench 2.1: Score", costChart: "Terminal-Bench 2.1: Cost per Task", definition: percentageEvaluation("terminal-bench-2-1", "Terminal-Bench 2.1", "https://artificialanalysis.ai/evaluations/terminalbench-2-1") },
+  { id: "terminal-bench-hard", capture: "terminalbench-hard", chart: "Terminal-Bench Hard: Score", costChart: "Terminal-Bench Hard: Cost per Task", definition: percentageEvaluation("terminal-bench-hard", "Terminal-Bench Hard", "https://artificialanalysis.ai/evaluations/terminalbench-hard") },
+  { id: "terminal-bench-science-0-1", capture: "terminal-bench-science", chart: "Terminal-Bench-Science 0.1: Score", costChart: "Terminal-Bench-Science 0.1: Score vs. Cost per Task", definition: percentageEvaluation("terminal-bench-science-0-1", "Terminal-Bench-Science 0.1", "https://artificialanalysis.ai/evaluations/terminal-bench-science") },
   { id: "scicode", capture: "scicode", chart: "SciCode: Score", costChart: "SciCode: Cost per Task" },
   { id: "humanity-s-last-exam", capture: "humanitys-last-exam", chart: "Humanity's Last Exam: Score", costChart: "Humanity's Last Exam: Cost per Task" },
   { id: "gdp-pdf", capture: "gdp-pdf", chart: "GDP.pdf: All-pass Rate", costChart: "GDP.pdf: Cost per Task" },
@@ -200,7 +226,19 @@ for (const config of evaluationConfigs) {
   const identities = new Set<string>();
   const sourceAssetId = hash(JSON.stringify(capture));
   const snapshotId = `${config.id}-${sourceAssetId.slice(0, 16)}`;
-  const evaluation = evaluationById.get(config.id)!;
+  const stored = evaluationById.get(config.id) ?? (config.definition && {
+    ...config.definition,
+    captured_at: "",
+    source_asset_id: "",
+    published_snapshot_id: "",
+    row_count: 0,
+    cost_label_count: 0,
+    precise_cost_count: 0,
+    has_confidence_interval: false,
+    has_release_date: false,
+  });
+  if (!stored) throw new Error(`${config.id}: no stored evaluation and no definition`);
+  const evaluation: Evaluation = stored;
   let previousValue: number | null = null;
   let previousRank = 0;
   rows.forEach((row, index) => {
@@ -255,7 +293,7 @@ for (const config of evaluationConfigs) {
     precise_cost_count: withCost,
     has_confidence_interval: withCi > 0,
     has_release_date: withRelease > 0,
-    notes: `${evaluation.notes.replace(/\s*Values refreshed from Artificial Analysis[^]*$/, "")} Values refreshed from the Artificial Analysis evaluation page captured ${capture.captured_at}.`.trim(),
+    notes: `${evaluation.notes.replace(/\s*Values refreshed from (?:the )?Artificial Analysis[^]*$/, "")} Values refreshed from the Artificial Analysis evaluation page captured ${capture.captured_at}.`.trim(),
   };
   newEvaluations.push(evaluationRecord);
   newSnapshots.push({
@@ -319,6 +357,7 @@ const keptSnapshots = dataset.snapshots.filter(snapshot => !replacedEvaluationId
 const replacedById = new Map(newEvaluations.map(evaluation => [evaluation.id, evaluation]));
 const evaluations = [
   ...dataset.evaluations.map(evaluation => replacedById.get(evaluation.id) ?? evaluation),
+  ...newEvaluations.filter(evaluation => !evaluationById.has(evaluation.id)),
 ];
 const rebuilt: Dataset = {
   ...dataset,
