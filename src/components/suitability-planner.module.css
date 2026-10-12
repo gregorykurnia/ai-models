@@ -377,6 +377,7 @@
 .modelFilterFields {
   display: grid;
   grid-template-columns: minmax(18rem, 2fr) minmax(12rem, 1fr) minmax(12rem, 1fr);
+  align-items: start;
   gap: var(--space-3);
 }
 
