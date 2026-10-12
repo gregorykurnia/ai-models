@@ -153,7 +153,7 @@ export async function POST(request: Request) {
         assertSharedTaskAcceptsWrites(previousData);
         const currentRevision = Number(previousData?.category_revision ?? 0);
         if (existing.exists && currentRevision !== Number(comparison.category_revision ?? 0))
-          throw new Error("This task's category changed while you were editing. Reload the comparison and try again.");
+          throw new Error("This task changed while you were editing. Reload the comparison and try again.");
         const categoryId = comparison.category_id ?? null;
         const categoryRef = categoryId ? adminDb().collection("sharedSuitabilityCategories").doc(categoryId) : null;
         let categoryName: string | null = null;
@@ -195,7 +195,7 @@ export async function POST(request: Request) {
     const quotaExceeded=(cause as {code?:number}).code===8;
     if (cause instanceof SharedTaskDeletedError)
       return Response.json({ error: cause.message, code: SHARED_TASK_DELETED_CODE }, { status: 409 });
-    if (cause instanceof Error && /category changed|category is no longer available/.test(cause.message))
+    if (cause instanceof Error && /task changed while you were editing|category is no longer available/.test(cause.message))
       return Response.json({ error: cause.message }, { status: 409 });
     return Response.json({ error: quotaExceeded
       ? "Firestore's quota is exhausted. Your selections are still visible; shared saves can resume when the quota resets or is increased."
