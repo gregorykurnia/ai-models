@@ -5,7 +5,7 @@ export default function DataPage() {
     <PageHeader>
     <div className="eyebrow">Source and methodology</div>
     <h1>About the data</h1>
-    <p>This app presents captured Artificial Analysis leaderboard snapshots, rather than a live feed. The evaluation leaderboards and AA-Briefcase component indexes were captured from Artificial Analysis on 11 Oct 2026.</p>
+    <p>This app presents captured Artificial Analysis leaderboard snapshots, rather than a live feed. The evaluation leaderboards and AA-Briefcase component indexes were captured from Artificial Analysis on 20 Oct 2026.</p>
     </PageHeader>
     <p><a href="/suitability#methodology">Read the Task Suitability scoring methodology</a>.</p>
 
@@ -21,8 +21,8 @@ export default function DataPage() {
     </Card>
 
     <h2>AA-Briefcase component indexes</h2>
-    <p>The 11 Oct 2026 evaluation capture contains all 224 listed models for each of three metrics: Rubric Score (%), Analytical Quality Elo, and Presentation Elo. Elo ratings move as pairwise comparisons accumulate, so the values were refreshed together with the rubric scores rather than kept from the 30 Sep capture. Rubric Score is the share of binary checks passed, converted from a fraction to a percentage. Analytical Quality and Presentation are separate Elo ratings from pairwise comparisons.</p>
-    <p>Artificial Analysis places Analytical Quality and Presentation in one results tab and distinguishes them with separate graph indicators. This catalog keeps them as separate complete leaderboards and uses a circle for Analytical Quality and a diamond for Presentation, with their labels shown. The 11 Oct capture does not include component Elo confidence bounds, so those fields remain blank. These component tables do not include cost data.</p>
+    <p>The 20 Oct 2026 evaluation capture contains all 233 listed models for each of three metrics: Rubric Score (%), Analytical Quality Elo, and Presentation Elo. Elo ratings move as pairwise comparisons accumulate, so the values were refreshed together with the rubric scores rather than kept from earlier captures. Rubric Score is the share of binary checks passed, converted from a fraction to a percentage. Analytical Quality and Presentation are separate Elo ratings from pairwise comparisons.</p>
+    <p>Artificial Analysis places Analytical Quality and Presentation in one results tab and distinguishes them with separate graph indicators. This catalog keeps them as separate complete leaderboards and uses a circle for Analytical Quality and a diamond for Presentation, with their labels shown. The 20 Oct capture includes the 95% confidence bounds for both component Elo ratings. These component tables do not include cost data.</p>
 
     <h2>Master leaderboard: ranks by evaluation</h2>
     <p>Each evaluation column displays that evaluation’s rank and links to the model’s results. The Cost per Intelligence Index task column links to the model’s Artificial Analysis profile. Ranks are the source ranks from each Artificial Analysis page, and estimates keep their label; the three AA-Briefcase component ranks follow their metric scores. Aggregate Score is the arithmetic mean of a model’s available source ranks across Analytical Quality Elo, Presentation Elo, Rubric Score, Omniscience Index, Economics Index, Finance &amp; Accounting, Intelligence Index, Strategy &amp; Ops Index, and Terminal-Bench 4.0. Missing dimensions are excluded, and the table shows how many of the nine dimensions contributed. Lower average ranks are better. This is not a normalized composite score or an overall master rank.</p>
@@ -33,6 +33,6 @@ export default function DataPage() {
     <p>Intelligence Index scoring status follows Artificial Analysis’s estimated flag. Estimates still awaiting independent scoring keep that wording. The Cost per Intelligence Index task comes from the Intelligence Index page.</p>
 
     <h2>Snapshot history and updates</h2>
-    <p>The evaluation leaderboards and AA-Briefcase component indexes were captured on 11 Oct 2026. Earlier snapshots, including the 29 Sep 2026 workbook and the 30 Sep and 7 Oct AA-Briefcase captures, remain in the published history. Later imports create immutable snapshots; failed imports preserve the last published data.</p>
+    <p>The evaluation leaderboards and AA-Briefcase component indexes were captured on 20 Oct 2026. Earlier snapshots, including the 29 Sep 2026 workbook, the 30 Sep and 7 Oct AA-Briefcase captures, and the 11 Oct evaluation capture, remain in the published history. Later imports create immutable snapshots; failed imports preserve the last published data.</p>
   </article>;
 }

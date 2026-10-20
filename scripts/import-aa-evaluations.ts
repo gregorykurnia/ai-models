@@ -22,7 +22,8 @@ type EvaluationConfig = {
   capture: string;
   // Exact title of the score chart on the capture page.
   chart: string;
-  // Chart holding the per-task cost; optional.
+  // Chart holding the per-task cost; optional. The "Cost per Task" bar charts no longer expose their values,
+  // so this reads the "vs. Cost per Task" scatter chart, which plots the same cost.
   costChart?: string;
   // Value and confidence interval come from "mid/lower/upper" series when true, otherwise "value".
   eloSeries?: boolean;
@@ -52,19 +53,19 @@ const percentageEvaluation = (id: string, displayName: string, sourceUrl: string
 });
 
 const evaluationConfigs: EvaluationConfig[] = [
-  // AA-Briefcase lists 91 tasks; its cost series is the total for the run, so divide to get cost per task.
-  { id: "briefcase-v1-1", capture: "aa-briefcase", chart: "AA-Briefcase Elo", costChart: "AA-Briefcase Cost per Task", eloSeries: true, costDivisor: 91 },
-  { id: "gdpval-aa-v2-1", capture: "gdpval-aa", chart: "GDPval-AA v2.1 Leaderboard", costChart: "GDPval-AA v2.1: Cost per Task", eloSeries: true },
-  { id: "automationbench-aa", capture: "automationbench-aa", chart: "AutomationBench-AA: Score", costChart: "AutomationBench-AA: Cost per Task" },
-  { id: "terminal-bench-4-0", capture: "terminalbench-4-0", chart: "Terminal-Bench 4.0: Score", costChart: "Terminal-Bench 4.0: Cost per Task" },
-  { id: "scicode", capture: "scicode", chart: "SciCode: Score", costChart: "SciCode: Cost per Task" },
-  { id: "humanity-s-last-exam", capture: "humanitys-last-exam", chart: "Humanity's Last Exam: Score", costChart: "Humanity's Last Exam: Cost per Task" },
-  { id: "gdp-pdf", capture: "gdp-pdf", chart: "GDP.pdf: All-pass Rate", costChart: "GDP.pdf: Cost per Task" },
-  { id: "critpt", capture: "critpt", chart: "CritPt: Score", costChart: "CritPt: Cost per Task" },
-  { id: "aa-omniscience-accuracy", capture: "omniscience", chart: "AA-Omniscience Accuracy", costChart: "AA-Omniscience: Cost per Task" },
-  { id: "aa-omniscience-index", capture: "omniscience", chart: "AA-Omniscience Index: Score", costChart: "AA-Omniscience: Cost per Task" },
-  { id: "aa-lcr-v1-1", capture: "artificial-analysis-long-context-reasoning", chart: "AA-LCR v1.1: Score", costChart: "AA-LCR v1.1: Cost per Task" },
-  { id: "mmmu-pro", capture: "mmmu-pro", chart: "MMMU-Pro: Score", costChart: "MMMU-Pro: Cost per Task" },
+  // AA-Briefcase lists 91 tasks; its cost series (totalCost) is the total for the run, so divide to get cost per task.
+  { id: "briefcase-v1-1", capture: "aa-briefcase", chart: "AA-Briefcase Elo", costChart: "AA-Briefcase Elo vs. Cost per Task", eloSeries: true, costDivisor: 91 },
+  { id: "gdpval-aa-v2-1", capture: "gdpval-aa", chart: "GDPval-AA v2.1 Leaderboard", costChart: "GDPval-AA v2.1: Elo vs. Cost per Task", eloSeries: true },
+  { id: "automationbench-aa", capture: "automationbench-aa", chart: "AutomationBench-AA: Score", costChart: "AutomationBench-AA: Score vs. Cost per Task" },
+  { id: "terminal-bench-4-0", capture: "terminalbench-4-0", chart: "Terminal-Bench 4.0: Score", costChart: "Terminal-Bench 4.0: Score vs. Cost per Task" },
+  { id: "scicode", capture: "scicode", chart: "SciCode: Score", costChart: "SciCode: Score vs. Cost per Task" },
+  { id: "humanity-s-last-exam", capture: "humanitys-last-exam", chart: "Humanity's Last Exam: Score", costChart: "Humanity's Last Exam: Score vs. Cost per Task" },
+  { id: "gdp-pdf", capture: "gdp-pdf", chart: "GDP.pdf: All-pass Rate", costChart: "GDP.pdf: All-pass Rate vs. Cost per Task" },
+  { id: "critpt", capture: "critpt", chart: "CritPt: Score", costChart: "CritPt: Score vs. Cost per Task" },
+  { id: "aa-omniscience-accuracy", capture: "omniscience", chart: "AA-Omniscience Accuracy", costChart: "AA-Omniscience Index vs. Cost per Task" },
+  { id: "aa-omniscience-index", capture: "omniscience", chart: "AA-Omniscience Index: Score", costChart: "AA-Omniscience Index vs. Cost per Task" },
+  { id: "aa-lcr-v1-1", capture: "artificial-analysis-long-context-reasoning", chart: "AA-LCR v1.1: Score", costChart: "AA-LCR v1.1: Score vs. Cost per Task" },
+  { id: "mmmu-pro", capture: "mmmu-pro", chart: "MMMU-Pro: Score", costChart: "MMMU-Pro: Score vs. Cost per Task" },
   { id: "finance-accounting", capture: "finance-and-accounting", chart: "Artificial Analysis Finance & Accounting Index", costChart: "Artificial Analysis Finance & Accounting Index vs. Cost per Task" },
   { id: "economics-index", capture: "economics", chart: "Artificial Analysis Economics Index", costChart: "Artificial Analysis Economics Index vs. Cost per Task" },
   { id: "strategy-ops-index", capture: "strategy-and-ops", chart: "Artificial Analysis Strategy & Ops Index", costChart: "Artificial Analysis Strategy & Ops Index vs. Cost per Task" },
@@ -123,6 +124,7 @@ function costOf(item: CaptureItem, divisor = 1): number | null {
     : typeof item.costPerTask === "number" ? item.costPerTask
     : typeof item.costPerTask?.total === "number" ? item.costPerTask.total
     : typeof item.cost?.total === "number" ? item.cost.total
+    : typeof item.totalCost === "number" ? item.totalCost
     : null;
   return raw === null ? null : raw / divisor;
 }

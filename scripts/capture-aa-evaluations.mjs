@@ -26,7 +26,7 @@ const pages = [
 const outDir = "data/aa-captures";
 // Keep only the fields the import reads; chart tooltips hold React element trees that aren't data.
 const KEEP = ["id", "slug", "name", "shortName", "label", "tooltipLabel", "value", "displayValue", "url", "logo",
-  "creatorName", "creatorLogo", "releaseDate", "intelligenceIndexIsEstimated", "intelligenceIndexCostPerTask"];
+  "creatorName", "creatorLogo", "releaseDate", "intelligenceIndexIsEstimated", "intelligenceIndexCostPerTask", "totalCost"];
 const USED_CHART = /Score|Elo|Index|Leaderboard|Accuracy|Rate|Cost per|Release Date|Intelligence Index/;
 const UNUSED_CHART = /Output Tokens|Time per Task|Turns|Tool Calls|Token Usage|Parameters|Hallucination|Breakdown|Objectives|Violation|Exploration|Knowledge|Capability/;
 function slim(item) {

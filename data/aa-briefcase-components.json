@@ -1,7 +1,7 @@
 {
   "source_url": "https://artificialanalysis.ai/evaluations/aa-briefcase?results=rubric-score",
   "source_title": "AA-Briefcase v1.1: Agentic Knowledge Work Benchmark",
-  "captured_at": "2026-10-11",
+  "captured_at": "2026-10-20",
   "source_tabs": {
     "rubric": "AA-Briefcase Rubric Score (%)",
     "quality_elos": "Analytical Quality & Presentation Elo"
@@ -13,10 +13,37 @@
       "name": "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
       "release_date": "2026-09-22",
       "rubric_score": 0.6121212121212121,
-      "analytical_quality_elo": 2154.34,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1714.38,
-      "presentation_ci": null
+      "analytical_quality_elo": 2142.71,
+      "analytical_quality_ci": {
+        "elo": 2142.71,
+        "lower95ci": 2119.83,
+        "upper95ci": 2164.06
+      },
+      "presentation_elo": 1714.96,
+      "presentation_ci": {
+        "elo": 1714.96,
+        "lower95ci": 1694.88,
+        "upper95ci": 1736.97
+      }
+    },
+    {
+      "id": "e994a6e0-d36b-4dab-8ae1-c1b469e4d9e2",
+      "provider": "Meta",
+      "name": "Muse Wonder Full (Max)",
+      "release_date": "2026-10-12",
+      "rubric_score": 0.6131313131313131,
+      "analytical_quality_elo": 2116.26,
+      "analytical_quality_ci": {
+        "elo": 2116.26,
+        "lower95ci": 2095.79,
+        "upper95ci": 2136.73
+      },
+      "presentation_elo": 1524.05,
+      "presentation_ci": {
+        "elo": 1524.05,
+        "lower95ci": 1506.49,
+        "upper95ci": 1541.61
+      }
     },
     {
       "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
@@ -24,10 +51,18 @@
       "name": "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
       "release_date": "2026-09-28",
       "rubric_score": 0.6515151515151515,
-      "analytical_quality_elo": 2126.7,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1718.28,
-      "presentation_ci": null
+      "analytical_quality_elo": 2115.09,
+      "analytical_quality_ci": {
+        "elo": 2115.09,
+        "lower95ci": 2093.81,
+        "upper95ci": 2138.33
+      },
+      "presentation_elo": 1716.02,
+      "presentation_ci": {
+        "elo": 1716.02,
+        "lower95ci": 1692.87,
+        "upper95ci": 1737.48
+      }
     },
     {
       "id": "df5bf99d-d228-4715-b41b-19ca86118777",
@@ -35,76 +70,18 @@
       "name": "Claude Opus 5.5 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
       "release_date": "2026-09-22",
       "rubric_score": 0.6060606060606061,
-      "analytical_quality_elo": 2100.12,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1642.11,
-      "presentation_ci": null
-    },
-    {
-      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
-      "provider": "Anthropic",
-      "name": "Claude Opus 5.5 (Adaptive Reasoning, High Effort, Default Fallback)",
-      "release_date": "2026-09-22",
-      "rubric_score": 0.5888888888888889,
-      "analytical_quality_elo": 1990.72,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1554.14,
-      "presentation_ci": null
-    },
-    {
-      "id": "3e87c73e-a257-495e-9730-367a66229811",
-      "provider": "Anthropic",
-      "name": "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
-      "release_date": "2026-09-01",
-      "rubric_score": 0.6151515151515151,
-      "analytical_quality_elo": 1971.11,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1492.35,
-      "presentation_ci": null
-    },
-    {
-      "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
-      "provider": "Anthropic",
-      "name": "Claude Fable 5.1 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
-      "release_date": "2026-09-01",
-      "rubric_score": 0.6060606060606061,
-      "analytical_quality_elo": 1929.54,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1478.94,
-      "presentation_ci": null
-    },
-    {
-      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
-      "provider": "OpenAI",
-      "name": "GPT-6 Astra (max)",
-      "release_date": "2026-09-03",
-      "rubric_score": 0.5202020202020202,
-      "analytical_quality_elo": 1759.67,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1549.94,
-      "presentation_ci": null
-    },
-    {
-      "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
-      "provider": "Google",
-      "name": "Gemini 4 Argon (High)",
-      "release_date": "2026-09-30",
-      "rubric_score": 0.6463414634146342,
-      "analytical_quality_elo": 1563.88,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1304.52,
-      "presentation_ci": null
-    },
-    {
-      "id": "1f541ef3-913f-4eb2-9d07-0e93c7a9a5e3",
-      "provider": "OpenAI",
-      "name": "GPT-6 Astra (xhigh)",
-      "release_date": "2026-09-03",
-      "rubric_score": 0.5232323232323233,
-      "analytical_quality_elo": 1710.42,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1518.34,
-      "presentation_ci": null
+      "analytical_quality_elo": 2093.3,
+      "analytical_quality_ci": {
+        "elo": 2093.3,
+        "lower95ci": 2071.83,
+        "upper95ci": 2115.11
+      },
+      "presentation_elo": 1642.19,
+      "presentation_ci": {
+        "elo": 1642.19,
+        "lower95ci": 1624.29,
+        "upper95ci": 1662.13
+      }
     },
     {
       "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
@@ -112,252 +89,75 @@
       "name": "Claude Sonnet 5.5 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
       "release_date": "2026-09-28",
       "rubric_score": 0.6222222222222222,
-      "analytical_quality_elo": 2031.84,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1646,
-      "presentation_ci": null
+      "analytical_quality_elo": 2026.49,
+      "analytical_quality_ci": {
+        "elo": 2026.49,
+        "lower95ci": 2005.26,
+        "upper95ci": 2049.84
+      },
+      "presentation_elo": 1649.87,
+      "presentation_ci": {
+        "elo": 1649.87,
+        "lower95ci": 1623.16,
+        "upper95ci": 1679.38
+      }
     },
     {
-      "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
-      "provider": "OpenAI",
-      "name": "GPT-6.1 Sol (max)",
-      "release_date": "2026-09-29",
-      "rubric_score": 0.5565656565656566,
-      "analytical_quality_elo": 1775.61,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1446.17,
-      "presentation_ci": null
-    },
-    {
-      "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
+      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
       "provider": "Anthropic",
-      "name": "Claude Opus 5.5 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+      "name": "Claude Opus 5.5 (Adaptive Reasoning, High Effort, Default Fallback)",
       "release_date": "2026-09-22",
-      "rubric_score": 0.5696969696969697,
-      "analytical_quality_elo": 1878.07,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1502.52,
-      "presentation_ci": null
+      "rubric_score": 0.5888888888888889,
+      "analytical_quality_elo": 1982.57,
+      "analytical_quality_ci": {
+        "elo": 1982.57,
+        "lower95ci": 1963.89,
+        "upper95ci": 2003.46
+      },
+      "presentation_elo": 1549.88,
+      "presentation_ci": {
+        "elo": 1549.88,
+        "lower95ci": 1532.6,
+        "upper95ci": 1568.62
+      }
     },
     {
-      "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
+      "id": "3e87c73e-a257-495e-9730-367a66229811",
       "provider": "Anthropic",
-      "name": "Claude Fable 5.1 (Adaptive Reasoning, High Effort, Default Fallback)",
+      "name": "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
       "release_date": "2026-09-01",
-      "rubric_score": 0.5717171717171717,
-      "analytical_quality_elo": 1837.9,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1409.43,
-      "presentation_ci": null
+      "rubric_score": 0.6151515151515151,
+      "analytical_quality_elo": 1965.92,
+      "analytical_quality_ci": {
+        "elo": 1965.92,
+        "lower95ci": 1949.84,
+        "upper95ci": 1983.85
+      },
+      "presentation_elo": 1491.35,
+      "presentation_ci": {
+        "elo": 1491.35,
+        "lower95ci": 1477.72,
+        "upper95ci": 1506.73
+      }
     },
     {
-      "id": "092a3b0e-c5c8-45dc-bf1b-53673c8ff352",
-      "provider": "OpenAI",
-      "name": "GPT-6.1 Sol (xhigh)",
-      "release_date": "2026-09-29",
-      "rubric_score": 0.5161616161616162,
-      "analytical_quality_elo": 1697.62,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1426.79,
-      "presentation_ci": null
-    },
-    {
-      "id": "e05a4828-0536-4876-870d-a235023f992b",
-      "provider": "OpenAI",
-      "name": "GPT-6 Astra (high)",
-      "release_date": "2026-09-03",
-      "rubric_score": 0.5080808080808081,
-      "analytical_quality_elo": 1678.25,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1462.8,
-      "presentation_ci": null
-    },
-    {
-      "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
-      "provider": "Anthropic",
-      "name": "Claude Opus 5 (Adaptive Reasoning, Max Effort)",
-      "release_date": "2026-07-24",
-      "rubric_score": 0.5717171717171717,
-      "analytical_quality_elo": 1916.5,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1567.82,
-      "presentation_ci": null
-    },
-    {
-      "id": "3b84fee3-b70a-41bc-819e-5fbdef9a0042",
-      "provider": "OpenAI",
-      "name": "GPT-6.1 Sol (high)",
-      "release_date": "2026-09-29",
-      "rubric_score": 0.4909090909090909,
-      "analytical_quality_elo": 1650.85,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1375.49,
-      "presentation_ci": null
-    },
-    {
-      "id": "1305c921-7aaa-4d6d-99b5-99b3acf15e19",
-      "provider": "Anthropic",
-      "name": "Claude Opus 5 (Adaptive Reasoning, Xhigh Effort)",
-      "release_date": "2026-07-24",
-      "rubric_score": 0.5797979797979798,
-      "analytical_quality_elo": 1908.27,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1492.95,
-      "presentation_ci": null
-    },
-    {
-      "id": "cd55210d-358e-4df1-ba9c-9acb5f186cc9",
-      "provider": "Anthropic",
-      "name": "Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback)",
-      "release_date": "2026-06-09",
-      "rubric_score": 0.5595959595959596,
-      "analytical_quality_elo": 1663.73,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1474.78,
-      "presentation_ci": null
-    },
-    {
-      "id": "e97a4ef5-e817-480e-9595-12f81dc4974f",
-      "provider": "OpenAI",
-      "name": "GPT-6 Astra (medium)",
-      "release_date": "2026-09-03",
-      "rubric_score": 0.47474747474747475,
-      "analytical_quality_elo": 1645.37,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1413.98,
-      "presentation_ci": null
-    },
-    {
-      "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
-      "provider": "Anthropic",
-      "name": "Claude Fable 5.1 (Adaptive Reasoning, Medium Effort, Default Fallback)",
-      "release_date": "2026-09-01",
-      "rubric_score": 0.5606060606060606,
-      "analytical_quality_elo": 1771.64,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1341.43,
-      "presentation_ci": null
-    },
-    {
-      "id": "712be54a-77ae-41b2-9a58-21181479d6ee",
-      "provider": "Anthropic",
-      "name": "Claude Opus 5 (Adaptive Reasoning, High Effort)",
-      "release_date": "2026-07-24",
-      "rubric_score": 0.5383838383838384,
-      "analytical_quality_elo": 1813.68,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1448.66,
-      "presentation_ci": null
-    },
-    {
-      "id": "9999672c-b687-4026-9c15-5cef02ff53bb",
+      "id": "ff2f3f3d-783f-4e27-8a39-47237501a313",
       "provider": "Meta",
-      "name": "Muse Spark 1.3 (max)",
-      "release_date": "2026-09-02",
-      "rubric_score": 0.5868686868686869,
-      "analytical_quality_elo": 1699.26,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1525.38,
-      "presentation_ci": null
-    },
-    {
-      "id": "a2e51d62-ea4e-4f15-8be0-be9dc1fb489d",
-      "provider": "OpenAI",
-      "name": "GPT-6.1 Sol (medium)",
-      "release_date": "2026-09-29",
-      "rubric_score": 0.4404040404040404,
-      "analytical_quality_elo": 1539.7,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1259.02,
-      "presentation_ci": null
-    },
-    {
-      "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
-      "provider": "OpenAI",
-      "name": "GPT-6 Sol (max)",
-      "release_date": "2026-09-22",
-      "rubric_score": 0.4626262626262626,
-      "analytical_quality_elo": 1616.13,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1514.44,
-      "presentation_ci": null
-    },
-    {
-      "id": "d93edfe8-bf35-49ad-b56e-b18116142a1c",
-      "provider": "OpenAI",
-      "name": "GPT-5.6 Sol (max)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.4184839044652129,
-      "analytical_quality_elo": 1538.11,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1654.78,
-      "presentation_ci": null
-    },
-    {
-      "id": "05776db7-f5c0-40f7-b824-079160f8cfa8",
-      "provider": "Anthropic",
-      "name": "Claude Fable 5.1 (Adaptive Reasoning, Low Effort, Default Fallback)",
-      "release_date": "2026-09-01",
-      "rubric_score": 0.5535353535353535,
-      "analytical_quality_elo": 1712.75,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1282.41,
-      "presentation_ci": null
-    },
-    {
-      "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
-      "provider": "Anthropic",
-      "name": "Claude Sonnet 5.5 (Adaptive Reasoning, High Effort, Default Fallback)",
-      "release_date": "2026-09-28",
-      "rubric_score": 0.602020202020202,
-      "analytical_quality_elo": 1884.02,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1492.85,
-      "presentation_ci": null
-    },
-    {
-      "id": "59627802-1546-422c-9a65-65b61c022d36",
-      "provider": "SpaceXAI",
-      "name": "Grok 4.7 (xhigh)",
-      "release_date": "2026-09-21",
-      "rubric_score": 0.5535353535353535,
-      "analytical_quality_elo": 1947.26,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1503.58,
-      "presentation_ci": null
-    },
-    {
-      "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
-      "provider": "SpaceXAI",
-      "name": "Grok 4.7 (high)",
-      "release_date": "2026-09-21",
-      "rubric_score": 0.5501022494887525,
-      "analytical_quality_elo": 1928.15,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1507.15,
-      "presentation_ci": null
-    },
-    {
-      "id": "24d8fdfe-6241-424e-b7b7-1b6efb06e4fb",
-      "provider": "Xiaomi",
-      "name": "MiMo-V2.6-Pro",
-      "release_date": "2026-09-21",
-      "rubric_score": 0.5474747474747474,
-      "analytical_quality_elo": 1801.58,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1296.29,
-      "presentation_ci": null
-    },
-    {
-      "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
-      "provider": "OpenAI",
-      "name": "GPT-6 Astra (low)",
-      "release_date": "2026-09-03",
-      "rubric_score": 0.402020202020202,
-      "analytical_quality_elo": 1403.07,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1155.73,
-      "presentation_ci": null
+      "name": "Muse Wonder (Max)",
+      "release_date": "2026-10-12",
+      "rubric_score": 0.6121212121212121,
+      "analytical_quality_elo": 1962.43,
+      "analytical_quality_ci": {
+        "elo": 1962.43,
+        "lower95ci": 1943.26,
+        "upper95ci": 1981.6
+      },
+      "presentation_elo": 1475.81,
+      "presentation_ci": {
+        "elo": 1475.81,
+        "lower95ci": 1458.2,
+        "upper95ci": 1493.42
+      }
     },
     {
       "id": "b112af07-3bd5-4647-b09f-b23204361bb2",
@@ -365,109 +165,113 @@
       "name": "Qwen3.8 Max (0902)",
       "release_date": "2026-09-02",
       "rubric_score": 0.5795574288724974,
-      "analytical_quality_elo": 1960.49,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1386.64,
-      "presentation_ci": null
+      "analytical_quality_elo": 1952.92,
+      "analytical_quality_ci": {
+        "elo": 1952.92,
+        "lower95ci": 1935.64,
+        "upper95ci": 1972.44
+      },
+      "presentation_elo": 1384.06,
+      "presentation_ci": {
+        "elo": 1384.06,
+        "lower95ci": 1366.71,
+        "upper95ci": 1402.47
+      }
     },
     {
-      "id": "d5170215-69be-4129-849b-26d8d8825bfc",
-      "provider": "Meta",
-      "name": "Muse Spark 1.3 (xhigh)",
-      "release_date": "2026-09-02",
-      "rubric_score": 0.5161616161616162,
-      "analytical_quality_elo": 1572.04,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1488.5,
-      "presentation_ci": null
+      "id": "59627802-1546-422c-9a65-65b61c022d36",
+      "provider": "SpaceXAI",
+      "name": "Grok 4.7 (Xhigh)",
+      "release_date": "2026-09-21",
+      "rubric_score": 0.5535353535353535,
+      "analytical_quality_elo": 1944.91,
+      "analytical_quality_ci": {
+        "elo": 1944.91,
+        "lower95ci": 1929.22,
+        "upper95ci": 1962.75
+      },
+      "presentation_elo": 1502.38,
+      "presentation_ci": {
+        "elo": 1502.38,
+        "lower95ci": 1483.57,
+        "upper95ci": 1520.66
+      }
     },
     {
-      "id": "ff51be8f-e362-4a7e-9043-687ba15de207",
+      "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
       "provider": "Anthropic",
-      "name": "Claude Opus 5 (Adaptive Reasoning, Medium Effort)",
+      "name": "Claude Fable 5.1 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
+      "release_date": "2026-09-01",
+      "rubric_score": 0.6060606060606061,
+      "analytical_quality_elo": 1927.59,
+      "analytical_quality_ci": {
+        "elo": 1927.59,
+        "lower95ci": 1912.3,
+        "upper95ci": 1946.32
+      },
+      "presentation_elo": 1477.81,
+      "presentation_ci": {
+        "elo": 1477.81,
+        "lower95ci": 1463.19,
+        "upper95ci": 1492.36
+      }
+    },
+    {
+      "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
+      "provider": "SpaceXAI",
+      "name": "Grok 4.7 (High)",
+      "release_date": "2026-09-21",
+      "rubric_score": 0.5501022494887525,
+      "analytical_quality_elo": 1927.48,
+      "analytical_quality_ci": {
+        "elo": 1927.48,
+        "lower95ci": 1910.73,
+        "upper95ci": 1944.85
+      },
+      "presentation_elo": 1508.09,
+      "presentation_ci": {
+        "elo": 1508.09,
+        "lower95ci": 1492.04,
+        "upper95ci": 1524.53
+      }
+    },
+    {
+      "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+      "provider": "Anthropic",
+      "name": "Claude Opus 5 (Max)",
       "release_date": "2026-07-24",
-      "rubric_score": 0.48484848484848486,
-      "analytical_quality_elo": 1636.26,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1316.22,
-      "presentation_ci": null
+      "rubric_score": 0.5717171717171717,
+      "analytical_quality_elo": 1914.17,
+      "analytical_quality_ci": {
+        "elo": 1914.17,
+        "lower95ci": 1899.14,
+        "upper95ci": 1930.37
+      },
+      "presentation_elo": 1567.97,
+      "presentation_ci": {
+        "elo": 1567.97,
+        "lower95ci": 1553.86,
+        "upper95ci": 1582.8
+      }
     },
     {
-      "id": "cd684ea4-b475-4269-b001-d469d06d8a7a",
-      "provider": "Z AI",
-      "name": "GLM-5.3 (max)",
-      "release_date": "2026-08-18",
-      "rubric_score": 0.5134854771784232,
-      "analytical_quality_elo": 1772.54,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1353.47,
-      "presentation_ci": null
-    },
-    {
-      "id": "c8adc5cf-fd5a-407b-af51-dc3bede3e49c",
-      "provider": "SpaceXAI",
-      "name": "Grok 4.6 (high)",
-      "release_date": "2026-08-12",
-      "rubric_score": 0.5282828282828282,
-      "analytical_quality_elo": 1659.77,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1520.75,
-      "presentation_ci": null
-    },
-    {
-      "id": "da2642fe-9f73-4788-b5af-24edcd55b37e",
-      "provider": "OpenAI",
-      "name": "GPT-6 Sol (xhigh)",
-      "release_date": "2026-09-22",
-      "rubric_score": 0.4171717171717172,
-      "analytical_quality_elo": 1466.62,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1371.82,
-      "presentation_ci": null
-    },
-    {
-      "id": "d6f43d0a-e8c4-447c-9ff7-5cf0a9d59aa3",
-      "provider": "SpaceXAI",
-      "name": "Grok 4.6 (xhigh)",
-      "release_date": "2026-08-12",
-      "rubric_score": 0.5383838383838384,
-      "analytical_quality_elo": 1665.07,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1532.2,
-      "presentation_ci": null
-    },
-    {
-      "id": "d998db47-9b67-4727-a2bb-2e1261020ac0",
-      "provider": "OpenAI",
-      "name": "GPT-5.6 Sol (xhigh)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.4131313131313131,
-      "analytical_quality_elo": 1470.84,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1597.34,
-      "presentation_ci": null
-    },
-    {
-      "id": "094ea3e3-ce41-419e-8bd1-723389663158",
-      "provider": "StepFun",
-      "name": "Step 5 Preview",
-      "release_date": "2026-09-18",
-      "rubric_score": 0.4777777777777778,
-      "analytical_quality_elo": 1543.81,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1394.16,
-      "presentation_ci": null
-    },
-    {
-      "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
-      "provider": "Kimi",
-      "name": "Kimi K3 (max)",
-      "release_date": "2026-07-16",
-      "rubric_score": 0.5097236438075742,
-      "analytical_quality_elo": 1663.51,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1451.17,
-      "presentation_ci": null
+      "id": "1305c921-7aaa-4d6d-99b5-99b3acf15e19",
+      "provider": "Anthropic",
+      "name": "Claude Opus 5 (Xhigh)",
+      "release_date": "2026-07-24",
+      "rubric_score": 0.5797979797979798,
+      "analytical_quality_elo": 1906.14,
+      "analytical_quality_ci": {
+        "elo": 1906.14,
+        "lower95ci": 1890.81,
+        "upper95ci": 1922.78
+      },
+      "presentation_elo": 1492.69,
+      "presentation_ci": {
+        "elo": 1492.69,
+        "lower95ci": 1478.41,
+        "upper95ci": 1506.95
+      }
     },
     {
       "id": "7d064a11-6e78-4030-b535-cdf940615041",
@@ -475,186 +279,37 @@
       "name": "Claude Haiku 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
       "release_date": "2026-10-07",
       "rubric_score": 0.5232323232323233,
-      "analytical_quality_elo": 1903.35,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1431.21,
-      "presentation_ci": null
+      "analytical_quality_elo": 1903.1,
+      "analytical_quality_ci": {
+        "elo": 1903.1,
+        "lower95ci": 1882.24,
+        "upper95ci": 1925.37
+      },
+      "presentation_elo": 1430.23,
+      "presentation_ci": {
+        "elo": 1430.23,
+        "lower95ci": 1410.89,
+        "upper95ci": 1449.62
+      }
     },
     {
-      "id": "26614164-6840-4e17-a65a-2deb2fe7e87b",
-      "provider": "SpaceXAI",
-      "name": "Grok 4.6 (medium)",
-      "release_date": "2026-08-12",
-      "rubric_score": 0.5252525252525253,
-      "analytical_quality_elo": 1579.68,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1458.57,
-      "presentation_ci": null
-    },
-    {
-      "id": "52eebe3e-6ede-4e46-92db-c5dea49fc410",
-      "provider": "OpenAI",
-      "name": "GPT-6 Sol (high)",
-      "release_date": "2026-09-22",
-      "rubric_score": 0.3787878787878788,
-      "analytical_quality_elo": 1363.05,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1277.28,
-      "presentation_ci": null
-    },
-    {
-      "id": "8afc250d-b538-45a2-812a-4605f4ffd87e",
-      "provider": "OpenAI",
-      "name": "GPT-5.6 Sol (high)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.38585858585858585,
-      "analytical_quality_elo": 1377.54,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1541.28,
-      "presentation_ci": null
-    },
-    {
-      "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
+      "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
       "provider": "Anthropic",
-      "name": "Claude Opus 5.5 (Adaptive Reasoning, Low Effort, Default Fallback)",
-      "release_date": "2026-09-22",
-      "rubric_score": 0.42525252525252527,
-      "analytical_quality_elo": 1440.39,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1147.27,
-      "presentation_ci": null
-    },
-    {
-      "id": "208c16f0-8c5b-4524-ac8a-ac74c02e80a9",
-      "provider": "SpaceXAI",
-      "name": "Grok 4.7 (Reasoning, Low Effort)",
-      "release_date": "2026-09-21",
-      "rubric_score": 0.49292929292929294,
-      "analytical_quality_elo": 1735.9,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1405.7,
-      "presentation_ci": null
-    },
-    {
-      "id": "e76e0fe5-93ca-4272-9359-2eb1740467d1",
-      "provider": "OpenAI",
-      "name": "GPT-6.1 Sol (low)",
-      "release_date": "2026-09-29",
-      "rubric_score": 0.3333333333333333,
-      "analytical_quality_elo": 1241.73,
-      "analytical_quality_ci": null,
-      "presentation_elo": 985.47,
-      "presentation_ci": null
-    },
-    {
-      "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
-      "provider": "OpenAI",
-      "name": "GPT-5.6 Terra (max)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.3414141414141414,
-      "analytical_quality_elo": 1343.59,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1529.83,
-      "presentation_ci": null
-    },
-    {
-      "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
-      "provider": "Z AI",
-      "name": "GLM-5.3-Flash",
-      "release_date": "2026-08-26",
-      "rubric_score": 0.4635897435897436,
-      "analytical_quality_elo": 1632.79,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1410.51,
-      "presentation_ci": null
-    },
-    {
-      "id": "992b7b84-5069-4c6a-9295-834252553d50",
-      "provider": "Anthropic",
-      "name": "Claude Opus 4.8 (Adaptive Reasoning, Max Effort)",
-      "release_date": "2026-05-28",
-      "rubric_score": 0.38686868686868686,
-      "analytical_quality_elo": 1291.61,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1477.24,
-      "presentation_ci": null
-    },
-    {
-      "id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
-      "provider": "Anthropic",
-      "name": "Claude Haiku 5.5 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
-      "release_date": "2026-10-07",
-      "rubric_score": 0.5141414141414141,
-      "analytical_quality_elo": 1812.68,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1393.47,
-      "presentation_ci": null
-    },
-    {
-      "id": "a6043b9b-628a-4a76-a021-2834e0627d05",
-      "provider": "InclusionAI",
-      "name": "Ling 3.1 Flash",
-      "release_date": "2026-10-01",
-      "rubric_score": 0.46464646464646464,
-      "analytical_quality_elo": 1561.77,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1318.33,
-      "presentation_ci": null
-    },
-    {
-      "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
-      "provider": "Google",
-      "name": "Gemini 3.8 Flash (high)",
-      "release_date": "2026-09-02",
-      "rubric_score": 0.4212121212121212,
-      "analytical_quality_elo": 1139.72,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1223.01,
-      "presentation_ci": null
-    },
-    {
-      "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
-      "provider": "Anthropic",
-      "name": "Claude Sonnet 5.5 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+      "name": "Claude Sonnet 5.5 (Adaptive Reasoning, High Effort, Default Fallback)",
       "release_date": "2026-09-28",
-      "rubric_score": 0.509090909090909,
-      "analytical_quality_elo": 1652.31,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1297.69,
-      "presentation_ci": null
-    },
-    {
-      "id": "e9a09db3-8fd6-41dd-ba2f-20e0a2bff7f2",
-      "provider": "Anthropic",
-      "name": "Claude Opus 4.7 (Adaptive Reasoning, Max Effort)",
-      "release_date": "2026-04-16",
-      "rubric_score": 0.39337474120082816,
-      "analytical_quality_elo": 1237.61,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1335.06,
-      "presentation_ci": null
-    },
-    {
-      "id": "5e5b4ce7-bc54-47b2-b911-21b9cad8394c",
-      "provider": "Alibaba",
-      "name": "Qwen3.8 Max",
-      "release_date": "2026-08-03",
-      "rubric_score": 0.49595959595959593,
-      "analytical_quality_elo": 1509.72,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1277.67,
-      "presentation_ci": null
-    },
-    {
-      "id": "8df710d3-9dae-4498-9b4e-9818238e6f31",
-      "provider": "Alibaba",
-      "name": "Qwen3.8 2.4T A95B",
-      "release_date": "2026-08-12",
-      "rubric_score": 0.5,
-      "analytical_quality_elo": 1599.59,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1322.5,
-      "presentation_ci": null
+      "rubric_score": 0.602020202020202,
+      "analytical_quality_elo": 1880.77,
+      "analytical_quality_ci": {
+        "elo": 1880.77,
+        "lower95ci": 1861.58,
+        "upper95ci": 1900.95
+      },
+      "presentation_elo": 1489.53,
+      "presentation_ci": {
+        "elo": 1489.53,
+        "lower95ci": 1470.73,
+        "upper95ci": 1509.63
+      }
     },
     {
       "id": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
@@ -662,164 +317,303 @@
       "name": "Qwen3.8-Flash-Next",
       "release_date": "2026-08-26",
       "rubric_score": 0.5410010649627263,
-      "analytical_quality_elo": 1881.44,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1444.73,
-      "presentation_ci": null
+      "analytical_quality_elo": 1877.19,
+      "analytical_quality_ci": {
+        "elo": 1877.19,
+        "lower95ci": 1859.89,
+        "upper95ci": 1894.07
+      },
+      "presentation_elo": 1444.61,
+      "presentation_ci": {
+        "elo": 1444.61,
+        "lower95ci": 1430.76,
+        "upper95ci": 1459.32
+      }
     },
     {
-      "id": "780a4a85-17ff-4175-a8dd-ebca4823e61b",
-      "provider": "OpenAI",
-      "name": "GPT-6 Sol (medium)",
-      "release_date": "2026-09-22",
-      "rubric_score": 0.32626262626262625,
-      "analytical_quality_elo": 1182.01,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1159.53,
-      "presentation_ci": null
-    },
-    {
-      "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
-      "provider": "Google",
-      "name": "Gemini 3.8 Flash (medium)",
-      "release_date": "2026-09-02",
-      "rubric_score": 0.4111111111111111,
-      "analytical_quality_elo": 1108.17,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1190.49,
-      "presentation_ci": null
-    },
-    {
-      "id": "04ee6719-0327-463b-a1a1-70a6a78254f9",
-      "provider": "Meta",
-      "name": "Muse Spark 1.2 (xhigh)",
-      "release_date": "2026-08-05",
-      "rubric_score": 0.45151515151515154,
-      "analytical_quality_elo": 1360.31,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1330.25,
-      "presentation_ci": null
-    },
-    {
-      "id": "dbe7c625-3100-4463-b479-a228c41f75dd",
-      "provider": "DeepSeek",
-      "name": "DeepSeek V4.1 Flash (Reasoning, Max Effort)",
-      "release_date": "2026-09-10",
-      "rubric_score": 0.45194274028629855,
-      "analytical_quality_elo": 1624.76,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1334.01,
-      "presentation_ci": null
-    },
-    {
-      "id": "20928ba9-3a3f-415f-9519-b84ff64ecf34",
+      "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
       "provider": "Anthropic",
-      "name": "Claude Opus 5 (Adaptive Reasoning, Low Effort)",
+      "name": "Claude Opus 5.5 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+      "release_date": "2026-09-22",
+      "rubric_score": 0.5696969696969697,
+      "analytical_quality_elo": 1874.87,
+      "analytical_quality_ci": {
+        "elo": 1874.87,
+        "lower95ci": 1855.86,
+        "upper95ci": 1893.14
+      },
+      "presentation_elo": 1501.25,
+      "presentation_ci": {
+        "elo": 1501.25,
+        "lower95ci": 1483.71,
+        "upper95ci": 1519.75
+      }
+    },
+    {
+      "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
+      "provider": "Anthropic",
+      "name": "Claude Fable 5.1 (Adaptive Reasoning, High Effort, Default Fallback)",
+      "release_date": "2026-09-01",
+      "rubric_score": 0.5717171717171717,
+      "analytical_quality_elo": 1836.39,
+      "analytical_quality_ci": {
+        "elo": 1836.39,
+        "lower95ci": 1821.18,
+        "upper95ci": 1851.95
+      },
+      "presentation_elo": 1409.47,
+      "presentation_ci": {
+        "elo": 1409.47,
+        "lower95ci": 1395.73,
+        "upper95ci": 1424.66
+      }
+    },
+    {
+      "id": "712be54a-77ae-41b2-9a58-21181479d6ee",
+      "provider": "Anthropic",
+      "name": "Claude Opus 5 (High)",
       "release_date": "2026-07-24",
-      "rubric_score": 0.38181818181818183,
-      "analytical_quality_elo": 1308.88,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1123.81,
-      "presentation_ci": null
+      "rubric_score": 0.5383838383838384,
+      "analytical_quality_elo": 1811.75,
+      "analytical_quality_ci": {
+        "elo": 1811.75,
+        "lower95ci": 1797.68,
+        "upper95ci": 1826.9
+      },
+      "presentation_elo": 1448.5,
+      "presentation_ci": {
+        "elo": 1448.5,
+        "lower95ci": 1435.36,
+        "upper95ci": 1462.5
+      }
     },
     {
-      "id": "6f174934-5b7d-4333-86cb-f5ebf4a862e3",
-      "provider": "OpenAI",
-      "name": "GPT-5.6 Sol (medium)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.3181818181818182,
-      "analytical_quality_elo": 1226.57,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1402.14,
-      "presentation_ci": null
-    },
-    {
-      "id": "b2331108-72ed-415a-82d1-188633875bbc",
-      "provider": "Google",
-      "name": "Gemini 3.7 Flash (high)",
-      "release_date": "2026-08-13",
-      "rubric_score": 0.36363636363636365,
-      "analytical_quality_elo": 1006.74,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1180.26,
-      "presentation_ci": null
-    },
-    {
-      "id": "794f69b5-cede-482b-b1cc-d769478497cd",
-      "provider": "SpaceXAI",
-      "name": "Grok 4.5 (high)",
-      "release_date": "2026-07-08",
-      "rubric_score": 0.4070707070707071,
-      "analytical_quality_elo": 1315.8,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1293.9,
-      "presentation_ci": null
-    },
-    {
-      "id": "34fc646a-0174-470e-9e62-d8df452210b3",
-      "provider": "Mistral",
-      "name": "Mistral Large 4 Preview",
-      "release_date": "2026-10-06",
-      "rubric_score": 0.45151515151515154,
-      "analytical_quality_elo": 1513.41,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1356.45,
-      "presentation_ci": null
-    },
-    {
-      "id": "1f054429-397e-4fdb-9e71-67bc92c1735e",
-      "provider": "OpenAI",
-      "name": "GPT-5.5 (xhigh)",
-      "release_date": "2026-04-23",
-      "rubric_score": 0.33438818565400846,
-      "analytical_quality_elo": 1180.38,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1107.56,
-      "presentation_ci": null
-    },
-    {
-      "id": "23c86e4a-c769-43c0-a056-79e3cd15834f",
+      "id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
       "provider": "Anthropic",
-      "name": "Claude Sonnet 5 (Adaptive Reasoning, Max Effort)",
-      "release_date": "2026-06-30",
-      "rubric_score": 0.42323232323232324,
-      "analytical_quality_elo": 1405.44,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1420.22,
-      "presentation_ci": null
+      "name": "Claude Haiku 5.5 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
+      "release_date": "2026-10-07",
+      "rubric_score": 0.5141414141414141,
+      "analytical_quality_elo": 1809.54,
+      "analytical_quality_ci": {
+        "elo": 1809.54,
+        "lower95ci": 1789.06,
+        "upper95ci": 1831.58
+      },
+      "presentation_elo": 1393.99,
+      "presentation_ci": {
+        "elo": 1393.99,
+        "lower95ci": 1376.34,
+        "upper95ci": 1413.02
+      }
     },
     {
-      "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
-      "provider": "OpenAI",
-      "name": "GPT-6 Luna (max)",
-      "release_date": "2026-09-22",
-      "rubric_score": 0.4121212121212121,
-      "analytical_quality_elo": 1378.05,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1395.99,
-      "presentation_ci": null
-    },
-    {
-      "id": "9e30696f-16fa-4b4f-ba53-161895a85fed",
-      "provider": "OpenAI",
-      "name": "GPT-5.6 Terra (xhigh)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.35353535353535354,
-      "analytical_quality_elo": 1335.84,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1508.26,
-      "presentation_ci": null
-    },
-    {
-      "id": "127de816-57d3-4037-8484-480a613cd413",
+      "id": "24d8fdfe-6241-424e-b7b7-1b6efb06e4fb",
       "provider": "Xiaomi",
-      "name": "MiMo-V2.6-Flash",
+      "name": "MiMo-V2.6-Pro",
       "release_date": "2026-09-21",
-      "rubric_score": 0.5179119754350051,
-      "analytical_quality_elo": 1663.03,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1405.98,
-      "presentation_ci": null
+      "rubric_score": 0.5474747474747474,
+      "analytical_quality_elo": 1798.36,
+      "analytical_quality_ci": {
+        "elo": 1798.36,
+        "lower95ci": 1779.24,
+        "upper95ci": 1818.3
+      },
+      "presentation_elo": 1296.38,
+      "presentation_ci": {
+        "elo": 1296.38,
+        "lower95ci": 1280.03,
+        "upper95ci": 1313.69
+      }
+    },
+    {
+      "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
+      "provider": "OpenAI",
+      "name": "GPT-6.1 Sol (Max)",
+      "release_date": "2026-09-29",
+      "rubric_score": 0.5565656565656566,
+      "analytical_quality_elo": 1773.21,
+      "analytical_quality_ci": {
+        "elo": 1773.21,
+        "lower95ci": 1758,
+        "upper95ci": 1790.79
+      },
+      "presentation_elo": 1447.29,
+      "presentation_ci": {
+        "elo": 1447.29,
+        "lower95ci": 1428.08,
+        "upper95ci": 1466.4
+      }
+    },
+    {
+      "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
+      "provider": "Anthropic",
+      "name": "Claude Fable 5.1 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+      "release_date": "2026-09-01",
+      "rubric_score": 0.5606060606060606,
+      "analytical_quality_elo": 1770.8,
+      "analytical_quality_ci": {
+        "elo": 1770.8,
+        "lower95ci": 1755.79,
+        "upper95ci": 1786.17
+      },
+      "presentation_elo": 1340.76,
+      "presentation_ci": {
+        "elo": 1340.76,
+        "lower95ci": 1327.29,
+        "upper95ci": 1354.73
+      }
+    },
+    {
+      "id": "cd684ea4-b475-4269-b001-d469d06d8a7a",
+      "provider": "Z AI",
+      "name": "GLM-5.3 (Max)",
+      "release_date": "2026-08-18",
+      "rubric_score": 0.5134854771784232,
+      "analytical_quality_elo": 1768.85,
+      "analytical_quality_ci": {
+        "elo": 1768.85,
+        "lower95ci": 1753.01,
+        "upper95ci": 1785.15
+      },
+      "presentation_elo": 1352.6,
+      "presentation_ci": {
+        "elo": 1352.6,
+        "lower95ci": 1336.78,
+        "upper95ci": 1366.94
+      }
+    },
+    {
+      "id": "f151fd0b-2139-40cf-a3ec-995e8cedc592",
+      "provider": "DeepSeek",
+      "name": "DeepSeek V4.1 Flash 1017 (Max)",
+      "release_date": "2026-10-17",
+      "rubric_score": 0.47474747474747475,
+      "analytical_quality_elo": 1765.78,
+      "analytical_quality_ci": {
+        "elo": 1765.78,
+        "lower95ci": 1747.46,
+        "upper95ci": 1784.11
+      },
+      "presentation_elo": 1602.45,
+      "presentation_ci": {
+        "elo": 1602.45,
+        "lower95ci": 1584.05,
+        "upper95ci": 1620.86
+      }
+    },
+    {
+      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
+      "provider": "OpenAI",
+      "name": "GPT-6 Astra (Max)",
+      "release_date": "2026-09-03",
+      "rubric_score": 0.5202020202020202,
+      "analytical_quality_elo": 1757.39,
+      "analytical_quality_ci": {
+        "elo": 1757.39,
+        "lower95ci": 1742.11,
+        "upper95ci": 1774.3
+      },
+      "presentation_elo": 1549,
+      "presentation_ci": {
+        "elo": 1549,
+        "lower95ci": 1532.66,
+        "upper95ci": 1567.05
+      }
+    },
+    {
+      "id": "208c16f0-8c5b-4524-ac8a-ac74c02e80a9",
+      "provider": "SpaceXAI",
+      "name": "Grok 4.7 (Low)",
+      "release_date": "2026-09-21",
+      "rubric_score": 0.49292929292929294,
+      "analytical_quality_elo": 1735.5,
+      "analytical_quality_ci": {
+        "elo": 1735.5,
+        "lower95ci": 1713.92,
+        "upper95ci": 1756.57
+      },
+      "presentation_elo": 1403.29,
+      "presentation_ci": {
+        "elo": 1403.29,
+        "lower95ci": 1385.61,
+        "upper95ci": 1421.99
+      }
+    },
+    {
+      "id": "05776db7-f5c0-40f7-b824-079160f8cfa8",
+      "provider": "Anthropic",
+      "name": "Claude Fable 5.1 (Adaptive Reasoning, Low Effort, Default Fallback)",
+      "release_date": "2026-09-01",
+      "rubric_score": 0.5535353535353535,
+      "analytical_quality_elo": 1712.16,
+      "analytical_quality_ci": {
+        "elo": 1712.16,
+        "lower95ci": 1697.37,
+        "upper95ci": 1728.37
+      },
+      "presentation_elo": 1283.17,
+      "presentation_ci": {
+        "elo": 1283.17,
+        "lower95ci": 1268.42,
+        "upper95ci": 1298.04
+      }
+    },
+    {
+      "id": "1f541ef3-913f-4eb2-9d07-0e93c7a9a5e3",
+      "provider": "OpenAI",
+      "name": "GPT-6 Astra (Xhigh)",
+      "release_date": "2026-09-03",
+      "rubric_score": 0.5232323232323233,
+      "analytical_quality_elo": 1710.96,
+      "analytical_quality_ci": {
+        "elo": 1710.96,
+        "lower95ci": 1694.77,
+        "upper95ci": 1728.91
+      },
+      "presentation_elo": 1519.12,
+      "presentation_ci": {
+        "elo": 1519.12,
+        "lower95ci": 1504.11,
+        "upper95ci": 1536.12
+      }
+    },
+    {
+      "id": "092a3b0e-c5c8-45dc-bf1b-53673c8ff352",
+      "provider": "OpenAI",
+      "name": "GPT-6.1 Sol (Xhigh)",
+      "release_date": "2026-09-29",
+      "rubric_score": 0.5161616161616162,
+      "analytical_quality_elo": 1699.28,
+      "analytical_quality_ci": {
+        "elo": 1699.28,
+        "lower95ci": 1680.28,
+        "upper95ci": 1718.61
+      },
+      "presentation_elo": 1426.01,
+      "presentation_ci": {
+        "elo": 1426.01,
+        "lower95ci": 1407.47,
+        "upper95ci": 1446.04
+      }
+    },
+    {
+      "id": "9999672c-b687-4026-9c15-5cef02ff53bb",
+      "provider": "Meta",
+      "name": "Muse Spark 1.3 (Max)",
+      "release_date": "2026-09-02",
+      "rubric_score": 0.5868686868686869,
+      "analytical_quality_elo": 1699.26,
+      "analytical_quality_ci": {
+        "elo": 1699.26,
+        "lower95ci": 1681.47,
+        "upper95ci": 1716.98
+      },
+      "presentation_elo": 1525.38,
+      "presentation_ci": {
+        "elo": 1525.38,
+        "lower95ci": 1509.19,
+        "upper95ci": 1542.33
+      }
     },
     {
       "id": "20829974-af06-497e-9f42-77fb958d43b9",
@@ -827,98 +621,322 @@
       "name": "Claude Haiku 5.5 (Adaptive Reasoning, High Effort, Default Fallback)",
       "release_date": "2026-10-07",
       "rubric_score": 0.4696969696969697,
-      "analytical_quality_elo": 1699.62,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1305.19,
-      "presentation_ci": null
+      "analytical_quality_elo": 1698.49,
+      "analytical_quality_ci": {
+        "elo": 1698.49,
+        "lower95ci": 1678.13,
+        "upper95ci": 1719.39
+      },
+      "presentation_elo": 1304.83,
+      "presentation_ci": {
+        "elo": 1304.83,
+        "lower95ci": 1286.4,
+        "upper95ci": 1323.24
+      }
     },
     {
-      "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+      "id": "e05a4828-0536-4876-870d-a235023f992b",
       "provider": "OpenAI",
-      "name": "GPT-5.6 Luna (max)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.3797979797979798,
-      "analytical_quality_elo": 1352.46,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1479.72,
-      "presentation_ci": null
+      "name": "GPT-6 Astra (High)",
+      "release_date": "2026-09-03",
+      "rubric_score": 0.5080808080808081,
+      "analytical_quality_elo": 1676.33,
+      "analytical_quality_ci": {
+        "elo": 1676.33,
+        "lower95ci": 1661.59,
+        "upper95ci": 1692.5
+      },
+      "presentation_elo": 1462.83,
+      "presentation_ci": {
+        "elo": 1462.83,
+        "lower95ci": 1447.51,
+        "upper95ci": 1479.12
+      }
     },
     {
-      "id": "b13c1257-d746-4027-8fc8-4892dc14701c",
-      "provider": "OpenAI",
-      "name": "GPT-5.5 (high)",
-      "release_date": "2026-04-23",
-      "rubric_score": 0.30606060606060603,
-      "analytical_quality_elo": 1123.5,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1078.79,
-      "presentation_ci": null
-    },
-    {
-      "id": "83173329-c09a-41f1-a028-a282a5f908d7",
-      "provider": "DeepSeek",
-      "name": "DeepSeek V4 Pro 0813 (Reasoning, Max Effort)",
-      "release_date": "2026-08-13",
-      "rubric_score": 0.4351851851851852,
-      "analytical_quality_elo": 1382.94,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1119.61,
-      "presentation_ci": null
-    },
-    {
-      "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
-      "provider": "Anthropic",
-      "name": "Claude Sonnet 5.5 (Adaptive Reasoning, Low Effort, Default Fallback)",
-      "release_date": "2026-09-28",
-      "rubric_score": 0.4171717171717172,
-      "analytical_quality_elo": 1441.4,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1119.73,
-      "presentation_ci": null
-    },
-    {
-      "id": "c07e65e6-32fc-451e-938d-7477a1c3ffcc",
+      "id": "d6f43d0a-e8c4-447c-9ff7-5cf0a9d59aa3",
       "provider": "SpaceXAI",
-      "name": "Grok 4.6 (low)",
+      "name": "Grok 4.6 (Xhigh)",
       "release_date": "2026-08-12",
-      "rubric_score": 0.402020202020202,
-      "analytical_quality_elo": 1365.87,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1270.96,
-      "presentation_ci": null
+      "rubric_score": 0.5383838383838384,
+      "analytical_quality_elo": 1664.9,
+      "analytical_quality_ci": {
+        "elo": 1664.9,
+        "lower95ci": 1651.16,
+        "upper95ci": 1679.9
+      },
+      "presentation_elo": 1532.82,
+      "presentation_ci": {
+        "elo": 1532.82,
+        "lower95ci": 1516.89,
+        "upper95ci": 1549.05
+      }
     },
     {
-      "id": "7707a46f-895f-4247-b7a8-ddab87c9a11d",
-      "provider": "DeepSeek",
-      "name": "DeepSeek V4 Flash Vision (Reasoning, Max Effort)",
-      "release_date": "2026-08-21",
-      "rubric_score": 0.4614594039054471,
-      "analytical_quality_elo": 1595.64,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1355.17,
-      "presentation_ci": null
+      "id": "cd55210d-358e-4df1-ba9c-9acb5f186cc9",
+      "provider": "Anthropic",
+      "name": "Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback)",
+      "release_date": "2026-06-09",
+      "rubric_score": 0.5595959595959596,
+      "analytical_quality_elo": 1663.26,
+      "analytical_quality_ci": {
+        "elo": 1663.26,
+        "lower95ci": 1649.86,
+        "upper95ci": 1677.62
+      },
+      "presentation_elo": 1474.72,
+      "presentation_ci": {
+        "elo": 1474.72,
+        "lower95ci": 1461.25,
+        "upper95ci": 1487.88
+      }
     },
     {
-      "id": "19813eb2-460a-475c-af65-810bb8660fec",
+      "id": "127de816-57d3-4037-8484-480a613cd413",
+      "provider": "Xiaomi",
+      "name": "MiMo-V2.6-Flash",
+      "release_date": "2026-09-21",
+      "rubric_score": 0.5179119754350051,
+      "analytical_quality_elo": 1660.53,
+      "analytical_quality_ci": {
+        "elo": 1660.53,
+        "lower95ci": 1642.76,
+        "upper95ci": 1679.6
+      },
+      "presentation_elo": 1403.11,
+      "presentation_ci": {
+        "elo": 1403.11,
+        "lower95ci": 1385.75,
+        "upper95ci": 1420.6
+      }
+    },
+    {
+      "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
+      "provider": "Kimi",
+      "name": "Kimi K3 (Max)",
+      "release_date": "2026-07-16",
+      "rubric_score": 0.5097236438075742,
+      "analytical_quality_elo": 1659.41,
+      "analytical_quality_ci": {
+        "elo": 1659.41,
+        "lower95ci": 1646.29,
+        "upper95ci": 1673.19
+      },
+      "presentation_elo": 1450.62,
+      "presentation_ci": {
+        "elo": 1450.62,
+        "lower95ci": 1437.48,
+        "upper95ci": 1464.6
+      }
+    },
+    {
+      "id": "c8adc5cf-fd5a-407b-af51-dc3bede3e49c",
+      "provider": "SpaceXAI",
+      "name": "Grok 4.6 (High)",
+      "release_date": "2026-08-12",
+      "rubric_score": 0.5282828282828282,
+      "analytical_quality_elo": 1659.19,
+      "analytical_quality_ci": {
+        "elo": 1659.19,
+        "lower95ci": 1645.19,
+        "upper95ci": 1674.3
+      },
+      "presentation_elo": 1520.69,
+      "presentation_ci": {
+        "elo": 1520.69,
+        "lower95ci": 1506.22,
+        "upper95ci": 1535.4
+      }
+    },
+    {
+      "id": "d93edfe8-bf35-49ad-b56e-b18116142a1c",
       "provider": "OpenAI",
-      "name": "GPT-6 Luna (xhigh)",
-      "release_date": "2026-09-22",
-      "rubric_score": 0.33636363636363636,
-      "analytical_quality_elo": 1261.92,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1328.34,
-      "presentation_ci": null
-    },
-    {
-      "id": "87110ff0-1f79-41b4-9976-eda250597317",
-      "provider": "OpenAI",
-      "name": "GPT-5.6 Luna (xhigh)",
+      "name": "GPT-5.6 Sol (Max)",
       "release_date": "2026-07-09",
-      "rubric_score": 0.3484848484848485,
-      "analytical_quality_elo": 1248.98,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1414.08,
-      "presentation_ci": null
+      "rubric_score": 0.4184839044652129,
+      "analytical_quality_elo": 1538.25,
+      "analytical_quality_ci": {
+        "elo": 1538.25,
+        "lower95ci": 1524.07,
+        "upper95ci": 1551.76
+      },
+      "presentation_elo": 1653.36,
+      "presentation_ci": {
+        "elo": 1653.36,
+        "lower95ci": 1639.32,
+        "upper95ci": 1669.4
+      }
+    },
+    {
+      "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
+      "provider": "MiniMax",
+      "name": "MiniMax-M3.1-Flash",
+      "release_date": "2026-10-19",
+      "rubric_score": 0.4780388151174668,
+      "analytical_quality_elo": 1651.76,
+      "analytical_quality_ci": {
+        "elo": 1651.76,
+        "lower95ci": 1634.07,
+        "upper95ci": 1669.44
+      },
+      "presentation_elo": 1425.44,
+      "presentation_ci": {
+        "elo": 1425.44,
+        "lower95ci": 1408.18,
+        "upper95ci": 1442.69
+      }
+    },
+    {
+      "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
+      "provider": "Anthropic",
+      "name": "Claude Sonnet 5.5 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+      "release_date": "2026-09-28",
+      "rubric_score": 0.509090909090909,
+      "analytical_quality_elo": 1650.88,
+      "analytical_quality_ci": {
+        "elo": 1650.88,
+        "lower95ci": 1632.42,
+        "upper95ci": 1669.91
+      },
+      "presentation_elo": 1296.72,
+      "presentation_ci": {
+        "elo": 1296.72,
+        "lower95ci": 1277.79,
+        "upper95ci": 1315.29
+      }
+    },
+    {
+      "id": "3b84fee3-b70a-41bc-819e-5fbdef9a0042",
+      "provider": "OpenAI",
+      "name": "GPT-6.1 Sol (High)",
+      "release_date": "2026-09-29",
+      "rubric_score": 0.4909090909090909,
+      "analytical_quality_elo": 1650.12,
+      "analytical_quality_ci": {
+        "elo": 1650.12,
+        "lower95ci": 1632.06,
+        "upper95ci": 1669.04
+      },
+      "presentation_elo": 1378.47,
+      "presentation_ci": {
+        "elo": 1378.47,
+        "lower95ci": 1359.72,
+        "upper95ci": 1399.22
+      }
+    },
+    {
+      "id": "e97a4ef5-e817-480e-9595-12f81dc4974f",
+      "provider": "OpenAI",
+      "name": "GPT-6 Astra (Medium)",
+      "release_date": "2026-09-03",
+      "rubric_score": 0.47474747474747475,
+      "analytical_quality_elo": 1647,
+      "analytical_quality_ci": {
+        "elo": 1647,
+        "lower95ci": 1629.99,
+        "upper95ci": 1664.19
+      },
+      "presentation_elo": 1413.36,
+      "presentation_ci": {
+        "elo": 1413.36,
+        "lower95ci": 1397.88,
+        "upper95ci": 1429.27
+      }
+    },
+    {
+      "id": "ff51be8f-e362-4a7e-9043-687ba15de207",
+      "provider": "Anthropic",
+      "name": "Claude Opus 5 (Medium)",
+      "release_date": "2026-07-24",
+      "rubric_score": 0.48484848484848486,
+      "analytical_quality_elo": 1635.59,
+      "analytical_quality_ci": {
+        "elo": 1635.59,
+        "lower95ci": 1622.41,
+        "upper95ci": 1650.45
+      },
+      "presentation_elo": 1316.04,
+      "presentation_ci": {
+        "elo": 1316.04,
+        "lower95ci": 1303.56,
+        "upper95ci": 1330.91
+      }
+    },
+    {
+      "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
+      "provider": "Z AI",
+      "name": "GLM-5.3-Flash",
+      "release_date": "2026-08-26",
+      "rubric_score": 0.4635897435897436,
+      "analytical_quality_elo": 1628.44,
+      "analytical_quality_ci": {
+        "elo": 1628.44,
+        "lower95ci": 1612.24,
+        "upper95ci": 1645.48
+      },
+      "presentation_elo": 1409.11,
+      "presentation_ci": {
+        "elo": 1409.11,
+        "lower95ci": 1397.01,
+        "upper95ci": 1422.62
+      }
+    },
+    {
+      "id": "dbe7c625-3100-4463-b479-a228c41f75dd",
+      "provider": "DeepSeek",
+      "name": "DeepSeek V4.1 Flash (Max)",
+      "release_date": "2026-09-10",
+      "rubric_score": 0.45194274028629855,
+      "analytical_quality_elo": 1621.41,
+      "analytical_quality_ci": {
+        "elo": 1621.41,
+        "lower95ci": 1606.25,
+        "upper95ci": 1638.26
+      },
+      "presentation_elo": 1332.46,
+      "presentation_ci": {
+        "elo": 1332.46,
+        "lower95ci": 1315.81,
+        "upper95ci": 1350.7
+      }
+    },
+    {
+      "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+      "provider": "OpenAI",
+      "name": "GPT-6 Sol (Max)",
+      "release_date": "2026-09-22",
+      "rubric_score": 0.4626262626262626,
+      "analytical_quality_elo": 1618.54,
+      "analytical_quality_ci": {
+        "elo": 1618.54,
+        "lower95ci": 1600.91,
+        "upper95ci": 1637.32
+      },
+      "presentation_elo": 1516.03,
+      "presentation_ci": {
+        "elo": 1516.03,
+        "lower95ci": 1500.42,
+        "upper95ci": 1532.57
+      }
+    },
+    {
+      "id": "8df710d3-9dae-4498-9b4e-9818238e6f31",
+      "provider": "Alibaba",
+      "name": "Qwen3.8 2.4T A95B",
+      "release_date": "2026-08-12",
+      "rubric_score": 0.5,
+      "analytical_quality_elo": 1599.47,
+      "analytical_quality_ci": {
+        "elo": 1599.47,
+        "lower95ci": 1585.04,
+        "upper95ci": 1613.73
+      },
+      "presentation_elo": 1322.37,
+      "presentation_ci": {
+        "elo": 1322.37,
+        "lower95ci": 1308.25,
+        "upper95ci": 1337.96
+      }
     },
     {
       "id": "af26fff4-8120-41be-a5f0-86aaea023f20",
@@ -926,252 +944,531 @@
       "name": "Claude Haiku 5.5 (Adaptive Reasoning, Medium Effort, Default Fallback)",
       "release_date": "2026-10-07",
       "rubric_score": 0.4494949494949495,
-      "analytical_quality_elo": 1596.77,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1222.34,
-      "presentation_ci": null
+      "analytical_quality_elo": 1597.03,
+      "analytical_quality_ci": {
+        "elo": 1597.03,
+        "lower95ci": 1579.41,
+        "upper95ci": 1616.18
+      },
+      "presentation_elo": 1222.27,
+      "presentation_ci": {
+        "elo": 1222.27,
+        "lower95ci": 1207,
+        "upper95ci": 1236.79
+      }
     },
     {
-      "id": "99f376bf-cbcb-4124-bf3e-6b0a4e6e9bea",
-      "provider": "Anthropic",
-      "name": "Claude Sonnet 5 (Adaptive Reasoning, Xhigh Effort)",
-      "release_date": "2026-06-30",
-      "rubric_score": 0.4,
-      "analytical_quality_elo": 1306.21,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1302.31,
-      "presentation_ci": null
+      "id": "d998db47-9b67-4727-a2bb-2e1261020ac0",
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Sol (Xhigh)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.4131313131313131,
+      "analytical_quality_elo": 1470.66,
+      "analytical_quality_ci": {
+        "elo": 1470.66,
+        "lower95ci": 1453.95,
+        "upper95ci": 1487.03
+      },
+      "presentation_elo": 1597.02,
+      "presentation_ci": {
+        "elo": 1597.02,
+        "lower95ci": 1579.96,
+        "upper95ci": 1614.32
+      }
     },
     {
-      "id": "fe4c0848-e284-4e52-a79d-cdc28392f1a9",
+      "id": "7707a46f-895f-4247-b7a8-ddab87c9a11d",
       "provider": "DeepSeek",
-      "name": "DeepSeek V4 Flash 0731 (Reasoning, Max Effort)",
-      "release_date": "2026-07-31",
-      "rubric_score": 0.41515151515151516,
-      "analytical_quality_elo": 1343.55,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1198.63,
-      "presentation_ci": null
+      "name": "DeepSeek V4 Flash Vision (Max)",
+      "release_date": "2026-08-21",
+      "rubric_score": 0.4614594039054471,
+      "analytical_quality_elo": 1595.72,
+      "analytical_quality_ci": {
+        "elo": 1595.72,
+        "lower95ci": 1579.67,
+        "upper95ci": 1612.19
+      },
+      "presentation_elo": 1354.6,
+      "presentation_ci": {
+        "elo": 1354.6,
+        "lower95ci": 1342.07,
+        "upper95ci": 1368.95
+      }
     },
     {
-      "id": "cc1e488b-8ba4-464d-875d-690166b15ad3",
-      "provider": "Z AI",
-      "name": "GLM-5.3 (low)",
-      "release_date": "2026-08-18",
-      "rubric_score": 0.37731958762886597,
-      "analytical_quality_elo": 1315.08,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1064.07,
-      "presentation_ci": null
+      "id": "26614164-6840-4e17-a65a-2deb2fe7e87b",
+      "provider": "SpaceXAI",
+      "name": "Grok 4.6 (Medium)",
+      "release_date": "2026-08-12",
+      "rubric_score": 0.5252525252525253,
+      "analytical_quality_elo": 1579.38,
+      "analytical_quality_ci": {
+        "elo": 1579.38,
+        "lower95ci": 1565.7,
+        "upper95ci": 1594.93
+      },
+      "presentation_elo": 1458.06,
+      "presentation_ci": {
+        "elo": 1458.06,
+        "lower95ci": 1443.88,
+        "upper95ci": 1472.89
+      }
     },
     {
-      "id": "81972fba-1219-477e-bbfb-18c656a63ff7",
-      "provider": "OpenAI",
-      "name": "GPT-5.6 Terra (high)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.29797979797979796,
-      "analytical_quality_elo": 1178.53,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1386.2,
-      "presentation_ci": null
-    },
-    {
-      "id": "01459872-433a-4ab2-8e99-7083162172eb",
-      "provider": "OpenAI",
-      "name": "GPT-6 Sol (low)",
-      "release_date": "2026-09-22",
-      "rubric_score": 0.20202020202020202,
-      "analytical_quality_elo": 893.66,
-      "analytical_quality_ci": null,
-      "presentation_elo": 867.24,
-      "presentation_ci": null
-    },
-    {
-      "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
-      "provider": "Google",
-      "name": "Gemini 3.6 Flash (high)",
-      "release_date": "2026-07-21",
-      "rubric_score": 0.2808080808080808,
-      "analytical_quality_elo": 795.63,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1033.59,
-      "presentation_ci": null
-    },
-    {
-      "id": "46f11cdf-1725-4abb-b39b-bd6bd948149c",
-      "provider": "China Mobile",
-      "name": "JT-4.1 Flash 236B A21B (Reasoning)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.26565656565656565,
-      "analytical_quality_elo": 1126.39,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1136.74,
-      "presentation_ci": null
-    },
-    {
-      "id": "6b79f899-e3c0-45f6-923c-243faccdb2fc",
-      "provider": "OpenAI",
-      "name": "GPT-5.5 (medium)",
-      "release_date": "2026-04-23",
-      "rubric_score": 0.26565656565656565,
-      "analytical_quality_elo": 1000,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1000,
-      "presentation_ci": null
-    },
-    {
-      "id": "d61493e2-43ff-460c-9054-eaf6ba317360",
+      "id": "d5170215-69be-4129-849b-26d8d8825bfc",
       "provider": "Meta",
-      "name": "Muse Spark 1.1 (xhigh)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.34545454545454546,
-      "analytical_quality_elo": 991.69,
-      "analytical_quality_ci": null,
-      "presentation_elo": 430.01,
-      "presentation_ci": null
-    },
-    {
-      "id": "f7a4ea75-e548-4069-80d4-9be8bc7c009b",
-      "provider": "Z AI",
-      "name": "GLM-5.2 (max)",
-      "release_date": "2026-06-16",
-      "rubric_score": 0.3606060606060606,
-      "analytical_quality_elo": 1262.07,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1262.31,
-      "presentation_ci": null
+      "name": "Muse Spark 1.3 (Xhigh)",
+      "release_date": "2026-09-02",
+      "rubric_score": 0.5161616161616162,
+      "analytical_quality_elo": 1571.57,
+      "analytical_quality_ci": {
+        "elo": 1571.57,
+        "lower95ci": 1556.73,
+        "upper95ci": 1587.92
+      },
+      "presentation_elo": 1487.89,
+      "presentation_ci": {
+        "elo": 1487.89,
+        "lower95ci": 1471.28,
+        "upper95ci": 1505.29
+      }
     },
     {
       "id": "b01dee41-c62b-48ed-8d16-984adc405e5c",
       "provider": "Alibaba",
-      "name": "Qwen3.8 27B (xhigh)",
+      "name": "Qwen3.8 27B (Xhigh)",
       "release_date": "2026-08-14",
       "rubric_score": 0.4780388151174668,
-      "analytical_quality_elo": 1569.22,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1287.52,
-      "presentation_ci": null
+      "analytical_quality_elo": 1564.45,
+      "analytical_quality_ci": {
+        "elo": 1564.45,
+        "lower95ci": 1550.53,
+        "upper95ci": 1579.15
+      },
+      "presentation_elo": 1286.91,
+      "presentation_ci": {
+        "elo": 1286.91,
+        "lower95ci": 1273.32,
+        "upper95ci": 1300.83
+      }
     },
     {
-      "id": "5016ea75-7b0e-4737-a7e6-1062c6d90fd4",
+      "id": "a6043b9b-628a-4a76-a021-2834e0627d05",
+      "provider": "InclusionAI",
+      "name": "Ling 3.1 Flash",
+      "release_date": "2026-10-01",
+      "rubric_score": 0.46464646464646464,
+      "analytical_quality_elo": 1562.37,
+      "analytical_quality_ci": {
+        "elo": 1562.37,
+        "lower95ci": 1543.11,
+        "upper95ci": 1581.23
+      },
+      "presentation_elo": 1316.88,
+      "presentation_ci": {
+        "elo": 1316.88,
+        "lower95ci": 1298.15,
+        "upper95ci": 1335.46
+      }
+    },
+    {
+      "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
       "provider": "Google",
-      "name": "Gemini 3.5 Flash (medium)",
-      "release_date": "2026-05-19",
-      "rubric_score": 0.27635619242579323,
-      "analytical_quality_elo": 720.19,
-      "analytical_quality_ci": null,
-      "presentation_elo": 910.7,
-      "presentation_ci": null
+      "name": "Gemini 4 Argon (High)",
+      "release_date": "2026-09-30",
+      "rubric_score": 0.6463414634146342,
+      "analytical_quality_elo": 1560.52,
+      "analytical_quality_ci": {
+        "elo": 1560.52,
+        "lower95ci": 1541.14,
+        "upper95ci": 1582.16
+      },
+      "presentation_elo": 1304.24,
+      "presentation_ci": {
+        "elo": 1304.24,
+        "lower95ci": 1287.68,
+        "upper95ci": 1322.03
+      }
     },
     {
-      "id": "b01eefb1-c9f8-412d-8353-571031a52f23",
-      "provider": "Motif Technologies",
-      "name": "Motif 3",
-      "release_date": "2026-08-12",
-      "rubric_score": 0.24462640736949848,
-      "analytical_quality_elo": 907.84,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1086.99,
-      "presentation_ci": null
+      "id": "094ea3e3-ce41-419e-8bd1-723389663158",
+      "provider": "StepFun",
+      "name": "Step 5 Preview",
+      "release_date": "2026-09-18",
+      "rubric_score": 0.4777777777777778,
+      "analytical_quality_elo": 1542.07,
+      "analytical_quality_ci": {
+        "elo": 1542.07,
+        "lower95ci": 1518.03,
+        "upper95ci": 1563.57
+      },
+      "presentation_elo": 1391.64,
+      "presentation_ci": {
+        "elo": 1391.64,
+        "lower95ci": 1371.23,
+        "upper95ci": 1411.52
+      }
     },
     {
-      "id": "0904b596-8932-43bd-9b21-324f128e1723",
+      "id": "8afc250d-b538-45a2-812a-4605f4ffd87e",
       "provider": "OpenAI",
-      "name": "GPT-5.6 Sol (low)",
+      "name": "GPT-5.6 Sol (High)",
       "release_date": "2026-07-09",
-      "rubric_score": 0.23939393939393938,
-      "analytical_quality_elo": 971.24,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1205.27,
-      "presentation_ci": null
+      "rubric_score": 0.38585858585858585,
+      "analytical_quality_elo": 1374.04,
+      "analytical_quality_ci": {
+        "elo": 1374.04,
+        "lower95ci": 1358.08,
+        "upper95ci": 1390.48
+      },
+      "presentation_elo": 1540.61,
+      "presentation_ci": {
+        "elo": 1540.61,
+        "lower95ci": 1525.36,
+        "upper95ci": 1555.67
+      }
     },
     {
-      "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
-      "provider": "Google",
-      "name": "Gemini 3.8 Flash (low)",
-      "release_date": "2026-09-02",
-      "rubric_score": 0.35454545454545455,
-      "analytical_quality_elo": 939.33,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1098.37,
-      "presentation_ci": null
-    },
-    {
-      "id": "7d1229bc-deea-4717-ba5b-f59a35d991e3",
+      "id": "a2e51d62-ea4e-4f15-8be0-be9dc1fb489d",
       "provider": "OpenAI",
-      "name": "GPT-6 Luna (high)",
+      "name": "GPT-6.1 Sol (Medium)",
+      "release_date": "2026-09-29",
+      "rubric_score": 0.4404040404040404,
+      "analytical_quality_elo": 1539.89,
+      "analytical_quality_ci": {
+        "elo": 1539.89,
+        "lower95ci": 1520.79,
+        "upper95ci": 1559.88
+      },
+      "presentation_elo": 1260.56,
+      "presentation_ci": {
+        "elo": 1260.56,
+        "lower95ci": 1241.62,
+        "upper95ci": 1278.26
+      }
+    },
+    {
+      "id": "6657d7de-a2a9-40bc-a32f-86e80ad63698",
+      "provider": "Alibaba",
+      "name": "Qwen3.8 27B (Medium)",
+      "release_date": "2026-08-14",
+      "rubric_score": 0.4652631578947368,
+      "analytical_quality_elo": 1538.98,
+      "analytical_quality_ci": {
+        "elo": 1538.98,
+        "lower95ci": 1524.34,
+        "upper95ci": 1554.99
+      },
+      "presentation_elo": 1261.82,
+      "presentation_ci": {
+        "elo": 1261.82,
+        "lower95ci": 1248.31,
+        "upper95ci": 1276.38
+      }
+    },
+    {
+      "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Terra (Max)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.3414141414141414,
+      "analytical_quality_elo": 1343.57,
+      "analytical_quality_ci": {
+        "elo": 1343.57,
+        "lower95ci": 1328.83,
+        "upper95ci": 1358.65
+      },
+      "presentation_elo": 1530.42,
+      "presentation_ci": {
+        "elo": 1530.42,
+        "lower95ci": 1515.61,
+        "upper95ci": 1544.81
+      }
+    },
+    {
+      "id": "34fc646a-0174-470e-9e62-d8df452210b3",
+      "provider": "Mistral",
+      "name": "Mistral Large 4 Preview",
+      "release_date": "2026-10-06",
+      "rubric_score": 0.45151515151515154,
+      "analytical_quality_elo": 1510.25,
+      "analytical_quality_ci": {
+        "elo": 1510.25,
+        "lower95ci": 1491.19,
+        "upper95ci": 1529.87
+      },
+      "presentation_elo": 1355.26,
+      "presentation_ci": {
+        "elo": 1355.26,
+        "lower95ci": 1336.51,
+        "upper95ci": 1375.43
+      }
+    },
+    {
+      "id": "9e30696f-16fa-4b4f-ba53-161895a85fed",
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Terra (Xhigh)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.35353535353535354,
+      "analytical_quality_elo": 1335.8,
+      "analytical_quality_ci": {
+        "elo": 1335.8,
+        "lower95ci": 1320.8,
+        "upper95ci": 1351.75
+      },
+      "presentation_elo": 1507.32,
+      "presentation_ci": {
+        "elo": 1507.32,
+        "lower95ci": 1492,
+        "upper95ci": 1523.63
+      }
+    },
+    {
+      "id": "5e5b4ce7-bc54-47b2-b911-21b9cad8394c",
+      "provider": "Alibaba",
+      "name": "Qwen3.8 Max",
+      "release_date": "2026-08-03",
+      "rubric_score": 0.49595959595959593,
+      "analytical_quality_elo": 1506.14,
+      "analytical_quality_ci": {
+        "elo": 1506.14,
+        "lower95ci": 1492.77,
+        "upper95ci": 1521.98
+      },
+      "presentation_elo": 1276.36,
+      "presentation_ci": {
+        "elo": 1276.36,
+        "lower95ci": 1262.53,
+        "upper95ci": 1290.23
+      }
+    },
+    {
+      "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Luna (Max)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.3797979797979798,
+      "analytical_quality_elo": 1352.43,
+      "analytical_quality_ci": {
+        "elo": 1352.43,
+        "lower95ci": 1338.76,
+        "upper95ci": 1366.84
+      },
+      "presentation_elo": 1479.62,
+      "presentation_ci": {
+        "elo": 1479.62,
+        "lower95ci": 1466.46,
+        "upper95ci": 1493.8
+      }
+    },
+    {
+      "id": "992b7b84-5069-4c6a-9295-834252553d50",
+      "provider": "Anthropic",
+      "name": "Claude Opus 4.8 (Max)",
+      "release_date": "2026-05-28",
+      "rubric_score": 0.38686868686868686,
+      "analytical_quality_elo": 1291.58,
+      "analytical_quality_ci": {
+        "elo": 1291.58,
+        "lower95ci": 1279.4,
+        "upper95ci": 1304.56
+      },
+      "presentation_elo": 1477.03,
+      "presentation_ci": {
+        "elo": 1477.03,
+        "lower95ci": 1464.43,
+        "upper95ci": 1490.41
+      }
+    },
+    {
+      "id": "da2642fe-9f73-4788-b5af-24edcd55b37e",
+      "provider": "OpenAI",
+      "name": "GPT-6 Sol (Xhigh)",
       "release_date": "2026-09-22",
-      "rubric_score": 0.3181818181818182,
-      "analytical_quality_elo": 1177.93,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1293.3,
-      "presentation_ci": null
+      "rubric_score": 0.4171717171717172,
+      "analytical_quality_elo": 1466.42,
+      "analytical_quality_ci": {
+        "elo": 1466.42,
+        "lower95ci": 1449.16,
+        "upper95ci": 1486.1
+      },
+      "presentation_elo": 1372.88,
+      "presentation_ci": {
+        "elo": 1372.88,
+        "lower95ci": 1357.87,
+        "upper95ci": 1387.97
+      }
     },
     {
-      "id": "0097ebf5-124f-42f6-9463-33b00e711f03",
-      "provider": "Google",
-      "name": "Gemini 3.5 Flash (high)",
-      "release_date": "2026-05-19",
-      "rubric_score": 0.2773207990599295,
-      "analytical_quality_elo": 712.39,
-      "analytical_quality_ci": null,
-      "presentation_elo": 892.57,
-      "presentation_ci": null
-    },
-    {
-      "id": "59b5b14b-5365-4ee7-824a-18a8e6309644",
-      "provider": "OpenAI",
-      "name": "GPT-5.3 Codex (xhigh)",
-      "release_date": "2026-02-05",
-      "rubric_score": 0.21818181818181817,
-      "analytical_quality_elo": 853.38,
-      "analytical_quality_ci": null,
-      "presentation_elo": 842.04,
-      "presentation_ci": null
-    },
-    {
-      "id": "aa55297e-8fbf-4372-b4ab-9b068dc6396c",
-      "provider": "OpenAI",
-      "name": "GPT-5.6 Luna (high)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.298989898989899,
-      "analytical_quality_elo": 1130.92,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1323.86,
-      "presentation_ci": null
-    },
-    {
-      "id": "ba0224cf-0351-4f56-8508-b3f1a740ae4a",
+      "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
       "provider": "Anthropic",
-      "name": "Claude Sonnet 5 (Adaptive Reasoning, High Effort)",
+      "name": "Claude Sonnet 5.5 (Adaptive Reasoning, Low Effort, Default Fallback)",
+      "release_date": "2026-09-28",
+      "rubric_score": 0.4171717171717172,
+      "analytical_quality_elo": 1441.28,
+      "analytical_quality_ci": {
+        "elo": 1441.28,
+        "lower95ci": 1422.03,
+        "upper95ci": 1462.4
+      },
+      "presentation_elo": 1119.85,
+      "presentation_ci": {
+        "elo": 1119.85,
+        "lower95ci": 1102.24,
+        "upper95ci": 1137.95
+      }
+    },
+    {
+      "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
+      "provider": "Anthropic",
+      "name": "Claude Opus 5.5 (Adaptive Reasoning, Low Effort, Default Fallback)",
+      "release_date": "2026-09-22",
+      "rubric_score": 0.42525252525252527,
+      "analytical_quality_elo": 1440.59,
+      "analytical_quality_ci": {
+        "elo": 1440.59,
+        "lower95ci": 1422.64,
+        "upper95ci": 1459.81
+      },
+      "presentation_elo": 1148.19,
+      "presentation_ci": {
+        "elo": 1148.19,
+        "lower95ci": 1130.68,
+        "upper95ci": 1165.89
+      }
+    },
+    {
+      "id": "23c86e4a-c769-43c0-a056-79e3cd15834f",
+      "provider": "Anthropic",
+      "name": "Claude Sonnet 5 (Max)",
       "release_date": "2026-06-30",
-      "rubric_score": 0.35454545454545455,
-      "analytical_quality_elo": 1189.33,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1194.4,
-      "presentation_ci": null
+      "rubric_score": 0.42323232323232324,
+      "analytical_quality_elo": 1405.38,
+      "analytical_quality_ci": {
+        "elo": 1405.38,
+        "lower95ci": 1392.03,
+        "upper95ci": 1419.15
+      },
+      "presentation_elo": 1420.44,
+      "presentation_ci": {
+        "elo": 1420.44,
+        "lower95ci": 1407.96,
+        "upper95ci": 1434.04
+      }
     },
     {
-      "id": "ebf3b39f-0be6-43a1-a37a-f9b2978c9916",
-      "provider": "Meta",
-      "name": "Muse Spark",
-      "release_date": "2026-04-08",
-      "rubric_score": 0.16767676767676767,
-      "analytical_quality_elo": 588.47,
-      "analytical_quality_ci": null,
-      "presentation_elo": 526.2,
-      "presentation_ci": null
+      "id": "87110ff0-1f79-41b4-9976-eda250597317",
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Luna (Xhigh)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.3484848484848485,
+      "analytical_quality_elo": 1248.96,
+      "analytical_quality_ci": {
+        "elo": 1248.96,
+        "lower95ci": 1234.57,
+        "upper95ci": 1263.09
+      },
+      "presentation_elo": 1414.19,
+      "presentation_ci": {
+        "elo": 1414.19,
+        "lower95ci": 1399.04,
+        "upper95ci": 1429.96
+      }
     },
     {
-      "id": "2fa8e143-77a8-4d05-bfa8-d3b54634c00f",
-      "provider": "Anthropic",
-      "name": "Claude Opus 4.7 (Non-reasoning, High Effort)",
-      "release_date": "2026-04-16",
-      "rubric_score": 0.27635619242579323,
-      "analytical_quality_elo": 1031.14,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1164.6,
-      "presentation_ci": null
+      "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
+      "provider": "OpenAI",
+      "name": "GPT-6 Astra (Low)",
+      "release_date": "2026-09-03",
+      "rubric_score": 0.402020202020202,
+      "analytical_quality_elo": 1403.24,
+      "analytical_quality_ci": {
+        "elo": 1403.24,
+        "lower95ci": 1386.36,
+        "upper95ci": 1419.84
+      },
+      "presentation_elo": 1155.95,
+      "presentation_ci": {
+        "elo": 1155.95,
+        "lower95ci": 1140.75,
+        "upper95ci": 1171.96
+      }
+    },
+    {
+      "id": "6f174934-5b7d-4333-86cb-f5ebf4a862e3",
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Sol (Medium)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.3181818181818182,
+      "analytical_quality_elo": 1226.56,
+      "analytical_quality_ci": {
+        "elo": 1226.56,
+        "lower95ci": 1211.47,
+        "upper95ci": 1241.73
+      },
+      "presentation_elo": 1402.41,
+      "presentation_ci": {
+        "elo": 1402.41,
+        "lower95ci": 1388.5,
+        "upper95ci": 1418.07
+      }
+    },
+    {
+      "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
+      "provider": "OpenAI",
+      "name": "GPT-6 Luna (Max)",
+      "release_date": "2026-09-22",
+      "rubric_score": 0.4121212121212121,
+      "analytical_quality_elo": 1374.83,
+      "analytical_quality_ci": {
+        "elo": 1374.83,
+        "lower95ci": 1355.97,
+        "upper95ci": 1394.56
+      },
+      "presentation_elo": 1394.86,
+      "presentation_ci": {
+        "elo": 1394.86,
+        "lower95ci": 1379.49,
+        "upper95ci": 1410.73
+      }
+    },
+    {
+      "id": "81972fba-1219-477e-bbfb-18c656a63ff7",
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Terra (High)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.29797979797979796,
+      "analytical_quality_elo": 1178.51,
+      "analytical_quality_ci": {
+        "elo": 1178.51,
+        "lower95ci": 1164.51,
+        "upper95ci": 1194.25
+      },
+      "presentation_elo": 1386.62,
+      "presentation_ci": {
+        "elo": 1386.62,
+        "lower95ci": 1372.42,
+        "upper95ci": 1402.45
+      }
+    },
+    {
+      "id": "83173329-c09a-41f1-a028-a282a5f908d7",
+      "provider": "DeepSeek",
+      "name": "DeepSeek V4 Pro 0813 (Max)",
+      "release_date": "2026-08-13",
+      "rubric_score": 0.4351851851851852,
+      "analytical_quality_elo": 1382.91,
+      "analytical_quality_ci": {
+        "elo": 1382.91,
+        "lower95ci": 1369.18,
+        "upper95ci": 1397.55
+      },
+      "presentation_elo": 1119.94,
+      "presentation_ci": {
+        "elo": 1119.94,
+        "lower95ci": 1105.17,
+        "upper95ci": 1133.95
+      }
     },
     {
       "id": "bb3d7e75-8e22-4082-b9d6-1db0803e042f",
@@ -1179,87 +1476,341 @@
       "name": "K2 Horizon 375B A23B",
       "release_date": "2026-09-03",
       "rubric_score": 0.4164926931106472,
-      "analytical_quality_elo": 1383.5,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1255.72,
-      "presentation_ci": null
+      "analytical_quality_elo": 1379.47,
+      "analytical_quality_ci": {
+        "elo": 1379.47,
+        "lower95ci": 1362.03,
+        "upper95ci": 1395.62
+      },
+      "presentation_elo": 1254.65,
+      "presentation_ci": {
+        "elo": 1254.65,
+        "lower95ci": 1241.26,
+        "upper95ci": 1267.39
+      }
     },
     {
-      "id": "bf220674-68bd-43cc-a1b8-ce5ed4d2f18d",
-      "provider": "DeepSeek",
-      "name": "DeepSeek V4 Pro 0424 (Reasoning, Max Effort)",
-      "release_date": "2026-04-24",
-      "rubric_score": 0.23938679245283018,
-      "analytical_quality_elo": 879.51,
-      "analytical_quality_ci": null,
-      "presentation_elo": 933.37,
-      "presentation_ci": null
-    },
-    {
-      "id": "26e0f83a-ca98-4f34-94ac-7c5e251ee410",
-      "provider": "OpenAI",
-      "name": "GPT-5.6 Terra (medium)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.2202020202020202,
-      "analytical_quality_elo": 972.13,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1216.39,
-      "presentation_ci": null
-    },
-    {
-      "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
-      "provider": "Kimi",
-      "name": "Kimi K3 (low)",
-      "release_date": "2026-07-16",
-      "rubric_score": 0.2606060606060606,
-      "analytical_quality_elo": 997.87,
-      "analytical_quality_ci": null,
-      "presentation_elo": 955.18,
-      "presentation_ci": null
-    },
-    {
-      "id": "df8d14e0-3997-4e4d-b4ad-9c047acc9c69",
-      "provider": "Anthropic",
-      "name": "Claude Sonnet 4.6 (Adaptive Reasoning, Max Effort)",
-      "release_date": "2026-02-17",
-      "rubric_score": 0.289198606271777,
-      "analytical_quality_elo": 977.85,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1174.27,
-      "presentation_ci": null
-    },
-    {
-      "id": "36667da0-9222-4967-adbb-f7efa15ad213",
-      "provider": "OpenAI",
-      "name": "GPT-6 Luna (medium)",
-      "release_date": "2026-09-22",
-      "rubric_score": 0.2808080808080808,
-      "analytical_quality_elo": 1067.81,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1191.74,
-      "presentation_ci": null
-    },
-    {
-      "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
-      "provider": "Google",
-      "name": "Gemini 3.1 Pro Preview",
-      "release_date": "2026-02-19",
-      "rubric_score": 0.12424242424242424,
-      "analytical_quality_elo": 289.47,
-      "analytical_quality_ci": null,
-      "presentation_elo": 352.93,
-      "presentation_ci": null
-    },
-    {
-      "id": "69534bed-2ffd-4235-832b-e20a810333ab",
+      "id": "7e30585f-fad7-40df-a8cb-03c1d96df38a",
       "provider": "Alibaba",
-      "name": "Qwen3.7 Max",
-      "release_date": "2026-05-19",
-      "rubric_score": 0.23737373737373738,
-      "analytical_quality_elo": 803.89,
-      "analytical_quality_ci": null,
-      "presentation_elo": 981.03,
-      "presentation_ci": null
+      "name": "Qwen3.8 27B (Low)",
+      "release_date": "2026-08-14",
+      "rubric_score": 0.4207818930041152,
+      "analytical_quality_elo": 1369.17,
+      "analytical_quality_ci": {
+        "elo": 1369.17,
+        "lower95ci": 1352.72,
+        "upper95ci": 1386.22
+      },
+      "presentation_elo": 1199.06,
+      "presentation_ci": {
+        "elo": 1199.06,
+        "lower95ci": 1183.13,
+        "upper95ci": 1215.43
+      }
+    },
+    {
+      "id": "c07e65e6-32fc-451e-938d-7477a1c3ffcc",
+      "provider": "SpaceXAI",
+      "name": "Grok 4.6 (Low)",
+      "release_date": "2026-08-12",
+      "rubric_score": 0.402020202020202,
+      "analytical_quality_elo": 1365.84,
+      "analytical_quality_ci": {
+        "elo": 1365.84,
+        "lower95ci": 1351.16,
+        "upper95ci": 1380.93
+      },
+      "presentation_elo": 1270.1,
+      "presentation_ci": {
+        "elo": 1270.1,
+        "lower95ci": 1255.88,
+        "upper95ci": 1284.42
+      }
+    },
+    {
+      "id": "04ee6719-0327-463b-a1a1-70a6a78254f9",
+      "provider": "Meta",
+      "name": "Muse Spark 1.2 (Xhigh)",
+      "release_date": "2026-08-05",
+      "rubric_score": 0.45151515151515154,
+      "analytical_quality_elo": 1360.27,
+      "analytical_quality_ci": {
+        "elo": 1360.27,
+        "lower95ci": 1345.4,
+        "upper95ci": 1375.08
+      },
+      "presentation_elo": 1330.01,
+      "presentation_ci": {
+        "elo": 1330.01,
+        "lower95ci": 1315.95,
+        "upper95ci": 1344.68
+      }
+    },
+    {
+      "id": "52eebe3e-6ede-4e46-92db-c5dea49fc410",
+      "provider": "OpenAI",
+      "name": "GPT-6 Sol (High)",
+      "release_date": "2026-09-22",
+      "rubric_score": 0.3787878787878788,
+      "analytical_quality_elo": 1360.26,
+      "analytical_quality_ci": {
+        "elo": 1360.26,
+        "lower95ci": 1341.29,
+        "upper95ci": 1377.85
+      },
+      "presentation_elo": 1277.58,
+      "presentation_ci": {
+        "elo": 1277.58,
+        "lower95ci": 1263.98,
+        "upper95ci": 1293.04
+      }
+    },
+    {
+      "id": "fe4c0848-e284-4e52-a79d-cdc28392f1a9",
+      "provider": "DeepSeek",
+      "name": "DeepSeek V4 Flash 0731 (Max)",
+      "release_date": "2026-07-31",
+      "rubric_score": 0.41515151515151516,
+      "analytical_quality_elo": 1343.52,
+      "analytical_quality_ci": {
+        "elo": 1343.52,
+        "lower95ci": 1330.25,
+        "upper95ci": 1357.58
+      },
+      "presentation_elo": 1198.78,
+      "presentation_ci": {
+        "elo": 1198.78,
+        "lower95ci": 1184.3,
+        "upper95ci": 1212.57
+      }
+    },
+    {
+      "id": "e9a09db3-8fd6-41dd-ba2f-20e0a2bff7f2",
+      "provider": "Anthropic",
+      "name": "Claude Opus 4.7 (Max)",
+      "release_date": "2026-04-16",
+      "rubric_score": 0.39337474120082816,
+      "analytical_quality_elo": 1237.59,
+      "analytical_quality_ci": {
+        "elo": 1237.59,
+        "lower95ci": 1225.67,
+        "upper95ci": 1249.16
+      },
+      "presentation_elo": 1334.89,
+      "presentation_ci": {
+        "elo": 1334.89,
+        "lower95ci": 1322.77,
+        "upper95ci": 1347.51
+      }
+    },
+    {
+      "id": "19813eb2-460a-475c-af65-810bb8660fec",
+      "provider": "OpenAI",
+      "name": "GPT-6 Luna (Xhigh)",
+      "release_date": "2026-09-22",
+      "rubric_score": 0.33636363636363636,
+      "analytical_quality_elo": 1261.89,
+      "analytical_quality_ci": {
+        "elo": 1261.89,
+        "lower95ci": 1243.58,
+        "upper95ci": 1281.01
+      },
+      "presentation_elo": 1328.93,
+      "presentation_ci": {
+        "elo": 1328.93,
+        "lower95ci": 1313.33,
+        "upper95ci": 1345.86
+      }
+    },
+    {
+      "id": "aa55297e-8fbf-4372-b4ab-9b068dc6396c",
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Luna (High)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.298989898989899,
+      "analytical_quality_elo": 1130.91,
+      "analytical_quality_ci": {
+        "elo": 1130.91,
+        "lower95ci": 1115.29,
+        "upper95ci": 1145.8
+      },
+      "presentation_elo": 1325.2,
+      "presentation_ci": {
+        "elo": 1325.2,
+        "lower95ci": 1310.06,
+        "upper95ci": 1340.43
+      }
+    },
+    {
+      "id": "794f69b5-cede-482b-b1cc-d769478497cd",
+      "provider": "SpaceXAI",
+      "name": "Grok 4.5 (High)",
+      "release_date": "2026-07-08",
+      "rubric_score": 0.4070707070707071,
+      "analytical_quality_elo": 1315.77,
+      "analytical_quality_ci": {
+        "elo": 1315.77,
+        "lower95ci": 1302.97,
+        "upper95ci": 1329.38
+      },
+      "presentation_elo": 1294.11,
+      "presentation_ci": {
+        "elo": 1294.11,
+        "lower95ci": 1280.58,
+        "upper95ci": 1307.29
+      }
+    },
+    {
+      "id": "cc1e488b-8ba4-464d-875d-690166b15ad3",
+      "provider": "Z AI",
+      "name": "GLM-5.3 (Low)",
+      "release_date": "2026-08-18",
+      "rubric_score": 0.37731958762886597,
+      "analytical_quality_elo": 1315.04,
+      "analytical_quality_ci": {
+        "elo": 1315.04,
+        "lower95ci": 1296.98,
+        "upper95ci": 1332.8
+      },
+      "presentation_elo": 1064.4,
+      "presentation_ci": {
+        "elo": 1064.4,
+        "lower95ci": 1046.15,
+        "upper95ci": 1081.94
+      }
+    },
+    {
+      "id": "20928ba9-3a3f-415f-9519-b84ff64ecf34",
+      "provider": "Anthropic",
+      "name": "Claude Opus 5 (Low)",
+      "release_date": "2026-07-24",
+      "rubric_score": 0.38181818181818183,
+      "analytical_quality_elo": 1308.85,
+      "analytical_quality_ci": {
+        "elo": 1308.85,
+        "lower95ci": 1295.45,
+        "upper95ci": 1322.67
+      },
+      "presentation_elo": 1124.12,
+      "presentation_ci": {
+        "elo": 1124.12,
+        "lower95ci": 1110.54,
+        "upper95ci": 1138.72
+      }
+    },
+    {
+      "id": "99f376bf-cbcb-4124-bf3e-6b0a4e6e9bea",
+      "provider": "Anthropic",
+      "name": "Claude Sonnet 5 (Xhigh)",
+      "release_date": "2026-06-30",
+      "rubric_score": 0.4,
+      "analytical_quality_elo": 1306.19,
+      "analytical_quality_ci": {
+        "elo": 1306.19,
+        "lower95ci": 1293.67,
+        "upper95ci": 1319.61
+      },
+      "presentation_elo": 1302.95,
+      "presentation_ci": {
+        "elo": 1302.95,
+        "lower95ci": 1290.94,
+        "upper95ci": 1315.77
+      }
+    },
+    {
+      "id": "3661c8fb-caf7-4118-aa18-65b84fea8e44",
+      "provider": "Meta",
+      "name": "Muse Spark Open (Xhigh)",
+      "release_date": "2026-10-15",
+      "rubric_score": 0.45656565656565656,
+      "analytical_quality_elo": 1256.93,
+      "analytical_quality_ci": {
+        "elo": 1256.93,
+        "lower95ci": 1236.67,
+        "upper95ci": 1278.15
+      },
+      "presentation_elo": 1301.09,
+      "presentation_ci": {
+        "elo": 1301.09,
+        "lower95ci": 1281.42,
+        "upper95ci": 1321.03
+      }
+    },
+    {
+      "id": "7d1229bc-deea-4717-ba5b-f59a35d991e3",
+      "provider": "OpenAI",
+      "name": "GPT-6 Luna (High)",
+      "release_date": "2026-09-22",
+      "rubric_score": 0.3181818181818182,
+      "analytical_quality_elo": 1179.63,
+      "analytical_quality_ci": {
+        "elo": 1179.63,
+        "lower95ci": 1162.01,
+        "upper95ci": 1197.16
+      },
+      "presentation_elo": 1292.97,
+      "presentation_ci": {
+        "elo": 1292.97,
+        "lower95ci": 1278.14,
+        "upper95ci": 1307.9
+      }
+    },
+    {
+      "id": "f7a4ea75-e548-4069-80d4-9be8bc7c009b",
+      "provider": "Z AI",
+      "name": "GLM-5.2 (Max)",
+      "release_date": "2026-06-16",
+      "rubric_score": 0.3606060606060606,
+      "analytical_quality_elo": 1262.05,
+      "analytical_quality_ci": {
+        "elo": 1262.05,
+        "lower95ci": 1249.76,
+        "upper95ci": 1274.69
+      },
+      "presentation_elo": 1262.36,
+      "presentation_ci": {
+        "elo": 1262.36,
+        "lower95ci": 1250.19,
+        "upper95ci": 1275.2
+      }
+    },
+    {
+      "id": "e76e0fe5-93ca-4272-9359-2eb1740467d1",
+      "provider": "OpenAI",
+      "name": "GPT-6.1 Sol (Low)",
+      "release_date": "2026-09-29",
+      "rubric_score": 0.3333333333333333,
+      "analytical_quality_elo": 1242.06,
+      "analytical_quality_ci": {
+        "elo": 1242.06,
+        "lower95ci": 1222.59,
+        "upper95ci": 1261.77
+      },
+      "presentation_elo": 985.97,
+      "presentation_ci": {
+        "elo": 985.97,
+        "lower95ci": 967.68,
+        "upper95ci": 1006.2
+      }
+    },
+    {
+      "id": "73c96f99-0de3-4668-a4bd-b106a0fe18f2",
+      "provider": "DeepSeek",
+      "name": "DeepSeek V4.1 Flash (Non-reasoning)",
+      "release_date": "2026-09-10",
+      "rubric_score": 0.3363821138211382,
+      "analytical_quality_elo": 1014.65,
+      "analytical_quality_ci": {
+        "elo": 1014.65,
+        "lower95ci": 996.43,
+        "upper95ci": 1032.64
+      },
+      "presentation_elo": 1229.57,
+      "presentation_ci": {
+        "elo": 1229.57,
+        "lower95ci": 1212.19,
+        "upper95ci": 1247.01
+      }
     },
     {
       "id": "42908ae3-d3bd-4934-be19-fbff93d3fde8",
@@ -1267,186 +1818,75 @@
       "name": "Claude Haiku 5.5 (Adaptive Reasoning, Low Effort, Default Fallback)",
       "release_date": "2026-10-07",
       "rubric_score": 0.3383838383838384,
-      "analytical_quality_elo": 1223.92,
-      "analytical_quality_ci": null,
-      "presentation_elo": 991.17,
-      "presentation_ci": null
+      "analytical_quality_elo": 1223.91,
+      "analytical_quality_ci": {
+        "elo": 1223.91,
+        "lower95ci": 1203.75,
+        "upper95ci": 1245.95
+      },
+      "presentation_elo": 991.28,
+      "presentation_ci": {
+        "elo": 991.28,
+        "lower95ci": 972.11,
+        "upper95ci": 1010.17
+      }
     },
     {
-      "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
-      "provider": "MiniMax",
-      "name": "MiniMax-M3",
-      "release_date": "2026-06-01",
-      "rubric_score": 0.30303030303030304,
-      "analytical_quality_elo": 1042.81,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1172,
-      "presentation_ci": null
+      "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+      "provider": "Google",
+      "name": "Gemini 3.8 Flash (High)",
+      "release_date": "2026-09-02",
+      "rubric_score": 0.4212121212121212,
+      "analytical_quality_elo": 1137.87,
+      "analytical_quality_ci": {
+        "elo": 1137.87,
+        "lower95ci": 1122.84,
+        "upper95ci": 1152.99
+      },
+      "presentation_elo": 1223.27,
+      "presentation_ci": {
+        "elo": 1223.27,
+        "lower95ci": 1208.64,
+        "upper95ci": 1237.83
+      }
     },
     {
-      "id": "d3e20e76-9e1a-45b6-b809-ad6aa37430cf",
+      "id": "26e0f83a-ca98-4f34-94ac-7c5e251ee410",
       "provider": "OpenAI",
-      "name": "GPT-6 Sol (Non-reasoning)",
-      "release_date": "2026-09-22",
-      "rubric_score": 0.32222222222222224,
-      "analytical_quality_elo": 1131.07,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1087.33,
-      "presentation_ci": null
-    },
-    {
-      "id": "7c4d1e30-6ecb-46cf-880c-41446d7b51f1",
-      "provider": "OpenAI",
-      "name": "GPT-5.6 Sol (Non-reasoning)",
+      "name": "GPT-5.6 Terra (Medium)",
       "release_date": "2026-07-09",
-      "rubric_score": 0.2383838383838384,
-      "analytical_quality_elo": 953.51,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1139.33,
-      "presentation_ci": null
+      "rubric_score": 0.2202020202020202,
+      "analytical_quality_elo": 972.12,
+      "analytical_quality_ci": {
+        "elo": 972.12,
+        "lower95ci": 957.17,
+        "upper95ci": 987.01
+      },
+      "presentation_elo": 1216.65,
+      "presentation_ci": {
+        "elo": 1216.65,
+        "lower95ci": 1200.54,
+        "upper95ci": 1232.16
+      }
     },
     {
-      "id": "3b5ba264-ad25-429b-a460-4d8698205f0d",
-      "provider": "Nex AGI",
-      "name": "Nex-N2-Pro (based on Qwen3.5-397B-A17B)",
-      "release_date": "2026-06-02",
-      "rubric_score": 0.2449197860962567,
-      "analytical_quality_elo": 949.82,
-      "analytical_quality_ci": null,
-      "presentation_elo": 917.62,
-      "presentation_ci": null
-    },
-    {
-      "id": "effcd151-7c31-4437-af3d-e88daeae9385",
-      "provider": "Anthropic",
-      "name": "Claude Sonnet 5 (Adaptive Reasoning, Medium Effort)",
-      "release_date": "2026-06-30",
-      "rubric_score": 0.2909090909090909,
-      "analytical_quality_elo": 1034.93,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1094.9,
-      "presentation_ci": null
-    },
-    {
-      "id": "6657d7de-a2a9-40bc-a32f-86e80ad63698",
-      "provider": "Alibaba",
-      "name": "Qwen3.8 27B (medium)",
-      "release_date": "2026-08-14",
-      "rubric_score": 0.4652631578947368,
-      "analytical_quality_elo": 1542.12,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1262.29,
-      "presentation_ci": null
-    },
-    {
-      "id": "cc4a20cd-09fe-4962-a430-119c815e85fa",
+      "id": "0904b596-8932-43bd-9b21-324f128e1723",
       "provider": "OpenAI",
-      "name": "GPT-5.6 Terra (low)",
+      "name": "GPT-5.6 Sol (Low)",
       "release_date": "2026-07-09",
-      "rubric_score": 0.23333333333333334,
-      "analytical_quality_elo": 920.09,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1180.66,
-      "presentation_ci": null
-    },
-    {
-      "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
-      "provider": "Kimi",
-      "name": "Kimi K2.6 (Reasoning)",
-      "release_date": "2026-04-20",
-      "rubric_score": 0.20606060606060606,
-      "analytical_quality_elo": 789.5,
-      "analytical_quality_ci": null,
-      "presentation_elo": 776.31,
-      "presentation_ci": null
-    },
-    {
-      "id": "f9739750-6d42-450f-ba1e-2f76c869b4fe",
-      "provider": "Multiverse Computing",
-      "name": "Quasar 438B (max, based on GLM-5.2)",
-      "release_date": "2026-08-10",
-      "rubric_score": 0.3434343434343434,
-      "analytical_quality_elo": 1067.47,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1187.39,
-      "presentation_ci": null
-    },
-    {
-      "id": "08242385-ee91-4de6-be7f-271a6d9780ce",
-      "provider": "Apodex",
-      "name": "Apodex 1.1",
-      "release_date": "2026-08-30",
-      "rubric_score": 0.2937563971340839,
-      "analytical_quality_elo": 1054.61,
-      "analytical_quality_ci": null,
-      "presentation_elo": 922.3,
-      "presentation_ci": null
-    },
-    {
-      "id": "7e30585f-fad7-40df-a8cb-03c1d96df38a",
-      "provider": "Alibaba",
-      "name": "Qwen3.8 27B (low)",
-      "release_date": "2026-08-14",
-      "rubric_score": 0.4207818930041152,
-      "analytical_quality_elo": 1372.53,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1200.42,
-      "presentation_ci": null
-    },
-    {
-      "id": "5aa1c578-af76-4b91-8699-cdd43582b3af",
-      "provider": "Z AI",
-      "name": "GLM-5.1 (Reasoning)",
-      "release_date": "2026-04-07",
-      "rubric_score": 0.25757575757575757,
-      "analytical_quality_elo": 930.94,
-      "analytical_quality_ci": null,
-      "presentation_elo": 966.88,
-      "presentation_ci": null
-    },
-    {
-      "id": "c4169d75-9d24-4794-a9c3-69e1fe364de5",
-      "provider": "OpenAI",
-      "name": "GPT-5.5 Instant (June 2026)",
-      "release_date": "2026-06-25",
-      "rubric_score": 0.2696969696969697,
-      "analytical_quality_elo": 1051.01,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1199.47,
-      "presentation_ci": null
-    },
-    {
-      "id": "00f1248e-78e3-4230-8dc8-5e13ba8645e2",
-      "provider": "Xiaomi",
-      "name": "MiMo-V2.5-Pro (Reasoning)",
-      "release_date": "2026-04-22",
-      "rubric_score": 0.21414141414141413,
-      "analytical_quality_elo": 776.21,
-      "analytical_quality_ci": null,
-      "presentation_elo": 947.41,
-      "presentation_ci": null
-    },
-    {
-      "id": "8d0cb231-7303-452c-9923-a9620b948475",
-      "provider": "Kimi",
-      "name": "Kimi K2.7 Code",
-      "release_date": "2026-06-12",
-      "rubric_score": 0.2070393374741201,
-      "analytical_quality_elo": 837.2,
-      "analytical_quality_ci": null,
-      "presentation_elo": 830.48,
-      "presentation_ci": null
-    },
-    {
-      "id": "7261504e-503c-4a66-a9d3-a3272cdf9ad6",
-      "provider": "Thinking Machines",
-      "name": "Inkling Small",
-      "release_date": "2026-07-30",
-      "rubric_score": 0.2,
-      "analytical_quality_elo": 786.11,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1064.27,
-      "presentation_ci": null
+      "rubric_score": 0.23939393939393938,
+      "analytical_quality_elo": 971.23,
+      "analytical_quality_ci": {
+        "elo": 971.23,
+        "lower95ci": 955.14,
+        "upper95ci": 985.91
+      },
+      "presentation_elo": 1204.93,
+      "presentation_ci": {
+        "elo": 1204.93,
+        "lower95ci": 1191.05,
+        "upper95ci": 1219.72
+      }
     },
     {
       "id": "53b9e276-e360-4a39-9076-1a19d72c25fe",
@@ -1455,9 +1895,682 @@
       "release_date": "2026-09-03",
       "rubric_score": 0.35454545454545455,
       "analytical_quality_elo": 1204.59,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1142.47,
-      "presentation_ci": null
+      "analytical_quality_ci": {
+        "elo": 1204.59,
+        "lower95ci": 1188.3,
+        "upper95ci": 1221.99
+      },
+      "presentation_elo": 1142.79,
+      "presentation_ci": {
+        "elo": 1142.79,
+        "lower95ci": 1126.87,
+        "upper95ci": 1161.21
+      }
+    },
+    {
+      "id": "c4169d75-9d24-4794-a9c3-69e1fe364de5",
+      "provider": "OpenAI",
+      "name": "GPT-5.5 Instant (June 2026)",
+      "release_date": "2026-06-25",
+      "rubric_score": 0.2696969696969697,
+      "analytical_quality_elo": 1051,
+      "analytical_quality_ci": {
+        "elo": 1051,
+        "lower95ci": 1035.86,
+        "upper95ci": 1066.99
+      },
+      "presentation_elo": 1200.14,
+      "presentation_ci": {
+        "elo": 1200.14,
+        "lower95ci": 1185.65,
+        "upper95ci": 1216.24
+      }
+    },
+    {
+      "id": "ba0224cf-0351-4f56-8508-b3f1a740ae4a",
+      "provider": "Anthropic",
+      "name": "Claude Sonnet 5 (High)",
+      "release_date": "2026-06-30",
+      "rubric_score": 0.35454545454545455,
+      "analytical_quality_elo": 1189.31,
+      "analytical_quality_ci": {
+        "elo": 1189.31,
+        "lower95ci": 1175.56,
+        "upper95ci": 1202.41
+      },
+      "presentation_elo": 1195.03,
+      "presentation_ci": {
+        "elo": 1195.03,
+        "lower95ci": 1181.35,
+        "upper95ci": 1207.5
+      }
+    },
+    {
+      "id": "36667da0-9222-4967-adbb-f7efa15ad213",
+      "provider": "OpenAI",
+      "name": "GPT-6 Luna (Medium)",
+      "release_date": "2026-09-22",
+      "rubric_score": 0.2808080808080808,
+      "analytical_quality_elo": 1067.8,
+      "analytical_quality_ci": {
+        "elo": 1067.8,
+        "lower95ci": 1049.56,
+        "upper95ci": 1084.69
+      },
+      "presentation_elo": 1192.16,
+      "presentation_ci": {
+        "elo": 1192.16,
+        "lower95ci": 1178.49,
+        "upper95ci": 1206.79
+      }
+    },
+    {
+      "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
+      "provider": "Google",
+      "name": "Gemini 3.8 Flash (Medium)",
+      "release_date": "2026-09-02",
+      "rubric_score": 0.4111111111111111,
+      "analytical_quality_elo": 1108.16,
+      "analytical_quality_ci": {
+        "elo": 1108.16,
+        "lower95ci": 1091.03,
+        "upper95ci": 1125.38
+      },
+      "presentation_elo": 1190.75,
+      "presentation_ci": {
+        "elo": 1190.75,
+        "lower95ci": 1174.61,
+        "upper95ci": 1207.76
+      }
+    },
+    {
+      "id": "f9739750-6d42-450f-ba1e-2f76c869b4fe",
+      "provider": "Multiverse Computing",
+      "name": "Quasar 438B (Max, Based on GLM-5.2)",
+      "release_date": "2026-08-10",
+      "rubric_score": 0.3434343434343434,
+      "analytical_quality_elo": 1067.46,
+      "analytical_quality_ci": {
+        "elo": 1067.46,
+        "lower95ci": 1051.01,
+        "upper95ci": 1082.53
+      },
+      "presentation_elo": 1187.9,
+      "presentation_ci": {
+        "elo": 1187.9,
+        "lower95ci": 1171.66,
+        "upper95ci": 1204.84
+      }
+    },
+    {
+      "id": "780a4a85-17ff-4175-a8dd-ebca4823e61b",
+      "provider": "OpenAI",
+      "name": "GPT-6 Sol (Medium)",
+      "release_date": "2026-09-22",
+      "rubric_score": 0.32626262626262625,
+      "analytical_quality_elo": 1182.18,
+      "analytical_quality_ci": {
+        "elo": 1182.18,
+        "lower95ci": 1164.69,
+        "upper95ci": 1200.71
+      },
+      "presentation_elo": 1159.96,
+      "presentation_ci": {
+        "elo": 1159.96,
+        "lower95ci": 1143.44,
+        "upper95ci": 1175.38
+      }
+    },
+    {
+      "id": "cc4a20cd-09fe-4962-a430-119c815e85fa",
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Terra (Low)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.23333333333333334,
+      "analytical_quality_elo": 920.08,
+      "analytical_quality_ci": {
+        "elo": 920.08,
+        "lower95ci": 905.31,
+        "upper95ci": 934.66
+      },
+      "presentation_elo": 1180.74,
+      "presentation_ci": {
+        "elo": 1180.74,
+        "lower95ci": 1165.03,
+        "upper95ci": 1195.83
+      }
+    },
+    {
+      "id": "b2331108-72ed-415a-82d1-188633875bbc",
+      "provider": "Google",
+      "name": "Gemini 3.7 Flash (High)",
+      "release_date": "2026-08-13",
+      "rubric_score": 0.36363636363636365,
+      "analytical_quality_elo": 1006.73,
+      "analytical_quality_ci": {
+        "elo": 1006.73,
+        "lower95ci": 991.32,
+        "upper95ci": 1022.07
+      },
+      "presentation_elo": 1180.15,
+      "presentation_ci": {
+        "elo": 1180.15,
+        "lower95ci": 1166.08,
+        "upper95ci": 1194.55
+      }
+    },
+    {
+      "id": "1f054429-397e-4fdb-9e71-67bc92c1735e",
+      "provider": "OpenAI",
+      "name": "GPT-5.5 (Xhigh)",
+      "release_date": "2026-04-23",
+      "rubric_score": 0.33438818565400846,
+      "analytical_quality_elo": 1180.06,
+      "analytical_quality_ci": {
+        "elo": 1180.06,
+        "lower95ci": 1168.53,
+        "upper95ci": 1192.51
+      },
+      "presentation_elo": 1106.52,
+      "presentation_ci": {
+        "elo": 1106.52,
+        "lower95ci": 1095.01,
+        "upper95ci": 1119
+      }
+    },
+    {
+      "id": "df8d14e0-3997-4e4d-b4ad-9c047acc9c69",
+      "provider": "Anthropic",
+      "name": "Claude Sonnet 4.6 (Max)",
+      "release_date": "2026-02-17",
+      "rubric_score": 0.289198606271777,
+      "analytical_quality_elo": 977.83,
+      "analytical_quality_ci": {
+        "elo": 977.83,
+        "lower95ci": 966.68,
+        "upper95ci": 989.42
+      },
+      "presentation_elo": 1174.14,
+      "presentation_ci": {
+        "elo": 1174.14,
+        "lower95ci": 1162,
+        "upper95ci": 1186.05
+      }
+    },
+    {
+      "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
+      "provider": "MiniMax",
+      "name": "MiniMax-M3",
+      "release_date": "2026-06-01",
+      "rubric_score": 0.30303030303030304,
+      "analytical_quality_elo": 1041.1,
+      "analytical_quality_ci": {
+        "elo": 1041.1,
+        "lower95ci": 1029.07,
+        "upper95ci": 1054.09
+      },
+      "presentation_elo": 1171.62,
+      "presentation_ci": {
+        "elo": 1171.62,
+        "lower95ci": 1159.89,
+        "upper95ci": 1183.44
+      }
+    },
+    {
+      "id": "2fa8e143-77a8-4d05-bfa8-d3b54634c00f",
+      "provider": "Anthropic",
+      "name": "Claude Opus 4.7 (Non-reasoning, High)",
+      "release_date": "2026-04-16",
+      "rubric_score": 0.27635619242579323,
+      "analytical_quality_elo": 1031.13,
+      "analytical_quality_ci": {
+        "elo": 1031.13,
+        "lower95ci": 1019.05,
+        "upper95ci": 1042.8
+      },
+      "presentation_elo": 1164.59,
+      "presentation_ci": {
+        "elo": 1164.59,
+        "lower95ci": 1152.37,
+        "upper95ci": 1177.58
+      }
+    },
+    {
+      "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
+      "provider": "Upstage",
+      "name": "Solar Pro 4",
+      "release_date": "2026-08-06",
+      "rubric_score": 0.3354908306364617,
+      "analytical_quality_elo": 1160.71,
+      "analytical_quality_ci": {
+        "elo": 1160.71,
+        "lower95ci": 1140.68,
+        "upper95ci": 1180.73
+      },
+      "presentation_elo": 1010.17,
+      "presentation_ci": {
+        "elo": 1010.17,
+        "lower95ci": 991,
+        "upper95ci": 1029.35
+      }
+    },
+    {
+      "id": "7c4d1e30-6ecb-46cf-880c-41446d7b51f1",
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Sol (Non-reasoning)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.2383838383838384,
+      "analytical_quality_elo": 953.5,
+      "analytical_quality_ci": {
+        "elo": 953.5,
+        "lower95ci": 937.16,
+        "upper95ci": 969.51
+      },
+      "presentation_elo": 1139.4,
+      "presentation_ci": {
+        "elo": 1139.4,
+        "lower95ci": 1123.47,
+        "upper95ci": 1155.66
+      }
+    },
+    {
+      "id": "46f11cdf-1725-4abb-b39b-bd6bd948149c",
+      "provider": "China Mobile",
+      "name": "JT-4.1 Flash 236B A21B (Reasoning)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.26565656565656565,
+      "analytical_quality_elo": 1126.37,
+      "analytical_quality_ci": {
+        "elo": 1126.37,
+        "lower95ci": 1105.94,
+        "upper95ci": 1147.35
+      },
+      "presentation_elo": 1136.67,
+      "presentation_ci": {
+        "elo": 1136.67,
+        "lower95ci": 1117.23,
+        "upper95ci": 1154.79
+      }
+    },
+    {
+      "id": "d3e20e76-9e1a-45b6-b809-ad6aa37430cf",
+      "provider": "OpenAI",
+      "name": "GPT-6 Sol (Non-reasoning)",
+      "release_date": "2026-09-22",
+      "rubric_score": 0.32222222222222224,
+      "analytical_quality_elo": 1131.05,
+      "analytical_quality_ci": {
+        "elo": 1131.05,
+        "lower95ci": 1115.33,
+        "upper95ci": 1147.04
+      },
+      "presentation_elo": 1087.34,
+      "presentation_ci": {
+        "elo": 1087.34,
+        "lower95ci": 1071.27,
+        "upper95ci": 1102.03
+      }
+    },
+    {
+      "id": "b13c1257-d746-4027-8fc8-4892dc14701c",
+      "provider": "OpenAI",
+      "name": "GPT-5.5 (High)",
+      "release_date": "2026-04-23",
+      "rubric_score": 0.30606060606060603,
+      "analytical_quality_elo": 1122.88,
+      "analytical_quality_ci": {
+        "elo": 1122.88,
+        "lower95ci": 1111.29,
+        "upper95ci": 1134.03
+      },
+      "presentation_elo": 1078.21,
+      "presentation_ci": {
+        "elo": 1078.21,
+        "lower95ci": 1065.4,
+        "upper95ci": 1090.81
+      }
+    },
+    {
+      "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
+      "provider": "Google",
+      "name": "Gemini 3.8 Flash (Low)",
+      "release_date": "2026-09-02",
+      "rubric_score": 0.35454545454545455,
+      "analytical_quality_elo": 939.32,
+      "analytical_quality_ci": {
+        "elo": 939.32,
+        "lower95ci": 923.22,
+        "upper95ci": 956.54
+      },
+      "presentation_elo": 1098.31,
+      "presentation_ci": {
+        "elo": 1098.31,
+        "lower95ci": 1083.04,
+        "upper95ci": 1113.03
+      }
+    },
+    {
+      "id": "effcd151-7c31-4437-af3d-e88daeae9385",
+      "provider": "Anthropic",
+      "name": "Claude Sonnet 5 (Medium)",
+      "release_date": "2026-06-30",
+      "rubric_score": 0.2909090909090909,
+      "analytical_quality_elo": 1034.92,
+      "analytical_quality_ci": {
+        "elo": 1034.92,
+        "lower95ci": 1020.67,
+        "upper95ci": 1048.26
+      },
+      "presentation_elo": 1095.12,
+      "presentation_ci": {
+        "elo": 1095.12,
+        "lower95ci": 1081.6,
+        "upper95ci": 1108.42
+      }
+    },
+    {
+      "id": "58b812bf-8498-46db-b834-f43ccc614b61",
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Luna (Medium)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.20202020202020202,
+      "analytical_quality_elo": 815.03,
+      "analytical_quality_ci": {
+        "elo": 815.03,
+        "lower95ci": 800.21,
+        "upper95ci": 828.84
+      },
+      "presentation_elo": 1094.52,
+      "presentation_ci": {
+        "elo": 1094.52,
+        "lower95ci": 1078.73,
+        "upper95ci": 1109.65
+      }
+    },
+    {
+      "id": "9b97a35e-6ac7-44d9-91c6-422fa678963e",
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Terra (Non-reasoning)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.2111111111111111,
+      "analytical_quality_elo": 843.25,
+      "analytical_quality_ci": {
+        "elo": 843.25,
+        "lower95ci": 827.68,
+        "upper95ci": 857.76
+      },
+      "presentation_elo": 1090.26,
+      "presentation_ci": {
+        "elo": 1090.26,
+        "lower95ci": 1075.91,
+        "upper95ci": 1106.23
+      }
+    },
+    {
+      "id": "b01eefb1-c9f8-412d-8353-571031a52f23",
+      "provider": "Motif Technologies",
+      "name": "Motif 3",
+      "release_date": "2026-08-12",
+      "rubric_score": 0.24462640736949848,
+      "analytical_quality_elo": 907.83,
+      "analytical_quality_ci": {
+        "elo": 907.83,
+        "lower95ci": 888.03,
+        "upper95ci": 926.42
+      },
+      "presentation_elo": 1087.6,
+      "presentation_ci": {
+        "elo": 1087.6,
+        "lower95ci": 1069.96,
+        "upper95ci": 1104.59
+      }
+    },
+    {
+      "id": "6d6fa1c9-b833-40b2-8a58-fa810e24a84e",
+      "provider": "InclusionAI",
+      "name": "Ling-3.0-flash-Fin",
+      "release_date": "2026-09-11",
+      "rubric_score": 0.23535353535353534,
+      "analytical_quality_elo": 855.19,
+      "analytical_quality_ci": {
+        "elo": 855.19,
+        "lower95ci": 837.45,
+        "upper95ci": 871.72
+      },
+      "presentation_elo": 1086.69,
+      "presentation_ci": {
+        "elo": 1086.69,
+        "lower95ci": 1069.81,
+        "upper95ci": 1104.59
+      }
+    },
+    {
+      "id": "433d5c5d-3092-4026-9727-1587ca07915d",
+      "provider": "InclusionAI",
+      "name": "Ling-3.0-flash-VL",
+      "release_date": "2026-09-10",
+      "rubric_score": 0.2494824016563147,
+      "analytical_quality_elo": 902.77,
+      "analytical_quality_ci": {
+        "elo": 902.77,
+        "lower95ci": 884.64,
+        "upper95ci": 918.44
+      },
+      "presentation_elo": 1076.3,
+      "presentation_ci": {
+        "elo": 1076.3,
+        "lower95ci": 1059.34,
+        "upper95ci": 1093.09
+      }
+    },
+    {
+      "id": "7261504e-503c-4a66-a9d3-a3272cdf9ad6",
+      "provider": "Thinking Machines",
+      "name": "Inkling Small",
+      "release_date": "2026-07-30",
+      "rubric_score": 0.2,
+      "analytical_quality_elo": 786.1,
+      "analytical_quality_ci": {
+        "elo": 786.1,
+        "lower95ci": 769.98,
+        "upper95ci": 801.9
+      },
+      "presentation_elo": 1064.56,
+      "presentation_ci": {
+        "elo": 1064.56,
+        "lower95ci": 1049.5,
+        "upper95ci": 1079.53
+      }
+    },
+    {
+      "id": "08242385-ee91-4de6-be7f-271a6d9780ce",
+      "provider": "Apodex",
+      "name": "Apodex 1.1",
+      "release_date": "2026-08-30",
+      "rubric_score": 0.2937563971340839,
+      "analytical_quality_elo": 1054.6,
+      "analytical_quality_ci": {
+        "elo": 1054.6,
+        "lower95ci": 1037.33,
+        "upper95ci": 1071.18
+      },
+      "presentation_elo": 922.48,
+      "presentation_ci": {
+        "elo": 922.48,
+        "lower95ci": 905.1,
+        "upper95ci": 940.37
+      }
+    },
+    {
+      "id": "89a2c945-1fab-4ee4-9f45-83a9f46cb221",
+      "provider": "DeepSeek",
+      "name": "DeepSeek V4 Flash 0420 (High)",
+      "release_date": "2026-04-24",
+      "rubric_score": 0.28484848484848485,
+      "analytical_quality_elo": 1020.84,
+      "analytical_quality_ci": {
+        "elo": 1020.84,
+        "lower95ci": 1002.71,
+        "upper95ci": 1037.52
+      },
+      "presentation_elo": 1047.83,
+      "presentation_ci": {
+        "elo": 1047.83,
+        "lower95ci": 1032.07,
+        "upper95ci": 1064.55
+      }
+    },
+    {
+      "id": "122a1fa1-976a-4089-87a2-5a0a13e2a52c",
+      "provider": "Institute of Foundation Models",
+      "name": "K2 Horizon 7B",
+      "release_date": "2026-09-03",
+      "rubric_score": 0.2624618514750763,
+      "analytical_quality_elo": 1046.4,
+      "analytical_quality_ci": {
+        "elo": 1046.4,
+        "lower95ci": 1028.66,
+        "upper95ci": 1064.17
+      },
+      "presentation_elo": 988.73,
+      "presentation_ci": {
+        "elo": 988.73,
+        "lower95ci": 972.96,
+        "upper95ci": 1006.77
+      }
+    },
+    {
+      "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
+      "provider": "Google",
+      "name": "Gemini 3.6 Flash (High)",
+      "release_date": "2026-07-21",
+      "rubric_score": 0.2808080808080808,
+      "analytical_quality_elo": 795.62,
+      "analytical_quality_ci": {
+        "elo": 795.62,
+        "lower95ci": 781.37,
+        "upper95ci": 809.19
+      },
+      "presentation_elo": 1033.89,
+      "presentation_ci": {
+        "elo": 1033.89,
+        "lower95ci": 1019.49,
+        "upper95ci": 1047.69
+      }
+    },
+    {
+      "id": "6b79f899-e3c0-45f6-923c-243faccdb2fc",
+      "provider": "OpenAI",
+      "name": "GPT-5.5 (Medium)",
+      "release_date": "2026-04-23",
+      "rubric_score": 0.26565656565656565,
+      "analytical_quality_elo": 1000,
+      "analytical_quality_ci": {
+        "elo": 1000,
+        "lower95ci": 1000,
+        "upper95ci": 1000
+      },
+      "presentation_elo": 1000,
+      "presentation_ci": {
+        "elo": 1000,
+        "lower95ci": 1000,
+        "upper95ci": 1000
+      }
+    },
+    {
+      "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
+      "provider": "Kimi",
+      "name": "Kimi K3 (Low)",
+      "release_date": "2026-07-16",
+      "rubric_score": 0.2606060606060606,
+      "analytical_quality_elo": 997.86,
+      "analytical_quality_ci": {
+        "elo": 997.86,
+        "lower95ci": 982.21,
+        "upper95ci": 1011.9
+      },
+      "presentation_elo": 955.35,
+      "presentation_ci": {
+        "elo": 955.35,
+        "lower95ci": 941.74,
+        "upper95ci": 970.65
+      }
+    },
+    {
+      "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
+      "provider": "NVIDIA",
+      "name": "Nemotron 3.5 Super VL",
+      "release_date": "2026-10-15",
+      "rubric_score": 0.2686868686868687,
+      "analytical_quality_elo": 996.67,
+      "analytical_quality_ci": {
+        "elo": 996.67,
+        "lower95ci": 979.1,
+        "upper95ci": 1014.24
+      },
+      "presentation_elo": 997.76,
+      "presentation_ci": {
+        "elo": 997.76,
+        "lower95ci": 980.29,
+        "upper95ci": 1015.22
+      }
+    },
+    {
+      "id": "d61493e2-43ff-460c-9054-eaf6ba317360",
+      "provider": "Meta",
+      "name": "Muse Spark 1.1 (Xhigh)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.34545454545454546,
+      "analytical_quality_elo": 991.68,
+      "analytical_quality_ci": {
+        "elo": 991.68,
+        "lower95ci": 977.83,
+        "upper95ci": 1006.5
+      },
+      "presentation_elo": 430.23,
+      "presentation_ci": {
+        "elo": 430.23,
+        "lower95ci": 411.94,
+        "upper95ci": 448.73
+      }
+    },
+    {
+      "id": "69468cce-7b5c-414a-b498-41df4c34df85",
+      "provider": "Reflection",
+      "name": "Beam 1.0",
+      "release_date": "2026-10-16",
+      "rubric_score": 0.31414141414141417,
+      "analytical_quality_elo": 983.09,
+      "analytical_quality_ci": {
+        "elo": 983.09,
+        "lower95ci": 965.6,
+        "upper95ci": 1000.59
+      },
+      "presentation_elo": 856.32,
+      "presentation_ci": {
+        "elo": 856.32,
+        "lower95ci": 838.4,
+        "upper95ci": 874.23
+      }
+    },
+    {
+      "id": "69534bed-2ffd-4235-832b-e20a810333ab",
+      "provider": "Alibaba",
+      "name": "Qwen3.7 Max",
+      "release_date": "2026-05-19",
+      "rubric_score": 0.23737373737373738,
+      "analytical_quality_elo": 803.88,
+      "analytical_quality_ci": {
+        "elo": 803.88,
+        "lower95ci": 790.39,
+        "upper95ci": 816.59
+      },
+      "presentation_elo": 981.2,
+      "presentation_ci": {
+        "elo": 981.2,
+        "lower95ci": 967.37,
+        "upper95ci": 994.29
+      }
     },
     {
       "id": "b23e6c69-96e5-44c9-8f58-4b42e0c399d5",
@@ -1465,21 +2578,18 @@
       "name": "Hy3",
       "release_date": "2026-07-06",
       "rubric_score": 0.2672858617131063,
-      "analytical_quality_elo": 865.11,
-      "analytical_quality_ci": null,
-      "presentation_elo": 975.3,
-      "presentation_ci": null
-    },
-    {
-      "id": "22d09131-343b-4adf-8760-533e20a2155f",
-      "provider": "Xiaomi",
-      "name": "MiMo-V2.5",
-      "release_date": "2026-04-22",
-      "rubric_score": 0.13871635610766045,
-      "analytical_quality_elo": 600.08,
-      "analytical_quality_ci": null,
-      "presentation_elo": 880.56,
-      "presentation_ci": null
+      "analytical_quality_elo": 865.1,
+      "analytical_quality_ci": {
+        "elo": 865.1,
+        "lower95ci": 847.2,
+        "upper95ci": 881.47
+      },
+      "presentation_elo": 975.45,
+      "presentation_ci": {
+        "elo": 975.45,
+        "lower95ci": 958.23,
+        "upper95ci": 990.27
+      }
     },
     {
       "id": "a87fce42-eea3-4e45-a96d-fe057814f371",
@@ -1488,251 +2598,17 @@
       "release_date": "2026-06-01",
       "rubric_score": 0.22828282828282828,
       "analytical_quality_elo": 837.43,
-      "analytical_quality_ci": null,
-      "presentation_elo": 973.29,
-      "presentation_ci": null
-    },
-    {
-      "id": "58b812bf-8498-46db-b834-f43ccc614b61",
-      "provider": "OpenAI",
-      "name": "GPT-5.6 Luna (medium)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.20202020202020202,
-      "analytical_quality_elo": 815.04,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1094.29,
-      "presentation_ci": null
-    },
-    {
-      "id": "0de09623-2b1a-4c8d-86ef-7f5245d4e24b",
-      "provider": "Thinking Machines",
-      "name": "Inkling (xhigh)",
-      "release_date": "2026-07-15",
-      "rubric_score": 0.19292929292929292,
-      "analytical_quality_elo": 742.56,
-      "analytical_quality_ci": null,
-      "presentation_elo": 870.9,
-      "presentation_ci": null
-    },
-    {
-      "id": "948892b5-db03-4118-a4a8-ccd51ed871ea",
-      "provider": "SpaceXAI",
-      "name": "Grok 4.3 (high)",
-      "release_date": "2026-04-30",
-      "rubric_score": 0.17272727272727273,
-      "analytical_quality_elo": 621.85,
-      "analytical_quality_ci": null,
-      "presentation_elo": 828.91,
-      "presentation_ci": null
-    },
-    {
-      "id": "73c96f99-0de3-4668-a4bd-b106a0fe18f2",
-      "provider": "DeepSeek",
-      "name": "DeepSeek V4.1 Flash (Non-Reasoning)",
-      "release_date": "2026-09-10",
-      "rubric_score": 0.3363821138211382,
-      "analytical_quality_elo": 1014.66,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1229.78,
-      "presentation_ci": null
-    },
-    {
-      "id": "433d5c5d-3092-4026-9727-1587ca07915d",
-      "provider": "InclusionAI",
-      "name": "Ling-3.0-flash-VL",
-      "release_date": "2026-09-10",
-      "rubric_score": 0.2494824016563147,
-      "analytical_quality_elo": 902.78,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1076.05,
-      "presentation_ci": null
-    },
-    {
-      "id": "89a2c945-1fab-4ee4-9f45-83a9f46cb221",
-      "provider": "DeepSeek",
-      "name": "DeepSeek V4 Flash 0420 (Reasoning, High Effort)",
-      "release_date": "2026-04-24",
-      "rubric_score": 0.28484848484848485,
-      "analytical_quality_elo": 1020.85,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1047.51,
-      "presentation_ci": null
-    },
-    {
-      "id": "142b93bf-09c4-42dc-9c3a-50b1a222cbd4",
-      "provider": "Anthropic",
-      "name": "Claude Sonnet 5 (Adaptive Reasoning, Low Effort)",
-      "release_date": "2026-06-30",
-      "rubric_score": 0.24646464646464647,
-      "analytical_quality_elo": 874.62,
-      "analytical_quality_ci": null,
-      "presentation_elo": 950.97,
-      "presentation_ci": null
-    },
-    {
-      "id": "d8ddb241-b3e4-4c25-a6a3-72eb1b30c541",
-      "provider": "DeepSeek",
-      "name": "DeepSeek V4 Flash 0420 (Reasoning, Max Effort)",
-      "release_date": "2026-04-24",
-      "rubric_score": 0.18680203045685279,
-      "analytical_quality_elo": 754.31,
-      "analytical_quality_ci": null,
-      "presentation_elo": 879.27,
-      "presentation_ci": null
-    },
-    {
-      "id": "ba242e40-83b7-4cd3-a0e0-b56237984914",
-      "provider": "OpenAI",
-      "name": "GPT-5.4 mini (xhigh)",
-      "release_date": "2026-03-17",
-      "rubric_score": 0.1254355400696864,
-      "analytical_quality_elo": 617.43,
-      "analytical_quality_ci": null,
-      "presentation_elo": 779.34,
-      "presentation_ci": null
-    },
-    {
-      "id": "62ea3198-9866-4d9f-8406-a79ee78c7164",
-      "provider": "Upstage",
-      "name": "Solar Mini 4",
-      "release_date": "2026-09-22",
-      "rubric_score": 0.22424242424242424,
-      "analytical_quality_elo": 793.1,
-      "analytical_quality_ci": null,
-      "presentation_elo": 879.67,
-      "presentation_ci": null
-    },
-    {
-      "id": "5b52def2-ac9b-4465-ad80-91ea8079e253",
-      "provider": "NVIDIA",
-      "name": "Nemotron 3 Ultra 550B A55B (Reasoning)",
-      "release_date": "2026-06-04",
-      "rubric_score": 0.2202020202020202,
-      "analytical_quality_elo": 831.8,
-      "analytical_quality_ci": null,
-      "presentation_elo": 877.27,
-      "presentation_ci": null
-    },
-    {
-      "id": "4bbceacb-cf47-464b-b60f-e1d1fe016d67",
-      "provider": "MiniMax",
-      "name": "MiniMax-M2.7",
-      "release_date": "2026-03-18",
-      "rubric_score": 0.1414141414141414,
-      "analytical_quality_elo": 554.99,
-      "analytical_quality_ci": null,
-      "presentation_elo": 820.98,
-      "presentation_ci": null
-    },
-    {
-      "id": "6d6fa1c9-b833-40b2-8a58-fa810e24a84e",
-      "provider": "InclusionAI",
-      "name": "Ling-3.0-flash-Fin",
-      "release_date": "2026-09-11",
-      "rubric_score": 0.23535353535353534,
-      "analytical_quality_elo": 855.2,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1086.15,
-      "presentation_ci": null
-    },
-    {
-      "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
-      "provider": "Google",
-      "name": "Gemini 3.5 Flash-Lite",
-      "release_date": "2026-07-21",
-      "rubric_score": 0.1484848484848485,
-      "analytical_quality_elo": 390.75,
-      "analytical_quality_ci": null,
-      "presentation_elo": 762.47,
-      "presentation_ci": null
-    },
-    {
-      "id": "bf9708d8-933d-44f6-affa-b696a7a650c9",
-      "provider": "OpenAI",
-      "name": "GPT-6 Luna (low)",
-      "release_date": "2026-09-22",
-      "rubric_score": 0.14444444444444443,
-      "analytical_quality_elo": 654.48,
-      "analytical_quality_ci": null,
-      "presentation_elo": 775.34,
-      "presentation_ci": null
-    },
-    {
-      "id": "8215372b-66ff-457b-855e-e8abeafc9571",
-      "provider": "SK Telecom",
-      "name": "A.X-K2",
-      "release_date": "2026-08-12",
-      "rubric_score": 0.17545748116254037,
-      "analytical_quality_elo": 766.51,
-      "analytical_quality_ci": null,
-      "presentation_elo": 623.58,
-      "presentation_ci": null
-    },
-    {
-      "id": "8c29d66d-bf98-4ea3-8572-5409353ecc66",
-      "provider": "Alibaba",
-      "name": "Qwen3.6 27B (Reasoning)",
-      "release_date": "2026-04-22",
-      "rubric_score": 0.17682926829268292,
-      "analytical_quality_elo": 672.61,
-      "analytical_quality_ci": null,
-      "presentation_elo": 928.26,
-      "presentation_ci": null
-    },
-    {
-      "id": "050c61cd-cddc-463a-a30a-a82aaa37be59",
-      "provider": "OpenAI",
-      "name": "GPT-5.6 Luna (low)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.13079299691040164,
-      "analytical_quality_elo": 594.06,
-      "analytical_quality_ci": null,
-      "presentation_elo": 869.31,
-      "presentation_ci": null
-    },
-    {
-      "id": "9b97a35e-6ac7-44d9-91c6-422fa678963e",
-      "provider": "OpenAI",
-      "name": "GPT-5.6 Terra (Non-reasoning)",
-      "release_date": "2026-07-09",
-      "rubric_score": 0.2111111111111111,
-      "analytical_quality_elo": 843.26,
-      "analytical_quality_ci": null,
-      "presentation_elo": 1090.02,
-      "presentation_ci": null
-    },
-    {
-      "id": "d4fc3f33-f2b0-4da1-88ee-f1f82bd4de31",
-      "provider": "OpenAI",
-      "name": "GPT-5.4 nano (xhigh)",
-      "release_date": "2026-03-17",
-      "rubric_score": 0.14621676891615543,
-      "analytical_quality_elo": 644.2,
-      "analytical_quality_ci": null,
-      "presentation_elo": 585.96,
-      "presentation_ci": null
-    },
-    {
-      "id": "90e078f2-051b-4c63-8919-76618971cb3f",
-      "provider": "Anthropic",
-      "name": "Claude 4.5 Sonnet (Reasoning)",
-      "release_date": "2025-09-29",
-      "rubric_score": 0.14646464646464646,
-      "analytical_quality_elo": 601.59,
-      "analytical_quality_ci": null,
-      "presentation_elo": 745.52,
-      "presentation_ci": null
-    },
-    {
-      "id": "122a1fa1-976a-4089-87a2-5a0a13e2a52c",
-      "provider": "Institute of Foundation Models",
-      "name": "K2 Horizon 7B",
-      "release_date": "2026-09-03",
-      "rubric_score": 0.2624618514750763,
-      "analytical_quality_elo": 1046.41,
-      "analytical_quality_ci": null,
-      "presentation_elo": 988.59,
-      "presentation_ci": null
+      "analytical_quality_ci": {
+        "elo": 837.43,
+        "lower95ci": 821.58,
+        "upper95ci": 854.35
+      },
+      "presentation_elo": 973.45,
+      "presentation_ci": {
+        "elo": 973.45,
+        "lower95ci": 957.82,
+        "upper95ci": 989.34
+      }
     },
     {
       "id": "d4f5b250-be37-4801-85e6-32fda4179337",
@@ -1740,54 +2616,151 @@
       "name": "DeepSeek V4 Pro 0813 (Non-reasoning)",
       "release_date": "2026-08-13",
       "rubric_score": 0.27639751552795033,
-      "analytical_quality_elo": 810.9,
-      "analytical_quality_ci": null,
-      "presentation_elo": 972.72,
-      "presentation_ci": null
+      "analytical_quality_elo": 810.89,
+      "analytical_quality_ci": {
+        "elo": 810.89,
+        "lower95ci": 790.98,
+        "upper95ci": 830.03
+      },
+      "presentation_elo": 972.85,
+      "presentation_ci": {
+        "elo": 972.85,
+        "lower95ci": 954.09,
+        "upper95ci": 991.99
+      }
     },
     {
-      "id": "353c92f3-2148-4c2d-9231-aa7e1322a1fd",
+      "id": "5aa1c578-af76-4b91-8699-cdd43582b3af",
+      "provider": "Z AI",
+      "name": "GLM-5.1 (Reasoning)",
+      "release_date": "2026-04-07",
+      "rubric_score": 0.25757575757575757,
+      "analytical_quality_elo": 930.93,
+      "analytical_quality_ci": {
+        "elo": 930.93,
+        "lower95ci": 917.95,
+        "upper95ci": 943.77
+      },
+      "presentation_elo": 967.07,
+      "presentation_ci": {
+        "elo": 967.07,
+        "lower95ci": 954.3,
+        "upper95ci": 979.77
+      }
+    },
+    {
+      "id": "142b93bf-09c4-42dc-9c3a-50b1a222cbd4",
+      "provider": "Anthropic",
+      "name": "Claude Sonnet 5 (Low)",
+      "release_date": "2026-06-30",
+      "rubric_score": 0.24646464646464647,
+      "analytical_quality_elo": 874.61,
+      "analytical_quality_ci": {
+        "elo": 874.61,
+        "lower95ci": 861.03,
+        "upper95ci": 887.61
+      },
+      "presentation_elo": 951.16,
+      "presentation_ci": {
+        "elo": 951.16,
+        "lower95ci": 937.65,
+        "upper95ci": 964.48
+      }
+    },
+    {
+      "id": "3b5ba264-ad25-429b-a460-4d8698205f0d",
+      "provider": "Nex AGI",
+      "name": "Nex-N2-Pro (Based on Qwen3.5-397B-A17B)",
+      "release_date": "2026-06-02",
+      "rubric_score": 0.2449197860962567,
+      "analytical_quality_elo": 949.81,
+      "analytical_quality_ci": {
+        "elo": 949.81,
+        "lower95ci": 933.22,
+        "upper95ci": 965.72
+      },
+      "presentation_elo": 917.82,
+      "presentation_ci": {
+        "elo": 917.82,
+        "lower95ci": 903.18,
+        "upper95ci": 932.13
+      }
+    },
+    {
+      "id": "00f1248e-78e3-4230-8dc8-5e13ba8645e2",
+      "provider": "Xiaomi",
+      "name": "MiMo-V2.5-Pro (Reasoning)",
+      "release_date": "2026-04-22",
+      "rubric_score": 0.21414141414141413,
+      "analytical_quality_elo": 776.2,
+      "analytical_quality_ci": {
+        "elo": 776.2,
+        "lower95ci": 764.06,
+        "upper95ci": 789.16
+      },
+      "presentation_elo": 947.74,
+      "presentation_ci": {
+        "elo": 947.74,
+        "lower95ci": 934.35,
+        "upper95ci": 961.1
+      }
+    },
+    {
+      "id": "7d2aa050-888e-4c27-a92d-10337a4dfb3a",
+      "provider": "NVIDIA",
+      "name": "Nemotron 3.5 Bolt 74B-A9B",
+      "release_date": "2026-10-15",
+      "rubric_score": 0.24343434343434345,
+      "analytical_quality_elo": 944.41,
+      "analytical_quality_ci": {
+        "elo": 944.41,
+        "lower95ci": 926.72,
+        "upper95ci": 962.11
+      },
+      "presentation_elo": 825.4,
+      "presentation_ci": {
+        "elo": 825.4,
+        "lower95ci": 807.24,
+        "upper95ci": 843.55
+      }
+    },
+    {
+      "id": "bf220674-68bd-43cc-a1b8-ce5ed4d2f18d",
+      "provider": "DeepSeek",
+      "name": "DeepSeek V4 Pro 0424 (Max)",
+      "release_date": "2026-04-24",
+      "rubric_score": 0.23938679245283018,
+      "analytical_quality_elo": 879.5,
+      "analytical_quality_ci": {
+        "elo": 879.5,
+        "lower95ci": 867.32,
+        "upper95ci": 892.03
+      },
+      "presentation_elo": 933.55,
+      "presentation_ci": {
+        "elo": 933.55,
+        "lower95ci": 920.4,
+        "upper95ci": 946.02
+      }
+    },
+    {
+      "id": "8c29d66d-bf98-4ea3-8572-5409353ecc66",
       "provider": "Alibaba",
-      "name": "Qwen3.8 27B (Non-reasoning)",
-      "release_date": "2026-08-14",
-      "rubric_score": 0.2489539748953975,
-      "analytical_quality_elo": 857.77,
-      "analytical_quality_ci": null,
-      "presentation_elo": 852.7,
-      "presentation_ci": null
-    },
-    {
-      "id": "e33dc369-ae81-40e0-8c4e-28b002d02197",
-      "provider": "InclusionAI",
-      "name": "Ling 3.0 Flash",
-      "release_date": "2026-08-04",
-      "rubric_score": 0.17373737373737375,
-      "analytical_quality_elo": 668.32,
-      "analytical_quality_ci": null,
-      "presentation_elo": 887.49,
-      "presentation_ci": null
-    },
-    {
-      "id": "5c3bdc0d-abab-4526-8079-34de4089bb4a",
-      "provider": "LongCat",
-      "name": "LongCat 2.0",
-      "release_date": "2026-06-29",
-      "rubric_score": 0.16873706004140787,
-      "analytical_quality_elo": 584.88,
-      "analytical_quality_ci": null,
-      "presentation_elo": 793.61,
-      "presentation_ci": null
-    },
-    {
-      "id": "fb112343-c82c-4b43-afea-996bd5101d62",
-      "provider": "KwaiKAT",
-      "name": "KAT-Coder-Pro V1",
-      "release_date": "2025-11-11",
-      "rubric_score": 0.13271604938271606,
-      "analytical_quality_elo": 458.17,
-      "analytical_quality_ci": null,
-      "presentation_elo": 598.16,
-      "presentation_ci": null
+      "name": "Qwen3.6 27B (Reasoning)",
+      "release_date": "2026-04-22",
+      "rubric_score": 0.17682926829268292,
+      "analytical_quality_elo": 672.6,
+      "analytical_quality_ci": {
+        "elo": 672.6,
+        "lower95ci": 658.42,
+        "upper95ci": 687.24
+      },
+      "presentation_elo": 928.46,
+      "presentation_ci": {
+        "elo": 928.46,
+        "lower95ci": 915.42,
+        "upper95ci": 942.31
+      }
     },
     {
       "id": "63cb48ea-0b0c-4e07-8ded-6d28dec4fa28",
@@ -1795,131 +2768,303 @@
       "name": "GPT-6 Luna (Non-reasoning)",
       "release_date": "2026-09-22",
       "rubric_score": 0.21313131313131314,
-      "analytical_quality_elo": 884.64,
-      "analytical_quality_ci": null,
-      "presentation_elo": 915.45,
-      "presentation_ci": null
+      "analytical_quality_elo": 884.63,
+      "analytical_quality_ci": {
+        "elo": 884.63,
+        "lower95ci": 866.64,
+        "upper95ci": 902.45
+      },
+      "presentation_elo": 915.65,
+      "presentation_ci": {
+        "elo": 915.65,
+        "lower95ci": 899.58,
+        "upper95ci": 931.44
+      }
     },
     {
-      "id": "0e66bae9-41f1-42fc-9276-ce8cb6f72919",
-      "provider": "Alibaba",
-      "name": "Qwen3.5 397B A17B (Reasoning)",
-      "release_date": "2026-02-16",
-      "rubric_score": 0.12121212121212122,
-      "analytical_quality_elo": 384.34,
-      "analytical_quality_ci": null,
-      "presentation_elo": 572.34,
-      "presentation_ci": null
+      "id": "5016ea75-7b0e-4737-a7e6-1062c6d90fd4",
+      "provider": "Google",
+      "name": "Gemini 3.5 Flash (Medium)",
+      "release_date": "2026-05-19",
+      "rubric_score": 0.27635619242579323,
+      "analytical_quality_elo": 720.18,
+      "analytical_quality_ci": {
+        "elo": 720.18,
+        "lower95ci": 707.3,
+        "upper95ci": 732.92
+      },
+      "presentation_elo": 910.89,
+      "presentation_ci": {
+        "elo": 910.89,
+        "lower95ci": 897.51,
+        "upper95ci": 925.14
+      }
     },
     {
-      "id": "8665ca00-c687-44c7-875c-22618cb31c4f",
-      "provider": "Alibaba",
-      "name": "Qwen3.6 35B A3B (Reasoning)",
-      "release_date": "2026-04-16",
-      "rubric_score": 0.15252525252525254,
-      "analytical_quality_elo": 564.76,
-      "analytical_quality_ci": null,
-      "presentation_elo": 760.62,
-      "presentation_ci": null
-    },
-    {
-      "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
-      "provider": "Meta",
-      "name": "Muse Glimmer (high)",
-      "release_date": "2026-08-10",
-      "rubric_score": 0.11514522821576763,
-      "analytical_quality_elo": 369.28,
-      "analytical_quality_ci": null,
-      "presentation_elo": 345.2,
-      "presentation_ci": null
-    },
-    {
-      "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
-      "provider": "Anthropic",
-      "name": "Claude 4.5 Haiku (Reasoning)",
-      "release_date": "2025-10-15",
-      "rubric_score": 0.10808080808080808,
-      "analytical_quality_elo": 447.9,
-      "analytical_quality_ci": null,
-      "presentation_elo": 673.43,
-      "presentation_ci": null
-    },
-    {
-      "id": "29855680-7469-43eb-8b88-cd3fb1d99da3",
+      "id": "01459872-433a-4ab2-8e99-7083162172eb",
       "provider": "OpenAI",
-      "name": "GPT-5 mini (high)",
-      "release_date": "2025-08-07",
-      "rubric_score": 0.08282828282828283,
-      "analytical_quality_elo": 358.18,
-      "analytical_quality_ci": null,
-      "presentation_elo": 270.84,
-      "presentation_ci": null
+      "name": "GPT-6 Sol (Low)",
+      "release_date": "2026-09-22",
+      "rubric_score": 0.20202020202020202,
+      "analytical_quality_elo": 893.64,
+      "analytical_quality_ci": {
+        "elo": 893.64,
+        "lower95ci": 874.73,
+        "upper95ci": 910.89
+      },
+      "presentation_elo": 867.45,
+      "presentation_ci": {
+        "elo": 867.45,
+        "lower95ci": 852.86,
+        "upper95ci": 882.45
+      }
     },
     {
-      "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
+      "id": "0097ebf5-124f-42f6-9463-33b00e711f03",
       "provider": "Google",
-      "name": "Gemma 4 26B A4B (Reasoning)",
-      "release_date": "2026-04-02",
-      "rubric_score": 0.07329842931937172,
-      "analytical_quality_elo": 29.12,
-      "analytical_quality_ci": null,
-      "presentation_elo": 275.32,
-      "presentation_ci": null
+      "name": "Gemini 3.5 Flash (High)",
+      "release_date": "2026-05-19",
+      "rubric_score": 0.2773207990599295,
+      "analytical_quality_elo": 712.38,
+      "analytical_quality_ci": {
+        "elo": 712.38,
+        "lower95ci": 698.97,
+        "upper95ci": 725.17
+      },
+      "presentation_elo": 892.9,
+      "presentation_ci": {
+        "elo": 892.9,
+        "lower95ci": 879.75,
+        "upper95ci": 905.54
+      }
     },
     {
-      "id": "eb4ba465-3fcd-4065-9fe2-e8225e7b2c6c",
+      "id": "e33dc369-ae81-40e0-8c4e-28b002d02197",
       "provider": "InclusionAI",
-      "name": "Ring-2.6-1T",
-      "release_date": "2026-05-08",
-      "rubric_score": 0.10929519918283963,
-      "analytical_quality_elo": 508.51,
-      "analytical_quality_ci": null,
-      "presentation_elo": 755.74,
-      "presentation_ci": null
+      "name": "Ling 3.0 Flash",
+      "release_date": "2026-08-04",
+      "rubric_score": 0.17373737373737375,
+      "analytical_quality_elo": 668.31,
+      "analytical_quality_ci": {
+        "elo": 668.31,
+        "lower95ci": 650.84,
+        "upper95ci": 683.71
+      },
+      "presentation_elo": 887.69,
+      "presentation_ci": {
+        "elo": 887.69,
+        "lower95ci": 872.45,
+        "upper95ci": 903.23
+      }
     },
     {
-      "id": "27202e5f-c82d-4710-92e9-4317877d4883",
-      "provider": "Google",
-      "name": "Gemini 2.5 Pro",
-      "release_date": "2025-06-05",
-      "rubric_score": 0.06565656565656566,
-      "analytical_quality_elo": 22.78,
-      "analytical_quality_ci": null,
-      "presentation_elo": 259.36,
-      "presentation_ci": null
+      "id": "22d09131-343b-4adf-8760-533e20a2155f",
+      "provider": "Xiaomi",
+      "name": "MiMo-V2.5",
+      "release_date": "2026-04-22",
+      "rubric_score": 0.13871635610766045,
+      "analytical_quality_elo": 600.07,
+      "analytical_quality_ci": {
+        "elo": 600.07,
+        "lower95ci": 581.79,
+        "upper95ci": 616.97
+      },
+      "presentation_elo": 880.77,
+      "presentation_ci": {
+        "elo": 880.77,
+        "lower95ci": 865.91,
+        "upper95ci": 896.4
+      }
     },
     {
-      "id": "31da3a71-0773-47d9-8560-9f19f069926b",
-      "provider": "Institute of Foundation Models",
-      "name": "K2 Horizon 3.7B",
-      "release_date": "2026-09-03",
-      "rubric_score": 0.2010204081632653,
-      "analytical_quality_elo": 734.12,
-      "analytical_quality_ci": null,
-      "presentation_elo": 765.19,
-      "presentation_ci": null
+      "id": "62ea3198-9866-4d9f-8406-a79ee78c7164",
+      "provider": "Upstage",
+      "name": "Solar Mini 4",
+      "release_date": "2026-09-22",
+      "rubric_score": 0.22424242424242424,
+      "analytical_quality_elo": 793.09,
+      "analytical_quality_ci": {
+        "elo": 793.09,
+        "lower95ci": 774.79,
+        "upper95ci": 812.15
+      },
+      "presentation_elo": 879.87,
+      "presentation_ci": {
+        "elo": 879.87,
+        "lower95ci": 860.08,
+        "upper95ci": 898.35
+      }
     },
     {
-      "id": "2236df45-0699-40d1-b5cc-69ee345d2257",
+      "id": "d8ddb241-b3e4-4c25-a6a3-72eb1b30c541",
+      "provider": "DeepSeek",
+      "name": "DeepSeek V4 Flash 0420 (Max)",
+      "release_date": "2026-04-24",
+      "rubric_score": 0.18680203045685279,
+      "analytical_quality_elo": 754.3,
+      "analytical_quality_ci": {
+        "elo": 754.3,
+        "lower95ci": 740.36,
+        "upper95ci": 766.76
+      },
+      "presentation_elo": 879.47,
+      "presentation_ci": {
+        "elo": 879.47,
+        "lower95ci": 866.1,
+        "upper95ci": 893.33
+      }
+    },
+    {
+      "id": "5b52def2-ac9b-4465-ad80-91ea8079e253",
+      "provider": "NVIDIA",
+      "name": "Nemotron 3 Ultra 550B A55B (Reasoning)",
+      "release_date": "2026-06-04",
+      "rubric_score": 0.2202020202020202,
+      "analytical_quality_elo": 831.75,
+      "analytical_quality_ci": {
+        "elo": 831.75,
+        "lower95ci": 818.81,
+        "upper95ci": 845.37
+      },
+      "presentation_elo": 877.23,
+      "presentation_ci": {
+        "elo": 877.23,
+        "lower95ci": 862.58,
+        "upper95ci": 890.42
+      }
+    },
+    {
+      "id": "0de09623-2b1a-4c8d-86ef-7f5245d4e24b",
+      "provider": "Thinking Machines",
+      "name": "Inkling (Xhigh)",
+      "release_date": "2026-07-15",
+      "rubric_score": 0.19292929292929292,
+      "analytical_quality_elo": 741.91,
+      "analytical_quality_ci": {
+        "elo": 741.91,
+        "lower95ci": 725.86,
+        "upper95ci": 759.83
+      },
+      "presentation_elo": 870.98,
+      "presentation_ci": {
+        "elo": 870.98,
+        "lower95ci": 855.75,
+        "upper95ci": 886.89
+      }
+    },
+    {
+      "id": "050c61cd-cddc-463a-a30a-a82aaa37be59",
+      "provider": "OpenAI",
+      "name": "GPT-5.6 Luna (Low)",
+      "release_date": "2026-07-09",
+      "rubric_score": 0.13079299691040164,
+      "analytical_quality_elo": 594.05,
+      "analytical_quality_ci": {
+        "elo": 594.05,
+        "lower95ci": 576.45,
+        "upper95ci": 611.58
+      },
+      "presentation_elo": 869.52,
+      "presentation_ci": {
+        "elo": 869.52,
+        "lower95ci": 854.18,
+        "upper95ci": 884.85
+      }
+    },
+    {
+      "id": "353c92f3-2148-4c2d-9231-aa7e1322a1fd",
       "provider": "Alibaba",
-      "name": "Qwen3.5 122B A10B (Reasoning)",
-      "release_date": "2026-02-24",
-      "rubric_score": 0.10606060606060606,
-      "analytical_quality_elo": 307.85,
-      "analytical_quality_ci": null,
-      "presentation_elo": 474.23,
-      "presentation_ci": null
+      "name": "Qwen3.8 27B (Non-reasoning)",
+      "release_date": "2026-08-14",
+      "rubric_score": 0.2489539748953975,
+      "analytical_quality_elo": 855.74,
+      "analytical_quality_ci": {
+        "elo": 855.74,
+        "lower95ci": 837.27,
+        "upper95ci": 874.74
+      },
+      "presentation_elo": 851.02,
+      "presentation_ci": {
+        "elo": 851.02,
+        "lower95ci": 830.03,
+        "upper95ci": 869.46
+      }
     },
     {
-      "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
-      "provider": "Google",
-      "name": "Gemini 3.1 Flash-Lite",
-      "release_date": "2026-03-03",
-      "rubric_score": 0.06332992849846783,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 129.58,
-      "presentation_ci": null
+      "id": "59b5b14b-5365-4ee7-824a-18a8e6309644",
+      "provider": "OpenAI",
+      "name": "GPT-5.3 Codex (Xhigh)",
+      "release_date": "2026-02-05",
+      "rubric_score": 0.21818181818181817,
+      "analytical_quality_elo": 853.37,
+      "analytical_quality_ci": {
+        "elo": 853.37,
+        "lower95ci": 840.45,
+        "upper95ci": 865.48
+      },
+      "presentation_elo": 842.25,
+      "presentation_ci": {
+        "elo": 842.25,
+        "lower95ci": 828.66,
+        "upper95ci": 855.18
+      }
+    },
+    {
+      "id": "8d0cb231-7303-452c-9923-a9620b948475",
+      "provider": "Kimi",
+      "name": "Kimi K2.7 Code",
+      "release_date": "2026-06-12",
+      "rubric_score": 0.2070393374741201,
+      "analytical_quality_elo": 837.19,
+      "analytical_quality_ci": {
+        "elo": 837.19,
+        "lower95ci": 821.01,
+        "upper95ci": 852.38
+      },
+      "presentation_elo": 830.7,
+      "presentation_ci": {
+        "elo": 830.7,
+        "lower95ci": 815.17,
+        "upper95ci": 845.75
+      }
+    },
+    {
+      "id": "948892b5-db03-4118-a4a8-ccd51ed871ea",
+      "provider": "SpaceXAI",
+      "name": "Grok 4.3 (High)",
+      "release_date": "2026-04-30",
+      "rubric_score": 0.17272727272727273,
+      "analytical_quality_elo": 621.84,
+      "analytical_quality_ci": {
+        "elo": 621.84,
+        "lower95ci": 608.55,
+        "upper95ci": 635.09
+      },
+      "presentation_elo": 829.13,
+      "presentation_ci": {
+        "elo": 829.13,
+        "lower95ci": 816.37,
+        "upper95ci": 843.02
+      }
+    },
+    {
+      "id": "4bbceacb-cf47-464b-b60f-e1d1fe016d67",
+      "provider": "MiniMax",
+      "name": "MiniMax-M2.7",
+      "release_date": "2026-03-18",
+      "rubric_score": 0.1414141414141414,
+      "analytical_quality_elo": 554.98,
+      "analytical_quality_ci": {
+        "elo": 554.98,
+        "lower95ci": 537.48,
+        "upper95ci": 572.39
+      },
+      "presentation_elo": 821.2,
+      "presentation_ci": {
+        "elo": 821.2,
+        "lower95ci": 804.95,
+        "upper95ci": 837.38
+      }
     },
     {
       "id": "dc64f856-3ded-497d-9527-d41d31267ed5",
@@ -1927,43 +3072,18 @@
       "name": "GPT-5.6 Luna (Non-reasoning)",
       "release_date": "2026-07-09",
       "rubric_score": 0.12857142857142856,
-      "analytical_quality_elo": 567.15,
-      "analytical_quality_ci": null,
-      "presentation_elo": 817.09,
-      "presentation_ci": null
-    },
-    {
-      "id": "0a7dda4d-cc9c-4a90-abc1-abb5772c901b",
-      "provider": "DeepSeek",
-      "name": "DeepSeek V3.1 Terminus (Reasoning)",
-      "release_date": "2025-09-22",
-      "rubric_score": 0.09696969696969697,
-      "analytical_quality_elo": 230.45,
-      "analytical_quality_ci": null,
-      "presentation_elo": 437.31,
-      "presentation_ci": null
-    },
-    {
-      "id": "cd26a386-4873-46ff-b853-d239050025a2",
-      "provider": "Google",
-      "name": "Gemma 4 31B (Reasoning)",
-      "release_date": "2026-04-02",
-      "rubric_score": 0.07777777777777778,
-      "analytical_quality_elo": 128.21,
-      "analytical_quality_ci": null,
-      "presentation_elo": 330.01,
-      "presentation_ci": null
-    },
-    {
-      "id": "dd059b25-d82a-4ead-82a4-4adceaaec48b",
-      "provider": "Mistral",
-      "name": "Mistral Medium 3.5",
-      "release_date": "2026-04-29",
-      "rubric_score": 0.12424242424242424,
-      "analytical_quality_elo": 349.81,
-      "analytical_quality_ci": null,
-      "presentation_elo": 482.36,
-      "presentation_ci": null
+      "analytical_quality_elo": 567.14,
+      "analytical_quality_ci": {
+        "elo": 567.14,
+        "lower95ci": 550.95,
+        "upper95ci": 583.68
+      },
+      "presentation_elo": 817.3,
+      "presentation_ci": {
+        "elo": 817.3,
+        "lower95ci": 801.81,
+        "upper95ci": 833.08
+      }
     },
     {
       "id": "90c2a9cf-ad7e-4332-9be2-2fd1309833e2",
@@ -1971,10 +3091,702 @@
       "name": "Grok 4.3 (Non-reasoning)",
       "release_date": "2026-04-30",
       "rubric_score": 0.1404040404040404,
-      "analytical_quality_elo": 572.2,
-      "analytical_quality_ci": null,
-      "presentation_elo": 816.94,
-      "presentation_ci": null
+      "analytical_quality_elo": 572.19,
+      "analytical_quality_ci": {
+        "elo": 572.19,
+        "lower95ci": 552.05,
+        "upper95ci": 591.9
+      },
+      "presentation_elo": 817.15,
+      "presentation_ci": {
+        "elo": 817.15,
+        "lower95ci": 800.4,
+        "upper95ci": 834.33
+      }
+    },
+    {
+      "id": "5c3bdc0d-abab-4526-8079-34de4089bb4a",
+      "provider": "LongCat",
+      "name": "LongCat 2.0",
+      "release_date": "2026-06-29",
+      "rubric_score": 0.16873706004140787,
+      "analytical_quality_elo": 584.87,
+      "analytical_quality_ci": {
+        "elo": 584.87,
+        "lower95ci": 565.79,
+        "upper95ci": 602.79
+      },
+      "presentation_elo": 793.83,
+      "presentation_ci": {
+        "elo": 793.83,
+        "lower95ci": 777.61,
+        "upper95ci": 809.46
+      }
+    },
+    {
+      "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
+      "provider": "Kimi",
+      "name": "Kimi K2.6 (Reasoning)",
+      "release_date": "2026-04-20",
+      "rubric_score": 0.20606060606060606,
+      "analytical_quality_elo": 789.49,
+      "analytical_quality_ci": {
+        "elo": 789.49,
+        "lower95ci": 775.92,
+        "upper95ci": 802.21
+      },
+      "presentation_elo": 776.54,
+      "presentation_ci": {
+        "elo": 776.54,
+        "lower95ci": 761.98,
+        "upper95ci": 789.78
+      }
+    },
+    {
+      "id": "ba242e40-83b7-4cd3-a0e0-b56237984914",
+      "provider": "OpenAI",
+      "name": "GPT-5.4 mini (Xhigh)",
+      "release_date": "2026-03-17",
+      "rubric_score": 0.1254355400696864,
+      "analytical_quality_elo": 617.42,
+      "analytical_quality_ci": {
+        "elo": 617.42,
+        "lower95ci": 602.91,
+        "upper95ci": 630.62
+      },
+      "presentation_elo": 779.56,
+      "presentation_ci": {
+        "elo": 779.56,
+        "lower95ci": 764.8,
+        "upper95ci": 793.09
+      }
+    },
+    {
+      "id": "bf9708d8-933d-44f6-affa-b696a7a650c9",
+      "provider": "OpenAI",
+      "name": "GPT-6 Luna (Low)",
+      "release_date": "2026-09-22",
+      "rubric_score": 0.14444444444444443,
+      "analytical_quality_elo": 654.47,
+      "analytical_quality_ci": {
+        "elo": 654.47,
+        "lower95ci": 634.87,
+        "upper95ci": 672.61
+      },
+      "presentation_elo": 775.55,
+      "presentation_ci": {
+        "elo": 775.55,
+        "lower95ci": 757.69,
+        "upper95ci": 792.95
+      }
+    },
+    {
+      "id": "8215372b-66ff-457b-855e-e8abeafc9571",
+      "provider": "SK Telecom",
+      "name": "A.X-K2",
+      "release_date": "2026-08-12",
+      "rubric_score": 0.17545748116254037,
+      "analytical_quality_elo": 766.5,
+      "analytical_quality_ci": {
+        "elo": 766.5,
+        "lower95ci": 747.21,
+        "upper95ci": 784.93
+      },
+      "presentation_elo": 623.8,
+      "presentation_ci": {
+        "elo": 623.8,
+        "lower95ci": 602.65,
+        "upper95ci": 646.19
+      }
+    },
+    {
+      "id": "31da3a71-0773-47d9-8560-9f19f069926b",
+      "provider": "Institute of Foundation Models",
+      "name": "K2 Horizon 3.7B",
+      "release_date": "2026-09-03",
+      "rubric_score": 0.2010204081632653,
+      "analytical_quality_elo": 734.11,
+      "analytical_quality_ci": {
+        "elo": 734.11,
+        "lower95ci": 716.02,
+        "upper95ci": 752.07
+      },
+      "presentation_elo": 765.67,
+      "presentation_ci": {
+        "elo": 765.67,
+        "lower95ci": 746.42,
+        "upper95ci": 782.87
+      }
+    },
+    {
+      "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+      "provider": "Google",
+      "name": "Gemini 3.5 Flash-Lite",
+      "release_date": "2026-07-21",
+      "rubric_score": 0.1484848484848485,
+      "analytical_quality_elo": 390.74,
+      "analytical_quality_ci": {
+        "elo": 390.74,
+        "lower95ci": 374.87,
+        "upper95ci": 407.77
+      },
+      "presentation_elo": 762.89,
+      "presentation_ci": {
+        "elo": 762.89,
+        "lower95ci": 746.45,
+        "upper95ci": 780.14
+      }
+    },
+    {
+      "id": "8665ca00-c687-44c7-875c-22618cb31c4f",
+      "provider": "Alibaba",
+      "name": "Qwen3.6 35B A3B (Reasoning)",
+      "release_date": "2026-04-16",
+      "rubric_score": 0.15252525252525254,
+      "analytical_quality_elo": 564.75,
+      "analytical_quality_ci": {
+        "elo": 564.75,
+        "lower95ci": 547.86,
+        "upper95ci": 581.34
+      },
+      "presentation_elo": 760.84,
+      "presentation_ci": {
+        "elo": 760.84,
+        "lower95ci": 745.21,
+        "upper95ci": 775.32
+      }
+    },
+    {
+      "id": "eb4ba465-3fcd-4065-9fe2-e8225e7b2c6c",
+      "provider": "InclusionAI",
+      "name": "Ring-2.6-1T",
+      "release_date": "2026-05-08",
+      "rubric_score": 0.10929519918283963,
+      "analytical_quality_elo": 508.5,
+      "analytical_quality_ci": {
+        "elo": 508.5,
+        "lower95ci": 489.22,
+        "upper95ci": 526.58
+      },
+      "presentation_elo": 755.96,
+      "presentation_ci": {
+        "elo": 755.96,
+        "lower95ci": 739.41,
+        "upper95ci": 773.72
+      }
+    },
+    {
+      "id": "90e078f2-051b-4c63-8919-76618971cb3f",
+      "provider": "Anthropic",
+      "name": "Claude 4.5 Sonnet (Reasoning)",
+      "release_date": "2025-09-29",
+      "rubric_score": 0.14646464646464646,
+      "analytical_quality_elo": 601.58,
+      "analytical_quality_ci": {
+        "elo": 601.58,
+        "lower95ci": 582.24,
+        "upper95ci": 618.07
+      },
+      "presentation_elo": 745.73,
+      "presentation_ci": {
+        "elo": 745.73,
+        "lower95ci": 728,
+        "upper95ci": 763.69
+      }
+    },
+    {
+      "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
+      "provider": "Anthropic",
+      "name": "Claude 4.5 Haiku (Reasoning)",
+      "release_date": "2025-10-15",
+      "rubric_score": 0.10808080808080808,
+      "analytical_quality_elo": 447.89,
+      "analytical_quality_ci": {
+        "elo": 447.89,
+        "lower95ci": 430.87,
+        "upper95ci": 462.31
+      },
+      "presentation_elo": 673.66,
+      "presentation_ci": {
+        "elo": 673.66,
+        "lower95ci": 658.16,
+        "upper95ci": 687.67
+      }
+    },
+    {
+      "id": "d4fc3f33-f2b0-4da1-88ee-f1f82bd4de31",
+      "provider": "OpenAI",
+      "name": "GPT-5.4 nano (Xhigh)",
+      "release_date": "2026-03-17",
+      "rubric_score": 0.14621676891615543,
+      "analytical_quality_elo": 644.19,
+      "analytical_quality_ci": {
+        "elo": 644.19,
+        "lower95ci": 626,
+        "upper95ci": 660.04
+      },
+      "presentation_elo": 586.18,
+      "presentation_ci": {
+        "elo": 586.18,
+        "lower95ci": 567.78,
+        "upper95ci": 603.64
+      }
+    },
+    {
+      "id": "7eaf926c-5f39-4e58-ae50-c38b5fc630fc",
+      "provider": "InclusionAI",
+      "name": "Ling 3.0 Tiny",
+      "release_date": "2026-08-06",
+      "rubric_score": 0.08383838383838384,
+      "analytical_quality_elo": 132.29,
+      "analytical_quality_ci": {
+        "elo": 132.29,
+        "lower95ci": 111.8,
+        "upper95ci": 151.09
+      },
+      "presentation_elo": 623.34,
+      "presentation_ci": {
+        "elo": 623.34,
+        "lower95ci": 604.72,
+        "upper95ci": 639.85
+      }
+    },
+    {
+      "id": "fb112343-c82c-4b43-afea-996bd5101d62",
+      "provider": "KwaiKAT",
+      "name": "KAT-Coder-Pro V1",
+      "release_date": "2025-11-11",
+      "rubric_score": 0.13271604938271606,
+      "analytical_quality_elo": 458.16,
+      "analytical_quality_ci": {
+        "elo": 458.16,
+        "lower95ci": 441.69,
+        "upper95ci": 472.43
+      },
+      "presentation_elo": 598.38,
+      "presentation_ci": {
+        "elo": 598.38,
+        "lower95ci": 580.72,
+        "upper95ci": 616.34
+      }
+    },
+    {
+      "id": "ebf3b39f-0be6-43a1-a37a-f9b2978c9916",
+      "provider": "Meta",
+      "name": "Muse Spark",
+      "release_date": "2026-04-08",
+      "rubric_score": 0.16767676767676767,
+      "analytical_quality_elo": 588.46,
+      "analytical_quality_ci": {
+        "elo": 588.46,
+        "lower95ci": 573.26,
+        "upper95ci": 601.83
+      },
+      "presentation_elo": 526.42,
+      "presentation_ci": {
+        "elo": 526.42,
+        "lower95ci": 510.22,
+        "upper95ci": 542.45
+      }
+    },
+    {
+      "id": "0e66bae9-41f1-42fc-9276-ce8cb6f72919",
+      "provider": "Alibaba",
+      "name": "Qwen3.5 397B A17B (Reasoning)",
+      "release_date": "2026-02-16",
+      "rubric_score": 0.12121212121212122,
+      "analytical_quality_elo": 384.33,
+      "analytical_quality_ci": {
+        "elo": 384.33,
+        "lower95ci": 367.85,
+        "upper95ci": 399.89
+      },
+      "presentation_elo": 572.56,
+      "presentation_ci": {
+        "elo": 572.56,
+        "lower95ci": 555.68,
+        "upper95ci": 588.52
+      }
+    },
+    {
+      "id": "05a32e26-e609-4377-951b-8fa23d329926",
+      "provider": "Mistral",
+      "name": "Mistral Medium 3.1",
+      "release_date": "2025-08-12",
+      "rubric_score": 0.1303030303030303,
+      "analytical_quality_elo": 321.28,
+      "analytical_quality_ci": {
+        "elo": 321.28,
+        "lower95ci": 301.86,
+        "upper95ci": 339.04
+      },
+      "presentation_elo": 507.36,
+      "presentation_ci": {
+        "elo": 507.36,
+        "lower95ci": 489.71,
+        "upper95ci": 526.23
+      }
+    },
+    {
+      "id": "641a073a-41c9-4773-9b02-d965c16607c5",
+      "provider": "OpenBMB",
+      "name": "MiniCPM5-2B",
+      "release_date": "2026-09-07",
+      "rubric_score": 0.07272727272727272,
+      "analytical_quality_elo": 137.58,
+      "analytical_quality_ci": {
+        "elo": 137.58,
+        "lower95ci": 113.57,
+        "upper95ci": 159.39
+      },
+      "presentation_elo": 492.89,
+      "presentation_ci": {
+        "elo": 492.89,
+        "lower95ci": 471.75,
+        "upper95ci": 515.23
+      }
+    },
+    {
+      "id": "29976311-665a-4b2f-ac72-557c33e0758e",
+      "provider": "NVIDIA",
+      "name": "Nemotron 3.5 Lightning",
+      "release_date": "2026-08-11",
+      "rubric_score": 0.08888888888888889,
+      "analytical_quality_elo": 351.5,
+      "analytical_quality_ci": {
+        "elo": 351.5,
+        "lower95ci": 328.84,
+        "upper95ci": 369.83
+      },
+      "presentation_elo": 491.49,
+      "presentation_ci": {
+        "elo": 491.49,
+        "lower95ci": 472.47,
+        "upper95ci": 508.74
+      }
+    },
+    {
+      "id": "ce819310-af7c-49d3-9a02-6845111e1788",
+      "provider": "Mistral",
+      "name": "Devstral Small 2",
+      "release_date": "2025-12-09",
+      "rubric_score": 0.10202020202020202,
+      "analytical_quality_elo": 297.5,
+      "analytical_quality_ci": {
+        "elo": 297.5,
+        "lower95ci": 275.87,
+        "upper95ci": 315.45
+      },
+      "presentation_elo": 485.39,
+      "presentation_ci": {
+        "elo": 485.39,
+        "lower95ci": 465.77,
+        "upper95ci": 504.11
+      }
+    },
+    {
+      "id": "dd059b25-d82a-4ead-82a4-4adceaaec48b",
+      "provider": "Mistral",
+      "name": "Mistral Medium 3.5",
+      "release_date": "2026-04-29",
+      "rubric_score": 0.12424242424242424,
+      "analytical_quality_elo": 349.58,
+      "analytical_quality_ci": {
+        "elo": 349.58,
+        "lower95ci": 333.57,
+        "upper95ci": 364.81
+      },
+      "presentation_elo": 482.44,
+      "presentation_ci": {
+        "elo": 482.44,
+        "lower95ci": 464.8,
+        "upper95ci": 498.64
+      }
+    },
+    {
+      "id": "2236df45-0699-40d1-b5cc-69ee345d2257",
+      "provider": "Alibaba",
+      "name": "Qwen3.5 122B A10B (Reasoning)",
+      "release_date": "2026-02-24",
+      "rubric_score": 0.10606060606060606,
+      "analytical_quality_elo": 307.84,
+      "analytical_quality_ci": {
+        "elo": 307.84,
+        "lower95ci": 288.97,
+        "upper95ci": 325.03
+      },
+      "presentation_elo": 474.46,
+      "presentation_ci": {
+        "elo": 474.46,
+        "lower95ci": 457.19,
+        "upper95ci": 492.13
+      }
+    },
+    {
+      "id": "09f43999-b67b-4c1b-b050-44df41ed7e62",
+      "provider": "Mistral",
+      "name": "Devstral 2",
+      "release_date": "2025-12-09",
+      "rubric_score": 0.11156601842374617,
+      "analytical_quality_elo": 292.16,
+      "analytical_quality_ci": {
+        "elo": 292.16,
+        "lower95ci": 270.95,
+        "upper95ci": 311.77
+      },
+      "presentation_elo": 442.04,
+      "presentation_ci": {
+        "elo": 442.04,
+        "lower95ci": 422.4,
+        "upper95ci": 462.73
+      }
+    },
+    {
+      "id": "0a7dda4d-cc9c-4a90-abc1-abb5772c901b",
+      "provider": "DeepSeek",
+      "name": "DeepSeek V3.1 Terminus (Reasoning)",
+      "release_date": "2025-09-22",
+      "rubric_score": 0.09696969696969697,
+      "analytical_quality_elo": 230.44,
+      "analytical_quality_ci": {
+        "elo": 230.44,
+        "lower95ci": 209.25,
+        "upper95ci": 248.7
+      },
+      "presentation_elo": 437.53,
+      "presentation_ci": {
+        "elo": 437.53,
+        "lower95ci": 419.22,
+        "upper95ci": 455.57
+      }
+    },
+    {
+      "id": "2e9ff877-fd2c-4ce7-b631-7ca1bdb6d13e",
+      "provider": "Cohere",
+      "name": "Command A+",
+      "release_date": "2026-05-20",
+      "rubric_score": 0.06917599186164802,
+      "analytical_quality_elo": 52.73,
+      "analytical_quality_ci": {
+        "elo": 52.73,
+        "lower95ci": 33.78,
+        "upper95ci": 69.83
+      },
+      "presentation_elo": 386.4,
+      "presentation_ci": {
+        "elo": 386.4,
+        "lower95ci": 368.37,
+        "upper95ci": 405.25
+      }
+    },
+    {
+      "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
+      "provider": "Meta",
+      "name": "Muse Glimmer (High)",
+      "release_date": "2026-08-10",
+      "rubric_score": 0.11514522821576763,
+      "analytical_quality_elo": 369.27,
+      "analytical_quality_ci": {
+        "elo": 369.27,
+        "lower95ci": 351.76,
+        "upper95ci": 384.4
+      },
+      "presentation_elo": 345.42,
+      "presentation_ci": {
+        "elo": 345.42,
+        "lower95ci": 327,
+        "upper95ci": 363.47
+      }
+    },
+    {
+      "id": "fc92f822-04b7-420d-9c07-a21af5e9aac7",
+      "provider": "Alibaba",
+      "name": "Qwen3 Coder Next",
+      "release_date": "2026-02-03",
+      "rubric_score": 0.07867494824016563,
+      "analytical_quality_elo": 198.49,
+      "analytical_quality_ci": {
+        "elo": 198.49,
+        "lower95ci": 177.06,
+        "upper95ci": 217.59
+      },
+      "presentation_elo": 363.34,
+      "presentation_ci": {
+        "elo": 363.34,
+        "lower95ci": 342.47,
+        "upper95ci": 382.64
+      }
+    },
+    {
+      "id": "29855680-7469-43eb-8b88-cd3fb1d99da3",
+      "provider": "OpenAI",
+      "name": "GPT-5 mini (High)",
+      "release_date": "2025-08-07",
+      "rubric_score": 0.08282828282828283,
+      "analytical_quality_elo": 358.17,
+      "analytical_quality_ci": {
+        "elo": 358.17,
+        "lower95ci": 337.81,
+        "upper95ci": 376.58
+      },
+      "presentation_elo": 271.06,
+      "presentation_ci": {
+        "elo": 271.06,
+        "lower95ci": 251.64,
+        "upper95ci": 289.22
+      }
+    },
+    {
+      "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
+      "provider": "Google",
+      "name": "Gemini 3.1 Pro Preview",
+      "release_date": "2026-02-19",
+      "rubric_score": 0.12424242424242424,
+      "analytical_quality_elo": 289.46,
+      "analytical_quality_ci": {
+        "elo": 289.46,
+        "lower95ci": 272.88,
+        "upper95ci": 305.48
+      },
+      "presentation_elo": 353.16,
+      "presentation_ci": {
+        "elo": 353.16,
+        "lower95ci": 336.5,
+        "upper95ci": 369.2
+      }
+    },
+    {
+      "id": "765c9f31-95ec-4f14-900a-80614c3b0777",
+      "provider": "Inception",
+      "name": "Mercury 2.5",
+      "release_date": "2026-09-08",
+      "rubric_score": 0.0758974358974359,
+      "analytical_quality_elo": 139.7,
+      "analytical_quality_ci": {
+        "elo": 139.7,
+        "lower95ci": 115.95,
+        "upper95ci": 160.3
+      },
+      "presentation_elo": 339.96,
+      "presentation_ci": {
+        "elo": 339.96,
+        "lower95ci": 316.13,
+        "upper95ci": 362.73
+      }
+    },
+    {
+      "id": "cd26a386-4873-46ff-b853-d239050025a2",
+      "provider": "Google",
+      "name": "Gemma 4 31B (Reasoning)",
+      "release_date": "2026-04-02",
+      "rubric_score": 0.07777777777777778,
+      "analytical_quality_elo": 128.2,
+      "analytical_quality_ci": {
+        "elo": 128.2,
+        "lower95ci": 110.91,
+        "upper95ci": 144.1
+      },
+      "presentation_elo": 330.23,
+      "presentation_ci": {
+        "elo": 330.23,
+        "lower95ci": 313.47,
+        "upper95ci": 345.32
+      }
+    },
+    {
+      "id": "24ac5b00-5f03-4c47-8e37-522d1195383e",
+      "provider": "Mistral",
+      "name": "Mistral Small 3.1",
+      "release_date": "2025-03-17",
+      "rubric_score": 0.06060606060606061,
+      "analytical_quality_elo": 60.91,
+      "analytical_quality_ci": {
+        "elo": 60.91,
+        "lower95ci": 40.5,
+        "upper95ci": 79.51
+      },
+      "presentation_elo": 276.58,
+      "presentation_ci": {
+        "elo": 276.58,
+        "lower95ci": 258.37,
+        "upper95ci": 294.47
+      }
+    },
+    {
+      "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
+      "provider": "Google",
+      "name": "Gemma 4 26B A4B (Reasoning)",
+      "release_date": "2026-04-02",
+      "rubric_score": 0.07329842931937172,
+      "analytical_quality_elo": 29.11,
+      "analytical_quality_ci": {
+        "elo": 29.11,
+        "lower95ci": 7.02,
+        "upper95ci": 51.01
+      },
+      "presentation_elo": 275.54,
+      "presentation_ci": {
+        "elo": 275.54,
+        "lower95ci": 252.34,
+        "upper95ci": 296.4
+      }
+    },
+    {
+      "id": "1071dea1-43e7-4fe9-b936-3034bb622b2e",
+      "provider": "IBM",
+      "name": "Granite 4.2 30B",
+      "release_date": "2026-08-25",
+      "rubric_score": 0.09785202863961814,
+      "analytical_quality_elo": 271.67,
+      "analytical_quality_ci": {
+        "elo": 271.67,
+        "lower95ci": 246.67,
+        "upper95ci": 291.94
+      },
+      "presentation_elo": 225.88,
+      "presentation_ci": {
+        "elo": 225.88,
+        "lower95ci": 202.94,
+        "upper95ci": 248.28
+      }
+    },
+    {
+      "id": "27202e5f-c82d-4710-92e9-4317877d4883",
+      "provider": "Google",
+      "name": "Gemini 2.5 Pro",
+      "release_date": "2025-06-05",
+      "rubric_score": 0.06565656565656566,
+      "analytical_quality_elo": 22.77,
+      "analytical_quality_ci": {
+        "elo": 22.77,
+        "lower95ci": 2.31,
+        "upper95ci": 41.79
+      },
+      "presentation_elo": 259.58,
+      "presentation_ci": {
+        "elo": 259.58,
+        "lower95ci": 240.8,
+        "upper95ci": 277.25
+      }
+    },
+    {
+      "id": "2d28a13a-096e-475a-beb8-26bbd1c7d51c",
+      "provider": "Alibaba",
+      "name": "Qwen3.5 9B (Reasoning)",
+      "release_date": "2026-03-02",
+      "rubric_score": 0.0797979797979798,
+      "analytical_quality_elo": 121.56,
+      "analytical_quality_ci": {
+        "elo": 121.56,
+        "lower95ci": 98.48,
+        "upper95ci": 143.22
+      },
+      "presentation_elo": 248.04,
+      "presentation_ci": {
+        "elo": 248.04,
+        "lower95ci": 225.2,
+        "upper95ci": 269.91
+      }
     },
     {
       "id": "016d330a-2141-4afa-b2fc-62b314423dc1",
@@ -1983,185 +3795,17 @@
       "release_date": "2026-02-20",
       "rubric_score": 0.05720122574055159,
       "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 243.94,
-      "presentation_ci": null
-    },
-    {
-      "id": "2e9ff877-fd2c-4ce7-b631-7ca1bdb6d13e",
-      "provider": "Cohere",
-      "name": "Command A+",
-      "release_date": "2026-05-20",
-      "rubric_score": 0.06917599186164802,
-      "analytical_quality_elo": 52.74,
-      "analytical_quality_ci": null,
-      "presentation_elo": 386.18,
-      "presentation_ci": null
-    },
-    {
-      "id": "29976311-665a-4b2f-ac72-557c33e0758e",
-      "provider": "NVIDIA",
-      "name": "Nemotron 3.5 Lightning",
-      "release_date": "2026-08-11",
-      "rubric_score": 0.08888888888888889,
-      "analytical_quality_elo": 351.51,
-      "analytical_quality_ci": null,
-      "presentation_elo": 491.26,
-      "presentation_ci": null
-    },
-    {
-      "id": "63872e9c-3377-4a6b-b477-7bba244c38e9",
-      "provider": "NVIDIA",
-      "name": "Nemotron 3 Super 120B A12B (Reasoning)",
-      "release_date": "2026-03-11",
-      "rubric_score": 0.006060606060606061,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
-    },
-    {
-      "id": "f6ccbe1d-bd7e-484b-9795-18cc9f91552d",
-      "provider": "Alibaba",
-      "name": "Qwen3 235B A22B 2507 (Reasoning)",
-      "release_date": "2025-07-25",
-      "rubric_score": 0.047474747474747475,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 76.68,
-      "presentation_ci": null
-    },
-    {
-      "id": "1071dea1-43e7-4fe9-b936-3034bb622b2e",
-      "provider": "IBM",
-      "name": "Granite 4.2 30B",
-      "release_date": "2026-08-25",
-      "rubric_score": 0.09785202863961814,
-      "analytical_quality_elo": 271.68,
-      "analytical_quality_ci": null,
-      "presentation_elo": 225.66,
-      "presentation_ci": null
-    },
-    {
-      "id": "641a073a-41c9-4773-9b02-d965c16607c5",
-      "provider": "OpenBMB",
-      "name": "MiniCPM5-2B",
-      "release_date": "2026-09-07",
-      "rubric_score": 0.07272727272727272,
-      "analytical_quality_elo": 137.59,
-      "analytical_quality_ci": null,
-      "presentation_elo": 492.67,
-      "presentation_ci": null
-    },
-    {
-      "id": "765c9f31-95ec-4f14-900a-80614c3b0777",
-      "provider": "Inception",
-      "name": "Mercury 2.5",
-      "release_date": "2026-09-08",
-      "rubric_score": 0.0758974358974359,
-      "analytical_quality_elo": 139.71,
-      "analytical_quality_ci": null,
-      "presentation_elo": 339.74,
-      "presentation_ci": null
-    },
-    {
-      "id": "340fb211-4fad-41d3-87d5-ed0d0cd34088",
-      "provider": "Multiverse Computing",
-      "name": "HyperNova 60B 2605 (high, based on gpt-oss-120b)",
-      "release_date": "2026-05-26",
-      "rubric_score": 0.0707070707070707,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 127.11,
-      "presentation_ci": null
-    },
-    {
-      "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
-      "provider": "OpenAI",
-      "name": "gpt-oss-120b (high)",
-      "release_date": "2025-08-05",
-      "rubric_score": 0.023232323232323233,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
-    },
-    {
-      "id": "5a49ef80-3af5-404b-8ac0-e1b230ae95de",
-      "provider": "Institute of Foundation Models",
-      "name": "K2 Think V2",
-      "release_date": "2025-12-15",
-      "rubric_score": 0.0411946446961895,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
-    },
-    {
-      "id": "0e34f05c-387e-4968-be15-ccec4a55d8c1",
-      "provider": "DeepSeek",
-      "name": "DeepSeek R1 (Jan '25)",
-      "release_date": "2025-01-20",
-      "rubric_score": 0.04171011470281543,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 75.3,
-      "presentation_ci": null
-    },
-    {
-      "id": "3fd96175-4ef1-434c-8795-f873aec2abc1",
-      "provider": "Mistral",
-      "name": "Mistral Small 4 (Reasoning)",
-      "release_date": "2026-03-16",
-      "rubric_score": 0.05656565656565657,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 171.79,
-      "presentation_ci": null
-    },
-    {
-      "id": "2d28a13a-096e-475a-beb8-26bbd1c7d51c",
-      "provider": "Alibaba",
-      "name": "Qwen3.5 9B (Reasoning)",
-      "release_date": "2026-03-02",
-      "rubric_score": 0.0797979797979798,
-      "analytical_quality_elo": 121.57,
-      "analytical_quality_ci": null,
-      "presentation_elo": 247.82,
-      "presentation_ci": null
-    },
-    {
-      "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
-      "provider": "IBM",
-      "name": "Granite 4.2 8B",
-      "release_date": "2026-08-25",
-      "rubric_score": 0.07272727272727272,
-      "analytical_quality_elo": 154.75,
-      "analytical_quality_ci": null,
-      "presentation_elo": 135.81,
-      "presentation_ci": null
-    },
-    {
-      "id": "7eaf926c-5f39-4e58-ae50-c38b5fc630fc",
-      "provider": "InclusionAI",
-      "name": "Ling 3.0 Tiny",
-      "release_date": "2026-08-06",
-      "rubric_score": 0.08383838383838384,
-      "analytical_quality_elo": 132.3,
-      "analytical_quality_ci": null,
-      "presentation_elo": 623.11,
-      "presentation_ci": null
-    },
-    {
-      "id": "076f2674-bc4b-4925-be59-50832eb8c090",
-      "provider": "OpenAI",
-      "name": "o3-mini (high)",
-      "release_date": "2025-01-31",
-      "rubric_score": 0.045454545454545456,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 132.85,
-      "presentation_ci": null
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 244.16,
+      "presentation_ci": {
+        "elo": 244.16,
+        "lower95ci": 226.02,
+        "upper95ci": 261.15
+      }
     },
     {
       "id": "b6d2e43d-3082-43f5-9318-0f4dbcb54163",
@@ -2170,53 +3814,17 @@
       "release_date": "2026-04-01",
       "rubric_score": 0.05761316872427984,
       "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 207.61,
-      "presentation_ci": null
-    },
-    {
-      "id": "922c69c7-9037-43c6-8bcf-a1c555e7f3eb",
-      "provider": "Meta",
-      "name": "Llama 4 Maverick",
-      "release_date": "2025-04-05",
-      "rubric_score": 0.00909090909090909,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
-    },
-    {
-      "id": "1e9907e0-ffac-4595-b006-962e4f1da7cf",
-      "provider": "Cohere",
-      "name": "North Mini Code",
-      "release_date": "2026-06-09",
-      "rubric_score": 0.06230847803881512,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 112.1,
-      "presentation_ci": null
-    },
-    {
-      "id": "5e0164b3-d902-4bcb-a1b2-83b4f4cd6143",
-      "provider": "Alibaba",
-      "name": "Qwen3 30B A3B 2507 (Reasoning)",
-      "release_date": "2025-07-30",
-      "rubric_score": 0.04081632653061224,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
-    },
-    {
-      "id": "75e1c197-f239-4361-a9d6-66dccfead236",
-      "provider": "DeepSeek",
-      "name": "DeepSeek V3 0324",
-      "release_date": "2025-03-25",
-      "rubric_score": 0.032989690721649485,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 207.83,
+      "presentation_ci": {
+        "elo": 207.83,
+        "lower95ci": 188.82,
+        "upper95ci": 224.09
+      }
     },
     {
       "id": "4928e950-7f37-4475-b0dc-c5bad781a321",
@@ -2225,185 +3833,169 @@
       "release_date": "2025-12-02",
       "rubric_score": 0.056179775280898875,
       "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 199.15,
-      "presentation_ci": null
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 199.37,
+      "presentation_ci": {
+        "elo": 199.37,
+        "lower95ci": 178.54,
+        "upper95ci": 216.17
+      }
     },
     {
-      "id": "fc92f822-04b7-420d-9c07-a21af5e9aac7",
-      "provider": "Alibaba",
-      "name": "Qwen3 Coder Next",
-      "release_date": "2026-02-03",
-      "rubric_score": 0.07867494824016563,
-      "analytical_quality_elo": 198.5,
-      "analytical_quality_ci": null,
-      "presentation_elo": 363.11,
-      "presentation_ci": null
-    },
-    {
-      "id": "05a32e26-e609-4377-951b-8fa23d329926",
+      "id": "3fd96175-4ef1-434c-8795-f873aec2abc1",
       "provider": "Mistral",
-      "name": "Mistral Medium 3.1",
-      "release_date": "2025-08-12",
-      "rubric_score": 0.1303030303030303,
-      "analytical_quality_elo": 321.29,
-      "analytical_quality_ci": null,
-      "presentation_elo": 507.13,
-      "presentation_ci": null
+      "name": "Mistral Small 4 (Reasoning)",
+      "release_date": "2026-03-16",
+      "rubric_score": 0.05656565656565657,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 172.01,
+      "presentation_ci": {
+        "elo": 172.01,
+        "lower95ci": 152.79,
+        "upper95ci": 191.55
+      }
     },
     {
-      "id": "0c64b008-20c3-408d-bd68-15136df8cd2c",
+      "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
       "provider": "IBM",
-      "name": "Granite 4.2 3B",
+      "name": "Granite 4.2 8B",
       "release_date": "2026-08-25",
-      "rubric_score": 0.047474747474747475,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
+      "rubric_score": 0.07272727272727272,
+      "analytical_quality_elo": 154.74,
+      "analytical_quality_ci": {
+        "elo": 154.74,
+        "lower95ci": 135.63,
+        "upper95ci": 172.87
+      },
+      "presentation_elo": 136.03,
+      "presentation_ci": {
+        "elo": 136.03,
+        "lower95ci": 116.63,
+        "upper95ci": 153.35
+      }
     },
     {
-      "id": "36f73aaf-d38a-4b56-a2b3-d04d17186910",
+      "id": "076f2674-bc4b-4925-be59-50832eb8c090",
       "provider": "OpenAI",
-      "name": "gpt-oss-20b (high)",
-      "release_date": "2025-08-05",
-      "rubric_score": 0.024242424242424242,
+      "name": "o3-mini (High)",
+      "release_date": "2025-01-31",
+      "rubric_score": 0.045454545454545456,
       "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 133.07,
+      "presentation_ci": {
+        "elo": 133.07,
+        "lower95ci": 112.69,
+        "upper95ci": 151.68
+      }
     },
     {
-      "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+      "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
       "provider": "Google",
-      "name": "Gemma 4 E4B (Reasoning)",
-      "release_date": "2026-04-03",
-      "rubric_score": 0.01919191919191919,
+      "name": "Gemini 3.1 Flash-Lite",
+      "release_date": "2026-03-03",
+      "rubric_score": 0.06332992849846783,
       "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 129.81,
+      "presentation_ci": {
+        "elo": 129.81,
+        "lower95ci": 112.58,
+        "upper95ci": 146.78
+      }
     },
     {
-      "id": "76dcf6ef-39ea-4be0-b693-b88da25b4caf",
-      "provider": "NVIDIA",
-      "name": "NVIDIA Nemotron 3 Nano 30B A3B (Reasoning)",
-      "release_date": "2025-12-15",
-      "rubric_score": 0.029471544715447155,
+      "id": "340fb211-4fad-41d3-87d5-ed0d0cd34088",
+      "provider": "Multiverse Computing",
+      "name": "HyperNova 60B 2605 (High, Based on gpt-oss-120b)",
+      "release_date": "2026-05-26",
+      "rubric_score": 0.0707070707070707,
       "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 127.33,
+      "presentation_ci": {
+        "elo": 127.33,
+        "lower95ci": 107.24,
+        "upper95ci": 144.76
+      }
     },
     {
-      "id": "09f43999-b67b-4c1b-b050-44df41ed7e62",
-      "provider": "Mistral",
-      "name": "Devstral 2",
-      "release_date": "2025-12-09",
-      "rubric_score": 0.11156601842374617,
-      "analytical_quality_elo": 292.17,
-      "analytical_quality_ci": null,
-      "presentation_elo": 441.82,
-      "presentation_ci": null
+      "id": "1e9907e0-ffac-4595-b006-962e4f1da7cf",
+      "provider": "Cohere",
+      "name": "North Mini Code",
+      "release_date": "2026-06-09",
+      "rubric_score": 0.06230847803881512,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 112.33,
+      "presentation_ci": {
+        "elo": 112.33,
+        "lower95ci": 93.27,
+        "upper95ci": 130.71
+      }
     },
     {
-      "id": "b00ecd62-a53f-4aed-b833-3e9d6b0170ba",
+      "id": "f6ccbe1d-bd7e-484b-9795-18cc9f91552d",
       "provider": "Alibaba",
-      "name": "Qwen3 32B (Reasoning)",
-      "release_date": "2025-04-28",
-      "rubric_score": 0.03939393939393939,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
-    },
-    {
-      "id": "43fc5506-c5ed-4dee-9b85-962bf7ae3986",
-      "provider": "DeepSeek",
-      "name": "DeepSeek V3 (Dec '24)",
-      "release_date": "2024-12-26",
+      "name": "Qwen3 235B A22B 2507 (Reasoning)",
+      "release_date": "2025-07-25",
       "rubric_score": 0.047474747474747475,
       "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 76.9,
+      "presentation_ci": {
+        "elo": 76.9,
+        "lower95ci": 54.99,
+        "upper95ci": 96.29
+      }
     },
     {
-      "id": "43da3718-3d6e-40dd-901a-05664179ff7f",
-      "provider": "Mistral",
-      "name": "Mistral Small 3.2",
-      "release_date": "2025-06-20",
-      "rubric_score": 0.034623217922606926,
+      "id": "0e34f05c-387e-4968-be15-ccec4a55d8c1",
+      "provider": "DeepSeek",
+      "name": "DeepSeek R1 (Jan '25)",
+      "release_date": "2025-01-20",
+      "rubric_score": 0.04171011470281543,
       "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
-    },
-    {
-      "id": "4559e9f0-8aad-4681-89fb-68cb915e0f16",
-      "provider": "Alibaba",
-      "name": "Qwen3 14B (Reasoning)",
-      "release_date": "2025-04-28",
-      "rubric_score": 0.02889576883384933,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
-    },
-    {
-      "id": "adf9a85e-abc3-4f28-937b-db6655cc5238",
-      "provider": "Meta",
-      "name": "Llama 4 Scout",
-      "release_date": "2025-04-05",
-      "rubric_score": 0.007164790174002047,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
-    },
-    {
-      "id": "b89c4faf-219e-4171-a1aa-e3bd2fd0a924",
-      "provider": "Upstage",
-      "name": "Solar Pro 3",
-      "release_date": "2026-04-06",
-      "rubric_score": 0.049029622063329927,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
-    },
-    {
-      "id": "ce819310-af7c-49d3-9a02-6845111e1788",
-      "provider": "Mistral",
-      "name": "Devstral Small 2",
-      "release_date": "2025-12-09",
-      "rubric_score": 0.10202020202020202,
-      "analytical_quality_elo": 297.51,
-      "analytical_quality_ci": null,
-      "presentation_elo": 485.17,
-      "presentation_ci": null
-    },
-    {
-      "id": "9dba61f5-78ee-4190-8d1d-8e7063ffd386",
-      "provider": "Alibaba",
-      "name": "Qwen3 8B (Reasoning)",
-      "release_date": "2025-04-28",
-      "rubric_score": 0.03232323232323232,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 0,
-      "presentation_ci": null
-    },
-    {
-      "id": "24ac5b00-5f03-4c47-8e37-522d1195383e",
-      "provider": "Mistral",
-      "name": "Mistral Small 3.1",
-      "release_date": "2025-03-17",
-      "rubric_score": 0.06060606060606061,
-      "analytical_quality_elo": 60.92,
-      "analytical_quality_ci": null,
-      "presentation_elo": 276.36,
-      "presentation_ci": null
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 75.52,
+      "presentation_ci": {
+        "elo": 75.52,
+        "lower95ci": 54.73,
+        "upper95ci": 94.05
+      }
     },
     {
       "id": "8014c311-fa23-4a4b-8485-8a864db8a113",
@@ -2412,9 +4004,17 @@
       "release_date": "2026-07-24",
       "rubric_score": 0.05454545454545454,
       "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 64.34,
-      "presentation_ci": null
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 64.56,
+      "presentation_ci": {
+        "elo": 64.56,
+        "lower95ci": 44.19,
+        "upper95ci": 82.78
+      }
     },
     {
       "id": "713fae11-c75c-4f10-ae2c-8e4074cd58af",
@@ -2423,9 +4023,245 @@
       "release_date": "2025-12-02",
       "rubric_score": 0.049029622063329927,
       "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
-      "presentation_elo": 31.62,
-      "presentation_ci": null
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 31.84,
+      "presentation_ci": {
+        "elo": 31.84,
+        "lower95ci": 10.3,
+        "upper95ci": 50.3
+      }
+    },
+    {
+      "id": "922c69c7-9037-43c6-8bcf-a1c555e7f3eb",
+      "provider": "Meta",
+      "name": "Llama 4 Maverick",
+      "release_date": "2025-04-05",
+      "rubric_score": 0.00909090909090909,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "adf9a85e-abc3-4f28-937b-db6655cc5238",
+      "provider": "Meta",
+      "name": "Llama 4 Scout",
+      "release_date": "2025-04-05",
+      "rubric_score": 0.007164790174002047,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+      "provider": "OpenAI",
+      "name": "gpt-oss-120b (High)",
+      "release_date": "2025-08-05",
+      "rubric_score": 0.023232323232323233,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "36f73aaf-d38a-4b56-a2b3-d04d17186910",
+      "provider": "OpenAI",
+      "name": "gpt-oss-20b (High)",
+      "release_date": "2025-08-05",
+      "rubric_score": 0.024242424242424242,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+      "provider": "Google",
+      "name": "Gemma 4 E4B (Reasoning)",
+      "release_date": "2026-04-03",
+      "rubric_score": 0.01919191919191919,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "5e0164b3-d902-4bcb-a1b2-83b4f4cd6143",
+      "provider": "Alibaba",
+      "name": "Qwen3 30B A3B 2507 (Reasoning)",
+      "release_date": "2025-07-30",
+      "rubric_score": 0.04081632653061224,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "b00ecd62-a53f-4aed-b833-3e9d6b0170ba",
+      "provider": "Alibaba",
+      "name": "Qwen3 32B (Reasoning)",
+      "release_date": "2025-04-28",
+      "rubric_score": 0.03939393939393939,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "4559e9f0-8aad-4681-89fb-68cb915e0f16",
+      "provider": "Alibaba",
+      "name": "Qwen3 14B (Reasoning)",
+      "release_date": "2025-04-28",
+      "rubric_score": 0.02889576883384933,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "9dba61f5-78ee-4190-8d1d-8e7063ffd386",
+      "provider": "Alibaba",
+      "name": "Qwen3 8B (Reasoning)",
+      "release_date": "2025-04-28",
+      "rubric_score": 0.03232323232323232,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "75e1c197-f239-4361-a9d6-66dccfead236",
+      "provider": "DeepSeek",
+      "name": "DeepSeek V3 0324",
+      "release_date": "2025-03-25",
+      "rubric_score": 0.032989690721649485,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 15.38
+      }
+    },
+    {
+      "id": "43fc5506-c5ed-4dee-9b85-962bf7ae3986",
+      "provider": "DeepSeek",
+      "name": "DeepSeek V3 (Dec '24)",
+      "release_date": "2024-12-26",
+      "rubric_score": 0.047474747474747475,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 14.08
+      }
+    },
+    {
+      "id": "43da3718-3d6e-40dd-901a-05664179ff7f",
+      "provider": "Mistral",
+      "name": "Mistral Small 3.2",
+      "release_date": "2025-06-20",
+      "rubric_score": 0.034623217922606926,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
     },
     {
       "id": "9741f3c2-cbb1-4a3f-99ee-7bd7384d9038",
@@ -2434,9 +4270,17 @@
       "release_date": "2025-12-02",
       "rubric_score": 0.04564315352697095,
       "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
       "presentation_elo": 0,
-      "presentation_ci": null
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
     },
     {
       "id": "66f4ce73-9a9b-4b49-9c6e-bedb9bfdc720",
@@ -2445,20 +4289,36 @@
       "release_date": "2025-12-02",
       "rubric_score": 0.03664921465968586,
       "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
       "presentation_elo": 0,
-      "presentation_ci": null
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
     },
     {
-      "id": "9ee13921-62a4-425a-a22b-df3302198d93",
-      "provider": "NVIDIA",
-      "name": "NVIDIA Nemotron 3 Nano 4B",
-      "release_date": "2026-03-16",
-      "rubric_score": 0.03535353535353535,
+      "id": "5a49ef80-3af5-404b-8ac0-e1b230ae95de",
+      "provider": "Institute of Foundation Models",
+      "name": "K2 Think V2",
+      "release_date": "2025-12-15",
+      "rubric_score": 0.0411946446961895,
       "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
       "presentation_elo": 0,
-      "presentation_ci": null
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
     },
     {
       "id": "9e9fb958-87f5-4835-a761-26102ef25898",
@@ -2467,9 +4327,112 @@
       "release_date": "2026-09-03",
       "rubric_score": 0,
       "analytical_quality_elo": 0,
-      "analytical_quality_ci": null,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
       "presentation_elo": 0,
-      "presentation_ci": null
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "b89c4faf-219e-4171-a1aa-e3bd2fd0a924",
+      "provider": "Upstage",
+      "name": "Solar Pro 3",
+      "release_date": "2026-04-06",
+      "rubric_score": 0.049029622063329927,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "63872e9c-3377-4a6b-b477-7bba244c38e9",
+      "provider": "NVIDIA",
+      "name": "Nemotron 3 Super 120B A12B (Reasoning)",
+      "release_date": "2026-03-11",
+      "rubric_score": 0.006060606060606061,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "76dcf6ef-39ea-4be0-b693-b88da25b4caf",
+      "provider": "NVIDIA",
+      "name": "NVIDIA Nemotron 3 Nano 30B A3B (Reasoning)",
+      "release_date": "2025-12-15",
+      "rubric_score": 0.029471544715447155,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 18.31
+      }
+    },
+    {
+      "id": "9ee13921-62a4-425a-a22b-df3302198d93",
+      "provider": "NVIDIA",
+      "name": "NVIDIA Nemotron 3 Nano 4B",
+      "release_date": "2026-03-16",
+      "rubric_score": 0.03535353535353535,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "0c64b008-20c3-408d-bd68-15136df8cd2c",
+      "provider": "IBM",
+      "name": "Granite 4.2 3B",
+      "release_date": "2026-08-25",
+      "rubric_score": 0.047474747474747475,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
     }
   ]
 }
