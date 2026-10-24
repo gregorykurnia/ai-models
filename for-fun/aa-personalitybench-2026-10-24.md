@@ -70,3 +70,80 @@ Higher means "more of that trait". **Slop is the exception: lower is better.** A
 - **GPT-6 models:** they have the least slop overall (Sol 1, Luna 4, Astra 14) and high Transparency. They're low on Informativeness and Expressiveness, so their answers are plain and sparse.
 - **Muse Spark models:** they're top for Informativeness and Imagination but also have a lot of slop (80–87).
 - **DeepSeek V4.1 Flash:** it's the most organized and opinionated (Organization 100, Conviction 97) but low on Warmth.
+
+## Just for fun: MBTI and Enneagram guesses
+
+These are a playful reading of the scores, not something AA measures. Each model's types come from fixed rules over its index and trait percentiles, so the same scores always give the same type.
+
+**MBTI**
+- **E / I:** E if the average of Warmth, Expressiveness and Humorous is 50 or more.
+- **N / S:** N if Imagination and Metaphorical average at least as high as Pragmatic, Actionable Guidance and Resource-Specific.
+- **F / T:** F if Friendly, Emotionally Intelligent and Sincere average higher than Direct, Evidence-Based and Truthful.
+- **J / P:** J if Structured, Answer First and Bottom-Line Summary average at least as high as Open-Ended.
+
+**Enneagram:** each type scores the average of four traits, and the highest wins. The wing is whichever neighbouring type scores higher.
+
+| Type | Traits averaged |
+|---|---|
+| 1 Reformer | Truthful, Structured, Direct, low Slop |
+| 2 Helper | Friendly, Emotionally Intelligent, Sincere, Sycophantic |
+| 3 Achiever | Answer First, Confident, Actionable Guidance, Scannable |
+| 4 Individualist | Eloquent, Metaphorical, Sincere, Creative |
+| 5 Investigator | Information Dense, Evidence-Based, Resource-Specific, low Friendly |
+| 6 Loyalist | Admits Uncertainty, Disclaims Assumptions, Flags Nuances, low Confident |
+| 7 Enthusiast | Humorous, Creative, Open-Ended, Friendly |
+| 8 Challenger | Direct, Opinionated, Constructive Pushback, Confident |
+| 9 Peacemaker | low Direct, low Opinionated, low Constructive Pushback, Sycophantic |
+
+The "Why" column lists each model's strongest and weakest indexes (not counting Slop).
+
+| Model | MBTI | Enneagram | Why |
+|---|---|---|---|
+| Claude Fable 5.1 (max with fallback) | ENFJ | 4w5 Individualist | Strongest: Expressiveness (100) and Conviction (100); weakest: Organization (54) |
+| Claude Opus 5.5 (max with fallback) | ENTP | 1w2 Reformer | Strongest: Imagination (95) and Informativeness (92); weakest: Conviction (70) |
+| Muse Wonder (max) | ESFP | 7w8 Enthusiast | Strongest: Warmth (100) and Informativeness (95); weakest: Transparency (57) |
+| Claude Sonnet 5.5 (max with fallback) | ENTP | 1w2 Reformer | Strongest: Transparency (100) and Informativeness (85); weakest: Conviction (54) |
+| Muse Spark 1.3 (max) | ESFP | 7w8 Enthusiast | Strongest: Informativeness (100) and Imagination (100); weakest: Transparency (39) |
+| GLM-5.3 (max) | ENFP | 4w5 Individualist | Strongest: Expressiveness (97) and Imagination (92); weakest: Organization (21) |
+| GLM-5.3-Flash | ENFP | 4w5 Individualist | Strongest: Expressiveness (95) and Warmth (85); weakest: Organization (37) |
+| Kimi K3 (max) | ENFP | 4w5 Individualist | Strongest: Expressiveness (92) and Warmth (92); weakest: Organization (34) |
+| Inkling (xhigh) | ENTP | 4w5 Individualist | Strongest: Organization (92) and Expressiveness (77); weakest: Warmth (47) |
+| Claude Haiku 5.5 (max) | ESTP | 1w2 Reformer | Strongest: Expressiveness (80) and Transparency (80); weakest: Organization (39) |
+| DeepSeek V4.1 Flash (max) | ISTJ | 8w7 Challenger | Strongest: Organization (100) and Conviction (97); weakest: Imagination (24) |
+| Mistral Large 4 Preview | ENFJ | 4w3 Individualist | Strongest: Organization (87) and Expressiveness (85); weakest: Transparency (34) |
+| Muse Spark Open (xhigh) | ENFP | 7w6 Enthusiast | Strongest: Imagination (97) and Informativeness (90); weakest: Conviction (24) |
+| DeepSeek V4.1 Flash 1017 (max) | ISTJ | 8w7 Challenger | Strongest: Conviction (95) and Transparency (87); weakest: Warmth (19) |
+| GPT-6 Astra (max) | ENTP | 1w2 Reformer | Strongest: Transparency (95) and Warmth (72); weakest: Informativeness (21) |
+| Gemini 3.8 Flash (high) | ESTJ | 3w4 Achiever | Strongest: Informativeness (82) and Conviction (82); weakest: Transparency (19) |
+| Gemini 4 Argon (high) | ESFJ | 4w3 Individualist | Strongest: Expressiveness (82) and Informativeness (80); weakest: Transparency (16) |
+| GPT-6.1 Sol (max) | ENTP | 1w2 Reformer | Strongest: Transparency (92) and Organization (80); weakest: Informativeness (19) |
+| Beam 1.0 | ISTP | 5w6 Investigator | Strongest: Informativeness (87) and Organization (72); weakest: Warmth (29) |
+| Claude Sonnet 5.5 (medium with fallback) | INTP | 6w7 Loyalist | Strongest: Transparency (85) and Imagination (75); weakest: Expressiveness (39) |
+| Nemotron 3.5 Super VL | ENFJ | 3w4 Achiever | Strongest: Organization (97) and Expressiveness (67); weakest: Conviction (21) |
+| Grok 4.5 (high) | ISTJ | 8w7 Challenger | Strongest: Conviction (87) and Transparency (67); weakest: Warmth (26) |
+| Grok 4.7 (xhigh) | ISTJ | 1w2 Reformer | Strongest: Conviction (85) and Expressiveness (72); weakest: Informativeness (24) |
+| Step 5 Preview | ISFJ | 3w2 Achiever | Strongest: Organization (95) and Conviction (57); weakest: Expressiveness (31) |
+| Grok 4.6 (xhigh) | ISTJ | 8w9 Challenger | Strongest: Conviction (92) and Transparency (77); weakest: Organization (14) |
+| MiniMax-M3 | ENFP | 7w6 Enthusiast | Strongest: Warmth (80) and Imagination (62); weakest: Conviction (19) |
+| Gemini 3.1 Pro Preview | ENFJ | 9w8 Peacemaker | Strongest: Expressiveness (59) and Warmth (57); weakest: Transparency (11) |
+| Qwen3.8 Max (0902) | ISTJ | 9w8 Peacemaker | Strongest: Organization (64) and Imagination (49); weakest: Expressiveness (16) |
+| Muse Glimmer (high) | INFP | 9w1 Peacemaker | Strongest: Imagination (85) and Warmth (64); weakest: Conviction (9) |
+| MiMo-V2.6-Pro | INFP | 7w6 Enthusiast | Strongest: Imagination (70) and Warmth (54); weakest: Informativeness (16) |
+| MiniMax-M3.1-Flash | ISTJ | 1w9 Reformer | Strongest: Organization (75) and Conviction (62); weakest: Warmth (11) |
+| GPT-6 Luna (max) | ISTJ | 1w9 Reformer | Strongest: Transparency (59) and Conviction (47); weakest: Informativeness (14) |
+| K2 Horizon 375B A23B | ISFJ | 9w8 Peacemaker | Strongest: Informativeness (70) and Imagination (47); weakest: Conviction (11) |
+| Qwen3.8 27B (xhigh) | ISFJ | 9w8 Peacemaker | Strongest: Organization (57) and Imagination (34); weakest: Expressiveness (14) |
+| GPT-6 Sol (max) | ISTP | 1w9 Reformer | Strongest: Warmth (49) and Conviction (49); weakest: Organization (11) |
+| GPT-5.4 mini (non-reasoning) | ISTP | 9w1 Peacemaker | Strongest: Organization (62) and Conviction (26); weakest: Informativeness (9) |
+| Nemotron 3 Ultra | ISTJ | 5w6 Investigator | Strongest: Informativeness (75) and Conviction (14); weakest: Warmth (1) |
+| GPT-4o (Nov) | ISFP | 9w1 Peacemaker | Strongest: Warmth (9) and Imagination (9); weakest: Expressiveness (6) |
+| Llama 4 Maverick | ISFP | 9w1 Peacemaker | Strongest: Warmth (6) and Expressiveness (4); weakest: Conviction (1) |
+| GPT-3.5 Turbo | INTJ | 9w1 Peacemaker | Strongest: Warmth (4) and Conviction (4); weakest: Expressiveness (1) |
+
+**Fun patterns**
+- **Claude models:** mostly 1w2 Reformers (Opus, Sonnet, Haiku): truthful, careful and low on slop. Fable 5.1 is the odd one out as an ENFJ 4w5 Individualist, the most expressive and opinionated model tested.
+- **GPT-6 models:** all Reformers too, but the quieter kind. Astra and Sol 6.1 come out as ENTP; Luna and Sol come out as introverted ISTJ/ISTP 1w9s.
+- **DeepSeek and Grok:** mostly ISTJ 8 Challengers. They're structured and blunt, with little warmth.
+- **GLM and Kimi:** ENFP 4w5 Individualists, the expressive, imaginative, loosely organized writers.
+- **Muse models:** the Enthusiasts (7w8 for Wonder and Spark 1.3).
+- **Older models (GPT-4o, Llama 4 Maverick, GPT-3.5 Turbo):** 9w1 Peacemakers. They're agreeable, generic and full of slop.
