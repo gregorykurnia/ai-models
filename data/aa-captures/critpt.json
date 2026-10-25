@@ -1,7 +1,7 @@
 {
  "key": "critpt",
  "source_url": "https://artificialanalysis.ai/evaluations/critpt",
- "captured_at": "2026-10-20",
+ "captured_at": "2026-10-25",
  "selectors": 6,
  "charts": [
   {
@@ -359,6 +359,15 @@
      "logo": "/img/logos/meta.svg"
     },
     {
+     "id": "539ed227-38f4-4bea-a015-117057c14b18",
+     "label": "Ling 3.1 Flash 1019",
+     "tooltipLabel": "Ling 3.1 Flash 1019",
+     "value": 0.26,
+     "displayValue": "26.0%",
+     "url": "/models/ling-3-1-flash-1019",
+     "logo": "/img/logos/inclusionai.jpg"
+    },
+    {
      "id": "8afc250d-b538-45a2-812a-4605f4ffd87e",
      "label": "GPT-5.6 Sol (high)",
      "tooltipLabel": "GPT-5.6 Sol (High)",
@@ -420,6 +429,15 @@
      "displayValue": "24.6%",
      "url": "/models/claude-sonnet-5-5-high",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "label": "Kimi K3.1 Pro",
+     "tooltipLabel": "Kimi K3.1 Pro",
+     "value": 0.245714285714286,
+     "displayValue": "24.6%",
+     "url": "/models/kimi-k3-1-pro",
+     "logo": "/img/logos/kimi.jpg"
     },
     {
      "id": "780a4a85-17ff-4175-a8dd-ebca4823e61b",
@@ -1088,6 +1106,15 @@
      "logo": "/img/logos/nvidia.svg"
     },
     {
+     "id": "8d0cb231-7303-452c-9923-a9620b948475",
+     "label": "Kimi K2.7 Code",
+     "tooltipLabel": "Kimi K2.7 Code",
+     "value": 0.1,
+     "displayValue": "10.0%",
+     "url": "/models/kimi-k2-7-code",
+     "logo": "/img/logos/kimi.jpg"
+    },
+    {
      "id": "ba242e40-83b7-4cd3-a0e0-b56237984914",
      "label": "GPT-5.4 mini (xhigh)",
      "tooltipLabel": "GPT-5.4 mini (Xhigh)",
@@ -1104,15 +1131,6 @@
      "displayValue": "10.0%",
      "url": "/models/deepseek-v4-pro-0424-high",
      "logo": "/img/logos/deepseek.svg"
-    },
-    {
-     "id": "8d0cb231-7303-452c-9923-a9620b948475",
-     "label": "Kimi K2.7 Code",
-     "tooltipLabel": "Kimi K2.7 Code",
-     "value": 0.1,
-     "displayValue": "10.0%",
-     "url": "/models/kimi-k2-7-code",
-     "logo": "/img/logos/kimi.jpg"
     },
     {
      "id": "cc4a20cd-09fe-4962-a430-119c815e85fa",
@@ -1241,6 +1259,15 @@
      "logo": "/img/logos/thinking-machines.svg"
     },
     {
+     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
+     "label": "Kimi K2.6",
+     "tooltipLabel": "Kimi K2.6 (Reasoning)",
+     "value": 0.08,
+     "displayValue": "8.0%",
+     "url": "/models/kimi-k2-6",
+     "logo": "/img/logos/kimi.jpg"
+    },
+    {
      "id": "c77cfe51-f4a0-4692-9dee-5061ef667f23",
      "label": "GPT-5.5 (low)",
      "tooltipLabel": "GPT-5.5 (Low)",
@@ -1257,15 +1284,6 @@
      "displayValue": "8.0%",
      "url": "/models/grok-4-3",
      "logo": "/img/logos/spacexai.svg"
-    },
-    {
-     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
-     "label": "Kimi K2.6",
-     "tooltipLabel": "Kimi K2.6 (Reasoning)",
-     "value": 0.08,
-     "displayValue": "8.0%",
-     "url": "/models/kimi-k2-6",
-     "logo": "/img/logos/kimi.jpg"
     },
     {
      "id": "84e3f11e-d659-4941-8988-1dbfabbaf538",
@@ -1592,15 +1610,6 @@
      "logo": "/img/logos/xiaomi.svg"
     },
     {
-     "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
-     "label": "MiniMax-M3",
-     "tooltipLabel": "MiniMax-M3",
-     "value": 0.0371428571428571,
-     "displayValue": "3.7%",
-     "url": "/models/minimax-m3",
-     "logo": "/img/logos/minimax.svg"
-    },
-    {
      "id": "eb4ba465-3fcd-4065-9fe2-e8225e7b2c6c",
      "label": "Ring-2.6-1T",
      "tooltipLabel": "Ring-2.6-1T",
@@ -1608,6 +1617,15 @@
      "displayValue": "3.7%",
      "url": "/models/ring-2-6-1t",
      "logo": "/img/logos/inclusionai.jpg"
+    },
+    {
+     "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
+     "label": "MiniMax-M3",
+     "tooltipLabel": "MiniMax-M3",
+     "value": 0.0371428571428571,
+     "displayValue": "3.7%",
+     "url": "/models/minimax-m3",
+     "logo": "/img/logos/minimax.svg"
     },
     {
      "id": "6000692c-f9a6-47f8-a5c0-e0874ac488bb",
@@ -1637,15 +1655,6 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
-     "id": "e8aa417f-18fe-46b0-ba62-ef99785a9585",
-     "label": "GLM-5.2 (non-reasoning)",
-     "tooltipLabel": "GLM-5.2 (Non-reasoning)",
-     "value": 0.0314285714285714,
-     "displayValue": "3.1%",
-     "url": "/models/glm-5-2-non-reasoning",
-     "logo": "/img/logos/zai.svg"
-    },
-    {
      "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
      "label": "Kimi K3 (low)",
      "tooltipLabel": "Kimi K3 (Low)",
@@ -1662,6 +1671,15 @@
      "displayValue": "3.1%",
      "url": "/models/kimi-k2-5",
      "logo": "/img/logos/kimi.jpg"
+    },
+    {
+     "id": "e8aa417f-18fe-46b0-ba62-ef99785a9585",
+     "label": "GLM-5.2 (non-reasoning)",
+     "tooltipLabel": "GLM-5.2 (Non-reasoning)",
+     "value": 0.0314285714285714,
+     "displayValue": "3.1%",
+     "url": "/models/glm-5-2-non-reasoning",
+     "logo": "/img/logos/zai.svg"
     },
     {
      "id": "5b52def2-ac9b-4465-ad80-91ea8079e253",
@@ -1754,6 +1772,15 @@
      "logo": "/img/logos/meta.svg"
     },
     {
+     "id": "bddebfd3-0a8d-47f5-b722-bc4c2ca5a5dc",
+     "label": "Kimi K2 Thinking",
+     "tooltipLabel": "Kimi K2 Thinking",
+     "value": 0.0257142857142857,
+     "displayValue": "2.6%",
+     "url": "/models/kimi-k2-thinking",
+     "logo": "/img/logos/kimi.jpg"
+    },
+    {
      "id": "e34ffffb-d8e1-4f5c-a2c7-3ca19c235eeb",
      "label": "GPT-5.5 Instant (May 2026)",
      "tooltipLabel": "GPT-5.5 Instant (May 2026)",
@@ -1788,15 +1815,6 @@
      "displayValue": "2.6%",
      "url": "/models/gemini-2-5-pro",
      "logo": "/img/logos/google.svg"
-    },
-    {
-     "id": "bddebfd3-0a8d-47f5-b722-bc4c2ca5a5dc",
-     "label": "Kimi K2 Thinking",
-     "tooltipLabel": "Kimi K2 Thinking",
-     "value": 0.0257142857142857,
-     "displayValue": "2.6%",
-     "url": "/models/kimi-k2-thinking",
-     "logo": "/img/logos/kimi.jpg"
     },
     {
      "id": "6d6fa1c9-b833-40b2-8a58-fa810e24a84e",
@@ -1943,6 +1961,15 @@
      "logo": "/img/logos/alibaba.svg"
     },
     {
+     "id": "0fc6308e-fbd2-42d3-a216-06da3c43e34e",
+     "label": "Kimi K2.6 (non-reasoning)",
+     "tooltipLabel": "Kimi K2.6 (Non-reasoning)",
+     "value": 0.0142857142857143,
+     "displayValue": "1.4%",
+     "url": "/models/kimi-k2-6-non-reasoning",
+     "logo": "/img/logos/kimi.jpg"
+    },
+    {
      "id": "6f1a7562-6e96-46ac-af4f-6ba5a7a3da96",
      "label": "GPT-5.5 (non-reasoning)",
      "tooltipLabel": "GPT-5.5 (Non-reasoning)",
@@ -2031,15 +2058,6 @@
      "displayValue": "1.4%",
      "url": "/models/deepseek-r1",
      "logo": "/img/logos/deepseek.svg"
-    },
-    {
-     "id": "0fc6308e-fbd2-42d3-a216-06da3c43e34e",
-     "label": "Kimi K2.6 (non-reasoning)",
-     "tooltipLabel": "Kimi K2.6 (Non-reasoning)",
-     "value": 0.0142857142857143,
-     "displayValue": "1.4%",
-     "url": "/models/kimi-k2-6-non-reasoning",
-     "logo": "/img/logos/kimi.jpg"
     },
     {
      "id": "62ea3198-9866-4d9f-8406-a79ee78c7164",
@@ -2366,6 +2384,15 @@
      "logo": "/img/logos/inceptionlabs.svg"
     },
     {
+     "id": "ba04694d-326a-4a6a-8f1b-46316f872a7f",
+     "label": "Kimi K2.5 (non-reasoning)",
+     "tooltipLabel": "Kimi K2.5 (Non-reasoning)",
+     "value": 0.00571428571428571,
+     "displayValue": "0.6%",
+     "url": "/models/kimi-k2-5-non-reasoning",
+     "logo": "/img/logos/kimi.jpg"
+    },
+    {
      "id": "493f6a1e-7717-4e98-9d6f-548b92c4702d",
      "label": "GPT-5.4 (non-reasoning)",
      "tooltipLabel": "GPT-5.4 (Non-reasoning)",
@@ -2465,24 +2492,6 @@
      "logo": "/img/logos/zai.svg"
     },
     {
-     "id": "ba04694d-326a-4a6a-8f1b-46316f872a7f",
-     "label": "Kimi K2.5 (non-reasoning)",
-     "tooltipLabel": "Kimi K2.5 (Non-reasoning)",
-     "value": 0.00571428571428571,
-     "displayValue": "0.6%",
-     "url": "/models/kimi-k2-5-non-reasoning",
-     "logo": "/img/logos/kimi.jpg"
-    },
-    {
-     "id": "4bbceacb-cf47-464b-b60f-e1d1fe016d67",
-     "label": "MiniMax-M2.7",
-     "tooltipLabel": "MiniMax-M2.7",
-     "value": 0.00571428571428571,
-     "displayValue": "0.6%",
-     "url": "/models/minimax-m2-7",
-     "logo": "/img/logos/minimax.svg"
-    },
-    {
      "id": "a29e66d6-1c3c-456a-8770-59ee3845b35d",
      "label": "Ring-1T",
      "tooltipLabel": "Ring-1T",
@@ -2499,6 +2508,15 @@
      "displayValue": "0.6%",
      "url": "/models/ling-1t",
      "logo": "/img/logos/inclusionai.jpg"
+    },
+    {
+     "id": "4bbceacb-cf47-464b-b60f-e1d1fe016d67",
+     "label": "MiniMax-M2.7",
+     "tooltipLabel": "MiniMax-M2.7",
+     "value": 0.00571428571428571,
+     "displayValue": "0.6%",
+     "url": "/models/minimax-m2-7",
+     "logo": "/img/logos/minimax.svg"
     },
     {
      "id": "9815da7d-70f4-44d6-b539-9ffef0faa152",
@@ -2708,15 +2726,6 @@
      "logo": "/img/logos/zai.svg"
     },
     {
-     "id": "272ff333-442f-4169-a804-ac9177bc99d7",
-     "label": "MiniMax-M2.1",
-     "tooltipLabel": "MiniMax-M2.1",
-     "value": 0.00285714285714286,
-     "displayValue": "0.3%",
-     "url": "/models/minimax-m2-1",
-     "logo": "/img/logos/minimax.svg"
-    },
-    {
      "id": "2e46d2fd-eb2b-42b9-9fe4-be50630fe870",
      "label": "Ling-2.6-1T",
      "tooltipLabel": "Ling-2.6-1T",
@@ -2724,6 +2733,15 @@
      "displayValue": "0.3%",
      "url": "/models/ling-2-6-1t",
      "logo": "/img/logos/inclusionai.jpg"
+    },
+    {
+     "id": "272ff333-442f-4169-a804-ac9177bc99d7",
+     "label": "MiniMax-M2.1",
+     "tooltipLabel": "MiniMax-M2.1",
+     "value": 0.00285714285714286,
+     "displayValue": "0.3%",
+     "url": "/models/minimax-m2-1",
+     "logo": "/img/logos/minimax.svg"
     },
     {
      "id": "864da2a5-156c-45fd-873c-8923be91914f",
@@ -3084,6 +3102,24 @@
      "displayValue": "0.0%",
      "url": "/models/llama-3-instruct-8b",
      "logo": "/img/logos/meta.svg"
+    },
+    {
+     "id": "66445f84-b2e3-4202-afdc-92ba0f0e5f36",
+     "label": "Kimi K2 0905",
+     "tooltipLabel": "Kimi K2 0905",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/kimi-k2-0905",
+     "logo": "/img/logos/kimi.jpg"
+    },
+    {
+     "id": "441734a9-8901-4850-9bae-b474c370291f",
+     "label": "Kimi K2",
+     "tooltipLabel": "Kimi K2",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/kimi-k2",
+     "logo": "/img/logos/kimi.jpg"
     },
     {
      "id": "c4169d75-9d24-4794-a9c3-69e1fe364de5",
@@ -4094,42 +4130,6 @@
      "logo": "/img/logos/zai.svg"
     },
     {
-     "id": "acad0665-9457-4531-abd5-b59efd7a89ea",
-     "label": "Step3 VL 10B",
-     "tooltipLabel": "Step3 VL 10B",
-     "value": 0,
-     "displayValue": "0.0%",
-     "url": "/models/step-3-vl-10b",
-     "logo": "/img/logos/stepfun.svg"
-    },
-    {
-     "id": "66445f84-b2e3-4202-afdc-92ba0f0e5f36",
-     "label": "Kimi K2 0905",
-     "tooltipLabel": "Kimi K2 0905",
-     "value": 0,
-     "displayValue": "0.0%",
-     "url": "/models/kimi-k2-0905",
-     "logo": "/img/logos/kimi.jpg"
-    },
-    {
-     "id": "441734a9-8901-4850-9bae-b474c370291f",
-     "label": "Kimi K2",
-     "tooltipLabel": "Kimi K2",
-     "value": 0,
-     "displayValue": "0.0%",
-     "url": "/models/kimi-k2",
-     "logo": "/img/logos/kimi.jpg"
-    },
-    {
-     "id": "9ca246a7-cf13-42c9-9182-5b5ad6b79026",
-     "label": "MiniMax M1 80k",
-     "tooltipLabel": "MiniMax M1 80k",
-     "value": 0,
-     "displayValue": "0.0%",
-     "url": "/models/minimax-m1-80k",
-     "logo": "/img/logos/minimax.svg"
-    },
-    {
      "id": "7eaf926c-5f39-4e58-ae50-c38b5fc630fc",
      "label": "Ling 3.0 Tiny",
      "tooltipLabel": "Ling 3.0 Tiny",
@@ -4164,6 +4164,24 @@
      "displayValue": "0.0%",
      "url": "/models/ling-mini-2-0",
      "logo": "/img/logos/inclusionai.jpg"
+    },
+    {
+     "id": "acad0665-9457-4531-abd5-b59efd7a89ea",
+     "label": "Step3 VL 10B",
+     "tooltipLabel": "Step3 VL 10B",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/step-3-vl-10b",
+     "logo": "/img/logos/stepfun.svg"
+    },
+    {
+     "id": "9ca246a7-cf13-42c9-9182-5b5ad6b79026",
+     "label": "MiniMax M1 80k",
+     "tooltipLabel": "MiniMax M1 80k",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/minimax-m1-80k",
+     "logo": "/img/logos/minimax.svg"
     },
     {
      "id": "dd059b25-d82a-4ead-82a4-4adceaaec48b",
@@ -5713,7 +5731,7 @@
      "name": "Llama 3.3 Instruct 70B",
      "shortName": "Llama 3.3 70B",
      "creatorName": "Meta",
-     "costPerTask": 0.003535909428571428
+     "costPerTask": 0.0033478405714285715
     },
     {
      "id": "739684ba-0f63-4e2a-b4ee-30741c9e9320",
@@ -5762,6 +5780,94 @@
      "shortName": "Llama 3 8B",
      "creatorName": "Meta",
      "costPerTask": 0.00037784971428571427
+    },
+    {
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "slug": "kimi-k3-1-pro",
+     "name": "Kimi K3.1 Pro",
+     "shortName": "Kimi K3.1 Pro",
+     "creatorName": "Kimi",
+     "costPerTask": 0.6121963714285714
+    },
+    {
+     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
+     "slug": "kimi-k3",
+     "name": "Kimi K3 (Max)",
+     "shortName": "Kimi K3 (max)",
+     "creatorName": "Kimi",
+     "costPerTask": 0.9018507428571428
+    },
+    {
+     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
+     "slug": "kimi-k3-low",
+     "name": "Kimi K3 (Low)",
+     "shortName": "Kimi K3 (low)",
+     "creatorName": "Kimi",
+     "costPerTask": 0.05026495714285715
+    },
+    {
+     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
+     "slug": "kimi-k2-6",
+     "name": "Kimi K2.6 (Reasoning)",
+     "shortName": "Kimi K2.6",
+     "creatorName": "Kimi",
+     "costPerTask": 0.7331727414285714
+    },
+    {
+     "id": "8d0cb231-7303-452c-9923-a9620b948475",
+     "slug": "kimi-k2-7-code",
+     "name": "Kimi K2.7 Code",
+     "shortName": "Kimi K2.7 Code",
+     "creatorName": "Kimi",
+     "costPerTask": 0.2563038357142857
+    },
+    {
+     "id": "0fc6308e-fbd2-42d3-a216-06da3c43e34e",
+     "slug": "kimi-k2-6-non-reasoning",
+     "name": "Kimi K2.6 (Non-reasoning)",
+     "shortName": "Kimi K2.6 (non-reasoning)",
+     "creatorName": "Kimi",
+     "costPerTask": 0.07642736357142856
+    },
+    {
+     "id": "a550ffca-f89e-4381-ade6-a85dc6a1fb4c",
+     "slug": "kimi-k2-5",
+     "name": "Kimi K2.5 (Reasoning)",
+     "shortName": "Kimi K2.5",
+     "creatorName": "Kimi",
+     "costPerTask": 0.12211370571428574
+    },
+    {
+     "id": "bddebfd3-0a8d-47f5-b722-bc4c2ca5a5dc",
+     "slug": "kimi-k2-thinking",
+     "name": "Kimi K2 Thinking",
+     "shortName": "Kimi K2 Thinking",
+     "creatorName": "Kimi",
+     "costPerTask": 0.12876010142857144
+    },
+    {
+     "id": "ba04694d-326a-4a6a-8f1b-46316f872a7f",
+     "slug": "kimi-k2-5-non-reasoning",
+     "name": "Kimi K2.5 (Non-reasoning)",
+     "shortName": "Kimi K2.5 (non-reasoning)",
+     "creatorName": "Kimi",
+     "costPerTask": 0.03052088571428571
+    },
+    {
+     "id": "66445f84-b2e3-4202-afdc-92ba0f0e5f36",
+     "slug": "kimi-k2-0905",
+     "name": "Kimi K2 0905",
+     "shortName": "Kimi K2 0905",
+     "creatorName": "Kimi",
+     "costPerTask": 0.013336052857142854
+    },
+    {
+     "id": "441734a9-8901-4850-9bae-b474c370291f",
+     "slug": "kimi-k2",
+     "name": "Kimi K2",
+     "shortName": "Kimi K2",
+     "creatorName": "Kimi",
+     "costPerTask": 0.007402034571428571
     },
     {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
@@ -6377,7 +6483,7 @@
      "name": "gpt-oss-120b (High)",
      "shortName": "gpt-oss-120b (high)",
      "creatorName": "OpenAI",
-     "costPerTask": 0.018255815642857144
+     "costPerTask": 0.018508392857142855
     },
     {
      "id": "c3738fb0-3408-4430-a699-760ae4b70c93",
@@ -6409,7 +6515,7 @@
      "name": "gpt-oss-120b (Low)",
      "shortName": "gpt-oss-120b (low)",
      "creatorName": "OpenAI",
-     "costPerTask": 0.0021686631428571427
+     "costPerTask": 0.002275230857142857
     },
     {
      "id": "9f7c7566-a704-49a2-a383-cb3181da33a4",
@@ -6425,7 +6531,7 @@
      "name": "gpt-oss-20b (Low)",
      "shortName": "gpt-oss-20b (low)",
      "creatorName": "OpenAI",
-     "costPerTask": 0.0006942274285714286
+     "costPerTask": 0.0007914217142857143
     },
     {
      "id": "bc26bfdb-4923-4442-a6ca-e77392923581",
@@ -6441,7 +6547,7 @@
      "name": "gpt-oss-20b (High)",
      "shortName": "gpt-oss-20b (high)",
      "creatorName": "OpenAI",
-     "costPerTask": 0.008285797392857144
+     "costPerTask": 0.008447621857142857
     },
     {
      "id": "c1045dc0-4fd3-4adb-9548-18763e0d051f",
@@ -6508,28 +6614,12 @@
      "costPerTask": 0.10172202857142858
     },
     {
-     "id": "eb0d4272-7204-42b9-b875-8866fed58548",
-     "slug": "gemini-3-7-flash-medium",
-     "name": "Gemini 3.7 Flash (Medium)",
-     "shortName": "Gemini 3.7 Flash (medium)",
-     "creatorName": "Google",
-     "costPerTask": 0.039175692857142855
-    },
-    {
      "id": "b2331108-72ed-415a-82d1-188633875bbc",
      "slug": "gemini-3-7-flash",
      "name": "Gemini 3.7 Flash (High)",
      "shortName": "Gemini 3.7 Flash (high)",
      "creatorName": "Google",
      "costPerTask": 0.1147868357142857
-    },
-    {
-     "id": "ddfdaf64-3f8e-40a6-a492-608ee83a1351",
-     "slug": "gemini-3-7-flash-low",
-     "name": "Gemini 3.7 Flash (Low)",
-     "shortName": "Gemini 3.7 Flash (low)",
-     "creatorName": "Google",
-     "costPerTask": 0.022999950000000005
     },
     {
      "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
@@ -6625,7 +6715,7 @@
      "name": "Gemma 4 26B A4B (Reasoning)",
      "shortName": "Gemma 4 26B A4B",
      "creatorName": "Google",
-     "costPerTask": 0.022681173571428574
+     "costPerTask": 0.020858315714285716
     },
     {
      "id": "27202e5f-c82d-4710-92e9-4317877d4883",
@@ -6673,7 +6763,7 @@
      "name": "Gemma 4 26B A4B (Non-reasoning)",
      "shortName": "Gemma 4 26B A4B (non-reasoning)",
      "creatorName": "Google",
-     "costPerTask": 0.005842619
+     "costPerTask": 0.005806678785714285
     },
     {
      "id": "219ed587-60c5-4a48-9517-8480e08d0ca1",
@@ -6985,7 +7075,7 @@
      "name": "MiMo-V2.5-Pro (Reasoning)",
      "shortName": "MiMo-V2.5-Pro",
      "creatorName": "Xiaomi",
-     "costPerTask": 0.05725586207142857
+     "costPerTask": 0.06569167853571428
     },
     {
      "id": "22d09131-343b-4adf-8760-533e20a2155f",
@@ -6993,7 +7083,7 @@
      "name": "MiMo-V2.5",
      "shortName": "MiMo-V2.5",
      "creatorName": "Xiaomi",
-     "costPerTask": 0.012249202
+     "costPerTask": 0.0116367419
     },
     {
      "id": "be185709-ddb4-4268-9597-856464359b25",
@@ -7009,7 +7099,7 @@
      "name": "MiMo-V2.5-Pro (Non-reasoning)",
      "shortName": "MiMo-V2.5-Pro (non-reasoning)",
      "creatorName": "Xiaomi",
-     "costPerTask": 0.012172679571428572
+     "costPerTask": 0.014365989857142858
     },
     {
      "id": "b112af07-3bd5-4647-b09f-b23204361bb2",
@@ -7241,7 +7331,7 @@
      "name": "Qwen3 235B A22B 2507 Instruct",
      "shortName": "Qwen3 235B 2507",
      "creatorName": "Alibaba",
-     "costPerTask": 0.011346176285714285
+     "costPerTask": 0.010830441000000001
     },
     {
      "id": "093883ed-f5fc-443b-8e18-afbfb166699e",
@@ -7249,15 +7339,7 @@
      "name": "Qwen3 Coder 480B A35B Instruct",
      "shortName": "Qwen3 Coder 480B",
      "creatorName": "Alibaba",
-     "costPerTask": 0.004839775714285715
-    },
-    {
-     "id": "c8a79180-7d16-4474-8701-9a77c0baa56a",
-     "slug": "qwen3-next-80b-a3b-reasoning",
-     "name": "Qwen3 Next 80B A3B (Reasoning)",
-     "shortName": "Qwen3 Next 80B A3B",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.029874998571428567
+     "costPerTask": 0.004311748928571429
     },
     {
      "id": "2d28a13a-096e-475a-beb8-26bbd1c7d51c",
@@ -7284,20 +7366,12 @@
      "costPerTask": 0.014168072428571427
     },
     {
-     "id": "5e0164b3-d902-4bcb-a1b2-83b4f4cd6143",
-     "slug": "qwen3-30b-a3b-2507-reasoning",
-     "name": "Qwen3 30B A3B 2507 (Reasoning)",
-     "shortName": "Qwen3 30B A3B 2507",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.03069434457142857
-    },
-    {
      "id": "2698f6c6-e436-47ce-a583-dbc25596c571",
      "slug": "qwen3-next-80b-a3b-instruct",
      "name": "Qwen3 Next 80B A3B Instruct",
      "shortName": "Qwen3 Next 80B A3B",
      "creatorName": "Alibaba",
-     "costPerTask": 0.010948889999999998
+     "costPerTask": 0.010269394285714285
     },
     {
      "id": "da9fe224-8af3-46d7-a8c4-6220779c3f35",
@@ -7305,7 +7379,7 @@
      "name": "Qwen3 Coder 30B A3B Instruct",
      "shortName": "Qwen3 Coder 30B A3B",
      "creatorName": "Alibaba",
-     "costPerTask": 0.011886055736571428
+     "costPerTask": 0.012642983214285716
     },
     {
      "id": "ce3d286e-093d-413d-a81a-0270309f039e",
@@ -7361,7 +7435,7 @@
      "name": "Qwen3 30B A3B 2507 Instruct",
      "shortName": "Qwen3 30B A3B 2507 (non-reasoning)",
      "creatorName": "Alibaba",
-     "costPerTask": 0.006450254285714286
+     "costPerTask": 0.004252531428571428
     },
     {
      "id": "b00ecd62-a53f-4aed-b833-3e9d6b0170ba",
@@ -7425,7 +7499,7 @@
      "name": "DeepSeek V4.1 Flash (Max)",
      "shortName": "DeepSeek V4.1 Flash (max)",
      "creatorName": "DeepSeek",
-     "costPerTask": 0.13483931142857145
+     "costPerTask": 0.13482447528571428
     },
     {
      "id": "83173329-c09a-41f1-a028-a282a5f908d7",
@@ -7585,7 +7659,7 @@
      "name": "DeepSeek R1 0528 (May '25)",
      "shortName": "DeepSeek R1 0528",
      "creatorName": "DeepSeek",
-     "costPerTask": 0.07322069357142856
+     "costPerTask": 0.06950275785714286
     },
     {
      "id": "0e34f05c-387e-4968-be15-ccec4a55d8c1",
@@ -7689,7 +7763,7 @@
      "name": "GLM-4.7 (Reasoning)",
      "shortName": "GLM-4.7",
      "creatorName": "Z AI",
-     "costPerTask": 0.10154464571428573
+     "costPerTask": 0.09670580250000002
     },
     {
      "id": "f164b41f-44c5-4675-bca3-fea1db4bd9ae",
@@ -7713,7 +7787,7 @@
      "name": "GLM-4.7 (Non-reasoning)",
      "shortName": "GLM-4.7 (non-reasoning)",
      "creatorName": "Z AI",
-     "costPerTask": 0.028980171428571427
+     "costPerTask": 0.027146145
     },
     {
      "id": "946e7aab-db1c-4c3f-b0b3-7720d0cff187",
@@ -7780,6 +7854,62 @@
      "costPerTask": 0.0048880799999999995
     },
     {
+     "id": "539ed227-38f4-4bea-a015-117057c14b18",
+     "slug": "ling-3-1-flash-1019",
+     "name": "Ling 3.1 Flash 1019",
+     "shortName": "Ling 3.1 Flash 1019",
+     "creatorName": "InclusionAI",
+     "costPerTask": 0.10341382714285714
+    },
+    {
+     "id": "a6043b9b-628a-4a76-a021-2834e0627d05",
+     "slug": "ling-3-1-flash",
+     "name": "Ling 3.1 Flash",
+     "shortName": "Ling 3.1 Flash",
+     "creatorName": "InclusionAI",
+     "costPerTask": 0.14572689428571428
+    },
+    {
+     "id": "e33dc369-ae81-40e0-8c4e-28b002d02197",
+     "slug": "ling-3-0-flash",
+     "name": "Ling 3.0 Flash",
+     "shortName": "Ling 3.0 Flash",
+     "creatorName": "InclusionAI",
+     "costPerTask": 0.03539447142857143
+    },
+    {
+     "id": "2e46d2fd-eb2b-42b9-9fe4-be50630fe870",
+     "slug": "ling-2-6-1t",
+     "name": "Ling-2.6-1T",
+     "shortName": "Ling-2.6-1T",
+     "creatorName": "InclusionAI",
+     "costPerTask": 0.027328812857142854
+    },
+    {
+     "id": "eb4ba465-3fcd-4065-9fe2-e8225e7b2c6c",
+     "slug": "ring-2-6-1t",
+     "name": "Ring-2.6-1T",
+     "shortName": "Ring-2.6-1T",
+     "creatorName": "InclusionAI",
+     "costPerTask": 0.27925967714285715
+    },
+    {
+     "id": "7eaf926c-5f39-4e58-ae50-c38b5fc630fc",
+     "slug": "ling-3-0-tiny",
+     "name": "Ling 3.0 Tiny",
+     "shortName": "Ling 3.0 Tiny",
+     "creatorName": "InclusionAI",
+     "costPerTask": 0
+    },
+    {
+     "id": "882a5da3-94ca-4602-8693-c45970df17e2",
+     "slug": "ling-flash-2-0",
+     "name": "Ling-flash-2.0",
+     "shortName": "Ling-flash-2.0",
+     "creatorName": "InclusionAI",
+     "costPerTask": 0.009321342428571428
+    },
+    {
      "id": "094ea3e3-ce41-419e-8bd1-723389663158",
      "slug": "step-5",
      "name": "Step 5 Preview",
@@ -7810,86 +7940,6 @@
      "shortName": "Step 3.5 Flash",
      "creatorName": "StepFun",
      "costPerTask": 0.03877103857142857
-    },
-    {
-     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
-     "slug": "kimi-k3",
-     "name": "Kimi K3 (Max)",
-     "shortName": "Kimi K3 (max)",
-     "creatorName": "Kimi",
-     "costPerTask": 0.9018507428571428
-    },
-    {
-     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
-     "slug": "kimi-k3-low",
-     "name": "Kimi K3 (Low)",
-     "shortName": "Kimi K3 (low)",
-     "creatorName": "Kimi",
-     "costPerTask": 0.05026495714285715
-    },
-    {
-     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
-     "slug": "kimi-k2-6",
-     "name": "Kimi K2.6 (Reasoning)",
-     "shortName": "Kimi K2.6",
-     "creatorName": "Kimi",
-     "costPerTask": 0.7331727414285714
-    },
-    {
-     "id": "8d0cb231-7303-452c-9923-a9620b948475",
-     "slug": "kimi-k2-7-code",
-     "name": "Kimi K2.7 Code",
-     "shortName": "Kimi K2.7 Code",
-     "creatorName": "Kimi",
-     "costPerTask": 0.2563038357142857
-    },
-    {
-     "id": "0fc6308e-fbd2-42d3-a216-06da3c43e34e",
-     "slug": "kimi-k2-6-non-reasoning",
-     "name": "Kimi K2.6 (Non-reasoning)",
-     "shortName": "Kimi K2.6 (non-reasoning)",
-     "creatorName": "Kimi",
-     "costPerTask": 0.07642736357142856
-    },
-    {
-     "id": "a550ffca-f89e-4381-ade6-a85dc6a1fb4c",
-     "slug": "kimi-k2-5",
-     "name": "Kimi K2.5 (Reasoning)",
-     "shortName": "Kimi K2.5",
-     "creatorName": "Kimi",
-     "costPerTask": 0.11222313785714286
-    },
-    {
-     "id": "bddebfd3-0a8d-47f5-b722-bc4c2ca5a5dc",
-     "slug": "kimi-k2-thinking",
-     "name": "Kimi K2 Thinking",
-     "shortName": "Kimi K2 Thinking",
-     "creatorName": "Kimi",
-     "costPerTask": 0.12876010142857144
-    },
-    {
-     "id": "ba04694d-326a-4a6a-8f1b-46316f872a7f",
-     "slug": "kimi-k2-5-non-reasoning",
-     "name": "Kimi K2.5 (Non-reasoning)",
-     "shortName": "Kimi K2.5 (non-reasoning)",
-     "creatorName": "Kimi",
-     "costPerTask": 0.03052088571428571
-    },
-    {
-     "id": "66445f84-b2e3-4202-afdc-92ba0f0e5f36",
-     "slug": "kimi-k2-0905",
-     "name": "Kimi K2 0905",
-     "shortName": "Kimi K2 0905",
-     "creatorName": "Kimi",
-     "costPerTask": 0.013336052857142854
-    },
-    {
-     "id": "441734a9-8901-4850-9bae-b474c370291f",
-     "slug": "kimi-k2",
-     "name": "Kimi K2",
-     "shortName": "Kimi K2",
-     "creatorName": "Kimi",
-     "costPerTask": 0.007402034571428571
     },
     {
      "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
@@ -7946,62 +7996,6 @@
      "shortName": "MiniMax M1 80k",
      "creatorName": "MiniMax",
      "costPerTask": 0.04343718500000001
-    },
-    {
-     "id": "a6043b9b-628a-4a76-a021-2834e0627d05",
-     "slug": "ling-3-1-flash",
-     "name": "Ling 3.1 Flash",
-     "shortName": "Ling 3.1 Flash",
-     "creatorName": "InclusionAI",
-     "costPerTask": 0.14572689428571428
-    },
-    {
-     "id": "6d6fa1c9-b833-40b2-8a58-fa810e24a84e",
-     "slug": "ling-3-0-flash-fin",
-     "name": "Ling-3.0-flash-Fin",
-     "shortName": "Ling-3.0-flash-Fin",
-     "creatorName": "InclusionAI",
-     "costPerTask": 0.04062684935714286
-    },
-    {
-     "id": "e33dc369-ae81-40e0-8c4e-28b002d02197",
-     "slug": "ling-3-0-flash",
-     "name": "Ling 3.0 Flash",
-     "shortName": "Ling 3.0 Flash",
-     "creatorName": "InclusionAI",
-     "costPerTask": 0.03539447142857143
-    },
-    {
-     "id": "2e46d2fd-eb2b-42b9-9fe4-be50630fe870",
-     "slug": "ling-2-6-1t",
-     "name": "Ling-2.6-1T",
-     "shortName": "Ling-2.6-1T",
-     "creatorName": "InclusionAI",
-     "costPerTask": 0.027328812857142854
-    },
-    {
-     "id": "eb4ba465-3fcd-4065-9fe2-e8225e7b2c6c",
-     "slug": "ring-2-6-1t",
-     "name": "Ring-2.6-1T",
-     "shortName": "Ring-2.6-1T",
-     "creatorName": "InclusionAI",
-     "costPerTask": 0.27925967714285715
-    },
-    {
-     "id": "7eaf926c-5f39-4e58-ae50-c38b5fc630fc",
-     "slug": "ling-3-0-tiny",
-     "name": "Ling 3.0 Tiny",
-     "shortName": "Ling 3.0 Tiny",
-     "creatorName": "InclusionAI",
-     "costPerTask": 0
-    },
-    {
-     "id": "882a5da3-94ca-4602-8693-c45970df17e2",
-     "slug": "ling-flash-2-0",
-     "name": "Ling-flash-2.0",
-     "shortName": "Ling-flash-2.0",
-     "creatorName": "InclusionAI",
-     "costPerTask": 0.009321342428571428
     },
     {
      "id": "34fc646a-0174-470e-9e62-d8df452210b3",
@@ -8129,7 +8123,7 @@
      "name": "Beam 1.0",
      "shortName": "Beam 1.0",
      "creatorName": "Reflection",
-     "costPerTask": 0.15806256999999999
+     "costPerTask": 0.09032146857142857
     },
     {
      "id": "f9739750-6d42-450f-ba1e-2f76c869b4fe",
@@ -8137,7 +8131,7 @@
      "name": "Quasar 438B (Max, Based on GLM-5.2)",
      "shortName": "Quasar 438B (max)",
      "creatorName": "Multiverse Computing",
-     "costPerTask": 0.35755140857142853
+     "costPerTask": 0.06555109157142858
     },
     {
      "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
@@ -8201,7 +8195,7 @@
      "name": "Nemotron 3 Nano Omni 30B A3B Reasoning",
      "shortName": "Nemotron 3 Nano Omni 30B A3B",
      "creatorName": "NVIDIA",
-     "costPerTask": 0.01045908857142857
+     "costPerTask": 0.015719986357142855
     },
     {
      "id": "76dcf6ef-39ea-4be0-b693-b88da25b4caf",
@@ -8708,13 +8702,6 @@
      "logo": "/img/logos/meta.svg"
     },
     {
-     "id": "16149b9c-a1e9-4669-a5cb-ff3c00d78f89",
-     "label": "gpt-oss-20b (low)",
-     "tooltipLabel": "gpt-oss-20b (Low)",
-     "url": "/models/gpt-oss-20b-low",
-     "logo": "/img/logos/openai.svg"
-    },
-    {
      "id": "43da3718-3d6e-40dd-901a-05664179ff7f",
      "label": "Mistral Small 3.2",
      "tooltipLabel": "Mistral Small 3.2",
@@ -8726,6 +8713,13 @@
      "label": "GPT-6 Luna (non-reasoning)",
      "tooltipLabel": "GPT-6 Luna (Non-reasoning)",
      "url": "/models/gpt-6-luna-non-reasoning",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "16149b9c-a1e9-4669-a5cb-ff3c00d78f89",
+     "label": "gpt-oss-20b (low)",
+     "tooltipLabel": "gpt-oss-20b (Low)",
+     "url": "/models/gpt-oss-20b-low",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -8960,6 +8954,13 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "976cc8ad-7904-4056-83c5-960181f47d5f",
+     "label": "Llama 3.3 70B",
+     "tooltipLabel": "Llama 3.3 Instruct 70B",
+     "url": "/models/llama-3-3-instruct-70b",
+     "logo": "/img/logos/meta.svg"
+    },
+    {
      "id": "5fb47ff6-a30e-4c2c-96f2-55e95a13390f",
      "label": "Llama 3.2 11B (Vision)",
      "tooltipLabel": "Llama 3.2 Instruct 11B (Vision)",
@@ -8972,13 +8973,6 @@
      "tooltipLabel": "GPT-5.4 nano (Non-reasoning)",
      "url": "/models/gpt-5-4-nano-non-reasoning",
      "logo": "/img/logos/openai.svg"
-    },
-    {
-     "id": "976cc8ad-7904-4056-83c5-960181f47d5f",
-     "label": "Llama 3.3 70B",
-     "tooltipLabel": "Llama 3.3 Instruct 70B",
-     "url": "/models/llama-3-3-instruct-70b",
-     "logo": "/img/logos/meta.svg"
     },
     {
      "id": "050c61cd-cddc-463a-a30a-a82aaa37be59",
@@ -9023,6 +9017,20 @@
      "logo": "/img/logos/nvidia.svg"
     },
     {
+     "id": "7ec1065a-c90e-41e4-bd17-abb7042eed76",
+     "label": "Qwen3 30B A3B 2507 (non-reasoning)",
+     "tooltipLabel": "Qwen3 30B A3B 2507 Instruct",
+     "url": "/models/qwen3-30b-a3b-2507",
+     "logo": "/img/logos/alibaba.svg"
+    },
+    {
+     "id": "093883ed-f5fc-443b-8e18-afbfb166699e",
+     "label": "Qwen3 Coder 480B",
+     "tooltipLabel": "Qwen3 Coder 480B A35B Instruct",
+     "url": "/models/qwen3-coder-480b-a35b-instruct",
+     "logo": "/img/logos/alibaba.svg"
+    },
+    {
      "id": "025ec6b6-df4a-449f-9a03-24e4388d6863",
      "label": "Gemma 4 12B (non-reasoning)",
      "tooltipLabel": "Gemma 4 12B (Non-reasoning)",
@@ -9049,13 +9057,6 @@
      "tooltipLabel": "DeepSeek V3.2 Exp (Non-reasoning)",
      "url": "/models/deepseek-v3-2-0925",
      "logo": "/img/logos/deepseek.svg"
-    },
-    {
-     "id": "093883ed-f5fc-443b-8e18-afbfb166699e",
-     "label": "Qwen3 Coder 480B",
-     "tooltipLabel": "Qwen3 Coder 480B A35B Instruct",
-     "url": "/models/qwen3-coder-480b-a35b-instruct",
-     "logo": "/img/logos/alibaba.svg"
     },
     {
      "id": "0081ab31-d10a-44a0-a10d-eee5533fec65",
@@ -9098,13 +9099,6 @@
      "tooltipLabel": "Gemma 4 26B A4B (Non-reasoning)",
      "url": "/models/gemma-4-26b-a4b-non-reasoning",
      "logo": "/img/logos/google.svg"
-    },
-    {
-     "id": "7ec1065a-c90e-41e4-bd17-abb7042eed76",
-     "label": "Qwen3 30B A3B 2507 (non-reasoning)",
-     "tooltipLabel": "Qwen3 30B A3B 2507 Instruct",
-     "url": "/models/qwen3-30b-a3b-2507",
-     "logo": "/img/logos/alibaba.svg"
     },
     {
      "id": "9f7c7566-a704-49a2-a383-cb3181da33a4",
@@ -9296,11 +9290,11 @@
      "logo": "/img/logos/alibaba.svg"
     },
     {
-     "id": "8c748e53-61ae-48b8-af8d-eb8298b1e9db",
-     "label": "Nemotron 3 Nano Omni 30B A3B",
-     "tooltipLabel": "Nemotron 3 Nano Omni 30B A3B Reasoning",
-     "url": "/models/nemotron-3-nano-omni-30b-a3b",
-     "logo": "/img/logos/nvidia.svg"
+     "id": "2698f6c6-e436-47ce-a583-dbc25596c571",
+     "label": "Qwen3 Next 80B A3B",
+     "tooltipLabel": "Qwen3 Next 80B A3B Instruct",
+     "url": "/models/qwen3-next-80b-a3b-instruct",
+     "logo": "/img/logos/alibaba.svg"
     },
     {
      "id": "651ef7ae-9a8f-477e-9c8e-460aa156ba02",
@@ -9317,20 +9311,6 @@
      "logo": "/img/logos/deepseek.svg"
     },
     {
-     "id": "d3968fd3-97d8-4693-8d26-19cefc6f5d5f",
-     "label": "Hermes 4 405B (non-reasoning)",
-     "tooltipLabel": "Hermes 4 - Llama-3.1 405B (Non-reasoning)",
-     "url": "/models/hermes-4-llama-3-1-405b",
-     "logo": "/img/logos/nousresearch.jpg"
-    },
-    {
-     "id": "2698f6c6-e436-47ce-a583-dbc25596c571",
-     "label": "Qwen3 Next 80B A3B",
-     "tooltipLabel": "Qwen3 Next 80B A3B Instruct",
-     "url": "/models/qwen3-next-80b-a3b-instruct",
-     "logo": "/img/logos/alibaba.svg"
-    },
-    {
      "id": "3373245b-e6dc-4b66-a7b0-3f06f9b7bd46",
      "label": "Qwen3 235B 2507",
      "tooltipLabel": "Qwen3 235B A22B 2507 Instruct",
@@ -9338,25 +9318,11 @@
      "logo": "/img/logos/alibaba.svg"
     },
     {
-     "id": "2d28a13a-096e-475a-beb8-26bbd1c7d51c",
-     "label": "Qwen3.5 9B",
-     "tooltipLabel": "Qwen3.5 9B (Reasoning)",
-     "url": "/models/qwen3-5-9b",
-     "logo": "/img/logos/alibaba.svg"
-    },
-    {
-     "id": "da9fe224-8af3-46d7-a8c4-6220779c3f35",
-     "label": "Qwen3 Coder 30B A3B",
-     "tooltipLabel": "Qwen3 Coder 30B A3B Instruct",
-     "url": "/models/qwen3-coder-30b-a3b-instruct",
-     "logo": "/img/logos/alibaba.svg"
-    },
-    {
-     "id": "4764d31d-f4af-4297-8bd1-e993f26bcb64",
-     "label": "MiMo-V2.5-Pro (non-reasoning)",
-     "tooltipLabel": "MiMo-V2.5-Pro (Non-reasoning)",
-     "url": "/models/mimo-v2-5-pro-non-reasoning",
-     "logo": "/img/logos/xiaomi.svg"
+     "id": "d3968fd3-97d8-4693-8d26-19cefc6f5d5f",
+     "label": "Hermes 4 405B (non-reasoning)",
+     "tooltipLabel": "Hermes 4 - Llama-3.1 405B (Non-reasoning)",
+     "url": "/models/hermes-4-llama-3-1-405b",
+     "logo": "/img/logos/nousresearch.jpg"
     },
     {
      "id": "22d09131-343b-4adf-8760-533e20a2155f",
@@ -9366,11 +9332,25 @@
      "logo": "/img/logos/xiaomi.svg"
     },
     {
+     "id": "2d28a13a-096e-475a-beb8-26bbd1c7d51c",
+     "label": "Qwen3.5 9B",
+     "tooltipLabel": "Qwen3.5 9B (Reasoning)",
+     "url": "/models/qwen3-5-9b",
+     "logo": "/img/logos/alibaba.svg"
+    },
+    {
      "id": "dbbcf240-a69e-4078-8f16-7c94c7a8c514",
      "label": "Reka Flash 3",
      "tooltipLabel": "Reka Flash 3",
      "url": "/models/reka-flash-3",
      "logo": "/img/logos/reka.svg"
+    },
+    {
+     "id": "da9fe224-8af3-46d7-a8c4-6220779c3f35",
+     "label": "Qwen3 Coder 30B A3B",
+     "tooltipLabel": "Qwen3 Coder 30B A3B Instruct",
+     "url": "/models/qwen3-coder-30b-a3b-instruct",
+     "logo": "/img/logos/alibaba.svg"
     },
     {
      "id": "5d303dc9-c027-401f-9803-4e9aa3331007",
@@ -9443,6 +9423,13 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "4764d31d-f4af-4297-8bd1-e993f26bcb64",
+     "label": "MiMo-V2.5-Pro (non-reasoning)",
+     "tooltipLabel": "MiMo-V2.5-Pro (Non-reasoning)",
+     "url": "/models/mimo-v2-5-pro-non-reasoning",
+     "logo": "/img/logos/xiaomi.svg"
+    },
+    {
      "id": "e18e5e6a-5a31-4c0b-b80b-ac401392f446",
      "label": "GPT-5 nano (high)",
      "tooltipLabel": "GPT-5 nano (High)",
@@ -9455,6 +9442,13 @@
      "tooltipLabel": "Nova 2.0 Lite (Low)",
      "url": "/models/nova-2-0-lite-reasoning-low",
      "logo": "/img/logos/aws.svg"
+    },
+    {
+     "id": "8c748e53-61ae-48b8-af8d-eb8298b1e9db",
+     "label": "Nemotron 3 Nano Omni 30B A3B",
+     "tooltipLabel": "Nemotron 3 Nano Omni 30B A3B Reasoning",
+     "url": "/models/nemotron-3-nano-omni-30b-a3b",
+     "logo": "/img/logos/nvidia.svg"
     },
     {
      "id": "73c96f99-0de3-4668-a4bd-b106a0fe18f2",
@@ -9583,6 +9577,13 @@
      "logo": "/img/logos/alibaba.svg"
     },
     {
+     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
+     "label": "Gemma 4 26B A4B",
+     "tooltipLabel": "Gemma 4 26B A4B (Reasoning)",
+     "url": "/models/gemma-4-26b-a4b",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "be185709-ddb4-4268-9597-856464359b25",
      "label": "MiMo-V2-Flash",
      "tooltipLabel": "MiMo-V2-Flash (Reasoning)",
@@ -9618,13 +9619,6 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
-     "label": "Gemma 4 26B A4B",
-     "tooltipLabel": "Gemma 4 26B A4B (Reasoning)",
-     "url": "/models/gemma-4-26b-a4b",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "66938aab-78fa-49d7-8461-b48b6833e837",
      "label": "Qwen3.6 35B A3B (non-reasoning)",
      "tooltipLabel": "Qwen3.6 35B A3B (Non-reasoning)",
@@ -9637,13 +9631,6 @@
      "tooltipLabel": "MiniMax-M2.1",
      "url": "/models/minimax-m2-1",
      "logo": "/img/logos/minimax.svg"
-    },
-    {
-     "id": "ddfdaf64-3f8e-40a6-a492-608ee83a1351",
-     "label": "Gemini 3.7 Flash (low)",
-     "tooltipLabel": "Gemini 3.7 Flash (Low)",
-     "url": "/models/gemini-3-7-flash-low",
-     "logo": "/img/logos/google.svg"
     },
     {
      "id": "fe4c0848-e284-4e52-a79d-cdc28392f1a9",
@@ -9702,6 +9689,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "81b6ddfc-111e-4422-bd44-42ee6165b699",
+     "label": "GLM-4.7 (non-reasoning)",
+     "tooltipLabel": "GLM-4.7 (Non-reasoning)",
+     "url": "/models/glm-4-7-non-reasoning",
+     "logo": "/img/logos/zai.svg"
+    },
+    {
      "id": "e76e0fe5-93ca-4272-9359-2eb1740467d1",
      "label": "GPT-6.1 Sol (low)",
      "tooltipLabel": "GPT-6.1 Sol (Low)",
@@ -9744,13 +9738,6 @@
      "logo": "/img/logos/aws.svg"
     },
     {
-     "id": "81b6ddfc-111e-4422-bd44-42ee6165b699",
-     "label": "GLM-4.7 (non-reasoning)",
-     "tooltipLabel": "GLM-4.7 (Non-reasoning)",
-     "url": "/models/glm-4-7-non-reasoning",
-     "logo": "/img/logos/zai.svg"
-    },
-    {
      "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
      "label": "Gemini 3.8 Flash (low)",
      "tooltipLabel": "Gemini 3.8 Flash (Low)",
@@ -9758,25 +9745,11 @@
      "logo": "/img/logos/google.svg"
     },
     {
-     "id": "c8a79180-7d16-4474-8701-9a77c0baa56a",
-     "label": "Qwen3 Next 80B A3B",
-     "tooltipLabel": "Qwen3 Next 80B A3B (Reasoning)",
-     "url": "/models/qwen3-next-80b-a3b-reasoning",
-     "logo": "/img/logos/alibaba.svg"
-    },
-    {
      "id": "ba04694d-326a-4a6a-8f1b-46316f872a7f",
      "label": "Kimi K2.5 (non-reasoning)",
      "tooltipLabel": "Kimi K2.5 (Non-reasoning)",
      "url": "/models/kimi-k2-5-non-reasoning",
      "logo": "/img/logos/kimi.jpg"
-    },
-    {
-     "id": "5e0164b3-d902-4bcb-a1b2-83b4f4cd6143",
-     "label": "Qwen3 30B A3B 2507",
-     "tooltipLabel": "Qwen3 30B A3B 2507 (Reasoning)",
-     "url": "/models/qwen3-30b-a3b-2507-reasoning",
-     "logo": "/img/logos/alibaba.svg"
     },
     {
      "id": "c3738fb0-3408-4430-a699-760ae4b70c93",
@@ -9912,13 +9885,6 @@
      "logo": "/img/logos/spacexai.svg"
     },
     {
-     "id": "eb0d4272-7204-42b9-b875-8866fed58548",
-     "label": "Gemini 3.7 Flash (medium)",
-     "tooltipLabel": "Gemini 3.7 Flash (Medium)",
-     "url": "/models/gemini-3-7-flash-medium",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "d925845d-39ad-4de3-8495-f176b79828c0",
      "label": "Claude 3.7 Sonnet (non-reasoning)",
      "tooltipLabel": "Claude 3.7 Sonnet (Non-reasoning)",
@@ -9945,13 +9911,6 @@
      "tooltipLabel": "Hermes 4 - Llama-3.1 405B (Reasoning)",
      "url": "/models/hermes-4-llama-3-1-405b-reasoning",
      "logo": "/img/logos/nousresearch.jpg"
-    },
-    {
-     "id": "6d6fa1c9-b833-40b2-8a58-fa810e24a84e",
-     "label": "Ling-3.0-flash-Fin",
-     "tooltipLabel": "Ling-3.0-flash-Fin",
-     "url": "/models/ling-3-0-flash-fin",
-     "logo": "/img/logos/inclusionai.jpg"
     },
     {
      "id": "6dd8ba55-5680-44a9-b309-82928165d5f0",
@@ -10129,13 +10088,6 @@
      "logo": "/img/logos/spacexai.svg"
     },
     {
-     "id": "00f1248e-78e3-4230-8dc8-5e13ba8645e2",
-     "label": "MiMo-V2.5-Pro",
-     "tooltipLabel": "MiMo-V2.5-Pro (Reasoning)",
-     "url": "/models/mimo-v2-5-pro",
-     "logo": "/img/logos/xiaomi.svg"
-    },
-    {
      "id": "c4169d75-9d24-4794-a9c3-69e1fe364de5",
      "label": "GPT-5.5 Instant (June 2026)",
      "tooltipLabel": "GPT-5.5 Instant (June 2026)",
@@ -10192,6 +10144,20 @@
      "logo": "/img/logos/deepseek.svg"
     },
     {
+     "id": "f9739750-6d42-450f-ba1e-2f76c869b4fe",
+     "label": "Quasar 438B (max)",
+     "tooltipLabel": "Quasar 438B (Max, Based on GLM-5.2)",
+     "url": "/models/quasar-438b",
+     "logo": "/img/logos/multiversecomputing.svg"
+    },
+    {
+     "id": "00f1248e-78e3-4230-8dc8-5e13ba8645e2",
+     "label": "MiMo-V2.5-Pro",
+     "tooltipLabel": "MiMo-V2.5-Pro (Reasoning)",
+     "url": "/models/mimo-v2-5-pro",
+     "logo": "/img/logos/xiaomi.svg"
+    },
+    {
      "id": "f2e21112-192e-4aed-ae82-68ca3b38e667",
      "label": "Claude Sonnet 4.6 (non-reasoning, low)",
      "tooltipLabel": "Claude Sonnet 4.6 (Non-reasoning, Low)",
@@ -10211,6 +10177,13 @@
      "tooltipLabel": "Gemini 3.1 Flash-Lite",
      "url": "/models/gemini-3-1-flash-lite-preview",
      "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "a83f84b3-473a-4276-9ae1-8909da723159",
+     "label": "DeepSeek R1 0528",
+     "tooltipLabel": "DeepSeek R1 0528 (May '25)",
+     "url": "/models/deepseek-r1",
+     "logo": "/img/logos/deepseek.svg"
     },
     {
      "id": "219ed587-60c5-4a48-9517-8480e08d0ca1",
@@ -10274,13 +10247,6 @@
      "tooltipLabel": "o3-mini (High)",
      "url": "/models/o3-mini-high",
      "logo": "/img/logos/openai.svg"
-    },
-    {
-     "id": "a83f84b3-473a-4276-9ae1-8909da723159",
-     "label": "DeepSeek R1 0528",
-     "tooltipLabel": "DeepSeek R1 0528 (May '25)",
-     "url": "/models/deepseek-r1",
-     "logo": "/img/logos/deepseek.svg"
     },
     {
      "id": "d58b9ada-fd9d-4fff-a086-242034657963",
@@ -10381,6 +10347,13 @@
      "logo": "/img/logos/alibaba.svg"
     },
     {
+     "id": "69468cce-7b5c-414a-b498-41df4c34df85",
+     "label": "Beam 1.0",
+     "tooltipLabel": "Beam 1.0",
+     "url": "/models/reflection-beam",
+     "logo": "/img/logos/reflection.svg"
+    },
+    {
      "id": "b6d2e43d-3082-43f5-9318-0f4dbcb54163",
      "label": "Trinity Large Thinking",
      "tooltipLabel": "Trinity Large Thinking",
@@ -10430,6 +10403,13 @@
      "logo": "/img/logos/minimax.svg"
     },
     {
+     "id": "6fc35842-0165-44cf-8570-c484a92b3d8c",
+     "label": "GLM-4.7",
+     "tooltipLabel": "GLM-4.7 (Reasoning)",
+     "url": "/models/glm-4-7",
+     "logo": "/img/logos/zai.svg"
+    },
+    {
      "id": "538e945c-6c27-4fd3-995d-ded80a36cd10",
      "label": "GPT-5.4 (low)",
      "tooltipLabel": "GPT-5.4 (Low)",
@@ -10444,18 +10424,18 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "6fc35842-0165-44cf-8570-c484a92b3d8c",
-     "label": "GLM-4.7",
-     "tooltipLabel": "GLM-4.7 (Reasoning)",
-     "url": "/models/glm-4-7",
-     "logo": "/img/logos/zai.svg"
-    },
-    {
      "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
      "label": "Gemini 3.8 Flash (medium)",
      "tooltipLabel": "Gemini 3.8 Flash (Medium)",
      "url": "/models/gemini-3-8-flash-medium",
      "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "539ed227-38f4-4bea-a015-117057c14b18",
+     "label": "Ling 3.1 Flash 1019",
+     "tooltipLabel": "Ling 3.1 Flash 1019",
+     "url": "/models/ling-3-1-flash-1019",
+     "logo": "/img/logos/inclusionai.jpg"
     },
     {
      "id": "0179b427-93dc-415c-bb4c-f980ddf8d088",
@@ -10477,13 +10457,6 @@
      "tooltipLabel": "DeepSeek V4 Flash Vision (Max)",
      "url": "/models/deepseek-v4-flash-vision",
      "logo": "/img/logos/deepseek.svg"
-    },
-    {
-     "id": "a550ffca-f89e-4381-ade6-a85dc6a1fb4c",
-     "label": "Kimi K2.5",
-     "tooltipLabel": "Kimi K2.5 (Reasoning)",
-     "url": "/models/kimi-k2-5",
-     "logo": "/img/logos/kimi.jpg"
     },
     {
      "id": "b2331108-72ed-415a-82d1-188633875bbc",
@@ -10519,6 +10492,13 @@
      "tooltipLabel": "Inkling Small",
      "url": "/models/inkling-small",
      "logo": "/img/logos/thinking-machines.svg"
+    },
+    {
+     "id": "a550ffca-f89e-4381-ade6-a85dc6a1fb4c",
+     "label": "Kimi K2.5",
+     "tooltipLabel": "Kimi K2.5 (Reasoning)",
+     "url": "/models/kimi-k2-5",
+     "logo": "/img/logos/kimi.jpg"
     },
     {
      "id": "2236df45-0699-40d1-b5cc-69ee345d2257",
@@ -10652,13 +10632,6 @@
      "tooltipLabel": "Step 5 Preview",
      "url": "/models/step-5",
      "logo": "/img/logos/stepfun.svg"
-    },
-    {
-     "id": "69468cce-7b5c-414a-b498-41df4c34df85",
-     "label": "Beam 1.0",
-     "tooltipLabel": "Beam 1.0",
-     "url": "/models/reflection-beam",
-     "logo": "/img/logos/reflection.svg"
     },
     {
      "id": "f151fd0b-2139-40cf-a3ec-995e8cedc592",
@@ -10983,13 +10956,6 @@
      "logo": "/img/logos/deepseek.svg"
     },
     {
-     "id": "f9739750-6d42-450f-ba1e-2f76c869b4fe",
-     "label": "Quasar 438B (max)",
-     "tooltipLabel": "Quasar 438B (Max, Based on GLM-5.2)",
-     "url": "/models/quasar-438b",
-     "logo": "/img/logos/multiversecomputing.svg"
-    },
-    {
      "id": "04787c2b-0751-4269-8029-075b727d7aed",
      "label": "Grok 4.20 0309",
      "tooltipLabel": "Grok 4.20 0309 (Reasoning)",
@@ -11149,6 +11115,13 @@
      "tooltipLabel": "GPT-5.6 Terra (Max)",
      "url": "/models/gpt-5-6-terra",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "label": "Kimi K3.1 Pro",
+     "tooltipLabel": "Kimi K3.1 Pro",
+     "url": "/models/kimi-k3-1-pro",
+     "logo": "/img/logos/kimi.jpg"
     },
     {
      "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
@@ -12024,6 +11997,94 @@
      "shortName": "Llama 3 8B",
      "creatorName": "Meta",
      "releaseDate": "2024-04-18"
+    },
+    {
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "slug": "kimi-k3-1-pro",
+     "name": "Kimi K3.1 Pro",
+     "shortName": "Kimi K3.1 Pro",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-10-23"
+    },
+    {
+     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
+     "slug": "kimi-k3",
+     "name": "Kimi K3 (Max)",
+     "shortName": "Kimi K3 (max)",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-07-16"
+    },
+    {
+     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
+     "slug": "kimi-k3-low",
+     "name": "Kimi K3 (Low)",
+     "shortName": "Kimi K3 (low)",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-07-16"
+    },
+    {
+     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
+     "slug": "kimi-k2-6",
+     "name": "Kimi K2.6 (Reasoning)",
+     "shortName": "Kimi K2.6",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-04-20"
+    },
+    {
+     "id": "8d0cb231-7303-452c-9923-a9620b948475",
+     "slug": "kimi-k2-7-code",
+     "name": "Kimi K2.7 Code",
+     "shortName": "Kimi K2.7 Code",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-06-12"
+    },
+    {
+     "id": "0fc6308e-fbd2-42d3-a216-06da3c43e34e",
+     "slug": "kimi-k2-6-non-reasoning",
+     "name": "Kimi K2.6 (Non-reasoning)",
+     "shortName": "Kimi K2.6 (non-reasoning)",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-04-20"
+    },
+    {
+     "id": "a550ffca-f89e-4381-ade6-a85dc6a1fb4c",
+     "slug": "kimi-k2-5",
+     "name": "Kimi K2.5 (Reasoning)",
+     "shortName": "Kimi K2.5",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-01-27"
+    },
+    {
+     "id": "bddebfd3-0a8d-47f5-b722-bc4c2ca5a5dc",
+     "slug": "kimi-k2-thinking",
+     "name": "Kimi K2 Thinking",
+     "shortName": "Kimi K2 Thinking",
+     "creatorName": "Kimi",
+     "releaseDate": "2025-11-06"
+    },
+    {
+     "id": "ba04694d-326a-4a6a-8f1b-46316f872a7f",
+     "slug": "kimi-k2-5-non-reasoning",
+     "name": "Kimi K2.5 (Non-reasoning)",
+     "shortName": "Kimi K2.5 (non-reasoning)",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-01-27"
+    },
+    {
+     "id": "66445f84-b2e3-4202-afdc-92ba0f0e5f36",
+     "slug": "kimi-k2-0905",
+     "name": "Kimi K2 0905",
+     "shortName": "Kimi K2 0905",
+     "creatorName": "Kimi",
+     "releaseDate": "2025-09-05"
+    },
+    {
+     "id": "441734a9-8901-4850-9bae-b474c370291f",
+     "slug": "kimi-k2",
+     "name": "Kimi K2",
+     "shortName": "Kimi K2",
+     "creatorName": "Kimi",
+     "releaseDate": "2025-07-11"
     },
     {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
@@ -14426,180 +14487,12 @@
      "releaseDate": "2025-08-11"
     },
     {
-     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
-     "slug": "step-5",
-     "name": "Step 5 Preview",
-     "shortName": "Step 5 Preview",
-     "creatorName": "StepFun",
-     "releaseDate": "2026-09-18"
-    },
-    {
-     "id": "6c7b322e-2f35-48ff-9171-fb621a726fc0",
-     "slug": "step-3-7-flash",
-     "name": "Step 3.7 Flash",
-     "shortName": "Step 3.7 Flash",
-     "creatorName": "StepFun",
-     "releaseDate": "2026-05-29"
-    },
-    {
-     "id": "1aa3694e-b656-4dbe-8f84-0c65d8897abb",
-     "slug": "step-3-5-flash",
-     "name": "Step 3.5 Flash 2603",
-     "shortName": "Step 3.5 Flash 2603",
-     "creatorName": "StepFun",
-     "releaseDate": "2026-04-02"
-    },
-    {
-     "id": "c8158c23-6fff-4c31-911d-954c32d80c28",
-     "slug": "step-3-5-flash-0202",
-     "name": "Step 3.5 Flash",
-     "shortName": "Step 3.5 Flash",
-     "creatorName": "StepFun",
-     "releaseDate": "2026-02-02"
-    },
-    {
-     "id": "acad0665-9457-4531-abd5-b59efd7a89ea",
-     "slug": "step-3-vl-10b",
-     "name": "Step3 VL 10B",
-     "shortName": "Step3 VL 10B",
-     "creatorName": "StepFun",
-     "releaseDate": "2026-01-20"
-    },
-    {
-     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
-     "slug": "kimi-k3",
-     "name": "Kimi K3 (Max)",
-     "shortName": "Kimi K3 (max)",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-07-16"
-    },
-    {
-     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
-     "slug": "kimi-k3-low",
-     "name": "Kimi K3 (Low)",
-     "shortName": "Kimi K3 (low)",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-07-16"
-    },
-    {
-     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
-     "slug": "kimi-k2-6",
-     "name": "Kimi K2.6 (Reasoning)",
-     "shortName": "Kimi K2.6",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-04-20"
-    },
-    {
-     "id": "8d0cb231-7303-452c-9923-a9620b948475",
-     "slug": "kimi-k2-7-code",
-     "name": "Kimi K2.7 Code",
-     "shortName": "Kimi K2.7 Code",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-06-12"
-    },
-    {
-     "id": "0fc6308e-fbd2-42d3-a216-06da3c43e34e",
-     "slug": "kimi-k2-6-non-reasoning",
-     "name": "Kimi K2.6 (Non-reasoning)",
-     "shortName": "Kimi K2.6 (non-reasoning)",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-04-20"
-    },
-    {
-     "id": "a550ffca-f89e-4381-ade6-a85dc6a1fb4c",
-     "slug": "kimi-k2-5",
-     "name": "Kimi K2.5 (Reasoning)",
-     "shortName": "Kimi K2.5",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-01-27"
-    },
-    {
-     "id": "bddebfd3-0a8d-47f5-b722-bc4c2ca5a5dc",
-     "slug": "kimi-k2-thinking",
-     "name": "Kimi K2 Thinking",
-     "shortName": "Kimi K2 Thinking",
-     "creatorName": "Kimi",
-     "releaseDate": "2025-11-06"
-    },
-    {
-     "id": "ba04694d-326a-4a6a-8f1b-46316f872a7f",
-     "slug": "kimi-k2-5-non-reasoning",
-     "name": "Kimi K2.5 (Non-reasoning)",
-     "shortName": "Kimi K2.5 (non-reasoning)",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-01-27"
-    },
-    {
-     "id": "66445f84-b2e3-4202-afdc-92ba0f0e5f36",
-     "slug": "kimi-k2-0905",
-     "name": "Kimi K2 0905",
-     "shortName": "Kimi K2 0905",
-     "creatorName": "Kimi",
-     "releaseDate": "2025-09-05"
-    },
-    {
-     "id": "441734a9-8901-4850-9bae-b474c370291f",
-     "slug": "kimi-k2",
-     "name": "Kimi K2",
-     "shortName": "Kimi K2",
-     "creatorName": "Kimi",
-     "releaseDate": "2025-07-11"
-    },
-    {
-     "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
-     "slug": "minimax-m3-1-flash",
-     "name": "MiniMax-M3.1-Flash",
-     "shortName": "MiniMax-M3.1-Flash",
-     "creatorName": "MiniMax",
-     "releaseDate": "2026-10-19"
-    },
-    {
-     "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
-     "slug": "minimax-m3",
-     "name": "MiniMax-M3",
-     "shortName": "MiniMax-M3",
-     "creatorName": "MiniMax",
-     "releaseDate": "2026-06-01"
-    },
-    {
-     "id": "12adec16-19fe-4d92-aeff-5ef3eb7e780a",
-     "slug": "minimax-m2-5",
-     "name": "MiniMax-M2.5",
-     "shortName": "MiniMax-M2.5",
-     "creatorName": "MiniMax",
-     "releaseDate": "2026-02-12"
-    },
-    {
-     "id": "4bbceacb-cf47-464b-b60f-e1d1fe016d67",
-     "slug": "minimax-m2-7",
-     "name": "MiniMax-M2.7",
-     "shortName": "MiniMax-M2.7",
-     "creatorName": "MiniMax",
-     "releaseDate": "2026-03-18"
-    },
-    {
-     "id": "272ff333-442f-4169-a804-ac9177bc99d7",
-     "slug": "minimax-m2-1",
-     "name": "MiniMax-M2.1",
-     "shortName": "MiniMax-M2.1",
-     "creatorName": "MiniMax",
-     "releaseDate": "2025-12-23"
-    },
-    {
-     "id": "f74ea286-cd29-4eb4-af14-1389b19c21e5",
-     "slug": "minimax-m2",
-     "name": "MiniMax-M2",
-     "shortName": "MiniMax-M2",
-     "creatorName": "MiniMax",
-     "releaseDate": "2025-10-26"
-    },
-    {
-     "id": "9ca246a7-cf13-42c9-9182-5b5ad6b79026",
-     "slug": "minimax-m1-80k",
-     "name": "MiniMax M1 80k",
-     "shortName": "MiniMax M1 80k",
-     "creatorName": "MiniMax",
-     "releaseDate": "2025-06-17"
+     "id": "539ed227-38f4-4bea-a015-117057c14b18",
+     "slug": "ling-3-1-flash-1019",
+     "name": "Ling 3.1 Flash 1019",
+     "shortName": "Ling 3.1 Flash 1019",
+     "creatorName": "InclusionAI",
+     "releaseDate": "2026-10-22"
     },
     {
      "id": "a6043b9b-628a-4a76-a021-2834e0627d05",
@@ -14704,6 +14597,102 @@
      "shortName": "Ling-mini-2.0",
      "creatorName": "InclusionAI",
      "releaseDate": "2025-09-09"
+    },
+    {
+     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
+     "slug": "step-5",
+     "name": "Step 5 Preview",
+     "shortName": "Step 5 Preview",
+     "creatorName": "StepFun",
+     "releaseDate": "2026-09-18"
+    },
+    {
+     "id": "6c7b322e-2f35-48ff-9171-fb621a726fc0",
+     "slug": "step-3-7-flash",
+     "name": "Step 3.7 Flash",
+     "shortName": "Step 3.7 Flash",
+     "creatorName": "StepFun",
+     "releaseDate": "2026-05-29"
+    },
+    {
+     "id": "1aa3694e-b656-4dbe-8f84-0c65d8897abb",
+     "slug": "step-3-5-flash",
+     "name": "Step 3.5 Flash 2603",
+     "shortName": "Step 3.5 Flash 2603",
+     "creatorName": "StepFun",
+     "releaseDate": "2026-04-02"
+    },
+    {
+     "id": "c8158c23-6fff-4c31-911d-954c32d80c28",
+     "slug": "step-3-5-flash-0202",
+     "name": "Step 3.5 Flash",
+     "shortName": "Step 3.5 Flash",
+     "creatorName": "StepFun",
+     "releaseDate": "2026-02-02"
+    },
+    {
+     "id": "acad0665-9457-4531-abd5-b59efd7a89ea",
+     "slug": "step-3-vl-10b",
+     "name": "Step3 VL 10B",
+     "shortName": "Step3 VL 10B",
+     "creatorName": "StepFun",
+     "releaseDate": "2026-01-20"
+    },
+    {
+     "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
+     "slug": "minimax-m3-1-flash",
+     "name": "MiniMax-M3.1-Flash",
+     "shortName": "MiniMax-M3.1-Flash",
+     "creatorName": "MiniMax",
+     "releaseDate": "2026-10-19"
+    },
+    {
+     "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
+     "slug": "minimax-m3",
+     "name": "MiniMax-M3",
+     "shortName": "MiniMax-M3",
+     "creatorName": "MiniMax",
+     "releaseDate": "2026-06-01"
+    },
+    {
+     "id": "12adec16-19fe-4d92-aeff-5ef3eb7e780a",
+     "slug": "minimax-m2-5",
+     "name": "MiniMax-M2.5",
+     "shortName": "MiniMax-M2.5",
+     "creatorName": "MiniMax",
+     "releaseDate": "2026-02-12"
+    },
+    {
+     "id": "4bbceacb-cf47-464b-b60f-e1d1fe016d67",
+     "slug": "minimax-m2-7",
+     "name": "MiniMax-M2.7",
+     "shortName": "MiniMax-M2.7",
+     "creatorName": "MiniMax",
+     "releaseDate": "2026-03-18"
+    },
+    {
+     "id": "272ff333-442f-4169-a804-ac9177bc99d7",
+     "slug": "minimax-m2-1",
+     "name": "MiniMax-M2.1",
+     "shortName": "MiniMax-M2.1",
+     "creatorName": "MiniMax",
+     "releaseDate": "2025-12-23"
+    },
+    {
+     "id": "f74ea286-cd29-4eb4-af14-1389b19c21e5",
+     "slug": "minimax-m2",
+     "name": "MiniMax-M2",
+     "shortName": "MiniMax-M2",
+     "creatorName": "MiniMax",
+     "releaseDate": "2025-10-26"
+    },
+    {
+     "id": "9ca246a7-cf13-42c9-9182-5b5ad6b79026",
+     "slug": "minimax-m1-80k",
+     "name": "MiniMax M1 80k",
+     "shortName": "MiniMax M1 80k",
+     "creatorName": "MiniMax",
+     "releaseDate": "2025-06-17"
     },
     {
      "id": "34fc646a-0174-470e-9e62-d8df452210b3",

@@ -1,7 +1,7 @@
 {
  "key": "mmmu-pro",
  "source_url": "https://artificialanalysis.ai/evaluations/mmmu-pro",
- "captured_at": "2026-10-20",
+ "captured_at": "2026-10-25",
  "selectors": 6,
  "charts": [
   {
@@ -215,6 +215,15 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "label": "Kimi K3.1 Pro",
+     "tooltipLabel": "Kimi K3.1 Pro",
+     "value": 0.838728323699422,
+     "displayValue": "84%",
+     "url": "/models/kimi-k3-1-pro",
+     "logo": "/img/logos/kimi.jpg"
+    },
+    {
      "id": "5016ea75-7b0e-4737-a7e6-1062c6d90fd4",
      "label": "Gemini 3.5 Flash (medium)",
      "tooltipLabel": "Gemini 3.5 Flash (Medium)",
@@ -413,15 +422,6 @@
      "logo": "/img/logos/deepseek.svg"
     },
     {
-     "id": "ebf3b39f-0be6-43a1-a37a-f9b2978c9916",
-     "label": "Muse Spark",
-     "tooltipLabel": "Muse Spark",
-     "value": 0.805202312138728,
-     "displayValue": "81%",
-     "url": "/models/muse-spark",
-     "logo": "/img/logos/meta.svg"
-    },
-    {
      "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
      "label": "Kimi K3 (max)",
      "tooltipLabel": "Kimi K3 (Max)",
@@ -429,6 +429,15 @@
      "displayValue": "81%",
      "url": "/models/kimi-k3",
      "logo": "/img/logos/kimi.jpg"
+    },
+    {
+     "id": "ebf3b39f-0be6-43a1-a37a-f9b2978c9916",
+     "label": "Muse Spark",
+     "tooltipLabel": "Muse Spark",
+     "value": 0.805202312138728,
+     "displayValue": "81%",
+     "url": "/models/muse-spark",
+     "logo": "/img/logos/meta.svg"
     },
     {
      "id": "a87fce42-eea3-4e45-a96d-fe057814f371",
@@ -656,15 +665,6 @@
      "logo": "/img/logos/google.svg"
     },
     {
-     "id": "59b5b14b-5365-4ee7-824a-18a8e6309644",
-     "label": "GPT-5.3 Codex (xhigh)",
-     "tooltipLabel": "GPT-5.3 Codex (Xhigh)",
-     "value": 0.784971098265896,
-     "displayValue": "78%",
-     "url": "/models/gpt-5-3-codex",
-     "logo": "/img/logos/openai.svg"
-    },
-    {
      "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
      "label": "Kimi K3 (low)",
      "tooltipLabel": "Kimi K3 (Low)",
@@ -672,6 +672,15 @@
      "displayValue": "78%",
      "url": "/models/kimi-k3-low",
      "logo": "/img/logos/kimi.jpg"
+    },
+    {
+     "id": "59b5b14b-5365-4ee7-824a-18a8e6309644",
+     "label": "GPT-5.3 Codex (xhigh)",
+     "tooltipLabel": "GPT-5.3 Codex (Xhigh)",
+     "value": 0.784971098265896,
+     "displayValue": "78%",
+     "url": "/models/gpt-5-3-codex",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "a89c4b28-2d8c-456e-88ea-255fb51fd2b6",
@@ -2823,6 +2832,54 @@
      "costPerTask": 0.0002837712427745665
     },
     {
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "slug": "kimi-k3-1-pro",
+     "name": "Kimi K3.1 Pro",
+     "shortName": "Kimi K3.1 Pro",
+     "creatorName": "Kimi",
+     "costPerTask": 0.045650891329479776
+    },
+    {
+     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
+     "slug": "kimi-k3",
+     "name": "Kimi K3 (Max)",
+     "shortName": "Kimi K3 (max)",
+     "creatorName": "Kimi",
+     "costPerTask": 0.08677822716763005
+    },
+    {
+     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
+     "slug": "kimi-k3-low",
+     "name": "Kimi K3 (Low)",
+     "shortName": "Kimi K3 (low)",
+     "creatorName": "Kimi",
+     "costPerTask": 0.017626931791907514
+    },
+    {
+     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
+     "slug": "kimi-k2-6",
+     "name": "Kimi K2.6 (Reasoning)",
+     "shortName": "Kimi K2.6",
+     "creatorName": "Kimi",
+     "costPerTask": 0.03900143205202311
+    },
+    {
+     "id": "a550ffca-f89e-4381-ade6-a85dc6a1fb4c",
+     "slug": "kimi-k2-5",
+     "name": "Kimi K2.5 (Reasoning)",
+     "shortName": "Kimi K2.5",
+     "creatorName": "Kimi",
+     "costPerTask": 0.022529655606936417
+    },
+    {
+     "id": "ba04694d-326a-4a6a-8f1b-46316f872a7f",
+     "slug": "kimi-k2-5-non-reasoning",
+     "name": "Kimi K2.5 (Non-reasoning)",
+     "shortName": "Kimi K2.5 (non-reasoning)",
+     "creatorName": "Kimi",
+     "costPerTask": 0.0037851076300578035
+    },
+    {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
      "slug": "gpt-6-astra",
      "name": "GPT-6 Astra (Max)",
@@ -3692,7 +3749,7 @@
      "name": "DeepSeek V4.1 Flash (Max)",
      "shortName": "DeepSeek V4.1 Flash (max)",
      "creatorName": "DeepSeek",
-     "costPerTask": 0.008486015028901733
+     "costPerTask": 0.008483603236994219
     },
     {
      "id": "7707a46f-895f-4247-b7a8-ddab87c9a11d",
@@ -3773,46 +3830,6 @@
      "shortName": "Step 3.7 Flash",
      "creatorName": "StepFun",
      "costPerTask": 0.011899372976878615
-    },
-    {
-     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
-     "slug": "kimi-k3",
-     "name": "Kimi K3 (Max)",
-     "shortName": "Kimi K3 (max)",
-     "creatorName": "Kimi",
-     "costPerTask": 0.08677822716763005
-    },
-    {
-     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
-     "slug": "kimi-k3-low",
-     "name": "Kimi K3 (Low)",
-     "shortName": "Kimi K3 (low)",
-     "creatorName": "Kimi",
-     "costPerTask": 0.017626931791907514
-    },
-    {
-     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
-     "slug": "kimi-k2-6",
-     "name": "Kimi K2.6 (Reasoning)",
-     "shortName": "Kimi K2.6",
-     "creatorName": "Kimi",
-     "costPerTask": 0.03900143205202311
-    },
-    {
-     "id": "a550ffca-f89e-4381-ade6-a85dc6a1fb4c",
-     "slug": "kimi-k2-5",
-     "name": "Kimi K2.5 (Reasoning)",
-     "shortName": "Kimi K2.5",
-     "creatorName": "Kimi",
-     "costPerTask": 0.02069026528901734
-    },
-    {
-     "id": "ba04694d-326a-4a6a-8f1b-46316f872a7f",
-     "slug": "kimi-k2-5-non-reasoning",
-     "name": "Kimi K2.5 (Non-reasoning)",
-     "shortName": "Kimi K2.5 (non-reasoning)",
-     "creatorName": "Kimi",
-     "costPerTask": 0.0037851076300578035
     },
     {
      "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
@@ -3959,28 +3976,12 @@
      "costPerTask": 0.006163959537572255
     },
     {
-     "id": "eb0d4272-7204-42b9-b875-8866fed58548",
-     "slug": "gemini-3-7-flash-medium",
-     "name": "Gemini 3.7 Flash (Medium)",
-     "shortName": "Gemini 3.7 Flash (medium)",
-     "creatorName": "Google",
-     "costPerTask": 0.004293218930635838
-    },
-    {
      "id": "b2331108-72ed-415a-82d1-188633875bbc",
      "slug": "gemini-3-7-flash",
      "name": "Gemini 3.7 Flash (High)",
      "shortName": "Gemini 3.7 Flash (high)",
      "creatorName": "Google",
      "costPerTask": 0.007579966040462427
-    },
-    {
-     "id": "ddfdaf64-3f8e-40a6-a492-608ee83a1351",
-     "slug": "gemini-3-7-flash-low",
-     "name": "Gemini 3.7 Flash (Low)",
-     "shortName": "Gemini 3.7 Flash (low)",
-     "creatorName": "Google",
-     "costPerTask": 0.0034870599710982654
     },
     {
      "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
@@ -4068,7 +4069,7 @@
      "name": "Gemma 4 26B A4B (Reasoning)",
      "shortName": "Gemma 4 26B A4B",
      "creatorName": "Google",
-     "costPerTask": 0.002554871057803469
+     "costPerTask": 0.002351682462427746
     },
     {
      "id": "27202e5f-c82d-4710-92e9-4317877d4883",
@@ -4116,7 +4117,7 @@
      "name": "Gemma 4 26B A4B (Non-reasoning)",
      "shortName": "Gemma 4 26B A4B (non-reasoning)",
      "creatorName": "Google",
-     "costPerTask": 0.0006161163468208093
+     "costPerTask": 0.0006088145895953757
     },
     {
      "id": "219ed587-60c5-4a48-9517-8480e08d0ca1",
@@ -4316,7 +4317,7 @@
      "name": "MiMo-V2.5",
      "shortName": "MiMo-V2.5",
      "creatorName": "Xiaomi",
-     "costPerTask": 0.001453187780346821
+     "costPerTask": 0.0013805283913294801
     },
     {
      "id": "f3a0e101-086f-44b3-a1b2-d23498f9716b",
@@ -4468,7 +4469,7 @@
      "name": "Nemotron 3 Nano Omni 30B A3B Reasoning",
      "shortName": "Nemotron 3 Nano Omni 30B A3B",
      "creatorName": "NVIDIA",
-     "costPerTask": 0.00573683323699422
+     "costPerTask": 0.008659321193641618
     },
     {
      "id": "ab7f016c-a29b-4710-bdf6-6a5cd96aacca",
@@ -4961,6 +4962,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
+     "label": "Gemma 4 26B A4B",
+     "tooltipLabel": "Gemma 4 26B A4B (Reasoning)",
+     "url": "/models/gemma-4-26b-a4b",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
      "label": "MiniMax-M3.1-Flash",
      "tooltipLabel": "MiniMax-M3.1-Flash",
@@ -4980,13 +4988,6 @@
      "tooltipLabel": "Claude 4.5 Haiku (Non-reasoning)",
      "url": "/models/claude-4-5-haiku",
      "logo": "/img/logos/anthropic.svg"
-    },
-    {
-     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
-     "label": "Gemma 4 26B A4B",
-     "tooltipLabel": "Gemma 4 26B A4B (Reasoning)",
-     "url": "/models/gemma-4-26b-a4b",
-     "logo": "/img/logos/google.svg"
     },
     {
      "id": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
@@ -5071,13 +5072,6 @@
      "tooltipLabel": "GLM-4.5V (Reasoning)",
      "url": "/models/glm-4-5v-reasoning",
      "logo": "/img/logos/zai.svg"
-    },
-    {
-     "id": "ddfdaf64-3f8e-40a6-a492-608ee83a1351",
-     "label": "Gemini 3.7 Flash (low)",
-     "tooltipLabel": "Gemini 3.7 Flash (Low)",
-     "url": "/models/gemini-3-7-flash-low",
-     "logo": "/img/logos/google.svg"
     },
     {
      "id": "76bce7fb-3a3f-4b66-a78d-35ccf3edf5d2",
@@ -5171,13 +5165,6 @@
      "logo": "/img/logos/alibaba.svg"
     },
     {
-     "id": "eb0d4272-7204-42b9-b875-8866fed58548",
-     "label": "Gemini 3.7 Flash (medium)",
-     "tooltipLabel": "Gemini 3.7 Flash (Medium)",
-     "url": "/models/gemini-3-7-flash-medium",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "6fd796d3-f346-4f66-97df-5da81714fc73",
      "label": "Nova 2.0 Lite (low)",
      "tooltipLabel": "Nova 2.0 Lite (Low)",
@@ -5239,13 +5226,6 @@
      "tooltipLabel": "Qwen3.6 35B A3B (Non-reasoning)",
      "url": "/models/qwen3-6-35b-a3b-non-reasoning",
      "logo": "/img/logos/alibaba.svg"
-    },
-    {
-     "id": "8c748e53-61ae-48b8-af8d-eb8298b1e9db",
-     "label": "Nemotron 3 Nano Omni 30B A3B",
-     "tooltipLabel": "Nemotron 3 Nano Omni 30B A3B Reasoning",
-     "url": "/models/nemotron-3-nano-omni-30b-a3b",
-     "logo": "/img/logos/nvidia.svg"
     },
     {
      "id": "021b1b31-d2fc-4653-ab74-c10bd2f41c8e",
@@ -5442,6 +5422,13 @@
      "tooltipLabel": "GPT-5.6 Sol (Low)",
      "url": "/models/gpt-5-6-sol-low",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "8c748e53-61ae-48b8-af8d-eb8298b1e9db",
+     "label": "Nemotron 3 Nano Omni 30B A3B",
+     "tooltipLabel": "Nemotron 3 Nano Omni 30B A3B Reasoning",
+     "url": "/models/nemotron-3-nano-omni-30b-a3b",
+     "logo": "/img/logos/nvidia.svg"
     },
     {
      "id": "3b156101-b0d7-4438-b350-2d1f1168f40a",
@@ -5787,13 +5774,6 @@
      "logo": "/img/logos/google.svg"
     },
     {
-     "id": "a550ffca-f89e-4381-ade6-a85dc6a1fb4c",
-     "label": "Kimi K2.5",
-     "tooltipLabel": "Kimi K2.5 (Reasoning)",
-     "url": "/models/kimi-k2-5",
-     "logo": "/img/logos/kimi.jpg"
-    },
-    {
      "id": "df5bf99d-d228-4715-b41b-19ca86118777",
      "label": "Claude Opus 5.5 (xhigh with fallback)",
      "tooltipLabel": "Claude Opus 5.5 (Xhigh, Default Fallback)",
@@ -5813,6 +5793,13 @@
      "tooltipLabel": "Muse Spark 1.3 (Xhigh)",
      "url": "/models/muse-spark-1-3-xhigh",
      "logo": "/img/logos/meta.svg"
+    },
+    {
+     "id": "a550ffca-f89e-4381-ade6-a85dc6a1fb4c",
+     "label": "Kimi K2.5",
+     "tooltipLabel": "Kimi K2.5 (Reasoning)",
+     "url": "/models/kimi-k2-5",
+     "logo": "/img/logos/kimi.jpg"
     },
     {
      "id": "0e66bae9-41f1-42fc-9276-ce8cb6f72919",
@@ -5988,6 +5975,13 @@
      "tooltipLabel": "Gemini 2.5 Pro",
      "url": "/models/gemini-2-5-pro",
      "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "label": "Kimi K3.1 Pro",
+     "tooltipLabel": "Kimi K3.1 Pro",
+     "url": "/models/kimi-k3-1-pro",
+     "logo": "/img/logos/kimi.jpg"
     },
     {
      "id": "1305c921-7aaa-4d6d-99b5-99b3acf15e19",
@@ -6374,6 +6368,54 @@
      "shortName": "Claude 3 Haiku",
      "creatorName": "Anthropic",
      "releaseDate": "2024-03-04"
+    },
+    {
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "slug": "kimi-k3-1-pro",
+     "name": "Kimi K3.1 Pro",
+     "shortName": "Kimi K3.1 Pro",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-10-23"
+    },
+    {
+     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
+     "slug": "kimi-k3",
+     "name": "Kimi K3 (Max)",
+     "shortName": "Kimi K3 (max)",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-07-16"
+    },
+    {
+     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
+     "slug": "kimi-k3-low",
+     "name": "Kimi K3 (Low)",
+     "shortName": "Kimi K3 (low)",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-07-16"
+    },
+    {
+     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
+     "slug": "kimi-k2-6",
+     "name": "Kimi K2.6 (Reasoning)",
+     "shortName": "Kimi K2.6",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-04-20"
+    },
+    {
+     "id": "a550ffca-f89e-4381-ade6-a85dc6a1fb4c",
+     "slug": "kimi-k2-5",
+     "name": "Kimi K2.5 (Reasoning)",
+     "shortName": "Kimi K2.5",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-01-27"
+    },
+    {
+     "id": "ba04694d-326a-4a6a-8f1b-46316f872a7f",
+     "slug": "kimi-k2-5-non-reasoning",
+     "name": "Kimi K2.5 (Non-reasoning)",
+     "shortName": "Kimi K2.5 (non-reasoning)",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-01-27"
     },
     {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
@@ -7478,46 +7520,6 @@
      "shortName": "Step3 VL 10B",
      "creatorName": "StepFun",
      "releaseDate": "2026-01-20"
-    },
-    {
-     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
-     "slug": "kimi-k3",
-     "name": "Kimi K3 (Max)",
-     "shortName": "Kimi K3 (max)",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-07-16"
-    },
-    {
-     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
-     "slug": "kimi-k3-low",
-     "name": "Kimi K3 (Low)",
-     "shortName": "Kimi K3 (low)",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-07-16"
-    },
-    {
-     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
-     "slug": "kimi-k2-6",
-     "name": "Kimi K2.6 (Reasoning)",
-     "shortName": "Kimi K2.6",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-04-20"
-    },
-    {
-     "id": "a550ffca-f89e-4381-ade6-a85dc6a1fb4c",
-     "slug": "kimi-k2-5",
-     "name": "Kimi K2.5 (Reasoning)",
-     "shortName": "Kimi K2.5",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-01-27"
-    },
-    {
-     "id": "ba04694d-326a-4a6a-8f1b-46316f872a7f",
-     "slug": "kimi-k2-5-non-reasoning",
-     "name": "Kimi K2.5 (Non-reasoning)",
-     "shortName": "Kimi K2.5 (non-reasoning)",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-01-27"
     },
     {
      "id": "d49c8680-e29b-400e-9511-824f7ddebe07",

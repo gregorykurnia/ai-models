@@ -1,7 +1,7 @@
 {
  "key": "aa-briefcase",
  "source_url": "https://artificialanalysis.ai/evaluations/aa-briefcase",
- "captured_at": "2026-10-20",
+ "captured_at": "2026-10-25",
  "selectors": 11,
  "charts": [
   {
@@ -13,13 +13,13 @@
      "url": "/models/claude-sonnet-5-5",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1817.26
+      "value": 1815.77
      },
      "lower": {
-      "value": 1806.93
+      "value": 1804.77
      },
      "upper": {
-      "value": 1829.56
+      "value": 1827.58
      }
     },
     {
@@ -28,13 +28,13 @@
      "url": "/models/claude-opus-5-5",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1802.99
+      "value": 1801.02
      },
      "lower": {
-      "value": 1791.77
+      "value": 1789.81
      },
      "upper": {
-      "value": 1815.11
+      "value": 1812.92
      }
     },
     {
@@ -43,13 +43,13 @@
      "url": "/models/claude-opus-5-5-xhigh",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1763.85
+      "value": 1761.16
      },
      "lower": {
-      "value": 1753.18
+      "value": 1750.87
      },
      "upper": {
-      "value": 1775.08
+      "value": 1771.76
      }
     },
     {
@@ -58,13 +58,13 @@
      "url": "/models/claude-sonnet-5-5-xhigh",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1750.96
+      "value": 1746
      },
      "lower": {
-      "value": 1738.06
+      "value": 1733.7
      },
      "upper": {
-      "value": 1764.77
+      "value": 1758.24
      }
     },
     {
@@ -88,13 +88,28 @@
      "url": "/models/claude-opus-5-5-high",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1685.66
+      "value": 1683.28
      },
      "lower": {
-      "value": 1675.94
+      "value": 1673.6
      },
      "upper": {
-      "value": 1697.05
+      "value": 1693.61
+     }
+    },
+    {
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "label": "Kimi K3.1 Pro",
+     "url": "/models/kimi-k3-1-pro",
+     "logo": "/img/logos/kimi.jpg",
+     "mid": {
+      "value": 1677.79
+     },
+     "lower": {
+      "value": 1667.35
+     },
+     "upper": {
+      "value": 1688.23
      }
     },
     {
@@ -103,28 +118,13 @@
      "url": "/models/claude-fable-5-1",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1672.26
+      "value": 1670.7
      },
      "lower": {
-      "value": 1664.49
+      "value": 1662.73
      },
      "upper": {
-      "value": 1681.12
-     }
-    },
-    {
-     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
-     "label": "Claude Opus 5 (max)",
-     "url": "/models/claude-opus-5",
-     "logo": "/img/logos/anthropic.svg",
-     "mid": {
-      "value": 1659.48
-     },
-     "lower": {
-      "value": 1651.19
-     },
-     "upper": {
-      "value": 1668.16
+      "value": 1679.02
      }
     },
     {
@@ -143,18 +143,33 @@
      }
     },
     {
+     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+     "label": "Claude Opus 5 (max)",
+     "url": "/models/claude-opus-5",
+     "logo": "/img/logos/anthropic.svg",
+     "mid": {
+      "value": 1656.53
+     },
+     "lower": {
+      "value": 1648.4
+     },
+     "upper": {
+      "value": 1664.24
+     }
+    },
+    {
      "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
      "label": "Claude Fable 5.1 (xhigh with fallback)",
      "url": "/models/claude-fable-5-1-xhigh",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1654.53
+      "value": 1650.97
      },
      "lower": {
-      "value": 1646.4
+      "value": 1642.86
      },
      "upper": {
-      "value": 1663.68
+      "value": 1659.6
      }
     },
     {
@@ -163,13 +178,13 @@
      "url": "/models/grok-4-7",
      "logo": "/img/logos/spacexai.svg",
      "mid": {
-      "value": 1641.75
+      "value": 1639.16
      },
      "lower": {
-      "value": 1632.5
+      "value": 1630.27
      },
      "upper": {
-      "value": 1651.51
+      "value": 1649.34
      }
     },
     {
@@ -178,28 +193,13 @@
      "url": "/models/claude-sonnet-5-5-high",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1635.77
+      "value": 1635.33
      },
      "lower": {
-      "value": 1626.33
+      "value": 1626.1
      },
      "upper": {
-      "value": 1646.81
-     }
-    },
-    {
-     "id": "1305c921-7aaa-4d6d-99b5-99b3acf15e19",
-     "label": "Claude Opus 5 (xhigh)",
-     "url": "/models/claude-opus-5-xhigh",
-     "logo": "/img/logos/anthropic.svg",
-     "mid": {
-      "value": 1633.85
-     },
-     "lower": {
-      "value": 1626.59
-     },
-     "upper": {
-      "value": 1642.92
+      "value": 1646.06
      }
     },
     {
@@ -208,13 +208,28 @@
      "url": "/models/grok-4-7-high",
      "logo": "/img/logos/spacexai.svg",
      "mid": {
-      "value": 1632.79
+      "value": 1630.47
      },
      "lower": {
-      "value": 1624.09
+      "value": 1621.19
      },
      "upper": {
-      "value": 1642.22
+      "value": 1639.19
+     }
+    },
+    {
+     "id": "1305c921-7aaa-4d6d-99b5-99b3acf15e19",
+     "label": "Claude Opus 5 (xhigh)",
+     "url": "/models/claude-opus-5-xhigh",
+     "logo": "/img/logos/anthropic.svg",
+     "mid": {
+      "value": 1629.58
+     },
+     "lower": {
+      "value": 1621.71
+     },
+     "upper": {
+      "value": 1637.82
      }
     },
     {
@@ -223,13 +238,13 @@
      "url": "/models/claude-opus-5-5-medium",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1625.06
+      "value": 1621.59
      },
      "lower": {
-      "value": 1615.02
+      "value": 1612.33
      },
      "upper": {
-      "value": 1635.74
+      "value": 1631.15
      }
     },
     {
@@ -238,13 +253,13 @@
      "url": "/models/qwen3-8-max",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 1612.62
+      "value": 1610.71
      },
      "lower": {
-      "value": 1603.61
+      "value": 1601.24
      },
      "upper": {
-      "value": 1621.93
+      "value": 1620.84
      }
     },
     {
@@ -268,28 +283,13 @@
      "url": "/models/claude-fable-5-1-high",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1580.33
+      "value": 1577.4
      },
      "lower": {
-      "value": 1572.7
+      "value": 1569.88
      },
      "upper": {
-      "value": 1588.44
-     }
-    },
-    {
-     "id": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
-     "label": "Qwen3.8-Flash-Next",
-     "url": "/models/qwen3-8-flash-next",
-     "logo": "/img/logos/alibaba.svg",
-     "mid": {
-      "value": 1579.93
-     },
-     "lower": {
-      "value": 1572.02
-     },
-     "upper": {
-      "value": 1589.05
+      "value": 1585.53
      }
     },
     {
@@ -298,13 +298,28 @@
      "url": "/models/claude-haiku-5-5",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1576.85
+      "value": 1575.48
      },
      "lower": {
-      "value": 1566.37
+      "value": 1564.79
      },
      "upper": {
-      "value": 1588.56
+      "value": 1587.15
+     }
+    },
+    {
+     "id": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
+     "label": "Qwen3.8-Flash-Next",
+     "url": "/models/qwen3-8-flash-next",
+     "logo": "/img/logos/alibaba.svg",
+     "mid": {
+      "value": 1575.31
+     },
+     "lower": {
+      "value": 1566.7
+     },
+     "upper": {
+      "value": 1584.46
      }
     },
     {
@@ -328,13 +343,13 @@
      "url": "/models/gpt-6-astra",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1568.99
+      "value": 1567.97
      },
      "lower": {
-      "value": 1560.5
+      "value": 1559.28
      },
      "upper": {
-      "value": 1578.01
+      "value": 1576.98
      }
     },
     {
@@ -343,13 +358,13 @@
      "url": "/models/claude-opus-5-high",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1560.7
+      "value": 1558.12
      },
      "lower": {
-      "value": 1553.39
+      "value": 1551.18
      },
      "upper": {
-      "value": 1568.52
+      "value": 1565.69
      }
     },
     {
@@ -358,13 +373,13 @@
      "url": "/models/gpt-6-1-sol",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1557
+      "value": 1554.98
      },
      "lower": {
-      "value": 1547.21
+      "value": 1544.9
      },
      "upper": {
-      "value": 1567.33
+      "value": 1564.36
      }
     },
     {
@@ -373,13 +388,13 @@
      "url": "/models/gpt-6-astra-xhigh",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1546.7
+      "value": 1543.09
      },
      "lower": {
-      "value": 1537.86
+      "value": 1534.59
      },
      "upper": {
-      "value": 1556.11
+      "value": 1551.28
      }
     },
     {
@@ -388,13 +403,13 @@
      "url": "/models/grok-4-6-xhigh",
      "logo": "/img/logos/spacexai.svg",
      "mid": {
-      "value": 1544.92
+      "value": 1542.89
      },
      "lower": {
-      "value": 1537.39
+      "value": 1535.26
      },
      "upper": {
-      "value": 1553.21
+      "value": 1550.57
      }
     },
     {
@@ -403,13 +418,13 @@
      "url": "/models/claude-fable-5",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1539.25
+      "value": 1536.92
      },
      "lower": {
-      "value": 1531.94
+      "value": 1529.57
      },
      "upper": {
-      "value": 1547.2
+      "value": 1544.29
      }
     },
     {
@@ -418,13 +433,13 @@
      "url": "/models/grok-4-6",
      "logo": "/img/logos/spacexai.svg",
      "mid": {
-      "value": 1534.25
+      "value": 1530.65
      },
      "lower": {
-      "value": 1526.41
+      "value": 1523.01
      },
      "upper": {
-      "value": 1542.89
+      "value": 1538.73
      }
     },
     {
@@ -433,13 +448,13 @@
      "url": "/models/claude-haiku-5-5-xhigh",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1531.52
+      "value": 1526.53
      },
      "lower": {
-      "value": 1521
+      "value": 1515.07
      },
      "upper": {
-      "value": 1542.89
+      "value": 1537.09
      }
     },
     {
@@ -448,13 +463,28 @@
      "url": "/models/claude-fable-5-1-medium",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1527.66
+      "value": 1525.22
      },
      "lower": {
-      "value": 1519.87
+      "value": 1517.48
      },
      "upper": {
-      "value": 1535.57
+      "value": 1533.38
+     }
+    },
+    {
+     "id": "539ed227-38f4-4bea-a015-117057c14b18",
+     "label": "Ling 3.1 Flash 1019",
+     "url": "/models/ling-3-1-flash-1019",
+     "logo": "/img/logos/inclusionai.jpg",
+     "mid": {
+      "value": 1522.09
+     },
+     "lower": {
+      "value": 1511.47
+     },
+     "upper": {
+      "value": 1533.42
      }
     },
     {
@@ -463,13 +493,13 @@
      "url": "/models/mimo-v2-6-pro",
      "logo": "/img/logos/xiaomi.svg",
      "mid": {
-      "value": 1514.66
+      "value": 1512.2
      },
      "lower": {
-      "value": 1504.8
+      "value": 1503.35
      },
      "upper": {
-      "value": 1525.84
+      "value": 1521.74
      }
     },
     {
@@ -478,13 +508,13 @@
      "url": "/models/glm-5-3",
      "logo": "/img/logos/zai.svg",
      "mid": {
-      "value": 1506.86
+      "value": 1505.1
      },
      "lower": {
-      "value": 1499.02
+      "value": 1496.88
      },
      "upper": {
-      "value": 1515.66
+      "value": 1513.34
      }
     },
     {
@@ -493,13 +523,13 @@
      "url": "/models/gpt-6-astra-high",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1505.91
+      "value": 1504.78
      },
      "lower": {
-      "value": 1497.16
+      "value": 1495.88
      },
      "upper": {
-      "value": 1515.02
+      "value": 1513.97
      }
     },
     {
@@ -508,13 +538,13 @@
      "url": "/models/gpt-6-1-sol-xhigh",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1503.6
+      "value": 1501.6
      },
      "lower": {
-      "value": 1492.1
+      "value": 1491.49
      },
      "upper": {
-      "value": 1514.32
+      "value": 1512.18
      }
     },
     {
@@ -523,13 +553,13 @@
      "url": "/models/kimi-k3",
      "logo": "/img/logos/kimi.jpg",
      "mid": {
-      "value": 1499.38
+      "value": 1498.75
      },
      "lower": {
-      "value": 1491.8
+      "value": 1491.3
      },
      "upper": {
-      "value": 1506.62
+      "value": 1505.32
      }
     },
     {
@@ -538,13 +568,13 @@
      "url": "/models/grok-4-7-low",
      "logo": "/img/logos/spacexai.svg",
      "mid": {
-      "value": 1498.6
+      "value": 1495.61
      },
      "lower": {
-      "value": 1487.82
+      "value": 1485.84
      },
      "upper": {
-      "value": 1509.76
+      "value": 1506.18
      }
     },
     {
@@ -553,13 +583,13 @@
      "url": "/models/mimo-v2-6-flash",
      "logo": "/img/logos/xiaomi.svg",
      "mid": {
-      "value": 1490.91
+      "value": 1488
      },
      "lower": {
-      "value": 1481.4
+      "value": 1478.34
      },
      "upper": {
-      "value": 1500.78
+      "value": 1498.36
      }
     },
     {
@@ -568,13 +598,13 @@
      "url": "/models/gemini-4-argon",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 1486.44
+      "value": 1485.61
      },
      "lower": {
-      "value": 1476.51
+      "value": 1475.27
      },
      "upper": {
-      "value": 1497.11
+      "value": 1496.29
      }
     },
     {
@@ -583,13 +613,13 @@
      "url": "/models/muse-spark-1-3-xhigh",
      "logo": "/img/logos/meta.svg",
      "mid": {
-      "value": 1485.51
+      "value": 1483.15
      },
      "lower": {
-      "value": 1477.48
+      "value": 1474.45
      },
      "upper": {
-      "value": 1494.68
+      "value": 1491.64
      }
     },
     {
@@ -598,13 +628,13 @@
      "url": "/models/grok-4-6-medium",
      "logo": "/img/logos/spacexai.svg",
      "mid": {
-      "value": 1483.19
+      "value": 1480.08
      },
      "lower": {
-      "value": 1475.9
+      "value": 1472.64
      },
      "upper": {
-      "value": 1491.57
+      "value": 1487.97
      }
     },
     {
@@ -613,28 +643,13 @@
      "url": "/models/claude-fable-5-1-low",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1481.82
+      "value": 1479.34
      },
      "lower": {
-      "value": 1474.14
+      "value": 1472.32
      },
      "upper": {
-      "value": 1489.66
-     }
-    },
-    {
-     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
-     "label": "GPT-6 Sol (max)",
-     "url": "/models/gpt-6-sol",
-     "logo": "/img/logos/openai.svg",
-     "mid": {
-      "value": 1480.92
-     },
-     "lower": {
-      "value": 1472.02
-     },
-     "upper": {
-      "value": 1490.29
+      "value": 1486.86
      }
     },
     {
@@ -643,13 +658,28 @@
      "url": "/models/gpt-5-6-sol",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1480.04
+      "value": 1478.85
      },
      "lower": {
-      "value": 1472.33
+      "value": 1470.68
      },
      "upper": {
-      "value": 1488.36
+      "value": 1486.98
+     }
+    },
+    {
+     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+     "label": "GPT-6 Sol (max)",
+     "url": "/models/gpt-6-sol",
+     "logo": "/img/logos/openai.svg",
+     "mid": {
+      "value": 1477.11
+     },
+     "lower": {
+      "value": 1468.2
+     },
+     "upper": {
+      "value": 1486
      }
     },
     {
@@ -673,13 +703,13 @@
      "url": "/models/gpt-6-1-sol-high",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1465.25
+      "value": 1464.98
      },
      "lower": {
-      "value": 1455.09
+      "value": 1455.19
      },
      "upper": {
-      "value": 1476.51
+      "value": 1475.53
      }
     },
     {
@@ -688,13 +718,13 @@
      "url": "/models/gpt-6-astra-medium",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1460.92
+      "value": 1459.72
      },
      "lower": {
-      "value": 1451.74
+      "value": 1451.14
      },
      "upper": {
-      "value": 1470.17
+      "value": 1467.94
      }
     },
     {
@@ -718,13 +748,13 @@
      "url": "/models/claude-haiku-5-5-high",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1442.67
+      "value": 1440.12
      },
      "lower": {
-      "value": 1431.05
+      "value": 1429.73
      },
      "upper": {
-      "value": 1454.13
+      "value": 1450.68
      }
     },
     {
@@ -733,13 +763,13 @@
      "url": "/models/claude-sonnet-5-5-medium",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1441.38
+      "value": 1438.4
      },
      "lower": {
-      "value": 1431.19
+      "value": 1428.39
      },
      "upper": {
-      "value": 1451.45
+      "value": 1448.57
      }
     },
     {
@@ -748,13 +778,13 @@
      "url": "/models/gpt-5-6-sol-xhigh",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1437.45
+      "value": 1435.48
      },
      "lower": {
-      "value": 1428.53
+      "value": 1427.71
      },
      "upper": {
-      "value": 1446.3
+      "value": 1444.7
      }
     },
     {
@@ -763,13 +793,13 @@
      "url": "/models/qwen3-8-2-4t-a95b",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 1435.33
+      "value": 1432.99
      },
      "lower": {
-      "value": 1427.45
+      "value": 1425.25
      },
      "upper": {
-      "value": 1443.6
+      "value": 1441.04
      }
     },
     {
@@ -778,28 +808,13 @@
      "url": "/models/claude-opus-5-medium",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1434.89
+      "value": 1432.7
      },
      "lower": {
-      "value": 1427.89
+      "value": 1424.85
      },
      "upper": {
-      "value": 1442.65
-     }
-    },
-    {
-     "id": "7707a46f-895f-4247-b7a8-ddab87c9a11d",
-     "label": "DeepSeek V4 Flash Vision (max)",
-     "url": "/models/deepseek-v4-flash-vision",
-     "logo": "/img/logos/deepseek.svg",
-     "mid": {
-      "value": 1424.6
-     },
-     "lower": {
-      "value": 1416.76
-     },
-     "upper": {
-      "value": 1433.41
+      "value": 1440.42
      }
     },
     {
@@ -808,13 +823,28 @@
      "url": "/models/step-5",
      "logo": "/img/logos/stepfun.svg",
      "mid": {
-      "value": 1424.32
+      "value": 1423.07
      },
      "lower": {
-      "value": 1413.12
+      "value": 1413.16
      },
      "upper": {
-      "value": 1435.11
+      "value": 1433.84
+     }
+    },
+    {
+     "id": "7707a46f-895f-4247-b7a8-ddab87c9a11d",
+     "label": "DeepSeek V4 Flash Vision (max)",
+     "url": "/models/deepseek-v4-flash-vision",
+     "logo": "/img/logos/deepseek.svg",
+     "mid": {
+      "value": 1421.04
+     },
+     "lower": {
+      "value": 1413.28
+     },
+     "upper": {
+      "value": 1429.23
      }
     },
     {
@@ -823,13 +853,13 @@
      "url": "/models/deepseek-v4-1-flash",
      "logo": "/img/logos/deepseek.svg",
      "mid": {
-      "value": 1420.2
+      "value": 1418.83
      },
      "lower": {
-      "value": 1411.28
+      "value": 1410.45
      },
      "upper": {
-      "value": 1430.09
+      "value": 1427.17
      }
     },
     {
@@ -838,13 +868,13 @@
      "url": "/models/ling-3-1-flash",
      "logo": "/img/logos/inclusionai.jpg",
      "mid": {
-      "value": 1400.04
+      "value": 1397.34
      },
      "lower": {
-      "value": 1390.11
+      "value": 1386.89
      },
      "upper": {
-      "value": 1409.97
+      "value": 1407.45
      }
     },
     {
@@ -853,13 +883,13 @@
      "url": "/models/qwen3-8-27b",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 1394.92
+      "value": 1394.03
      },
      "lower": {
-      "value": 1387.8
+      "value": 1386.61
      },
      "upper": {
-      "value": 1402.51
+      "value": 1401.16
      }
     },
     {
@@ -868,13 +898,13 @@
      "url": "/models/mistral-large-4",
      "logo": "/img/logos/mistral.svg",
      "mid": {
-      "value": 1391.97
+      "value": 1391.08
      },
      "lower": {
-      "value": 1381.46
+      "value": 1379.76
      },
      "upper": {
-      "value": 1402.29
+      "value": 1401.5
      }
     },
     {
@@ -883,13 +913,13 @@
      "url": "/models/qwen3-8-max-0803",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 1384.6
+      "value": 1382.88
      },
      "lower": {
-      "value": 1377.27
+      "value": 1376.14
      },
      "upper": {
-      "value": 1392.81
+      "value": 1390.21
      }
     },
     {
@@ -898,13 +928,13 @@
      "url": "/models/qwen3-8-27b-medium",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 1375.49
+      "value": 1374.14
      },
      "lower": {
-      "value": 1367.07
+      "value": 1365.75
      },
      "upper": {
-      "value": 1383.85
+      "value": 1383.02
      }
     },
     {
@@ -913,13 +943,13 @@
      "url": "/models/claude-haiku-5-5-medium",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1371.54
+      "value": 1368.89
      },
      "lower": {
-      "value": 1362.33
+      "value": 1359.67
      },
      "upper": {
-      "value": 1381.01
+      "value": 1378.36
      }
     },
     {
@@ -928,13 +958,13 @@
      "url": "/models/gpt-5-6-sol-high",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1368.7
+      "value": 1368.12
      },
      "lower": {
-      "value": 1360.71
+      "value": 1359.41
      },
      "upper": {
-      "value": 1377.78
+      "value": 1376.78
      }
     },
     {
@@ -943,13 +973,13 @@
      "url": "/models/gpt-6-1-sol-medium",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1361.16
+      "value": 1358.64
      },
      "lower": {
-      "value": 1350.57
+      "value": 1348.85
      },
      "upper": {
-      "value": 1371.73
+      "value": 1368.22
      }
     },
     {
@@ -958,13 +988,13 @@
      "url": "/models/claude-sonnet-5",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1358.4
+      "value": 1356.6
      },
      "lower": {
-      "value": 1351.49
+      "value": 1350.21
      },
      "upper": {
-      "value": 1365.49
+      "value": 1363.64
      }
     },
     {
@@ -973,13 +1003,13 @@
      "url": "/models/gpt-6-sol-xhigh",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1357.36
+      "value": 1355.27
      },
      "lower": {
-      "value": 1348.32
+      "value": 1346.26
      },
      "upper": {
-      "value": 1366.66
+      "value": 1364.49
      }
     },
     {
@@ -988,13 +1018,13 @@
      "url": "/models/gpt-5-6-luna",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1342.18
+      "value": 1339.22
      },
      "lower": {
-      "value": 1334.42
+      "value": 1332
      },
      "upper": {
-      "value": 1350.16
+      "value": 1346.78
      }
     },
     {
@@ -1003,13 +1033,13 @@
      "url": "/models/gpt-6-luna",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1334.83
+      "value": 1335.52
      },
      "lower": {
-      "value": 1325.5
+      "value": 1326.65
      },
      "upper": {
-      "value": 1344.71
+      "value": 1344.58
      }
     },
     {
@@ -1018,13 +1048,13 @@
      "url": "/models/gpt-5-6-terra",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1334.22
+      "value": 1332.05
      },
      "lower": {
-      "value": 1326.48
+      "value": 1324.28
      },
      "upper": {
-      "value": 1342.75
+      "value": 1340.44
      }
     },
     {
@@ -1033,13 +1063,13 @@
      "url": "/models/gpt-5-6-terra-xhigh",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1332.76
+      "value": 1330.79
      },
      "lower": {
-      "value": 1324.42
+      "value": 1322.73
      },
      "upper": {
-      "value": 1341.09
+      "value": 1339.11
      }
     },
     {
@@ -1048,13 +1078,13 @@
      "url": "/models/muse-spark-1-2",
      "logo": "/img/logos/meta.svg",
      "mid": {
-      "value": 1328.29
+      "value": 1326.93
      },
      "lower": {
-      "value": 1319.9
+      "value": 1319.12
      },
      "upper": {
-      "value": 1336.74
+      "value": 1334.37
      }
     },
     {
@@ -1063,13 +1093,13 @@
      "url": "/models/claude-opus-4-8",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1321.43
+      "value": 1319.48
      },
      "lower": {
-      "value": 1314.6
+      "value": 1312.48
      },
      "upper": {
-      "value": 1328.52
+      "value": 1326.32
      }
     },
     {
@@ -1078,13 +1108,13 @@
      "url": "/models/k2-horizon-375b-a23b",
      "logo": "/img/logos/ifm.svg",
      "mid": {
-      "value": 1294.09
+      "value": 1293.88
      },
      "lower": {
-      "value": 1286.36
+      "value": 1285.91
      },
      "upper": {
-      "value": 1301.85
+      "value": 1302.4
      }
     },
     {
@@ -1093,43 +1123,13 @@
      "url": "/models/grok-4-6-low",
      "logo": "/img/logos/spacexai.svg",
      "mid": {
-      "value": 1287.61
+      "value": 1285.96
      },
      "lower": {
-      "value": 1280.5
+      "value": 1278.44
      },
      "upper": {
-      "value": 1295.6
-     }
-    },
-    {
-     "id": "794f69b5-cede-482b-b1cc-d769478497cd",
-     "label": "Grok 4.5 (high)",
-     "url": "/models/grok-4-5",
-     "logo": "/img/logos/spacexai.svg",
-     "mid": {
-      "value": 1280.57
-     },
-     "lower": {
-      "value": 1273.05
-     },
-     "upper": {
-      "value": 1288.41
-     }
-    },
-    {
-     "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
-     "label": "Claude Opus 5.5 (low with fallback)",
-     "url": "/models/claude-opus-5-5-low",
-     "logo": "/img/logos/anthropic.svg",
-     "mid": {
-      "value": 1279.79
-     },
-     "lower": {
-      "value": 1270.23
-     },
-     "upper": {
-      "value": 1289.66
+      "value": 1293.84
      }
     },
     {
@@ -1138,13 +1138,43 @@
      "url": "/models/muse-spark-open",
      "logo": "/img/logos/meta.svg",
      "mid": {
-      "value": 1279.37
+      "value": 1278.6
      },
      "lower": {
-      "value": 1269.07
+      "value": 1267.38
      },
      "upper": {
-      "value": 1290.28
+      "value": 1289.95
+     }
+    },
+    {
+     "id": "794f69b5-cede-482b-b1cc-d769478497cd",
+     "label": "Grok 4.5 (high)",
+     "url": "/models/grok-4-5",
+     "logo": "/img/logos/spacexai.svg",
+     "mid": {
+      "value": 1278.38
+     },
+     "lower": {
+      "value": 1271.15
+     },
+     "upper": {
+      "value": 1285.46
+     }
+    },
+    {
+     "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
+     "label": "Claude Opus 5.5 (low with fallback)",
+     "url": "/models/claude-opus-5-5-low",
+     "logo": "/img/logos/anthropic.svg",
+     "mid": {
+      "value": 1276.4
+     },
+     "lower": {
+      "value": 1267.6
+     },
+     "upper": {
+      "value": 1285.43
      }
     },
     {
@@ -1153,13 +1183,13 @@
      "url": "/models/claude-sonnet-5-xhigh",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1273.1
+      "value": 1272.27
      },
      "lower": {
-      "value": 1266.01
+      "value": 1265.18
      },
      "upper": {
-      "value": 1280.66
+      "value": 1279.42
      }
     },
     {
@@ -1168,13 +1198,13 @@
      "url": "/models/qwen3-8-27b-low",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 1271.57
+      "value": 1270.9
      },
      "lower": {
-      "value": 1262.93
+      "value": 1262.41
      },
      "upper": {
-      "value": 1281.57
+      "value": 1280.57
      }
     },
     {
@@ -1183,13 +1213,13 @@
      "url": "/models/claude-sonnet-5-5-low",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1271.53
+      "value": 1267.89
      },
      "lower": {
-      "value": 1260.99
+      "value": 1258.03
      },
      "upper": {
-      "value": 1282.33
+      "value": 1278.08
      }
     },
     {
@@ -1198,13 +1228,13 @@
      "url": "/models/gpt-5-6-luna-xhigh",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1267.93
+      "value": 1266.51
      },
      "lower": {
-      "value": 1260.13
+      "value": 1258.84
      },
      "upper": {
-      "value": 1276.68
+      "value": 1274.43
      }
     },
     {
@@ -1213,13 +1243,13 @@
      "url": "/models/gpt-6-sol-high",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1266.41
+      "value": 1265.41
      },
      "lower": {
-      "value": 1256.89
+      "value": 1256.39
      },
      "upper": {
-      "value": 1275.32
+      "value": 1274.72
      }
     },
     {
@@ -1228,28 +1258,13 @@
      "url": "/models/deepseek-v4-flash",
      "logo": "/img/logos/deepseek.svg",
      "mid": {
-      "value": 1258.64
+      "value": 1256.76
      },
      "lower": {
-      "value": 1251.44
+      "value": 1249.39
      },
      "upper": {
-      "value": 1266.26
-     }
-    },
-    {
-     "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
-     "label": "GPT-6 Astra (low)",
-     "url": "/models/gpt-6-astra-low",
-     "logo": "/img/logos/openai.svg",
-     "mid": {
-      "value": 1257.01
-     },
-     "lower": {
-      "value": 1248.03
-     },
-     "upper": {
-      "value": 1266.07
+      "value": 1264.51
      }
     },
     {
@@ -1258,13 +1273,28 @@
      "url": "/models/deepseek-v4-pro",
      "logo": "/img/logos/deepseek.svg",
      "mid": {
-      "value": 1256.94
+      "value": 1255.61
      },
      "lower": {
-      "value": 1248.9
+      "value": 1247.8
      },
      "upper": {
-      "value": 1264.76
+      "value": 1263.34
+     }
+    },
+    {
+     "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
+     "label": "GPT-6 Astra (low)",
+     "url": "/models/gpt-6-astra-low",
+     "logo": "/img/logos/openai.svg",
+     "mid": {
+      "value": 1254.64
+     },
+     "lower": {
+      "value": 1245.95
+     },
+     "upper": {
+      "value": 1262.69
      }
     },
     {
@@ -1273,13 +1303,13 @@
      "url": "/models/claude-opus-4-7",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1254.06
+      "value": 1251.92
      },
      "lower": {
-      "value": 1247.83
+      "value": 1245.14
      },
      "upper": {
-      "value": 1260.8
+      "value": 1258.59
      }
     },
     {
@@ -1288,13 +1318,13 @@
      "url": "/models/gpt-5-6-sol-medium",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1241.93
+      "value": 1240.1
      },
      "lower": {
-      "value": 1233.38
+      "value": 1231.58
      },
      "upper": {
-      "value": 1250.19
+      "value": 1248.63
      }
     },
     {
@@ -1303,13 +1333,13 @@
      "url": "/models/gpt-6-luna-xhigh",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1236.97
+      "value": 1235.37
      },
      "lower": {
-      "value": 1226.94
+      "value": 1226.18
      },
      "upper": {
-      "value": 1246.42
+      "value": 1243.78
      }
     },
     {
@@ -1318,13 +1348,13 @@
      "url": "/models/glm-5-2",
      "logo": "/img/logos/zai.svg",
      "mid": {
-      "value": 1228.86
+      "value": 1227.04
      },
      "lower": {
-      "value": 1221.52
+      "value": 1220.63
      },
      "upper": {
-      "value": 1235.88
+      "value": 1233.83
      }
     },
     {
@@ -1333,13 +1363,13 @@
      "url": "/models/claude-opus-5-low",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1209.28
+      "value": 1208.18
      },
      "lower": {
-      "value": 1202.1
+      "value": 1200.73
      },
      "upper": {
-      "value": 1217.14
+      "value": 1216
      }
     },
     {
@@ -1348,13 +1378,13 @@
      "url": "/models/gemini-3-8-flash",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 1202.59
+      "value": 1202.29
      },
      "lower": {
-      "value": 1194.75
+      "value": 1193.71
      },
      "upper": {
-      "value": 1210.72
+      "value": 1210.18
      }
     },
     {
@@ -1363,13 +1393,13 @@
      "url": "/models/gpt-5-6-terra-high",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1202.17
+      "value": 1202.27
      },
      "lower": {
-      "value": 1194.55
+      "value": 1193.86
      },
      "upper": {
-      "value": 1210.88
+      "value": 1210.15
      }
     },
     {
@@ -1378,13 +1408,13 @@
      "url": "/models/glm-5-3-low",
      "logo": "/img/logos/zai.svg",
      "mid": {
-      "value": 1186.83
+      "value": 1185.42
      },
      "lower": {
-      "value": 1176.92
+      "value": 1175.72
      },
      "upper": {
-      "value": 1196.7
+      "value": 1193.91
      }
     },
     {
@@ -1393,13 +1423,13 @@
      "url": "/models/gpt-6-luna-high",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1186.42
+      "value": 1184.6
      },
      "lower": {
-      "value": 1178.22
+      "value": 1175.08
      },
      "upper": {
-      "value": 1195.6
+      "value": 1192.96
      }
     },
     {
@@ -1408,13 +1438,13 @@
      "url": "/models/gemini-3-8-flash-medium",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 1181.5
+      "value": 1181.31
      },
      "lower": {
-      "value": 1172.3
+      "value": 1171.84
      },
      "upper": {
-      "value": 1190.38
+      "value": 1189.91
      }
     },
     {
@@ -1423,13 +1453,13 @@
      "url": "/models/claude-sonnet-5-high",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1176.53
+      "value": 1175.71
      },
      "lower": {
-      "value": 1169.48
+      "value": 1168.65
      },
      "upper": {
-      "value": 1183.61
+      "value": 1182.52
      }
     },
     {
@@ -1438,13 +1468,13 @@
      "url": "/models/gpt-5-6-luna-high",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1170.08
+      "value": 1168.6
      },
      "lower": {
-      "value": 1161.95
+      "value": 1160.54
      },
      "upper": {
-      "value": 1177.77
+      "value": 1176.37
      }
     },
     {
@@ -1453,13 +1483,13 @@
      "url": "/models/k2-horizon-mova-36b-a4b",
      "logo": "/img/logos/ifm.svg",
      "mid": {
-      "value": 1166.7
+      "value": 1165.46
      },
      "lower": {
-      "value": 1158.46
+      "value": 1156.25
      },
      "upper": {
-      "value": 1176.85
+      "value": 1174.76
      }
     },
     {
@@ -1468,13 +1498,13 @@
      "url": "/models/gpt-6-sol-medium",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1149.3
+      "value": 1148.38
      },
      "lower": {
-      "value": 1139.88
+      "value": 1139.17
      },
      "upper": {
-      "value": 1158.36
+      "value": 1158.29
      }
     },
     {
@@ -1483,13 +1513,13 @@
      "url": "/models/gpt-5-5",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1136.33
+      "value": 1135.57
      },
      "lower": {
-      "value": 1129.95
+      "value": 1128.14
      },
      "upper": {
-      "value": 1143.07
+      "value": 1142.28
      }
     },
     {
@@ -1498,13 +1528,13 @@
      "url": "/models/quasar-438b",
      "logo": "/img/logos/multiversecomputing.svg",
      "mid": {
-      "value": 1122.88
+      "value": 1122.35
      },
      "lower": {
-      "value": 1114.68
+      "value": 1114.03
      },
      "upper": {
-      "value": 1131.91
+      "value": 1130.3
      }
     },
     {
@@ -1513,13 +1543,13 @@
      "url": "/models/deepseek-v4-1-flash-non-reasoning",
      "logo": "/img/logos/deepseek.svg",
      "mid": {
-      "value": 1117.62
+      "value": 1118.29
      },
      "lower": {
-      "value": 1108.06
+      "value": 1108.42
      },
      "upper": {
-      "value": 1127.33
+      "value": 1127.96
      }
     },
     {
@@ -1528,13 +1558,13 @@
      "url": "/models/gpt-6-1-sol-low",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1116.74
+      "value": 1114.37
      },
      "lower": {
-      "value": 1107.5
+      "value": 1104.25
      },
      "upper": {
-      "value": 1127.25
+      "value": 1124.81
      }
     },
     {
@@ -1543,13 +1573,13 @@
      "url": "/models/gemini-3-7-flash",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 1113.53
+      "value": 1113.09
      },
      "lower": {
-      "value": 1105.51
+      "value": 1105.6
      },
      "upper": {
-      "value": 1121.79
+      "value": 1120.91
      }
     },
     {
@@ -1558,13 +1588,13 @@
      "url": "/models/claude-haiku-5-5-low",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1111.68
+      "value": 1112.32
      },
      "lower": {
-      "value": 1101.3
+      "value": 1101.08
      },
      "upper": {
-      "value": 1122.54
+      "value": 1122.34
      }
     },
     {
@@ -1573,13 +1603,13 @@
      "url": "/models/gpt-6-sol-non-reasoning",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1103.23
+      "value": 1104.23
      },
      "lower": {
-      "value": 1094.47
+      "value": 1094.77
      },
      "upper": {
-      "value": 1112.13
+      "value": 1113.35
      }
     },
     {
@@ -1588,13 +1618,13 @@
      "url": "/models/gpt-6-luna-medium",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1098.75
+      "value": 1096.56
      },
      "lower": {
-      "value": 1090.21
+      "value": 1088.1
      },
      "upper": {
-      "value": 1107.44
+      "value": 1106.1
      }
     },
     {
@@ -1633,13 +1663,13 @@
      "url": "/models/jt-4-1-flash-236b-a21b",
      "logo": "/img/logos/china-mobile.png",
      "mid": {
-      "value": 1089.28
+      "value": 1089.67
      },
      "lower": {
-      "value": 1078.96
+      "value": 1079.07
      },
      "upper": {
-      "value": 1100.09
+      "value": 1099.85
      }
     },
     {
@@ -1648,13 +1678,13 @@
      "url": "/models/gpt-5-5-high",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1088.3
+      "value": 1087.71
      },
      "lower": {
-      "value": 1081.7
+      "value": 1081.15
      },
      "upper": {
-      "value": 1095.42
+      "value": 1094.62
      }
     },
     {
@@ -1663,13 +1693,13 @@
      "url": "/models/gpt-5-5-instant-06-26",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1086.37
+      "value": 1086.25
      },
      "lower": {
-      "value": 1076.89
+      "value": 1077.26
      },
      "upper": {
-      "value": 1095.04
+      "value": 1095.09
      }
     },
     {
@@ -1678,13 +1708,13 @@
      "url": "/models/claude-opus-4-7-non-reasoning",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1067.85
+      "value": 1067.45
      },
      "lower": {
-      "value": 1060.97
+      "value": 1060.16
      },
      "upper": {
-      "value": 1074.68
+      "value": 1073.52
      }
     },
     {
@@ -1693,13 +1723,13 @@
      "url": "/models/claude-sonnet-4-6-adaptive",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1062.96
+      "value": 1061.88
      },
      "lower": {
-      "value": 1056.67
+      "value": 1055.79
      },
      "upper": {
-      "value": 1069.74
+      "value": 1068.35
      }
     },
     {
@@ -1708,13 +1738,13 @@
      "url": "/models/gemini-3-8-flash-low",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 1062.43
+      "value": 1061.34
      },
      "lower": {
-      "value": 1054.29
+      "value": 1052.37
      },
      "upper": {
-      "value": 1070.81
+      "value": 1070.08
      }
     },
     {
@@ -1723,28 +1753,13 @@
      "url": "/models/claude-sonnet-5-medium",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1057.7
+      "value": 1057.31
      },
      "lower": {
-      "value": 1050.74
+      "value": 1050.38
      },
      "upper": {
-      "value": 1064.76
-     }
-    },
-    {
-     "id": "89a2c945-1fab-4ee4-9f45-83a9f46cb221",
-     "label": "DeepSeek V4 Flash (high)",
-     "url": "/models/deepseek-v4-flash-0420-high",
-     "logo": "/img/logos/deepseek.svg",
-     "mid": {
-      "value": 1043.64
-     },
-     "lower": {
-      "value": 1034.65
-     },
-     "upper": {
-      "value": 1053.03
+      "value": 1064.02
      }
     },
     {
@@ -1753,13 +1768,28 @@
      "url": "/models/gpt-5-6-sol-low",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1043.52
+      "value": 1042.55
      },
      "lower": {
-      "value": 1035.75
+      "value": 1035.01
      },
      "upper": {
-      "value": 1051.62
+      "value": 1050.55
+     }
+    },
+    {
+     "id": "89a2c945-1fab-4ee4-9f45-83a9f46cb221",
+     "label": "DeepSeek V4 Flash (high)",
+     "url": "/models/deepseek-v4-flash-0420-high",
+     "logo": "/img/logos/deepseek.svg",
+     "mid": {
+      "value": 1041.45
+     },
+     "lower": {
+      "value": 1031.51
+     },
+     "upper": {
+      "value": 1050.23
      }
     },
     {
@@ -1768,28 +1798,13 @@
      "url": "/models/gpt-5-6-terra-medium",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1039.24
+      "value": 1037.91
      },
      "lower": {
-      "value": 1031.35
+      "value": 1029.86
      },
      "upper": {
-      "value": 1047.36
-     }
-    },
-    {
-     "id": "122a1fa1-976a-4089-87a2-5a0a13e2a52c",
-     "label": "K2 Horizon 7B",
-     "url": "/models/k2-horizon-7b",
-     "logo": "/img/logos/ifm.svg",
-     "mid": {
-      "value": 1015.62
-     },
-     "lower": {
-      "value": 1005.55
-     },
-     "upper": {
-      "value": 1025.84
+      "value": 1045.97
      }
     },
     {
@@ -1798,13 +1813,28 @@
      "url": "/models/gpt-5-6-terra-low",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1014.15
+      "value": 1014.14
      },
      "lower": {
-      "value": 1006.33
+      "value": 1005.97
      },
      "upper": {
-      "value": 1022.21
+      "value": 1021.57
+     }
+    },
+    {
+     "id": "122a1fa1-976a-4089-87a2-5a0a13e2a52c",
+     "label": "K2 Horizon 7B",
+     "url": "/models/k2-horizon-7b",
+     "logo": "/img/logos/ifm.svg",
+     "mid": {
+      "value": 1012.2
+     },
+     "lower": {
+      "value": 1002.96
+     },
+     "upper": {
+      "value": 1021.7
      }
     },
     {
@@ -1813,13 +1843,13 @@
      "url": "/models/apodex-1-1",
      "logo": "/img/logos/apodex.svg",
      "mid": {
-      "value": 1012.52
+      "value": 1011.91
      },
      "lower": {
-      "value": 1003.16
+      "value": 1002.57
      },
      "upper": {
-      "value": 1022.36
+      "value": 1021.63
      }
     },
     {
@@ -1828,13 +1858,13 @@
      "url": "/models/gpt-5-6-sol-non-reasoning",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1008.14
+      "value": 1007.31
      },
      "lower": {
-      "value": 999.97
+      "value": 999.23
      },
      "upper": {
-      "value": 1016.2
+      "value": 1015.76
      }
     },
     {
@@ -1873,28 +1903,13 @@
      "url": "/models/motif-3",
      "logo": "/img/logos/motif.svg",
      "mid": {
-      "value": 992.01
+      "value": 991.66
      },
      "lower": {
-      "value": 982.06
+      "value": 981.21
      },
      "upper": {
-      "value": 1002
-     }
-    },
-    {
-     "id": "433d5c5d-3092-4026-9727-1587ca07915d",
-     "label": "Ling-3.0-flash-VL",
-     "url": "/models/ling-3-0-flash-vl",
-     "logo": "/img/logos/inclusionai.jpg",
-     "mid": {
-      "value": 985.79
-     },
-     "lower": {
-      "value": 976.23
-     },
-     "upper": {
-      "value": 994.84
+      "value": 1001.21
      }
     },
     {
@@ -1903,13 +1918,28 @@
      "url": "/models/kimi-k3-low",
      "logo": "/img/logos/kimi.jpg",
      "mid": {
-      "value": 985.76
+      "value": 984.38
      },
      "lower": {
-      "value": 977.17
+      "value": 976.06
      },
      "upper": {
-      "value": 994.11
+      "value": 991.62
+     }
+    },
+    {
+     "id": "433d5c5d-3092-4026-9727-1587ca07915d",
+     "label": "Ling-3.0-flash-VL",
+     "url": "/models/ling-3-0-flash-vl",
+     "logo": "/img/logos/inclusionai.jpg",
+     "mid": {
+      "value": 984.31
+     },
+     "lower": {
+      "value": 975.49
+     },
+     "upper": {
+      "value": 992.96
      }
     },
     {
@@ -1933,13 +1963,13 @@
      "url": "/models/glm-5-1",
      "logo": "/img/logos/zai.svg",
      "mid": {
-      "value": 964.54
+      "value": 964.26
      },
      "lower": {
-      "value": 957.49
+      "value": 957.37
      },
      "upper": {
-      "value": 971.1
+      "value": 971.57
      }
     },
     {
@@ -1948,13 +1978,13 @@
      "url": "/models/ling-3-0-flash-fin",
      "logo": "/img/logos/inclusionai.jpg",
      "mid": {
-      "value": 960.95
+      "value": 958.37
      },
      "lower": {
-      "value": 951.53
+      "value": 949.08
      },
      "upper": {
-      "value": 970.07
+      "value": 968.17
      }
     },
     {
@@ -1963,28 +1993,13 @@
      "url": "/models/gemini-3-6-flash",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 953.92
+      "value": 954.67
      },
      "lower": {
-      "value": 946.58
+      "value": 947.36
      },
      "upper": {
-      "value": 961.27
-     }
-    },
-    {
-     "id": "9b97a35e-6ac7-44d9-91c6-422fa678963e",
-     "label": "GPT-5.6 Terra (non-reasoning)",
-     "url": "/models/gpt-5-6-terra-non-reasoning",
-     "logo": "/img/logos/openai.svg",
-     "mid": {
-      "value": 947.53
-     },
-     "lower": {
-      "value": 939.57
-     },
-     "upper": {
-      "value": 955.64
+      "value": 962.53
      }
     },
     {
@@ -1993,13 +2008,28 @@
      "url": "/models/hy3",
      "logo": "/img/logos/tencent.svg",
      "mid": {
-      "value": 946.66
+      "value": 946.69
      },
      "lower": {
-      "value": 937.21
+      "value": 938.08
      },
      "upper": {
-      "value": 955.51
+      "value": 955.59
+     }
+    },
+    {
+     "id": "9b97a35e-6ac7-44d9-91c6-422fa678963e",
+     "label": "GPT-5.6 Terra (non-reasoning)",
+     "url": "/models/gpt-5-6-terra-non-reasoning",
+     "logo": "/img/logos/openai.svg",
+     "mid": {
+      "value": 945.37
+     },
+     "lower": {
+      "value": 937.17
+     },
+     "upper": {
+      "value": 953.37
      }
     },
     {
@@ -2008,13 +2038,13 @@
      "url": "/models/nex-n2-pro",
      "logo": "/img/logos/nex.svg",
      "mid": {
-      "value": 940.79
+      "value": 939.63
      },
      "lower": {
-      "value": 931.16
+      "value": 930.53
      },
      "upper": {
-      "value": 948.92
+      "value": 947.47
      }
     },
     {
@@ -2023,13 +2053,13 @@
      "url": "/models/gpt-5-6-luna-medium",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 934.59
+      "value": 933.29
      },
      "lower": {
-      "value": 926.6
+      "value": 925.13
      },
      "upper": {
-      "value": 942.34
+      "value": 940.86
      }
     },
     {
@@ -2038,13 +2068,13 @@
      "url": "/models/deepseek-v4-pro-non-reasoning",
      "logo": "/img/logos/deepseek.svg",
      "mid": {
-      "value": 928.2
+      "value": 927.67
      },
      "lower": {
-      "value": 917.21
+      "value": 917.22
      },
      "upper": {
-      "value": 939.23
+      "value": 937.46
      }
     },
     {
@@ -2053,13 +2083,13 @@
      "url": "/models/claude-sonnet-5-low",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 926.63
+      "value": 926.34
      },
      "lower": {
-      "value": 919.26
+      "value": 918.91
      },
      "upper": {
-      "value": 933.28
+      "value": 933.5
      }
     },
     {
@@ -2068,13 +2098,13 @@
      "url": "/models/deepseek-v4-pro-0424",
      "logo": "/img/logos/deepseek.svg",
      "mid": {
-      "value": 922.01
+      "value": 921.63
      },
      "lower": {
-      "value": 914.89
+      "value": 915
      },
      "upper": {
-      "value": 928.49
+      "value": 927.75
      }
     },
     {
@@ -2083,13 +2113,13 @@
      "url": "/models/qwen3-7-max",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 916.31
+      "value": 916.15
      },
      "lower": {
-      "value": 909.05
+      "value": 909.38
      },
      "upper": {
-      "value": 923.15
+      "value": 922.37
      }
     },
     {
@@ -2098,13 +2128,13 @@
      "url": "/models/qwen3-7-plus",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 915.27
+      "value": 914.18
      },
      "lower": {
-      "value": 906.61
+      "value": 904.87
      },
      "upper": {
-      "value": 924.34
+      "value": 922.47
      }
     },
     {
@@ -2128,13 +2158,13 @@
      "url": "/models/inkling-small",
      "logo": "/img/logos/thinking-machines.svg",
      "mid": {
-      "value": 911.75
+      "value": 911.25
      },
      "lower": {
-      "value": 903.48
+      "value": 902.79
      },
      "upper": {
-      "value": 920.07
+      "value": 919.79
      }
     },
     {
@@ -2143,13 +2173,13 @@
      "url": "/models/gpt-6-luna-non-reasoning",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 903.18
+      "value": 901.8
      },
      "lower": {
-      "value": 893.05
+      "value": 892.31
      },
      "upper": {
-      "value": 912.7
+      "value": 910.74
      }
     },
     {
@@ -2158,13 +2188,13 @@
      "url": "/models/qwen3-8-27b-non-reasoning",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 897.66
+      "value": 897.74
      },
      "lower": {
-      "value": 886.93
+      "value": 887.59
      },
      "upper": {
-      "value": 907.36
+      "value": 907.75
      }
     },
     {
@@ -2173,13 +2203,13 @@
      "url": "/models/gpt-6-sol-low",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 886.44
+      "value": 885.59
      },
      "lower": {
-      "value": 876.78
+      "value": 875.88
      },
      "upper": {
-      "value": 894.96
+      "value": 894.5
      }
     },
     {
@@ -2188,13 +2218,13 @@
      "url": "/models/mimo-v2-5-pro",
      "logo": "/img/logos/xiaomi.svg",
      "mid": {
-      "value": 882.79
+      "value": 882.63
      },
      "lower": {
-      "value": 875.52
+      "value": 875.87
      },
      "upper": {
-      "value": 889.65
+      "value": 889.33
      }
     },
     {
@@ -2203,13 +2233,13 @@
      "url": "/models/gemini-3-5-flash-medium",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 876.82
+      "value": 876.27
      },
      "lower": {
-      "value": 869.63
+      "value": 869.03
      },
      "upper": {
-      "value": 883.53
+      "value": 882.56
      }
     },
     {
@@ -2218,13 +2248,13 @@
      "url": "/models/nvidia-nemotron-3-ultra-550b-a55b",
      "logo": "/img/logos/nvidia.svg",
      "mid": {
-      "value": 876.28
+      "value": 876.27
      },
      "lower": {
-      "value": 868.97
+      "value": 868.37
      },
      "upper": {
-      "value": 883.59
+      "value": 883.14
      }
     },
     {
@@ -2233,28 +2263,13 @@
      "url": "/models/gemini-3-5-flash",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 874.32
+      "value": 874.34
      },
      "lower": {
-      "value": 867.41
+      "value": 867.82
      },
      "upper": {
-      "value": 881.09
-     }
-    },
-    {
-     "id": "62ea3198-9866-4d9f-8406-a79ee78c7164",
-     "label": "Solar Mini 4",
-     "url": "/models/solar-mini4",
-     "logo": "/img/logos/upstage.svg",
-     "mid": {
-      "value": 869.52
-     },
-     "lower": {
-      "value": 858.52
-     },
-     "upper": {
-      "value": 878.69
+      "value": 880.87
      }
     },
     {
@@ -2263,13 +2278,28 @@
      "url": "/models/gpt-5-3-codex",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 868.34
+      "value": 867.74
      },
      "lower": {
-      "value": 861.03
+      "value": 860.37
      },
      "upper": {
-      "value": 875.2
+      "value": 874.41
+     }
+    },
+    {
+     "id": "62ea3198-9866-4d9f-8406-a79ee78c7164",
+     "label": "Solar Mini 4",
+     "url": "/models/solar-mini4",
+     "logo": "/img/logos/upstage.svg",
+     "mid": {
+      "value": 866.7
+     },
+     "lower": {
+      "value": 855.14
+     },
+     "upper": {
+      "value": 876.85
      }
     },
     {
@@ -2278,13 +2308,13 @@
      "url": "/models/kimi-k2-7-code",
      "logo": "/img/logos/kimi.jpg",
      "mid": {
-      "value": 858.75
+      "value": 858.11
      },
      "lower": {
-      "value": 849.8
+      "value": 849.53
      },
      "upper": {
-      "value": 867.38
+      "value": 866.52
      }
     },
     {
@@ -2293,13 +2323,13 @@
      "url": "/models/muse-spark-1-1",
      "logo": "/img/logos/meta.svg",
      "mid": {
-      "value": 850.65
+      "value": 849.89
      },
      "lower": {
-      "value": 841.24
+      "value": 841.42
      },
      "upper": {
-      "value": 859.45
+      "value": 857.84
      }
     },
     {
@@ -2308,13 +2338,13 @@
      "url": "/models/deepseek-v4-flash-0420",
      "logo": "/img/logos/deepseek.svg",
      "mid": {
-      "value": 835.84
+      "value": 835.48
      },
      "lower": {
-      "value": 828.89
+      "value": 828.57
      },
      "upper": {
-      "value": 842.04
+      "value": 842.4
      }
     },
     {
@@ -2323,13 +2353,13 @@
      "url": "/models/inkling",
      "logo": "/img/logos/thinking-machines.svg",
      "mid": {
-      "value": 832.43
+      "value": 832.11
      },
      "lower": {
-      "value": 824.54
+      "value": 823.64
      },
      "upper": {
-      "value": 841.99
+      "value": 840.05
      }
     },
     {
@@ -2338,13 +2368,13 @@
      "url": "/models/kimi-k2-6",
      "logo": "/img/logos/kimi.jpg",
      "mid": {
-      "value": 819.82
+      "value": 819.06
      },
      "lower": {
-      "value": 812.43
+      "value": 811.46
      },
      "upper": {
-      "value": 826.84
+      "value": 826.15
      }
     },
     {
@@ -2353,13 +2383,13 @@
      "url": "/models/qwen3-6-27b",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 815.82
+      "value": 815.44
      },
      "lower": {
-      "value": 808.3
+      "value": 807.64
      },
      "upper": {
-      "value": 823.42
+      "value": 822.23
      }
     },
     {
@@ -2368,13 +2398,13 @@
      "url": "/models/ling-3-0-flash",
      "logo": "/img/logos/inclusionai.jpg",
      "mid": {
-      "value": 797.62
+      "value": 797.71
      },
      "lower": {
-      "value": 789.36
+      "value": 789.37
      },
      "upper": {
-      "value": 805.29
+      "value": 805.4
      }
     },
     {
@@ -2383,13 +2413,13 @@
      "url": "/models/k2-horizon-3-7b",
      "logo": "/img/logos/ifm.svg",
      "mid": {
-      "value": 793.05
+      "value": 792.07
      },
      "lower": {
-      "value": 782.56
+      "value": 781.18
      },
      "upper": {
-      "value": 802.56
+      "value": 801.47
      }
     },
     {
@@ -2398,13 +2428,13 @@
      "url": "/models/grok-4-3",
      "logo": "/img/logos/spacexai.svg",
      "mid": {
-      "value": 761.88
+      "value": 761.81
      },
      "lower": {
-      "value": 754.58
+      "value": 754.92
      },
      "upper": {
-      "value": 768.85
+      "value": 768.21
      }
     },
     {
@@ -2413,28 +2443,13 @@
      "url": "/models/mimo-v2-5-0424",
      "logo": "/img/logos/xiaomi.svg",
      "mid": {
-      "value": 753.75
+      "value": 753.6
      },
      "lower": {
-      "value": 744.77
+      "value": 744.41
      },
      "upper": {
-      "value": 762.82
-     }
-    },
-    {
-     "id": "bf9708d8-933d-44f6-affa-b696a7a650c9",
-     "label": "GPT-6 Luna (low)",
-     "url": "/models/gpt-6-luna-low",
-     "logo": "/img/logos/openai.svg",
-     "mid": {
-      "value": 741.34
-     },
-     "lower": {
-      "value": 732.15
-     },
-     "upper": {
-      "value": 750.51
+      "value": 761.71
      }
     },
     {
@@ -2443,13 +2458,28 @@
      "url": "/models/gpt-5-6-luna-low",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 740.69
+      "value": 740.43
      },
      "lower": {
-      "value": 731.78
+      "value": 731.46
      },
      "upper": {
-      "value": 749.07
+      "value": 748.72
+     }
+    },
+    {
+     "id": "bf9708d8-933d-44f6-affa-b696a7a650c9",
+     "label": "GPT-6 Luna (low)",
+     "url": "/models/gpt-6-luna-low",
+     "logo": "/img/logos/openai.svg",
+     "mid": {
+      "value": 739.84
+     },
+     "lower": {
+      "value": 729.97
+     },
+     "upper": {
+      "value": 748.63
      }
     },
     {
@@ -2458,13 +2488,13 @@
      "url": "/models/longcat-2-0",
      "logo": "/img/logos/longcat.svg",
      "mid": {
-      "value": 739.75
+      "value": 739.23
      },
      "lower": {
-      "value": 730.04
+      "value": 729.41
      },
      "upper": {
-      "value": 748.88
+      "value": 748.12
      }
     },
     {
@@ -2473,13 +2503,13 @@
      "url": "/models/a-x-k2",
      "logo": "/img/logos/sktelecom.svg",
      "mid": {
-      "value": 737.35
+      "value": 737.78
      },
      "lower": {
-      "value": 725.67
+      "value": 726.68
      },
      "upper": {
-      "value": 748.01
+      "value": 748.99
      }
     },
     {
@@ -2488,13 +2518,13 @@
      "url": "/models/grok-4-3-non-reasoning",
      "logo": "/img/logos/spacexai.svg",
      "mid": {
-      "value": 724.34
+      "value": 723.74
      },
      "lower": {
-      "value": 715.26
+      "value": 712.83
      },
      "upper": {
-      "value": 733.69
+      "value": 733.05
      }
     },
     {
@@ -2503,13 +2533,13 @@
      "url": "/models/gpt-5-4-mini",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 719.36
+      "value": 719.27
      },
      "lower": {
-      "value": 711.86
+      "value": 711.6
      },
      "upper": {
-      "value": 726.07
+      "value": 726.24
      }
     },
     {
@@ -2518,13 +2548,13 @@
      "url": "/models/minimax-m2-7",
      "logo": "/img/logos/minimax.svg",
      "mid": {
-      "value": 718.55
+      "value": 717.95
      },
      "lower": {
-      "value": 709.03
+      "value": 708.48
      },
      "upper": {
-      "value": 726.92
+      "value": 725.77
      }
     },
     {
@@ -2533,13 +2563,13 @@
      "url": "/models/claude-4-5-sonnet-thinking",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 713.27
+      "value": 713.13
      },
      "lower": {
-      "value": 703.01
+      "value": 703.21
      },
      "upper": {
-      "value": 721.94
+      "value": 722.08
      }
     },
     {
@@ -2548,13 +2578,13 @@
      "url": "/models/qwen3-6-35b-a3b",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 712.84
+      "value": 712.88
      },
      "lower": {
-      "value": 703.65
+      "value": 704.32
      },
      "upper": {
-      "value": 721.54
+      "value": 720.58
      }
     },
     {
@@ -2563,13 +2593,13 @@
      "url": "/models/gpt-5-6-luna-non-reasoning",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 706.04
+      "value": 706.1
      },
      "lower": {
-      "value": 697.15
+      "value": 696.96
      },
      "upper": {
-      "value": 714.61
+      "value": 714.69
      }
     },
     {
@@ -2578,13 +2608,13 @@
      "url": "/models/gpt-5-4-nano",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 673.76
+      "value": 673.32
      },
      "lower": {
-      "value": 663.94
+      "value": 663.76
      },
      "upper": {
-      "value": 682.86
+      "value": 682.84
      }
     },
     {
@@ -2593,13 +2623,13 @@
      "url": "/models/ring-2-6-1t",
      "logo": "/img/logos/inclusionai.jpg",
      "mid": {
-      "value": 658.17
+      "value": 657.21
      },
      "lower": {
-      "value": 648.34
+      "value": 647.29
      },
      "upper": {
-      "value": 667.07
+      "value": 665.69
      }
     },
     {
@@ -2608,13 +2638,13 @@
      "url": "/models/gemini-3-5-flash-lite",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 650.26
+      "value": 650.19
      },
      "lower": {
-      "value": 641.5
+      "value": 641.66
      },
      "upper": {
-      "value": 658.93
+      "value": 657.93
      }
     },
     {
@@ -2623,13 +2653,13 @@
      "url": "/models/muse-spark",
      "logo": "/img/logos/meta.svg",
      "mid": {
-      "value": 645.85
+      "value": 645.46
      },
      "lower": {
-      "value": 637.89
+      "value": 636.98
      },
      "upper": {
-      "value": 653.52
+      "value": 652.79
      }
     },
     {
@@ -2638,13 +2668,13 @@
      "url": "/models/claude-4-5-haiku-reasoning",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 616.35
+      "value": 615.72
      },
      "lower": {
-      "value": 607.83
+      "value": 607.8
      },
      "upper": {
-      "value": 623.35
+      "value": 622.56
      }
     },
     {
@@ -2653,13 +2683,13 @@
      "url": "/models/kat-coder-pro-v1",
      "logo": "/img/logos/kwaikat.svg",
      "mid": {
-      "value": 601.39
+      "value": 601.23
      },
      "lower": {
-      "value": 592.41
+      "value": 593.12
      },
      "upper": {
-      "value": 609.62
+      "value": 609.25
      }
     },
     {
@@ -2668,13 +2698,13 @@
      "url": "/models/qwen3-5-397b-a17b",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 562.4
+      "value": 562.03
      },
      "lower": {
-      "value": 553.47
+      "value": 553.31
      },
      "upper": {
-      "value": 570.23
+      "value": 569.39
      }
     },
     {
@@ -2683,13 +2713,13 @@
      "url": "/models/mistral-medium-3-1",
      "logo": "/img/logos/mistral.svg",
      "mid": {
-      "value": 529.91
+      "value": 529.99
      },
      "lower": {
-      "value": 519.57
+      "value": 520.77
      },
      "upper": {
-      "value": 538.79
+      "value": 538.64
      }
     },
     {
@@ -2698,13 +2728,13 @@
      "url": "/models/mistral-medium-3-5",
      "logo": "/img/logos/mistral.svg",
      "mid": {
-      "value": 522.97
+      "value": 522.54
      },
      "lower": {
-      "value": 514.35
+      "value": 513.95
      },
      "upper": {
-      "value": 531.12
+      "value": 529.76
      }
     },
     {
@@ -2713,13 +2743,13 @@
      "url": "/models/nemotron-3-5-lightning",
      "logo": "/img/logos/nvidia.svg",
      "mid": {
-      "value": 506.17
+      "value": 506.04
      },
      "lower": {
-      "value": 495.78
+      "value": 494.88
      },
      "upper": {
-      "value": 515.23
+      "value": 515.66
      }
     },
     {
@@ -2728,13 +2758,13 @@
      "url": "/models/qwen3-5-122b-a10b",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 497.34
+      "value": 496.87
      },
      "lower": {
-      "value": 487.41
+      "value": 486.69
      },
      "upper": {
-      "value": 505.95
+      "value": 505.52
      }
     },
     {
@@ -2743,13 +2773,13 @@
      "url": "/models/devstral-small-2",
      "logo": "/img/logos/mistral.svg",
      "mid": {
-      "value": 495.06
+      "value": 494.99
      },
      "lower": {
-      "value": 484.43
+      "value": 484.57
      },
      "upper": {
-      "value": 504.18
+      "value": 504.44
      }
     },
     {
@@ -2758,13 +2788,13 @@
      "url": "/models/devstral-2",
      "logo": "/img/logos/mistral.svg",
      "mid": {
-      "value": 482.33
+      "value": 482.08
      },
      "lower": {
-      "value": 471.83
+      "value": 471.36
      },
      "upper": {
-      "value": 491.9
+      "value": 491.55
      }
     },
     {
@@ -2773,13 +2803,13 @@
      "url": "/models/muse-glimmer",
      "logo": "/img/logos/meta.svg",
      "mid": {
-      "value": 477.41
+      "value": 477.06
      },
      "lower": {
-      "value": 468.03
+      "value": 467.83
      },
      "upper": {
-      "value": 485.69
+      "value": 485.28
      }
     },
     {
@@ -2788,13 +2818,13 @@
      "url": "/models/ling-3-0-tiny",
      "logo": "/img/logos/inclusionai.jpg",
      "mid": {
-      "value": 475.22
+      "value": 475.24
      },
      "lower": {
-      "value": 464.92
+      "value": 465.06
      },
      "upper": {
-      "value": 484.72
+      "value": 484.35
      }
     },
     {
@@ -2803,13 +2833,13 @@
      "url": "/models/deepseek-v3-1-terminus-reasoning",
      "logo": "/img/logos/deepseek.svg",
      "mid": {
-      "value": 458.09
+      "value": 457.85
      },
      "lower": {
-      "value": 447.16
+      "value": 447.76
      },
      "upper": {
-      "value": 467.38
+      "value": 466.77
      }
     },
     {
@@ -2818,13 +2848,13 @@
      "url": "/models/gemini-3-1-pro-preview",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 456.5
+      "value": 456.24
      },
      "lower": {
-      "value": 447.43
+      "value": 447.49
      },
      "upper": {
-      "value": 464.31
+      "value": 464.38
      }
     },
     {
@@ -2833,10 +2863,10 @@
      "url": "/models/gpt-5-mini",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 428.44
+      "value": 428.25
      },
      "lower": {
-      "value": 418.66
+      "value": 418.04
      },
      "upper": {
       "value": 438.07
@@ -2848,13 +2878,13 @@
      "url": "/models/minicpm5-2b",
      "logo": "/img/logos/openbmb.svg",
      "mid": {
-      "value": 422.99
+      "value": 422.56
      },
      "lower": {
-      "value": 410.59
+      "value": 411.51
      },
      "upper": {
-      "value": 433.8
+      "value": 433.23
      }
     },
     {
@@ -2863,13 +2893,13 @@
      "url": "/models/qwen3-coder-next",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 403.62
+      "value": 403.55
      },
      "lower": {
-      "value": 393.15
+      "value": 392.6
      },
      "upper": {
-      "value": 413.09
+      "value": 413.43
      }
     },
     {
@@ -2878,13 +2908,13 @@
      "url": "/models/granite-4-2-30b",
      "logo": "/img/logos/ibm.svg",
      "mid": {
-      "value": 394.41
+      "value": 394.13
      },
      "lower": {
-      "value": 381.95
+      "value": 382.56
      },
      "upper": {
-      "value": 404.31
+      "value": 405.65
      }
     },
     {
@@ -2893,13 +2923,13 @@
      "url": "/models/mercury-2-5",
      "logo": "/img/logos/inceptionlabs.svg",
      "mid": {
-      "value": 377.81
+      "value": 377.56
      },
      "lower": {
-      "value": 365.65
+      "value": 365.51
      },
      "upper": {
-      "value": 388.51
+      "value": 388.92
      }
     },
     {
@@ -2908,13 +2938,13 @@
      "url": "/models/gemma-4-31b",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 367.87
+      "value": 367.8
      },
      "lower": {
-      "value": 359.11
+      "value": 358.54
      },
      "upper": {
-      "value": 376.31
+      "value": 375.7
      }
     },
     {
@@ -2923,13 +2953,13 @@
      "url": "/models/command-a-plus",
      "logo": "/img/logos/cohere.svg",
      "mid": {
-      "value": 355.85
+      "value": 355.45
      },
      "lower": {
-      "value": 346.48
+      "value": 345.51
      },
      "upper": {
-      "value": 364.53
+      "value": 364.71
      }
     },
     {
@@ -2938,13 +2968,13 @@
      "url": "/models/qwen3-5-9b",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 340.67
+      "value": 340.62
      },
      "lower": {
-      "value": 329.02
+      "value": 328.82
      },
      "upper": {
-      "value": 351.12
+      "value": 351.16
      }
     },
     {
@@ -2953,13 +2983,13 @@
      "url": "/models/gemma-4-26b-a4b",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 315.08
+      "value": 315.01
      },
      "lower": {
-      "value": 303.68
+      "value": 303.37
      },
      "upper": {
-      "value": 325.57
+      "value": 326.2
      }
     },
     {
@@ -2968,13 +2998,13 @@
      "url": "/models/mistral-small-3-1",
      "logo": "/img/logos/mistral.svg",
      "mid": {
-      "value": 313.44
+      "value": 313.13
      },
      "lower": {
-      "value": 303
+      "value": 301.52
      },
      "upper": {
-      "value": 322.94
+      "value": 322.36
      }
     },
     {
@@ -2983,13 +3013,13 @@
      "url": "/models/granite-4-2-8b",
      "logo": "/img/logos/ibm.svg",
      "mid": {
-      "value": 309.9
+      "value": 309.67
      },
      "lower": {
-      "value": 299.27
+      "value": 299.59
      },
      "upper": {
-      "value": 318.56
+      "value": 318.28
      }
     },
     {
@@ -2998,13 +3028,13 @@
      "url": "/models/gemini-2-5-pro",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 301.88
+      "value": 301.77
      },
      "lower": {
-      "value": 291.75
+      "value": 290.98
      },
      "upper": {
-      "value": 311.52
+      "value": 311.08
      }
     },
     {
@@ -3013,13 +3043,13 @@
      "url": "/models/mercury-2",
      "logo": "/img/logos/inceptionlabs.svg",
      "mid": {
-      "value": 265.26
+      "value": 265.05
      },
      "lower": {
-      "value": 255.65
+      "value": 255.21
      },
      "upper": {
-      "value": 273.73
+      "value": 273.31
      }
     },
     {
@@ -3028,13 +3058,13 @@
      "url": "/models/trinity-large-thinking",
      "logo": "/img/logos/arcee.svg",
      "mid": {
-      "value": 255.45
+      "value": 255.14
      },
      "lower": {
-      "value": 245.7
+      "value": 244.6
      },
      "upper": {
-      "value": 264.72
+      "value": 264.46
      }
     },
     {
@@ -3043,13 +3073,13 @@
      "url": "/models/mistral-small-4",
      "logo": "/img/logos/mistral.svg",
      "mid": {
-      "value": 241.11
+      "value": 240.7
      },
      "lower": {
-      "value": 230.5
+      "value": 229.37
      },
      "upper": {
-      "value": 251.17
+      "value": 251.13
      }
     },
     {
@@ -3058,13 +3088,13 @@
      "url": "/models/hypernova-60b",
      "logo": "/img/logos/multiversecomputing.svg",
      "mid": {
-      "value": 231.85
+      "value": 231.63
      },
      "lower": {
-      "value": 221.54
+      "value": 220.75
      },
      "upper": {
-      "value": 241.42
+      "value": 241.02
      }
     },
     {
@@ -3073,13 +3103,13 @@
      "url": "/models/mistral-large-3",
      "logo": "/img/logos/mistral.svg",
      "mid": {
-      "value": 228.3
+      "value": 228.09
      },
      "lower": {
-      "value": 218.64
+      "value": 218.57
      },
      "upper": {
-      "value": 236.6
+      "value": 237.44
      }
     },
     {
@@ -3088,13 +3118,13 @@
      "url": "/models/north-mini-code",
      "logo": "/img/logos/cohere.svg",
      "mid": {
-      "value": 211.77
+      "value": 211.68
      },
      "lower": {
-      "value": 202.43
+      "value": 201.65
      },
      "upper": {
-      "value": 220.74
+      "value": 219.58
      }
     },
     {
@@ -3103,13 +3133,13 @@
      "url": "/models/gemini-3-1-flash-lite-preview",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 207.25
+      "value": 207.1
      },
      "lower": {
-      "value": 197.91
+      "value": 197
      },
      "upper": {
-      "value": 215.96
+      "value": 215.1
      }
     },
     {
@@ -3118,13 +3148,13 @@
      "url": "/models/qwen3-235b-a22b-instruct-2507-reasoning",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 169.28
+      "value": 169.05
      },
      "lower": {
-      "value": 157.66
+      "value": 156.59
      },
      "upper": {
-      "value": 179.25
+      "value": 179.45
      }
     },
     {
@@ -3133,13 +3163,13 @@
      "url": "/models/celeris-1",
      "logo": "/img/logos/celeris.svg",
      "mid": {
-      "value": 151.41
+      "value": 151.18
      },
      "lower": {
-      "value": 140.91
+      "value": 140.02
      },
      "upper": {
-      "value": 160.1
+      "value": 161.35
      }
     },
     {
@@ -3148,13 +3178,13 @@
      "url": "/models/o3-mini-high",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 141.71
+      "value": 141.5
      },
      "lower": {
-      "value": 131.16
+      "value": 130.79
      },
      "upper": {
-      "value": 151.25
+      "value": 150.57
      }
     },
     {
@@ -3163,13 +3193,13 @@
      "url": "/models/ministral-3-14b",
      "logo": "/img/logos/mistral.svg",
      "mid": {
-      "value": 131.09
+      "value": 130.91
      },
      "lower": {
-      "value": 119.94
+      "value": 119.96
      },
      "upper": {
-      "value": 141.1
+      "value": 140.62
      }
     },
     {
@@ -3178,13 +3208,13 @@
      "url": "/models/deepseek-r1-0120",
      "logo": "/img/logos/deepseek.svg",
      "mid": {
-      "value": 128.21
+      "value": 128.14
      },
      "lower": {
-      "value": 116.72
+      "value": 117.36
      },
      "upper": {
-      "value": 137.36
+      "value": 137.43
      }
     },
     {
@@ -3193,13 +3223,13 @@
      "url": "/models/solar-pro-3",
      "logo": "/img/logos/upstage.svg",
      "mid": {
-      "value": 98.98
+      "value": 98.88
      },
      "lower": {
-      "value": 89.03
+      "value": 88.58
      },
      "upper": {
-      "value": 107.83
+      "value": 107.6
      }
     },
     {
@@ -3208,13 +3238,13 @@
      "url": "/models/granite-4-2-3b",
      "logo": "/img/logos/ibm.svg",
      "mid": {
-      "value": 98.26
+      "value": 98.05
      },
      "lower": {
-      "value": 85.69
+      "value": 86.11
      },
      "upper": {
-      "value": 109.47
+      "value": 108.94
      }
     },
     {
@@ -3223,13 +3253,13 @@
      "url": "/models/deepseek-v3",
      "logo": "/img/logos/deepseek.svg",
      "mid": {
-      "value": 77.7
+      "value": 77.49
      },
      "lower": {
-      "value": 66.03
+      "value": 64.85
      },
      "upper": {
-      "value": 87.63
+      "value": 88.09
      }
     },
     {
@@ -3238,13 +3268,13 @@
      "url": "/models/ministral-3-8b",
      "logo": "/img/logos/mistral.svg",
      "mid": {
-      "value": 77.44
+      "value": 77.22
      },
      "lower": {
-      "value": 66.1
+      "value": 66.74
      },
      "upper": {
-      "value": 87.75
+      "value": 87.19
      }
     },
     {
@@ -3253,13 +3283,13 @@
      "url": "/models/nvidia-nemotron-3-nano-30b-a3b-reasoning",
      "logo": "/img/logos/nvidia.svg",
      "mid": {
-      "value": 77.36
+      "value": 77.22
      },
      "lower": {
-      "value": 65.91
+      "value": 65.63
      },
      "upper": {
-      "value": 87.13
+      "value": 87.27
      }
     },
     {
@@ -3268,13 +3298,13 @@
      "url": "/models/deepseek-v3-0324",
      "logo": "/img/logos/deepseek.svg",
      "mid": {
-      "value": 68.11
+      "value": 67.96
      },
      "lower": {
-      "value": 56.37
+      "value": 56.16
      },
      "upper": {
-      "value": 77.69
+      "value": 77.92
      }
     },
     {
@@ -3283,13 +3313,13 @@
      "url": "/models/k2-think-v2",
      "logo": "/img/logos/ifm.svg",
      "mid": {
-      "value": 6.97
+      "value": 6.69
      },
      "lower": {
       "value": 0
      },
      "upper": {
-      "value": 15.84
+      "value": 16.33
      }
     },
     {
@@ -3298,13 +3328,13 @@
      "url": "/models/qwen3-30b-a3b-2507-reasoning",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 5.32
+      "value": 5.06
      },
      "lower": {
       "value": 0
      },
      "upper": {
-      "value": 15.47
+      "value": 15.24
      }
     },
     {
@@ -3876,6 +3906,46 @@
      "totalCost": 66.35191944
     },
     {
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "slug": "kimi-k3-1-pro",
+     "name": "Kimi K3.1 Pro",
+     "shortName": "Kimi K3.1 Pro",
+     "creatorName": "Kimi",
+     "totalCost": 657.0779093643412
+    },
+    {
+     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
+     "slug": "kimi-k3",
+     "name": "Kimi K3 (Max)",
+     "shortName": "Kimi K3 (max)",
+     "creatorName": "Kimi",
+     "totalCost": 612.8548889841259
+    },
+    {
+     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
+     "slug": "kimi-k3-low",
+     "name": "Kimi K3 (Low)",
+     "shortName": "Kimi K3 (low)",
+     "creatorName": "Kimi",
+     "totalCost": 49.17904594211097
+    },
+    {
+     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
+     "slug": "kimi-k2-6",
+     "name": "Kimi K2.6 (Reasoning)",
+     "shortName": "Kimi K2.6",
+     "creatorName": "Kimi",
+     "totalCost": 106.08030664242693
+    },
+    {
+     "id": "8d0cb231-7303-452c-9923-a9620b948475",
+     "slug": "kimi-k2-7-code",
+     "name": "Kimi K2.7 Code",
+     "shortName": "Kimi K2.7 Code",
+     "creatorName": "Kimi",
+     "totalCost": 71.7381020277297
+    },
+    {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
      "slug": "gpt-6-astra",
      "name": "GPT-6 Astra (Max)",
@@ -4265,7 +4335,7 @@
      "name": "gpt-oss-120b (High)",
      "shortName": "gpt-oss-120b (high)",
      "creatorName": "OpenAI",
-     "totalCost": 43.786318415
+     "totalCost": 51.52986765
     },
     {
      "id": "076f2674-bc4b-4925-be59-50832eb8c090",
@@ -4280,7 +4350,7 @@
      "name": "gpt-oss-20b (High)",
      "shortName": "gpt-oss-20b (high)",
      "creatorName": "OpenAI",
-     "totalCost": 0.7679260875
+     "totalCost": 0.7432630899999999
     },
     {
      "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
@@ -4311,8 +4381,7 @@
      "slug": "gemini-3-7-flash",
      "name": "Gemini 3.7 Flash (High)",
      "shortName": "Gemini 3.7 Flash (high)",
-     "creatorName": "Google",
-     "totalCost": 196.0995589255749
+     "creatorName": "Google"
     },
     {
      "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
@@ -4367,7 +4436,7 @@
      "name": "Gemma 4 26B A4B (Reasoning)",
      "shortName": "Gemma 4 26B A4B",
      "creatorName": "Google",
-     "totalCost": 11.853448123595344
+     "totalCost": 9.58003974719069
     },
     {
      "id": "27202e5f-c82d-4710-92e9-4317877d4883",
@@ -4503,7 +4572,7 @@
      "name": "MiMo-V2.5-Pro (Reasoning)",
      "shortName": "MiMo-V2.5-Pro",
      "creatorName": "Xiaomi",
-     "totalCost": 6.538234488024752
+     "totalCost": 11.895101482814198
     },
     {
      "id": "22d09131-343b-4adf-8760-533e20a2155f",
@@ -4511,7 +4580,7 @@
      "name": "MiMo-V2.5",
      "shortName": "MiMo-V2.5",
      "creatorName": "Xiaomi",
-     "totalCost": 1.415279430252699
+     "totalCost": 2.001618378331438
     },
     {
      "id": "b112af07-3bd5-4647-b09f-b23204361bb2",
@@ -4641,14 +4710,6 @@
      "totalCost": 22.130513915
     },
     {
-     "id": "5e0164b3-d902-4bcb-a1b2-83b4f4cd6143",
-     "slug": "qwen3-30b-a3b-2507-reasoning",
-     "name": "Qwen3 30B A3B 2507 (Reasoning)",
-     "shortName": "Qwen3 30B A3B 2507",
-     "creatorName": "Alibaba",
-     "totalCost": 13.43282124
-    },
-    {
      "id": "fc92f822-04b7-420d-9c07-a21af5e9aac7",
      "slug": "qwen3-coder-next",
      "name": "Qwen3 Coder Next",
@@ -4686,7 +4747,7 @@
      "name": "DeepSeek V4.1 Flash (Max)",
      "shortName": "DeepSeek V4.1 Flash (max)",
      "creatorName": "DeepSeek",
-     "totalCost": 94.95282040897776
+     "totalCost": 93.85815230702237
     },
     {
      "id": "83173329-c09a-41f1-a028-a282a5f908d7",
@@ -4710,7 +4771,7 @@
      "name": "DeepSeek V4 Flash 0731 (Max)",
      "shortName": "DeepSeek V4 Flash 0731 (max)",
      "creatorName": "DeepSeek",
-     "totalCost": 29.91226578306136
+     "totalCost": 25.58942142814056
     },
     {
      "id": "bf220674-68bd-43cc-a1b8-ce5ed4d2f18d",
@@ -4726,7 +4787,7 @@
      "name": "DeepSeek V4.1 Flash (Non-reasoning)",
      "shortName": "DeepSeek V4.1 Flash (non-reasoning)",
      "creatorName": "DeepSeek",
-     "totalCost": 17.570453687389264
+     "totalCost": 19.39663269813853
     },
     {
      "id": "89a2c945-1fab-4ee4-9f45-83a9f46cb221",
@@ -4825,67 +4886,12 @@
      "totalCost": 76.41437041545339
     },
     {
-     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
-     "slug": "step-5",
-     "name": "Step 5 Preview",
-     "shortName": "Step 5 Preview",
-     "creatorName": "StepFun",
-     "totalCost": 215.92946074175984
-    },
-    {
-     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
-     "slug": "kimi-k3",
-     "name": "Kimi K3 (Max)",
-     "shortName": "Kimi K3 (max)",
-     "creatorName": "Kimi",
-     "totalCost": 612.8548889841259
-    },
-    {
-     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
-     "slug": "kimi-k3-low",
-     "name": "Kimi K3 (Low)",
-     "shortName": "Kimi K3 (low)",
-     "creatorName": "Kimi",
-     "totalCost": 49.17904594211097
-    },
-    {
-     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
-     "slug": "kimi-k2-6",
-     "name": "Kimi K2.6 (Reasoning)",
-     "shortName": "Kimi K2.6",
-     "creatorName": "Kimi",
-     "totalCost": 106.08030664242693
-    },
-    {
-     "id": "8d0cb231-7303-452c-9923-a9620b948475",
-     "slug": "kimi-k2-7-code",
-     "name": "Kimi K2.7 Code",
-     "shortName": "Kimi K2.7 Code",
-     "creatorName": "Kimi",
-     "totalCost": 71.7381020277297
-    },
-    {
-     "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
-     "slug": "minimax-m3-1-flash",
-     "name": "MiniMax-M3.1-Flash",
-     "shortName": "MiniMax-M3.1-Flash",
-     "creatorName": "MiniMax",
-     "totalCost": 48.103196798033665
-    },
-    {
-     "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
-     "slug": "minimax-m3",
-     "name": "MiniMax-M3",
-     "shortName": "MiniMax-M3",
-     "creatorName": "MiniMax",
-     "totalCost": 85.49718027093401
-    },
-    {
-     "id": "4bbceacb-cf47-464b-b60f-e1d1fe016d67",
-     "slug": "minimax-m2-7",
-     "name": "MiniMax-M2.7",
-     "shortName": "MiniMax-M2.7",
-     "creatorName": "MiniMax"
+     "id": "539ed227-38f4-4bea-a015-117057c14b18",
+     "slug": "ling-3-1-flash-1019",
+     "name": "Ling 3.1 Flash 1019",
+     "shortName": "Ling 3.1 Flash 1019",
+     "creatorName": "InclusionAI",
+     "totalCost": 353.04545595596267
     },
     {
      "id": "a6043b9b-628a-4a76-a021-2834e0627d05",
@@ -4894,13 +4900,6 @@
      "shortName": "Ling 3.1 Flash",
      "creatorName": "InclusionAI",
      "totalCost": 184.22193552538062
-    },
-    {
-     "id": "6d6fa1c9-b833-40b2-8a58-fa810e24a84e",
-     "slug": "ling-3-0-flash-fin",
-     "name": "Ling-3.0-flash-Fin",
-     "shortName": "Ling-3.0-flash-Fin",
-     "creatorName": "InclusionAI"
     },
     {
      "id": "e33dc369-ae81-40e0-8c4e-28b002d02197",
@@ -4924,6 +4923,37 @@
      "shortName": "Ling 3.0 Tiny",
      "creatorName": "InclusionAI",
      "totalCost": 0
+    },
+    {
+     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
+     "slug": "step-5",
+     "name": "Step 5 Preview",
+     "shortName": "Step 5 Preview",
+     "creatorName": "StepFun",
+     "totalCost": 215.92946074175984
+    },
+    {
+     "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
+     "slug": "minimax-m3-1-flash",
+     "name": "MiniMax-M3.1-Flash",
+     "shortName": "MiniMax-M3.1-Flash",
+     "creatorName": "MiniMax",
+     "totalCost": 48.103196798033665
+    },
+    {
+     "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
+     "slug": "minimax-m3",
+     "name": "MiniMax-M3",
+     "shortName": "MiniMax-M3",
+     "creatorName": "MiniMax",
+     "totalCost": 85.49718027093401
+    },
+    {
+     "id": "4bbceacb-cf47-464b-b60f-e1d1fe016d67",
+     "slug": "minimax-m2-7",
+     "name": "MiniMax-M2.7",
+     "shortName": "MiniMax-M2.7",
+     "creatorName": "MiniMax"
     },
     {
      "id": "34fc646a-0174-470e-9e62-d8df452210b3",
@@ -5011,15 +5041,14 @@
      "name": "Beam 1.0",
      "shortName": "Beam 1.0",
      "creatorName": "Reflection",
-     "totalCost": 84.60876740066999
+     "totalCost": 33.8122066294
     },
     {
      "id": "f9739750-6d42-450f-ba1e-2f76c869b4fe",
      "slug": "quasar-438b",
      "name": "Quasar 438B (Max, Based on GLM-5.2)",
      "shortName": "Quasar 438B (max)",
-     "creatorName": "Multiverse Computing",
-     "totalCost": 342.35816700000004
+     "creatorName": "Multiverse Computing"
     },
     {
      "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
@@ -5059,7 +5088,7 @@
      "name": "Nemotron 3 Ultra 550B A55B (Reasoning)",
      "shortName": "Nemotron 3 Ultra",
      "creatorName": "NVIDIA",
-     "totalCost": 116.68285996389122
+     "totalCost": 94.59606582589439
     },
     {
      "id": "29976311-665a-4b2f-ac72-557c33e0758e",
@@ -5272,13 +5301,6 @@
      "logo": "/img/logos/google.svg"
     },
     {
-     "id": "22d09131-343b-4adf-8760-533e20a2155f",
-     "label": "MiMo-V2.5",
-     "tooltipLabel": "MiMo-V2.5",
-     "url": "/models/mimo-v2-5-0424",
-     "logo": "/img/logos/xiaomi.svg"
-    },
-    {
      "id": "0c64b008-20c3-408d-bd68-15136df8cd2c",
      "label": "Granite 4.2 3B",
      "tooltipLabel": "Granite 4.2 3B",
@@ -5305,6 +5327,13 @@
      "tooltipLabel": "GPT-6 Luna (Non-reasoning)",
      "url": "/models/gpt-6-luna-non-reasoning",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "22d09131-343b-4adf-8760-533e20a2155f",
+     "label": "MiMo-V2.5",
+     "tooltipLabel": "MiMo-V2.5",
+     "url": "/models/mimo-v2-5-0424",
+     "logo": "/img/logos/xiaomi.svg"
     },
     {
      "id": "66f4ce73-9a9b-4b49-9c6e-bedb9bfdc720",
@@ -5412,13 +5441,6 @@
      "logo": "/img/logos/mistral.svg"
     },
     {
-     "id": "00f1248e-78e3-4230-8dc8-5e13ba8645e2",
-     "label": "MiMo-V2.5-Pro",
-     "tooltipLabel": "MiMo-V2.5-Pro (Reasoning)",
-     "url": "/models/mimo-v2-5-pro",
-     "logo": "/img/logos/xiaomi.svg"
-    },
-    {
      "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
      "label": "Muse Glimmer (high)",
      "tooltipLabel": "Muse Glimmer (High)",
@@ -5461,6 +5483,13 @@
      "logo": "/img/logos/deepseek.svg"
     },
     {
+     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
+     "label": "Gemma 4 26B A4B",
+     "tooltipLabel": "Gemma 4 26B A4B (Reasoning)",
+     "url": "/models/gemma-4-26b-a4b",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "765c9f31-95ec-4f14-900a-80614c3b0777",
      "label": "Mercury 2.5",
      "tooltipLabel": "Mercury 2.5",
@@ -5496,11 +5525,11 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
-     "label": "Gemma 4 26B A4B",
-     "tooltipLabel": "Gemma 4 26B A4B (Reasoning)",
-     "url": "/models/gemma-4-26b-a4b",
-     "logo": "/img/logos/google.svg"
+     "id": "00f1248e-78e3-4230-8dc8-5e13ba8645e2",
+     "label": "MiMo-V2.5-Pro",
+     "tooltipLabel": "MiMo-V2.5-Pro (Reasoning)",
+     "url": "/models/mimo-v2-5-pro",
+     "logo": "/img/logos/xiaomi.svg"
     },
     {
      "id": "af26fff4-8120-41be-a5f0-86aaea023f20",
@@ -5522,13 +5551,6 @@
      "tooltipLabel": "Celeris-1",
      "url": "/models/celeris-1",
      "logo": "/img/logos/celeris.svg"
-    },
-    {
-     "id": "5e0164b3-d902-4bcb-a1b2-83b4f4cd6143",
-     "label": "Qwen3 30B A3B 2507",
-     "tooltipLabel": "Qwen3 30B A3B 2507 (Reasoning)",
-     "url": "/models/qwen3-30b-a3b-2507-reasoning",
-     "logo": "/img/logos/alibaba.svg"
     },
     {
      "id": "127de816-57d3-4037-8484-480a613cd413",
@@ -5573,18 +5595,18 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "73c96f99-0de3-4668-a4bd-b106a0fe18f2",
-     "label": "DeepSeek V4.1 Flash (non-reasoning)",
-     "tooltipLabel": "DeepSeek V4.1 Flash (Non-reasoning)",
-     "url": "/models/deepseek-v4-1-flash-non-reasoning",
-     "logo": "/img/logos/deepseek.svg"
-    },
-    {
      "id": "1071dea1-43e7-4fe9-b936-3034bb622b2e",
      "label": "Granite 4.2 30B",
      "tooltipLabel": "Granite 4.2 30B",
      "url": "/models/granite-4-2-30b",
      "logo": "/img/logos/ibm.svg"
+    },
+    {
+     "id": "73c96f99-0de3-4668-a4bd-b106a0fe18f2",
+     "label": "DeepSeek V4.1 Flash (non-reasoning)",
+     "tooltipLabel": "DeepSeek V4.1 Flash (Non-reasoning)",
+     "url": "/models/deepseek-v4-1-flash-non-reasoning",
+     "logo": "/img/logos/deepseek.svg"
     },
     {
      "id": "89a2c945-1fab-4ee4-9f45-83a9f46cb221",
@@ -5636,6 +5658,13 @@
      "logo": "/img/logos/nvidia.svg"
     },
     {
+     "id": "fe4c0848-e284-4e52-a79d-cdc28392f1a9",
+     "label": "DeepSeek V4 Flash 0731 (max)",
+     "tooltipLabel": "DeepSeek V4 Flash 0731 (Max)",
+     "url": "/models/deepseek-v4-flash",
+     "logo": "/img/logos/deepseek.svg"
+    },
+    {
      "id": "948892b5-db03-4118-a4a8-ccd51ed871ea",
      "label": "Grok 4.3 (high)",
      "tooltipLabel": "Grok 4.3 (High)",
@@ -5655,13 +5684,6 @@
      "tooltipLabel": "GPT-5.6 Terra (Non-reasoning)",
      "url": "/models/gpt-5-6-terra-non-reasoning",
      "logo": "/img/logos/openai.svg"
-    },
-    {
-     "id": "fe4c0848-e284-4e52-a79d-cdc28392f1a9",
-     "label": "DeepSeek V4 Flash 0731 (max)",
-     "tooltipLabel": "DeepSeek V4 Flash 0731 (Max)",
-     "url": "/models/deepseek-v4-flash",
-     "logo": "/img/logos/deepseek.svg"
     },
     {
      "id": "780a4a85-17ff-4175-a8dd-ebca4823e61b",
@@ -5690,6 +5712,13 @@
      "tooltipLabel": "Claude Haiku 5.5 (Xhigh)",
      "url": "/models/claude-haiku-5-5-xhigh",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "69468cce-7b5c-414a-b498-41df4c34df85",
+     "label": "Beam 1.0",
+     "tooltipLabel": "Beam 1.0",
+     "url": "/models/reflection-beam",
+     "logo": "/img/logos/reflection.svg"
     },
     {
      "id": "d3e20e76-9e1a-45b6-b809-ad6aa37430cf",
@@ -5762,13 +5791,6 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
-     "label": "gpt-oss-120b (high)",
-     "tooltipLabel": "gpt-oss-120b (High)",
-     "url": "/models/gpt-oss-120b",
-     "logo": "/img/logos/openai.svg"
-    },
-    {
      "id": "27202e5f-c82d-4710-92e9-4317877d4883",
      "label": "Gemini 2.5 Pro",
      "tooltipLabel": "Gemini 2.5 Pro",
@@ -5802,6 +5824,13 @@
      "tooltipLabel": "Kimi K3 (Low)",
      "url": "/models/kimi-k3-low",
      "logo": "/img/logos/kimi.jpg"
+    },
+    {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "label": "gpt-oss-120b (high)",
+     "tooltipLabel": "gpt-oss-120b (High)",
+     "url": "/models/gpt-oss-120b",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "d4fc3f33-f2b0-4da1-88ee-f1f82bd4de31",
@@ -5930,13 +5959,6 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "69468cce-7b5c-414a-b498-41df4c34df85",
-     "label": "Beam 1.0",
-     "tooltipLabel": "Beam 1.0",
-     "url": "/models/reflection-beam",
-     "logo": "/img/logos/reflection.svg"
-    },
-    {
      "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
      "label": "MiniMax-M3",
      "tooltipLabel": "MiniMax-M3",
@@ -5979,6 +6001,13 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "dbe7c625-3100-4463-b479-a228c41f75dd",
+     "label": "DeepSeek V4.1 Flash (max)",
+     "tooltipLabel": "DeepSeek V4.1 Flash (Max)",
+     "url": "/models/deepseek-v4-1-flash",
+     "logo": "/img/logos/deepseek.svg"
+    },
+    {
      "id": "08242385-ee91-4de6-be7f-271a6d9780ce",
      "label": "Apodex 1.1",
      "tooltipLabel": "Apodex 1.1",
@@ -5993,11 +6022,11 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "dbe7c625-3100-4463-b479-a228c41f75dd",
-     "label": "DeepSeek V4.1 Flash (max)",
-     "tooltipLabel": "DeepSeek V4.1 Flash (Max)",
-     "url": "/models/deepseek-v4-1-flash",
-     "logo": "/img/logos/deepseek.svg"
+     "id": "5b52def2-ac9b-4465-ad80-91ea8079e253",
+     "label": "Nemotron 3 Ultra",
+     "tooltipLabel": "Nemotron 3 Ultra 550B A55B (Reasoning)",
+     "url": "/models/nvidia-nemotron-3-ultra-550b-a55b",
+     "logo": "/img/logos/nvidia.svg"
     },
     {
      "id": "8c29d66d-bf98-4ea3-8572-5409353ecc66",
@@ -6047,13 +6076,6 @@
      "tooltipLabel": "Gemini 3.1 Pro Preview",
      "url": "/models/gemini-3-1-pro-preview",
      "logo": "/img/logos/google.svg"
-    },
-    {
-     "id": "5b52def2-ac9b-4465-ad80-91ea8079e253",
-     "label": "Nemotron 3 Ultra",
-     "tooltipLabel": "Nemotron 3 Ultra 550B A55B (Reasoning)",
-     "url": "/models/nvidia-nemotron-3-ultra-550b-a55b",
-     "logo": "/img/logos/nvidia.svg"
     },
     {
      "id": "fc92f822-04b7-420d-9c07-a21af5e9aac7",
@@ -6182,13 +6204,6 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "b2331108-72ed-415a-82d1-188633875bbc",
-     "label": "Gemini 3.7 Flash (high)",
-     "tooltipLabel": "Gemini 3.7 Flash (High)",
-     "url": "/models/gemini-3-7-flash",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
      "label": "GPT-6.1 Sol (max)",
      "tooltipLabel": "GPT-6.1 Sol (Max)",
@@ -6315,13 +6330,6 @@
      "logo": "/img/logos/meta.svg"
     },
     {
-     "id": "f9739750-6d42-450f-ba1e-2f76c869b4fe",
-     "label": "Quasar 438B (max)",
-     "tooltipLabel": "Quasar 438B (Max, Based on GLM-5.2)",
-     "url": "/models/quasar-438b",
-     "logo": "/img/logos/multiversecomputing.svg"
-    },
-    {
      "id": "ba0224cf-0351-4f56-8508-b3f1a740ae4a",
      "label": "Claude Sonnet 5 (high)",
      "tooltipLabel": "Claude Sonnet 5 (High)",
@@ -6334,6 +6342,13 @@
      "tooltipLabel": "Solar Pro 4",
      "url": "/models/solar-pro4",
      "logo": "/img/logos/upstage.svg"
+    },
+    {
+     "id": "539ed227-38f4-4bea-a015-117057c14b18",
+     "label": "Ling 3.1 Flash 1019",
+     "tooltipLabel": "Ling 3.1 Flash 1019",
+     "url": "/models/ling-3-1-flash-1019",
+     "logo": "/img/logos/inclusionai.jpg"
     },
     {
      "id": "e97a4ef5-e817-480e-9595-12f81dc4974f",
@@ -6467,6 +6482,13 @@
      "tooltipLabel": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
      "url": "/models/claude-sonnet-5-5-xhigh",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "label": "Kimi K3.1 Pro",
+     "tooltipLabel": "Kimi K3.1 Pro",
+     "url": "/models/kimi-k3-1-pro",
+     "logo": "/img/logos/kimi.jpg"
     },
     {
      "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
@@ -7023,6 +7045,46 @@
      "name": "Llama 4 Scout",
      "shortName": "Llama 4 Scout",
      "creatorName": "Meta",
+     "intelligenceIndexIsEstimated": false
+    },
+    {
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "slug": "kimi-k3-1-pro",
+     "name": "Kimi K3.1 Pro",
+     "shortName": "Kimi K3.1 Pro",
+     "creatorName": "Kimi",
+     "intelligenceIndexIsEstimated": false
+    },
+    {
+     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
+     "slug": "kimi-k3",
+     "name": "Kimi K3 (Max)",
+     "shortName": "Kimi K3 (max)",
+     "creatorName": "Kimi",
+     "intelligenceIndexIsEstimated": false
+    },
+    {
+     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
+     "slug": "kimi-k3-low",
+     "name": "Kimi K3 (Low)",
+     "shortName": "Kimi K3 (low)",
+     "creatorName": "Kimi",
+     "intelligenceIndexIsEstimated": false
+    },
+    {
+     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
+     "slug": "kimi-k2-6",
+     "name": "Kimi K2.6 (Reasoning)",
+     "shortName": "Kimi K2.6",
+     "creatorName": "Kimi",
+     "intelligenceIndexIsEstimated": false
+    },
+    {
+     "id": "8d0cb231-7303-452c-9923-a9620b948475",
+     "slug": "kimi-k2-7-code",
+     "name": "Kimi K2.7 Code",
+     "shortName": "Kimi K2.7 Code",
+     "creatorName": "Kimi",
      "intelligenceIndexIsEstimated": false
     },
     {
@@ -7986,67 +8048,11 @@
      "intelligenceIndexIsEstimated": false
     },
     {
-     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
-     "slug": "step-5",
-     "name": "Step 5 Preview",
-     "shortName": "Step 5 Preview",
-     "creatorName": "StepFun",
-     "intelligenceIndexIsEstimated": false
-    },
-    {
-     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
-     "slug": "kimi-k3",
-     "name": "Kimi K3 (Max)",
-     "shortName": "Kimi K3 (max)",
-     "creatorName": "Kimi",
-     "intelligenceIndexIsEstimated": false
-    },
-    {
-     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
-     "slug": "kimi-k3-low",
-     "name": "Kimi K3 (Low)",
-     "shortName": "Kimi K3 (low)",
-     "creatorName": "Kimi",
-     "intelligenceIndexIsEstimated": false
-    },
-    {
-     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
-     "slug": "kimi-k2-6",
-     "name": "Kimi K2.6 (Reasoning)",
-     "shortName": "Kimi K2.6",
-     "creatorName": "Kimi",
-     "intelligenceIndexIsEstimated": false
-    },
-    {
-     "id": "8d0cb231-7303-452c-9923-a9620b948475",
-     "slug": "kimi-k2-7-code",
-     "name": "Kimi K2.7 Code",
-     "shortName": "Kimi K2.7 Code",
-     "creatorName": "Kimi",
-     "intelligenceIndexIsEstimated": false
-    },
-    {
-     "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
-     "slug": "minimax-m3-1-flash",
-     "name": "MiniMax-M3.1-Flash",
-     "shortName": "MiniMax-M3.1-Flash",
-     "creatorName": "MiniMax",
-     "intelligenceIndexIsEstimated": false
-    },
-    {
-     "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
-     "slug": "minimax-m3",
-     "name": "MiniMax-M3",
-     "shortName": "MiniMax-M3",
-     "creatorName": "MiniMax",
-     "intelligenceIndexIsEstimated": false
-    },
-    {
-     "id": "4bbceacb-cf47-464b-b60f-e1d1fe016d67",
-     "slug": "minimax-m2-7",
-     "name": "MiniMax-M2.7",
-     "shortName": "MiniMax-M2.7",
-     "creatorName": "MiniMax",
+     "id": "539ed227-38f4-4bea-a015-117057c14b18",
+     "slug": "ling-3-1-flash-1019",
+     "name": "Ling 3.1 Flash 1019",
+     "shortName": "Ling 3.1 Flash 1019",
+     "creatorName": "InclusionAI",
      "intelligenceIndexIsEstimated": false
     },
     {
@@ -8095,6 +8101,38 @@
      "name": "Ling 3.0 Tiny",
      "shortName": "Ling 3.0 Tiny",
      "creatorName": "InclusionAI",
+     "intelligenceIndexIsEstimated": false
+    },
+    {
+     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
+     "slug": "step-5",
+     "name": "Step 5 Preview",
+     "shortName": "Step 5 Preview",
+     "creatorName": "StepFun",
+     "intelligenceIndexIsEstimated": false
+    },
+    {
+     "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
+     "slug": "minimax-m3-1-flash",
+     "name": "MiniMax-M3.1-Flash",
+     "shortName": "MiniMax-M3.1-Flash",
+     "creatorName": "MiniMax",
+     "intelligenceIndexIsEstimated": false
+    },
+    {
+     "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
+     "slug": "minimax-m3",
+     "name": "MiniMax-M3",
+     "shortName": "MiniMax-M3",
+     "creatorName": "MiniMax",
+     "intelligenceIndexIsEstimated": false
+    },
+    {
+     "id": "4bbceacb-cf47-464b-b60f-e1d1fe016d67",
+     "slug": "minimax-m2-7",
+     "name": "MiniMax-M2.7",
+     "shortName": "MiniMax-M2.7",
+     "creatorName": "MiniMax",
      "intelligenceIndexIsEstimated": false
     },
     {
@@ -8893,6 +8931,46 @@
      "shortName": "Llama 4 Scout",
      "creatorName": "Meta",
      "releaseDate": "2025-04-05"
+    },
+    {
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "slug": "kimi-k3-1-pro",
+     "name": "Kimi K3.1 Pro",
+     "shortName": "Kimi K3.1 Pro",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-10-23"
+    },
+    {
+     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
+     "slug": "kimi-k3",
+     "name": "Kimi K3 (Max)",
+     "shortName": "Kimi K3 (max)",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-07-16"
+    },
+    {
+     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
+     "slug": "kimi-k3-low",
+     "name": "Kimi K3 (Low)",
+     "shortName": "Kimi K3 (low)",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-07-16"
+    },
+    {
+     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
+     "slug": "kimi-k2-6",
+     "name": "Kimi K2.6 (Reasoning)",
+     "shortName": "Kimi K2.6",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-04-20"
+    },
+    {
+     "id": "8d0cb231-7303-452c-9923-a9620b948475",
+     "slug": "kimi-k2-7-code",
+     "name": "Kimi K2.7 Code",
+     "shortName": "Kimi K2.7 Code",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-06-12"
     },
     {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
@@ -9855,68 +9933,12 @@
      "releaseDate": "2026-04-07"
     },
     {
-     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
-     "slug": "step-5",
-     "name": "Step 5 Preview",
-     "shortName": "Step 5 Preview",
-     "creatorName": "StepFun",
-     "releaseDate": "2026-09-18"
-    },
-    {
-     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
-     "slug": "kimi-k3",
-     "name": "Kimi K3 (Max)",
-     "shortName": "Kimi K3 (max)",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-07-16"
-    },
-    {
-     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
-     "slug": "kimi-k3-low",
-     "name": "Kimi K3 (Low)",
-     "shortName": "Kimi K3 (low)",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-07-16"
-    },
-    {
-     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
-     "slug": "kimi-k2-6",
-     "name": "Kimi K2.6 (Reasoning)",
-     "shortName": "Kimi K2.6",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-04-20"
-    },
-    {
-     "id": "8d0cb231-7303-452c-9923-a9620b948475",
-     "slug": "kimi-k2-7-code",
-     "name": "Kimi K2.7 Code",
-     "shortName": "Kimi K2.7 Code",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-06-12"
-    },
-    {
-     "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
-     "slug": "minimax-m3-1-flash",
-     "name": "MiniMax-M3.1-Flash",
-     "shortName": "MiniMax-M3.1-Flash",
-     "creatorName": "MiniMax",
-     "releaseDate": "2026-10-19"
-    },
-    {
-     "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
-     "slug": "minimax-m3",
-     "name": "MiniMax-M3",
-     "shortName": "MiniMax-M3",
-     "creatorName": "MiniMax",
-     "releaseDate": "2026-06-01"
-    },
-    {
-     "id": "4bbceacb-cf47-464b-b60f-e1d1fe016d67",
-     "slug": "minimax-m2-7",
-     "name": "MiniMax-M2.7",
-     "shortName": "MiniMax-M2.7",
-     "creatorName": "MiniMax",
-     "releaseDate": "2026-03-18"
+     "id": "539ed227-38f4-4bea-a015-117057c14b18",
+     "slug": "ling-3-1-flash-1019",
+     "name": "Ling 3.1 Flash 1019",
+     "shortName": "Ling 3.1 Flash 1019",
+     "creatorName": "InclusionAI",
+     "releaseDate": "2026-10-22"
     },
     {
      "id": "a6043b9b-628a-4a76-a021-2834e0627d05",
@@ -9965,6 +9987,38 @@
      "shortName": "Ling 3.0 Tiny",
      "creatorName": "InclusionAI",
      "releaseDate": "2026-08-06"
+    },
+    {
+     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
+     "slug": "step-5",
+     "name": "Step 5 Preview",
+     "shortName": "Step 5 Preview",
+     "creatorName": "StepFun",
+     "releaseDate": "2026-09-18"
+    },
+    {
+     "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
+     "slug": "minimax-m3-1-flash",
+     "name": "MiniMax-M3.1-Flash",
+     "shortName": "MiniMax-M3.1-Flash",
+     "creatorName": "MiniMax",
+     "releaseDate": "2026-10-19"
+    },
+    {
+     "id": "277f939a-985b-4b37-859d-b3eabc7c0b26",
+     "slug": "minimax-m3",
+     "name": "MiniMax-M3",
+     "shortName": "MiniMax-M3",
+     "creatorName": "MiniMax",
+     "releaseDate": "2026-06-01"
+    },
+    {
+     "id": "4bbceacb-cf47-464b-b60f-e1d1fe016d67",
+     "slug": "minimax-m2-7",
+     "name": "MiniMax-M2.7",
+     "shortName": "MiniMax-M2.7",
+     "creatorName": "MiniMax",
+     "releaseDate": "2026-03-18"
     },
     {
      "id": "34fc646a-0174-470e-9e62-d8df452210b3",
@@ -10392,15 +10446,15 @@
      "1",
      "Anthropic",
      "Claude Sonnet 5.5 (Max, Default Fallback)",
-     "1817",
-     "-10 / +12",
+     "1816",
+     "-11 / +12",
      "Sep 2026"
     ],
     [
      "2",
      "Anthropic",
      "Claude Opus 5.5 (Max, Default Fallback)",
-     "1803",
+     "1801",
      "-11 / +12",
      "Sep 2026"
     ],
@@ -10408,16 +10462,16 @@
      "3",
      "Anthropic",
      "Claude Opus 5.5 (Xhigh, Default Fallback)",
-     "1764",
-     "-11 / +11",
+     "1761",
+     "-10 / +11",
      "Sep 2026"
     ],
     [
      "4",
      "Anthropic",
      "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
-     "1751",
-     "-13 / +14",
+     "1746",
+     "-12 / +12",
      "Sep 2026"
     ],
     [
@@ -10432,25 +10486,25 @@
      "6",
      "Anthropic",
      "Claude Opus 5.5 (High, Default Fallback)",
-     "1686",
-     "-10 / +11",
+     "1683",
+     "-10 / +10",
      "Sep 2026"
     ],
     [
      "7",
-     "Anthropic",
-     "Claude Fable 5.1 (Max, Default Fallback)",
-     "1672",
-     "-8 / +9",
-     "Sep 2026"
+     "Kimi",
+     "Kimi K3.1 Pro",
+     "1678",
+     "-10 / +10",
+     "Oct 2026"
     ],
     [
      "8",
      "Anthropic",
-     "Claude Opus 5 (Max)",
-     "1659",
-     "-8 / +9",
-     "Jul 2026"
+     "Claude Fable 5.1 (Max, Default Fallback)",
+     "1671",
+     "-8 / +8",
+     "Sep 2026"
     ],
     [
      "9",
@@ -10463,61 +10517,69 @@
     [
      "10",
      "Anthropic",
+     "Claude Opus 5 (Max)",
+     "1657",
+     "-8 / +8",
+     "Jul 2026"
+    ],
+    [
+     "11",
+     "Anthropic",
      "Claude Fable 5.1 (Xhigh, Default Fallback)",
-     "1655",
+     "1651",
      "-8 / +9",
      "Sep 2026"
     ],
     [
-     "11",
+     "12",
      "SpaceXAI",
      "Grok 4.7 (Xhigh)",
-     "1642",
+     "1639",
      "-9 / +10",
-     "Sep 2026"
-    ],
-    [
-     "12",
-     "Anthropic",
-     "Claude Sonnet 5.5 (High, Default Fallback)",
-     "1636",
-     "-9 / +11",
      "Sep 2026"
     ],
     [
      "13",
      "Anthropic",
-     "Claude Opus 5 (Xhigh)",
-     "1634",
-     "-7 / +9",
-     "Jul 2026"
+     "Claude Sonnet 5.5 (High, Default Fallback)",
+     "1635",
+     "-9 / +11",
+     "Sep 2026"
     ],
     [
      "14",
      "SpaceXAI",
      "Grok 4.7 (High)",
-     "1633",
+     "1630",
      "-9 / +9",
      "Sep 2026"
     ],
     [
      "15",
      "Anthropic",
-     "Claude Opus 5.5 (Medium, Default Fallback)",
-     "1625",
-     "-10 / +11",
-     "Sep 2026"
+     "Claude Opus 5 (Xhigh)",
+     "1630",
+     "-8 / +8",
+     "Jul 2026"
     ],
     [
      "16",
-     "Alibaba",
-     "Qwen3.8 Max (0902)",
-     "1613",
-     "-9 / +9",
+     "Anthropic",
+     "Claude Opus 5.5 (Medium, Default Fallback)",
+     "1622",
+     "-9 / +10",
      "Sep 2026"
     ],
     [
      "17",
+     "Alibaba",
+     "Qwen3.8 Max (0902)",
+     "1611",
+     "-9 / +10",
+     "Sep 2026"
+    ],
+    [
+     "18",
      "Meta",
      "Muse Spark 1.3 (Max)",
      "1581",
@@ -10525,31 +10587,31 @@
      "Sep 2026"
     ],
     [
-     "18",
+     "19",
      "Anthropic",
      "Claude Fable 5.1 (High, Default Fallback)",
-     "1580",
+     "1577",
      "-8 / +8",
      "Sep 2026"
-    ],
-    [
-     "19",
-     "Alibaba",
-     "Qwen3.8-Flash-Next",
-     "1580",
-     "-8 / +9",
-     "Aug 2026"
     ],
     [
      "20",
      "Anthropic",
      "Claude Haiku 5.5 (Max)",
-     "1577",
-     "-10 / +12",
+     "1575",
+     "-11 / +12",
      "Oct 2026"
     ],
     [
      "21",
+     "Alibaba",
+     "Qwen3.8-Flash-Next",
+     "1575",
+     "-9 / +9",
+     "Aug 2026"
+    ],
+    [
+     "22",
      "DeepSeek",
      "DeepSeek V4.1 Flash 1017 (Max)",
      "1570",
@@ -10557,135 +10619,143 @@
      "Oct 2026"
     ],
     [
-     "22",
+     "23",
      "OpenAI",
      "GPT-6 Astra (Max)",
-     "1569",
-     "-8 / +9",
+     "1568",
+     "-9 / +9",
      "Sep 2026"
-    ],
-    [
-     "23",
-     "Anthropic",
-     "Claude Opus 5 (High)",
-     "1561",
-     "-7 / +8",
-     "Jul 2026"
     ],
     [
      "24",
-     "OpenAI",
-     "GPT-6.1 Sol (Max)",
-     "1557",
-     "-10 / +10",
-     "Sep 2026"
+     "Anthropic",
+     "Claude Opus 5 (High)",
+     "1558",
+     "-7 / +8",
+     "Jul 2026"
     ],
     [
      "25",
      "OpenAI",
-     "GPT-6 Astra (Xhigh)",
-     "1547",
-     "-9 / +9",
+     "GPT-6.1 Sol (Max)",
+     "1555",
+     "-10 / +9",
      "Sep 2026"
     ],
     [
      "26",
+     "OpenAI",
+     "GPT-6 Astra (Xhigh)",
+     "1543",
+     "-9 / +8",
+     "Sep 2026"
+    ],
+    [
+     "27",
      "SpaceXAI",
      "Grok 4.6 (Xhigh)",
-     "1545",
+     "1543",
      "-8 / +8",
      "Aug 2026"
     ],
     [
-     "27",
+     "28",
      "Anthropic",
      "Claude Fable 5 (Max, Opus 4.8 Fallback)",
-     "1539",
-     "-7 / +8",
+     "1537",
+     "-7 / +7",
      "Jun 2026"
     ],
     [
-     "28",
+     "29",
      "SpaceXAI",
      "Grok 4.6 (High)",
-     "1534",
-     "-8 / +9",
+     "1531",
+     "-8 / +8",
      "Aug 2026"
-    ],
-    [
-     "29",
-     "Anthropic",
-     "Claude Haiku 5.5 (Xhigh)",
-     "1532",
-     "-11 / +11",
-     "Oct 2026"
     ],
     [
      "30",
      "Anthropic",
+     "Claude Haiku 5.5 (Xhigh)",
+     "1527",
+     "-11 / +11",
+     "Oct 2026"
+    ],
+    [
+     "31",
+     "Anthropic",
      "Claude Fable 5.1 (Medium, Default Fallback)",
-     "1528",
+     "1525",
      "-8 / +8",
      "Sep 2026"
     ],
     [
-     "31",
-     "Xiaomi",
-     "MiMo-V2.6-Pro",
-     "1515",
-     "-10 / +11",
-     "Sep 2026"
-    ],
-    [
      "32",
-     "Z AI",
-     "GLM-5.3 (Max)",
-     "1507",
-     "-8 / +9",
-     "Aug 2026"
+     "InclusionAI",
+     "Ling 3.1 Flash 1019",
+     "1522",
+     "-11 / +11",
+     "Oct 2026"
     ],
     [
      "33",
-     "OpenAI",
-     "GPT-6 Astra (High)",
-     "1506",
-     "-9 / +9",
+     "Xiaomi",
+     "MiMo-V2.6-Pro",
+     "1512",
+     "-9 / +10",
      "Sep 2026"
     ],
     [
      "34",
-     "OpenAI",
-     "GPT-6.1 Sol (Xhigh)",
-     "1504",
-     "-12 / +11",
-     "Sep 2026"
+     "Z AI",
+     "GLM-5.3 (Max)",
+     "1505",
+     "-8 / +8",
+     "Aug 2026"
     ],
     [
      "35",
-     "Kimi",
-     "Kimi K3 (Max)",
-     "1499",
-     "-8 / +7",
-     "Jul 2026"
+     "OpenAI",
+     "GPT-6 Astra (High)",
+     "1505",
+     "-9 / +9",
+     "Sep 2026"
     ],
     [
      "36",
-     "SpaceXAI",
-     "Grok 4.7 (Low)",
-     "1499",
-     "-11 / +11",
+     "OpenAI",
+     "GPT-6.1 Sol (Xhigh)",
+     "1502",
+     "-10 / +11",
      "Sep 2026"
     ],
     [
      "37",
+     "Kimi",
+     "Kimi K3 (Max)",
+     "1499",
+     "-7 / +7",
+     "Jul 2026"
+    ],
+    [
+     "38",
+     "SpaceXAI",
+     "Grok 4.7 (Low)",
+     "1496",
+     "-10 / +11",
+     "Sep 2026"
+    ],
+    [
+     "39",
      "Xiaomi",
      "MiMo-V2.6-Flash",
-     "1491",
+     "1488",
      "-10 / +10",
      "Sep 2026"
     ],
     [
-     "38",
+     "40",
      "Google",
      "Gemini 4 Argon (High)",
      "1486",
@@ -10693,47 +10763,47 @@
      "Sep 2026"
     ],
     [
-     "39",
+     "41",
      "Meta",
      "Muse Spark 1.3 (Xhigh)",
-     "1486",
-     "-8 / +9",
-     "Sep 2026"
-    ],
-    [
-     "40",
-     "SpaceXAI",
-     "Grok 4.6 (Medium)",
      "1483",
-     "-7 / +8",
-     "Aug 2026"
-    ],
-    [
-     "41",
-     "Anthropic",
-     "Claude Fable 5.1 (Low, Default Fallback)",
-     "1482",
-     "-8 / +8",
+     "-9 / +8",
      "Sep 2026"
     ],
     [
      "42",
-     "OpenAI",
-     "GPT-6 Sol (Max)",
-     "1481",
-     "-9 / +9",
-     "Sep 2026"
+     "SpaceXAI",
+     "Grok 4.6 (Medium)",
+     "1480",
+     "-7 / +8",
+     "Aug 2026"
     ],
     [
      "43",
+     "Anthropic",
+     "Claude Fable 5.1 (Low, Default Fallback)",
+     "1479",
+     "-7 / +8",
+     "Sep 2026"
+    ],
+    [
+     "44",
      "OpenAI",
      "GPT-5.6 Sol (Max)",
-     "1480",
+     "1479",
      "-8 / +8",
      "Jul 2026"
     ],
     [
-     "44",
+     "45",
+     "OpenAI",
+     "GPT-6 Sol (Max)",
+     "1477",
+     "-9 / +9",
+     "Sep 2026"
+    ],
+    [
+     "46",
      "MiniMax",
      "MiniMax-M3.1-Flash",
      "1474",
@@ -10741,7 +10811,7 @@
      "Oct 2026"
     ],
     [
-     "45",
+     "47",
      "OpenAI",
      "GPT-6.1 Sol (High)",
      "1465",
@@ -10749,15 +10819,15 @@
      "Sep 2026"
     ],
     [
-     "46",
+     "48",
      "OpenAI",
      "GPT-6 Astra (Medium)",
-     "1461",
-     "-9 / +9",
+     "1460",
+     "-9 / +8",
      "Sep 2026"
     ],
     [
-     "47",
+     "49",
      "Z AI",
      "GLM-5.3-Flash",
      "1453",
@@ -10765,431 +10835,431 @@
      "Aug 2026"
     ],
     [
-     "48",
+     "50",
      "Anthropic",
      "Claude Haiku 5.5 (High)",
-     "1443",
-     "-12 / +11",
+     "1440",
+     "-10 / +11",
      "Oct 2026"
     ],
     [
-     "49",
+     "51",
      "Anthropic",
      "Claude Sonnet 5.5 (Medium, Default Fallback)",
-     "1441",
+     "1438",
      "-10 / +10",
      "Sep 2026"
     ],
     [
-     "50",
+     "52",
      "OpenAI",
      "GPT-5.6 Sol (Xhigh)",
-     "1437",
-     "-9 / +9",
-     "Jul 2026"
-    ],
-    [
-     "51",
-     "Alibaba",
-     "Qwen3.8 2.4T A95B",
      "1435",
-     "-8 / +8",
-     "Aug 2026"
-    ],
-    [
-     "52",
-     "Anthropic",
-     "Claude Opus 5 (Medium)",
-     "1435",
-     "-7 / +8",
+     "-8 / +9",
      "Jul 2026"
     ],
     [
      "53",
-     "DeepSeek",
-     "DeepSeek V4 Flash Vision (Max)",
-     "1425",
-     "-8 / +9",
+     "Alibaba",
+     "Qwen3.8 2.4T A95B",
+     "1433",
+     "-8 / +8",
      "Aug 2026"
     ],
     [
      "54",
-     "StepFun",
-     "Step 5 Preview",
-     "1424",
-     "-11 / +11",
-     "Sep 2026"
+     "Anthropic",
+     "Claude Opus 5 (Medium)",
+     "1433",
+     "-8 / +8",
+     "Jul 2026"
     ],
     [
      "55",
-     "DeepSeek",
-     "DeepSeek V4.1 Flash (Max)",
-     "1420",
-     "-9 / +10",
+     "StepFun",
+     "Step 5 Preview",
+     "1423",
+     "-10 / +11",
      "Sep 2026"
     ],
     [
      "56",
-     "InclusionAI",
-     "Ling 3.1 Flash",
-     "1400",
-     "-10 / +10",
-     "Oct 2026"
-    ],
-    [
-     "57",
-     "Alibaba",
-     "Qwen3.8 27B (Xhigh)",
-     "1395",
-     "-7 / +8",
+     "DeepSeek",
+     "DeepSeek V4 Flash Vision (Max)",
+     "1421",
+     "-8 / +8",
      "Aug 2026"
     ],
     [
+     "57",
+     "DeepSeek",
+     "DeepSeek V4.1 Flash (Max)",
+     "1419",
+     "-8 / +8",
+     "Sep 2026"
+    ],
+    [
      "58",
-     "Mistral",
-     "Mistral Large 4 Preview",
-     "1392",
-     "-11 / +10",
+     "InclusionAI",
+     "Ling 3.1 Flash",
+     "1397",
+     "-10 / +10",
      "Oct 2026"
     ],
     [
      "59",
      "Alibaba",
-     "Qwen3.8 Max",
-     "1385",
-     "-7 / +8",
+     "Qwen3.8 27B (Xhigh)",
+     "1394",
+     "-7 / +7",
      "Aug 2026"
     ],
     [
      "60",
-     "Alibaba",
-     "Qwen3.8 27B (Medium)",
-     "1375",
-     "-8 / +8",
-     "Aug 2026"
+     "Mistral",
+     "Mistral Large 4 Preview",
+     "1391",
+     "-11 / +10",
+     "Oct 2026"
     ],
     [
      "61",
+     "Alibaba",
+     "Qwen3.8 Max",
+     "1383",
+     "-7 / +7",
+     "Aug 2026"
+    ],
+    [
+     "62",
+     "Alibaba",
+     "Qwen3.8 27B (Medium)",
+     "1374",
+     "-8 / +9",
+     "Aug 2026"
+    ],
+    [
+     "63",
      "Anthropic",
      "Claude Haiku 5.5 (Medium)",
-     "1372",
+     "1369",
      "-9 / +9",
      "Oct 2026"
     ],
     [
-     "62",
+     "64",
      "OpenAI",
      "GPT-5.6 Sol (High)",
-     "1369",
-     "-8 / +9",
+     "1368",
+     "-9 / +9",
      "Jul 2026"
-    ],
-    [
-     "63",
-     "OpenAI",
-     "GPT-6.1 Sol (Medium)",
-     "1361",
-     "-11 / +11",
-     "Sep 2026"
-    ],
-    [
-     "64",
-     "Anthropic",
-     "Claude Sonnet 5 (Max)",
-     "1358",
-     "-7 / +7",
-     "Jun 2026"
     ],
     [
      "65",
      "OpenAI",
-     "GPT-6 Sol (Xhigh)",
-     "1357",
-     "-9 / +9",
+     "GPT-6.1 Sol (Medium)",
+     "1359",
+     "-10 / +10",
      "Sep 2026"
     ],
     [
      "66",
-     "OpenAI",
-     "GPT-5.6 Luna (Max)",
-     "1342",
-     "-8 / +8",
-     "Jul 2026"
+     "Anthropic",
+     "Claude Sonnet 5 (Max)",
+     "1357",
+     "-6 / +7",
+     "Jun 2026"
     ],
     [
      "67",
      "OpenAI",
-     "GPT-6 Luna (Max)",
-     "1335",
-     "-9 / +10",
+     "GPT-6 Sol (Xhigh)",
+     "1355",
+     "-9 / +9",
      "Sep 2026"
     ],
     [
      "68",
      "OpenAI",
-     "GPT-5.6 Terra (Max)",
-     "1334",
-     "-8 / +9",
+     "GPT-5.6 Luna (Max)",
+     "1339",
+     "-7 / +8",
      "Jul 2026"
     ],
     [
      "69",
      "OpenAI",
-     "GPT-5.6 Terra (Xhigh)",
-     "1333",
+     "GPT-6 Luna (Max)",
+     "1336",
+     "-9 / +9",
+     "Sep 2026"
+    ],
+    [
+     "70",
+     "OpenAI",
+     "GPT-5.6 Terra (Max)",
+     "1332",
      "-8 / +8",
      "Jul 2026"
     ],
     [
-     "70",
+     "71",
+     "OpenAI",
+     "GPT-5.6 Terra (Xhigh)",
+     "1331",
+     "-8 / +8",
+     "Jul 2026"
+    ],
+    [
+     "72",
      "Meta",
      "Muse Spark 1.2 (Xhigh)",
-     "1328",
-     "-8 / +8",
+     "1327",
+     "-8 / +7",
      "Aug 2026"
     ],
     [
-     "71",
+     "73",
      "Anthropic",
      "Claude Opus 4.8 (Max)",
-     "1321",
+     "1319",
      "-7 / +7",
      "May 2026"
     ],
     [
-     "72",
+     "74",
      "Institute of Foundation Models",
      "K2 Horizon 375B A23B",
      "1294",
-     "-8 / +8",
+     "-8 / +9",
      "Sep 2026"
-    ],
-    [
-     "73",
-     "SpaceXAI",
-     "Grok 4.6 (Low)",
-     "1288",
-     "-7 / +8",
-     "Aug 2026"
-    ],
-    [
-     "74",
-     "SpaceXAI",
-     "Grok 4.5 (High)",
-     "1281",
-     "-8 / +8",
-     "Jul 2026"
     ],
     [
      "75",
-     "Anthropic",
-     "Claude Opus 5.5 (Low, Default Fallback)",
-     "1280",
-     "-10 / +10",
-     "Sep 2026"
+     "SpaceXAI",
+     "Grok 4.6 (Low)",
+     "1286",
+     "-8 / +8",
+     "Aug 2026"
     ],
     [
      "76",
      "Meta",
      "Muse Spark Open (Xhigh)",
      "1279",
-     "-10 / +11",
+     "-11 / +11",
      "Oct 2026"
     ],
     [
      "77",
-     "Anthropic",
-     "Claude Sonnet 5 (Xhigh)",
-     "1273",
-     "-7 / +8",
-     "Jun 2026"
+     "SpaceXAI",
+     "Grok 4.5 (High)",
+     "1278",
+     "-7 / +7",
+     "Jul 2026"
     ],
     [
      "78",
-     "Alibaba",
-     "Qwen3.8 27B (Low)",
-     "1272",
-     "-9 / +10",
-     "Aug 2026"
+     "Anthropic",
+     "Claude Opus 5.5 (Low, Default Fallback)",
+     "1276",
+     "-9 / +9",
+     "Sep 2026"
     ],
     [
      "79",
      "Anthropic",
-     "Claude Sonnet 5.5 (Low, Default Fallback)",
+     "Claude Sonnet 5 (Xhigh)",
      "1272",
-     "-11 / +11",
-     "Sep 2026"
+     "-7 / +7",
+     "Jun 2026"
     ],
     [
      "80",
-     "OpenAI",
-     "GPT-5.6 Luna (Xhigh)",
-     "1268",
-     "-8 / +9",
-     "Jul 2026"
+     "Alibaba",
+     "Qwen3.8 27B (Low)",
+     "1271",
+     "-8 / +10",
+     "Aug 2026"
     ],
     [
      "81",
-     "OpenAI",
-     "GPT-6 Sol (High)",
-     "1266",
-     "-10 / +9",
+     "Anthropic",
+     "Claude Sonnet 5.5 (Low, Default Fallback)",
+     "1268",
+     "-10 / +10",
      "Sep 2026"
     ],
     [
      "82",
-     "DeepSeek",
-     "DeepSeek V4 Flash 0731 (Max)",
-     "1259",
-     "-7 / +8",
+     "OpenAI",
+     "GPT-5.6 Luna (Xhigh)",
+     "1267",
+     "-8 / +8",
      "Jul 2026"
     ],
     [
      "83",
      "OpenAI",
-     "GPT-6 Astra (Low)",
-     "1257",
+     "GPT-6 Sol (High)",
+     "1265",
      "-9 / +9",
      "Sep 2026"
     ],
     [
      "84",
      "DeepSeek",
-     "DeepSeek V4 Pro 0813 (Max)",
+     "DeepSeek V4 Flash 0731 (Max)",
      "1257",
-     "-8 / +8",
-     "Aug 2026"
-    ],
-    [
-     "85",
-     "Anthropic",
-     "Claude Opus 4.7 (Max)",
-     "1254",
-     "-6 / +7",
-     "Apr 2026"
-    ],
-    [
-     "86",
-     "OpenAI",
-     "GPT-5.6 Sol (Medium)",
-     "1242",
-     "-9 / +8",
-     "Jul 2026"
-    ],
-    [
-     "87",
-     "OpenAI",
-     "GPT-6 Luna (Xhigh)",
-     "1237",
-     "-10 / +9",
-     "Sep 2026"
-    ],
-    [
-     "88",
-     "Z AI",
-     "GLM-5.2 (Max)",
-     "1229",
-     "-7 / +7",
-     "Jun 2026"
-    ],
-    [
-     "89",
-     "Anthropic",
-     "Claude Opus 5 (Low)",
-     "1209",
      "-7 / +8",
      "Jul 2026"
     ],
     [
-     "90",
-     "Google",
-     "Gemini 3.8 Flash (High)",
-     "1203",
+     "85",
+     "DeepSeek",
+     "DeepSeek V4 Pro 0813 (Max)",
+     "1256",
      "-8 / +8",
+     "Aug 2026"
+    ],
+    [
+     "86",
+     "OpenAI",
+     "GPT-6 Astra (Low)",
+     "1255",
+     "-9 / +8",
      "Sep 2026"
     ],
     [
-     "91",
+     "87",
+     "Anthropic",
+     "Claude Opus 4.7 (Max)",
+     "1252",
+     "-7 / +7",
+     "Apr 2026"
+    ],
+    [
+     "88",
      "OpenAI",
-     "GPT-5.6 Terra (High)",
-     "1202",
-     "-8 / +9",
+     "GPT-5.6 Sol (Medium)",
+     "1240",
+     "-9 / +9",
+     "Jul 2026"
+    ],
+    [
+     "89",
+     "OpenAI",
+     "GPT-6 Luna (Xhigh)",
+     "1235",
+     "-9 / +8",
+     "Sep 2026"
+    ],
+    [
+     "90",
+     "Z AI",
+     "GLM-5.2 (Max)",
+     "1227",
+     "-6 / +7",
+     "Jun 2026"
+    ],
+    [
+     "91",
+     "Anthropic",
+     "Claude Opus 5 (Low)",
+     "1208",
+     "-7 / +8",
      "Jul 2026"
     ],
     [
      "92",
-     "Z AI",
-     "GLM-5.3 (Low)",
-     "1187",
-     "-10 / +10",
-     "Aug 2026"
+     "Google",
+     "Gemini 3.8 Flash (High)",
+     "1202",
+     "-9 / +8",
+     "Sep 2026"
     ],
     [
      "93",
      "OpenAI",
-     "GPT-6 Luna (High)",
-     "1186",
-     "-8 / +9",
-     "Sep 2026"
-    ],
-    [
-     "94",
-     "Google",
-     "Gemini 3.8 Flash (Medium)",
-     "1182",
-     "-9 / +9",
-     "Sep 2026"
-    ],
-    [
-     "95",
-     "Anthropic",
-     "Claude Sonnet 5 (High)",
-     "1177",
-     "-7 / +7",
-     "Jun 2026"
-    ],
-    [
-     "96",
-     "OpenAI",
-     "GPT-5.6 Luna (High)",
-     "1170",
+     "GPT-5.6 Terra (High)",
+     "1202",
      "-8 / +8",
      "Jul 2026"
     ],
     [
-     "97",
-     "Institute of Foundation Models",
-     "K2 Horizon MoVA 36B A4B",
-     "1167",
-     "-8 / +10",
+     "94",
+     "Z AI",
+     "GLM-5.3 (Low)",
+     "1185",
+     "-10 / +8",
+     "Aug 2026"
+    ],
+    [
+     "95",
+     "OpenAI",
+     "GPT-6 Luna (High)",
+     "1185",
+     "-10 / +8",
      "Sep 2026"
     ],
     [
-     "98",
-     "OpenAI",
-     "GPT-6 Sol (Medium)",
-     "1149",
+     "96",
+     "Google",
+     "Gemini 3.8 Flash (Medium)",
+     "1181",
      "-9 / +9",
      "Sep 2026"
     ],
     [
-     "99",
+     "97",
+     "Anthropic",
+     "Claude Sonnet 5 (High)",
+     "1176",
+     "-7 / +7",
+     "Jun 2026"
+    ],
+    [
+     "98",
      "OpenAI",
-     "GPT-5.5 (Xhigh)",
-     "1136",
-     "-6 / +7",
-     "Apr 2026"
+     "GPT-5.6 Luna (High)",
+     "1169",
+     "-8 / +8",
+     "Jul 2026"
+    ],
+    [
+     "99",
+     "Institute of Foundation Models",
+     "K2 Horizon MoVA 36B A4B",
+     "1165",
+     "-9 / +9",
+     "Sep 2026"
     ],
     [
      "100",
-     "Multiverse Computing",
-     "Quasar 438B (Max, Based on GLM-5.2)",
-     "1123",
-     "-8 / +9",
-     "Aug 2026"
+     "OpenAI",
+     "GPT-6 Sol (Medium)",
+     "1148",
+     "-9 / +10",
+     "Sep 2026"
     ],
     [
      "101",
+     "OpenAI",
+     "GPT-5.5 (Xhigh)",
+     "1136",
+     "-7 / +7",
+     "Apr 2026"
+    ],
+    [
+     "102",
+     "Multiverse Computing",
+     "Quasar 438B (Max, Based on GLM-5.2)",
+     "1122",
+     "-8 / +8",
+     "Aug 2026"
+    ],
+    [
+     "103",
      "DeepSeek",
      "DeepSeek V4.1 Flash (Non-reasoning)",
      "1118",
@@ -11197,47 +11267,47 @@
      "Sep 2026"
     ],
     [
-     "102",
+     "104",
      "OpenAI",
      "GPT-6.1 Sol (Low)",
-     "1117",
-     "-9 / +11",
-     "Sep 2026"
-    ],
-    [
-     "103",
-     "Google",
-     "Gemini 3.7 Flash (High)",
      "1114",
-     "-8 / +8",
-     "Aug 2026"
-    ],
-    [
-     "104",
-     "Anthropic",
-     "Claude Haiku 5.5 (Low)",
-     "1112",
-     "-10 / +11",
-     "Oct 2026"
+     "-10 / +10",
+     "Sep 2026"
     ],
     [
      "105",
-     "OpenAI",
-     "GPT-6 Sol (Non-reasoning)",
-     "1103",
-     "-9 / +9",
-     "Sep 2026"
+     "Google",
+     "Gemini 3.7 Flash (High)",
+     "1113",
+     "-7 / +8",
+     "Aug 2026"
     ],
     [
      "106",
+     "Anthropic",
+     "Claude Haiku 5.5 (Low)",
+     "1112",
+     "-11 / +10",
+     "Oct 2026"
+    ],
+    [
+     "107",
      "OpenAI",
-     "GPT-6 Luna (Medium)",
-     "1099",
+     "GPT-6 Sol (Non-reasoning)",
+     "1104",
      "-9 / +9",
      "Sep 2026"
     ],
     [
-     "107",
+     "108",
+     "OpenAI",
+     "GPT-6 Luna (Medium)",
+     "1097",
+     "-8 / +10",
+     "Sep 2026"
+    ],
+    [
+     "109",
      "Upstage",
      "Solar Pro 4",
      "1093",
@@ -11245,7 +11315,7 @@
      "Aug 2026"
     ],
     [
-     "108",
+     "110",
      "MiniMax",
      "MiniMax-M3",
      "1090",
@@ -11253,15 +11323,15 @@
      "Jun 2026"
     ],
     [
-     "109",
+     "111",
      "China Mobile",
      "JT-4.1 Flash 236B A21B (Reasoning)",
-     "1089",
-     "-10 / +11",
+     "1090",
+     "-11 / +10",
      "Jul 2026"
     ],
     [
-     "110",
+     "112",
      "OpenAI",
      "GPT-5.5 (High)",
      "1088",
@@ -11269,7 +11339,7 @@
      "Apr 2026"
     ],
     [
-     "111",
+     "113",
      "OpenAI",
      "GPT-5.5 Instant (June 2026)",
      "1086",
@@ -11277,95 +11347,95 @@
      "Jun 2026"
     ],
     [
-     "112",
+     "114",
      "Anthropic",
      "Claude Opus 4.7 (Non-reasoning, High)",
-     "1068",
-     "-7 / +7",
+     "1067",
+     "-7 / +6",
      "Apr 2026"
-    ],
-    [
-     "113",
-     "Anthropic",
-     "Claude Sonnet 4.6 (Max)",
-     "1063",
-     "-6 / +7",
-     "Feb 2026"
-    ],
-    [
-     "114",
-     "Google",
-     "Gemini 3.8 Flash (Low)",
-     "1062",
-     "-8 / +8",
-     "Sep 2026"
     ],
     [
      "115",
      "Anthropic",
+     "Claude Sonnet 4.6 (Max)",
+     "1062",
+     "-6 / +6",
+     "Feb 2026"
+    ],
+    [
+     "116",
+     "Google",
+     "Gemini 3.8 Flash (Low)",
+     "1061",
+     "-9 / +9",
+     "Sep 2026"
+    ],
+    [
+     "117",
+     "Anthropic",
      "Claude Sonnet 5 (Medium)",
-     "1058",
+     "1057",
      "-7 / +7",
      "Jun 2026"
     ],
     [
-     "116",
-     "DeepSeek",
-     "DeepSeek V4 Flash 0420 (High)",
-     "1044",
-     "-9 / +9",
-     "Apr 2026"
-    ],
-    [
-     "117",
-     "OpenAI",
-     "GPT-5.6 Sol (Low)",
-     "1044",
-     "-8 / +8",
-     "Jul 2026"
-    ],
-    [
      "118",
      "OpenAI",
-     "GPT-5.6 Terra (Medium)",
-     "1039",
+     "GPT-5.6 Sol (Low)",
+     "1043",
      "-8 / +8",
      "Jul 2026"
     ],
     [
      "119",
-     "Institute of Foundation Models",
-     "K2 Horizon 7B",
-     "1016",
-     "-10 / +10",
-     "Sep 2026"
+     "DeepSeek",
+     "DeepSeek V4 Flash 0420 (High)",
+     "1041",
+     "-10 / +9",
+     "Apr 2026"
     ],
     [
      "120",
      "OpenAI",
-     "GPT-5.6 Terra (Low)",
-     "1014",
+     "GPT-5.6 Terra (Medium)",
+     "1038",
      "-8 / +8",
      "Jul 2026"
     ],
     [
      "121",
+     "OpenAI",
+     "GPT-5.6 Terra (Low)",
+     "1014",
+     "-8 / +7",
+     "Jul 2026"
+    ],
+    [
+     "122",
+     "Institute of Foundation Models",
+     "K2 Horizon 7B",
+     "1012",
+     "-9 / +10",
+     "Sep 2026"
+    ],
+    [
+     "123",
      "Apodex",
      "Apodex 1.1",
-     "1013",
+     "1012",
      "-9 / +10",
      "Aug 2026"
     ],
     [
-     "122",
+     "124",
      "OpenAI",
      "GPT-5.6 Sol (Non-reasoning)",
-     "1008",
+     "1007",
      "-8 / +8",
      "Jul 2026"
     ],
     [
-     "123",
+     "125",
      "OpenAI",
      "GPT-5.5 (Medium)",
      "1000",
@@ -11373,7 +11443,7 @@
      "Apr 2026"
     ],
     [
-     "124",
+     "126",
      "NVIDIA",
      "Nemotron 3.5 Super VL",
      "999",
@@ -11381,7 +11451,7 @@
      "Oct 2026"
     ],
     [
-     "125",
+     "127",
      "Motif Technologies",
      "Motif 3",
      "992",
@@ -11389,23 +11459,23 @@
      "Aug 2026"
     ],
     [
-     "126",
-     "InclusionAI",
-     "Ling-3.0-flash-VL",
-     "986",
-     "-10 / +9",
-     "Sep 2026"
-    ],
-    [
-     "127",
+     "128",
      "Kimi",
      "Kimi K3 (Low)",
-     "986",
-     "-9 / +8",
+     "984",
+     "-8 / +7",
      "Jul 2026"
     ],
     [
-     "128",
+     "129",
+     "InclusionAI",
+     "Ling-3.0-flash-VL",
+     "984",
+     "-9 / +9",
+     "Sep 2026"
+    ],
+    [
+     "130",
      "Reflection",
      "Beam 1.0",
      "976",
@@ -11413,39 +11483,31 @@
      "Oct 2026"
     ],
     [
-     "129",
+     "131",
      "Z AI",
      "GLM-5.1 (Reasoning)",
-     "965",
+     "964",
      "-7 / +7",
      "Apr 2026"
     ],
     [
-     "130",
+     "132",
      "InclusionAI",
      "Ling-3.0-flash-Fin",
-     "961",
-     "-9 / +9",
+     "958",
+     "-9 / +10",
      "Sep 2026"
     ],
     [
-     "131",
+     "133",
      "Google",
      "Gemini 3.6 Flash (High)",
-     "954",
-     "-7 / +7",
+     "955",
+     "-7 / +8",
      "Jul 2026"
     ],
     [
-     "132",
-     "OpenAI",
-     "GPT-5.6 Terra (Non-reasoning)",
-     "948",
-     "-8 / +8",
-     "Jul 2026"
-    ],
-    [
-     "133",
+     "134",
      "Tencent",
      "Hy3",
      "947",
@@ -11453,39 +11515,47 @@
      "Jul 2026"
     ],
     [
-     "134",
-     "Nex AGI",
-     "Nex-N2-Pro (Based on Qwen3.5-397B-A17B)",
-     "941",
-     "-10 / +8",
-     "Jun 2026"
-    ],
-    [
      "135",
      "OpenAI",
-     "GPT-5.6 Luna (Medium)",
-     "935",
+     "GPT-5.6 Terra (Non-reasoning)",
+     "945",
      "-8 / +8",
      "Jul 2026"
     ],
     [
      "136",
-     "DeepSeek",
-     "DeepSeek V4 Pro 0813 (Non-reasoning)",
-     "928",
-     "-11 / +11",
-     "Aug 2026"
+     "Nex AGI",
+     "Nex-N2-Pro (Based on Qwen3.5-397B-A17B)",
+     "940",
+     "-9 / +8",
+     "Jun 2026"
     ],
     [
      "137",
+     "OpenAI",
+     "GPT-5.6 Luna (Medium)",
+     "933",
+     "-8 / +8",
+     "Jul 2026"
+    ],
+    [
+     "138",
+     "DeepSeek",
+     "DeepSeek V4 Pro 0813 (Non-reasoning)",
+     "928",
+     "-10 / +10",
+     "Aug 2026"
+    ],
+    [
+     "139",
      "Anthropic",
      "Claude Sonnet 5 (Low)",
-     "927",
+     "926",
      "-7 / +7",
      "Jun 2026"
     ],
     [
-     "138",
+     "140",
      "DeepSeek",
      "DeepSeek V4 Pro 0424 (Max)",
      "922",
@@ -11493,23 +11563,23 @@
      "Apr 2026"
     ],
     [
-     "139",
+     "141",
      "Alibaba",
      "Qwen3.7 Max",
      "916",
-     "-7 / +7",
+     "-7 / +6",
      "May 2026"
     ],
     [
-     "140",
+     "142",
      "Alibaba",
      "Qwen3.7 Plus",
-     "915",
-     "-9 / +9",
+     "914",
+     "-9 / +8",
      "Jun 2026"
     ],
     [
-     "141",
+     "143",
      "NVIDIA",
      "Nemotron 3.5 Bolt 74B-A9B",
      "912",
@@ -11517,31 +11587,31 @@
      "Oct 2026"
     ],
     [
-     "142",
+     "144",
      "Thinking Machines",
      "Inkling Small",
-     "912",
-     "-8 / +8",
+     "911",
+     "-8 / +9",
      "Jul 2026"
     ],
     [
-     "143",
+     "145",
      "OpenAI",
      "GPT-6 Luna (Non-reasoning)",
-     "903",
-     "-10 / +10",
+     "902",
+     "-9 / +9",
      "Sep 2026"
     ],
     [
-     "144",
+     "146",
      "Alibaba",
      "Qwen3.8 27B (Non-reasoning)",
      "898",
-     "-11 / +10",
+     "-10 / +10",
      "Aug 2026"
     ],
     [
-     "145",
+     "147",
      "OpenAI",
      "GPT-6 Sol (Low)",
      "886",
@@ -11549,7 +11619,7 @@
      "Sep 2026"
     ],
     [
-     "146",
+     "148",
      "Xiaomi",
      "MiMo-V2.5-Pro (Reasoning)",
      "883",
@@ -11557,23 +11627,23 @@
      "Apr 2026"
     ],
     [
-     "147",
+     "149",
      "Google",
      "Gemini 3.5 Flash (Medium)",
-     "877",
-     "-7 / +7",
+     "876",
+     "-7 / +6",
      "May 2026"
     ],
     [
-     "148",
+     "150",
      "NVIDIA",
      "Nemotron 3 Ultra 550B A55B (Reasoning)",
      "876",
-     "-7 / +7",
+     "-8 / +7",
      "Jun 2026"
     ],
     [
-     "149",
+     "151",
      "Google",
      "Gemini 3.5 Flash (High)",
      "874",
@@ -11581,15 +11651,7 @@
      "May 2026"
     ],
     [
-     "150",
-     "Upstage",
-     "Solar Mini 4",
-     "870",
-     "-11 / +9",
-     "Sep 2026"
-    ],
-    [
-     "151",
+     "152",
      "OpenAI",
      "GPT-5.3 Codex (Xhigh)",
      "868",
@@ -11597,55 +11659,63 @@
      "Feb 2026"
     ],
     [
-     "152",
-     "Kimi",
-     "Kimi K2.7 Code",
-     "859",
-     "-9 / +9",
-     "Jun 2026"
-    ],
-    [
      "153",
-     "Meta",
-     "Muse Spark 1.1 (Xhigh)",
-     "851",
-     "-9 / +9",
-     "Jul 2026"
+     "Upstage",
+     "Solar Mini 4",
+     "867",
+     "-12 / +10",
+     "Sep 2026"
     ],
     [
      "154",
-     "DeepSeek",
-     "DeepSeek V4 Flash 0420 (Max)",
-     "836",
-     "-7 / +6",
-     "Apr 2026"
+     "Kimi",
+     "Kimi K2.7 Code",
+     "858",
+     "-9 / +8",
+     "Jun 2026"
     ],
     [
      "155",
-     "Thinking Machines",
-     "Inkling (Xhigh)",
-     "832",
-     "-8 / +10",
+     "Meta",
+     "Muse Spark 1.1 (Xhigh)",
+     "850",
+     "-8 / +8",
      "Jul 2026"
     ],
     [
      "156",
-     "Kimi",
-     "Kimi K2.6 (Reasoning)",
-     "820",
+     "DeepSeek",
+     "DeepSeek V4 Flash 0420 (Max)",
+     "835",
      "-7 / +7",
      "Apr 2026"
     ],
     [
      "157",
-     "Alibaba",
-     "Qwen3.6 27B (Reasoning)",
-     "816",
+     "Thinking Machines",
+     "Inkling (Xhigh)",
+     "832",
      "-8 / +8",
-     "Apr 2026"
+     "Jul 2026"
     ],
     [
      "158",
+     "Kimi",
+     "Kimi K2.6 (Reasoning)",
+     "819",
+     "-8 / +7",
+     "Apr 2026"
+    ],
+    [
+     "159",
+     "Alibaba",
+     "Qwen3.6 27B (Reasoning)",
+     "815",
+     "-8 / +7",
+     "Apr 2026"
+    ],
+    [
+     "160",
      "InclusionAI",
      "Ling 3.0 Flash",
      "798",
@@ -11653,71 +11723,71 @@
      "Aug 2026"
     ],
     [
-     "159",
+     "161",
      "Institute of Foundation Models",
      "K2 Horizon 3.7B",
-     "793",
-     "-10 / +10",
+     "792",
+     "-11 / +9",
      "Sep 2026"
-    ],
-    [
-     "160",
-     "SpaceXAI",
-     "Grok 4.3 (High)",
-     "762",
-     "-7 / +7",
-     "Apr 2026"
-    ],
-    [
-     "161",
-     "Xiaomi",
-     "MiMo-V2.5",
-     "754",
-     "-9 / +9",
-     "Apr 2026"
     ],
     [
      "162",
-     "OpenAI",
-     "GPT-6 Luna (Low)",
-     "741",
-     "-9 / +9",
-     "Sep 2026"
+     "SpaceXAI",
+     "Grok 4.3 (High)",
+     "762",
+     "-7 / +6",
+     "Apr 2026"
     ],
     [
      "163",
+     "Xiaomi",
+     "MiMo-V2.5",
+     "754",
+     "-9 / +8",
+     "Apr 2026"
+    ],
+    [
+     "164",
      "OpenAI",
      "GPT-5.6 Luna (Low)",
-     "741",
+     "740",
      "-9 / +8",
      "Jul 2026"
     ],
     [
-     "164",
+     "165",
+     "OpenAI",
+     "GPT-6 Luna (Low)",
+     "740",
+     "-10 / +9",
+     "Sep 2026"
+    ],
+    [
+     "166",
      "LongCat",
      "LongCat 2.0",
-     "740",
+     "739",
      "-10 / +9",
      "Jun 2026"
     ],
     [
-     "165",
+     "167",
      "SK Telecom",
      "A.X-K2",
-     "737",
-     "-12 / +11",
+     "738",
+     "-11 / +11",
      "Aug 2026"
     ],
     [
-     "166",
+     "168",
      "SpaceXAI",
      "Grok 4.3 (Non-reasoning)",
      "724",
-     "-9 / +9",
+     "-11 / +9",
      "Apr 2026"
     ],
     [
-     "167",
+     "169",
      "OpenAI",
      "GPT-5.4 mini (Xhigh)",
      "719",
@@ -11725,15 +11795,15 @@
      "Mar 2026"
     ],
     [
-     "168",
+     "170",
      "MiniMax",
      "MiniMax-M2.7",
-     "719",
-     "-10 / +8",
+     "718",
+     "-9 / +8",
      "Mar 2026"
     ],
     [
-     "169",
+     "171",
      "Anthropic",
      "Claude 4.5 Sonnet (Reasoning)",
      "713",
@@ -11741,15 +11811,15 @@
      "Sep 2025"
     ],
     [
-     "170",
+     "172",
      "Alibaba",
      "Qwen3.6 35B A3B (Reasoning)",
      "713",
-     "-9 / +9",
+     "-9 / +8",
      "Apr 2026"
     ],
     [
-     "171",
+     "173",
      "OpenAI",
      "GPT-5.6 Luna (Non-reasoning)",
      "706",
@@ -11757,87 +11827,87 @@
      "Jul 2026"
     ],
     [
-     "172",
+     "174",
      "OpenAI",
      "GPT-5.4 nano (Xhigh)",
-     "674",
-     "-10 / +9",
+     "673",
+     "-10 / +10",
      "Mar 2026"
     ],
     [
-     "173",
+     "175",
      "InclusionAI",
      "Ring-2.6-1T",
-     "658",
-     "-10 / +9",
+     "657",
+     "-10 / +8",
      "May 2026"
     ],
     [
-     "174",
+     "176",
      "Google",
      "Gemini 3.5 Flash-Lite",
      "650",
-     "-9 / +9",
+     "-9 / +8",
      "Jul 2026"
     ],
     [
-     "175",
+     "177",
      "Meta",
      "Muse Spark",
-     "646",
-     "-8 / +8",
+     "645",
+     "-8 / +7",
      "Apr 2026"
-    ],
-    [
-     "176",
-     "Anthropic",
-     "Claude 4.5 Haiku (Reasoning)",
-     "616",
-     "-9 / +7",
-     "Oct 2025"
-    ],
-    [
-     "177",
-     "KwaiKAT",
-     "KAT-Coder-Pro V1",
-     "601",
-     "-9 / +8",
-     "Nov 2025"
     ],
     [
      "178",
-     "Alibaba",
-     "Qwen3.5 397B A17B (Reasoning)",
-     "562",
-     "-9 / +8",
-     "Feb 2026"
+     "Anthropic",
+     "Claude 4.5 Haiku (Reasoning)",
+     "616",
+     "-8 / +7",
+     "Oct 2025"
     ],
     [
      "179",
-     "Mistral",
-     "Mistral Medium 3.1",
-     "530",
-     "-10 / +9",
-     "Aug 2025"
+     "KwaiKAT",
+     "KAT-Coder-Pro V1",
+     "601",
+     "-8 / +8",
+     "Nov 2025"
     ],
     [
      "180",
-     "Mistral",
-     "Mistral Medium 3.5",
-     "523",
-     "-9 / +8",
-     "Apr 2026"
+     "Alibaba",
+     "Qwen3.5 397B A17B (Reasoning)",
+     "562",
+     "-9 / +7",
+     "Feb 2026"
     ],
     [
      "181",
-     "NVIDIA",
-     "Nemotron 3.5 Lightning",
-     "506",
-     "-10 / +9",
-     "Aug 2026"
+     "Mistral",
+     "Mistral Medium 3.1",
+     "530",
+     "-9 / +9",
+     "Aug 2025"
     ],
     [
      "182",
+     "Mistral",
+     "Mistral Medium 3.5",
+     "523",
+     "-9 / +7",
+     "Apr 2026"
+    ],
+    [
+     "183",
+     "NVIDIA",
+     "Nemotron 3.5 Lightning",
+     "506",
+     "-11 / +10",
+     "Aug 2026"
+    ],
+    [
+     "184",
      "Alibaba",
      "Qwen3.5 122B A10B (Reasoning)",
      "497",
@@ -11845,23 +11915,23 @@
      "Feb 2026"
     ],
     [
-     "183",
+     "185",
      "Mistral",
      "Devstral Small 2",
      "495",
+     "-10 / +9",
+     "Dec 2025"
+    ],
+    [
+     "186",
+     "Mistral",
+     "Devstral 2",
+     "482",
      "-11 / +9",
      "Dec 2025"
     ],
     [
-     "184",
-     "Mistral",
-     "Devstral 2",
-     "482",
-     "-11 / +10",
-     "Dec 2025"
-    ],
-    [
-     "185",
+     "187",
      "Meta",
      "Muse Glimmer (High)",
      "477",
@@ -11869,31 +11939,31 @@
      "Aug 2026"
     ],
     [
-     "186",
+     "188",
      "InclusionAI",
      "Ling 3.0 Tiny",
      "475",
-     "-10 / +10",
+     "-10 / +9",
      "Aug 2026"
     ],
     [
-     "187",
+     "189",
      "DeepSeek",
      "DeepSeek V3.1 Terminus (Reasoning)",
      "458",
-     "-11 / +9",
+     "-10 / +9",
      "Sep 2025"
     ],
     [
-     "188",
+     "190",
      "Google",
      "Gemini 3.1 Pro Preview",
-     "457",
+     "456",
      "-9 / +8",
      "Feb 2026"
     ],
     [
-     "189",
+     "191",
      "OpenAI",
      "GPT-5 mini (High)",
      "428",
@@ -11901,31 +11971,31 @@
      "Aug 2025"
     ],
     [
-     "190",
+     "192",
      "OpenBMB",
      "MiniCPM5-2B",
      "423",
-     "-12 / +11",
+     "-11 / +11",
      "Sep 2026"
     ],
     [
-     "191",
+     "193",
      "Alibaba",
      "Qwen3 Coder Next",
      "404",
-     "-10 / +9",
+     "-11 / +10",
      "Feb 2026"
     ],
     [
-     "192",
+     "194",
      "IBM",
      "Granite 4.2 30B",
      "394",
-     "-12 / +10",
+     "-12 / +12",
      "Aug 2026"
     ],
     [
-     "193",
+     "195",
      "Inception",
      "Mercury 2.5",
      "378",
@@ -11933,7 +12003,7 @@
      "Sep 2026"
     ],
     [
-     "194",
+     "196",
      "Google",
      "Gemma 4 31B (Reasoning)",
      "368",
@@ -11941,55 +12011,55 @@
      "Apr 2026"
     ],
     [
-     "195",
+     "197",
      "Cohere",
      "Command A+",
-     "356",
-     "-9 / +9",
+     "355",
+     "-10 / +9",
      "May 2026"
     ],
     [
-     "196",
+     "198",
      "Alibaba",
      "Qwen3.5 9B (Reasoning)",
      "341",
-     "-12 / +10",
+     "-12 / +11",
      "Mar 2026"
     ],
     [
-     "197",
+     "199",
      "Google",
      "Gemma 4 26B A4B (Reasoning)",
      "315",
-     "-11 / +10",
+     "-12 / +11",
      "Apr 2026"
     ],
     [
-     "198",
+     "200",
      "Mistral",
      "Mistral Small 3.1",
      "313",
-     "-10 / +10",
+     "-12 / +9",
      "Mar 2025"
     ],
     [
-     "199",
+     "201",
      "IBM",
      "Granite 4.2 8B",
      "310",
-     "-11 / +9",
+     "-10 / +9",
      "Aug 2026"
     ],
     [
-     "200",
+     "202",
      "Google",
      "Gemini 2.5 Pro",
      "302",
-     "-10 / +10",
+     "-11 / +9",
      "Jun 2025"
     ],
     [
-     "201",
+     "203",
      "Inception",
      "Mercury 2",
      "265",
@@ -11997,15 +12067,15 @@
      "Feb 2026"
     ],
     [
-     "202",
+     "204",
      "Arcee AI",
      "Trinity Large Thinking",
      "255",
-     "-10 / +9",
+     "-11 / +9",
      "Apr 2026"
     ],
     [
-     "203",
+     "205",
      "Mistral",
      "Mistral Small 4 (Reasoning)",
      "241",
@@ -12013,39 +12083,39 @@
      "Mar 2026"
     ],
     [
-     "204",
+     "206",
      "Multiverse Computing",
      "HyperNova 60B 2605 (High, Based on gpt-oss-120b)",
      "232",
-     "-10 / +10",
+     "-11 / +9",
      "May 2026"
     ],
     [
-     "205",
+     "207",
      "Mistral",
      "Mistral Large 3",
      "228",
-     "-10 / +8",
+     "-10 / +9",
      "Dec 2025"
     ],
     [
-     "206",
+     "208",
      "Cohere",
      "North Mini Code",
      "212",
-     "-9 / +9",
+     "-10 / +8",
      "Jun 2026"
     ],
     [
-     "207",
+     "209",
      "Google",
      "Gemini 3.1 Flash-Lite",
      "207",
-     "-9 / +9",
+     "-10 / +8",
      "Mar 2026"
     ],
     [
-     "208",
+     "210",
      "Alibaba",
      "Qwen3 235B A22B 2507 (Reasoning)",
      "169",
@@ -12053,23 +12123,23 @@
      "Jul 2025"
     ],
     [
-     "209",
+     "211",
      "Celeris",
      "Celeris-1",
      "151",
-     "-11 / +9",
+     "-11 / +10",
      "Jul 2026"
     ],
     [
-     "210",
+     "212",
      "OpenAI",
      "o3-mini (High)",
      "142",
-     "-11 / +10",
+     "-11 / +9",
      "Jan 2025"
     ],
     [
-     "211",
+     "213",
      "Mistral",
      "Ministral 3 14B",
      "131",
@@ -12077,7 +12147,7 @@
      "Dec 2025"
     ],
     [
-     "212",
+     "214",
      "DeepSeek",
      "DeepSeek R1 (Jan '25)",
      "128",
@@ -12085,7 +12155,7 @@
      "Jan 2025"
     ],
     [
-     "213",
+     "215",
      "Upstage",
      "Solar Pro 3",
      "99",
@@ -12093,39 +12163,39 @@
      "Apr 2026"
     ],
     [
-     "214",
+     "216",
      "IBM",
      "Granite 4.2 3B",
      "98",
-     "-13 / +11",
+     "-12 / +11",
      "Aug 2026"
     ],
     [
-     "215",
+     "217",
      "DeepSeek",
      "DeepSeek V3 (Dec '24)",
-     "78",
-     "-12 / +10",
+     "77",
+     "-13 / +11",
      "Dec 2024"
     ],
     [
-     "216",
-     "Mistral",
-     "Ministral 3 8B",
-     "77",
-     "-11 / +10",
-     "Dec 2025"
-    ],
-    [
-     "217",
+     "218",
      "NVIDIA",
      "NVIDIA Nemotron 3 Nano 30B A3B (Reasoning)",
      "77",
-     "-11 / +10",
+     "-12 / +10",
      "Dec 2025"
     ],
     [
-     "218",
+     "219",
+     "Mistral",
+     "Ministral 3 8B",
+     "77",
+     "-10 / +10",
+     "Dec 2025"
+    ],
+    [
+     "220",
      "DeepSeek",
      "DeepSeek V3 0324",
      "68",
@@ -12133,15 +12203,15 @@
      "Mar 2025"
     ],
     [
-     "219",
+     "221",
      "Institute of Foundation Models",
      "K2 Think V2",
      "7",
-     "-7 / +9",
+     "-7 / +10",
      "Dec 2025"
     ],
     [
-     "220",
+     "222",
      "Alibaba",
      "Qwen3 30B A3B 2507 (Reasoning)",
      "5",
@@ -12149,7 +12219,7 @@
      "Jul 2025"
     ],
     [
-     "221",
+     "223",
      "NVIDIA",
      "Nemotron 3 Super 120B A12B (Reasoning)",
      "0",
@@ -12157,7 +12227,7 @@
      "Mar 2026"
     ],
     [
-     "222",
+     "224",
      "OpenAI",
      "gpt-oss-120b (High)",
      "0",
@@ -12165,7 +12235,7 @@
      "Aug 2025"
     ],
     [
-     "223",
+     "225",
      "Meta",
      "Llama 4 Maverick",
      "0",
@@ -12173,7 +12243,7 @@
      "Apr 2025"
     ],
     [
-     "224",
+     "226",
      "OpenAI",
      "gpt-oss-20b (High)",
      "0",
@@ -12181,7 +12251,7 @@
      "Aug 2025"
     ],
     [
-     "225",
+     "227",
      "Google",
      "Gemma 4 E4B (Reasoning)",
      "0",
@@ -12189,7 +12259,7 @@
      "Apr 2026"
     ],
     [
-     "226",
+     "228",
      "Alibaba",
      "Qwen3 32B (Reasoning)",
      "0",
@@ -12197,7 +12267,7 @@
      "Apr 2025"
     ],
     [
-     "227",
+     "229",
      "Mistral",
      "Mistral Small 3.2",
      "0",
@@ -12205,7 +12275,7 @@
      "Jun 2025"
     ],
     [
-     "228",
+     "230",
      "Meta",
      "Llama 4 Scout",
      "0",
@@ -12213,7 +12283,7 @@
      "Apr 2025"
     ],
     [
-     "229",
+     "231",
      "Alibaba",
      "Qwen3 14B (Reasoning)",
      "0",
@@ -12221,7 +12291,7 @@
      "Apr 2025"
     ],
     [
-     "230",
+     "232",
      "Alibaba",
      "Qwen3 8B (Reasoning)",
      "0",
@@ -12229,7 +12299,7 @@
      "Apr 2025"
     ],
     [
-     "231",
+     "233",
      "Mistral",
      "Ministral 3 3B",
      "0",
@@ -12237,7 +12307,7 @@
      "Dec 2025"
     ],
     [
-     "232",
+     "234",
      "NVIDIA",
      "NVIDIA Nemotron 3 Nano 4B",
      "0",
@@ -12245,7 +12315,7 @@
      "Mar 2026"
     ],
     [
-     "233",
+     "235",
      "Institute of Foundation Models",
      "K2 Horizon 0.9B",
      "0",
