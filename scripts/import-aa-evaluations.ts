@@ -59,7 +59,8 @@ const evaluationConfigs: EvaluationConfig[] = [
   { id: "automationbench-aa", capture: "automationbench-aa", chart: "AutomationBench-AA: Score", costChart: "AutomationBench-AA: Score vs. Cost per Task" },
   { id: "terminal-bench-4-0", capture: "terminalbench-4-0", chart: "Terminal-Bench 4.0: Score", costChart: "Terminal-Bench 4.0: Score vs. Cost per Task" },
   { id: "scicode", capture: "scicode", chart: "SciCode: Score", costChart: "SciCode: Score vs. Cost per Task" },
-  { id: "humanity-s-last-exam", capture: "humanitys-last-exam", chart: "Humanity's Last Exam: Score", costChart: "Humanity's Last Exam: Score vs. Cost per Task" },
+  { id: "hle-diamond", capture: "hle-diamond", chart: "HLE-Diamond: Score", costChart: "HLE-Diamond: Score vs. Cost per Task", definition: percentageEvaluation("hle-diamond", "HLE-Diamond", "https://artificialanalysis.ai/evaluations/hle-diamond") },
+  { id: "frontiercode-2-0", capture: "frontiercode-2-0", chart: "FrontierCode 2.0: Score", costChart: "FrontierCode 2.0: Score vs. Cost per Task", definition: percentageEvaluation("frontiercode-2-0", "FrontierCode 2.0", "https://artificialanalysis.ai/evaluations/frontiercode-2-0") },
   { id: "gdp-pdf", capture: "gdp-pdf", chart: "GDP.pdf: All-pass Rate", costChart: "GDP.pdf: All-pass Rate vs. Cost per Task" },
   { id: "critpt", capture: "critpt", chart: "CritPt: Score", costChart: "CritPt: Score vs. Cost per Task" },
   { id: "aa-omniscience-accuracy", capture: "omniscience", chart: "AA-Omniscience Accuracy", costChart: "AA-Omniscience Index vs. Cost per Task" },
@@ -71,6 +72,10 @@ const evaluationConfigs: EvaluationConfig[] = [
   { id: "strategy-ops-index", capture: "strategy-and-ops", chart: "Artificial Analysis Strategy & Ops Index", costChart: "Artificial Analysis Strategy & Ops Index vs. Cost per Task" },
   { id: "intelligence-index", capture: "artificial-analysis-intelligence-index", chart: "Artificial Analysis Intelligence Index: Score" },
 ];
+
+// Evaluations Artificial Analysis no longer publishes. The rebuild drops their rows; production hides them once
+// their Firestore evaluation doc loses its published_snapshot_id. HLE-Diamond replaced Humanity's Last Exam.
+const retiredEvaluationIds = new Set(["humanity-s-last-exam"]);
 
 // Models whose creator isn't listed in any chart on their evaluation page. The creator is taken from
 // the model's own AA page (captured 11 Oct 2026).
@@ -138,7 +143,7 @@ for (const config of evaluationConfigs) {
   captures.set(config.capture, JSON.parse(raw) as Capture);
 }
 
-const replacedEvaluationIds = new Set(evaluationConfigs.map(config => config.id));
+const replacedEvaluationIds = new Set([...evaluationConfigs.map(config => config.id), ...retiredEvaluationIds]);
 const providers = new Map(dataset.providers.map(provider => [String(provider.id), provider]));
 const models = new Map(dataset.models.map(model => [String(model.id), model]));
 const previousEntries = dataset.entries.filter(entry => replacedEvaluationIds.has(entry.evaluation_id));
@@ -353,7 +358,7 @@ const keptEntries = dataset.entries.filter(entry => !replacedEvaluationIds.has(e
 const keptSnapshots = dataset.snapshots.filter(snapshot => !replacedEvaluationIds.has(String(snapshot.evaluation_id)));
 const replacedById = new Map(newEvaluations.map(evaluation => [evaluation.id, evaluation]));
 const evaluations = [
-  ...dataset.evaluations.map(evaluation => replacedById.get(evaluation.id) ?? evaluation),
+  ...dataset.evaluations.filter(evaluation => !retiredEvaluationIds.has(evaluation.id)).map(evaluation => replacedById.get(evaluation.id) ?? evaluation),
   ...newEvaluations.filter(evaluation => !evaluationById.has(evaluation.id)),
 ];
 const rebuilt: Dataset = {
@@ -366,12 +371,15 @@ const rebuilt: Dataset = {
   models: [...models.values()],
 };
 const reportRows = new Map(evaluations.map(evaluation => [evaluation.display_name, evaluation.row_count]));
+const retiredNames = new Set(dataset.evaluations.filter(evaluation => retiredEvaluationIds.has(evaluation.id)).map(evaluation => evaluation.display_name));
 rebuilt.report = {
   ...dataset.report,
   row_count: rebuilt.entries.length,
   provider_count: providers.size,
   evaluations: Array.isArray(dataset.report.evaluations)
-    ? dataset.report.evaluations.map((row: Record<string, unknown>) => reportRows.has(String(row.name)) ? { ...row, rows: reportRows.get(String(row.name)) } : row)
+    ? dataset.report.evaluations
+      .filter((row: Record<string, unknown>) => !retiredNames.has(String(row.name)))
+      .map((row: Record<string, unknown>) => reportRows.has(String(row.name)) ? { ...row, rows: reportRows.get(String(row.name)) } : row)
     : dataset.report.evaluations,
 };
 

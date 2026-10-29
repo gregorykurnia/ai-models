@@ -1,7 +1,7 @@
 {
  "key": "scicode",
  "source_url": "https://artificialanalysis.ai/evaluations/scicode",
- "captured_at": "2026-10-25",
+ "captured_at": "2026-10-29",
  "selectors": 6,
  "charts": [
   {
@@ -24,6 +24,15 @@
      "displayValue": "65.0%",
      "url": "/models/claude-opus-5-5-xhigh",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+     "label": "Gemini 4 Carbon (high)",
+     "tooltipLabel": "Gemini 4 Carbon (High)",
+     "value": 0.642361111111111,
+     "displayValue": "64.2%",
+     "url": "/models/gemini-4-carbon",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "3e87c73e-a257-495e-9730-367a66229811",
@@ -188,15 +197,6 @@
      "logo": "/img/logos/meta.svg"
     },
     {
-     "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
-     "label": "Claude Fable 5.1 (high with fallback)",
-     "tooltipLabel": "Claude Fable 5.1 (High, Default Fallback)",
-     "value": 0.586805555555556,
-     "displayValue": "58.7%",
-     "url": "/models/claude-fable-5-1-high",
-     "logo": "/img/logos/anthropic.svg"
-    },
-    {
      "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
      "label": "Gemini 3.1 Pro Preview",
      "tooltipLabel": "Gemini 3.1 Pro Preview",
@@ -204,6 +204,15 @@
      "displayValue": "58.7%",
      "url": "/models/gemini-3-1-pro-preview",
      "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
+     "label": "Claude Fable 5.1 (high with fallback)",
+     "tooltipLabel": "Claude Fable 5.1 (High, Default Fallback)",
+     "value": 0.586805555555556,
+     "displayValue": "58.7%",
+     "url": "/models/claude-fable-5-1-high",
+     "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
@@ -251,15 +260,6 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "04ee6719-0327-463b-a1a1-70a6a78254f9",
-     "label": "Muse Spark 1.2 (xhigh)",
-     "tooltipLabel": "Muse Spark 1.2 (Xhigh)",
-     "value": 0.574074074074074,
-     "displayValue": "57.4%",
-     "url": "/models/muse-spark-1-2",
-     "logo": "/img/logos/meta.svg"
-    },
-    {
      "id": "6f174934-5b7d-4333-86cb-f5ebf4a862e3",
      "label": "GPT-5.6 Sol (medium)",
      "tooltipLabel": "GPT-5.6 Sol (Medium)",
@@ -267,6 +267,15 @@
      "displayValue": "57.4%",
      "url": "/models/gpt-5-6-sol-medium",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "04ee6719-0327-463b-a1a1-70a6a78254f9",
+     "label": "Muse Spark 1.2 (xhigh)",
+     "tooltipLabel": "Muse Spark 1.2 (Xhigh)",
+     "value": 0.574074074074074,
+     "displayValue": "57.4%",
+     "url": "/models/muse-spark-1-2",
+     "logo": "/img/logos/meta.svg"
     },
     {
      "id": "59627802-1546-422c-9a65-65b61c022d36",
@@ -359,21 +368,21 @@
      "logo": "/img/logos/spacexai.svg"
     },
     {
-     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
-     "label": "Claude Opus 5 (max)",
-     "tooltipLabel": "Claude Opus 5 (Max)",
-     "value": 0.563657407407407,
-     "displayValue": "56.4%",
-     "url": "/models/claude-opus-5",
-     "logo": "/img/logos/anthropic.svg"
-    },
-    {
      "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
      "label": "Claude Fable 5.1 (medium with fallback)",
      "tooltipLabel": "Claude Fable 5.1 (Medium, Default Fallback)",
      "value": 0.563657407407407,
      "displayValue": "56.4%",
      "url": "/models/claude-fable-5-1-medium",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+     "label": "Claude Opus 5 (max)",
+     "tooltipLabel": "Claude Opus 5 (Max)",
+     "value": 0.563657407407407,
+     "displayValue": "56.4%",
+     "url": "/models/claude-opus-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -431,6 +440,15 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "ddfdaf64-3f8e-40a6-a492-608ee83a1351",
+     "label": "Gemini 3.7 Flash (low)",
+     "tooltipLabel": "Gemini 3.7 Flash (Low)",
+     "value": 0.556712962962963,
+     "displayValue": "55.7%",
+     "url": "/models/gemini-3-7-flash-low",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "1305c921-7aaa-4d6d-99b5-99b3acf15e19",
      "label": "Claude Opus 5 (xhigh)",
      "tooltipLabel": "Claude Opus 5 (Xhigh)",
@@ -458,15 +476,6 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "ddfdaf64-3f8e-40a6-a492-608ee83a1351",
-     "label": "Gemini 3.7 Flash (low)",
-     "tooltipLabel": "Gemini 3.7 Flash (Low)",
-     "value": 0.556712962962963,
-     "displayValue": "55.7%",
-     "url": "/models/gemini-3-7-flash-low",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "712be54a-77ae-41b2-9a58-21181479d6ee",
      "label": "Claude Opus 5 (high)",
      "tooltipLabel": "Claude Opus 5 (High)",
@@ -485,6 +494,24 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
+     "label": "Gemini 3.8 Flash (medium)",
+     "tooltipLabel": "Gemini 3.8 Flash (Medium)",
+     "value": 0.550925925925926,
+     "displayValue": "55.1%",
+     "url": "/models/gemini-3-8-flash-medium",
+     "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "b0c462cf-f2d0-4126-9434-28db9502219f",
+     "label": "GPT-6.1 Terra (max)",
+     "tooltipLabel": "GPT-6.1 Terra (Max)",
+     "value": 0.550925925925926,
+     "displayValue": "55.1%",
+     "url": "/models/gpt-6-1-terra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "da2642fe-9f73-4788-b5af-24edcd55b37e",
      "label": "GPT-6 Sol (xhigh)",
      "tooltipLabel": "GPT-6 Sol (Xhigh)",
@@ -494,12 +521,12 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
-     "label": "Gemini 3.8 Flash (medium)",
-     "tooltipLabel": "Gemini 3.8 Flash (Medium)",
-     "value": 0.550925925925926,
-     "displayValue": "55.1%",
-     "url": "/models/gemini-3-8-flash-medium",
+     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
+     "label": "Gemini 3.8 Flash (low)",
+     "tooltipLabel": "Gemini 3.8 Flash (Low)",
+     "value": 0.549768518518518,
+     "displayValue": "55.0%",
+     "url": "/models/gemini-3-8-flash-low",
      "logo": "/img/logos/google.svg"
     },
     {
@@ -519,15 +546,6 @@
      "displayValue": "55.0%",
      "url": "/models/gpt-5-6-terra",
      "logo": "/img/logos/openai.svg"
-    },
-    {
-     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
-     "label": "Gemini 3.8 Flash (low)",
-     "tooltipLabel": "Gemini 3.8 Flash (Low)",
-     "value": 0.549768518518518,
-     "displayValue": "55.0%",
-     "url": "/models/gemini-3-8-flash-low",
-     "logo": "/img/logos/google.svg"
     },
     {
      "id": "794f69b5-cede-482b-b1cc-d769478497cd",
@@ -710,6 +728,15 @@
      "logo": "/img/logos/google.svg"
     },
     {
+     "id": "e8d443ba-8aca-4830-a186-ae869bb9c6fe",
+     "label": "GPT-6.1 Terra (xhigh)",
+     "tooltipLabel": "GPT-6.1 Terra (Xhigh)",
+     "value": 0.533564814814815,
+     "displayValue": "53.4%",
+     "url": "/models/gpt-6-1-terra-xhigh",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
      "label": "MiniMax-M3.1-Flash",
      "tooltipLabel": "MiniMax-M3.1-Flash",
@@ -779,6 +806,15 @@
      "value": 0.525462962962963,
      "displayValue": "52.5%",
      "url": "/models/gpt-5-5-instant-06-26",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "c955b262-a17f-4f1a-b097-6860b866295b",
+     "label": "GPT-6.1 Terra (low)",
+     "tooltipLabel": "GPT-6.1 Terra (Low)",
+     "value": 0.524305555555556,
+     "displayValue": "52.4%",
+     "url": "/models/gpt-6-1-terra-low",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -863,6 +899,24 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "ea3e1f50-f62d-41d2-849a-9af0413e4d37",
+     "label": "GPT-6.1 Terra (high)",
+     "tooltipLabel": "GPT-6.1 Terra (High)",
+     "value": 0.516203703703704,
+     "displayValue": "51.6%",
+     "url": "/models/gpt-6-1-terra-high",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "c441e158-a87d-4116-911b-93325e4b4f1c",
+     "label": "GPT-6.1 Terra (medium)",
+     "tooltipLabel": "GPT-6.1 Terra (Medium)",
+     "value": 0.516203703703704,
+     "displayValue": "51.6%",
+     "url": "/models/gpt-6-1-terra-medium",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "aa55297e-8fbf-4372-b4ab-9b068dc6396c",
      "label": "GPT-5.6 Luna (high)",
      "tooltipLabel": "GPT-5.6 Luna (High)",
@@ -944,15 +998,6 @@
      "logo": "/img/logos/deepseek.svg"
     },
     {
-     "id": "00f1248e-78e3-4230-8dc8-5e13ba8645e2",
-     "label": "MiMo-V2.5-Pro",
-     "tooltipLabel": "MiMo-V2.5-Pro (Reasoning)",
-     "value": 0.505787037037037,
-     "displayValue": "50.6%",
-     "url": "/models/mimo-v2-5-pro",
-     "logo": "/img/logos/xiaomi.svg"
-    },
-    {
      "id": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
      "label": "Qwen3.8-Flash-Next",
      "tooltipLabel": "Qwen3.8-Flash-Next",
@@ -962,13 +1007,13 @@
      "logo": "/img/logos/alibaba.svg"
     },
     {
-     "id": "87110ff0-1f79-41b4-9976-eda250597317",
-     "label": "GPT-5.6 Luna (xhigh)",
-     "tooltipLabel": "GPT-5.6 Luna (Xhigh)",
-     "value": 0.50462962962963,
-     "displayValue": "50.5%",
-     "url": "/models/gpt-5-6-luna-xhigh",
-     "logo": "/img/logos/openai.svg"
+     "id": "00f1248e-78e3-4230-8dc8-5e13ba8645e2",
+     "label": "MiMo-V2.5-Pro",
+     "tooltipLabel": "MiMo-V2.5-Pro (Reasoning)",
+     "value": 0.505787037037037,
+     "displayValue": "50.6%",
+     "url": "/models/mimo-v2-5-pro",
+     "logo": "/img/logos/xiaomi.svg"
     },
     {
      "id": "26e0f83a-ca98-4f34-94ac-7c5e251ee410",
@@ -977,6 +1022,15 @@
      "value": 0.50462962962963,
      "displayValue": "50.5%",
      "url": "/models/gpt-5-6-terra-medium",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "87110ff0-1f79-41b4-9976-eda250597317",
+     "label": "GPT-5.6 Luna (xhigh)",
+     "tooltipLabel": "GPT-5.6 Luna (Xhigh)",
+     "value": 0.50462962962963,
+     "displayValue": "50.5%",
+     "url": "/models/gpt-5-6-luna-xhigh",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -1007,21 +1061,21 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "df8d14e0-3997-4e4d-b4ad-9c047acc9c69",
-     "label": "Claude Sonnet 4.6 (max)",
-     "tooltipLabel": "Claude Sonnet 4.6 (Max)",
-     "value": 0.501157407407407,
-     "displayValue": "50.1%",
-     "url": "/models/claude-sonnet-4-6-adaptive",
-     "logo": "/img/logos/anthropic.svg"
-    },
-    {
      "id": "142b93bf-09c4-42dc-9c3a-50b1a222cbd4",
      "label": "Claude Sonnet 5 (low)",
      "tooltipLabel": "Claude Sonnet 5 (Low)",
      "value": 0.501157407407407,
      "displayValue": "50.1%",
      "url": "/models/claude-sonnet-5-low",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "df8d14e0-3997-4e4d-b4ad-9c047acc9c69",
+     "label": "Claude Sonnet 4.6 (max)",
+     "tooltipLabel": "Claude Sonnet 4.6 (Max)",
+     "value": 0.501157407407407,
+     "displayValue": "50.1%",
+     "url": "/models/claude-sonnet-4-6-adaptive",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -1079,21 +1133,21 @@
      "logo": "/img/logos/spacexai.svg"
     },
     {
-     "id": "20928ba9-3a3f-415f-9519-b84ff64ecf34",
-     "label": "Claude Opus 5 (low)",
-     "tooltipLabel": "Claude Opus 5 (Low)",
-     "value": 0.491898148148148,
-     "displayValue": "49.2%",
-     "url": "/models/claude-opus-5-low",
-     "logo": "/img/logos/anthropic.svg"
-    },
-    {
      "id": "42908ae3-d3bd-4934-be19-fbff93d3fde8",
      "label": "Claude Haiku 5.5 (low)",
      "tooltipLabel": "Claude Haiku 5.5 (Low)",
      "value": 0.491898148148148,
      "displayValue": "49.2%",
      "url": "/models/claude-haiku-5-5-low",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "20928ba9-3a3f-415f-9519-b84ff64ecf34",
+     "label": "Claude Opus 5 (low)",
+     "tooltipLabel": "Claude Opus 5 (Low)",
+     "value": 0.491898148148148,
+     "displayValue": "49.2%",
+     "url": "/models/claude-opus-5-low",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -1185,6 +1239,15 @@
      "displayValue": "48.0%",
      "url": "/models/solar-open2-250b",
      "logo": "/img/logos/upstage.svg"
+    },
+    {
+     "id": "0d3c777f-6817-42d7-9bb9-223314bc5a57",
+     "label": "GPT-6.1 Terra (non-reasoning)",
+     "tooltipLabel": "GPT-6.1 Terra (Non-reasoning)",
+     "value": 0.478009259259259,
+     "displayValue": "47.8%",
+     "url": "/models/gpt-6-1-terra-non-reasoning",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "8d0cb231-7303-452c-9923-a9620b948475",
@@ -2146,20 +2209,148 @@
    "title": "SciCode: Score vs. Cost per Task",
    "items": [
     {
+     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+     "slug": "gemini-4-carbon",
+     "name": "Gemini 4 Carbon (High)",
+     "shortName": "Gemini 4 Carbon (high)",
+     "creatorName": "Google",
+     "costPerTask": 0.7087839722222221
+    },
+    {
+     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
+     "slug": "gemini-4-argon",
+     "name": "Gemini 4 Argon (High)",
+     "shortName": "Gemini 4 Argon (high)",
+     "creatorName": "Google",
+     "costPerTask": 0.21135638888888889
+    },
+    {
+     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+     "slug": "gemini-3-8-flash",
+     "name": "Gemini 3.8 Flash (High)",
+     "shortName": "Gemini 3.8 Flash (high)",
+     "creatorName": "Google",
+     "costPerTask": 0.07681339583333333
+    },
+    {
+     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
+     "slug": "gemini-3-8-flash-medium",
+     "name": "Gemini 3.8 Flash (Medium)",
+     "shortName": "Gemini 3.8 Flash (medium)",
+     "creatorName": "Google",
+     "costPerTask": 0.029326989583333334
+    },
+    {
+     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
+     "slug": "gemini-3-8-flash-low",
+     "name": "Gemini 3.8 Flash (Low)",
+     "shortName": "Gemini 3.8 Flash (low)",
+     "creatorName": "Google",
+     "costPerTask": 0.0042929765625
+    },
+    {
+     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+     "slug": "gemini-3-5-flash-lite",
+     "name": "Gemini 3.5 Flash-Lite",
+     "shortName": "Gemini 3.5 Flash-Lite",
+     "creatorName": "Google",
+     "costPerTask": 0.012601281597222224
+    },
+    {
+     "id": "0097ebf5-124f-42f6-9463-33b00e711f03",
+     "slug": "gemini-3-5-flash",
+     "name": "Gemini 3.5 Flash (High)",
+     "shortName": "Gemini 3.5 Flash (high)",
+     "creatorName": "Google",
+     "costPerTask": 0.06818365624999999
+    },
+    {
+     "id": "27202e5f-c82d-4710-92e9-4317877d4883",
+     "slug": "gemini-2-5-pro",
+     "name": "Gemini 2.5 Pro",
+     "shortName": "Gemini 2.5 Pro",
+     "creatorName": "Google",
+     "costPerTask": 0.07984639756944445
+    },
+    {
+     "id": "2bfdd17a-e027-4068-a54e-b0e90a6df118",
+     "slug": "gemma-3-27b",
+     "name": "Gemma 3 27B Instruct",
+     "shortName": "Gemma 3 27B",
+     "creatorName": "Google",
+     "costPerTask": 0
+    },
+    {
+     "id": "2e6400f5-85ca-4ebc-ba8f-c2811a631138",
+     "slug": "gemma-3-12b",
+     "name": "Gemma 3 12B Instruct",
+     "shortName": "Gemma 3 12B",
+     "creatorName": "Google",
+     "costPerTask": 0
+    },
+    {
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "slug": "gemini-3-1-flash-lite-preview",
+     "name": "Gemini 3.1 Flash-Lite",
+     "shortName": "Gemini 3.1 Flash-Lite",
+     "creatorName": "Google",
+     "costPerTask": 0.01818731857638889
+    },
+    {
+     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
+     "slug": "gemma-4-26b-a4b",
+     "name": "Gemma 4 26B A4B (Reasoning)",
+     "shortName": "Gemma 4 26B A4B",
+     "creatorName": "Google",
+     "costPerTask": 0.0029019229861111115
+    },
+    {
+     "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
+     "slug": "gemini-3-6-flash",
+     "name": "Gemini 3.6 Flash (High)",
+     "shortName": "Gemini 3.6 Flash (high)",
+     "creatorName": "Google",
+     "costPerTask": 0.030375859374999998
+    },
+    {
+     "id": "b2331108-72ed-415a-82d1-188633875bbc",
+     "slug": "gemini-3-7-flash",
+     "name": "Gemini 3.7 Flash (High)",
+     "shortName": "Gemini 3.7 Flash (high)",
+     "creatorName": "Google",
+     "costPerTask": 0.024521190104166667
+    },
+    {
+     "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
+     "slug": "gemini-3-1-pro-preview",
+     "name": "Gemini 3.1 Pro Preview",
+     "shortName": "Gemini 3.1 Pro Preview",
+     "creatorName": "Google",
+     "costPerTask": 0.08296459027777778
+    },
+    {
+     "id": "cd26a386-4873-46ff-b853-d239050025a2",
+     "slug": "gemma-4-31b",
+     "name": "Gemma 4 31B (Reasoning)",
+     "shortName": "Gemma 4 31B",
+     "creatorName": "Google",
+     "costPerTask": 0
+    },
+    {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "slug": "gemma-4-e4b",
+     "name": "Gemma 4 E4B (Reasoning)",
+     "shortName": "Gemma 4 E4B",
+     "creatorName": "Google",
+     "costPerTask": 0.00028473548611111115
+    },
+    {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
      "slug": "claude-opus-5-5",
      "name": "Claude Opus 5.5 (Max, Default Fallback)",
      "shortName": "Claude Opus 5.5 (max with fallback)",
      "creatorName": "Anthropic",
      "costPerTask": 0.4691160138888889
-    },
-    {
-     "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
-     "slug": "claude-sonnet-5-5",
-     "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (max with fallback)",
-     "creatorName": "Anthropic",
-     "costPerTask": 0.27800963194444445
     },
     {
      "id": "df5bf99d-d228-4715-b41b-19ca86118777",
@@ -2170,20 +2361,20 @@
      "costPerTask": 0.06755947222222222
     },
     {
+     "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
+     "slug": "claude-sonnet-5-5",
+     "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (max with fallback)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.27800963194444445
+    },
+    {
      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
      "slug": "claude-opus-5-5-high",
      "name": "Claude Opus 5.5 (High, Default Fallback)",
      "shortName": "Claude Opus 5.5 (high with fallback)",
      "creatorName": "Anthropic",
      "costPerTask": 0.04019579166666667
-    },
-    {
-     "id": "3e87c73e-a257-495e-9730-367a66229811",
-     "slug": "claude-fable-5-1",
-     "name": "Claude Fable 5.1 (Max, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (max with fallback)",
-     "creatorName": "Anthropic",
-     "costPerTask": 0.6585189583333333
     },
     {
      "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
@@ -2202,6 +2393,14 @@
      "costPerTask": 0.023654777777777778
     },
     {
+     "id": "3e87c73e-a257-495e-9730-367a66229811",
+     "slug": "claude-fable-5-1",
+     "name": "Claude Fable 5.1 (Max, Default Fallback)",
+     "shortName": "Claude Fable 5.1 (max with fallback)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.6585189583333333
+    },
+    {
      "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
      "slug": "claude-opus-5-5-medium",
      "name": "Claude Opus 5.5 (Medium, Default Fallback)",
@@ -2218,52 +2417,12 @@
      "costPerTask": 0.08909774305555555
     },
     {
-     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
-     "slug": "claude-opus-5",
-     "name": "Claude Opus 5 (Max)",
-     "shortName": "Claude Opus 5 (max)",
-     "creatorName": "Anthropic",
-     "costPerTask": 0.1177131076388889
-    },
-    {
-     "id": "1305c921-7aaa-4d6d-99b5-99b3acf15e19",
-     "slug": "claude-opus-5-xhigh",
-     "name": "Claude Opus 5 (Xhigh)",
-     "shortName": "Claude Opus 5 (xhigh)",
-     "creatorName": "Anthropic",
-     "costPerTask": 0.07227737847222221
-    },
-    {
-     "id": "cd55210d-358e-4df1-ba9c-9acb5f186cc9",
-     "slug": "claude-fable-5",
-     "name": "Claude Fable 5 (Max, Opus 4.8 Fallback)",
-     "shortName": "Claude Fable 5 (with fallback)",
-     "creatorName": "Anthropic",
-     "costPerTask": 0.26770639390625006
-    },
-    {
      "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
      "slug": "claude-fable-5-1-medium",
      "name": "Claude Fable 5.1 (Medium, Default Fallback)",
      "shortName": "Claude Fable 5.1 (medium with fallback)",
      "creatorName": "Anthropic",
      "costPerTask": 0.07562430555555556
-    },
-    {
-     "id": "712be54a-77ae-41b2-9a58-21181479d6ee",
-     "slug": "claude-opus-5-high",
-     "name": "Claude Opus 5 (High)",
-     "shortName": "Claude Opus 5 (high)",
-     "creatorName": "Anthropic",
-     "costPerTask": 0.048084340277777776
-    },
-    {
-     "id": "05776db7-f5c0-40f7-b824-079160f8cfa8",
-     "slug": "claude-fable-5-1-low",
-     "name": "Claude Fable 5.1 (Low, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (low with fallback)",
-     "creatorName": "Anthropic",
-     "costPerTask": 0.06897253472222223
     },
     {
      "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
@@ -2274,12 +2433,12 @@
      "costPerTask": 0.016000437500000003
     },
     {
-     "id": "ff51be8f-e362-4a7e-9043-687ba15de207",
-     "slug": "claude-opus-5-medium",
-     "name": "Claude Opus 5 (Medium)",
-     "shortName": "Claude Opus 5 (medium)",
+     "id": "05776db7-f5c0-40f7-b824-079160f8cfa8",
+     "slug": "claude-fable-5-1-low",
+     "name": "Claude Fable 5.1 (Low, Default Fallback)",
+     "shortName": "Claude Fable 5.1 (low with fallback)",
      "creatorName": "Anthropic",
-     "costPerTask": 0.03692772569444444
+     "costPerTask": 0.06897253472222223
     },
     {
      "id": "7d064a11-6e78-4030-b535-cdf940615041",
@@ -2298,14 +2457,6 @@
      "costPerTask": 0.026438402777777776
     },
     {
-     "id": "992b7b84-5069-4c6a-9295-834252553d50",
-     "slug": "claude-opus-4-8",
-     "name": "Claude Opus 4.8 (Max)",
-     "shortName": "Claude Opus 4.8 (max)",
-     "creatorName": "Anthropic",
-     "costPerTask": 0.2664386111111111
-    },
-    {
      "id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
      "slug": "claude-haiku-5-5-xhigh",
      "name": "Claude Haiku 5.5 (Xhigh)",
@@ -2320,22 +2471,6 @@
      "shortName": "Claude Sonnet 5.5 (medium with fallback)",
      "creatorName": "Anthropic",
      "costPerTask": 0.013536590277777778
-    },
-    {
-     "id": "20928ba9-3a3f-415f-9519-b84ff64ecf34",
-     "slug": "claude-opus-5-low",
-     "name": "Claude Opus 5 (Low)",
-     "shortName": "Claude Opus 5 (low)",
-     "creatorName": "Anthropic",
-     "costPerTask": 0.02870795138888889
-    },
-    {
-     "id": "23c86e4a-c769-43c0-a056-79e3cd15834f",
-     "slug": "claude-sonnet-5",
-     "name": "Claude Sonnet 5 (Max)",
-     "shortName": "Claude Sonnet 5 (max)",
-     "creatorName": "Anthropic",
-     "costPerTask": 0.19166355555555556
     },
     {
      "id": "20829974-af06-497e-9f42-77fb958d43b9",
@@ -2362,30 +2497,6 @@
      "costPerTask": 0.0011676524305555555
     },
     {
-     "id": "99f376bf-cbcb-4124-bf3e-6b0a4e6e9bea",
-     "slug": "claude-sonnet-5-xhigh",
-     "name": "Claude Sonnet 5 (Xhigh)",
-     "shortName": "Claude Sonnet 5 (xhigh)",
-     "creatorName": "Anthropic",
-     "costPerTask": 0.03986681944444445
-    },
-    {
-     "id": "ba0224cf-0351-4f56-8508-b3f1a740ae4a",
-     "slug": "claude-sonnet-5-high",
-     "name": "Claude Sonnet 5 (High)",
-     "shortName": "Claude Sonnet 5 (high)",
-     "creatorName": "Anthropic",
-     "costPerTask": 0.025494687499999998
-    },
-    {
-     "id": "df8d14e0-3997-4e4d-b4ad-9c047acc9c69",
-     "slug": "claude-sonnet-4-6-adaptive",
-     "name": "Claude Sonnet 4.6 (Max)",
-     "shortName": "Claude Sonnet 4.6 (max)",
-     "creatorName": "Anthropic",
-     "costPerTask": 0.15019713541666666
-    },
-    {
      "id": "42908ae3-d3bd-4934-be19-fbff93d3fde8",
      "slug": "claude-haiku-5-5-low",
      "name": "Claude Haiku 5.5 (Low)",
@@ -2394,12 +2505,12 @@
      "costPerTask": 0.0009499020833333335
     },
     {
-     "id": "effcd151-7c31-4437-af3d-e88daeae9385",
-     "slug": "claude-sonnet-5-medium",
-     "name": "Claude Sonnet 5 (Medium)",
-     "shortName": "Claude Sonnet 5 (medium)",
+     "id": "1305c921-7aaa-4d6d-99b5-99b3acf15e19",
+     "slug": "claude-opus-5-xhigh",
+     "name": "Claude Opus 5 (Xhigh)",
+     "shortName": "Claude Opus 5 (xhigh)",
      "creatorName": "Anthropic",
-     "costPerTask": 0.01714157638888889
+     "costPerTask": 0.07227737847222221
     },
     {
      "id": "142b93bf-09c4-42dc-9c3a-50b1a222cbd4",
@@ -2410,12 +2521,52 @@
      "costPerTask": 0.013203243055555555
     },
     {
+     "id": "20928ba9-3a3f-415f-9519-b84ff64ecf34",
+     "slug": "claude-opus-5-low",
+     "name": "Claude Opus 5 (Low)",
+     "shortName": "Claude Opus 5 (low)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.02870795138888889
+    },
+    {
+     "id": "23c86e4a-c769-43c0-a056-79e3cd15834f",
+     "slug": "claude-sonnet-5",
+     "name": "Claude Sonnet 5 (Max)",
+     "shortName": "Claude Sonnet 5 (max)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.19166355555555556
+    },
+    {
+     "id": "712be54a-77ae-41b2-9a58-21181479d6ee",
+     "slug": "claude-opus-5-high",
+     "name": "Claude Opus 5 (High)",
+     "shortName": "Claude Opus 5 (high)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.048084340277777776
+    },
+    {
      "id": "90e078f2-051b-4c63-8919-76618971cb3f",
      "slug": "claude-4-5-sonnet-thinking",
      "name": "Claude 4.5 Sonnet (Reasoning)",
      "shortName": "Claude 4.5 Sonnet",
      "creatorName": "Anthropic",
      "costPerTask": 0.12905480208333334
+    },
+    {
+     "id": "992b7b84-5069-4c6a-9295-834252553d50",
+     "slug": "claude-opus-4-8",
+     "name": "Claude Opus 4.8 (Max)",
+     "shortName": "Claude Opus 4.8 (max)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.2664386111111111
+    },
+    {
+     "id": "99f376bf-cbcb-4124-bf3e-6b0a4e6e9bea",
+     "slug": "claude-sonnet-5-xhigh",
+     "name": "Claude Sonnet 5 (Xhigh)",
+     "shortName": "Claude Sonnet 5 (xhigh)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.03986681944444445
     },
     {
      "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
@@ -2426,116 +2577,52 @@
      "costPerTask": 0.05102059722222222
     },
     {
-     "id": "ff2f3f3d-783f-4e27-8a39-47237501a313",
-     "slug": "muse-wonder",
-     "name": "Muse Wonder (Max)",
-     "shortName": "Muse Wonder (max)",
-     "creatorName": "Meta",
-     "costPerTask": 0.134993125
+     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+     "slug": "claude-opus-5",
+     "name": "Claude Opus 5 (Max)",
+     "shortName": "Claude Opus 5 (max)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.1177131076388889
     },
     {
-     "id": "9999672c-b687-4026-9c15-5cef02ff53bb",
-     "slug": "muse-spark-1-3",
-     "name": "Muse Spark 1.3 (Max)",
-     "shortName": "Muse Spark 1.3 (max)",
-     "creatorName": "Meta",
-     "costPerTask": 0.03927459895833333
+     "id": "ba0224cf-0351-4f56-8508-b3f1a740ae4a",
+     "slug": "claude-sonnet-5-high",
+     "name": "Claude Sonnet 5 (High)",
+     "shortName": "Claude Sonnet 5 (high)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.025494687499999998
     },
     {
-     "id": "d5170215-69be-4129-849b-26d8d8825bfc",
-     "slug": "muse-spark-1-3-xhigh",
-     "name": "Muse Spark 1.3 (Xhigh)",
-     "shortName": "Muse Spark 1.3 (xhigh)",
-     "creatorName": "Meta",
-     "costPerTask": 0.03716573697916667
+     "id": "cd55210d-358e-4df1-ba9c-9acb5f186cc9",
+     "slug": "claude-fable-5",
+     "name": "Claude Fable 5 (Max, Opus 4.8 Fallback)",
+     "shortName": "Claude Fable 5 (with fallback)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.26770639390625006
     },
     {
-     "id": "04ee6719-0327-463b-a1a1-70a6a78254f9",
-     "slug": "muse-spark-1-2",
-     "name": "Muse Spark 1.2 (Xhigh)",
-     "shortName": "Muse Spark 1.2 (xhigh)",
-     "creatorName": "Meta",
-     "costPerTask": 0.060479525173611104
+     "id": "df8d14e0-3997-4e4d-b4ad-9c047acc9c69",
+     "slug": "claude-sonnet-4-6-adaptive",
+     "name": "Claude Sonnet 4.6 (Max)",
+     "shortName": "Claude Sonnet 4.6 (max)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.15019713541666666
     },
     {
-     "id": "3661c8fb-caf7-4118-aa18-65b84fea8e44",
-     "slug": "muse-spark-open",
-     "name": "Muse Spark Open (Xhigh)",
-     "shortName": "Muse Spark Open (xhigh)",
-     "creatorName": "Meta",
-     "costPerTask": 0.040471086805555556
+     "id": "effcd151-7c31-4437-af3d-e88daeae9385",
+     "slug": "claude-sonnet-5-medium",
+     "name": "Claude Sonnet 5 (Medium)",
+     "shortName": "Claude Sonnet 5 (medium)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.01714157638888889
     },
     {
-     "id": "d61493e2-43ff-460c-9054-eaf6ba317360",
-     "slug": "muse-spark-1-1",
-     "name": "Muse Spark 1.1 (Xhigh)",
-     "shortName": "Muse Spark 1.1 (xhigh)",
-     "creatorName": "Meta",
-     "costPerTask": 0.030686757812499996
-    },
-    {
-     "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
-     "slug": "muse-glimmer",
-     "name": "Muse Glimmer (High)",
-     "shortName": "Muse Glimmer (high)",
-     "creatorName": "Meta",
-     "costPerTask": 0.006250422916666667
-    },
-    {
-     "id": "922c69c7-9037-43c6-8bcf-a1c555e7f3eb",
-     "slug": "llama-4-maverick",
-     "name": "Llama 4 Maverick",
-     "shortName": "Llama 4 Maverick",
-     "creatorName": "Meta",
-     "costPerTask": 0.00085371
-    },
-    {
-     "id": "adf9a85e-abc3-4f28-937b-db6655cc5238",
-     "slug": "llama-4-scout",
-     "name": "Llama 4 Scout",
-     "shortName": "Llama 4 Scout",
-     "creatorName": "Meta",
-     "costPerTask": 0.0009124391666666668
-    },
-    {
-     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
-     "slug": "kimi-k3-1-pro",
-     "name": "Kimi K3.1 Pro",
-     "shortName": "Kimi K3.1 Pro",
-     "creatorName": "Kimi",
-     "costPerTask": 0.06983243055555555
-    },
-    {
-     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
-     "slug": "kimi-k3",
-     "name": "Kimi K3 (Max)",
-     "shortName": "Kimi K3 (max)",
-     "creatorName": "Kimi",
-     "costPerTask": 0.06016669791666667
-    },
-    {
-     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
-     "slug": "kimi-k3-low",
-     "name": "Kimi K3 (Low)",
-     "shortName": "Kimi K3 (low)",
-     "creatorName": "Kimi",
-     "costPerTask": 0.018565968750000002
-    },
-    {
-     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
-     "slug": "kimi-k2-6",
-     "name": "Kimi K2.6 (Reasoning)",
-     "shortName": "Kimi K2.6",
-     "creatorName": "Kimi",
-     "costPerTask": 0.043348140798611115
-    },
-    {
-     "id": "8d0cb231-7303-452c-9923-a9620b948475",
-     "slug": "kimi-k2-7-code",
-     "name": "Kimi K2.7 Code",
-     "shortName": "Kimi K2.7 Code",
-     "creatorName": "Kimi",
-     "costPerTask": 0.023826147916666665
+     "id": "ff51be8f-e362-4a7e-9043-687ba15de207",
+     "slug": "claude-opus-5-medium",
+     "name": "Claude Opus 5 (Medium)",
+     "shortName": "Claude Opus 5 (medium)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.03692772569444444
     },
     {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
@@ -2554,6 +2641,14 @@
      "costPerTask": 0.12163322916666666
     },
     {
+     "id": "e05a4828-0536-4876-870d-a235023f992b",
+     "slug": "gpt-6-astra-high",
+     "name": "GPT-6 Astra (High)",
+     "shortName": "GPT-6 Astra (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.06957760416666667
+    },
+    {
      "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
      "slug": "gpt-6-1-sol",
      "name": "GPT-6.1 Sol (Max)",
@@ -2570,12 +2665,20 @@
      "costPerTask": 0.022047979166666665
     },
     {
-     "id": "e05a4828-0536-4876-870d-a235023f992b",
-     "slug": "gpt-6-astra-high",
-     "name": "GPT-6 Astra (High)",
-     "shortName": "GPT-6 Astra (high)",
+     "id": "e97a4ef5-e817-480e-9595-12f81dc4974f",
+     "slug": "gpt-6-astra-medium",
+     "name": "GPT-6 Astra (Medium)",
+     "shortName": "GPT-6 Astra (medium)",
      "creatorName": "OpenAI",
-     "costPerTask": 0.06957760416666667
+     "costPerTask": 0.05087506944444445
+    },
+    {
+     "id": "b0c462cf-f2d0-4126-9434-28db9502219f",
+     "slug": "gpt-6-1-terra",
+     "name": "GPT-6.1 Terra (Max)",
+     "shortName": "GPT-6.1 Terra (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.07318462500000002
     },
     {
      "id": "3b84fee3-b70a-41bc-819e-5fbdef9a0042",
@@ -2586,14 +2689,6 @@
      "costPerTask": 0.01296726388888889
     },
     {
-     "id": "e97a4ef5-e817-480e-9595-12f81dc4974f",
-     "slug": "gpt-6-astra-medium",
-     "name": "GPT-6 Astra (Medium)",
-     "shortName": "GPT-6 Astra (medium)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.05087506944444445
-    },
-    {
      "id": "a2e51d62-ea4e-4f15-8be0-be9dc1fb489d",
      "slug": "gpt-6-1-sol-medium",
      "name": "GPT-6.1 Sol (Medium)",
@@ -2602,20 +2697,12 @@
      "costPerTask": 0.009314833333333335
     },
     {
-     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
-     "slug": "gpt-6-sol",
-     "name": "GPT-6 Sol (Max)",
-     "shortName": "GPT-6 Sol (max)",
+     "id": "e8d443ba-8aca-4830-a186-ae869bb9c6fe",
+     "slug": "gpt-6-1-terra-xhigh",
+     "name": "GPT-6.1 Terra (Xhigh)",
+     "shortName": "GPT-6.1 Terra (xhigh)",
      "creatorName": "OpenAI",
-     "costPerTask": 0.042489881944444446
-    },
-    {
-     "id": "d93edfe8-bf35-49ad-b56e-b18116142a1c",
-     "slug": "gpt-5-6-sol",
-     "name": "GPT-5.6 Sol (Max)",
-     "shortName": "GPT-5.6 Sol (max)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.07969684722222221
+     "costPerTask": 0.015102052083333333
     },
     {
      "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
@@ -2626,36 +2713,20 @@
      "costPerTask": 0.04250701388888889
     },
     {
-     "id": "da2642fe-9f73-4788-b5af-24edcd55b37e",
-     "slug": "gpt-6-sol-xhigh",
-     "name": "GPT-6 Sol (Xhigh)",
-     "shortName": "GPT-6 Sol (xhigh)",
+     "id": "ea3e1f50-f62d-41d2-849a-9af0413e4d37",
+     "slug": "gpt-6-1-terra-high",
+     "name": "GPT-6.1 Terra (High)",
+     "shortName": "GPT-6.1 Terra (high)",
      "creatorName": "OpenAI",
-     "costPerTask": 0.02145940972222222
+     "costPerTask": 0.007952489583333333
     },
     {
-     "id": "d998db47-9b67-4727-a2bb-2e1261020ac0",
-     "slug": "gpt-5-6-sol-xhigh",
-     "name": "GPT-5.6 Sol (Xhigh)",
-     "shortName": "GPT-5.6 Sol (xhigh)",
+     "id": "c441e158-a87d-4116-911b-93325e4b4f1c",
+     "slug": "gpt-6-1-terra-medium",
+     "name": "GPT-6.1 Terra (Medium)",
+     "shortName": "GPT-6.1 Terra (medium)",
      "creatorName": "OpenAI",
-     "costPerTask": 0.044891458333333335
-    },
-    {
-     "id": "52eebe3e-6ede-4e46-92db-c5dea49fc410",
-     "slug": "gpt-6-sol-high",
-     "name": "GPT-6 Sol (High)",
-     "shortName": "GPT-6 Sol (high)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.013034076388888888
-    },
-    {
-     "id": "8afc250d-b538-45a2-812a-4605f4ffd87e",
-     "slug": "gpt-5-6-sol-high",
-     "name": "GPT-5.6 Sol (High)",
-     "shortName": "GPT-5.6 Sol (high)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.03528609722222223
+     "costPerTask": 0.005176416666666666
     },
     {
      "id": "e76e0fe5-93ca-4272-9359-2eb1740467d1",
@@ -2666,36 +2737,20 @@
      "costPerTask": 0.008424590277777777
     },
     {
-     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
-     "slug": "gpt-5-6-terra",
-     "name": "GPT-5.6 Terra (Max)",
-     "shortName": "GPT-5.6 Terra (max)",
+     "id": "0d3c777f-6817-42d7-9bb9-223314bc5a57",
+     "slug": "gpt-6-1-terra-non-reasoning",
+     "name": "GPT-6.1 Terra (Non-reasoning)",
+     "shortName": "GPT-6.1 Terra (non-reasoning)",
      "creatorName": "OpenAI",
-     "costPerTask": 0.11439322222222222
+     "costPerTask": 0.003651555555555556
     },
     {
-     "id": "780a4a85-17ff-4175-a8dd-ebca4823e61b",
-     "slug": "gpt-6-sol-medium",
-     "name": "GPT-6 Sol (Medium)",
-     "shortName": "GPT-6 Sol (medium)",
+     "id": "c955b262-a17f-4f1a-b097-6860b866295b",
+     "slug": "gpt-6-1-terra-low",
+     "name": "GPT-6.1 Terra (Low)",
+     "shortName": "GPT-6.1 Terra (low)",
      "creatorName": "OpenAI",
-     "costPerTask": 0.009487291666666666
-    },
-    {
-     "id": "6f174934-5b7d-4333-86cb-f5ebf4a862e3",
-     "slug": "gpt-5-6-sol-medium",
-     "name": "GPT-5.6 Sol (Medium)",
-     "shortName": "GPT-5.6 Sol (medium)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.028483875
-    },
-    {
-     "id": "1f054429-397e-4fdb-9e71-67bc92c1735e",
-     "slug": "gpt-5-5",
-     "name": "GPT-5.5 (Xhigh)",
-     "shortName": "GPT-5.5 (xhigh)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.16845909722222221
+     "costPerTask": 0.003654184027777777
     },
     {
      "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
@@ -2706,76 +2761,12 @@
      "costPerTask": 0.0036765802083333337
     },
     {
-     "id": "9e30696f-16fa-4b4f-ba53-161895a85fed",
-     "slug": "gpt-5-6-terra-xhigh",
-     "name": "GPT-5.6 Terra (Xhigh)",
-     "shortName": "GPT-5.6 Terra (xhigh)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.032531624999999995
-    },
-    {
-     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
-     "slug": "gpt-5-6-luna",
-     "name": "GPT-5.6 Luna (Max)",
-     "shortName": "GPT-5.6 Luna (max)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.00927091111111111
-    },
-    {
-     "id": "b13c1257-d746-4027-8fc8-4892dc14701c",
-     "slug": "gpt-5-5-high",
-     "name": "GPT-5.5 (High)",
-     "shortName": "GPT-5.5 (high)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.10705229166666667
-    },
-    {
      "id": "19813eb2-460a-475c-af65-810bb8660fec",
      "slug": "gpt-6-luna-xhigh",
      "name": "GPT-6 Luna (Xhigh)",
      "shortName": "GPT-6 Luna (xhigh)",
      "creatorName": "OpenAI",
      "costPerTask": 0.0014390868055555554
-    },
-    {
-     "id": "87110ff0-1f79-41b4-9976-eda250597317",
-     "slug": "gpt-5-6-luna-xhigh",
-     "name": "GPT-5.6 Luna (Xhigh)",
-     "shortName": "GPT-5.6 Luna (xhigh)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.004469059722222222
-    },
-    {
-     "id": "81972fba-1219-477e-bbfb-18c656a63ff7",
-     "slug": "gpt-5-6-terra-high",
-     "name": "GPT-5.6 Terra (High)",
-     "shortName": "GPT-5.6 Terra (high)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.02319586111111111
-    },
-    {
-     "id": "01459872-433a-4ab2-8e99-7083162172eb",
-     "slug": "gpt-6-sol-low",
-     "name": "GPT-6 Sol (Low)",
-     "shortName": "GPT-6 Sol (low)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.007426701388888889
-    },
-    {
-     "id": "6b79f899-e3c0-45f6-923c-243faccdb2fc",
-     "slug": "gpt-5-5-medium",
-     "name": "GPT-5.5 (Medium)",
-     "shortName": "GPT-5.5 (medium)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.062208090277777774
-    },
-    {
-     "id": "0904b596-8932-43bd-9b21-324f128e1723",
-     "slug": "gpt-5-6-sol-low",
-     "name": "GPT-5.6 Sol (Low)",
-     "shortName": "GPT-5.6 Sol (low)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.024094624999999998
     },
     {
      "id": "7d1229bc-deea-4717-ba5b-f59a35d991e3",
@@ -2786,76 +2777,12 @@
      "costPerTask": 0.0009804875000000001
     },
     {
-     "id": "aa55297e-8fbf-4372-b4ab-9b068dc6396c",
-     "slug": "gpt-5-6-luna-high",
-     "name": "GPT-5.6 Luna (High)",
-     "shortName": "GPT-5.6 Luna (high)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.0029259881944444445
-    },
-    {
-     "id": "26e0f83a-ca98-4f34-94ac-7c5e251ee410",
-     "slug": "gpt-5-6-terra-medium",
-     "name": "GPT-5.6 Terra (Medium)",
-     "shortName": "GPT-5.6 Terra (medium)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.014950979166666665
-    },
-    {
      "id": "36667da0-9222-4967-adbb-f7efa15ad213",
      "slug": "gpt-6-luna-medium",
      "name": "GPT-6 Luna (Medium)",
      "shortName": "GPT-6 Luna (medium)",
      "creatorName": "OpenAI",
      "costPerTask": 0.0006986395833333334
-    },
-    {
-     "id": "d3e20e76-9e1a-45b6-b809-ad6aa37430cf",
-     "slug": "gpt-6-sol-non-reasoning",
-     "name": "GPT-6 Sol (Non-reasoning)",
-     "shortName": "GPT-6 Sol (non-reasoning)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.006940486111111112
-    },
-    {
-     "id": "7c4d1e30-6ecb-46cf-880c-41446d7b51f1",
-     "slug": "gpt-5-6-sol-non-reasoning",
-     "name": "GPT-5.6 Sol (Non-reasoning)",
-     "shortName": "GPT-5.6 Sol (non-reasoning)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.018905569444444444
-    },
-    {
-     "id": "cc4a20cd-09fe-4962-a430-119c815e85fa",
-     "slug": "gpt-5-6-terra-low",
-     "name": "GPT-5.6 Terra (Low)",
-     "shortName": "GPT-5.6 Terra (low)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.011905694444444443
-    },
-    {
-     "id": "c4169d75-9d24-4794-a9c3-69e1fe364de5",
-     "slug": "gpt-5-5-instant-06-26",
-     "name": "GPT-5.5 Instant (June 2026)",
-     "shortName": "GPT-5.5 Instant (June 2026)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.02547489583333333
-    },
-    {
-     "id": "58b812bf-8498-46db-b834-f43ccc614b61",
-     "slug": "gpt-5-6-luna-medium",
-     "name": "GPT-5.6 Luna (Medium)",
-     "shortName": "GPT-5.6 Luna (medium)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.0017958319444444444
-    },
-    {
-     "id": "ba242e40-83b7-4cd3-a0e0-b56237984914",
-     "slug": "gpt-5-4-mini",
-     "name": "GPT-5.4 mini (Xhigh)",
-     "shortName": "GPT-5.4 mini (xhigh)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.21084019010416666
     },
     {
      "id": "bf9708d8-933d-44f6-affa-b696a7a650c9",
@@ -2866,12 +2793,156 @@
      "costPerTask": 0.0005107920138888889
     },
     {
+     "id": "63cb48ea-0b0c-4e07-8ded-6d28dec4fa28",
+     "slug": "gpt-6-luna-non-reasoning",
+     "name": "GPT-6 Luna (Non-reasoning)",
+     "shortName": "GPT-6 Luna (non-reasoning)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.00041646180555555555
+    },
+    {
+     "id": "01459872-433a-4ab2-8e99-7083162172eb",
+     "slug": "gpt-6-sol-low",
+     "name": "GPT-6 Sol (Low)",
+     "shortName": "GPT-6 Sol (low)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.007426701388888889
+    },
+    {
      "id": "050c61cd-cddc-463a-a30a-a82aaa37be59",
      "slug": "gpt-5-6-luna-low",
      "name": "GPT-5.6 Luna (Low)",
      "shortName": "GPT-5.6 Luna (low)",
      "creatorName": "OpenAI",
      "costPerTask": 0.0014673874999999999
+    },
+    {
+     "id": "076f2674-bc4b-4925-be59-50832eb8c090",
+     "slug": "o3-mini-high",
+     "name": "o3-mini (High)",
+     "shortName": "o3-mini (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.026184801041666667
+    },
+    {
+     "id": "0904b596-8932-43bd-9b21-324f128e1723",
+     "slug": "gpt-5-6-sol-low",
+     "name": "GPT-5.6 Sol (Low)",
+     "shortName": "GPT-5.6 Sol (low)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.024094624999999998
+    },
+    {
+     "id": "1f054429-397e-4fdb-9e71-67bc92c1735e",
+     "slug": "gpt-5-5",
+     "name": "GPT-5.5 (Xhigh)",
+     "shortName": "GPT-5.5 (xhigh)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.16845909722222221
+    },
+    {
+     "id": "26e0f83a-ca98-4f34-94ac-7c5e251ee410",
+     "slug": "gpt-5-6-terra-medium",
+     "name": "GPT-5.6 Terra (Medium)",
+     "shortName": "GPT-5.6 Terra (medium)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.014950979166666665
+    },
+    {
+     "id": "29855680-7469-43eb-8b88-cd3fb1d99da3",
+     "slug": "gpt-5-mini",
+     "name": "GPT-5 mini (High)",
+     "shortName": "GPT-5 mini (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.010917830729166668
+    },
+    {
+     "id": "36f73aaf-d38a-4b56-a2b3-d04d17186910",
+     "slug": "gpt-oss-20b",
+     "name": "gpt-oss-20b (High)",
+     "shortName": "gpt-oss-20b (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.0022742725
+    },
+    {
+     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+     "slug": "gpt-5-6-luna",
+     "name": "GPT-5.6 Luna (Max)",
+     "shortName": "GPT-5.6 Luna (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.00927091111111111
+    },
+    {
+     "id": "52eebe3e-6ede-4e46-92db-c5dea49fc410",
+     "slug": "gpt-6-sol-high",
+     "name": "GPT-6 Sol (High)",
+     "shortName": "GPT-6 Sol (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.013034076388888888
+    },
+    {
+     "id": "58b812bf-8498-46db-b834-f43ccc614b61",
+     "slug": "gpt-5-6-luna-medium",
+     "name": "GPT-5.6 Luna (Medium)",
+     "shortName": "GPT-5.6 Luna (medium)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.0017958319444444444
+    },
+    {
+     "id": "6b79f899-e3c0-45f6-923c-243faccdb2fc",
+     "slug": "gpt-5-5-medium",
+     "name": "GPT-5.5 (Medium)",
+     "shortName": "GPT-5.5 (medium)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.062208090277777774
+    },
+    {
+     "id": "6f174934-5b7d-4333-86cb-f5ebf4a862e3",
+     "slug": "gpt-5-6-sol-medium",
+     "name": "GPT-5.6 Sol (Medium)",
+     "shortName": "GPT-5.6 Sol (medium)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.028483875
+    },
+    {
+     "id": "780a4a85-17ff-4175-a8dd-ebca4823e61b",
+     "slug": "gpt-6-sol-medium",
+     "name": "GPT-6 Sol (Medium)",
+     "shortName": "GPT-6 Sol (medium)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.009487291666666666
+    },
+    {
+     "id": "7c4d1e30-6ecb-46cf-880c-41446d7b51f1",
+     "slug": "gpt-5-6-sol-non-reasoning",
+     "name": "GPT-5.6 Sol (Non-reasoning)",
+     "shortName": "GPT-5.6 Sol (non-reasoning)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.018905569444444444
+    },
+    {
+     "id": "81972fba-1219-477e-bbfb-18c656a63ff7",
+     "slug": "gpt-5-6-terra-high",
+     "name": "GPT-5.6 Terra (High)",
+     "shortName": "GPT-5.6 Terra (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.02319586111111111
+    },
+    {
+     "id": "87110ff0-1f79-41b4-9976-eda250597317",
+     "slug": "gpt-5-6-luna-xhigh",
+     "name": "GPT-5.6 Luna (Xhigh)",
+     "shortName": "GPT-5.6 Luna (xhigh)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.004469059722222222
+    },
+    {
+     "id": "8afc250d-b538-45a2-812a-4605f4ffd87e",
+     "slug": "gpt-5-6-sol-high",
+     "name": "GPT-5.6 Sol (High)",
+     "shortName": "GPT-5.6 Sol (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.03528609722222223
     },
     {
      "id": "9b97a35e-6ac7-44d9-91c6-422fa678963e",
@@ -2882,6 +2953,78 @@
      "costPerTask": 0.009958513888888888
     },
     {
+     "id": "9e30696f-16fa-4b4f-ba53-161895a85fed",
+     "slug": "gpt-5-6-terra-xhigh",
+     "name": "GPT-5.6 Terra (Xhigh)",
+     "shortName": "GPT-5.6 Terra (xhigh)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.032531624999999995
+    },
+    {
+     "id": "aa55297e-8fbf-4372-b4ab-9b068dc6396c",
+     "slug": "gpt-5-6-luna-high",
+     "name": "GPT-5.6 Luna (High)",
+     "shortName": "GPT-5.6 Luna (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.0029259881944444445
+    },
+    {
+     "id": "b13c1257-d746-4027-8fc8-4892dc14701c",
+     "slug": "gpt-5-5-high",
+     "name": "GPT-5.5 (High)",
+     "shortName": "GPT-5.5 (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.10705229166666667
+    },
+    {
+     "id": "ba242e40-83b7-4cd3-a0e0-b56237984914",
+     "slug": "gpt-5-4-mini",
+     "name": "GPT-5.4 mini (Xhigh)",
+     "shortName": "GPT-5.4 mini (xhigh)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.21084019010416666
+    },
+    {
+     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
+     "slug": "gpt-5-6-terra",
+     "name": "GPT-5.6 Terra (Max)",
+     "shortName": "GPT-5.6 Terra (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.11439322222222222
+    },
+    {
+     "id": "c4169d75-9d24-4794-a9c3-69e1fe364de5",
+     "slug": "gpt-5-5-instant-06-26",
+     "name": "GPT-5.5 Instant (June 2026)",
+     "shortName": "GPT-5.5 Instant (June 2026)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.02547489583333333
+    },
+    {
+     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+     "slug": "gpt-6-sol",
+     "name": "GPT-6 Sol (Max)",
+     "shortName": "GPT-6 Sol (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.042489881944444446
+    },
+    {
+     "id": "cc4a20cd-09fe-4962-a430-119c815e85fa",
+     "slug": "gpt-5-6-terra-low",
+     "name": "GPT-5.6 Terra (Low)",
+     "shortName": "GPT-5.6 Terra (low)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.011905694444444443
+    },
+    {
+     "id": "d3e20e76-9e1a-45b6-b809-ad6aa37430cf",
+     "slug": "gpt-6-sol-non-reasoning",
+     "name": "GPT-6 Sol (Non-reasoning)",
+     "shortName": "GPT-6 Sol (non-reasoning)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.006940486111111112
+    },
+    {
      "id": "d4fc3f33-f2b0-4da1-88ee-f1f82bd4de31",
      "slug": "gpt-5-4-nano",
      "name": "GPT-5.4 nano (Xhigh)",
@@ -2890,20 +3033,28 @@
      "costPerTask": 0.022674866145833337
     },
     {
-     "id": "63cb48ea-0b0c-4e07-8ded-6d28dec4fa28",
-     "slug": "gpt-6-luna-non-reasoning",
-     "name": "GPT-6 Luna (Non-reasoning)",
-     "shortName": "GPT-6 Luna (non-reasoning)",
+     "id": "d93edfe8-bf35-49ad-b56e-b18116142a1c",
+     "slug": "gpt-5-6-sol",
+     "name": "GPT-5.6 Sol (Max)",
+     "shortName": "GPT-5.6 Sol (max)",
      "creatorName": "OpenAI",
-     "costPerTask": 0.00041646180555555555
+     "costPerTask": 0.07969684722222221
     },
     {
-     "id": "29855680-7469-43eb-8b88-cd3fb1d99da3",
-     "slug": "gpt-5-mini",
-     "name": "GPT-5 mini (High)",
-     "shortName": "GPT-5 mini (high)",
+     "id": "d998db47-9b67-4727-a2bb-2e1261020ac0",
+     "slug": "gpt-5-6-sol-xhigh",
+     "name": "GPT-5.6 Sol (Xhigh)",
+     "shortName": "GPT-5.6 Sol (xhigh)",
      "creatorName": "OpenAI",
-     "costPerTask": 0.010917830729166668
+     "costPerTask": 0.044891458333333335
+    },
+    {
+     "id": "da2642fe-9f73-4788-b5af-24edcd55b37e",
+     "slug": "gpt-6-sol-xhigh",
+     "name": "GPT-6 Sol (Xhigh)",
+     "shortName": "GPT-6 Sol (xhigh)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.02145940972222222
     },
     {
      "id": "dc64f856-3ded-497d-9527-d41d31267ed5",
@@ -2922,148 +3073,124 @@
      "costPerTask": 0.003906497395833333
     },
     {
-     "id": "076f2674-bc4b-4925-be59-50832eb8c090",
-     "slug": "o3-mini-high",
-     "name": "o3-mini (High)",
-     "shortName": "o3-mini (high)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.026184801041666667
+     "id": "ff2f3f3d-783f-4e27-8a39-47237501a313",
+     "slug": "muse-wonder",
+     "name": "Muse Wonder (Max)",
+     "shortName": "Muse Wonder (max)",
+     "creatorName": "Meta",
+     "costPerTask": 0.134993125
     },
     {
-     "id": "36f73aaf-d38a-4b56-a2b3-d04d17186910",
-     "slug": "gpt-oss-20b",
-     "name": "gpt-oss-20b (High)",
-     "shortName": "gpt-oss-20b (high)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.0022742725
+     "id": "9999672c-b687-4026-9c15-5cef02ff53bb",
+     "slug": "muse-spark-1-3",
+     "name": "Muse Spark 1.3 (Max)",
+     "shortName": "Muse Spark 1.3 (max)",
+     "creatorName": "Meta",
+     "costPerTask": 0.03927459895833333
     },
     {
-     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
-     "slug": "gemini-4-argon",
-     "name": "Gemini 4 Argon (High)",
-     "shortName": "Gemini 4 Argon (high)",
-     "creatorName": "Google",
-     "costPerTask": 0.10567819444444444
+     "id": "3661c8fb-caf7-4118-aa18-65b84fea8e44",
+     "slug": "muse-spark-open",
+     "name": "Muse Spark Open (Xhigh)",
+     "shortName": "Muse Spark Open (xhigh)",
+     "creatorName": "Meta",
+     "costPerTask": 0.040471086805555556
     },
     {
-     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
-     "slug": "gemini-3-8-flash",
-     "name": "Gemini 3.8 Flash (High)",
-     "shortName": "Gemini 3.8 Flash (high)",
-     "creatorName": "Google",
-     "costPerTask": 0.07681339583333333
+     "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
+     "slug": "muse-glimmer",
+     "name": "Muse Glimmer (High)",
+     "shortName": "Muse Glimmer (high)",
+     "creatorName": "Meta",
+     "costPerTask": 0.006250422916666667
     },
     {
-     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
-     "slug": "gemini-3-8-flash-medium",
-     "name": "Gemini 3.8 Flash (Medium)",
-     "shortName": "Gemini 3.8 Flash (medium)",
-     "creatorName": "Google",
-     "costPerTask": 0.029326989583333334
+     "id": "04ee6719-0327-463b-a1a1-70a6a78254f9",
+     "slug": "muse-spark-1-2",
+     "name": "Muse Spark 1.2 (Xhigh)",
+     "shortName": "Muse Spark 1.2 (xhigh)",
+     "creatorName": "Meta",
+     "costPerTask": 0.060479525173611104
     },
     {
-     "id": "b2331108-72ed-415a-82d1-188633875bbc",
-     "slug": "gemini-3-7-flash",
-     "name": "Gemini 3.7 Flash (High)",
-     "shortName": "Gemini 3.7 Flash (high)",
-     "creatorName": "Google",
-     "costPerTask": 0.024521190104166667
+     "id": "922c69c7-9037-43c6-8bcf-a1c555e7f3eb",
+     "slug": "llama-4-maverick",
+     "name": "Llama 4 Maverick",
+     "shortName": "Llama 4 Maverick",
+     "creatorName": "Meta",
+     "costPerTask": 0.00085371
     },
     {
-     "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
-     "slug": "gemini-3-6-flash",
-     "name": "Gemini 3.6 Flash (High)",
-     "shortName": "Gemini 3.6 Flash (high)",
-     "creatorName": "Google",
-     "costPerTask": 0.030375859374999998
+     "id": "adf9a85e-abc3-4f28-937b-db6655cc5238",
+     "slug": "llama-4-scout",
+     "name": "Llama 4 Scout",
+     "shortName": "Llama 4 Scout",
+     "creatorName": "Meta",
+     "costPerTask": 0.0009124391666666668
     },
     {
-     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
-     "slug": "gemini-3-8-flash-low",
-     "name": "Gemini 3.8 Flash (Low)",
-     "shortName": "Gemini 3.8 Flash (low)",
-     "creatorName": "Google",
-     "costPerTask": 0.0042929765625
+     "id": "d5170215-69be-4129-849b-26d8d8825bfc",
+     "slug": "muse-spark-1-3-xhigh",
+     "name": "Muse Spark 1.3 (Xhigh)",
+     "shortName": "Muse Spark 1.3 (xhigh)",
+     "creatorName": "Meta",
+     "costPerTask": 0.03716573697916667
     },
     {
-     "id": "0097ebf5-124f-42f6-9463-33b00e711f03",
-     "slug": "gemini-3-5-flash",
-     "name": "Gemini 3.5 Flash (High)",
-     "shortName": "Gemini 3.5 Flash (high)",
-     "creatorName": "Google",
-     "costPerTask": 0.06818365624999999
+     "id": "d61493e2-43ff-460c-9054-eaf6ba317360",
+     "slug": "muse-spark-1-1",
+     "name": "Muse Spark 1.1 (Xhigh)",
+     "shortName": "Muse Spark 1.1 (xhigh)",
+     "creatorName": "Meta",
+     "costPerTask": 0.030686757812499996
     },
     {
-     "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
-     "slug": "gemini-3-1-pro-preview",
-     "name": "Gemini 3.1 Pro Preview",
-     "shortName": "Gemini 3.1 Pro Preview",
-     "creatorName": "Google",
-     "costPerTask": 0.08296459027777778
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "slug": "kimi-k3-1-pro",
+     "name": "Kimi K3.1 Pro",
+     "shortName": "Kimi K3.1 Pro",
+     "creatorName": "Kimi",
+     "costPerTask": 0.06983243055555555
     },
     {
-     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
-     "slug": "gemini-3-5-flash-lite",
-     "name": "Gemini 3.5 Flash-Lite",
-     "shortName": "Gemini 3.5 Flash-Lite",
-     "creatorName": "Google",
-     "costPerTask": 0.012601281597222224
+     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
+     "slug": "kimi-k2-6",
+     "name": "Kimi K2.6 (Reasoning)",
+     "shortName": "Kimi K2.6",
+     "creatorName": "Kimi",
+     "costPerTask": 0.043348140798611115
     },
     {
-     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
-     "slug": "gemma-4-26b-a4b",
-     "name": "Gemma 4 26B A4B (Reasoning)",
-     "shortName": "Gemma 4 26B A4B",
-     "creatorName": "Google",
-     "costPerTask": 0.0029019229861111115
+     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
+     "slug": "kimi-k3-low",
+     "name": "Kimi K3 (Low)",
+     "shortName": "Kimi K3 (low)",
+     "creatorName": "Kimi",
+     "costPerTask": 0.018565968750000002
     },
     {
-     "id": "27202e5f-c82d-4710-92e9-4317877d4883",
-     "slug": "gemini-2-5-pro",
-     "name": "Gemini 2.5 Pro",
-     "shortName": "Gemini 2.5 Pro",
-     "creatorName": "Google",
-     "costPerTask": 0.07984639756944445
+     "id": "8d0cb231-7303-452c-9923-a9620b948475",
+     "slug": "kimi-k2-7-code",
+     "name": "Kimi K2.7 Code",
+     "shortName": "Kimi K2.7 Code",
+     "creatorName": "Kimi",
+     "costPerTask": 0.023826147916666665
     },
     {
-     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
-     "slug": "gemini-3-1-flash-lite-preview",
-     "name": "Gemini 3.1 Flash-Lite",
-     "shortName": "Gemini 3.1 Flash-Lite",
-     "creatorName": "Google",
-     "costPerTask": 0.01818731857638889
+     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
+     "slug": "kimi-k3",
+     "name": "Kimi K3 (Max)",
+     "shortName": "Kimi K3 (max)",
+     "creatorName": "Kimi",
+     "costPerTask": 0.06016669791666667
     },
     {
-     "id": "cd26a386-4873-46ff-b853-d239050025a2",
-     "slug": "gemma-4-31b",
-     "name": "Gemma 4 31B (Reasoning)",
-     "shortName": "Gemma 4 31B",
-     "creatorName": "Google",
-     "costPerTask": 0
-    },
-    {
-     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
-     "slug": "gemma-4-e4b",
-     "name": "Gemma 4 E4B (Reasoning)",
-     "shortName": "Gemma 4 E4B",
-     "creatorName": "Google",
-     "costPerTask": 0.00028473548611111115
-    },
-    {
-     "id": "2bfdd17a-e027-4068-a54e-b0e90a6df118",
-     "slug": "gemma-3-27b",
-     "name": "Gemma 3 27B Instruct",
-     "shortName": "Gemma 3 27B",
-     "creatorName": "Google",
-     "costPerTask": 0
-    },
-    {
-     "id": "2e6400f5-85ca-4ebc-ba8f-c2811a631138",
-     "slug": "gemma-3-12b",
-     "name": "Gemma 3 12B Instruct",
-     "shortName": "Gemma 3 12B",
-     "creatorName": "Google",
-     "costPerTask": 0
+     "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
+     "slug": "grok-4-7-high",
+     "name": "Grok 4.7 (High)",
+     "shortName": "Grok 4.7 (high)",
+     "creatorName": "SpaceXAI",
+     "costPerTask": 0.09931336805555556
     },
     {
      "id": "59627802-1546-422c-9a65-65b61c022d36",
@@ -3074,12 +3201,52 @@
      "costPerTask": 0.13300160416666665
     },
     {
-     "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
-     "slug": "grok-4-7-high",
-     "name": "Grok 4.7 (High)",
-     "shortName": "Grok 4.7 (high)",
+     "id": "208c16f0-8c5b-4524-ac8a-ac74c02e80a9",
+     "slug": "grok-4-7-low",
+     "name": "Grok 4.7 (Low)",
+     "shortName": "Grok 4.7 (low)",
      "creatorName": "SpaceXAI",
-     "costPerTask": 0.09931336805555556
+     "costPerTask": 0.02677860416666667
+    },
+    {
+     "id": "26614164-6840-4e17-a65a-2deb2fe7e87b",
+     "slug": "grok-4-6-medium",
+     "name": "Grok 4.6 (Medium)",
+     "shortName": "Grok 4.6 (medium)",
+     "creatorName": "SpaceXAI",
+     "costPerTask": 0.023294180555555558
+    },
+    {
+     "id": "794f69b5-cede-482b-b1cc-d769478497cd",
+     "slug": "grok-4-5",
+     "name": "Grok 4.5 (High)",
+     "shortName": "Grok 4.5 (high)",
+     "creatorName": "SpaceXAI",
+     "costPerTask": 0.025980527777777776
+    },
+    {
+     "id": "90c2a9cf-ad7e-4332-9be2-2fd1309833e2",
+     "slug": "grok-4-3-non-reasoning",
+     "name": "Grok 4.3 (Non-reasoning)",
+     "shortName": "Grok 4.3 (non-reasoning)",
+     "creatorName": "SpaceXAI",
+     "costPerTask": 0.004003246527777778
+    },
+    {
+     "id": "948892b5-db03-4118-a4a8-ccd51ed871ea",
+     "slug": "grok-4-3",
+     "name": "Grok 4.3 (High)",
+     "shortName": "Grok 4.3 (high)",
+     "creatorName": "SpaceXAI",
+     "costPerTask": 0.01301550347222222
+    },
+    {
+     "id": "c07e65e6-32fc-451e-938d-7477a1c3ffcc",
+     "slug": "grok-4-6-low",
+     "name": "Grok 4.6 (Low)",
+     "shortName": "Grok 4.6 (low)",
+     "creatorName": "SpaceXAI",
+     "costPerTask": 0.00979515972222222
     },
     {
      "id": "c8adc5cf-fd5a-407b-af51-dc3bede3e49c",
@@ -3098,52 +3265,308 @@
      "costPerTask": 0.029567694444444445
     },
     {
-     "id": "26614164-6840-4e17-a65a-2deb2fe7e87b",
-     "slug": "grok-4-6-medium",
-     "name": "Grok 4.6 (Medium)",
-     "shortName": "Grok 4.6 (medium)",
-     "creatorName": "SpaceXAI",
-     "costPerTask": 0.023294180555555558
+     "id": "b112af07-3bd5-4647-b09f-b23204361bb2",
+     "slug": "qwen3-8-max",
+     "name": "Qwen3.8 Max (0902)",
+     "shortName": "Qwen3.8 Max (0902)",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.11307818750000001
     },
     {
-     "id": "208c16f0-8c5b-4524-ac8a-ac74c02e80a9",
-     "slug": "grok-4-7-low",
-     "name": "Grok 4.7 (Low)",
-     "shortName": "Grok 4.7 (low)",
-     "creatorName": "SpaceXAI",
-     "costPerTask": 0.02677860416666667
+     "id": "b01dee41-c62b-48ed-8d16-984adc405e5c",
+     "slug": "qwen3-8-27b",
+     "name": "Qwen3.8 27B (Xhigh)",
+     "shortName": "Qwen3.8 27B (xhigh)",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.06447482291666667
     },
     {
-     "id": "794f69b5-cede-482b-b1cc-d769478497cd",
-     "slug": "grok-4-5",
-     "name": "Grok 4.5 (High)",
-     "shortName": "Grok 4.5 (high)",
-     "creatorName": "SpaceXAI",
-     "costPerTask": 0.025980527777777776
+     "id": "0e66bae9-41f1-42fc-9276-ce8cb6f72919",
+     "slug": "qwen3-5-397b-a17b",
+     "name": "Qwen3.5 397B A17B (Reasoning)",
+     "shortName": "Qwen3.5 397B A17B",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.025959152083333336
     },
     {
-     "id": "c07e65e6-32fc-451e-938d-7477a1c3ffcc",
-     "slug": "grok-4-6-low",
-     "name": "Grok 4.6 (Low)",
-     "shortName": "Grok 4.6 (low)",
-     "creatorName": "SpaceXAI",
-     "costPerTask": 0.00979515972222222
+     "id": "2236df45-0699-40d1-b5cc-69ee345d2257",
+     "slug": "qwen3-5-122b-a10b",
+     "name": "Qwen3.5 122B A10B (Reasoning)",
+     "shortName": "Qwen3.5 122B A10B",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.01588411111111111
     },
     {
-     "id": "948892b5-db03-4118-a4a8-ccd51ed871ea",
-     "slug": "grok-4-3",
-     "name": "Grok 4.3 (High)",
-     "shortName": "Grok 4.3 (high)",
-     "creatorName": "SpaceXAI",
-     "costPerTask": 0.01301550347222222
+     "id": "2d28a13a-096e-475a-beb8-26bbd1c7d51c",
+     "slug": "qwen3-5-9b",
+     "name": "Qwen3.5 9B (Reasoning)",
+     "shortName": "Qwen3.5 9B",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.0017788336458333333
     },
     {
-     "id": "90c2a9cf-ad7e-4332-9be2-2fd1309833e2",
-     "slug": "grok-4-3-non-reasoning",
-     "name": "Grok 4.3 (Non-reasoning)",
-     "shortName": "Grok 4.3 (non-reasoning)",
-     "creatorName": "SpaceXAI",
-     "costPerTask": 0.004003246527777778
+     "id": "353c92f3-2148-4c2d-9231-aa7e1322a1fd",
+     "slug": "qwen3-8-27b-non-reasoning",
+     "name": "Qwen3.8 27B (Non-reasoning)",
+     "shortName": "Qwen3.8 27B (non-reasoning)",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.004820871527777778
+    },
+    {
+     "id": "4559e9f0-8aad-4681-89fb-68cb915e0f16",
+     "slug": "qwen3-14b-instruct-reasoning",
+     "name": "Qwen3 14B (Reasoning)",
+     "shortName": "Qwen3 14B",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.0013655029166666668
+    },
+    {
+     "id": "5e5b4ce7-bc54-47b2-b911-21b9cad8394c",
+     "slug": "qwen3-8-max-0803",
+     "name": "Qwen3.8 Max",
+     "shortName": "Qwen3.8 Max",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.11063102083333333
+    },
+    {
+     "id": "6657d7de-a2a9-40bc-a32f-86e80ad63698",
+     "slug": "qwen3-8-27b-medium",
+     "name": "Qwen3.8 27B (Medium)",
+     "shortName": "Qwen3.8 27B (medium)",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.011675270833333333
+    },
+    {
+     "id": "69534bed-2ffd-4235-832b-e20a810333ab",
+     "slug": "qwen3-7-max",
+     "name": "Qwen3.7 Max",
+     "shortName": "Qwen3.7 Max",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.05839658854166666
+    },
+    {
+     "id": "7e30585f-fad7-40df-a8cb-03c1d96df38a",
+     "slug": "qwen3-8-27b-low",
+     "name": "Qwen3.8 27B (Low)",
+     "shortName": "Qwen3.8 27B (low)",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.008242126736111112
+    },
+    {
+     "id": "8665ca00-c687-44c7-875c-22618cb31c4f",
+     "slug": "qwen3-6-35b-a3b",
+     "name": "Qwen3.6 35B A3B (Reasoning)",
+     "shortName": "Qwen3.6 35B A3B",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.00950658203125
+    },
+    {
+     "id": "8c29d66d-bf98-4ea3-8572-5409353ecc66",
+     "slug": "qwen3-6-27b",
+     "name": "Qwen3.6 27B (Reasoning)",
+     "shortName": "Qwen3.6 27B",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.019682327083333336
+    },
+    {
+     "id": "8df710d3-9dae-4498-9b4e-9818238e6f31",
+     "slug": "qwen3-8-2-4t-a95b",
+     "name": "Qwen3.8 2.4T A95B",
+     "shortName": "Qwen3.8 2.4T A95B",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.10060797916666665
+    },
+    {
+     "id": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
+     "slug": "qwen3-8-flash-next",
+     "name": "Qwen3.8-Flash-Next",
+     "shortName": "Qwen3.8-Flash-Next",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.01263321940972222
+    },
+    {
+     "id": "a87fce42-eea3-4e45-a96d-fe057814f371",
+     "slug": "qwen3-7-plus",
+     "name": "Qwen3.7 Plus",
+     "shortName": "Qwen3.7 Plus",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.013954031944444445
+    },
+    {
+     "id": "b00ecd62-a53f-4aed-b833-3e9d6b0170ba",
+     "slug": "qwen3-32b-instruct-reasoning",
+     "name": "Qwen3 32B (Reasoning)",
+     "shortName": "Qwen3 32B",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.003581302083333333
+    },
+    {
+     "id": "f6ccbe1d-bd7e-484b-9795-18cc9f91552d",
+     "slug": "qwen3-235b-a22b-instruct-2507-reasoning",
+     "name": "Qwen3 235B A22B 2507 (Reasoning)",
+     "shortName": "Qwen3 235B A22B 2507",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.015317894583333333
+    },
+    {
+     "id": "fc92f822-04b7-420d-9c07-a21af5e9aac7",
+     "slug": "qwen3-coder-next",
+     "name": "Qwen3 Coder Next",
+     "shortName": "Qwen3 Coder Next",
+     "creatorName": "Alibaba",
+     "costPerTask": 0.0021680905555555557
+    },
+    {
+     "id": "f151fd0b-2139-40cf-a3ec-995e8cedc592",
+     "slug": "deepseek-v4-1-flash-1017",
+     "name": "DeepSeek V4.1 Flash 1017 (Max)",
+     "shortName": "DeepSeek V4.1 Flash 1017 (max)",
+     "creatorName": "DeepSeek",
+     "costPerTask": 0.016143957291666663
+    },
+    {
+     "id": "83173329-c09a-41f1-a028-a282a5f908d7",
+     "slug": "deepseek-v4-pro",
+     "name": "DeepSeek V4 Pro 0813 (Max)",
+     "shortName": "DeepSeek V4 Pro 0813 (max)",
+     "creatorName": "DeepSeek",
+     "costPerTask": 0.050256222499999996
+    },
+    {
+     "id": "0a7dda4d-cc9c-4a90-abc1-abb5772c901b",
+     "slug": "deepseek-v3-1-terminus-reasoning",
+     "name": "DeepSeek V3.1 Terminus (Reasoning)",
+     "shortName": "DeepSeek V3.1 Terminus",
+     "creatorName": "DeepSeek",
+     "costPerTask": 0.012793894375
+    },
+    {
+     "id": "0e34f05c-387e-4968-be15-ccec4a55d8c1",
+     "slug": "deepseek-r1-0120",
+     "name": "DeepSeek R1 (Jan '25)",
+     "shortName": "DeepSeek R1 (Jan)",
+     "creatorName": "DeepSeek",
+     "costPerTask": 0.02797491666666667
+    },
+    {
+     "id": "43fc5506-c5ed-4dee-9b85-962bf7ae3986",
+     "slug": "deepseek-v3",
+     "name": "DeepSeek V3 (Dec '24)",
+     "shortName": "DeepSeek V3 (Dec)",
+     "creatorName": "DeepSeek",
+     "costPerTask": 0.0010633126388888891
+    },
+    {
+     "id": "73c96f99-0de3-4668-a4bd-b106a0fe18f2",
+     "slug": "deepseek-v4-1-flash-non-reasoning",
+     "name": "DeepSeek V4.1 Flash (Non-reasoning)",
+     "shortName": "DeepSeek V4.1 Flash (non-reasoning)",
+     "creatorName": "DeepSeek",
+     "costPerTask": 0.0020843864583333332
+    },
+    {
+     "id": "75e1c197-f239-4361-a9d6-66dccfead236",
+     "slug": "deepseek-v3-0324",
+     "name": "DeepSeek V3 0324",
+     "shortName": "DeepSeek V3 0324",
+     "creatorName": "DeepSeek",
+     "costPerTask": 0.0009524439583333333
+    },
+    {
+     "id": "7707a46f-895f-4247-b7a8-ddab87c9a11d",
+     "slug": "deepseek-v4-flash-vision",
+     "name": "DeepSeek V4 Flash Vision (Max)",
+     "shortName": "DeepSeek V4 Flash Vision (max)",
+     "creatorName": "DeepSeek",
+     "costPerTask": 0.034389608611111115
+    },
+    {
+     "id": "89a2c945-1fab-4ee4-9f45-83a9f46cb221",
+     "slug": "deepseek-v4-flash-0420-high",
+     "name": "DeepSeek V4 Flash 0420 (High)",
+     "shortName": "DeepSeek V4 Flash (high)",
+     "creatorName": "DeepSeek",
+     "costPerTask": 0.0020502430392361115
+    },
+    {
+     "id": "bf220674-68bd-43cc-a1b8-ce5ed4d2f18d",
+     "slug": "deepseek-v4-pro-0424",
+     "name": "DeepSeek V4 Pro 0424 (Max)",
+     "shortName": "DeepSeek V4 Pro (max)",
+     "creatorName": "DeepSeek",
+     "costPerTask": 0.011360523437499999
+    },
+    {
+     "id": "d4f5b250-be37-4801-85e6-32fda4179337",
+     "slug": "deepseek-v4-pro-non-reasoning",
+     "name": "DeepSeek V4 Pro 0813 (Non-reasoning)",
+     "shortName": "DeepSeek V4 Pro 0813 (non-reasoning)",
+     "creatorName": "DeepSeek",
+     "costPerTask": 0.005223450833333333
+    },
+    {
+     "id": "d8ddb241-b3e4-4c25-a6a3-72eb1b30c541",
+     "slug": "deepseek-v4-flash-0420",
+     "name": "DeepSeek V4 Flash 0420 (Max)",
+     "shortName": "DeepSeek V4 Flash (max)",
+     "creatorName": "DeepSeek",
+     "costPerTask": 0.0032914068833333333
+    },
+    {
+     "id": "dbe7c625-3100-4463-b479-a228c41f75dd",
+     "slug": "deepseek-v4-1-flash",
+     "name": "DeepSeek V4.1 Flash (Max)",
+     "shortName": "DeepSeek V4.1 Flash (max)",
+     "creatorName": "DeepSeek",
+     "costPerTask": 0.012361726041666667
+    },
+    {
+     "id": "fe4c0848-e284-4e52-a79d-cdc28392f1a9",
+     "slug": "deepseek-v4-flash",
+     "name": "DeepSeek V4 Flash 0731 (Max)",
+     "shortName": "DeepSeek V4 Flash 0731 (max)",
+     "creatorName": "DeepSeek",
+     "costPerTask": 0.009055585
+    },
+    {
+     "id": "cd684ea4-b475-4269-b001-d469d06d8a7a",
+     "slug": "glm-5-3",
+     "name": "GLM-5.3 (Max)",
+     "shortName": "GLM-5.3 (max)",
+     "creatorName": "Z AI",
+     "costPerTask": 0.08202589583333333
+    },
+    {
+     "id": "cc1e488b-8ba4-464d-875d-690166b15ad3",
+     "slug": "glm-5-3-low",
+     "name": "GLM-5.3 (Low)",
+     "shortName": "GLM-5.3 (low)",
+     "creatorName": "Z AI",
+     "costPerTask": 0.0064749291666666665
+    },
+    {
+     "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
+     "slug": "glm-5-3-flash",
+     "name": "GLM-5.3-Flash",
+     "shortName": "GLM-5.3-Flash",
+     "creatorName": "Z AI",
+     "costPerTask": 0.013985710069444443
+    },
+    {
+     "id": "5aa1c578-af76-4b91-8699-cdd43582b3af",
+     "slug": "glm-5-1",
+     "name": "GLM-5.1 (Reasoning)",
+     "shortName": "GLM-5.1",
+     "creatorName": "Z AI",
+     "costPerTask": 0.04418658788194445
+    },
+    {
+     "id": "f7a4ea75-e548-4069-80d4-9be8bc7c009b",
+     "slug": "glm-5-2",
+     "name": "GLM-5.2 (Max)",
+     "shortName": "GLM-5.2 (max)",
+     "creatorName": "Z AI",
+     "costPerTask": 0.05536939097222223
     },
     {
      "id": "24d8fdfe-6241-424e-b7b7-1b6efb06e4fb",
@@ -3178,316 +3601,20 @@
      "costPerTask": 0.0033515842986111114
     },
     {
-     "id": "b112af07-3bd5-4647-b09f-b23204361bb2",
-     "slug": "qwen3-8-max",
-     "name": "Qwen3.8 Max (0902)",
-     "shortName": "Qwen3.8 Max (0902)",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.11307818750000001
-    },
-    {
-     "id": "5e5b4ce7-bc54-47b2-b911-21b9cad8394c",
-     "slug": "qwen3-8-max-0803",
-     "name": "Qwen3.8 Max",
-     "shortName": "Qwen3.8 Max",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.11063102083333333
-    },
-    {
-     "id": "8df710d3-9dae-4498-9b4e-9818238e6f31",
-     "slug": "qwen3-8-2-4t-a95b",
-     "name": "Qwen3.8 2.4T A95B",
-     "shortName": "Qwen3.8 2.4T A95B",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.10060797916666665
-    },
-    {
-     "id": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
-     "slug": "qwen3-8-flash-next",
-     "name": "Qwen3.8-Flash-Next",
-     "shortName": "Qwen3.8-Flash-Next",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.01263321940972222
-    },
-    {
-     "id": "b01dee41-c62b-48ed-8d16-984adc405e5c",
-     "slug": "qwen3-8-27b",
-     "name": "Qwen3.8 27B (Xhigh)",
-     "shortName": "Qwen3.8 27B (xhigh)",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.06447482291666667
-    },
-    {
-     "id": "69534bed-2ffd-4235-832b-e20a810333ab",
-     "slug": "qwen3-7-max",
-     "name": "Qwen3.7 Max",
-     "shortName": "Qwen3.7 Max",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.05839658854166666
-    },
-    {
-     "id": "6657d7de-a2a9-40bc-a32f-86e80ad63698",
-     "slug": "qwen3-8-27b-medium",
-     "name": "Qwen3.8 27B (Medium)",
-     "shortName": "Qwen3.8 27B (medium)",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.011675270833333333
-    },
-    {
-     "id": "7e30585f-fad7-40df-a8cb-03c1d96df38a",
-     "slug": "qwen3-8-27b-low",
-     "name": "Qwen3.8 27B (Low)",
-     "shortName": "Qwen3.8 27B (low)",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.008242126736111112
-    },
-    {
-     "id": "a87fce42-eea3-4e45-a96d-fe057814f371",
-     "slug": "qwen3-7-plus",
-     "name": "Qwen3.7 Plus",
-     "shortName": "Qwen3.7 Plus",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.013954031944444445
-    },
-    {
-     "id": "8c29d66d-bf98-4ea3-8572-5409353ecc66",
-     "slug": "qwen3-6-27b",
-     "name": "Qwen3.6 27B (Reasoning)",
-     "shortName": "Qwen3.6 27B",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.019682327083333336
-    },
-    {
-     "id": "353c92f3-2148-4c2d-9231-aa7e1322a1fd",
-     "slug": "qwen3-8-27b-non-reasoning",
-     "name": "Qwen3.8 27B (Non-reasoning)",
-     "shortName": "Qwen3.8 27B (non-reasoning)",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.004820871527777778
-    },
-    {
-     "id": "0e66bae9-41f1-42fc-9276-ce8cb6f72919",
-     "slug": "qwen3-5-397b-a17b",
-     "name": "Qwen3.5 397B A17B (Reasoning)",
-     "shortName": "Qwen3.5 397B A17B",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.025959152083333336
-    },
-    {
-     "id": "8665ca00-c687-44c7-875c-22618cb31c4f",
-     "slug": "qwen3-6-35b-a3b",
-     "name": "Qwen3.6 35B A3B (Reasoning)",
-     "shortName": "Qwen3.6 35B A3B",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.00950658203125
-    },
-    {
-     "id": "2236df45-0699-40d1-b5cc-69ee345d2257",
-     "slug": "qwen3-5-122b-a10b",
-     "name": "Qwen3.5 122B A10B (Reasoning)",
-     "shortName": "Qwen3.5 122B A10B",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.01588411111111111
-    },
-    {
-     "id": "f6ccbe1d-bd7e-484b-9795-18cc9f91552d",
-     "slug": "qwen3-235b-a22b-instruct-2507-reasoning",
-     "name": "Qwen3 235B A22B 2507 (Reasoning)",
-     "shortName": "Qwen3 235B A22B 2507",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.015317894583333333
-    },
-    {
-     "id": "2d28a13a-096e-475a-beb8-26bbd1c7d51c",
-     "slug": "qwen3-5-9b",
-     "name": "Qwen3.5 9B (Reasoning)",
-     "shortName": "Qwen3.5 9B",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.0017788336458333333
-    },
-    {
-     "id": "fc92f822-04b7-420d-9c07-a21af5e9aac7",
-     "slug": "qwen3-coder-next",
-     "name": "Qwen3 Coder Next",
-     "shortName": "Qwen3 Coder Next",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.0021680905555555557
-    },
-    {
-     "id": "b00ecd62-a53f-4aed-b833-3e9d6b0170ba",
-     "slug": "qwen3-32b-instruct-reasoning",
-     "name": "Qwen3 32B (Reasoning)",
-     "shortName": "Qwen3 32B",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.003581302083333333
-    },
-    {
-     "id": "4559e9f0-8aad-4681-89fb-68cb915e0f16",
-     "slug": "qwen3-14b-instruct-reasoning",
-     "name": "Qwen3 14B (Reasoning)",
-     "shortName": "Qwen3 14B",
-     "creatorName": "Alibaba",
-     "costPerTask": 0.0013655029166666668
-    },
-    {
-     "id": "f151fd0b-2139-40cf-a3ec-995e8cedc592",
-     "slug": "deepseek-v4-1-flash-1017",
-     "name": "DeepSeek V4.1 Flash 1017 (Max)",
-     "shortName": "DeepSeek V4.1 Flash 1017 (max)",
-     "creatorName": "DeepSeek",
-     "costPerTask": 0.016143957291666663
-    },
-    {
-     "id": "dbe7c625-3100-4463-b479-a228c41f75dd",
-     "slug": "deepseek-v4-1-flash",
-     "name": "DeepSeek V4.1 Flash (Max)",
-     "shortName": "DeepSeek V4.1 Flash (max)",
-     "creatorName": "DeepSeek",
-     "costPerTask": 0.012350750190972221
-    },
-    {
-     "id": "83173329-c09a-41f1-a028-a282a5f908d7",
-     "slug": "deepseek-v4-pro",
-     "name": "DeepSeek V4 Pro 0813 (Max)",
-     "shortName": "DeepSeek V4 Pro 0813 (max)",
-     "creatorName": "DeepSeek",
-     "costPerTask": 0.050256222499999996
-    },
-    {
-     "id": "7707a46f-895f-4247-b7a8-ddab87c9a11d",
-     "slug": "deepseek-v4-flash-vision",
-     "name": "DeepSeek V4 Flash Vision (Max)",
-     "shortName": "DeepSeek V4 Flash Vision (max)",
-     "creatorName": "DeepSeek",
-     "costPerTask": 0.034389608611111115
-    },
-    {
-     "id": "fe4c0848-e284-4e52-a79d-cdc28392f1a9",
-     "slug": "deepseek-v4-flash",
-     "name": "DeepSeek V4 Flash 0731 (Max)",
-     "shortName": "DeepSeek V4 Flash 0731 (max)",
-     "creatorName": "DeepSeek",
-     "costPerTask": 0.009055585
-    },
-    {
-     "id": "bf220674-68bd-43cc-a1b8-ce5ed4d2f18d",
-     "slug": "deepseek-v4-pro-0424",
-     "name": "DeepSeek V4 Pro 0424 (Max)",
-     "shortName": "DeepSeek V4 Pro (max)",
-     "creatorName": "DeepSeek",
-     "costPerTask": 0.011360523437499999
-    },
-    {
-     "id": "73c96f99-0de3-4668-a4bd-b106a0fe18f2",
-     "slug": "deepseek-v4-1-flash-non-reasoning",
-     "name": "DeepSeek V4.1 Flash (Non-reasoning)",
-     "shortName": "DeepSeek V4.1 Flash (non-reasoning)",
-     "creatorName": "DeepSeek",
-     "costPerTask": 0.0020843864583333332
-    },
-    {
-     "id": "89a2c945-1fab-4ee4-9f45-83a9f46cb221",
-     "slug": "deepseek-v4-flash-0420-high",
-     "name": "DeepSeek V4 Flash 0420 (High)",
-     "shortName": "DeepSeek V4 Flash (high)",
-     "creatorName": "DeepSeek",
-     "costPerTask": 0.0020502430392361115
-    },
-    {
-     "id": "d8ddb241-b3e4-4c25-a6a3-72eb1b30c541",
-     "slug": "deepseek-v4-flash-0420",
-     "name": "DeepSeek V4 Flash 0420 (Max)",
-     "shortName": "DeepSeek V4 Flash (max)",
-     "creatorName": "DeepSeek",
-     "costPerTask": 0.0032914068833333333
-    },
-    {
-     "id": "d4f5b250-be37-4801-85e6-32fda4179337",
-     "slug": "deepseek-v4-pro-non-reasoning",
-     "name": "DeepSeek V4 Pro 0813 (Non-reasoning)",
-     "shortName": "DeepSeek V4 Pro 0813 (non-reasoning)",
-     "creatorName": "DeepSeek",
-     "costPerTask": 0.005223450833333333
-    },
-    {
-     "id": "0a7dda4d-cc9c-4a90-abc1-abb5772c901b",
-     "slug": "deepseek-v3-1-terminus-reasoning",
-     "name": "DeepSeek V3.1 Terminus (Reasoning)",
-     "shortName": "DeepSeek V3.1 Terminus",
-     "creatorName": "DeepSeek",
-     "costPerTask": 0.012793894375
-    },
-    {
-     "id": "0e34f05c-387e-4968-be15-ccec4a55d8c1",
-     "slug": "deepseek-r1-0120",
-     "name": "DeepSeek R1 (Jan '25)",
-     "shortName": "DeepSeek R1 (Jan)",
-     "creatorName": "DeepSeek",
-     "costPerTask": 0.02797491666666667
-    },
-    {
-     "id": "75e1c197-f239-4361-a9d6-66dccfead236",
-     "slug": "deepseek-v3-0324",
-     "name": "DeepSeek V3 0324",
-     "shortName": "DeepSeek V3 0324",
-     "creatorName": "DeepSeek",
-     "costPerTask": 0.0009524439583333333
-    },
-    {
-     "id": "43fc5506-c5ed-4dee-9b85-962bf7ae3986",
-     "slug": "deepseek-v3",
-     "name": "DeepSeek V3 (Dec '24)",
-     "shortName": "DeepSeek V3 (Dec)",
-     "creatorName": "DeepSeek",
-     "costPerTask": 0.0010633126388888891
-    },
-    {
-     "id": "cd684ea4-b475-4269-b001-d469d06d8a7a",
-     "slug": "glm-5-3",
-     "name": "GLM-5.3 (Max)",
-     "shortName": "GLM-5.3 (max)",
-     "creatorName": "Z AI",
-     "costPerTask": 0.08202589583333333
-    },
-    {
-     "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
-     "slug": "glm-5-3-flash",
-     "name": "GLM-5.3-Flash",
-     "shortName": "GLM-5.3-Flash",
-     "creatorName": "Z AI",
-     "costPerTask": 0.013985710069444443
-    },
-    {
-     "id": "cc1e488b-8ba4-464d-875d-690166b15ad3",
-     "slug": "glm-5-3-low",
-     "name": "GLM-5.3 (Low)",
-     "shortName": "GLM-5.3 (low)",
-     "creatorName": "Z AI",
-     "costPerTask": 0.0064749291666666665
-    },
-    {
-     "id": "f7a4ea75-e548-4069-80d4-9be8bc7c009b",
-     "slug": "glm-5-2",
-     "name": "GLM-5.2 (Max)",
-     "shortName": "GLM-5.2 (max)",
-     "creatorName": "Z AI",
-     "costPerTask": 0.05536939097222223
-    },
-    {
-     "id": "5aa1c578-af76-4b91-8699-cdd43582b3af",
-     "slug": "glm-5-1",
-     "name": "GLM-5.1 (Reasoning)",
-     "shortName": "GLM-5.1",
-     "creatorName": "Z AI",
-     "costPerTask": 0.04418658788194445
-    },
-    {
      "id": "539ed227-38f4-4bea-a015-117057c14b18",
      "slug": "ling-3-1-flash-1019",
      "name": "Ling 3.1 Flash 1019",
      "shortName": "Ling 3.1 Flash 1019",
      "creatorName": "InclusionAI",
      "costPerTask": 0.024376307291666666
+    },
+    {
+     "id": "7eaf926c-5f39-4e58-ae50-c38b5fc630fc",
+     "slug": "ling-3-0-tiny",
+     "name": "Ling 3.0 Tiny",
+     "shortName": "Ling 3.0 Tiny",
+     "creatorName": "InclusionAI",
+     "costPerTask": 0
     },
     {
      "id": "a6043b9b-628a-4a76-a021-2834e0627d05",
@@ -3514,30 +3641,6 @@
      "costPerTask": 0.010353965972222223
     },
     {
-     "id": "7eaf926c-5f39-4e58-ae50-c38b5fc630fc",
-     "slug": "ling-3-0-tiny",
-     "name": "Ling 3.0 Tiny",
-     "shortName": "Ling 3.0 Tiny",
-     "creatorName": "InclusionAI",
-     "costPerTask": 0
-    },
-    {
-     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
-     "slug": "step-5",
-     "name": "Step 5 Preview",
-     "shortName": "Step 5 Preview",
-     "creatorName": "StepFun",
-     "costPerTask": 0.02031152013888889
-    },
-    {
-     "id": "6c7b322e-2f35-48ff-9171-fb621a726fc0",
-     "slug": "step-3-7-flash",
-     "name": "Step 3.7 Flash",
-     "shortName": "Step 3.7 Flash",
-     "creatorName": "StepFun",
-     "costPerTask": 0.025448106597222218
-    },
-    {
      "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
      "slug": "minimax-m3-1-flash",
      "name": "MiniMax-M3.1-Flash",
@@ -3562,36 +3665,28 @@
      "costPerTask": 0.007995238541666666
     },
     {
+     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
+     "slug": "step-5",
+     "name": "Step 5 Preview",
+     "shortName": "Step 5 Preview",
+     "creatorName": "StepFun",
+     "costPerTask": 0.02031152013888889
+    },
+    {
+     "id": "6c7b322e-2f35-48ff-9171-fb621a726fc0",
+     "slug": "step-3-7-flash",
+     "name": "Step 3.7 Flash",
+     "shortName": "Step 3.7 Flash",
+     "creatorName": "StepFun",
+     "costPerTask": 0.025448106597222218
+    },
+    {
      "id": "34fc646a-0174-470e-9e62-d8df452210b3",
      "slug": "mistral-large-4",
      "name": "Mistral Large 4 Preview",
      "shortName": "Mistral Large 4 Preview",
      "creatorName": "Mistral",
      "costPerTask": 0.066954509375
-    },
-    {
-     "id": "dd059b25-d82a-4ead-82a4-4adceaaec48b",
-     "slug": "mistral-medium-3-5",
-     "name": "Mistral Medium 3.5",
-     "shortName": "Mistral Medium 3.5",
-     "creatorName": "Mistral",
-     "costPerTask": 0.08166539583333333
-    },
-    {
-     "id": "3fd96175-4ef1-434c-8795-f873aec2abc1",
-     "slug": "mistral-small-4",
-     "name": "Mistral Small 4 (Reasoning)",
-     "shortName": "Mistral Small 4",
-     "creatorName": "Mistral",
-     "costPerTask": 0.0050509671875
-    },
-    {
-     "id": "4928e950-7f37-4475-b0dc-c5bad781a321",
-     "slug": "mistral-large-3",
-     "name": "Mistral Large 3",
-     "shortName": "Mistral Large 3",
-     "creatorName": "Mistral",
-     "costPerTask": 0.0019618020833333336
     },
     {
      "id": "24ac5b00-5f03-4c47-8e37-522d1195383e",
@@ -3602,12 +3697,36 @@
      "costPerTask": 0.00025717156249999997
     },
     {
+     "id": "3fd96175-4ef1-434c-8795-f873aec2abc1",
+     "slug": "mistral-small-4",
+     "name": "Mistral Small 4 (Reasoning)",
+     "shortName": "Mistral Small 4",
+     "creatorName": "Mistral",
+     "costPerTask": 0.0050509671875
+    },
+    {
      "id": "43da3718-3d6e-40dd-901a-05664179ff7f",
      "slug": "mistral-small-3-2",
      "name": "Mistral Small 3.2",
      "shortName": "Mistral Small 3.2",
      "creatorName": "Mistral",
      "costPerTask": 0.0002585900173611111
+    },
+    {
+     "id": "4928e950-7f37-4475-b0dc-c5bad781a321",
+     "slug": "mistral-large-3",
+     "name": "Mistral Large 3",
+     "shortName": "Mistral Large 3",
+     "creatorName": "Mistral",
+     "costPerTask": 0.0019618020833333336
+    },
+    {
+     "id": "66f4ce73-9a9b-4b49-9c6e-bedb9bfdc720",
+     "slug": "ministral-3-3b",
+     "name": "Ministral 3 3B",
+     "shortName": "Ministral 3 3B",
+     "creatorName": "Mistral",
+     "costPerTask": 0.0004586836805555555
     },
     {
      "id": "713fae11-c75c-4f10-ae2c-8e4074cd58af",
@@ -3626,20 +3745,12 @@
      "costPerTask": 0.0005732484374999999
     },
     {
-     "id": "66f4ce73-9a9b-4b49-9c6e-bedb9bfdc720",
-     "slug": "ministral-3-3b",
-     "name": "Ministral 3 3B",
-     "shortName": "Ministral 3 3B",
+     "id": "dd059b25-d82a-4ead-82a4-4adceaaec48b",
+     "slug": "mistral-medium-3-5",
+     "name": "Mistral Medium 3.5",
+     "shortName": "Mistral Medium 3.5",
      "creatorName": "Mistral",
-     "costPerTask": 0.0004586836805555555
-    },
-    {
-     "id": "f3a0e101-086f-44b3-a1b2-d23498f9716b",
-     "slug": "agnes-2-5-pro-beta",
-     "name": "Agnes 2.5 Pro Beta",
-     "shortName": "Agnes 2.5 Pro Beta",
-     "creatorName": "Sapiens AI",
-     "costPerTask": 0.007272608680555556
+     "costPerTask": 0.08166539583333333
     },
     {
      "id": "bb3d7e75-8e22-4082-b9d6-1db0803e042f",
@@ -3656,38 +3767,6 @@
      "shortName": "Beam 1.0",
      "creatorName": "Reflection",
      "costPerTask": 0.0071358513888888885
-    },
-    {
-     "id": "f9739750-6d42-450f-ba1e-2f76c869b4fe",
-     "slug": "quasar-438b",
-     "name": "Quasar 438B (Max, Based on GLM-5.2)",
-     "shortName": "Quasar 438B (max)",
-     "creatorName": "Multiverse Computing",
-     "costPerTask": 0.005883249930555556
-    },
-    {
-     "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
-     "slug": "solar-pro4",
-     "name": "Solar Pro 4",
-     "shortName": "Solar Pro 4",
-     "creatorName": "Upstage",
-     "costPerTask": 0.008808919791666666
-    },
-    {
-     "id": "62ea3198-9866-4d9f-8406-a79ee78c7164",
-     "slug": "solar-mini4",
-     "name": "Solar Mini 4",
-     "shortName": "Solar Mini 4",
-     "creatorName": "Upstage",
-     "costPerTask": 0.012222695138888889
-    },
-    {
-     "id": "b89c4faf-219e-4171-a1aa-e3bd2fd0a924",
-     "slug": "solar-pro-3",
-     "name": "Solar Pro 3",
-     "shortName": "Solar Pro 3",
-     "creatorName": "Upstage",
-     "costPerTask": 0.006869813541666666
     },
     {
      "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
@@ -3730,14 +3809,6 @@
      "costPerTask": 0.0011380795138888889
     },
     {
-     "id": "08242385-ee91-4de6-be7f-271a6d9780ce",
-     "slug": "apodex-1-1",
-     "name": "Apodex 1.1",
-     "shortName": "Apodex 1.1",
-     "creatorName": "Apodex",
-     "costPerTask": 0.020706591666666666
-    },
-    {
      "id": "7261504e-503c-4a66-a9d3-a3272cdf9ad6",
      "slug": "inkling-small",
      "name": "Inkling Small",
@@ -3752,22 +3823,6 @@
      "shortName": "Inkling (xhigh)",
      "creatorName": "Thinking Machines",
      "costPerTask": 0.05873065347222222
-    },
-    {
-     "id": "b23e6c69-96e5-44c9-8f58-4b42e0c399d5",
-     "slug": "hy3",
-     "name": "Hy3",
-     "shortName": "Hy3",
-     "creatorName": "Tencent",
-     "costPerTask": 0.006589039871527777
-    },
-    {
-     "id": "5c3bdc0d-abab-4526-8079-34de4089bb4a",
-     "slug": "longcat-2-0",
-     "name": "LongCat 2.0",
-     "shortName": "LongCat 2.0",
-     "creatorName": "LongCat",
-     "costPerTask": 0.04920169861111111
     },
     {
      "id": "2e9ff877-fd2c-4ce7-b631-7ca1bdb6d13e",
@@ -3786,28 +3841,12 @@
      "costPerTask": 0
     },
     {
-     "id": "1071dea1-43e7-4fe9-b936-3034bb622b2e",
-     "slug": "granite-4-2-30b",
-     "name": "Granite 4.2 30B",
-     "shortName": "Granite 4.2 30B",
-     "creatorName": "IBM",
-     "costPerTask": 0.006026272118055556
-    },
-    {
-     "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
-     "slug": "granite-4-2-8b",
-     "name": "Granite 4.2 8B",
-     "shortName": "Granite 4.2 8B",
-     "creatorName": "IBM",
-     "costPerTask": 0.0025393956944444445
-    },
-    {
-     "id": "0c64b008-20c3-408d-bd68-15136df8cd2c",
-     "slug": "granite-4-2-3b",
-     "name": "Granite 4.2 3B",
-     "shortName": "Granite 4.2 3B",
-     "creatorName": "IBM",
-     "costPerTask": 0.0016449335416666665
+     "id": "016d330a-2141-4afa-b2fc-62b314423dc1",
+     "slug": "mercury-2",
+     "name": "Mercury 2",
+     "shortName": "Mercury 2",
+     "creatorName": "Inception",
+     "costPerTask": 0.0034573750000000004
     },
     {
      "id": "765c9f31-95ec-4f14-900a-80614c3b0777",
@@ -3818,20 +3857,60 @@
      "costPerTask": 0.003267921006944444
     },
     {
-     "id": "016d330a-2141-4afa-b2fc-62b314423dc1",
-     "slug": "mercury-2",
-     "name": "Mercury 2",
-     "shortName": "Mercury 2",
-     "creatorName": "Inception",
-     "costPerTask": 0.0034573750000000004
+     "id": "08242385-ee91-4de6-be7f-271a6d9780ce",
+     "slug": "apodex-1-1",
+     "name": "Apodex 1.1",
+     "shortName": "Apodex 1.1",
+     "creatorName": "Apodex",
+     "costPerTask": 0.020706591666666666
     },
     {
-     "id": "b6d2e43d-3082-43f5-9318-0f4dbcb54163",
-     "slug": "trinity-large-thinking",
-     "name": "Trinity Large Thinking",
-     "shortName": "Trinity Large Thinking",
-     "creatorName": "Arcee AI",
-     "costPerTask": 0.012482725694444446
+     "id": "0c64b008-20c3-408d-bd68-15136df8cd2c",
+     "slug": "granite-4-2-3b",
+     "name": "Granite 4.2 3B",
+     "shortName": "Granite 4.2 3B",
+     "creatorName": "IBM",
+     "costPerTask": 0.0016449335416666665
+    },
+    {
+     "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
+     "slug": "granite-4-2-8b",
+     "name": "Granite 4.2 8B",
+     "shortName": "Granite 4.2 8B",
+     "creatorName": "IBM",
+     "costPerTask": 0.0025393956944444445
+    },
+    {
+     "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
+     "slug": "solar-pro4",
+     "name": "Solar Pro 4",
+     "shortName": "Solar Pro 4",
+     "creatorName": "Upstage",
+     "costPerTask": 0.008808919791666666
+    },
+    {
+     "id": "62ea3198-9866-4d9f-8406-a79ee78c7164",
+     "slug": "solar-mini4",
+     "name": "Solar Mini 4",
+     "shortName": "Solar Mini 4",
+     "creatorName": "Upstage",
+     "costPerTask": 0.012222695138888889
+    },
+    {
+     "id": "b89c4faf-219e-4171-a1aa-e3bd2fd0a924",
+     "slug": "solar-pro-3",
+     "name": "Solar Pro 3",
+     "shortName": "Solar Pro 3",
+     "creatorName": "Upstage",
+     "costPerTask": 0.006869813541666666
+    },
+    {
+     "id": "5c3bdc0d-abab-4526-8079-34de4089bb4a",
+     "slug": "longcat-2-0",
+     "name": "LongCat 2.0",
+     "shortName": "LongCat 2.0",
+     "creatorName": "LongCat",
+     "costPerTask": 0.04920169861111111
     },
     {
      "id": "8014c311-fa23-4a4b-8485-8a864db8a113",
@@ -3840,19 +3919,36 @@
      "shortName": "Celeris-1",
      "creatorName": "Celeris",
      "costPerTask": 0.0017395527777777776
+    },
+    {
+     "id": "b23e6c69-96e5-44c9-8f58-4b42e0c399d5",
+     "slug": "hy3",
+     "name": "Hy3",
+     "shortName": "Hy3",
+     "creatorName": "Tencent",
+     "costPerTask": 0.006589039871527777
+    },
+    {
+     "id": "f3a0e101-086f-44b3-a1b2-d23498f9716b",
+     "slug": "agnes-2-5-pro-beta",
+     "name": "Agnes 2.5 Pro Beta",
+     "shortName": "Agnes 2.5 Pro Beta",
+     "creatorName": "Sapiens AI",
+     "costPerTask": 0.007272608680555556
+    },
+    {
+     "id": "f9739750-6d42-450f-ba1e-2f76c869b4fe",
+     "slug": "quasar-438b",
+     "name": "Quasar 438B (Max, Based on GLM-5.2)",
+     "shortName": "Quasar 438B (max)",
+     "creatorName": "Multiverse Computing",
+     "costPerTask": 0.005883249930555556
     }
    ]
   },
   {
    "title": "SciCode: Cost per Task",
    "items": [
-    {
-     "id": "cd26a386-4873-46ff-b853-d239050025a2",
-     "label": "Gemma 4 31B",
-     "tooltipLabel": "Gemma 4 31B (Reasoning)",
-     "url": "/models/gemma-4-31b",
-     "logo": "/img/logos/google.svg"
-    },
     {
      "id": "2bfdd17a-e027-4068-a54e-b0e90a6df118",
      "label": "Gemma 3 27B",
@@ -3865,6 +3961,13 @@
      "label": "Gemma 3 12B",
      "tooltipLabel": "Gemma 3 12B Instruct",
      "url": "/models/gemma-3-12b",
+     "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "cd26a386-4873-46ff-b853-d239050025a2",
+     "label": "Gemma 4 31B",
+     "tooltipLabel": "Gemma 4 31B (Reasoning)",
+     "url": "/models/gemma-4-31b",
      "logo": "/img/logos/google.svg"
     },
     {
@@ -4197,6 +4300,20 @@
      "logo": "/img/logos/alibaba.svg"
     },
     {
+     "id": "0d3c777f-6817-42d7-9bb9-223314bc5a57",
+     "label": "GPT-6.1 Terra (non-reasoning)",
+     "tooltipLabel": "GPT-6.1 Terra (Non-reasoning)",
+     "url": "/models/gpt-6-1-terra-non-reasoning",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "c955b262-a17f-4f1a-b097-6860b866295b",
+     "label": "GPT-6.1 Terra (low)",
+     "tooltipLabel": "GPT-6.1 Terra (Low)",
+     "url": "/models/gpt-6-1-terra-low",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
      "label": "GPT-6 Luna (max)",
      "tooltipLabel": "GPT-6 Luna (Max)",
@@ -4267,6 +4384,13 @@
      "logo": "/img/logos/mistral.svg"
     },
     {
+     "id": "c441e158-a87d-4116-911b-93325e4b4f1c",
+     "label": "GPT-6.1 Terra (medium)",
+     "tooltipLabel": "GPT-6.1 Terra (Medium)",
+     "url": "/models/gpt-6-1-terra-medium",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "d4f5b250-be37-4801-85e6-32fda4179337",
      "label": "DeepSeek V4 Pro 0813 (non-reasoning)",
      "tooltipLabel": "DeepSeek V4 Pro 0813 (Non-reasoning)",
@@ -4286,13 +4410,6 @@
      "tooltipLabel": "Quasar 438B (Max, Based on GLM-5.2)",
      "url": "/models/quasar-438b",
      "logo": "/img/logos/multiversecomputing.svg"
-    },
-    {
-     "id": "1071dea1-43e7-4fe9-b936-3034bb622b2e",
-     "label": "Granite 4.2 30B",
-     "tooltipLabel": "Granite 4.2 30B",
-     "url": "/models/granite-4-2-30b",
-     "logo": "/img/logos/ibm.svg"
     },
     {
      "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
@@ -4356,6 +4473,13 @@
      "tooltipLabel": "MiMo-V2.6-Pro",
      "url": "/models/mimo-v2-6-pro",
      "logo": "/img/logos/xiaomi.svg"
+    },
+    {
+     "id": "ea3e1f50-f62d-41d2-849a-9af0413e4d37",
+     "label": "GPT-6.1 Terra (high)",
+     "tooltipLabel": "GPT-6.1 Terra (High)",
+     "url": "/models/gpt-6-1-terra-high",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "4bbceacb-cf47-464b-b60f-e1d1fe016d67",
@@ -4498,13 +4622,6 @@
      "logo": "/img/logos/deepseek.svg"
     },
     {
-     "id": "b6d2e43d-3082-43f5-9318-0f4dbcb54163",
-     "label": "Trinity Large Thinking",
-     "tooltipLabel": "Trinity Large Thinking",
-     "url": "/models/trinity-large-thinking",
-     "logo": "/img/logos/arcee.svg"
-    },
-    {
      "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
      "label": "Gemini 3.5 Flash-Lite",
      "tooltipLabel": "Gemini 3.5 Flash-Lite",
@@ -4586,6 +4703,13 @@
      "label": "GPT-5.6 Terra (medium)",
      "tooltipLabel": "GPT-5.6 Terra (Medium)",
      "url": "/models/gpt-5-6-terra-medium",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "e8d443ba-8aca-4830-a186-ae869bb9c6fe",
+     "label": "GPT-6.1 Terra (xhigh)",
+     "tooltipLabel": "GPT-6.1 Terra (Xhigh)",
+     "url": "/models/gpt-6-1-terra-xhigh",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -5114,6 +5238,13 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "b0c462cf-f2d0-4126-9434-28db9502219f",
+     "label": "GPT-6.1 Terra (max)",
+     "tooltipLabel": "GPT-6.1 Terra (Max)",
+     "url": "/models/gpt-6-1-terra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
      "label": "Claude Fable 5.1 (medium with fallback)",
      "tooltipLabel": "Claude Fable 5.1 (Medium, Default Fallback)",
@@ -5182,13 +5313,6 @@
      "tooltipLabel": "Qwen3.8 2.4T A95B",
      "url": "/models/qwen3-8-2-4t-a95b",
      "logo": "/img/logos/alibaba.svg"
-    },
-    {
-     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
-     "label": "Gemini 4 Argon (high)",
-     "tooltipLabel": "Gemini 4 Argon (High)",
-     "url": "/models/gemini-4-argon",
-     "logo": "/img/logos/google.svg"
     },
     {
      "id": "b13c1257-d746-4027-8fc8-4892dc14701c",
@@ -5282,6 +5406,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
+     "label": "Gemini 4 Argon (high)",
+     "tooltipLabel": "Gemini 4 Argon (High)",
+     "url": "/models/gemini-4-argon",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
      "label": "GPT-6 Astra (max)",
      "tooltipLabel": "GPT-6 Astra (Max)",
@@ -5329,6 +5460,13 @@
      "tooltipLabel": "Claude Fable 5.1 (Max, Default Fallback)",
      "url": "/models/claude-fable-5-1",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+     "label": "Gemini 4 Carbon (high)",
+     "tooltipLabel": "Gemini 4 Carbon (High)",
+     "url": "/models/gemini-4-carbon",
+     "logo": "/img/logos/google.svg"
     }
    ]
   },
@@ -5336,804 +5474,12 @@
    "title": "SciCode: Score vs. Release Date",
    "items": [
     {
-     "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
-     "slug": "claude-opus-5-5",
-     "name": "Claude Opus 5.5 (Max, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (max with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
-     "slug": "claude-sonnet-5-5",
-     "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (max with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-28"
-    },
-    {
-     "id": "df5bf99d-d228-4715-b41b-19ca86118777",
-     "slug": "claude-opus-5-5-xhigh",
-     "name": "Claude Opus 5.5 (Xhigh, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (xhigh with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
-     "slug": "claude-opus-5-5-high",
-     "name": "Claude Opus 5.5 (High, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (high with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "3e87c73e-a257-495e-9730-367a66229811",
-     "slug": "claude-fable-5-1",
-     "name": "Claude Fable 5.1 (Max, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (max with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-01"
-    },
-    {
-     "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
-     "slug": "claude-fable-5-1-xhigh",
-     "name": "Claude Fable 5.1 (Xhigh, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (xhigh with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-01"
-    },
-    {
-     "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
-     "slug": "claude-sonnet-5-5-xhigh",
-     "name": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (xhigh with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-28"
-    },
-    {
-     "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
-     "slug": "claude-opus-5-5-medium",
-     "name": "Claude Opus 5.5 (Medium, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (medium with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
-     "slug": "claude-fable-5-1-high",
-     "name": "Claude Fable 5.1 (High, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (high with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-01"
-    },
-    {
-     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
-     "slug": "claude-opus-5",
-     "name": "Claude Opus 5 (Max)",
-     "shortName": "Claude Opus 5 (max)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-07-24"
-    },
-    {
-     "id": "1305c921-7aaa-4d6d-99b5-99b3acf15e19",
-     "slug": "claude-opus-5-xhigh",
-     "name": "Claude Opus 5 (Xhigh)",
-     "shortName": "Claude Opus 5 (xhigh)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-07-24"
-    },
-    {
-     "id": "cd55210d-358e-4df1-ba9c-9acb5f186cc9",
-     "slug": "claude-fable-5",
-     "name": "Claude Fable 5 (Max, Opus 4.8 Fallback)",
-     "shortName": "Claude Fable 5 (with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-06-09"
-    },
-    {
-     "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
-     "slug": "claude-fable-5-1-medium",
-     "name": "Claude Fable 5.1 (Medium, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (medium with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-01"
-    },
-    {
-     "id": "712be54a-77ae-41b2-9a58-21181479d6ee",
-     "slug": "claude-opus-5-high",
-     "name": "Claude Opus 5 (High)",
-     "shortName": "Claude Opus 5 (high)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-07-24"
-    },
-    {
-     "id": "05776db7-f5c0-40f7-b824-079160f8cfa8",
-     "slug": "claude-fable-5-1-low",
-     "name": "Claude Fable 5.1 (Low, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (low with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-01"
-    },
-    {
-     "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
-     "slug": "claude-sonnet-5-5-high",
-     "name": "Claude Sonnet 5.5 (High, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (high with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-28"
-    },
-    {
-     "id": "ff51be8f-e362-4a7e-9043-687ba15de207",
-     "slug": "claude-opus-5-medium",
-     "name": "Claude Opus 5 (Medium)",
-     "shortName": "Claude Opus 5 (medium)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-07-24"
-    },
-    {
-     "id": "7d064a11-6e78-4030-b535-cdf940615041",
-     "slug": "claude-haiku-5-5",
-     "name": "Claude Haiku 5.5 (Max)",
-     "shortName": "Claude Haiku 5.5 (max)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-10-07"
-    },
-    {
-     "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
-     "slug": "claude-opus-5-5-low",
-     "name": "Claude Opus 5.5 (Low, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (low with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "992b7b84-5069-4c6a-9295-834252553d50",
-     "slug": "claude-opus-4-8",
-     "name": "Claude Opus 4.8 (Max)",
-     "shortName": "Claude Opus 4.8 (max)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-05-28"
-    },
-    {
-     "id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
-     "slug": "claude-haiku-5-5-xhigh",
-     "name": "Claude Haiku 5.5 (Xhigh)",
-     "shortName": "Claude Haiku 5.5 (xhigh)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-10-07"
-    },
-    {
-     "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
-     "slug": "claude-sonnet-5-5-medium",
-     "name": "Claude Sonnet 5.5 (Medium, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (medium with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-28"
-    },
-    {
-     "id": "20928ba9-3a3f-415f-9519-b84ff64ecf34",
-     "slug": "claude-opus-5-low",
-     "name": "Claude Opus 5 (Low)",
-     "shortName": "Claude Opus 5 (low)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-07-24"
-    },
-    {
-     "id": "23c86e4a-c769-43c0-a056-79e3cd15834f",
-     "slug": "claude-sonnet-5",
-     "name": "Claude Sonnet 5 (Max)",
-     "shortName": "Claude Sonnet 5 (max)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-06-30"
-    },
-    {
-     "id": "20829974-af06-497e-9f42-77fb958d43b9",
-     "slug": "claude-haiku-5-5-high",
-     "name": "Claude Haiku 5.5 (High)",
-     "shortName": "Claude Haiku 5.5 (high)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-10-07"
-    },
-    {
-     "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
-     "slug": "claude-sonnet-5-5-low",
-     "name": "Claude Sonnet 5.5 (Low, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (low with fallback)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-09-28"
-    },
-    {
-     "id": "af26fff4-8120-41be-a5f0-86aaea023f20",
-     "slug": "claude-haiku-5-5-medium",
-     "name": "Claude Haiku 5.5 (Medium)",
-     "shortName": "Claude Haiku 5.5 (medium)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-10-07"
-    },
-    {
-     "id": "99f376bf-cbcb-4124-bf3e-6b0a4e6e9bea",
-     "slug": "claude-sonnet-5-xhigh",
-     "name": "Claude Sonnet 5 (Xhigh)",
-     "shortName": "Claude Sonnet 5 (xhigh)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-06-30"
-    },
-    {
-     "id": "ba0224cf-0351-4f56-8508-b3f1a740ae4a",
-     "slug": "claude-sonnet-5-high",
-     "name": "Claude Sonnet 5 (High)",
-     "shortName": "Claude Sonnet 5 (high)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-06-30"
-    },
-    {
-     "id": "df8d14e0-3997-4e4d-b4ad-9c047acc9c69",
-     "slug": "claude-sonnet-4-6-adaptive",
-     "name": "Claude Sonnet 4.6 (Max)",
-     "shortName": "Claude Sonnet 4.6 (max)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-02-17"
-    },
-    {
-     "id": "42908ae3-d3bd-4934-be19-fbff93d3fde8",
-     "slug": "claude-haiku-5-5-low",
-     "name": "Claude Haiku 5.5 (Low)",
-     "shortName": "Claude Haiku 5.5 (low)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-10-07"
-    },
-    {
-     "id": "effcd151-7c31-4437-af3d-e88daeae9385",
-     "slug": "claude-sonnet-5-medium",
-     "name": "Claude Sonnet 5 (Medium)",
-     "shortName": "Claude Sonnet 5 (medium)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-06-30"
-    },
-    {
-     "id": "142b93bf-09c4-42dc-9c3a-50b1a222cbd4",
-     "slug": "claude-sonnet-5-low",
-     "name": "Claude Sonnet 5 (Low)",
-     "shortName": "Claude Sonnet 5 (low)",
-     "creatorName": "Anthropic",
-     "releaseDate": "2026-06-30"
-    },
-    {
-     "id": "90e078f2-051b-4c63-8919-76618971cb3f",
-     "slug": "claude-4-5-sonnet-thinking",
-     "name": "Claude 4.5 Sonnet (Reasoning)",
-     "shortName": "Claude 4.5 Sonnet",
-     "creatorName": "Anthropic",
-     "releaseDate": "2025-09-29"
-    },
-    {
-     "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
-     "slug": "claude-4-5-haiku-reasoning",
-     "name": "Claude 4.5 Haiku (Reasoning)",
-     "shortName": "Claude 4.5 Haiku",
-     "creatorName": "Anthropic",
-     "releaseDate": "2025-10-15"
-    },
-    {
-     "id": "e994a6e0-d36b-4dab-8ae1-c1b469e4d9e2",
-     "slug": "muse-wonder-full",
-     "name": "Muse Wonder Full (Max)",
-     "shortName": "Muse Wonder Full (max)",
-     "creatorName": "Meta",
-     "releaseDate": "2026-10-12"
-    },
-    {
-     "id": "ff2f3f3d-783f-4e27-8a39-47237501a313",
-     "slug": "muse-wonder",
-     "name": "Muse Wonder (Max)",
-     "shortName": "Muse Wonder (max)",
-     "creatorName": "Meta",
-     "releaseDate": "2026-10-12"
-    },
-    {
-     "id": "9999672c-b687-4026-9c15-5cef02ff53bb",
-     "slug": "muse-spark-1-3",
-     "name": "Muse Spark 1.3 (Max)",
-     "shortName": "Muse Spark 1.3 (max)",
-     "creatorName": "Meta",
-     "releaseDate": "2026-09-02"
-    },
-    {
-     "id": "d5170215-69be-4129-849b-26d8d8825bfc",
-     "slug": "muse-spark-1-3-xhigh",
-     "name": "Muse Spark 1.3 (Xhigh)",
-     "shortName": "Muse Spark 1.3 (xhigh)",
-     "creatorName": "Meta",
-     "releaseDate": "2026-09-02"
-    },
-    {
-     "id": "04ee6719-0327-463b-a1a1-70a6a78254f9",
-     "slug": "muse-spark-1-2",
-     "name": "Muse Spark 1.2 (Xhigh)",
-     "shortName": "Muse Spark 1.2 (xhigh)",
-     "creatorName": "Meta",
-     "releaseDate": "2026-08-05"
-    },
-    {
-     "id": "3661c8fb-caf7-4118-aa18-65b84fea8e44",
-     "slug": "muse-spark-open",
-     "name": "Muse Spark Open (Xhigh)",
-     "shortName": "Muse Spark Open (xhigh)",
-     "creatorName": "Meta",
-     "releaseDate": "2026-10-15"
-    },
-    {
-     "id": "d61493e2-43ff-460c-9054-eaf6ba317360",
-     "slug": "muse-spark-1-1",
-     "name": "Muse Spark 1.1 (Xhigh)",
-     "shortName": "Muse Spark 1.1 (xhigh)",
-     "creatorName": "Meta",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
-     "slug": "muse-glimmer",
-     "name": "Muse Glimmer (High)",
-     "shortName": "Muse Glimmer (high)",
-     "creatorName": "Meta",
-     "releaseDate": "2026-08-10"
-    },
-    {
-     "id": "922c69c7-9037-43c6-8bcf-a1c555e7f3eb",
-     "slug": "llama-4-maverick",
-     "name": "Llama 4 Maverick",
-     "shortName": "Llama 4 Maverick",
-     "creatorName": "Meta",
-     "releaseDate": "2025-04-05"
-    },
-    {
-     "id": "adf9a85e-abc3-4f28-937b-db6655cc5238",
-     "slug": "llama-4-scout",
-     "name": "Llama 4 Scout",
-     "shortName": "Llama 4 Scout",
-     "creatorName": "Meta",
-     "releaseDate": "2025-04-05"
-    },
-    {
-     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
-     "slug": "kimi-k3-1-pro",
-     "name": "Kimi K3.1 Pro",
-     "shortName": "Kimi K3.1 Pro",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-10-23"
-    },
-    {
-     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
-     "slug": "kimi-k3",
-     "name": "Kimi K3 (Max)",
-     "shortName": "Kimi K3 (max)",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-07-16"
-    },
-    {
-     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
-     "slug": "kimi-k3-low",
-     "name": "Kimi K3 (Low)",
-     "shortName": "Kimi K3 (low)",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-07-16"
-    },
-    {
-     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
-     "slug": "kimi-k2-6",
-     "name": "Kimi K2.6 (Reasoning)",
-     "shortName": "Kimi K2.6",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-04-20"
-    },
-    {
-     "id": "8d0cb231-7303-452c-9923-a9620b948475",
-     "slug": "kimi-k2-7-code",
-     "name": "Kimi K2.7 Code",
-     "shortName": "Kimi K2.7 Code",
-     "creatorName": "Kimi",
-     "releaseDate": "2026-06-12"
-    },
-    {
-     "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
-     "slug": "gpt-6-astra",
-     "name": "GPT-6 Astra (Max)",
-     "shortName": "GPT-6 Astra (max)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-03"
-    },
-    {
-     "id": "1f541ef3-913f-4eb2-9d07-0e93c7a9a5e3",
-     "slug": "gpt-6-astra-xhigh",
-     "name": "GPT-6 Astra (Xhigh)",
-     "shortName": "GPT-6 Astra (xhigh)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-03"
-    },
-    {
-     "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
-     "slug": "gpt-6-1-sol",
-     "name": "GPT-6.1 Sol (Max)",
-     "shortName": "GPT-6.1 Sol (max)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-29"
-    },
-    {
-     "id": "092a3b0e-c5c8-45dc-bf1b-53673c8ff352",
-     "slug": "gpt-6-1-sol-xhigh",
-     "name": "GPT-6.1 Sol (Xhigh)",
-     "shortName": "GPT-6.1 Sol (xhigh)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-29"
-    },
-    {
-     "id": "e05a4828-0536-4876-870d-a235023f992b",
-     "slug": "gpt-6-astra-high",
-     "name": "GPT-6 Astra (High)",
-     "shortName": "GPT-6 Astra (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-03"
-    },
-    {
-     "id": "3b84fee3-b70a-41bc-819e-5fbdef9a0042",
-     "slug": "gpt-6-1-sol-high",
-     "name": "GPT-6.1 Sol (High)",
-     "shortName": "GPT-6.1 Sol (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-29"
-    },
-    {
-     "id": "e97a4ef5-e817-480e-9595-12f81dc4974f",
-     "slug": "gpt-6-astra-medium",
-     "name": "GPT-6 Astra (Medium)",
-     "shortName": "GPT-6 Astra (medium)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-03"
-    },
-    {
-     "id": "a2e51d62-ea4e-4f15-8be0-be9dc1fb489d",
-     "slug": "gpt-6-1-sol-medium",
-     "name": "GPT-6.1 Sol (Medium)",
-     "shortName": "GPT-6.1 Sol (medium)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-29"
-    },
-    {
-     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
-     "slug": "gpt-6-sol",
-     "name": "GPT-6 Sol (Max)",
-     "shortName": "GPT-6 Sol (max)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "d93edfe8-bf35-49ad-b56e-b18116142a1c",
-     "slug": "gpt-5-6-sol",
-     "name": "GPT-5.6 Sol (Max)",
-     "shortName": "GPT-5.6 Sol (max)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
-     "slug": "gpt-6-astra-low",
-     "name": "GPT-6 Astra (Low)",
-     "shortName": "GPT-6 Astra (low)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-03"
-    },
-    {
-     "id": "da2642fe-9f73-4788-b5af-24edcd55b37e",
-     "slug": "gpt-6-sol-xhigh",
-     "name": "GPT-6 Sol (Xhigh)",
-     "shortName": "GPT-6 Sol (xhigh)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "d998db47-9b67-4727-a2bb-2e1261020ac0",
-     "slug": "gpt-5-6-sol-xhigh",
-     "name": "GPT-5.6 Sol (Xhigh)",
-     "shortName": "GPT-5.6 Sol (xhigh)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "52eebe3e-6ede-4e46-92db-c5dea49fc410",
-     "slug": "gpt-6-sol-high",
-     "name": "GPT-6 Sol (High)",
-     "shortName": "GPT-6 Sol (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "8afc250d-b538-45a2-812a-4605f4ffd87e",
-     "slug": "gpt-5-6-sol-high",
-     "name": "GPT-5.6 Sol (High)",
-     "shortName": "GPT-5.6 Sol (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "e76e0fe5-93ca-4272-9359-2eb1740467d1",
-     "slug": "gpt-6-1-sol-low",
-     "name": "GPT-6.1 Sol (Low)",
-     "shortName": "GPT-6.1 Sol (low)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-29"
-    },
-    {
-     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
-     "slug": "gpt-5-6-terra",
-     "name": "GPT-5.6 Terra (Max)",
-     "shortName": "GPT-5.6 Terra (max)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "780a4a85-17ff-4175-a8dd-ebca4823e61b",
-     "slug": "gpt-6-sol-medium",
-     "name": "GPT-6 Sol (Medium)",
-     "shortName": "GPT-6 Sol (medium)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "6f174934-5b7d-4333-86cb-f5ebf4a862e3",
-     "slug": "gpt-5-6-sol-medium",
-     "name": "GPT-5.6 Sol (Medium)",
-     "shortName": "GPT-5.6 Sol (medium)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "1f054429-397e-4fdb-9e71-67bc92c1735e",
-     "slug": "gpt-5-5",
-     "name": "GPT-5.5 (Xhigh)",
-     "shortName": "GPT-5.5 (xhigh)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-04-23"
-    },
-    {
-     "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
-     "slug": "gpt-6-luna",
-     "name": "GPT-6 Luna (Max)",
-     "shortName": "GPT-6 Luna (max)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "9e30696f-16fa-4b4f-ba53-161895a85fed",
-     "slug": "gpt-5-6-terra-xhigh",
-     "name": "GPT-5.6 Terra (Xhigh)",
-     "shortName": "GPT-5.6 Terra (xhigh)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
-     "slug": "gpt-5-6-luna",
-     "name": "GPT-5.6 Luna (Max)",
-     "shortName": "GPT-5.6 Luna (max)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "b13c1257-d746-4027-8fc8-4892dc14701c",
-     "slug": "gpt-5-5-high",
-     "name": "GPT-5.5 (High)",
-     "shortName": "GPT-5.5 (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-04-23"
-    },
-    {
-     "id": "19813eb2-460a-475c-af65-810bb8660fec",
-     "slug": "gpt-6-luna-xhigh",
-     "name": "GPT-6 Luna (Xhigh)",
-     "shortName": "GPT-6 Luna (xhigh)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "87110ff0-1f79-41b4-9976-eda250597317",
-     "slug": "gpt-5-6-luna-xhigh",
-     "name": "GPT-5.6 Luna (Xhigh)",
-     "shortName": "GPT-5.6 Luna (xhigh)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "81972fba-1219-477e-bbfb-18c656a63ff7",
-     "slug": "gpt-5-6-terra-high",
-     "name": "GPT-5.6 Terra (High)",
-     "shortName": "GPT-5.6 Terra (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "01459872-433a-4ab2-8e99-7083162172eb",
-     "slug": "gpt-6-sol-low",
-     "name": "GPT-6 Sol (Low)",
-     "shortName": "GPT-6 Sol (low)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "6b79f899-e3c0-45f6-923c-243faccdb2fc",
-     "slug": "gpt-5-5-medium",
-     "name": "GPT-5.5 (Medium)",
-     "shortName": "GPT-5.5 (medium)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-04-23"
-    },
-    {
-     "id": "0904b596-8932-43bd-9b21-324f128e1723",
-     "slug": "gpt-5-6-sol-low",
-     "name": "GPT-5.6 Sol (Low)",
-     "shortName": "GPT-5.6 Sol (low)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "7d1229bc-deea-4717-ba5b-f59a35d991e3",
-     "slug": "gpt-6-luna-high",
-     "name": "GPT-6 Luna (High)",
-     "shortName": "GPT-6 Luna (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "aa55297e-8fbf-4372-b4ab-9b068dc6396c",
-     "slug": "gpt-5-6-luna-high",
-     "name": "GPT-5.6 Luna (High)",
-     "shortName": "GPT-5.6 Luna (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "26e0f83a-ca98-4f34-94ac-7c5e251ee410",
-     "slug": "gpt-5-6-terra-medium",
-     "name": "GPT-5.6 Terra (Medium)",
-     "shortName": "GPT-5.6 Terra (medium)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "36667da0-9222-4967-adbb-f7efa15ad213",
-     "slug": "gpt-6-luna-medium",
-     "name": "GPT-6 Luna (Medium)",
-     "shortName": "GPT-6 Luna (medium)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "d3e20e76-9e1a-45b6-b809-ad6aa37430cf",
-     "slug": "gpt-6-sol-non-reasoning",
-     "name": "GPT-6 Sol (Non-reasoning)",
-     "shortName": "GPT-6 Sol (non-reasoning)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "7c4d1e30-6ecb-46cf-880c-41446d7b51f1",
-     "slug": "gpt-5-6-sol-non-reasoning",
-     "name": "GPT-5.6 Sol (Non-reasoning)",
-     "shortName": "GPT-5.6 Sol (non-reasoning)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "cc4a20cd-09fe-4962-a430-119c815e85fa",
-     "slug": "gpt-5-6-terra-low",
-     "name": "GPT-5.6 Terra (Low)",
-     "shortName": "GPT-5.6 Terra (low)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "c4169d75-9d24-4794-a9c3-69e1fe364de5",
-     "slug": "gpt-5-5-instant-06-26",
-     "name": "GPT-5.5 Instant (June 2026)",
-     "shortName": "GPT-5.5 Instant (June 2026)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-06-25"
-    },
-    {
-     "id": "58b812bf-8498-46db-b834-f43ccc614b61",
-     "slug": "gpt-5-6-luna-medium",
-     "name": "GPT-5.6 Luna (Medium)",
-     "shortName": "GPT-5.6 Luna (medium)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "ba242e40-83b7-4cd3-a0e0-b56237984914",
-     "slug": "gpt-5-4-mini",
-     "name": "GPT-5.4 mini (Xhigh)",
-     "shortName": "GPT-5.4 mini (xhigh)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-03-17"
-    },
-    {
-     "id": "bf9708d8-933d-44f6-affa-b696a7a650c9",
-     "slug": "gpt-6-luna-low",
-     "name": "GPT-6 Luna (Low)",
-     "shortName": "GPT-6 Luna (low)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "050c61cd-cddc-463a-a30a-a82aaa37be59",
-     "slug": "gpt-5-6-luna-low",
-     "name": "GPT-5.6 Luna (Low)",
-     "shortName": "GPT-5.6 Luna (low)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "9b97a35e-6ac7-44d9-91c6-422fa678963e",
-     "slug": "gpt-5-6-terra-non-reasoning",
-     "name": "GPT-5.6 Terra (Non-reasoning)",
-     "shortName": "GPT-5.6 Terra (non-reasoning)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "d4fc3f33-f2b0-4da1-88ee-f1f82bd4de31",
-     "slug": "gpt-5-4-nano",
-     "name": "GPT-5.4 nano (Xhigh)",
-     "shortName": "GPT-5.4 nano (xhigh)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-03-17"
-    },
-    {
-     "id": "63cb48ea-0b0c-4e07-8ded-6d28dec4fa28",
-     "slug": "gpt-6-luna-non-reasoning",
-     "name": "GPT-6 Luna (Non-reasoning)",
-     "shortName": "GPT-6 Luna (non-reasoning)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "29855680-7469-43eb-8b88-cd3fb1d99da3",
-     "slug": "gpt-5-mini",
-     "name": "GPT-5 mini (High)",
-     "shortName": "GPT-5 mini (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2025-08-07"
-    },
-    {
-     "id": "dc64f856-3ded-497d-9527-d41d31267ed5",
-     "slug": "gpt-5-6-luna-non-reasoning",
-     "name": "GPT-5.6 Luna (Non-reasoning)",
-     "shortName": "GPT-5.6 Luna (non-reasoning)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
-     "slug": "gpt-oss-120b",
-     "name": "gpt-oss-120b (High)",
-     "shortName": "gpt-oss-120b (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2025-08-05"
-    },
-    {
-     "id": "076f2674-bc4b-4925-be59-50832eb8c090",
-     "slug": "o3-mini-high",
-     "name": "o3-mini (High)",
-     "shortName": "o3-mini (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2025-01-31"
-    },
-    {
-     "id": "36f73aaf-d38a-4b56-a2b3-d04d17186910",
-     "slug": "gpt-oss-20b",
-     "name": "gpt-oss-20b (High)",
-     "shortName": "gpt-oss-20b (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2025-08-05"
+     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+     "slug": "gemini-4-carbon",
+     "name": "Gemini 4 Carbon (High)",
+     "shortName": "Gemini 4 Carbon (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-10-28"
     },
     {
      "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
@@ -6160,60 +5506,12 @@
      "releaseDate": "2026-09-02"
     },
     {
-     "id": "eb0d4272-7204-42b9-b875-8866fed58548",
-     "slug": "gemini-3-7-flash-medium",
-     "name": "Gemini 3.7 Flash (Medium)",
-     "shortName": "Gemini 3.7 Flash (medium)",
-     "creatorName": "Google",
-     "releaseDate": "2026-08-13"
-    },
-    {
-     "id": "b2331108-72ed-415a-82d1-188633875bbc",
-     "slug": "gemini-3-7-flash",
-     "name": "Gemini 3.7 Flash (High)",
-     "shortName": "Gemini 3.7 Flash (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-08-13"
-    },
-    {
-     "id": "ddfdaf64-3f8e-40a6-a492-608ee83a1351",
-     "slug": "gemini-3-7-flash-low",
-     "name": "Gemini 3.7 Flash (Low)",
-     "shortName": "Gemini 3.7 Flash (low)",
-     "creatorName": "Google",
-     "releaseDate": "2026-08-13"
-    },
-    {
-     "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
-     "slug": "gemini-3-6-flash",
-     "name": "Gemini 3.6 Flash (High)",
-     "shortName": "Gemini 3.6 Flash (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-07-21"
-    },
-    {
      "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
      "slug": "gemini-3-8-flash-low",
      "name": "Gemini 3.8 Flash (Low)",
      "shortName": "Gemini 3.8 Flash (low)",
      "creatorName": "Google",
      "releaseDate": "2026-09-02"
-    },
-    {
-     "id": "0097ebf5-124f-42f6-9463-33b00e711f03",
-     "slug": "gemini-3-5-flash",
-     "name": "Gemini 3.5 Flash (High)",
-     "shortName": "Gemini 3.5 Flash (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-05-19"
-    },
-    {
-     "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
-     "slug": "gemini-3-1-pro-preview",
-     "name": "Gemini 3.1 Pro Preview",
-     "shortName": "Gemini 3.1 Pro Preview",
-     "creatorName": "Google",
-     "releaseDate": "2026-02-19"
     },
     {
      "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
@@ -6224,12 +5522,12 @@
      "releaseDate": "2026-07-21"
     },
     {
-     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
-     "slug": "gemma-4-26b-a4b",
-     "name": "Gemma 4 26B A4B (Reasoning)",
-     "shortName": "Gemma 4 26B A4B",
+     "id": "0097ebf5-124f-42f6-9463-33b00e711f03",
+     "slug": "gemini-3-5-flash",
+     "name": "Gemini 3.5 Flash (High)",
+     "shortName": "Gemini 3.5 Flash (high)",
      "creatorName": "Google",
-     "releaseDate": "2026-04-02"
+     "releaseDate": "2026-05-19"
     },
     {
      "id": "27202e5f-c82d-4710-92e9-4317877d4883",
@@ -6238,30 +5536,6 @@
      "shortName": "Gemini 2.5 Pro",
      "creatorName": "Google",
      "releaseDate": "2025-06-05"
-    },
-    {
-     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
-     "slug": "gemini-3-1-flash-lite-preview",
-     "name": "Gemini 3.1 Flash-Lite",
-     "shortName": "Gemini 3.1 Flash-Lite",
-     "creatorName": "Google",
-     "releaseDate": "2026-03-03"
-    },
-    {
-     "id": "cd26a386-4873-46ff-b853-d239050025a2",
-     "slug": "gemma-4-31b",
-     "name": "Gemma 4 31B (Reasoning)",
-     "shortName": "Gemma 4 31B",
-     "creatorName": "Google",
-     "releaseDate": "2026-04-02"
-    },
-    {
-     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
-     "slug": "gemma-4-e4b",
-     "name": "Gemma 4 E4B (Reasoning)",
-     "shortName": "Gemma 4 E4B",
-     "creatorName": "Google",
-     "releaseDate": "2026-04-03"
     },
     {
      "id": "2bfdd17a-e027-4068-a54e-b0e90a6df118",
@@ -6280,12 +5554,924 @@
      "releaseDate": "2025-03-12"
     },
     {
-     "id": "59627802-1546-422c-9a65-65b61c022d36",
-     "slug": "grok-4-7",
-     "name": "Grok 4.7 (Xhigh)",
-     "shortName": "Grok 4.7 (xhigh)",
-     "creatorName": "SpaceXAI",
-     "releaseDate": "2026-09-21"
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "slug": "gemini-3-1-flash-lite-preview",
+     "name": "Gemini 3.1 Flash-Lite",
+     "shortName": "Gemini 3.1 Flash-Lite",
+     "creatorName": "Google",
+     "releaseDate": "2026-03-03"
+    },
+    {
+     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
+     "slug": "gemma-4-26b-a4b",
+     "name": "Gemma 4 26B A4B (Reasoning)",
+     "shortName": "Gemma 4 26B A4B",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-02"
+    },
+    {
+     "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
+     "slug": "gemini-3-6-flash",
+     "name": "Gemini 3.6 Flash (High)",
+     "shortName": "Gemini 3.6 Flash (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-07-21"
+    },
+    {
+     "id": "b2331108-72ed-415a-82d1-188633875bbc",
+     "slug": "gemini-3-7-flash",
+     "name": "Gemini 3.7 Flash (High)",
+     "shortName": "Gemini 3.7 Flash (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-08-13"
+    },
+    {
+     "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
+     "slug": "gemini-3-1-pro-preview",
+     "name": "Gemini 3.1 Pro Preview",
+     "shortName": "Gemini 3.1 Pro Preview",
+     "creatorName": "Google",
+     "releaseDate": "2026-02-19"
+    },
+    {
+     "id": "cd26a386-4873-46ff-b853-d239050025a2",
+     "slug": "gemma-4-31b",
+     "name": "Gemma 4 31B (Reasoning)",
+     "shortName": "Gemma 4 31B",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-02"
+    },
+    {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "slug": "gemma-4-e4b",
+     "name": "Gemma 4 E4B (Reasoning)",
+     "shortName": "Gemma 4 E4B",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-03"
+    },
+    {
+     "id": "ddfdaf64-3f8e-40a6-a492-608ee83a1351",
+     "slug": "gemini-3-7-flash-low",
+     "name": "Gemini 3.7 Flash (Low)",
+     "shortName": "Gemini 3.7 Flash (low)",
+     "creatorName": "Google",
+     "releaseDate": "2026-08-13"
+    },
+    {
+     "id": "eb0d4272-7204-42b9-b875-8866fed58548",
+     "slug": "gemini-3-7-flash-medium",
+     "name": "Gemini 3.7 Flash (Medium)",
+     "shortName": "Gemini 3.7 Flash (medium)",
+     "creatorName": "Google",
+     "releaseDate": "2026-08-13"
+    },
+    {
+     "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
+     "slug": "claude-opus-5-5",
+     "name": "Claude Opus 5.5 (Max, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (max with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "df5bf99d-d228-4715-b41b-19ca86118777",
+     "slug": "claude-opus-5-5-xhigh",
+     "name": "Claude Opus 5.5 (Xhigh, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (xhigh with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
+     "slug": "claude-sonnet-5-5",
+     "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (max with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-28"
+    },
+    {
+     "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
+     "slug": "claude-opus-5-5-high",
+     "name": "Claude Opus 5.5 (High, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (high with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
+     "slug": "claude-fable-5-1-xhigh",
+     "name": "Claude Fable 5.1 (Xhigh, Default Fallback)",
+     "shortName": "Claude Fable 5.1 (xhigh with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-01"
+    },
+    {
+     "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
+     "slug": "claude-sonnet-5-5-xhigh",
+     "name": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (xhigh with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-28"
+    },
+    {
+     "id": "3e87c73e-a257-495e-9730-367a66229811",
+     "slug": "claude-fable-5-1",
+     "name": "Claude Fable 5.1 (Max, Default Fallback)",
+     "shortName": "Claude Fable 5.1 (max with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-01"
+    },
+    {
+     "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
+     "slug": "claude-opus-5-5-medium",
+     "name": "Claude Opus 5.5 (Medium, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (medium with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
+     "slug": "claude-fable-5-1-high",
+     "name": "Claude Fable 5.1 (High, Default Fallback)",
+     "shortName": "Claude Fable 5.1 (high with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-01"
+    },
+    {
+     "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
+     "slug": "claude-fable-5-1-medium",
+     "name": "Claude Fable 5.1 (Medium, Default Fallback)",
+     "shortName": "Claude Fable 5.1 (medium with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-01"
+    },
+    {
+     "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
+     "slug": "claude-sonnet-5-5-high",
+     "name": "Claude Sonnet 5.5 (High, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (high with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-28"
+    },
+    {
+     "id": "05776db7-f5c0-40f7-b824-079160f8cfa8",
+     "slug": "claude-fable-5-1-low",
+     "name": "Claude Fable 5.1 (Low, Default Fallback)",
+     "shortName": "Claude Fable 5.1 (low with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-01"
+    },
+    {
+     "id": "7d064a11-6e78-4030-b535-cdf940615041",
+     "slug": "claude-haiku-5-5",
+     "name": "Claude Haiku 5.5 (Max)",
+     "shortName": "Claude Haiku 5.5 (max)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-10-07"
+    },
+    {
+     "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
+     "slug": "claude-opus-5-5-low",
+     "name": "Claude Opus 5.5 (Low, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (low with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
+     "slug": "claude-haiku-5-5-xhigh",
+     "name": "Claude Haiku 5.5 (Xhigh)",
+     "shortName": "Claude Haiku 5.5 (xhigh)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-10-07"
+    },
+    {
+     "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
+     "slug": "claude-sonnet-5-5-medium",
+     "name": "Claude Sonnet 5.5 (Medium, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (medium with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-28"
+    },
+    {
+     "id": "20829974-af06-497e-9f42-77fb958d43b9",
+     "slug": "claude-haiku-5-5-high",
+     "name": "Claude Haiku 5.5 (High)",
+     "shortName": "Claude Haiku 5.5 (high)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-10-07"
+    },
+    {
+     "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
+     "slug": "claude-sonnet-5-5-low",
+     "name": "Claude Sonnet 5.5 (Low, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (low with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-09-28"
+    },
+    {
+     "id": "af26fff4-8120-41be-a5f0-86aaea023f20",
+     "slug": "claude-haiku-5-5-medium",
+     "name": "Claude Haiku 5.5 (Medium)",
+     "shortName": "Claude Haiku 5.5 (medium)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-10-07"
+    },
+    {
+     "id": "42908ae3-d3bd-4934-be19-fbff93d3fde8",
+     "slug": "claude-haiku-5-5-low",
+     "name": "Claude Haiku 5.5 (Low)",
+     "shortName": "Claude Haiku 5.5 (low)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-10-07"
+    },
+    {
+     "id": "1305c921-7aaa-4d6d-99b5-99b3acf15e19",
+     "slug": "claude-opus-5-xhigh",
+     "name": "Claude Opus 5 (Xhigh)",
+     "shortName": "Claude Opus 5 (xhigh)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-07-24"
+    },
+    {
+     "id": "142b93bf-09c4-42dc-9c3a-50b1a222cbd4",
+     "slug": "claude-sonnet-5-low",
+     "name": "Claude Sonnet 5 (Low)",
+     "shortName": "Claude Sonnet 5 (low)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-06-30"
+    },
+    {
+     "id": "20928ba9-3a3f-415f-9519-b84ff64ecf34",
+     "slug": "claude-opus-5-low",
+     "name": "Claude Opus 5 (Low)",
+     "shortName": "Claude Opus 5 (low)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-07-24"
+    },
+    {
+     "id": "23c86e4a-c769-43c0-a056-79e3cd15834f",
+     "slug": "claude-sonnet-5",
+     "name": "Claude Sonnet 5 (Max)",
+     "shortName": "Claude Sonnet 5 (max)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-06-30"
+    },
+    {
+     "id": "712be54a-77ae-41b2-9a58-21181479d6ee",
+     "slug": "claude-opus-5-high",
+     "name": "Claude Opus 5 (High)",
+     "shortName": "Claude Opus 5 (high)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-07-24"
+    },
+    {
+     "id": "90e078f2-051b-4c63-8919-76618971cb3f",
+     "slug": "claude-4-5-sonnet-thinking",
+     "name": "Claude 4.5 Sonnet (Reasoning)",
+     "shortName": "Claude 4.5 Sonnet",
+     "creatorName": "Anthropic",
+     "releaseDate": "2025-09-29"
+    },
+    {
+     "id": "992b7b84-5069-4c6a-9295-834252553d50",
+     "slug": "claude-opus-4-8",
+     "name": "Claude Opus 4.8 (Max)",
+     "shortName": "Claude Opus 4.8 (max)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-05-28"
+    },
+    {
+     "id": "99f376bf-cbcb-4124-bf3e-6b0a4e6e9bea",
+     "slug": "claude-sonnet-5-xhigh",
+     "name": "Claude Sonnet 5 (Xhigh)",
+     "shortName": "Claude Sonnet 5 (xhigh)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-06-30"
+    },
+    {
+     "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
+     "slug": "claude-4-5-haiku-reasoning",
+     "name": "Claude 4.5 Haiku (Reasoning)",
+     "shortName": "Claude 4.5 Haiku",
+     "creatorName": "Anthropic",
+     "releaseDate": "2025-10-15"
+    },
+    {
+     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+     "slug": "claude-opus-5",
+     "name": "Claude Opus 5 (Max)",
+     "shortName": "Claude Opus 5 (max)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-07-24"
+    },
+    {
+     "id": "ba0224cf-0351-4f56-8508-b3f1a740ae4a",
+     "slug": "claude-sonnet-5-high",
+     "name": "Claude Sonnet 5 (High)",
+     "shortName": "Claude Sonnet 5 (high)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-06-30"
+    },
+    {
+     "id": "cd55210d-358e-4df1-ba9c-9acb5f186cc9",
+     "slug": "claude-fable-5",
+     "name": "Claude Fable 5 (Max, Opus 4.8 Fallback)",
+     "shortName": "Claude Fable 5 (with fallback)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-06-09"
+    },
+    {
+     "id": "df8d14e0-3997-4e4d-b4ad-9c047acc9c69",
+     "slug": "claude-sonnet-4-6-adaptive",
+     "name": "Claude Sonnet 4.6 (Max)",
+     "shortName": "Claude Sonnet 4.6 (max)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-02-17"
+    },
+    {
+     "id": "effcd151-7c31-4437-af3d-e88daeae9385",
+     "slug": "claude-sonnet-5-medium",
+     "name": "Claude Sonnet 5 (Medium)",
+     "shortName": "Claude Sonnet 5 (medium)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-06-30"
+    },
+    {
+     "id": "ff51be8f-e362-4a7e-9043-687ba15de207",
+     "slug": "claude-opus-5-medium",
+     "name": "Claude Opus 5 (Medium)",
+     "shortName": "Claude Opus 5 (medium)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-07-24"
+    },
+    {
+     "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
+     "slug": "gpt-6-astra",
+     "name": "GPT-6 Astra (Max)",
+     "shortName": "GPT-6 Astra (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-03"
+    },
+    {
+     "id": "1f541ef3-913f-4eb2-9d07-0e93c7a9a5e3",
+     "slug": "gpt-6-astra-xhigh",
+     "name": "GPT-6 Astra (Xhigh)",
+     "shortName": "GPT-6 Astra (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-03"
+    },
+    {
+     "id": "e05a4828-0536-4876-870d-a235023f992b",
+     "slug": "gpt-6-astra-high",
+     "name": "GPT-6 Astra (High)",
+     "shortName": "GPT-6 Astra (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-03"
+    },
+    {
+     "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
+     "slug": "gpt-6-1-sol",
+     "name": "GPT-6.1 Sol (Max)",
+     "shortName": "GPT-6.1 Sol (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-29"
+    },
+    {
+     "id": "092a3b0e-c5c8-45dc-bf1b-53673c8ff352",
+     "slug": "gpt-6-1-sol-xhigh",
+     "name": "GPT-6.1 Sol (Xhigh)",
+     "shortName": "GPT-6.1 Sol (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-29"
+    },
+    {
+     "id": "e97a4ef5-e817-480e-9595-12f81dc4974f",
+     "slug": "gpt-6-astra-medium",
+     "name": "GPT-6 Astra (Medium)",
+     "shortName": "GPT-6 Astra (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-03"
+    },
+    {
+     "id": "b0c462cf-f2d0-4126-9434-28db9502219f",
+     "slug": "gpt-6-1-terra",
+     "name": "GPT-6.1 Terra (Max)",
+     "shortName": "GPT-6.1 Terra (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-10-26"
+    },
+    {
+     "id": "3b84fee3-b70a-41bc-819e-5fbdef9a0042",
+     "slug": "gpt-6-1-sol-high",
+     "name": "GPT-6.1 Sol (High)",
+     "shortName": "GPT-6.1 Sol (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-29"
+    },
+    {
+     "id": "a2e51d62-ea4e-4f15-8be0-be9dc1fb489d",
+     "slug": "gpt-6-1-sol-medium",
+     "name": "GPT-6.1 Sol (Medium)",
+     "shortName": "GPT-6.1 Sol (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-29"
+    },
+    {
+     "id": "e8d443ba-8aca-4830-a186-ae869bb9c6fe",
+     "slug": "gpt-6-1-terra-xhigh",
+     "name": "GPT-6.1 Terra (Xhigh)",
+     "shortName": "GPT-6.1 Terra (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-10-26"
+    },
+    {
+     "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
+     "slug": "gpt-6-astra-low",
+     "name": "GPT-6 Astra (Low)",
+     "shortName": "GPT-6 Astra (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-03"
+    },
+    {
+     "id": "ea3e1f50-f62d-41d2-849a-9af0413e4d37",
+     "slug": "gpt-6-1-terra-high",
+     "name": "GPT-6.1 Terra (High)",
+     "shortName": "GPT-6.1 Terra (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-10-26"
+    },
+    {
+     "id": "c441e158-a87d-4116-911b-93325e4b4f1c",
+     "slug": "gpt-6-1-terra-medium",
+     "name": "GPT-6.1 Terra (Medium)",
+     "shortName": "GPT-6.1 Terra (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-10-26"
+    },
+    {
+     "id": "e76e0fe5-93ca-4272-9359-2eb1740467d1",
+     "slug": "gpt-6-1-sol-low",
+     "name": "GPT-6.1 Sol (Low)",
+     "shortName": "GPT-6.1 Sol (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-29"
+    },
+    {
+     "id": "0d3c777f-6817-42d7-9bb9-223314bc5a57",
+     "slug": "gpt-6-1-terra-non-reasoning",
+     "name": "GPT-6.1 Terra (Non-reasoning)",
+     "shortName": "GPT-6.1 Terra (non-reasoning)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-10-26"
+    },
+    {
+     "id": "c955b262-a17f-4f1a-b097-6860b866295b",
+     "slug": "gpt-6-1-terra-low",
+     "name": "GPT-6.1 Terra (Low)",
+     "shortName": "GPT-6.1 Terra (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-10-26"
+    },
+    {
+     "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
+     "slug": "gpt-6-luna",
+     "name": "GPT-6 Luna (Max)",
+     "shortName": "GPT-6 Luna (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "19813eb2-460a-475c-af65-810bb8660fec",
+     "slug": "gpt-6-luna-xhigh",
+     "name": "GPT-6 Luna (Xhigh)",
+     "shortName": "GPT-6 Luna (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "7d1229bc-deea-4717-ba5b-f59a35d991e3",
+     "slug": "gpt-6-luna-high",
+     "name": "GPT-6 Luna (High)",
+     "shortName": "GPT-6 Luna (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "36667da0-9222-4967-adbb-f7efa15ad213",
+     "slug": "gpt-6-luna-medium",
+     "name": "GPT-6 Luna (Medium)",
+     "shortName": "GPT-6 Luna (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "bf9708d8-933d-44f6-affa-b696a7a650c9",
+     "slug": "gpt-6-luna-low",
+     "name": "GPT-6 Luna (Low)",
+     "shortName": "GPT-6 Luna (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "63cb48ea-0b0c-4e07-8ded-6d28dec4fa28",
+     "slug": "gpt-6-luna-non-reasoning",
+     "name": "GPT-6 Luna (Non-reasoning)",
+     "shortName": "GPT-6 Luna (non-reasoning)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "01459872-433a-4ab2-8e99-7083162172eb",
+     "slug": "gpt-6-sol-low",
+     "name": "GPT-6 Sol (Low)",
+     "shortName": "GPT-6 Sol (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "050c61cd-cddc-463a-a30a-a82aaa37be59",
+     "slug": "gpt-5-6-luna-low",
+     "name": "GPT-5.6 Luna (Low)",
+     "shortName": "GPT-5.6 Luna (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "076f2674-bc4b-4925-be59-50832eb8c090",
+     "slug": "o3-mini-high",
+     "name": "o3-mini (High)",
+     "shortName": "o3-mini (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2025-01-31"
+    },
+    {
+     "id": "0904b596-8932-43bd-9b21-324f128e1723",
+     "slug": "gpt-5-6-sol-low",
+     "name": "GPT-5.6 Sol (Low)",
+     "shortName": "GPT-5.6 Sol (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "1f054429-397e-4fdb-9e71-67bc92c1735e",
+     "slug": "gpt-5-5",
+     "name": "GPT-5.5 (Xhigh)",
+     "shortName": "GPT-5.5 (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-04-23"
+    },
+    {
+     "id": "26e0f83a-ca98-4f34-94ac-7c5e251ee410",
+     "slug": "gpt-5-6-terra-medium",
+     "name": "GPT-5.6 Terra (Medium)",
+     "shortName": "GPT-5.6 Terra (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "29855680-7469-43eb-8b88-cd3fb1d99da3",
+     "slug": "gpt-5-mini",
+     "name": "GPT-5 mini (High)",
+     "shortName": "GPT-5 mini (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2025-08-07"
+    },
+    {
+     "id": "36f73aaf-d38a-4b56-a2b3-d04d17186910",
+     "slug": "gpt-oss-20b",
+     "name": "gpt-oss-20b (High)",
+     "shortName": "gpt-oss-20b (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2025-08-05"
+    },
+    {
+     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+     "slug": "gpt-5-6-luna",
+     "name": "GPT-5.6 Luna (Max)",
+     "shortName": "GPT-5.6 Luna (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "52eebe3e-6ede-4e46-92db-c5dea49fc410",
+     "slug": "gpt-6-sol-high",
+     "name": "GPT-6 Sol (High)",
+     "shortName": "GPT-6 Sol (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "58b812bf-8498-46db-b834-f43ccc614b61",
+     "slug": "gpt-5-6-luna-medium",
+     "name": "GPT-5.6 Luna (Medium)",
+     "shortName": "GPT-5.6 Luna (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "6b79f899-e3c0-45f6-923c-243faccdb2fc",
+     "slug": "gpt-5-5-medium",
+     "name": "GPT-5.5 (Medium)",
+     "shortName": "GPT-5.5 (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-04-23"
+    },
+    {
+     "id": "6f174934-5b7d-4333-86cb-f5ebf4a862e3",
+     "slug": "gpt-5-6-sol-medium",
+     "name": "GPT-5.6 Sol (Medium)",
+     "shortName": "GPT-5.6 Sol (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "780a4a85-17ff-4175-a8dd-ebca4823e61b",
+     "slug": "gpt-6-sol-medium",
+     "name": "GPT-6 Sol (Medium)",
+     "shortName": "GPT-6 Sol (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "7c4d1e30-6ecb-46cf-880c-41446d7b51f1",
+     "slug": "gpt-5-6-sol-non-reasoning",
+     "name": "GPT-5.6 Sol (Non-reasoning)",
+     "shortName": "GPT-5.6 Sol (non-reasoning)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "81972fba-1219-477e-bbfb-18c656a63ff7",
+     "slug": "gpt-5-6-terra-high",
+     "name": "GPT-5.6 Terra (High)",
+     "shortName": "GPT-5.6 Terra (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "87110ff0-1f79-41b4-9976-eda250597317",
+     "slug": "gpt-5-6-luna-xhigh",
+     "name": "GPT-5.6 Luna (Xhigh)",
+     "shortName": "GPT-5.6 Luna (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "8afc250d-b538-45a2-812a-4605f4ffd87e",
+     "slug": "gpt-5-6-sol-high",
+     "name": "GPT-5.6 Sol (High)",
+     "shortName": "GPT-5.6 Sol (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "9b97a35e-6ac7-44d9-91c6-422fa678963e",
+     "slug": "gpt-5-6-terra-non-reasoning",
+     "name": "GPT-5.6 Terra (Non-reasoning)",
+     "shortName": "GPT-5.6 Terra (non-reasoning)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "9e30696f-16fa-4b4f-ba53-161895a85fed",
+     "slug": "gpt-5-6-terra-xhigh",
+     "name": "GPT-5.6 Terra (Xhigh)",
+     "shortName": "GPT-5.6 Terra (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "aa55297e-8fbf-4372-b4ab-9b068dc6396c",
+     "slug": "gpt-5-6-luna-high",
+     "name": "GPT-5.6 Luna (High)",
+     "shortName": "GPT-5.6 Luna (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "b13c1257-d746-4027-8fc8-4892dc14701c",
+     "slug": "gpt-5-5-high",
+     "name": "GPT-5.5 (High)",
+     "shortName": "GPT-5.5 (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-04-23"
+    },
+    {
+     "id": "ba242e40-83b7-4cd3-a0e0-b56237984914",
+     "slug": "gpt-5-4-mini",
+     "name": "GPT-5.4 mini (Xhigh)",
+     "shortName": "GPT-5.4 mini (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-03-17"
+    },
+    {
+     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
+     "slug": "gpt-5-6-terra",
+     "name": "GPT-5.6 Terra (Max)",
+     "shortName": "GPT-5.6 Terra (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "c4169d75-9d24-4794-a9c3-69e1fe364de5",
+     "slug": "gpt-5-5-instant-06-26",
+     "name": "GPT-5.5 Instant (June 2026)",
+     "shortName": "GPT-5.5 Instant (June 2026)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-06-25"
+    },
+    {
+     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+     "slug": "gpt-6-sol",
+     "name": "GPT-6 Sol (Max)",
+     "shortName": "GPT-6 Sol (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "cc4a20cd-09fe-4962-a430-119c815e85fa",
+     "slug": "gpt-5-6-terra-low",
+     "name": "GPT-5.6 Terra (Low)",
+     "shortName": "GPT-5.6 Terra (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "d3e20e76-9e1a-45b6-b809-ad6aa37430cf",
+     "slug": "gpt-6-sol-non-reasoning",
+     "name": "GPT-6 Sol (Non-reasoning)",
+     "shortName": "GPT-6 Sol (non-reasoning)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "d4fc3f33-f2b0-4da1-88ee-f1f82bd4de31",
+     "slug": "gpt-5-4-nano",
+     "name": "GPT-5.4 nano (Xhigh)",
+     "shortName": "GPT-5.4 nano (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-03-17"
+    },
+    {
+     "id": "d93edfe8-bf35-49ad-b56e-b18116142a1c",
+     "slug": "gpt-5-6-sol",
+     "name": "GPT-5.6 Sol (Max)",
+     "shortName": "GPT-5.6 Sol (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "d998db47-9b67-4727-a2bb-2e1261020ac0",
+     "slug": "gpt-5-6-sol-xhigh",
+     "name": "GPT-5.6 Sol (Xhigh)",
+     "shortName": "GPT-5.6 Sol (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "da2642fe-9f73-4788-b5af-24edcd55b37e",
+     "slug": "gpt-6-sol-xhigh",
+     "name": "GPT-6 Sol (Xhigh)",
+     "shortName": "GPT-6 Sol (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "dc64f856-3ded-497d-9527-d41d31267ed5",
+     "slug": "gpt-5-6-luna-non-reasoning",
+     "name": "GPT-5.6 Luna (Non-reasoning)",
+     "shortName": "GPT-5.6 Luna (non-reasoning)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "slug": "gpt-oss-120b",
+     "name": "gpt-oss-120b (High)",
+     "shortName": "gpt-oss-120b (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2025-08-05"
+    },
+    {
+     "id": "e994a6e0-d36b-4dab-8ae1-c1b469e4d9e2",
+     "slug": "muse-wonder-full",
+     "name": "Muse Wonder Full (Max)",
+     "shortName": "Muse Wonder Full (max)",
+     "creatorName": "Meta",
+     "releaseDate": "2026-10-12"
+    },
+    {
+     "id": "ff2f3f3d-783f-4e27-8a39-47237501a313",
+     "slug": "muse-wonder",
+     "name": "Muse Wonder (Max)",
+     "shortName": "Muse Wonder (max)",
+     "creatorName": "Meta",
+     "releaseDate": "2026-10-12"
+    },
+    {
+     "id": "9999672c-b687-4026-9c15-5cef02ff53bb",
+     "slug": "muse-spark-1-3",
+     "name": "Muse Spark 1.3 (Max)",
+     "shortName": "Muse Spark 1.3 (max)",
+     "creatorName": "Meta",
+     "releaseDate": "2026-09-02"
+    },
+    {
+     "id": "3661c8fb-caf7-4118-aa18-65b84fea8e44",
+     "slug": "muse-spark-open",
+     "name": "Muse Spark Open (Xhigh)",
+     "shortName": "Muse Spark Open (xhigh)",
+     "creatorName": "Meta",
+     "releaseDate": "2026-10-15"
+    },
+    {
+     "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
+     "slug": "muse-glimmer",
+     "name": "Muse Glimmer (High)",
+     "shortName": "Muse Glimmer (high)",
+     "creatorName": "Meta",
+     "releaseDate": "2026-08-10"
+    },
+    {
+     "id": "04ee6719-0327-463b-a1a1-70a6a78254f9",
+     "slug": "muse-spark-1-2",
+     "name": "Muse Spark 1.2 (Xhigh)",
+     "shortName": "Muse Spark 1.2 (xhigh)",
+     "creatorName": "Meta",
+     "releaseDate": "2026-08-05"
+    },
+    {
+     "id": "922c69c7-9037-43c6-8bcf-a1c555e7f3eb",
+     "slug": "llama-4-maverick",
+     "name": "Llama 4 Maverick",
+     "shortName": "Llama 4 Maverick",
+     "creatorName": "Meta",
+     "releaseDate": "2025-04-05"
+    },
+    {
+     "id": "adf9a85e-abc3-4f28-937b-db6655cc5238",
+     "slug": "llama-4-scout",
+     "name": "Llama 4 Scout",
+     "shortName": "Llama 4 Scout",
+     "creatorName": "Meta",
+     "releaseDate": "2025-04-05"
+    },
+    {
+     "id": "d5170215-69be-4129-849b-26d8d8825bfc",
+     "slug": "muse-spark-1-3-xhigh",
+     "name": "Muse Spark 1.3 (Xhigh)",
+     "shortName": "Muse Spark 1.3 (xhigh)",
+     "creatorName": "Meta",
+     "releaseDate": "2026-09-02"
+    },
+    {
+     "id": "d61493e2-43ff-460c-9054-eaf6ba317360",
+     "slug": "muse-spark-1-1",
+     "name": "Muse Spark 1.1 (Xhigh)",
+     "shortName": "Muse Spark 1.1 (xhigh)",
+     "creatorName": "Meta",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+     "slug": "kimi-k3-1-pro",
+     "name": "Kimi K3.1 Pro",
+     "shortName": "Kimi K3.1 Pro",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-10-23"
+    },
+    {
+     "id": "0de67206-4d36-4d10-b8f6-cf37fa747a03",
+     "slug": "kimi-k2-6",
+     "name": "Kimi K2.6 (Reasoning)",
+     "shortName": "Kimi K2.6",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-04-20"
+    },
+    {
+     "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
+     "slug": "kimi-k3-low",
+     "name": "Kimi K3 (Low)",
+     "shortName": "Kimi K3 (low)",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-07-16"
+    },
+    {
+     "id": "8d0cb231-7303-452c-9923-a9620b948475",
+     "slug": "kimi-k2-7-code",
+     "name": "Kimi K2.7 Code",
+     "shortName": "Kimi K2.7 Code",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-06-12"
+    },
+    {
+     "id": "f7d2fc3e-1f7b-405f-818c-07952a4af78f",
+     "slug": "kimi-k3",
+     "name": "Kimi K3 (Max)",
+     "shortName": "Kimi K3 (max)",
+     "creatorName": "Kimi",
+     "releaseDate": "2026-07-16"
     },
     {
      "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
@@ -6294,6 +6480,62 @@
      "shortName": "Grok 4.7 (high)",
      "creatorName": "SpaceXAI",
      "releaseDate": "2026-09-21"
+    },
+    {
+     "id": "59627802-1546-422c-9a65-65b61c022d36",
+     "slug": "grok-4-7",
+     "name": "Grok 4.7 (Xhigh)",
+     "shortName": "Grok 4.7 (xhigh)",
+     "creatorName": "SpaceXAI",
+     "releaseDate": "2026-09-21"
+    },
+    {
+     "id": "208c16f0-8c5b-4524-ac8a-ac74c02e80a9",
+     "slug": "grok-4-7-low",
+     "name": "Grok 4.7 (Low)",
+     "shortName": "Grok 4.7 (low)",
+     "creatorName": "SpaceXAI",
+     "releaseDate": "2026-09-21"
+    },
+    {
+     "id": "26614164-6840-4e17-a65a-2deb2fe7e87b",
+     "slug": "grok-4-6-medium",
+     "name": "Grok 4.6 (Medium)",
+     "shortName": "Grok 4.6 (medium)",
+     "creatorName": "SpaceXAI",
+     "releaseDate": "2026-08-12"
+    },
+    {
+     "id": "794f69b5-cede-482b-b1cc-d769478497cd",
+     "slug": "grok-4-5",
+     "name": "Grok 4.5 (High)",
+     "shortName": "Grok 4.5 (high)",
+     "creatorName": "SpaceXAI",
+     "releaseDate": "2026-07-08"
+    },
+    {
+     "id": "90c2a9cf-ad7e-4332-9be2-2fd1309833e2",
+     "slug": "grok-4-3-non-reasoning",
+     "name": "Grok 4.3 (Non-reasoning)",
+     "shortName": "Grok 4.3 (non-reasoning)",
+     "creatorName": "SpaceXAI",
+     "releaseDate": "2026-04-30"
+    },
+    {
+     "id": "948892b5-db03-4118-a4a8-ccd51ed871ea",
+     "slug": "grok-4-3",
+     "name": "Grok 4.3 (High)",
+     "shortName": "Grok 4.3 (high)",
+     "creatorName": "SpaceXAI",
+     "releaseDate": "2026-04-30"
+    },
+    {
+     "id": "c07e65e6-32fc-451e-938d-7477a1c3ffcc",
+     "slug": "grok-4-6-low",
+     "name": "Grok 4.6 (Low)",
+     "shortName": "Grok 4.6 (low)",
+     "creatorName": "SpaceXAI",
+     "releaseDate": "2026-08-12"
     },
     {
      "id": "c8adc5cf-fd5a-407b-af51-dc3bede3e49c",
@@ -6312,52 +6554,324 @@
      "releaseDate": "2026-08-12"
     },
     {
-     "id": "26614164-6840-4e17-a65a-2deb2fe7e87b",
-     "slug": "grok-4-6-medium",
-     "name": "Grok 4.6 (Medium)",
-     "shortName": "Grok 4.6 (medium)",
-     "creatorName": "SpaceXAI",
+     "id": "b112af07-3bd5-4647-b09f-b23204361bb2",
+     "slug": "qwen3-8-max",
+     "name": "Qwen3.8 Max (0902)",
+     "shortName": "Qwen3.8 Max (0902)",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-09-02"
+    },
+    {
+     "id": "b01dee41-c62b-48ed-8d16-984adc405e5c",
+     "slug": "qwen3-8-27b",
+     "name": "Qwen3.8 27B (Xhigh)",
+     "shortName": "Qwen3.8 27B (xhigh)",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-08-14"
+    },
+    {
+     "id": "0e66bae9-41f1-42fc-9276-ce8cb6f72919",
+     "slug": "qwen3-5-397b-a17b",
+     "name": "Qwen3.5 397B A17B (Reasoning)",
+     "shortName": "Qwen3.5 397B A17B",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-02-16"
+    },
+    {
+     "id": "2236df45-0699-40d1-b5cc-69ee345d2257",
+     "slug": "qwen3-5-122b-a10b",
+     "name": "Qwen3.5 122B A10B (Reasoning)",
+     "shortName": "Qwen3.5 122B A10B",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-02-24"
+    },
+    {
+     "id": "2d28a13a-096e-475a-beb8-26bbd1c7d51c",
+     "slug": "qwen3-5-9b",
+     "name": "Qwen3.5 9B (Reasoning)",
+     "shortName": "Qwen3.5 9B",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-03-02"
+    },
+    {
+     "id": "353c92f3-2148-4c2d-9231-aa7e1322a1fd",
+     "slug": "qwen3-8-27b-non-reasoning",
+     "name": "Qwen3.8 27B (Non-reasoning)",
+     "shortName": "Qwen3.8 27B (non-reasoning)",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-08-14"
+    },
+    {
+     "id": "4559e9f0-8aad-4681-89fb-68cb915e0f16",
+     "slug": "qwen3-14b-instruct-reasoning",
+     "name": "Qwen3 14B (Reasoning)",
+     "shortName": "Qwen3 14B",
+     "creatorName": "Alibaba",
+     "releaseDate": "2025-04-28"
+    },
+    {
+     "id": "5e0164b3-d902-4bcb-a1b2-83b4f4cd6143",
+     "slug": "qwen3-30b-a3b-2507-reasoning",
+     "name": "Qwen3 30B A3B 2507 (Reasoning)",
+     "shortName": "Qwen3 30B A3B 2507",
+     "creatorName": "Alibaba",
+     "releaseDate": "2025-07-30"
+    },
+    {
+     "id": "5e5b4ce7-bc54-47b2-b911-21b9cad8394c",
+     "slug": "qwen3-8-max-0803",
+     "name": "Qwen3.8 Max",
+     "shortName": "Qwen3.8 Max",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-08-03"
+    },
+    {
+     "id": "6657d7de-a2a9-40bc-a32f-86e80ad63698",
+     "slug": "qwen3-8-27b-medium",
+     "name": "Qwen3.8 27B (Medium)",
+     "shortName": "Qwen3.8 27B (medium)",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-08-14"
+    },
+    {
+     "id": "69534bed-2ffd-4235-832b-e20a810333ab",
+     "slug": "qwen3-7-max",
+     "name": "Qwen3.7 Max",
+     "shortName": "Qwen3.7 Max",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-05-19"
+    },
+    {
+     "id": "7e30585f-fad7-40df-a8cb-03c1d96df38a",
+     "slug": "qwen3-8-27b-low",
+     "name": "Qwen3.8 27B (Low)",
+     "shortName": "Qwen3.8 27B (low)",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-08-14"
+    },
+    {
+     "id": "8665ca00-c687-44c7-875c-22618cb31c4f",
+     "slug": "qwen3-6-35b-a3b",
+     "name": "Qwen3.6 35B A3B (Reasoning)",
+     "shortName": "Qwen3.6 35B A3B",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-04-16"
+    },
+    {
+     "id": "8c29d66d-bf98-4ea3-8572-5409353ecc66",
+     "slug": "qwen3-6-27b",
+     "name": "Qwen3.6 27B (Reasoning)",
+     "shortName": "Qwen3.6 27B",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-04-22"
+    },
+    {
+     "id": "8df710d3-9dae-4498-9b4e-9818238e6f31",
+     "slug": "qwen3-8-2-4t-a95b",
+     "name": "Qwen3.8 2.4T A95B",
+     "shortName": "Qwen3.8 2.4T A95B",
+     "creatorName": "Alibaba",
      "releaseDate": "2026-08-12"
     },
     {
-     "id": "208c16f0-8c5b-4524-ac8a-ac74c02e80a9",
-     "slug": "grok-4-7-low",
-     "name": "Grok 4.7 (Low)",
-     "shortName": "Grok 4.7 (low)",
-     "creatorName": "SpaceXAI",
-     "releaseDate": "2026-09-21"
+     "id": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
+     "slug": "qwen3-8-flash-next",
+     "name": "Qwen3.8-Flash-Next",
+     "shortName": "Qwen3.8-Flash-Next",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-08-26"
     },
     {
-     "id": "794f69b5-cede-482b-b1cc-d769478497cd",
-     "slug": "grok-4-5",
-     "name": "Grok 4.5 (High)",
-     "shortName": "Grok 4.5 (high)",
-     "creatorName": "SpaceXAI",
-     "releaseDate": "2026-07-08"
+     "id": "9dba61f5-78ee-4190-8d1d-8e7063ffd386",
+     "slug": "qwen3-8b-instruct-reasoning",
+     "name": "Qwen3 8B (Reasoning)",
+     "shortName": "Qwen3 8B",
+     "creatorName": "Alibaba",
+     "releaseDate": "2025-04-28"
     },
     {
-     "id": "c07e65e6-32fc-451e-938d-7477a1c3ffcc",
-     "slug": "grok-4-6-low",
-     "name": "Grok 4.6 (Low)",
-     "shortName": "Grok 4.6 (low)",
-     "creatorName": "SpaceXAI",
-     "releaseDate": "2026-08-12"
+     "id": "a87fce42-eea3-4e45-a96d-fe057814f371",
+     "slug": "qwen3-7-plus",
+     "name": "Qwen3.7 Plus",
+     "shortName": "Qwen3.7 Plus",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-06-01"
     },
     {
-     "id": "948892b5-db03-4118-a4a8-ccd51ed871ea",
-     "slug": "grok-4-3",
-     "name": "Grok 4.3 (High)",
-     "shortName": "Grok 4.3 (high)",
-     "creatorName": "SpaceXAI",
-     "releaseDate": "2026-04-30"
+     "id": "b00ecd62-a53f-4aed-b833-3e9d6b0170ba",
+     "slug": "qwen3-32b-instruct-reasoning",
+     "name": "Qwen3 32B (Reasoning)",
+     "shortName": "Qwen3 32B",
+     "creatorName": "Alibaba",
+     "releaseDate": "2025-04-28"
     },
     {
-     "id": "90c2a9cf-ad7e-4332-9be2-2fd1309833e2",
-     "slug": "grok-4-3-non-reasoning",
-     "name": "Grok 4.3 (Non-reasoning)",
-     "shortName": "Grok 4.3 (non-reasoning)",
-     "creatorName": "SpaceXAI",
-     "releaseDate": "2026-04-30"
+     "id": "f6ccbe1d-bd7e-484b-9795-18cc9f91552d",
+     "slug": "qwen3-235b-a22b-instruct-2507-reasoning",
+     "name": "Qwen3 235B A22B 2507 (Reasoning)",
+     "shortName": "Qwen3 235B A22B 2507",
+     "creatorName": "Alibaba",
+     "releaseDate": "2025-07-25"
+    },
+    {
+     "id": "fc92f822-04b7-420d-9c07-a21af5e9aac7",
+     "slug": "qwen3-coder-next",
+     "name": "Qwen3 Coder Next",
+     "shortName": "Qwen3 Coder Next",
+     "creatorName": "Alibaba",
+     "releaseDate": "2026-02-03"
+    },
+    {
+     "id": "f151fd0b-2139-40cf-a3ec-995e8cedc592",
+     "slug": "deepseek-v4-1-flash-1017",
+     "name": "DeepSeek V4.1 Flash 1017 (Max)",
+     "shortName": "DeepSeek V4.1 Flash 1017 (max)",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2026-10-17"
+    },
+    {
+     "id": "83173329-c09a-41f1-a028-a282a5f908d7",
+     "slug": "deepseek-v4-pro",
+     "name": "DeepSeek V4 Pro 0813 (Max)",
+     "shortName": "DeepSeek V4 Pro 0813 (max)",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2026-08-13"
+    },
+    {
+     "id": "0a7dda4d-cc9c-4a90-abc1-abb5772c901b",
+     "slug": "deepseek-v3-1-terminus-reasoning",
+     "name": "DeepSeek V3.1 Terminus (Reasoning)",
+     "shortName": "DeepSeek V3.1 Terminus",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2025-09-22"
+    },
+    {
+     "id": "0e34f05c-387e-4968-be15-ccec4a55d8c1",
+     "slug": "deepseek-r1-0120",
+     "name": "DeepSeek R1 (Jan '25)",
+     "shortName": "DeepSeek R1 (Jan)",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2025-01-20"
+    },
+    {
+     "id": "43fc5506-c5ed-4dee-9b85-962bf7ae3986",
+     "slug": "deepseek-v3",
+     "name": "DeepSeek V3 (Dec '24)",
+     "shortName": "DeepSeek V3 (Dec)",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2024-12-26"
+    },
+    {
+     "id": "73c96f99-0de3-4668-a4bd-b106a0fe18f2",
+     "slug": "deepseek-v4-1-flash-non-reasoning",
+     "name": "DeepSeek V4.1 Flash (Non-reasoning)",
+     "shortName": "DeepSeek V4.1 Flash (non-reasoning)",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2026-09-10"
+    },
+    {
+     "id": "75e1c197-f239-4361-a9d6-66dccfead236",
+     "slug": "deepseek-v3-0324",
+     "name": "DeepSeek V3 0324",
+     "shortName": "DeepSeek V3 0324",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2025-03-25"
+    },
+    {
+     "id": "7707a46f-895f-4247-b7a8-ddab87c9a11d",
+     "slug": "deepseek-v4-flash-vision",
+     "name": "DeepSeek V4 Flash Vision (Max)",
+     "shortName": "DeepSeek V4 Flash Vision (max)",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2026-08-21"
+    },
+    {
+     "id": "89a2c945-1fab-4ee4-9f45-83a9f46cb221",
+     "slug": "deepseek-v4-flash-0420-high",
+     "name": "DeepSeek V4 Flash 0420 (High)",
+     "shortName": "DeepSeek V4 Flash (high)",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2026-04-24"
+    },
+    {
+     "id": "bf220674-68bd-43cc-a1b8-ce5ed4d2f18d",
+     "slug": "deepseek-v4-pro-0424",
+     "name": "DeepSeek V4 Pro 0424 (Max)",
+     "shortName": "DeepSeek V4 Pro (max)",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2026-04-24"
+    },
+    {
+     "id": "d4f5b250-be37-4801-85e6-32fda4179337",
+     "slug": "deepseek-v4-pro-non-reasoning",
+     "name": "DeepSeek V4 Pro 0813 (Non-reasoning)",
+     "shortName": "DeepSeek V4 Pro 0813 (non-reasoning)",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2026-08-13"
+    },
+    {
+     "id": "d8ddb241-b3e4-4c25-a6a3-72eb1b30c541",
+     "slug": "deepseek-v4-flash-0420",
+     "name": "DeepSeek V4 Flash 0420 (Max)",
+     "shortName": "DeepSeek V4 Flash (max)",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2026-04-24"
+    },
+    {
+     "id": "dbe7c625-3100-4463-b479-a228c41f75dd",
+     "slug": "deepseek-v4-1-flash",
+     "name": "DeepSeek V4.1 Flash (Max)",
+     "shortName": "DeepSeek V4.1 Flash (max)",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2026-09-10"
+    },
+    {
+     "id": "fe4c0848-e284-4e52-a79d-cdc28392f1a9",
+     "slug": "deepseek-v4-flash",
+     "name": "DeepSeek V4 Flash 0731 (Max)",
+     "shortName": "DeepSeek V4 Flash 0731 (max)",
+     "creatorName": "DeepSeek",
+     "releaseDate": "2026-07-31"
+    },
+    {
+     "id": "cd684ea4-b475-4269-b001-d469d06d8a7a",
+     "slug": "glm-5-3",
+     "name": "GLM-5.3 (Max)",
+     "shortName": "GLM-5.3 (max)",
+     "creatorName": "Z AI",
+     "releaseDate": "2026-08-18"
+    },
+    {
+     "id": "cc1e488b-8ba4-464d-875d-690166b15ad3",
+     "slug": "glm-5-3-low",
+     "name": "GLM-5.3 (Low)",
+     "shortName": "GLM-5.3 (low)",
+     "creatorName": "Z AI",
+     "releaseDate": "2026-08-18"
+    },
+    {
+     "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
+     "slug": "glm-5-3-flash",
+     "name": "GLM-5.3-Flash",
+     "shortName": "GLM-5.3-Flash",
+     "creatorName": "Z AI",
+     "releaseDate": "2026-08-26"
+    },
+    {
+     "id": "5aa1c578-af76-4b91-8699-cdd43582b3af",
+     "slug": "glm-5-1",
+     "name": "GLM-5.1 (Reasoning)",
+     "shortName": "GLM-5.1",
+     "creatorName": "Z AI",
+     "releaseDate": "2026-04-07"
+    },
+    {
+     "id": "f7a4ea75-e548-4069-80d4-9be8bc7c009b",
+     "slug": "glm-5-2",
+     "name": "GLM-5.2 (Max)",
+     "shortName": "GLM-5.2 (max)",
+     "creatorName": "Z AI",
+     "releaseDate": "2026-06-16"
     },
     {
      "id": "24d8fdfe-6241-424e-b7b7-1b6efb06e4fb",
@@ -6392,340 +6906,12 @@
      "releaseDate": "2026-04-22"
     },
     {
-     "id": "b112af07-3bd5-4647-b09f-b23204361bb2",
-     "slug": "qwen3-8-max",
-     "name": "Qwen3.8 Max (0902)",
-     "shortName": "Qwen3.8 Max (0902)",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-09-02"
-    },
-    {
-     "id": "5e5b4ce7-bc54-47b2-b911-21b9cad8394c",
-     "slug": "qwen3-8-max-0803",
-     "name": "Qwen3.8 Max",
-     "shortName": "Qwen3.8 Max",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-08-03"
-    },
-    {
-     "id": "8df710d3-9dae-4498-9b4e-9818238e6f31",
-     "slug": "qwen3-8-2-4t-a95b",
-     "name": "Qwen3.8 2.4T A95B",
-     "shortName": "Qwen3.8 2.4T A95B",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-08-12"
-    },
-    {
-     "id": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
-     "slug": "qwen3-8-flash-next",
-     "name": "Qwen3.8-Flash-Next",
-     "shortName": "Qwen3.8-Flash-Next",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-08-26"
-    },
-    {
-     "id": "b01dee41-c62b-48ed-8d16-984adc405e5c",
-     "slug": "qwen3-8-27b",
-     "name": "Qwen3.8 27B (Xhigh)",
-     "shortName": "Qwen3.8 27B (xhigh)",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-08-14"
-    },
-    {
-     "id": "69534bed-2ffd-4235-832b-e20a810333ab",
-     "slug": "qwen3-7-max",
-     "name": "Qwen3.7 Max",
-     "shortName": "Qwen3.7 Max",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-05-19"
-    },
-    {
-     "id": "6657d7de-a2a9-40bc-a32f-86e80ad63698",
-     "slug": "qwen3-8-27b-medium",
-     "name": "Qwen3.8 27B (Medium)",
-     "shortName": "Qwen3.8 27B (medium)",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-08-14"
-    },
-    {
-     "id": "7e30585f-fad7-40df-a8cb-03c1d96df38a",
-     "slug": "qwen3-8-27b-low",
-     "name": "Qwen3.8 27B (Low)",
-     "shortName": "Qwen3.8 27B (low)",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-08-14"
-    },
-    {
-     "id": "a87fce42-eea3-4e45-a96d-fe057814f371",
-     "slug": "qwen3-7-plus",
-     "name": "Qwen3.7 Plus",
-     "shortName": "Qwen3.7 Plus",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-06-01"
-    },
-    {
-     "id": "8c29d66d-bf98-4ea3-8572-5409353ecc66",
-     "slug": "qwen3-6-27b",
-     "name": "Qwen3.6 27B (Reasoning)",
-     "shortName": "Qwen3.6 27B",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-04-22"
-    },
-    {
-     "id": "353c92f3-2148-4c2d-9231-aa7e1322a1fd",
-     "slug": "qwen3-8-27b-non-reasoning",
-     "name": "Qwen3.8 27B (Non-reasoning)",
-     "shortName": "Qwen3.8 27B (non-reasoning)",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-08-14"
-    },
-    {
-     "id": "0e66bae9-41f1-42fc-9276-ce8cb6f72919",
-     "slug": "qwen3-5-397b-a17b",
-     "name": "Qwen3.5 397B A17B (Reasoning)",
-     "shortName": "Qwen3.5 397B A17B",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-02-16"
-    },
-    {
-     "id": "8665ca00-c687-44c7-875c-22618cb31c4f",
-     "slug": "qwen3-6-35b-a3b",
-     "name": "Qwen3.6 35B A3B (Reasoning)",
-     "shortName": "Qwen3.6 35B A3B",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-04-16"
-    },
-    {
-     "id": "2236df45-0699-40d1-b5cc-69ee345d2257",
-     "slug": "qwen3-5-122b-a10b",
-     "name": "Qwen3.5 122B A10B (Reasoning)",
-     "shortName": "Qwen3.5 122B A10B",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-02-24"
-    },
-    {
-     "id": "f6ccbe1d-bd7e-484b-9795-18cc9f91552d",
-     "slug": "qwen3-235b-a22b-instruct-2507-reasoning",
-     "name": "Qwen3 235B A22B 2507 (Reasoning)",
-     "shortName": "Qwen3 235B A22B 2507",
-     "creatorName": "Alibaba",
-     "releaseDate": "2025-07-25"
-    },
-    {
-     "id": "2d28a13a-096e-475a-beb8-26bbd1c7d51c",
-     "slug": "qwen3-5-9b",
-     "name": "Qwen3.5 9B (Reasoning)",
-     "shortName": "Qwen3.5 9B",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-03-02"
-    },
-    {
-     "id": "5e0164b3-d902-4bcb-a1b2-83b4f4cd6143",
-     "slug": "qwen3-30b-a3b-2507-reasoning",
-     "name": "Qwen3 30B A3B 2507 (Reasoning)",
-     "shortName": "Qwen3 30B A3B 2507",
-     "creatorName": "Alibaba",
-     "releaseDate": "2025-07-30"
-    },
-    {
-     "id": "fc92f822-04b7-420d-9c07-a21af5e9aac7",
-     "slug": "qwen3-coder-next",
-     "name": "Qwen3 Coder Next",
-     "shortName": "Qwen3 Coder Next",
-     "creatorName": "Alibaba",
-     "releaseDate": "2026-02-03"
-    },
-    {
-     "id": "b00ecd62-a53f-4aed-b833-3e9d6b0170ba",
-     "slug": "qwen3-32b-instruct-reasoning",
-     "name": "Qwen3 32B (Reasoning)",
-     "shortName": "Qwen3 32B",
-     "creatorName": "Alibaba",
-     "releaseDate": "2025-04-28"
-    },
-    {
-     "id": "4559e9f0-8aad-4681-89fb-68cb915e0f16",
-     "slug": "qwen3-14b-instruct-reasoning",
-     "name": "Qwen3 14B (Reasoning)",
-     "shortName": "Qwen3 14B",
-     "creatorName": "Alibaba",
-     "releaseDate": "2025-04-28"
-    },
-    {
-     "id": "9dba61f5-78ee-4190-8d1d-8e7063ffd386",
-     "slug": "qwen3-8b-instruct-reasoning",
-     "name": "Qwen3 8B (Reasoning)",
-     "shortName": "Qwen3 8B",
-     "creatorName": "Alibaba",
-     "releaseDate": "2025-04-28"
-    },
-    {
-     "id": "f151fd0b-2139-40cf-a3ec-995e8cedc592",
-     "slug": "deepseek-v4-1-flash-1017",
-     "name": "DeepSeek V4.1 Flash 1017 (Max)",
-     "shortName": "DeepSeek V4.1 Flash 1017 (max)",
-     "creatorName": "DeepSeek",
-     "releaseDate": "2026-10-17"
-    },
-    {
-     "id": "dbe7c625-3100-4463-b479-a228c41f75dd",
-     "slug": "deepseek-v4-1-flash",
-     "name": "DeepSeek V4.1 Flash (Max)",
-     "shortName": "DeepSeek V4.1 Flash (max)",
-     "creatorName": "DeepSeek",
-     "releaseDate": "2026-09-10"
-    },
-    {
-     "id": "83173329-c09a-41f1-a028-a282a5f908d7",
-     "slug": "deepseek-v4-pro",
-     "name": "DeepSeek V4 Pro 0813 (Max)",
-     "shortName": "DeepSeek V4 Pro 0813 (max)",
-     "creatorName": "DeepSeek",
-     "releaseDate": "2026-08-13"
-    },
-    {
-     "id": "7707a46f-895f-4247-b7a8-ddab87c9a11d",
-     "slug": "deepseek-v4-flash-vision",
-     "name": "DeepSeek V4 Flash Vision (Max)",
-     "shortName": "DeepSeek V4 Flash Vision (max)",
-     "creatorName": "DeepSeek",
-     "releaseDate": "2026-08-21"
-    },
-    {
-     "id": "fe4c0848-e284-4e52-a79d-cdc28392f1a9",
-     "slug": "deepseek-v4-flash",
-     "name": "DeepSeek V4 Flash 0731 (Max)",
-     "shortName": "DeepSeek V4 Flash 0731 (max)",
-     "creatorName": "DeepSeek",
-     "releaseDate": "2026-07-31"
-    },
-    {
-     "id": "bf220674-68bd-43cc-a1b8-ce5ed4d2f18d",
-     "slug": "deepseek-v4-pro-0424",
-     "name": "DeepSeek V4 Pro 0424 (Max)",
-     "shortName": "DeepSeek V4 Pro (max)",
-     "creatorName": "DeepSeek",
-     "releaseDate": "2026-04-24"
-    },
-    {
-     "id": "73c96f99-0de3-4668-a4bd-b106a0fe18f2",
-     "slug": "deepseek-v4-1-flash-non-reasoning",
-     "name": "DeepSeek V4.1 Flash (Non-reasoning)",
-     "shortName": "DeepSeek V4.1 Flash (non-reasoning)",
-     "creatorName": "DeepSeek",
-     "releaseDate": "2026-09-10"
-    },
-    {
-     "id": "89a2c945-1fab-4ee4-9f45-83a9f46cb221",
-     "slug": "deepseek-v4-flash-0420-high",
-     "name": "DeepSeek V4 Flash 0420 (High)",
-     "shortName": "DeepSeek V4 Flash (high)",
-     "creatorName": "DeepSeek",
-     "releaseDate": "2026-04-24"
-    },
-    {
-     "id": "d8ddb241-b3e4-4c25-a6a3-72eb1b30c541",
-     "slug": "deepseek-v4-flash-0420",
-     "name": "DeepSeek V4 Flash 0420 (Max)",
-     "shortName": "DeepSeek V4 Flash (max)",
-     "creatorName": "DeepSeek",
-     "releaseDate": "2026-04-24"
-    },
-    {
-     "id": "d4f5b250-be37-4801-85e6-32fda4179337",
-     "slug": "deepseek-v4-pro-non-reasoning",
-     "name": "DeepSeek V4 Pro 0813 (Non-reasoning)",
-     "shortName": "DeepSeek V4 Pro 0813 (non-reasoning)",
-     "creatorName": "DeepSeek",
-     "releaseDate": "2026-08-13"
-    },
-    {
-     "id": "0a7dda4d-cc9c-4a90-abc1-abb5772c901b",
-     "slug": "deepseek-v3-1-terminus-reasoning",
-     "name": "DeepSeek V3.1 Terminus (Reasoning)",
-     "shortName": "DeepSeek V3.1 Terminus",
-     "creatorName": "DeepSeek",
-     "releaseDate": "2025-09-22"
-    },
-    {
-     "id": "0e34f05c-387e-4968-be15-ccec4a55d8c1",
-     "slug": "deepseek-r1-0120",
-     "name": "DeepSeek R1 (Jan '25)",
-     "shortName": "DeepSeek R1 (Jan)",
-     "creatorName": "DeepSeek",
-     "releaseDate": "2025-01-20"
-    },
-    {
-     "id": "75e1c197-f239-4361-a9d6-66dccfead236",
-     "slug": "deepseek-v3-0324",
-     "name": "DeepSeek V3 0324",
-     "shortName": "DeepSeek V3 0324",
-     "creatorName": "DeepSeek",
-     "releaseDate": "2025-03-25"
-    },
-    {
-     "id": "43fc5506-c5ed-4dee-9b85-962bf7ae3986",
-     "slug": "deepseek-v3",
-     "name": "DeepSeek V3 (Dec '24)",
-     "shortName": "DeepSeek V3 (Dec)",
-     "creatorName": "DeepSeek",
-     "releaseDate": "2024-12-26"
-    },
-    {
-     "id": "cd684ea4-b475-4269-b001-d469d06d8a7a",
-     "slug": "glm-5-3",
-     "name": "GLM-5.3 (Max)",
-     "shortName": "GLM-5.3 (max)",
-     "creatorName": "Z AI",
-     "releaseDate": "2026-08-18"
-    },
-    {
-     "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
-     "slug": "glm-5-3-flash",
-     "name": "GLM-5.3-Flash",
-     "shortName": "GLM-5.3-Flash",
-     "creatorName": "Z AI",
-     "releaseDate": "2026-08-26"
-    },
-    {
-     "id": "cc1e488b-8ba4-464d-875d-690166b15ad3",
-     "slug": "glm-5-3-low",
-     "name": "GLM-5.3 (Low)",
-     "shortName": "GLM-5.3 (low)",
-     "creatorName": "Z AI",
-     "releaseDate": "2026-08-18"
-    },
-    {
-     "id": "f7a4ea75-e548-4069-80d4-9be8bc7c009b",
-     "slug": "glm-5-2",
-     "name": "GLM-5.2 (Max)",
-     "shortName": "GLM-5.2 (max)",
-     "creatorName": "Z AI",
-     "releaseDate": "2026-06-16"
-    },
-    {
-     "id": "5aa1c578-af76-4b91-8699-cdd43582b3af",
-     "slug": "glm-5-1",
-     "name": "GLM-5.1 (Reasoning)",
-     "shortName": "GLM-5.1",
-     "creatorName": "Z AI",
-     "releaseDate": "2026-04-07"
-    },
-    {
      "id": "539ed227-38f4-4bea-a015-117057c14b18",
      "slug": "ling-3-1-flash-1019",
      "name": "Ling 3.1 Flash 1019",
      "shortName": "Ling 3.1 Flash 1019",
      "creatorName": "InclusionAI",
      "releaseDate": "2026-10-22"
-    },
-    {
-     "id": "a6043b9b-628a-4a76-a021-2834e0627d05",
-     "slug": "ling-3-1-flash",
-     "name": "Ling 3.1 Flash",
-     "shortName": "Ling 3.1 Flash",
-     "creatorName": "InclusionAI",
-     "releaseDate": "2026-10-01"
     },
     {
      "id": "433d5c5d-3092-4026-9727-1587ca07915d",
@@ -6744,6 +6930,22 @@
      "releaseDate": "2026-09-11"
     },
     {
+     "id": "7eaf926c-5f39-4e58-ae50-c38b5fc630fc",
+     "slug": "ling-3-0-tiny",
+     "name": "Ling 3.0 Tiny",
+     "shortName": "Ling 3.0 Tiny",
+     "creatorName": "InclusionAI",
+     "releaseDate": "2026-08-06"
+    },
+    {
+     "id": "a6043b9b-628a-4a76-a021-2834e0627d05",
+     "slug": "ling-3-1-flash",
+     "name": "Ling 3.1 Flash",
+     "shortName": "Ling 3.1 Flash",
+     "creatorName": "InclusionAI",
+     "releaseDate": "2026-10-01"
+    },
+    {
      "id": "e33dc369-ae81-40e0-8c4e-28b002d02197",
      "slug": "ling-3-0-flash",
      "name": "Ling 3.0 Flash",
@@ -6758,30 +6960,6 @@
      "shortName": "Ring-2.6-1T",
      "creatorName": "InclusionAI",
      "releaseDate": "2026-05-08"
-    },
-    {
-     "id": "7eaf926c-5f39-4e58-ae50-c38b5fc630fc",
-     "slug": "ling-3-0-tiny",
-     "name": "Ling 3.0 Tiny",
-     "shortName": "Ling 3.0 Tiny",
-     "creatorName": "InclusionAI",
-     "releaseDate": "2026-08-06"
-    },
-    {
-     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
-     "slug": "step-5",
-     "name": "Step 5 Preview",
-     "shortName": "Step 5 Preview",
-     "creatorName": "StepFun",
-     "releaseDate": "2026-09-18"
-    },
-    {
-     "id": "6c7b322e-2f35-48ff-9171-fb621a726fc0",
-     "slug": "step-3-7-flash",
-     "name": "Step 3.7 Flash",
-     "shortName": "Step 3.7 Flash",
-     "creatorName": "StepFun",
-     "releaseDate": "2026-05-29"
     },
     {
      "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
@@ -6808,36 +6986,28 @@
      "releaseDate": "2026-03-18"
     },
     {
+     "id": "094ea3e3-ce41-419e-8bd1-723389663158",
+     "slug": "step-5",
+     "name": "Step 5 Preview",
+     "shortName": "Step 5 Preview",
+     "creatorName": "StepFun",
+     "releaseDate": "2026-09-18"
+    },
+    {
+     "id": "6c7b322e-2f35-48ff-9171-fb621a726fc0",
+     "slug": "step-3-7-flash",
+     "name": "Step 3.7 Flash",
+     "shortName": "Step 3.7 Flash",
+     "creatorName": "StepFun",
+     "releaseDate": "2026-05-29"
+    },
+    {
      "id": "34fc646a-0174-470e-9e62-d8df452210b3",
      "slug": "mistral-large-4",
      "name": "Mistral Large 4 Preview",
      "shortName": "Mistral Large 4 Preview",
      "creatorName": "Mistral",
      "releaseDate": "2026-10-06"
-    },
-    {
-     "id": "dd059b25-d82a-4ead-82a4-4adceaaec48b",
-     "slug": "mistral-medium-3-5",
-     "name": "Mistral Medium 3.5",
-     "shortName": "Mistral Medium 3.5",
-     "creatorName": "Mistral",
-     "releaseDate": "2026-04-29"
-    },
-    {
-     "id": "3fd96175-4ef1-434c-8795-f873aec2abc1",
-     "slug": "mistral-small-4",
-     "name": "Mistral Small 4 (Reasoning)",
-     "shortName": "Mistral Small 4",
-     "creatorName": "Mistral",
-     "releaseDate": "2026-03-16"
-    },
-    {
-     "id": "4928e950-7f37-4475-b0dc-c5bad781a321",
-     "slug": "mistral-large-3",
-     "name": "Mistral Large 3",
-     "shortName": "Mistral Large 3",
-     "creatorName": "Mistral",
-     "releaseDate": "2025-12-02"
     },
     {
      "id": "05a32e26-e609-4377-951b-8fa23d329926",
@@ -6856,14 +7026,6 @@
      "releaseDate": "2025-12-09"
     },
     {
-     "id": "ce819310-af7c-49d3-9a02-6845111e1788",
-     "slug": "devstral-small-2",
-     "name": "Devstral Small 2",
-     "shortName": "Devstral Small 2",
-     "creatorName": "Mistral",
-     "releaseDate": "2025-12-09"
-    },
-    {
      "id": "24ac5b00-5f03-4c47-8e37-522d1195383e",
      "slug": "mistral-small-3-1",
      "name": "Mistral Small 3.1",
@@ -6872,12 +7034,36 @@
      "releaseDate": "2025-03-17"
     },
     {
+     "id": "3fd96175-4ef1-434c-8795-f873aec2abc1",
+     "slug": "mistral-small-4",
+     "name": "Mistral Small 4 (Reasoning)",
+     "shortName": "Mistral Small 4",
+     "creatorName": "Mistral",
+     "releaseDate": "2026-03-16"
+    },
+    {
      "id": "43da3718-3d6e-40dd-901a-05664179ff7f",
      "slug": "mistral-small-3-2",
      "name": "Mistral Small 3.2",
      "shortName": "Mistral Small 3.2",
      "creatorName": "Mistral",
      "releaseDate": "2025-06-20"
+    },
+    {
+     "id": "4928e950-7f37-4475-b0dc-c5bad781a321",
+     "slug": "mistral-large-3",
+     "name": "Mistral Large 3",
+     "shortName": "Mistral Large 3",
+     "creatorName": "Mistral",
+     "releaseDate": "2025-12-02"
+    },
+    {
+     "id": "66f4ce73-9a9b-4b49-9c6e-bedb9bfdc720",
+     "slug": "ministral-3-3b",
+     "name": "Ministral 3 3B",
+     "shortName": "Ministral 3 3B",
+     "creatorName": "Mistral",
+     "releaseDate": "2025-12-02"
     },
     {
      "id": "713fae11-c75c-4f10-ae2c-8e4074cd58af",
@@ -6896,50 +7082,26 @@
      "releaseDate": "2025-12-02"
     },
     {
-     "id": "66f4ce73-9a9b-4b49-9c6e-bedb9bfdc720",
-     "slug": "ministral-3-3b",
-     "name": "Ministral 3 3B",
-     "shortName": "Ministral 3 3B",
+     "id": "ce819310-af7c-49d3-9a02-6845111e1788",
+     "slug": "devstral-small-2",
+     "name": "Devstral Small 2",
+     "shortName": "Devstral Small 2",
      "creatorName": "Mistral",
-     "releaseDate": "2025-12-02"
+     "releaseDate": "2025-12-09"
     },
     {
-     "id": "f3a0e101-086f-44b3-a1b2-d23498f9716b",
-     "slug": "agnes-2-5-pro-beta",
-     "name": "Agnes 2.5 Pro Beta",
-     "shortName": "Agnes 2.5 Pro Beta",
-     "creatorName": "Sapiens AI",
-     "releaseDate": "2026-08-26"
-    },
-    {
-     "id": "46f11cdf-1725-4abb-b39b-bd6bd948149c",
-     "slug": "jt-4-1-flash-236b-a21b",
-     "name": "JT-4.1 Flash 236B A21B (Reasoning)",
-     "shortName": "JT-4.1 Flash 236B A21B",
-     "creatorName": "China Mobile",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "b01eefb1-c9f8-412d-8353-571031a52f23",
-     "slug": "motif-3",
-     "name": "Motif 3",
-     "shortName": "Motif 3",
-     "creatorName": "Motif Technologies",
-     "releaseDate": "2026-08-12"
+     "id": "dd059b25-d82a-4ead-82a4-4adceaaec48b",
+     "slug": "mistral-medium-3-5",
+     "name": "Mistral Medium 3.5",
+     "shortName": "Mistral Medium 3.5",
+     "creatorName": "Mistral",
+     "releaseDate": "2026-04-29"
     },
     {
      "id": "bb3d7e75-8e22-4082-b9d6-1db0803e042f",
      "slug": "k2-horizon-375b-a23b",
      "name": "K2 Horizon 375B A23B",
      "shortName": "K2 Horizon 375B A23B",
-     "creatorName": "Institute of Foundation Models",
-     "releaseDate": "2026-09-03"
-    },
-    {
-     "id": "53b9e276-e360-4a39-9076-1a19d72c25fe",
-     "slug": "k2-horizon-mova-36b-a4b",
-     "name": "K2 Horizon MoVA 36B A4B",
-     "shortName": "K2 Horizon MoVA 36B A4B",
      "creatorName": "Institute of Foundation Models",
      "releaseDate": "2026-09-03"
     },
@@ -6960,6 +7122,14 @@
      "releaseDate": "2026-09-03"
     },
     {
+     "id": "53b9e276-e360-4a39-9076-1a19d72c25fe",
+     "slug": "k2-horizon-mova-36b-a4b",
+     "name": "K2 Horizon MoVA 36B A4B",
+     "shortName": "K2 Horizon MoVA 36B A4B",
+     "creatorName": "Institute of Foundation Models",
+     "releaseDate": "2026-09-03"
+    },
+    {
      "id": "9e9fb958-87f5-4835-a761-26102ef25898",
      "slug": "k2-horizon-0-9b",
      "name": "K2 Horizon 0.9B",
@@ -6974,54 +7144,6 @@
      "shortName": "Beam 1.0",
      "creatorName": "Reflection",
      "releaseDate": "2026-10-16"
-    },
-    {
-     "id": "3b5ba264-ad25-429b-a460-4d8698205f0d",
-     "slug": "nex-n2-pro",
-     "name": "Nex-N2-Pro (Based on Qwen3.5-397B-A17B)",
-     "shortName": "Nex-N2-Pro",
-     "creatorName": "Nex AGI",
-     "releaseDate": "2026-06-02"
-    },
-    {
-     "id": "f9739750-6d42-450f-ba1e-2f76c869b4fe",
-     "slug": "quasar-438b",
-     "name": "Quasar 438B (Max, Based on GLM-5.2)",
-     "shortName": "Quasar 438B (max)",
-     "creatorName": "Multiverse Computing",
-     "releaseDate": "2026-08-10"
-    },
-    {
-     "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
-     "slug": "solar-pro4",
-     "name": "Solar Pro 4",
-     "shortName": "Solar Pro 4",
-     "creatorName": "Upstage",
-     "releaseDate": "2026-08-06"
-    },
-    {
-     "id": "7eabd8ca-bf43-4d56-b3df-efd1c4eebfb0",
-     "slug": "solar-open2-250b",
-     "name": "Solar Open2 250B",
-     "shortName": "Solar Open2 250B",
-     "creatorName": "Upstage",
-     "releaseDate": "2026-08-12"
-    },
-    {
-     "id": "62ea3198-9866-4d9f-8406-a79ee78c7164",
-     "slug": "solar-mini4",
-     "name": "Solar Mini 4",
-     "shortName": "Solar Mini 4",
-     "creatorName": "Upstage",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "b89c4faf-219e-4171-a1aa-e3bd2fd0a924",
-     "slug": "solar-pro-3",
-     "name": "Solar Pro 3",
-     "shortName": "Solar Pro 3",
-     "creatorName": "Upstage",
-     "releaseDate": "2026-04-06"
     },
     {
      "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
@@ -7040,12 +7162,12 @@
      "releaseDate": "2026-06-04"
     },
     {
-     "id": "7d2aa050-888e-4c27-a92d-10337a4dfb3a",
-     "slug": "nemotron-3-5-bolt-74b-a9b",
-     "name": "Nemotron 3.5 Bolt 74B-A9B",
-     "shortName": "Nemotron 3.5 Bolt 74B-A9B",
+     "id": "9ee13921-62a4-425a-a22b-df3302198d93",
+     "slug": "nvidia-nemotron-3-nano-4b",
+     "name": "NVIDIA Nemotron 3 Nano 4B",
+     "shortName": "Nemotron 3 Nano 4B",
      "creatorName": "NVIDIA",
-     "releaseDate": "2026-10-15"
+     "releaseDate": "2026-03-16"
     },
     {
      "id": "29976311-665a-4b2f-ac72-557c33e0758e",
@@ -7072,20 +7194,12 @@
      "releaseDate": "2025-12-15"
     },
     {
-     "id": "9ee13921-62a4-425a-a22b-df3302198d93",
-     "slug": "nvidia-nemotron-3-nano-4b",
-     "name": "NVIDIA Nemotron 3 Nano 4B",
-     "shortName": "Nemotron 3 Nano 4B",
+     "id": "7d2aa050-888e-4c27-a92d-10337a4dfb3a",
+     "slug": "nemotron-3-5-bolt-74b-a9b",
+     "name": "Nemotron 3.5 Bolt 74B-A9B",
+     "shortName": "Nemotron 3.5 Bolt 74B-A9B",
      "creatorName": "NVIDIA",
-     "releaseDate": "2026-03-16"
-    },
-    {
-     "id": "08242385-ee91-4de6-be7f-271a6d9780ce",
-     "slug": "apodex-1-1",
-     "name": "Apodex 1.1",
-     "shortName": "Apodex 1.1",
-     "creatorName": "Apodex",
-     "releaseDate": "2026-08-30"
+     "releaseDate": "2026-10-15"
     },
     {
      "id": "7261504e-503c-4a66-a9d3-a3272cdf9ad6",
@@ -7104,46 +7218,6 @@
      "releaseDate": "2026-07-15"
     },
     {
-     "id": "b23e6c69-96e5-44c9-8f58-4b42e0c399d5",
-     "slug": "hy3",
-     "name": "Hy3",
-     "shortName": "Hy3",
-     "creatorName": "Tencent",
-     "releaseDate": "2026-07-06"
-    },
-    {
-     "id": "c1c5db7c-968f-445a-a274-7b5689348bf8",
-     "slug": "g9v3-39a5b",
-     "name": "G9v3-39A5B",
-     "shortName": "G9v3-39A5B",
-     "creatorName": "AI9Stars",
-     "releaseDate": "2026-08-20"
-    },
-    {
-     "id": "8215372b-66ff-457b-855e-e8abeafc9571",
-     "slug": "a-x-k2",
-     "name": "A.X-K2",
-     "shortName": "A.X-K2",
-     "creatorName": "SK Telecom",
-     "releaseDate": "2026-08-12"
-    },
-    {
-     "id": "18721247-4e56-4cf7-9a9d-c71cc60c0961",
-     "slug": "k-exaone-2-0-0803",
-     "name": "K-EXAONE 2.0 0803",
-     "shortName": "K-EXAONE 2.0",
-     "creatorName": "LG AI Research",
-     "releaseDate": "2026-08-12"
-    },
-    {
-     "id": "5c3bdc0d-abab-4526-8079-34de4089bb4a",
-     "slug": "longcat-2-0",
-     "name": "LongCat 2.0",
-     "shortName": "LongCat 2.0",
-     "creatorName": "LongCat",
-     "releaseDate": "2026-06-29"
-    },
-    {
      "id": "2e9ff877-fd2c-4ce7-b631-7ca1bdb6d13e",
      "slug": "command-a-plus",
      "name": "Command A+",
@@ -7158,6 +7232,38 @@
      "shortName": "North Mini Code",
      "creatorName": "Cohere",
      "releaseDate": "2026-06-09"
+    },
+    {
+     "id": "016d330a-2141-4afa-b2fc-62b314423dc1",
+     "slug": "mercury-2",
+     "name": "Mercury 2",
+     "shortName": "Mercury 2",
+     "creatorName": "Inception",
+     "releaseDate": "2026-02-20"
+    },
+    {
+     "id": "765c9f31-95ec-4f14-900a-80614c3b0777",
+     "slug": "mercury-2-5",
+     "name": "Mercury 2.5",
+     "shortName": "Mercury 2.5",
+     "creatorName": "Inception",
+     "releaseDate": "2026-09-08"
+    },
+    {
+     "id": "08242385-ee91-4de6-be7f-271a6d9780ce",
+     "slug": "apodex-1-1",
+     "name": "Apodex 1.1",
+     "shortName": "Apodex 1.1",
+     "creatorName": "Apodex",
+     "releaseDate": "2026-08-30"
+    },
+    {
+     "id": "0c64b008-20c3-408d-bd68-15136df8cd2c",
+     "slug": "granite-4-2-3b",
+     "name": "Granite 4.2 3B",
+     "shortName": "Granite 4.2 3B",
+     "creatorName": "IBM",
+     "releaseDate": "2026-08-25"
     },
     {
      "id": "1071dea1-43e7-4fe9-b936-3034bb622b2e",
@@ -7176,12 +7282,68 @@
      "releaseDate": "2026-08-25"
     },
     {
-     "id": "0c64b008-20c3-408d-bd68-15136df8cd2c",
-     "slug": "granite-4-2-3b",
-     "name": "Granite 4.2 3B",
-     "shortName": "Granite 4.2 3B",
-     "creatorName": "IBM",
-     "releaseDate": "2026-08-25"
+     "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
+     "slug": "solar-pro4",
+     "name": "Solar Pro 4",
+     "shortName": "Solar Pro 4",
+     "creatorName": "Upstage",
+     "releaseDate": "2026-08-06"
+    },
+    {
+     "id": "62ea3198-9866-4d9f-8406-a79ee78c7164",
+     "slug": "solar-mini4",
+     "name": "Solar Mini 4",
+     "shortName": "Solar Mini 4",
+     "creatorName": "Upstage",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "7eabd8ca-bf43-4d56-b3df-efd1c4eebfb0",
+     "slug": "solar-open2-250b",
+     "name": "Solar Open2 250B",
+     "shortName": "Solar Open2 250B",
+     "creatorName": "Upstage",
+     "releaseDate": "2026-08-12"
+    },
+    {
+     "id": "b89c4faf-219e-4171-a1aa-e3bd2fd0a924",
+     "slug": "solar-pro-3",
+     "name": "Solar Pro 3",
+     "shortName": "Solar Pro 3",
+     "creatorName": "Upstage",
+     "releaseDate": "2026-04-06"
+    },
+    {
+     "id": "18721247-4e56-4cf7-9a9d-c71cc60c0961",
+     "slug": "k-exaone-2-0-0803",
+     "name": "K-EXAONE 2.0 0803",
+     "shortName": "K-EXAONE 2.0",
+     "creatorName": "LG AI Research",
+     "releaseDate": "2026-08-12"
+    },
+    {
+     "id": "3b5ba264-ad25-429b-a460-4d8698205f0d",
+     "slug": "nex-n2-pro",
+     "name": "Nex-N2-Pro (Based on Qwen3.5-397B-A17B)",
+     "shortName": "Nex-N2-Pro",
+     "creatorName": "Nex AGI",
+     "releaseDate": "2026-06-02"
+    },
+    {
+     "id": "46f11cdf-1725-4abb-b39b-bd6bd948149c",
+     "slug": "jt-4-1-flash-236b-a21b",
+     "name": "JT-4.1 Flash 236B A21B (Reasoning)",
+     "shortName": "JT-4.1 Flash 236B A21B",
+     "creatorName": "China Mobile",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "5c3bdc0d-abab-4526-8079-34de4089bb4a",
+     "slug": "longcat-2-0",
+     "name": "LongCat 2.0",
+     "shortName": "LongCat 2.0",
+     "creatorName": "LongCat",
+     "releaseDate": "2026-06-29"
     },
     {
      "id": "641a073a-41c9-4773-9b02-d965c16607c5",
@@ -7192,20 +7354,36 @@
      "releaseDate": "2026-09-07"
     },
     {
-     "id": "765c9f31-95ec-4f14-900a-80614c3b0777",
-     "slug": "mercury-2-5",
-     "name": "Mercury 2.5",
-     "shortName": "Mercury 2.5",
-     "creatorName": "Inception",
-     "releaseDate": "2026-09-08"
+     "id": "8014c311-fa23-4a4b-8485-8a864db8a113",
+     "slug": "celeris-1",
+     "name": "Celeris-1",
+     "shortName": "Celeris-1",
+     "creatorName": "Celeris",
+     "releaseDate": "2026-07-24"
     },
     {
-     "id": "016d330a-2141-4afa-b2fc-62b314423dc1",
-     "slug": "mercury-2",
-     "name": "Mercury 2",
-     "shortName": "Mercury 2",
-     "creatorName": "Inception",
-     "releaseDate": "2026-02-20"
+     "id": "8215372b-66ff-457b-855e-e8abeafc9571",
+     "slug": "a-x-k2",
+     "name": "A.X-K2",
+     "shortName": "A.X-K2",
+     "creatorName": "SK Telecom",
+     "releaseDate": "2026-08-12"
+    },
+    {
+     "id": "b01eefb1-c9f8-412d-8353-571031a52f23",
+     "slug": "motif-3",
+     "name": "Motif 3",
+     "shortName": "Motif 3",
+     "creatorName": "Motif Technologies",
+     "releaseDate": "2026-08-12"
+    },
+    {
+     "id": "b23e6c69-96e5-44c9-8f58-4b42e0c399d5",
+     "slug": "hy3",
+     "name": "Hy3",
+     "shortName": "Hy3",
+     "creatorName": "Tencent",
+     "releaseDate": "2026-07-06"
     },
     {
      "id": "b6d2e43d-3082-43f5-9318-0f4dbcb54163",
@@ -7216,6 +7394,14 @@
      "releaseDate": "2026-04-01"
     },
     {
+     "id": "c1c5db7c-968f-445a-a274-7b5689348bf8",
+     "slug": "g9v3-39a5b",
+     "name": "G9v3-39A5B",
+     "shortName": "G9v3-39A5B",
+     "creatorName": "AI9Stars",
+     "releaseDate": "2026-08-20"
+    },
+    {
      "id": "e1bfc488-5f48-4d42-abf6-7f3c53d79f9c",
      "slug": "lfm2-5-2-6b",
      "name": "LFM2.5-2.6B",
@@ -7224,12 +7410,20 @@
      "releaseDate": "2026-08-04"
     },
     {
-     "id": "8014c311-fa23-4a4b-8485-8a864db8a113",
-     "slug": "celeris-1",
-     "name": "Celeris-1",
-     "shortName": "Celeris-1",
-     "creatorName": "Celeris",
-     "releaseDate": "2026-07-24"
+     "id": "f3a0e101-086f-44b3-a1b2-d23498f9716b",
+     "slug": "agnes-2-5-pro-beta",
+     "name": "Agnes 2.5 Pro Beta",
+     "shortName": "Agnes 2.5 Pro Beta",
+     "creatorName": "Sapiens AI",
+     "releaseDate": "2026-08-26"
+    },
+    {
+     "id": "f9739750-6d42-450f-ba1e-2f76c869b4fe",
+     "slug": "quasar-438b",
+     "name": "Quasar 438B (Max, Based on GLM-5.2)",
+     "shortName": "Quasar 438B (max)",
+     "creatorName": "Multiverse Computing",
+     "releaseDate": "2026-08-10"
     }
    ]
   }
