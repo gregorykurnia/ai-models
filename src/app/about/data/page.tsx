@@ -5,7 +5,7 @@ export default function DataPage() {
     <PageHeader>
     <div className="eyebrow">Source and methodology</div>
     <h1>About the data</h1>
-    <p>This app presents captured Artificial Analysis leaderboard snapshots, rather than a live feed. The evaluation leaderboards and AA-Briefcase component indexes were captured from Artificial Analysis on 29 Oct 2026.</p>
+    <p>This app presents captured Artificial Analysis leaderboard snapshots, rather than a live feed. The evaluation leaderboards and AA-Briefcase component indexes were captured from Artificial Analysis on 7 Nov 2026.</p>
     </PageHeader>
     <p><a href="/suitability#methodology">Read the Task Suitability scoring methodology</a>.</p>
 
@@ -21,8 +21,8 @@ export default function DataPage() {
     </Card>
 
     <h2>AA-Briefcase component indexes</h2>
-    <p>The 29 Oct 2026 evaluation capture contains all 242 listed models for each of three metrics: Rubric Score (%), Analytical Quality Elo, and Presentation Elo. Elo ratings move as pairwise comparisons accumulate, so the values were refreshed together with the rubric scores rather than kept from earlier captures. Rubric Score is the share of binary checks passed, converted from a fraction to a percentage. Analytical Quality and Presentation are separate Elo ratings from pairwise comparisons.</p>
-    <p>Artificial Analysis places Analytical Quality and Presentation in one results tab and distinguishes them with separate graph indicators. This catalog keeps them as separate complete leaderboards and uses a circle for Analytical Quality and a diamond for Presentation, with their labels shown. The 25 Oct capture includes the 95% confidence bounds for both component Elo ratings. These component tables do not include cost data.</p>
+    <p>The 7 Nov 2026 evaluation capture contains all 253 listed models for each of three metrics: Rubric Score (%), Analytical Quality Elo, and Presentation Elo. Elo ratings move as pairwise comparisons accumulate, so the values were refreshed together with the rubric scores rather than kept from earlier captures. Rubric Score is the share of binary checks passed, converted from a fraction to a percentage. Analytical Quality and Presentation are separate Elo ratings from pairwise comparisons.</p>
+    <p>Artificial Analysis places Analytical Quality and Presentation in one results tab and distinguishes them with separate graph indicators. This catalog keeps them as separate complete leaderboards and uses a circle for Analytical Quality and a diamond for Presentation, with their labels shown. The 7 Nov capture includes the 95% confidence bounds for both component Elo ratings. These component tables do not include cost data.</p>
 
     <h2>Master leaderboard: ranks by evaluation</h2>
     <p>Each evaluation column displays that evaluation’s rank and links to the model’s results. The Cost per Intelligence Index task column links to the model’s Artificial Analysis profile. Ranks are the source ranks from each Artificial Analysis page, and estimates keep their label; the three AA-Briefcase component ranks follow their metric scores. Aggregate Score is the arithmetic mean of a model’s available source ranks across Analytical Quality Elo, Presentation Elo, Rubric Score, Omniscience Index, Economics Index, Finance &amp; Accounting, Intelligence Index, Strategy &amp; Ops Index, and Terminal-Bench 4.0. Missing dimensions are excluded, and the table shows how many of the nine dimensions contributed. Lower average ranks are better. This is not a normalized composite score or an overall master rank.</p>
@@ -30,9 +30,9 @@ export default function DataPage() {
 
     <h2>How the evaluations are built</h2>
     <p>Each evaluation is rebuilt from the chart and table data on its Artificial Analysis page. Models use Artificial Analysis’s current names, with reasoning and fallback variants kept separate. A model appears in an evaluation only if the page scores it there, so a model that Artificial Analysis no longer scores is not shown.</p>
-    <p>Intelligence Index scoring status follows Artificial Analysis’s estimated flag. Estimates still awaiting independent scoring keep that wording. The Cost per Intelligence Index task comes from the Intelligence Index page.</p>
+    <p>Intelligence Index v5.0.1 contains all 109 listed models in the 7 Nov 2026 capture, with re-scored results replacing v5.0. Scoring status follows Artificial Analysis’s estimated flag. Estimates still awaiting independent scoring keep that wording. The Cost per Intelligence Index task comes from the same page, with 102 available cost records.</p>
 
     <h2>Snapshot history and updates</h2>
-    <p>The evaluation leaderboards and AA-Briefcase component indexes were captured on 29 Oct 2026. That capture moves to Intelligence Index v5.0 and AA-Omniscience v1.1, which list fewer models than the versions they replace, adds FrontierCode 2.0, and replaces Humanity’s Last Exam with HLE-Diamond. Earlier snapshots, including the 29 Sep 2026 workbook, the 30 Sep and 7 Oct AA-Briefcase captures, and the 11, 20 and 25 Oct evaluation captures, remain in the published history. Later imports create immutable snapshots; failed imports preserve the last published data.</p>
+    <p>The evaluation leaderboards and AA-Briefcase component indexes were captured on 7 Nov 2026. That capture moves to Intelligence Index v5.0.1 with refreshed scores, ranks, and task costs. It retains AA-Omniscience v1.1, FrontierCode 2.0, and HLE-Diamond. Earlier snapshots, including the 29 Sep 2026 workbook, the 30 Sep and 7 Oct AA-Briefcase captures, and the 11, 20, 25 and 29 Oct evaluation captures, remain in the published history. Later imports create immutable snapshots; failed imports preserve the last published data.</p>
   </article>;
 }

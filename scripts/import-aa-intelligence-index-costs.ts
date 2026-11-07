@@ -1,4 +1,6 @@
+import { createHash, webcrypto } from "node:crypto";
 import { writeFile } from "node:fs/promises";
+import { gunzipSync } from "node:zlib";
 
 const sourceUrl = "https://artificialanalysis.ai/models/gpt-6-1-sol-high";
 const response = await fetch(sourceUrl, { headers: { "user-agent": "ai-models-leaderboards/1.0" } });
@@ -38,16 +40,47 @@ function parseJsonValue(input: string, start: number): { value: unknown; end: nu
 
 const currentModelKey = '"currentModel":';
 const currentModelStart = flight.indexOf(currentModelKey);
-if (currentModelStart < 0) throw new Error("Could not find the current model in the page data");
-const currentModel = parseJsonValue(flight, currentModelStart + currentModelKey.length).value as Record<string, unknown>;
-
-const modelsKey = '"models":';
-const modelsStart = flight.indexOf(modelsKey, currentModelStart);
-if (modelsStart < 0) throw new Error("Could not find the model list in the page data");
-const models = parseJsonValue(flight, modelsStart + modelsKey.length).value as Record<string, unknown>[];
+let models: Record<string, unknown>[];
+if (currentModelStart >= 0) {
+  const currentModel = parseJsonValue(flight, currentModelStart + currentModelKey.length).value as Record<string, unknown>;
+  const modelsKey = '"models":';
+  const modelsStart = flight.indexOf(modelsKey, currentModelStart);
+  if (modelsStart < 0) throw new Error("Could not find the model list in the page data");
+  models = [currentModel, ...parseJsonValue(flight, modelsStart + modelsKey.length).value as Record<string, unknown>[]];
+} else {
+  // AA now sends only preselected models inline. Its public manifests load the complete model list.
+  const manifests = [...flight.matchAll(/"manifest":(\{[^}]+\})/g)]
+    .map(match => JSON.parse(match[1]) as { path: string; key?: string });
+  models = [];
+  for (const manifest of manifests) {
+    const dataUrl = new URL(manifest.path, sourceUrl);
+    const dataResponse = await fetch(dataUrl);
+    if (!dataResponse.ok) throw new Error(`Artificial Analysis returned ${dataResponse.status} for ${dataUrl}`);
+    let payload: unknown;
+    if (manifest.key) {
+      // Match AA's browser loader: AES-GCM, SHA-256(key)'s first 12 bytes as IV, then gzip.
+      const key = Buffer.from(manifest.key, "hex");
+      const cryptoKey = await webcrypto.subtle.importKey("raw", key, { name: "AES-GCM" }, false, ["decrypt"]);
+      const decrypted = await webcrypto.subtle.decrypt({
+        name: "AES-GCM",
+        iv: createHash("sha256").update(key).digest().subarray(0, 12),
+        tagLength: 128,
+      }, cryptoKey, await dataResponse.arrayBuffer());
+      payload = JSON.parse(gunzipSync(Buffer.from(decrypted)).toString("utf8"));
+    } else {
+      payload = await dataResponse.json();
+    }
+    // The other manifest contains hosted endpoints, rather than creator-owned model records.
+    if (payload && typeof payload === "object" && !Array.isArray(payload)) {
+      const listedModels = (payload as { models?: Record<string, unknown>[] }).models;
+      if (Array.isArray(listedModels)) models.push(...listedModels);
+    }
+  }
+  if (!models.length) throw new Error("Could not find the complete model list in the page manifests");
+}
 
 const uniqueModels = new Map<string, Record<string, unknown>>();
-for (const model of [currentModel, ...models]) {
+for (const model of models) {
   const slug = model.slug;
   if (typeof slug !== "string") continue;
   const previous = uniqueModels.get(slug);

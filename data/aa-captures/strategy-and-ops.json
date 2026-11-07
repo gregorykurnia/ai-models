@@ -1,7 +1,7 @@
 {
  "key": "strategy-and-ops",
  "source_url": "https://artificialanalysis.ai/models/capabilities/strategy-and-ops",
- "captured_at": "2026-10-29",
+ "captured_at": "2026-11-07",
  "selectors": 8,
  "charts": [
   {
@@ -9,7 +9,7 @@
    "items": [
     {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
-     "label": "Claude Opus 5.5 (max with fallback)",
+     "label": "Claude Opus 5.5 (max)",
      "tooltipLabel": "Claude Opus 5.5 (Max, Default Fallback)",
      "value": 61.4430560192797,
      "displayValue": "61",
@@ -27,7 +27,7 @@
     },
     {
      "id": "df5bf99d-d228-4715-b41b-19ca86118777",
-     "label": "Claude Opus 5.5 (xhigh with fallback)",
+     "label": "Claude Opus 5.5 (xhigh)",
      "tooltipLabel": "Claude Opus 5.5 (Xhigh, Default Fallback)",
      "value": 59.0016439367228,
      "displayValue": "59",
@@ -36,7 +36,7 @@
     },
     {
      "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
-     "label": "Claude Sonnet 5.5 (max with fallback)",
+     "label": "Claude Sonnet 5.5 (max)",
      "tooltipLabel": "Claude Sonnet 5.5 (Max, Default Fallback)",
      "value": 58.0648248307907,
      "displayValue": "58",
@@ -54,7 +54,7 @@
     },
     {
      "id": "3e87c73e-a257-495e-9730-367a66229811",
-     "label": "Claude Fable 5.1 (max with fallback)",
+     "label": "Claude Fable 5.1 (max)",
      "tooltipLabel": "Claude Fable 5.1 (Max, Default Fallback)",
      "value": 57.9666973601692,
      "displayValue": "58",
@@ -80,6 +80,15 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
+     "label": "Gemini 4 Carbon (medium)",
+     "tooltipLabel": "Gemini 4 Carbon (Medium)",
+     "value": 57.7844149553606,
+     "displayValue": "58",
+     "url": "/models/gemini-4-carbon-medium",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
      "label": "Kimi K3.1 Pro",
      "tooltipLabel": "Kimi K3.1 Pro",
@@ -99,7 +108,7 @@
     },
     {
      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
-     "label": "Claude Opus 5.5 (high with fallback)",
+     "label": "Claude Opus 5.5 (high)",
      "tooltipLabel": "Claude Opus 5.5 (High, Default Fallback)",
      "value": 57.569428030905,
      "displayValue": "58",
@@ -135,7 +144,7 @@
     },
     {
      "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
-     "label": "Claude Fable 5.1 (xhigh with fallback)",
+     "label": "Claude Fable 5.1 (xhigh)",
      "tooltipLabel": "Claude Fable 5.1 (Xhigh, Default Fallback)",
      "value": 56.4345028895822,
      "displayValue": "56",
@@ -144,7 +153,7 @@
     },
     {
      "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
-     "label": "Claude Opus 5.5 (medium with fallback)",
+     "label": "Claude Opus 5.5 (medium)",
      "tooltipLabel": "Claude Opus 5.5 (Medium, Default Fallback)",
      "value": 55.9883643765278,
      "displayValue": "56",
@@ -188,8 +197,17 @@
      "logo": "/img/logos/meta.svg"
     },
     {
+     "id": "38a98e3d-779b-49ec-b005-230a3a72088a",
+     "label": "Muse Wonder (high)",
+     "tooltipLabel": "Muse Wonder (High)",
+     "value": 54.1348255135499,
+     "displayValue": "54",
+     "url": "/models/muse-wonder-high",
+     "logo": "/img/logos/meta.svg"
+    },
+    {
      "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
-     "label": "Claude Sonnet 5.5 (xhigh with fallback)",
+     "label": "Claude Sonnet 5.5 (xhigh)",
      "tooltipLabel": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
      "value": 54.0920682727969,
      "displayValue": "54",
@@ -198,11 +216,20 @@
     },
     {
      "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
-     "label": "Claude Fable 5.1 (high with fallback)",
+     "label": "Claude Fable 5.1 (high)",
      "tooltipLabel": "Claude Fable 5.1 (High, Default Fallback)",
      "value": 53.7929981280634,
      "displayValue": "54",
      "url": "/models/claude-fable-5-1-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+     "label": "Claude Opus 5 (max)",
+     "tooltipLabel": "Claude Opus 5 (Max)",
+     "value": 53.6721063208618,
+     "displayValue": "54",
+     "url": "/models/claude-opus-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -224,8 +251,26 @@
      "logo": "/img/logos/spacexai.svg"
     },
     {
+     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
+     "label": "Gemini 4 Carbon (low)",
+     "tooltipLabel": "Gemini 4 Carbon (Low)",
+     "value": 53.0322784522725,
+     "displayValue": "53",
+     "url": "/models/gemini-4-carbon-low",
+     "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "d6f43d0a-e8c4-447c-9ff7-5cf0a9d59aa3",
+     "label": "Grok 4.6 (xhigh)",
+     "tooltipLabel": "Grok 4.6 (Xhigh)",
+     "value": 52.7682564904798,
+     "displayValue": "53",
+     "url": "/models/grok-4-6-xhigh",
+     "logo": "/img/logos/spacexai.svg"
+    },
+    {
      "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
-     "label": "Claude Fable 5.1 (medium with fallback)",
+     "label": "Claude Fable 5.1 (medium)",
      "tooltipLabel": "Claude Fable 5.1 (Medium, Default Fallback)",
      "value": 52.3052049157468,
      "displayValue": "52",
@@ -233,8 +278,17 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+     "label": "GPT-6 Sol (max)",
+     "tooltipLabel": "GPT-6 Sol (Max)",
+     "value": 52.0934822735576,
+     "displayValue": "52",
+     "url": "/models/gpt-6-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
-     "label": "Claude Sonnet 5.5 (high with fallback)",
+     "label": "Claude Sonnet 5.5 (high)",
      "tooltipLabel": "Claude Sonnet 5.5 (High, Default Fallback)",
      "value": 51.1926205197365,
      "displayValue": "51",
@@ -243,7 +297,7 @@
     },
     {
      "id": "05776db7-f5c0-40f7-b824-079160f8cfa8",
-     "label": "Claude Fable 5.1 (low with fallback)",
+     "label": "Claude Fable 5.1 (low)",
      "tooltipLabel": "Claude Fable 5.1 (Low, Default Fallback)",
      "value": 51.1338863092319,
      "displayValue": "51",
@@ -305,6 +359,15 @@
      "logo": "/img/logos/deepseek.svg"
     },
     {
+     "id": "d274918e-ea82-4951-8b37-8ed9ab898dbc",
+     "label": "Tencent Hy4",
+     "tooltipLabel": "Tencent Hy4",
+     "value": 48.7309500250963,
+     "displayValue": "49",
+     "url": "/models/tencent-hy4",
+     "logo": "/img/logos/tencent-hy.svg"
+    },
+    {
      "id": "e8d443ba-8aca-4830-a186-ae869bb9c6fe",
      "label": "GPT-6.1 Terra (xhigh)",
      "tooltipLabel": "GPT-6.1 Terra (Xhigh)",
@@ -312,6 +375,15 @@
      "displayValue": "49",
      "url": "/models/gpt-6-1-terra-xhigh",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "c3b66080-fdcb-48e4-8ade-6baf77921c7c",
+     "label": "DeepSeek V4.1 Flash 1017 (high)",
+     "tooltipLabel": "DeepSeek V4.1 Flash 1017 (High)",
+     "value": 48.4496543689861,
+     "displayValue": "48",
+     "url": "/models/deepseek-v4-1-flash-1017-high",
+     "logo": "/img/logos/deepseek.svg"
     },
     {
      "id": "d5170215-69be-4129-849b-26d8d8825bfc",
@@ -333,7 +405,7 @@
     },
     {
      "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
-     "label": "Claude Opus 5.5 (low with fallback)",
+     "label": "Claude Opus 5.5 (low)",
      "tooltipLabel": "Claude Opus 5.5 (Low, Default Fallback)",
      "value": 47.5044823647318,
      "displayValue": "48",
@@ -387,7 +459,7 @@
     },
     {
      "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
-     "label": "Claude Sonnet 5.5 (medium with fallback)",
+     "label": "Claude Sonnet 5.5 (medium)",
      "tooltipLabel": "Claude Sonnet 5.5 (Medium, Default Fallback)",
      "value": 46.6658917810045,
      "displayValue": "47",
@@ -476,6 +548,15 @@
      "logo": "/img/logos/stepfun.svg"
     },
     {
+     "id": "e2ed7885-d46b-4da7-a873-f12f88af0081",
+     "label": "Inkling 2 Small",
+     "tooltipLabel": "Inkling 2 Small",
+     "value": 43.459245992875,
+     "displayValue": "43",
+     "url": "/models/inkling-2-small",
+     "logo": "/img/logos/thinking-machines.svg"
+    },
+    {
      "id": "3661c8fb-caf7-4118-aa18-65b84fea8e44",
      "label": "Muse Spark Open (xhigh)",
      "tooltipLabel": "Muse Spark Open (Xhigh)",
@@ -489,6 +570,15 @@
      "label": "Mistral Large 4 Preview",
      "tooltipLabel": "Mistral Large 4 Preview",
      "value": 43.3763286855087,
+     "displayValue": "43",
+     "url": "/models/mistral-large-4-preview",
+     "logo": "/img/logos/mistral.svg"
+    },
+    {
+     "id": "ea5019ae-b0b7-49a5-80b3-0e584807af0f",
+     "label": "Mistral Large 4 (high)",
+     "tooltipLabel": "Mistral Large 4 (High)",
+     "value": 43.287086637647,
      "displayValue": "43",
      "url": "/models/mistral-large-4",
      "logo": "/img/logos/mistral.svg"
@@ -513,7 +603,7 @@
     },
     {
      "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
-     "label": "Claude Sonnet 5.5 (low with fallback)",
+     "label": "Claude Sonnet 5.5 (low)",
      "tooltipLabel": "Claude Sonnet 5.5 (Low, Default Fallback)",
      "value": 41.6753109270971,
      "displayValue": "42",
@@ -528,6 +618,15 @@
      "displayValue": "41",
      "url": "/models/deepseek-v4-pro",
      "logo": "/img/logos/deepseek.svg"
+    },
+    {
+     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+     "label": "GPT-5.6 Luna (max)",
+     "tooltipLabel": "GPT-5.6 Luna (Max)",
+     "value": 40.7042501294702,
+     "displayValue": "41",
+     "url": "/models/gpt-5-6-luna",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "0d3c777f-6817-42d7-9bb9-223314bc5a57",
@@ -546,6 +645,15 @@
      "displayValue": "40",
      "url": "/models/gpt-5-6-terra-xhigh",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "5720fd2f-873a-4765-8640-a153b38bd64d",
+     "label": "DeepSeek V4.1 Flash 1017 (non-reasoning)",
+     "tooltipLabel": "DeepSeek V4.1 Flash 1017 (Non-reasoning)",
+     "value": 39.6662195673259,
+     "displayValue": "40",
+     "url": "/models/deepseek-v4-1-flash-1017-non-reasoning",
+     "logo": "/img/logos/deepseek.svg"
     },
     {
      "id": "19813eb2-460a-475c-af65-810bb8660fec",
@@ -584,6 +692,15 @@
      "logo": "/img/logos/alibaba.svg"
     },
     {
+     "id": "27b24366-fd1a-44b7-8011-e24d7501318d",
+     "label": "Mistral Large 4 (medium)",
+     "tooltipLabel": "Mistral Large 4 (Medium)",
+     "value": 38.9694565669656,
+     "displayValue": "39",
+     "url": "/models/mistral-large-4-medium",
+     "logo": "/img/logos/mistral.svg"
+    },
+    {
      "id": "cc1e488b-8ba4-464d-875d-690166b15ad3",
      "label": "GLM-5.3 (low)",
      "tooltipLabel": "GLM-5.3 (Low)",
@@ -618,6 +735,15 @@
      "displayValue": "37",
      "url": "/models/kimi-k3-low",
      "logo": "/img/logos/kimi.jpg"
+    },
+    {
+     "id": "4cef9716-27a3-4ac3-9620-cd75135d7bbf",
+     "label": "Nanbeige4.3-33B",
+     "tooltipLabel": "Nanbeige4.3-33B",
+     "value": 35.9702812813869,
+     "displayValue": "36",
+     "url": "/models/nanbeige4-3-33b",
+     "logo": "/img/logos/nanbeige.png"
     },
     {
      "id": "81972fba-1219-477e-bbfb-18c656a63ff7",
@@ -683,6 +809,15 @@
      "logo": "/img/logos/ifm.svg"
     },
     {
+     "id": "f7a4ea75-e548-4069-80d4-9be8bc7c009b",
+     "label": "GLM-5.2 (max)",
+     "tooltipLabel": "GLM-5.2 (Max)",
+     "value": 29.9673025478602,
+     "displayValue": "30",
+     "url": "/models/glm-5-2",
+     "logo": "/img/logos/zai.svg"
+    },
+    {
      "id": "26e0f83a-ca98-4f34-94ac-7c5e251ee410",
      "label": "GPT-5.6 Terra (medium)",
      "tooltipLabel": "GPT-5.6 Terra (Medium)",
@@ -735,6 +870,15 @@
      "displayValue": "27",
      "url": "/models/claude-haiku-5-5-low",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
+     "label": "Solar Pro 4",
+     "tooltipLabel": "Solar Pro 4",
+     "value": 22.4432311248145,
+     "displayValue": "22",
+     "url": "/models/solar-pro4",
+     "logo": "/img/logos/upstage.svg"
     },
     {
      "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
@@ -827,6 +971,33 @@
      "logo": "/img/logos/nvidia.svg"
     },
     {
+     "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
+     "label": "Claude 4.5 Haiku",
+     "tooltipLabel": "Claude 4.5 Haiku (Reasoning)",
+     "value": 11.167279806286,
+     "displayValue": "11",
+     "url": "/models/claude-4-5-haiku-reasoning",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "18721247-4e56-4cf7-9a9d-c71cc60c0961",
+     "label": "K-EXAONE 2.0",
+     "tooltipLabel": "K-EXAONE 2.0",
+     "value": 10.882555180635,
+     "displayValue": "11",
+     "url": "/models/k-exaone-2-0-0803",
+     "logo": "/img/logos/lg.png"
+    },
+    {
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "label": "Gemini 3.1 Flash-Lite",
+     "tooltipLabel": "Gemini 3.1 Flash-Lite",
+     "value": 10.4998145054575,
+     "displayValue": "10",
+     "url": "/models/gemini-3-1-flash-lite-preview",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "7eaf926c-5f39-4e58-ae50-c38b5fc630fc",
      "label": "Ling 3.0 Tiny",
      "tooltipLabel": "Ling 3.0 Tiny",
@@ -872,6 +1043,42 @@
      "logo": "/img/logos/cohere.svg"
     },
     {
+     "id": "1071dea1-43e7-4fe9-b936-3034bb622b2e",
+     "label": "Granite 4.2 30B",
+     "tooltipLabel": "Granite 4.2 30B",
+     "value": 7.28228343854413,
+     "displayValue": "7",
+     "url": "/models/granite-4-2-30b",
+     "logo": "/img/logos/ibm.svg"
+    },
+    {
+     "id": "29976311-665a-4b2f-ac72-557c33e0758e",
+     "label": "Nemotron 3.5 Lightning",
+     "tooltipLabel": "Nemotron 3.5 Lightning",
+     "value": 7.07236105682436,
+     "displayValue": "7",
+     "url": "/models/nemotron-3-5-lightning",
+     "logo": "/img/logos/nvidia.svg"
+    },
+    {
+     "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
+     "label": "Granite 4.2 8B",
+     "tooltipLabel": "Granite 4.2 8B",
+     "value": 6.94571475667168,
+     "displayValue": "7",
+     "url": "/models/granite-4-2-8b",
+     "logo": "/img/logos/ibm.svg"
+    },
+    {
+     "id": "cd26a386-4873-46ff-b853-d239050025a2",
+     "label": "Gemma 4 31B",
+     "tooltipLabel": "Gemma 4 31B (Reasoning)",
+     "value": 6.87442889787855,
+     "displayValue": "7",
+     "url": "/models/gemma-4-31b",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "3fd96175-4ef1-434c-8795-f873aec2abc1",
      "label": "Mistral Small 4",
      "tooltipLabel": "Mistral Small 4 (Reasoning)",
@@ -879,6 +1086,24 @@
      "displayValue": "7",
      "url": "/models/mistral-small-4",
      "logo": "/img/logos/mistral.svg"
+    },
+    {
+     "id": "0c64b008-20c3-408d-bd68-15136df8cd2c",
+     "label": "Granite 4.2 3B",
+     "tooltipLabel": "Granite 4.2 3B",
+     "value": 6.40867420039659,
+     "displayValue": "6",
+     "url": "/models/granite-4-2-3b",
+     "logo": "/img/logos/ibm.svg"
+    },
+    {
+     "id": "1e9907e0-ffac-4595-b006-962e4f1da7cf",
+     "label": "North Mini Code",
+     "tooltipLabel": "North Mini Code",
+     "value": 6.24510845455821,
+     "displayValue": "6",
+     "url": "/models/north-mini-code",
+     "logo": "/img/logos/cohere.svg"
     },
     {
      "id": "b89c4faf-219e-4171-a1aa-e3bd2fd0a924",
@@ -922,6 +1147,15 @@
      "logo": "/img/logos/google.svg"
     },
     {
+     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
+     "label": "Gemini 4 Carbon (medium)",
+     "tooltipLabel": "Gemini 4 Carbon (Medium)",
+     "value": 75.72914325870231,
+     "displayValue": "76",
+     "url": "/models/gemini-4-carbon-medium",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "e994a6e0-d36b-4dab-8ae1-c1b469e4d9e2",
      "label": "Muse Wonder Full (max)",
      "tooltipLabel": "Muse Wonder Full (Max)",
@@ -950,7 +1184,7 @@
     },
     {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
-     "label": "Claude Opus 5.5 (max with fallback)",
+     "label": "Claude Opus 5.5 (max)",
      "tooltipLabel": "Claude Opus 5.5 (Max, Default Fallback)",
      "value": 70.20680123755176,
      "displayValue": "70",
@@ -959,7 +1193,7 @@
     },
     {
      "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
-     "label": "Claude Sonnet 5.5 (max with fallback)",
+     "label": "Claude Sonnet 5.5 (max)",
      "tooltipLabel": "Claude Sonnet 5.5 (Max, Default Fallback)",
      "value": 70.07206640996897,
      "displayValue": "70",
@@ -974,6 +1208,24 @@
      "displayValue": "69",
      "url": "/models/muse-wonder",
      "logo": "/img/logos/meta.svg"
+    },
+    {
+     "id": "38a98e3d-779b-49ec-b005-230a3a72088a",
+     "label": "Muse Wonder (high)",
+     "tooltipLabel": "Muse Wonder (High)",
+     "value": 68.44178615750558,
+     "displayValue": "68",
+     "url": "/models/muse-wonder-high",
+     "logo": "/img/logos/meta.svg"
+    },
+    {
+     "id": "c3b66080-fdcb-48e4-8ade-6baf77921c7c",
+     "label": "DeepSeek V4.1 Flash 1017 (high)",
+     "tooltipLabel": "DeepSeek V4.1 Flash 1017 (High)",
+     "value": 68.36022674317535,
+     "displayValue": "68",
+     "url": "/models/deepseek-v4-1-flash-1017-high",
+     "logo": "/img/logos/deepseek.svg"
     },
     {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
@@ -1012,6 +1264,15 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "d274918e-ea82-4951-8b37-8ed9ab898dbc",
+     "label": "Tencent Hy4",
+     "tooltipLabel": "Tencent Hy4",
+     "value": 66.39072613417159,
+     "displayValue": "66",
+     "url": "/models/tencent-hy4",
+     "logo": "/img/logos/tencent-hy.svg"
+    },
+    {
      "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
      "label": "GPT-6.1 Sol (max)",
      "tooltipLabel": "GPT-6.1 Sol (Max)",
@@ -1021,8 +1282,17 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "d6f43d0a-e8c4-447c-9ff7-5cf0a9d59aa3",
+     "label": "Grok 4.6 (xhigh)",
+     "tooltipLabel": "Grok 4.6 (Xhigh)",
+     "value": 65.9680979093073,
+     "displayValue": "66",
+     "url": "/models/grok-4-6-xhigh",
+     "logo": "/img/logos/spacexai.svg"
+    },
+    {
      "id": "df5bf99d-d228-4715-b41b-19ca86118777",
-     "label": "Claude Opus 5.5 (xhigh with fallback)",
+     "label": "Claude Opus 5.5 (xhigh)",
      "tooltipLabel": "Claude Opus 5.5 (Xhigh, Default Fallback)",
      "value": 65.61397373814776,
      "displayValue": "66",
@@ -1031,7 +1301,7 @@
     },
     {
      "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
-     "label": "Claude Sonnet 5.5 (xhigh with fallback)",
+     "label": "Claude Sonnet 5.5 (xhigh)",
      "tooltipLabel": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
      "value": 65.49666373681328,
      "displayValue": "65",
@@ -1076,7 +1346,7 @@
     },
     {
      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
-     "label": "Claude Opus 5.5 (high with fallback)",
+     "label": "Claude Opus 5.5 (high)",
      "tooltipLabel": "Claude Opus 5.5 (High, Default Fallback)",
      "value": 64.2148776105608,
      "displayValue": "64",
@@ -1102,6 +1372,15 @@
      "logo": "/img/logos/xiaomi.svg"
     },
     {
+     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+     "label": "GPT-6 Sol (max)",
+     "tooltipLabel": "GPT-6 Sol (Max)",
+     "value": 63.59377474984722,
+     "displayValue": "64",
+     "url": "/models/gpt-6-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "a2e51d62-ea4e-4f15-8be0-be9dc1fb489d",
      "label": "GPT-6.1 Sol (medium)",
      "tooltipLabel": "GPT-6.1 Sol (Medium)",
@@ -1112,12 +1391,21 @@
     },
     {
      "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
-     "label": "Claude Opus 5.5 (medium with fallback)",
+     "label": "Claude Opus 5.5 (medium)",
      "tooltipLabel": "Claude Opus 5.5 (Medium, Default Fallback)",
      "value": 63.040183545789915,
      "displayValue": "63",
      "url": "/models/claude-opus-5-5-medium",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
+     "label": "Gemini 4 Carbon (low)",
+     "tooltipLabel": "Gemini 4 Carbon (Low)",
+     "value": 62.585541553578985,
+     "displayValue": "63",
+     "url": "/models/gemini-4-carbon-low",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
@@ -1148,7 +1436,7 @@
     },
     {
      "id": "3e87c73e-a257-495e-9730-367a66229811",
-     "label": "Claude Fable 5.1 (max with fallback)",
+     "label": "Claude Fable 5.1 (max)",
      "tooltipLabel": "Claude Fable 5.1 (Max, Default Fallback)",
      "value": 61.93210799841636,
      "displayValue": "62",
@@ -1175,7 +1463,7 @@
     },
     {
      "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
-     "label": "Claude Sonnet 5.5 (high with fallback)",
+     "label": "Claude Sonnet 5.5 (high)",
      "tooltipLabel": "Claude Sonnet 5.5 (High, Default Fallback)",
      "value": 61.04246607288437,
      "displayValue": "61",
@@ -1233,12 +1521,12 @@
      "tooltipLabel": "Mistral Large 4 Preview",
      "value": 59.773414433928664,
      "displayValue": "60",
-     "url": "/models/mistral-large-4",
+     "url": "/models/mistral-large-4-preview",
      "logo": "/img/logos/mistral.svg"
     },
     {
      "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
-     "label": "Claude Fable 5.1 (xhigh with fallback)",
+     "label": "Claude Fable 5.1 (xhigh)",
      "tooltipLabel": "Claude Fable 5.1 (Xhigh, Default Fallback)",
      "value": 59.58112499942081,
      "displayValue": "60",
@@ -1264,6 +1552,15 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "ea5019ae-b0b7-49a5-80b3-0e584807af0f",
+     "label": "Mistral Large 4 (high)",
+     "tooltipLabel": "Mistral Large 4 (High)",
+     "value": 58.5678456702813,
+     "displayValue": "59",
+     "url": "/models/mistral-large-4",
+     "logo": "/img/logos/mistral.svg"
+    },
+    {
      "id": "9999672c-b687-4026-9c15-5cef02ff53bb",
      "label": "Muse Spark 1.3 (max)",
      "tooltipLabel": "Muse Spark 1.3 (Max)",
@@ -1282,8 +1579,17 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+     "label": "Claude Opus 5 (max)",
+     "tooltipLabel": "Claude Opus 5 (Max)",
+     "value": 57.911288041344044,
+     "displayValue": "58",
+     "url": "/models/claude-opus-5",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
      "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
-     "label": "Claude Fable 5.1 (high with fallback)",
+     "label": "Claude Fable 5.1 (high)",
      "tooltipLabel": "Claude Fable 5.1 (High, Default Fallback)",
      "value": 57.61601339612592,
      "displayValue": "58",
@@ -1301,7 +1607,7 @@
     },
     {
      "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
-     "label": "Claude Fable 5.1 (medium with fallback)",
+     "label": "Claude Fable 5.1 (medium)",
      "tooltipLabel": "Claude Fable 5.1 (Medium, Default Fallback)",
      "value": 57.03348598241025,
      "displayValue": "57",
@@ -1328,7 +1634,7 @@
     },
     {
      "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
-     "label": "Claude Sonnet 5.5 (medium with fallback)",
+     "label": "Claude Sonnet 5.5 (medium)",
      "tooltipLabel": "Claude Sonnet 5.5 (Medium, Default Fallback)",
      "value": 56.68077285829112,
      "displayValue": "57",
@@ -1373,7 +1679,7 @@
     },
     {
      "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
-     "label": "Claude Opus 5.5 (low with fallback)",
+     "label": "Claude Opus 5.5 (low)",
      "tooltipLabel": "Claude Opus 5.5 (Low, Default Fallback)",
      "value": 55.51258744048132,
      "displayValue": "56",
@@ -1381,8 +1687,17 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "27b24366-fd1a-44b7-8011-e24d7501318d",
+     "label": "Mistral Large 4 (medium)",
+     "tooltipLabel": "Mistral Large 4 (Medium)",
+     "value": 55.14749495323497,
+     "displayValue": "55",
+     "url": "/models/mistral-large-4-medium",
+     "logo": "/img/logos/mistral.svg"
+    },
+    {
      "id": "05776db7-f5c0-40f7-b824-079160f8cfa8",
-     "label": "Claude Fable 5.1 (low with fallback)",
+     "label": "Claude Fable 5.1 (low)",
      "tooltipLabel": "Claude Fable 5.1 (Low, Default Fallback)",
      "value": 54.64695944051826,
      "displayValue": "55",
@@ -1397,6 +1712,15 @@
      "displayValue": "53",
      "url": "/models/gpt-6-1-sol-low",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "4cef9716-27a3-4ac3-9620-cd75135d7bbf",
+     "label": "Nanbeige4.3-33B",
+     "tooltipLabel": "Nanbeige4.3-33B",
+     "value": 53.086025023213644,
+     "displayValue": "53",
+     "url": "/models/nanbeige4-3-33b",
+     "logo": "/img/logos/nanbeige.png"
     },
     {
      "id": "cc1e488b-8ba4-464d-875d-690166b15ad3",
@@ -1427,7 +1751,7 @@
     },
     {
      "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
-     "label": "Claude Sonnet 5.5 (low with fallback)",
+     "label": "Claude Sonnet 5.5 (low)",
      "tooltipLabel": "Claude Sonnet 5.5 (Low, Default Fallback)",
      "value": 51.80570193509566,
      "displayValue": "52",
@@ -1459,6 +1783,15 @@
      "value": 50.391709017853536,
      "displayValue": "50",
      "url": "/models/gpt-6-luna-xhigh",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+     "label": "GPT-5.6 Luna (max)",
+     "tooltipLabel": "GPT-5.6 Luna (Max)",
+     "value": 50.38792624129421,
+     "displayValue": "50",
+     "url": "/models/gpt-5-6-luna",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -1496,6 +1829,24 @@
      "displayValue": "49",
      "url": "/models/gpt-5-6-terra-xhigh",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "5720fd2f-873a-4765-8640-a153b38bd64d",
+     "label": "DeepSeek V4.1 Flash 1017 (non-reasoning)",
+     "tooltipLabel": "DeepSeek V4.1 Flash 1017 (Non-reasoning)",
+     "value": 48.5981496553156,
+     "displayValue": "49",
+     "url": "/models/deepseek-v4-1-flash-1017-non-reasoning",
+     "logo": "/img/logos/deepseek.svg"
+    },
+    {
+     "id": "e2ed7885-d46b-4da7-a873-f12f88af0081",
+     "label": "Inkling 2 Small",
+     "tooltipLabel": "Inkling 2 Small",
+     "value": 45.99778334931195,
+     "displayValue": "46",
+     "url": "/models/inkling-2-small",
+     "logo": "/img/logos/thinking-machines.svg"
     },
     {
      "id": "81972fba-1219-477e-bbfb-18c656a63ff7",
@@ -1588,6 +1939,15 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "f7a4ea75-e548-4069-80d4-9be8bc7c009b",
+     "label": "GLM-5.2 (max)",
+     "tooltipLabel": "GLM-5.2 (Max)",
+     "value": 30.75243994201254,
+     "displayValue": "31",
+     "url": "/models/glm-5-2",
+     "logo": "/img/logos/zai.svg"
+    },
+    {
      "id": "cc4a20cd-09fe-4962-a430-119c815e85fa",
      "label": "GPT-5.6 Terra (low)",
      "tooltipLabel": "GPT-5.6 Terra (Low)",
@@ -1660,6 +2020,15 @@
      "logo": "/img/logos/nvidia.svg"
     },
     {
+     "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
+     "label": "Solar Pro 4",
+     "tooltipLabel": "Solar Pro 4",
+     "value": 14.198493689946106,
+     "displayValue": "14",
+     "url": "/models/solar-pro4",
+     "logo": "/img/logos/upstage.svg"
+    },
+    {
      "id": "9b97a35e-6ac7-44d9-91c6-422fa678963e",
      "label": "GPT-5.6 Terra (non-reasoning)",
      "tooltipLabel": "GPT-5.6 Terra (Non-reasoning)",
@@ -1705,6 +2074,15 @@
      "logo": "/img/logos/meta.svg"
     },
     {
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "label": "Gemini 3.1 Flash-Lite",
+     "tooltipLabel": "Gemini 3.1 Flash-Lite",
+     "value": 7.05691885858383,
+     "displayValue": "7",
+     "url": "/models/gemini-3-1-flash-lite-preview",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "dd059b25-d82a-4ead-82a4-4adceaaec48b",
      "label": "Mistral Medium 3.5",
      "tooltipLabel": "Mistral Medium 3.5",
@@ -1723,6 +2101,15 @@
      "logo": "/img/logos/thinking-machines.svg"
     },
     {
+     "id": "cd26a386-4873-46ff-b853-d239050025a2",
+     "label": "Gemma 4 31B",
+     "tooltipLabel": "Gemma 4 31B (Reasoning)",
+     "value": 5.177264288364321,
+     "displayValue": "5",
+     "url": "/models/gemma-4-31b",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "0de09623-2b1a-4c8d-86ef-7f5245d4e24b",
      "label": "Inkling (xhigh)",
      "tooltipLabel": "Inkling (Xhigh)",
@@ -1730,6 +2117,24 @@
      "displayValue": "5",
      "url": "/models/inkling",
      "logo": "/img/logos/thinking-machines.svg"
+    },
+    {
+     "id": "18721247-4e56-4cf7-9a9d-c71cc60c0961",
+     "label": "K-EXAONE 2.0",
+     "tooltipLabel": "K-EXAONE 2.0",
+     "value": 4.198049746438704,
+     "displayValue": "4",
+     "url": "/models/k-exaone-2-0-0803",
+     "logo": "/img/logos/lg.png"
+    },
+    {
+     "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
+     "label": "Claude 4.5 Haiku",
+     "tooltipLabel": "Claude 4.5 Haiku (Reasoning)",
+     "value": 3.881472757716326,
+     "displayValue": "4",
+     "url": "/models/claude-4-5-haiku-reasoning",
+     "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "5b52def2-ac9b-4465-ad80-91ea8079e253",
@@ -1741,12 +2146,39 @@
      "logo": "/img/logos/nvidia.svg"
     },
     {
+     "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
+     "label": "Granite 4.2 8B",
+     "tooltipLabel": "Granite 4.2 8B",
+     "value": 2.4022535459077083,
+     "displayValue": "2",
+     "url": "/models/granite-4-2-8b",
+     "logo": "/img/logos/ibm.svg"
+    },
+    {
      "id": "2e9ff877-fd2c-4ce7-b631-7ca1bdb6d13e",
      "label": "Command A+",
      "tooltipLabel": "Command A+",
      "value": 1.8577223542112913,
      "displayValue": "2",
      "url": "/models/command-a-plus",
+     "logo": "/img/logos/cohere.svg"
+    },
+    {
+     "id": "1071dea1-43e7-4fe9-b936-3034bb622b2e",
+     "label": "Granite 4.2 30B",
+     "tooltipLabel": "Granite 4.2 30B",
+     "value": 1.851434266527679,
+     "displayValue": "2",
+     "url": "/models/granite-4-2-30b",
+     "logo": "/img/logos/ibm.svg"
+    },
+    {
+     "id": "1e9907e0-ffac-4595-b006-962e4f1da7cf",
+     "label": "North Mini Code",
+     "tooltipLabel": "North Mini Code",
+     "value": 1.457252718798162,
+     "displayValue": "1",
+     "url": "/models/north-mini-code",
      "logo": "/img/logos/cohere.svg"
     },
     {
@@ -1757,6 +2189,15 @@
      "displayValue": "1",
      "url": "/models/mistral-small-4",
      "logo": "/img/logos/mistral.svg"
+    },
+    {
+     "id": "29976311-665a-4b2f-ac72-557c33e0758e",
+     "label": "Nemotron 3.5 Lightning",
+     "tooltipLabel": "Nemotron 3.5 Lightning",
+     "value": 0.8388135668573264,
+     "displayValue": "1",
+     "url": "/models/nemotron-3-5-lightning",
+     "logo": "/img/logos/nvidia.svg"
     },
     {
      "id": "eb4ba465-3fcd-4065-9fe2-e8225e7b2c6c",
@@ -1786,6 +2227,15 @@
      "logo": "/img/logos/nvidia.svg"
     },
     {
+     "id": "0c64b008-20c3-408d-bd68-15136df8cd2c",
+     "label": "Granite 4.2 3B",
+     "tooltipLabel": "Granite 4.2 3B",
+     "value": 0.4609985630070573,
+     "displayValue": "0",
+     "url": "/models/granite-4-2-3b",
+     "logo": "/img/logos/ibm.svg"
+    },
+    {
      "id": "7eaf926c-5f39-4e58-ae50-c38b5fc630fc",
      "label": "Ling 3.0 Tiny",
      "tooltipLabel": "Ling 3.0 Tiny",
@@ -1799,6 +2249,13 @@
   {
    "title": "Artificial Analysis Strategy & Ops Index: Cost per Task",
    "items": [
+    {
+     "id": "cd26a386-4873-46ff-b853-d239050025a2",
+     "label": "Gemma 4 31B",
+     "tooltipLabel": "Gemma 4 31B (Reasoning)",
+     "url": "/models/gemma-4-31b",
+     "logo": "/img/logos/google.svg"
+    },
     {
      "id": "7eaf926c-5f39-4e58-ae50-c38b5fc630fc",
      "label": "Ling 3.0 Tiny",
@@ -1818,6 +2275,13 @@
      "label": "Command A+",
      "tooltipLabel": "Command A+",
      "url": "/models/command-a-plus",
+     "logo": "/img/logos/cohere.svg"
+    },
+    {
+     "id": "1e9907e0-ffac-4595-b006-962e4f1da7cf",
+     "label": "North Mini Code",
+     "tooltipLabel": "North Mini Code",
+     "url": "/models/north-mini-code",
      "logo": "/img/logos/cohere.svg"
     },
     {
@@ -1868,6 +2332,20 @@
      "tooltipLabel": "GPT-6 Luna (Xhigh)",
      "url": "/models/gpt-6-luna-xhigh",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
+     "label": "Granite 4.2 8B",
+     "tooltipLabel": "Granite 4.2 8B",
+     "url": "/models/granite-4-2-8b",
+     "logo": "/img/logos/ibm.svg"
+    },
+    {
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "label": "Gemini 3.1 Flash-Lite",
+     "tooltipLabel": "Gemini 3.1 Flash-Lite",
+     "url": "/models/gemini-3-1-flash-lite-preview",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "b89c4faf-219e-4171-a1aa-e3bd2fd0a924",
@@ -1926,6 +2404,13 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "29976311-665a-4b2f-ac72-557c33e0758e",
+     "label": "Nemotron 3.5 Lightning",
+     "tooltipLabel": "Nemotron 3.5 Lightning",
+     "url": "/models/nemotron-3-5-lightning",
+     "logo": "/img/logos/nvidia.svg"
+    },
+    {
      "id": "69468cce-7b5c-414a-b498-41df4c34df85",
      "label": "Beam 1.0",
      "tooltipLabel": "Beam 1.0",
@@ -1982,6 +2467,27 @@
      "logo": "/img/logos/xiaomi.svg"
     },
     {
+     "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
+     "label": "Claude 4.5 Haiku",
+     "tooltipLabel": "Claude 4.5 Haiku (Reasoning)",
+     "url": "/models/claude-4-5-haiku-reasoning",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+     "label": "GPT-5.6 Luna (max)",
+     "tooltipLabel": "GPT-5.6 Luna (Max)",
+     "url": "/models/gpt-5-6-luna",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "c3b66080-fdcb-48e4-8ade-6baf77921c7c",
+     "label": "DeepSeek V4.1 Flash 1017 (high)",
+     "tooltipLabel": "DeepSeek V4.1 Flash 1017 (High)",
+     "url": "/models/deepseek-v4-1-flash-1017-high",
+     "logo": "/img/logos/deepseek.svg"
+    },
+    {
      "id": "9b97a35e-6ac7-44d9-91c6-422fa678963e",
      "label": "GPT-5.6 Terra (non-reasoning)",
      "tooltipLabel": "GPT-5.6 Terra (Non-reasoning)",
@@ -1996,11 +2502,11 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
-     "label": "MiniMax-M3.1-Flash",
-     "tooltipLabel": "MiniMax-M3.1-Flash",
-     "url": "/models/minimax-m3-1-flash",
-     "logo": "/img/logos/minimax.svg"
+     "id": "27b24366-fd1a-44b7-8011-e24d7501318d",
+     "label": "Mistral Large 4 (medium)",
+     "tooltipLabel": "Mistral Large 4 (Medium)",
+     "url": "/models/mistral-large-4-medium",
+     "logo": "/img/logos/mistral.svg"
     },
     {
      "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
@@ -2008,6 +2514,13 @@
      "tooltipLabel": "Nemotron 3.5 Super VL",
      "url": "/models/nemotron-3-5-super-vl",
      "logo": "/img/logos/nvidia.svg"
+    },
+    {
+     "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
+     "label": "MiniMax-M3.1-Flash",
+     "tooltipLabel": "MiniMax-M3.1-Flash",
+     "url": "/models/minimax-m3-1-flash",
+     "logo": "/img/logos/minimax.svg"
     },
     {
      "id": "cc4a20cd-09fe-4962-a430-119c815e85fa",
@@ -2052,6 +2565,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "5720fd2f-873a-4765-8640-a153b38bd64d",
+     "label": "DeepSeek V4.1 Flash 1017 (non-reasoning)",
+     "tooltipLabel": "DeepSeek V4.1 Flash 1017 (Non-reasoning)",
+     "url": "/models/deepseek-v4-1-flash-1017-non-reasoning",
+     "logo": "/img/logos/deepseek.svg"
+    },
+    {
      "id": "f151fd0b-2139-40cf-a3ec-995e8cedc592",
      "label": "DeepSeek V4.1 Flash 1017 (max)",
      "tooltipLabel": "DeepSeek V4.1 Flash 1017 (Max)",
@@ -2094,6 +2614,13 @@
      "logo": "/img/logos/minimax.svg"
     },
     {
+     "id": "e2ed7885-d46b-4da7-a873-f12f88af0081",
+     "label": "Inkling 2 Small",
+     "tooltipLabel": "Inkling 2 Small",
+     "url": "/models/inkling-2-small",
+     "logo": "/img/logos/thinking-machines.svg"
+    },
+    {
      "id": "b0c462cf-f2d0-4126-9434-28db9502219f",
      "label": "GPT-6.1 Terra (max)",
      "tooltipLabel": "GPT-6.1 Terra (Max)",
@@ -2102,7 +2629,7 @@
     },
     {
      "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
-     "label": "Claude Sonnet 5.5 (low with fallback)",
+     "label": "Claude Sonnet 5.5 (low)",
      "tooltipLabel": "Claude Sonnet 5.5 (Low, Default Fallback)",
      "url": "/models/claude-sonnet-5-5-low",
      "logo": "/img/logos/anthropic.svg"
@@ -2126,6 +2653,13 @@
      "label": "Mistral Medium 3.5",
      "tooltipLabel": "Mistral Medium 3.5",
      "url": "/models/mistral-medium-3-5",
+     "logo": "/img/logos/mistral.svg"
+    },
+    {
+     "id": "ea5019ae-b0b7-49a5-80b3-0e584807af0f",
+     "label": "Mistral Large 4 (high)",
+     "tooltipLabel": "Mistral Large 4 (High)",
+     "url": "/models/mistral-large-4",
      "logo": "/img/logos/mistral.svg"
     },
     {
@@ -2164,6 +2698,13 @@
      "logo": "/img/logos/upstage.svg"
     },
     {
+     "id": "d274918e-ea82-4951-8b37-8ed9ab898dbc",
+     "label": "Tencent Hy4",
+     "tooltipLabel": "Tencent Hy4",
+     "url": "/models/tencent-hy4",
+     "logo": "/img/logos/tencent-hy.svg"
+    },
+    {
      "id": "0de09623-2b1a-4c8d-86ef-7f5245d4e24b",
      "label": "Inkling (xhigh)",
      "tooltipLabel": "Inkling (Xhigh)",
@@ -2172,14 +2713,14 @@
     },
     {
      "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
-     "label": "Claude Sonnet 5.5 (medium with fallback)",
+     "label": "Claude Sonnet 5.5 (medium)",
      "tooltipLabel": "Claude Sonnet 5.5 (Medium, Default Fallback)",
      "url": "/models/claude-sonnet-5-5-medium",
      "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
-     "label": "Claude Opus 5.5 (low with fallback)",
+     "label": "Claude Opus 5.5 (low)",
      "tooltipLabel": "Claude Opus 5.5 (Low, Default Fallback)",
      "url": "/models/claude-opus-5-5-low",
      "logo": "/img/logos/anthropic.svg"
@@ -2234,11 +2775,32 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "34fc646a-0174-470e-9e62-d8df452210b3",
+     "label": "Mistral Large 4 Preview",
+     "tooltipLabel": "Mistral Large 4 Preview",
+     "url": "/models/mistral-large-4-preview",
+     "logo": "/img/logos/mistral.svg"
+    },
+    {
+     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+     "label": "GPT-6 Sol (max)",
+     "tooltipLabel": "GPT-6 Sol (Max)",
+     "url": "/models/gpt-6-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "d5170215-69be-4129-849b-26d8d8825bfc",
      "label": "Muse Spark 1.3 (xhigh)",
      "tooltipLabel": "Muse Spark 1.3 (Xhigh)",
      "url": "/models/muse-spark-1-3-xhigh",
      "logo": "/img/logos/meta.svg"
+    },
+    {
+     "id": "f7a4ea75-e548-4069-80d4-9be8bc7c009b",
+     "label": "GLM-5.2 (max)",
+     "tooltipLabel": "GLM-5.2 (Max)",
+     "url": "/models/glm-5-2",
+     "logo": "/img/logos/zai.svg"
     },
     {
      "id": "6657d7de-a2a9-40bc-a32f-86e80ad63698",
@@ -2256,7 +2818,7 @@
     },
     {
      "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
-     "label": "Claude Sonnet 5.5 (high with fallback)",
+     "label": "Claude Sonnet 5.5 (high)",
      "tooltipLabel": "Claude Sonnet 5.5 (High, Default Fallback)",
      "url": "/models/claude-sonnet-5-5-high",
      "logo": "/img/logos/anthropic.svg"
@@ -2276,11 +2838,11 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "34fc646a-0174-470e-9e62-d8df452210b3",
-     "label": "Mistral Large 4 Preview",
-     "tooltipLabel": "Mistral Large 4 Preview",
-     "url": "/models/mistral-large-4",
-     "logo": "/img/logos/mistral.svg"
+     "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
+     "label": "Solar Pro 4",
+     "tooltipLabel": "Solar Pro 4",
+     "url": "/models/solar-pro4",
+     "logo": "/img/logos/upstage.svg"
     },
     {
      "id": "539ed227-38f4-4bea-a015-117057c14b18",
@@ -2298,7 +2860,7 @@
     },
     {
      "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
-     "label": "Claude Opus 5.5 (medium with fallback)",
+     "label": "Claude Opus 5.5 (medium)",
      "tooltipLabel": "Claude Opus 5.5 (Medium, Default Fallback)",
      "url": "/models/claude-opus-5-5-medium",
      "logo": "/img/logos/anthropic.svg"
@@ -2309,6 +2871,13 @@
      "tooltipLabel": "GPT-6 Astra (Medium)",
      "url": "/models/gpt-6-astra-medium",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "d6f43d0a-e8c4-447c-9ff7-5cf0a9d59aa3",
+     "label": "Grok 4.6 (xhigh)",
+     "tooltipLabel": "Grok 4.6 (Xhigh)",
+     "url": "/models/grok-4-6-xhigh",
+     "logo": "/img/logos/spacexai.svg"
     },
     {
      "id": "cd684ea4-b475-4269-b001-d469d06d8a7a",
@@ -2325,6 +2894,13 @@
      "logo": "/img/logos/google.svg"
     },
     {
+     "id": "38a98e3d-779b-49ec-b005-230a3a72088a",
+     "label": "Muse Wonder (high)",
+     "tooltipLabel": "Muse Wonder (High)",
+     "url": "/models/muse-wonder-high",
+     "logo": "/img/logos/meta.svg"
+    },
+    {
      "id": "e05a4828-0536-4876-870d-a235023f992b",
      "label": "GPT-6 Astra (high)",
      "tooltipLabel": "GPT-6 Astra (High)",
@@ -2333,7 +2909,7 @@
     },
     {
      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
-     "label": "Claude Opus 5.5 (high with fallback)",
+     "label": "Claude Opus 5.5 (high)",
      "tooltipLabel": "Claude Opus 5.5 (High, Default Fallback)",
      "url": "/models/claude-opus-5-5-high",
      "logo": "/img/logos/anthropic.svg"
@@ -2347,10 +2923,17 @@
     },
     {
      "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
-     "label": "Claude Sonnet 5.5 (xhigh with fallback)",
+     "label": "Claude Sonnet 5.5 (xhigh)",
      "tooltipLabel": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
      "url": "/models/claude-sonnet-5-5-xhigh",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
+     "label": "Gemini 4 Carbon (low)",
+     "tooltipLabel": "Gemini 4 Carbon (Low)",
+     "url": "/models/gemini-4-carbon-low",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
@@ -2375,10 +2958,17 @@
     },
     {
      "id": "05776db7-f5c0-40f7-b824-079160f8cfa8",
-     "label": "Claude Fable 5.1 (low with fallback)",
+     "label": "Claude Fable 5.1 (low)",
      "tooltipLabel": "Claude Fable 5.1 (Low, Default Fallback)",
      "url": "/models/claude-fable-5-1-low",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
+     "label": "Gemini 4 Carbon (medium)",
+     "tooltipLabel": "Gemini 4 Carbon (Medium)",
+     "url": "/models/gemini-4-carbon-medium",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "59627802-1546-422c-9a65-65b61c022d36",
@@ -2402,13 +2992,6 @@
      "logo": "/img/logos/meta.svg"
     },
     {
-     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
-     "label": "Gemini 4 Argon (high)",
-     "tooltipLabel": "Gemini 4 Argon (High)",
-     "url": "/models/gemini-4-argon",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
      "label": "Gemini 4 Carbon (high)",
      "tooltipLabel": "Gemini 4 Carbon (High)",
@@ -2417,7 +3000,7 @@
     },
     {
      "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
-     "label": "Claude Fable 5.1 (medium with fallback)",
+     "label": "Claude Fable 5.1 (medium)",
      "tooltipLabel": "Claude Fable 5.1 (Medium, Default Fallback)",
      "url": "/models/claude-fable-5-1-medium",
      "logo": "/img/logos/anthropic.svg"
@@ -2430,17 +3013,31 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
+     "label": "Gemini 4 Argon (high)",
+     "tooltipLabel": "Gemini 4 Argon (High)",
+     "url": "/models/gemini-4-argon",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "df5bf99d-d228-4715-b41b-19ca86118777",
-     "label": "Claude Opus 5.5 (xhigh with fallback)",
+     "label": "Claude Opus 5.5 (xhigh)",
      "tooltipLabel": "Claude Opus 5.5 (Xhigh, Default Fallback)",
      "url": "/models/claude-opus-5-5-xhigh",
      "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
-     "label": "Claude Fable 5.1 (high with fallback)",
+     "label": "Claude Fable 5.1 (high)",
      "tooltipLabel": "Claude Fable 5.1 (High, Default Fallback)",
      "url": "/models/claude-fable-5-1-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+     "label": "Claude Opus 5 (max)",
+     "tooltipLabel": "Claude Opus 5 (Max)",
+     "url": "/models/claude-opus-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -2452,28 +3049,28 @@
     },
     {
      "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
-     "label": "Claude Fable 5.1 (xhigh with fallback)",
+     "label": "Claude Fable 5.1 (xhigh)",
      "tooltipLabel": "Claude Fable 5.1 (Xhigh, Default Fallback)",
      "url": "/models/claude-fable-5-1-xhigh",
      "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
-     "label": "Claude Sonnet 5.5 (max with fallback)",
+     "label": "Claude Sonnet 5.5 (max)",
      "tooltipLabel": "Claude Sonnet 5.5 (Max, Default Fallback)",
      "url": "/models/claude-sonnet-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
-     "label": "Claude Opus 5.5 (max with fallback)",
+     "label": "Claude Opus 5.5 (max)",
      "tooltipLabel": "Claude Opus 5.5 (Max, Default Fallback)",
      "url": "/models/claude-opus-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "3e87c73e-a257-495e-9730-367a66229811",
-     "label": "Claude Fable 5.1 (max with fallback)",
+     "label": "Claude Fable 5.1 (max)",
      "tooltipLabel": "Claude Fable 5.1 (Max, Default Fallback)",
      "url": "/models/claude-fable-5-1",
      "logo": "/img/logos/anthropic.svg"
@@ -2495,6 +3092,28 @@
      }
     },
     {
+     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
+     "slug": "gemini-4-carbon-medium",
+     "name": "Gemini 4 Carbon (Medium)",
+     "shortName": "Gemini 4 Carbon (medium)",
+     "releaseDate": "2026-10-28",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 2.72828512400591
+     }
+    },
+    {
+     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
+     "slug": "gemini-4-carbon-low",
+     "name": "Gemini 4 Carbon (Low)",
+     "shortName": "Gemini 4 Carbon (low)",
+     "releaseDate": "2026-10-28",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 2.493840190947567
+     }
+    },
+    {
      "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
      "slug": "gemini-4-argon",
      "name": "Gemini 4 Argon (High)",
@@ -2502,7 +3121,7 @@
      "releaseDate": "2026-09-30",
      "creatorName": "Google",
      "costPerTask": {
-      "total": 3.1753228804846323
+      "total": 3.9541079351920216
      }
     },
     {
@@ -2550,10 +3169,21 @@
      }
     },
     {
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "slug": "gemini-3-1-flash-lite-preview",
+     "name": "Gemini 3.1 Flash-Lite",
+     "shortName": "Gemini 3.1 Flash-Lite",
+     "releaseDate": "2026-03-03",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.04227297623142357
+     }
+    },
+    {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
      "slug": "claude-opus-5-5",
      "name": "Claude Opus 5.5 (Max, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (max with fallback)",
+     "shortName": "Claude Opus 5.5 (max)",
      "releaseDate": "2026-09-22",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2564,7 +3194,7 @@
      "id": "df5bf99d-d228-4715-b41b-19ca86118777",
      "slug": "claude-opus-5-5-xhigh",
      "name": "Claude Opus 5.5 (Xhigh, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (xhigh with fallback)",
+     "shortName": "Claude Opus 5.5 (xhigh)",
      "releaseDate": "2026-09-22",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2575,7 +3205,7 @@
      "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
      "slug": "claude-sonnet-5-5",
      "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (max with fallback)",
+     "shortName": "Claude Sonnet 5.5 (max)",
      "releaseDate": "2026-09-28",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2586,7 +3216,7 @@
      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
      "slug": "claude-opus-5-5-high",
      "name": "Claude Opus 5.5 (High, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (high with fallback)",
+     "shortName": "Claude Opus 5.5 (high)",
      "releaseDate": "2026-09-22",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2597,7 +3227,7 @@
      "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
      "slug": "claude-fable-5-1-xhigh",
      "name": "Claude Fable 5.1 (Xhigh, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (xhigh with fallback)",
+     "shortName": "Claude Fable 5.1 (xhigh)",
      "releaseDate": "2026-09-01",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2608,7 +3238,7 @@
      "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
      "slug": "claude-sonnet-5-5-xhigh",
      "name": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (xhigh with fallback)",
+     "shortName": "Claude Sonnet 5.5 (xhigh)",
      "releaseDate": "2026-09-28",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2619,7 +3249,7 @@
      "id": "3e87c73e-a257-495e-9730-367a66229811",
      "slug": "claude-fable-5-1",
      "name": "Claude Fable 5.1 (Max, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (max with fallback)",
+     "shortName": "Claude Fable 5.1 (max)",
      "releaseDate": "2026-09-01",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2630,7 +3260,7 @@
      "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
      "slug": "claude-opus-5-5-medium",
      "name": "Claude Opus 5.5 (Medium, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (medium with fallback)",
+     "shortName": "Claude Opus 5.5 (medium)",
      "releaseDate": "2026-09-22",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2641,7 +3271,7 @@
      "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
      "slug": "claude-fable-5-1-high",
      "name": "Claude Fable 5.1 (High, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (high with fallback)",
+     "shortName": "Claude Fable 5.1 (high)",
      "releaseDate": "2026-09-01",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2649,10 +3279,21 @@
      }
     },
     {
+     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+     "slug": "claude-opus-5",
+     "name": "Claude Opus 5 (Max)",
+     "shortName": "Claude Opus 5 (max)",
+     "releaseDate": "2026-07-24",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 5.860909051695462
+     }
+    },
+    {
      "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
      "slug": "claude-fable-5-1-medium",
      "name": "Claude Fable 5.1 (Medium, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (medium with fallback)",
+     "shortName": "Claude Fable 5.1 (medium)",
      "releaseDate": "2026-09-01",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2663,7 +3304,7 @@
      "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
      "slug": "claude-sonnet-5-5-high",
      "name": "Claude Sonnet 5.5 (High, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (high with fallback)",
+     "shortName": "Claude Sonnet 5.5 (high)",
      "releaseDate": "2026-09-28",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2674,7 +3315,7 @@
      "id": "05776db7-f5c0-40f7-b824-079160f8cfa8",
      "slug": "claude-fable-5-1-low",
      "name": "Claude Fable 5.1 (Low, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (low with fallback)",
+     "shortName": "Claude Fable 5.1 (low)",
      "releaseDate": "2026-09-01",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2696,7 +3337,7 @@
      "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
      "slug": "claude-opus-5-5-low",
      "name": "Claude Opus 5.5 (Low, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (low with fallback)",
+     "shortName": "Claude Opus 5.5 (low)",
      "releaseDate": "2026-09-22",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2718,7 +3359,7 @@
      "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
      "slug": "claude-sonnet-5-5-medium",
      "name": "Claude Sonnet 5.5 (Medium, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (medium with fallback)",
+     "shortName": "Claude Sonnet 5.5 (medium)",
      "releaseDate": "2026-09-28",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2740,7 +3381,7 @@
      "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
      "slug": "claude-sonnet-5-5-low",
      "name": "Claude Sonnet 5.5 (Low, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (low with fallback)",
+     "shortName": "Claude Sonnet 5.5 (low)",
      "releaseDate": "2026-09-28",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -2767,6 +3408,17 @@
      "creatorName": "Anthropic",
      "costPerTask": {
       "total": 0.020550484317698056
+     }
+    },
+    {
+     "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
+     "slug": "claude-4-5-haiku-reasoning",
+     "name": "Claude 4.5 Haiku (Reasoning)",
+     "shortName": "Claude 4.5 Haiku",
+     "releaseDate": "2025-10-15",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 0.15402477242284454
      }
     },
     {
@@ -2880,6 +3532,17 @@
      }
     },
     {
+     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+     "slug": "gpt-6-sol",
+     "name": "GPT-6 Sol (Max)",
+     "shortName": "GPT-6 Sol (max)",
+     "releaseDate": "2026-09-22",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.940874095959701
+     }
+    },
+    {
      "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
      "slug": "gpt-6-astra-low",
      "name": "GPT-6 Astra (Low)",
@@ -2924,6 +3587,17 @@
      }
     },
     {
+     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
+     "slug": "gpt-5-6-terra",
+     "name": "GPT-5.6 Terra (Max)",
+     "shortName": "GPT-5.6 Terra (max)",
+     "releaseDate": "2026-07-09",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 1.1565274803529837
+     }
+    },
+    {
      "id": "0d3c777f-6817-42d7-9bb9-223314bc5a57",
      "slug": "gpt-6-1-terra-non-reasoning",
      "name": "GPT-6.1 Terra (Non-reasoning)",
@@ -2954,6 +3628,17 @@
      "creatorName": "OpenAI",
      "costPerTask": {
       "total": 0.06586797886894176
+     }
+    },
+    {
+     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+     "slug": "gpt-5-6-luna",
+     "name": "GPT-5.6 Luna (Max)",
+     "shortName": "GPT-5.6 Luna (max)",
+     "releaseDate": "2026-07-09",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.15637705291479834
      }
     },
     {
@@ -3056,17 +3741,6 @@
      }
     },
     {
-     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
-     "slug": "gpt-5-6-terra",
-     "name": "GPT-5.6 Terra (Max)",
-     "shortName": "GPT-5.6 Terra (max)",
-     "releaseDate": "2026-07-09",
-     "creatorName": "OpenAI",
-     "costPerTask": {
-      "total": 1.1565274803529837
-     }
-    },
-    {
      "id": "cc4a20cd-09fe-4962-a430-119c815e85fa",
      "slug": "gpt-5-6-terra-low",
      "name": "GPT-5.6 Terra (Low)",
@@ -3086,6 +3760,17 @@
      "creatorName": "Meta",
      "costPerTask": {
       "total": 2.9062746209019426
+     }
+    },
+    {
+     "id": "38a98e3d-779b-49ec-b005-230a3a72088a",
+     "slug": "muse-wonder-high",
+     "name": "Muse Wonder (High)",
+     "shortName": "Muse Wonder (high)",
+     "releaseDate": "2026-10-12",
+     "creatorName": "Meta",
+     "costPerTask": {
+      "total": 1.9602864550846426
      }
     },
     {
@@ -3155,17 +3840,6 @@
      }
     },
     {
-     "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
-     "slug": "grok-4-7-high",
-     "name": "Grok 4.7 (High)",
-     "shortName": "Grok 4.7 (high)",
-     "releaseDate": "2026-09-21",
-     "creatorName": "SpaceXAI",
-     "costPerTask": {
-      "total": 2.234406297162975
-     }
-    },
-    {
      "id": "59627802-1546-422c-9a65-65b61c022d36",
      "slug": "grok-4-7",
      "name": "Grok 4.7 (Xhigh)",
@@ -3177,6 +3851,17 @@
      }
     },
     {
+     "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
+     "slug": "grok-4-7-high",
+     "name": "Grok 4.7 (High)",
+     "shortName": "Grok 4.7 (high)",
+     "releaseDate": "2026-09-21",
+     "creatorName": "SpaceXAI",
+     "costPerTask": {
+      "total": 2.234406297162975
+     }
+    },
+    {
      "id": "208c16f0-8c5b-4524-ac8a-ac74c02e80a9",
      "slug": "grok-4-7-low",
      "name": "Grok 4.7 (Low)",
@@ -3185,6 +3870,28 @@
      "creatorName": "SpaceXAI",
      "costPerTask": {
       "total": 0.7868788288055374
+     }
+    },
+    {
+     "id": "d6f43d0a-e8c4-447c-9ff7-5cf0a9d59aa3",
+     "slug": "grok-4-6-xhigh",
+     "name": "Grok 4.6 (Xhigh)",
+     "shortName": "Grok 4.6 (xhigh)",
+     "releaseDate": "2026-08-12",
+     "creatorName": "SpaceXAI",
+     "costPerTask": {
+      "total": 1.7107962742668463
+     }
+    },
+    {
+     "id": "d274918e-ea82-4951-8b37-8ed9ab898dbc",
+     "slug": "tencent-hy4",
+     "name": "Tencent Hy4",
+     "shortName": "Tencent Hy4",
+     "releaseDate": "2026-11-03",
+     "creatorName": "Tencent",
+     "costPerTask": {
+      "total": 0.5028569259307636
      }
     },
     {
@@ -3210,17 +3917,6 @@
      }
     },
     {
-     "id": "353c92f3-2148-4c2d-9231-aa7e1322a1fd",
-     "slug": "qwen3-8-27b-non-reasoning",
-     "name": "Qwen3.8 27B (Non-reasoning)",
-     "shortName": "Qwen3.8 27B (non-reasoning)",
-     "releaseDate": "2026-08-14",
-     "creatorName": "Alibaba",
-     "costPerTask": {
-      "total": 2.7872030561607284
-     }
-    },
-    {
      "id": "6657d7de-a2a9-40bc-a32f-86e80ad63698",
      "slug": "qwen3-8-27b-medium",
      "name": "Qwen3.8 27B (Medium)",
@@ -3240,6 +3936,17 @@
      "creatorName": "Alibaba",
      "costPerTask": {
       "total": 0.7893143436238308
+     }
+    },
+    {
+     "id": "353c92f3-2148-4c2d-9231-aa7e1322a1fd",
+     "slug": "qwen3-8-27b-non-reasoning",
+     "name": "Qwen3.8 27B (Non-reasoning)",
+     "shortName": "Qwen3.8 27B (non-reasoning)",
+     "releaseDate": "2026-08-14",
+     "creatorName": "Alibaba",
+     "costPerTask": {
+      "total": 2.7872030561607284
      }
     },
     {
@@ -3276,6 +3983,17 @@
      }
     },
     {
+     "id": "c3b66080-fdcb-48e4-8ade-6baf77921c7c",
+     "slug": "deepseek-v4-1-flash-1017-high",
+     "name": "DeepSeek V4.1 Flash 1017 (High)",
+     "shortName": "DeepSeek V4.1 Flash 1017 (high)",
+     "releaseDate": "2026-10-17",
+     "creatorName": "DeepSeek",
+     "costPerTask": {
+      "total": 0.16138173769188752
+     }
+    },
+    {
      "id": "83173329-c09a-41f1-a028-a282a5f908d7",
      "slug": "deepseek-v4-pro",
      "name": "DeepSeek V4 Pro 0813 (Max)",
@@ -3284,6 +4002,17 @@
      "creatorName": "DeepSeek",
      "costPerTask": {
       "total": 0.42696085219501045
+     }
+    },
+    {
+     "id": "5720fd2f-873a-4765-8640-a153b38bd64d",
+     "slug": "deepseek-v4-1-flash-1017-non-reasoning",
+     "name": "DeepSeek V4.1 Flash 1017 (Non-reasoning)",
+     "shortName": "DeepSeek V4.1 Flash 1017 (non-reasoning)",
+     "releaseDate": "2026-10-17",
+     "creatorName": "DeepSeek",
+     "costPerTask": {
+      "total": 0.2614886612470505
      }
     },
     {
@@ -3309,6 +4038,17 @@
      }
     },
     {
+     "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
+     "slug": "glm-5-3-flash",
+     "name": "GLM-5.3-Flash",
+     "shortName": "GLM-5.3-Flash",
+     "releaseDate": "2026-08-26",
+     "creatorName": "Z AI",
+     "costPerTask": {
+      "total": 0.3085977047438532
+     }
+    },
+    {
      "id": "cc1e488b-8ba4-464d-875d-690166b15ad3",
      "slug": "glm-5-3-low",
      "name": "GLM-5.3 (Low)",
@@ -3320,14 +4060,47 @@
      }
     },
     {
-     "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
-     "slug": "glm-5-3-flash",
-     "name": "GLM-5.3-Flash",
-     "shortName": "GLM-5.3-Flash",
-     "releaseDate": "2026-08-26",
+     "id": "f7a4ea75-e548-4069-80d4-9be8bc7c009b",
+     "slug": "glm-5-2",
+     "name": "GLM-5.2 (Max)",
+     "shortName": "GLM-5.2 (max)",
+     "releaseDate": "2026-06-16",
      "creatorName": "Z AI",
      "costPerTask": {
-      "total": 0.3085977047438532
+      "total": 0.9856632382202899
+     }
+    },
+    {
+     "id": "e2ed7885-d46b-4da7-a873-f12f88af0081",
+     "slug": "inkling-2-small",
+     "name": "Inkling 2 Small",
+     "shortName": "Inkling 2 Small",
+     "releaseDate": "2026-11-05",
+     "creatorName": "Thinking Machines",
+     "costPerTask": {
+      "total": 0.33035966035237746
+     }
+    },
+    {
+     "id": "7261504e-503c-4a66-a9d3-a3272cdf9ad6",
+     "slug": "inkling-small",
+     "name": "Inkling Small",
+     "shortName": "Inkling Small",
+     "releaseDate": "2026-07-30",
+     "creatorName": "Thinking Machines",
+     "costPerTask": {
+      "total": 0.0587229833104822
+     }
+    },
+    {
+     "id": "0de09623-2b1a-4c8d-86ef-7f5245d4e24b",
+     "slug": "inkling",
+     "name": "Inkling (Xhigh)",
+     "shortName": "Inkling (xhigh)",
+     "releaseDate": "2026-07-15",
+     "creatorName": "Thinking Machines",
+     "costPerTask": {
+      "total": 0.5084658044302373
      }
     },
     {
@@ -3408,25 +4181,36 @@
      }
     },
     {
-     "id": "34fc646a-0174-470e-9e62-d8df452210b3",
+     "id": "ea5019ae-b0b7-49a5-80b3-0e584807af0f",
      "slug": "mistral-large-4",
+     "name": "Mistral Large 4 (High)",
+     "shortName": "Mistral Large 4 (high)",
+     "releaseDate": "2026-10-29",
+     "creatorName": "Mistral",
+     "costPerTask": {
+      "total": 0.40809792091349306
+     }
+    },
+    {
+     "id": "34fc646a-0174-470e-9e62-d8df452210b3",
+     "slug": "mistral-large-4-preview",
      "name": "Mistral Large 4 Preview",
      "shortName": "Mistral Large 4 Preview",
      "releaseDate": "2026-10-06",
      "creatorName": "Mistral",
      "costPerTask": {
-      "total": 1.168853272368246
+      "total": 0.8813911073611997
      }
     },
     {
-     "id": "3fd96175-4ef1-434c-8795-f873aec2abc1",
-     "slug": "mistral-small-4",
-     "name": "Mistral Small 4 (Reasoning)",
-     "shortName": "Mistral Small 4",
-     "releaseDate": "2026-03-16",
+     "id": "27b24366-fd1a-44b7-8011-e24d7501318d",
+     "slug": "mistral-large-4-medium",
+     "name": "Mistral Large 4 (Medium)",
+     "shortName": "Mistral Large 4 (medium)",
+     "releaseDate": "2026-10-29",
      "creatorName": "Mistral",
      "costPerTask": {
-      "total": 0.01068686989165016
+      "total": 0.18081292568086657
      }
     },
     {
@@ -3438,6 +4222,17 @@
      "creatorName": "Mistral",
      "costPerTask": {
       "total": 0.3622953607826218
+     }
+    },
+    {
+     "id": "3fd96175-4ef1-434c-8795-f873aec2abc1",
+     "slug": "mistral-small-4",
+     "name": "Mistral Small 4 (Reasoning)",
+     "shortName": "Mistral Small 4",
+     "releaseDate": "2026-03-16",
+     "creatorName": "Mistral",
+     "costPerTask": {
+      "total": 0.01068686989165016
      }
     },
     {
@@ -3459,7 +4254,7 @@
      "releaseDate": "2026-10-15",
      "creatorName": "NVIDIA",
      "costPerTask": {
-      "total": 0.19822856877347467
+      "total": 0.1827691869884966
      }
     },
     {
@@ -3474,25 +4269,36 @@
      }
     },
     {
-     "id": "7261504e-503c-4a66-a9d3-a3272cdf9ad6",
-     "slug": "inkling-small",
-     "name": "Inkling Small",
-     "shortName": "Inkling Small",
-     "releaseDate": "2026-07-30",
-     "creatorName": "Thinking Machines",
+     "id": "29976311-665a-4b2f-ac72-557c33e0758e",
+     "slug": "nemotron-3-5-lightning",
+     "name": "Nemotron 3.5 Lightning",
+     "shortName": "Nemotron 3.5 Lightning",
+     "releaseDate": "2026-08-11",
+     "creatorName": "NVIDIA",
      "costPerTask": {
-      "total": 0.0587229833104822
+      "total": 0.09448697325227282
      }
     },
     {
-     "id": "0de09623-2b1a-4c8d-86ef-7f5245d4e24b",
-     "slug": "inkling",
-     "name": "Inkling (Xhigh)",
-     "shortName": "Inkling (xhigh)",
-     "releaseDate": "2026-07-15",
-     "creatorName": "Thinking Machines",
+     "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
+     "slug": "granite-4-2-8b",
+     "name": "Granite 4.2 8B",
+     "shortName": "Granite 4.2 8B",
+     "releaseDate": "2026-08-25",
+     "creatorName": "IBM",
      "costPerTask": {
-      "total": 0.5084658044302373
+      "total": 0.034686165429521236
+     }
+    },
+    {
+     "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
+     "slug": "solar-pro4",
+     "name": "Solar Pro 4",
+     "shortName": "Solar Pro 4",
+     "releaseDate": "2026-08-06",
+     "creatorName": "Upstage",
+     "costPerTask": {
+      "total": 1.1996767632228837
      }
     },
     {
@@ -3534,6 +4340,28 @@
      }
     },
     {
+     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
+     "slug": "gemini-4-carbon-medium",
+     "name": "Gemini 4 Carbon (Medium)",
+     "shortName": "Gemini 4 Carbon (medium)",
+     "releaseDate": "2026-10-28",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 2.72828512400591
+     }
+    },
+    {
+     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
+     "slug": "gemini-4-carbon-low",
+     "name": "Gemini 4 Carbon (Low)",
+     "shortName": "Gemini 4 Carbon (low)",
+     "releaseDate": "2026-10-28",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 2.493840190947567
+     }
+    },
+    {
      "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
      "slug": "gemini-4-argon",
      "name": "Gemini 4 Argon (High)",
@@ -3541,7 +4369,7 @@
      "releaseDate": "2026-09-30",
      "creatorName": "Google",
      "costPerTask": {
-      "total": 3.1753228804846323
+      "total": 3.9541079351920216
      }
     },
     {
@@ -3589,10 +4417,32 @@
      }
     },
     {
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "slug": "gemini-3-1-flash-lite-preview",
+     "name": "Gemini 3.1 Flash-Lite",
+     "shortName": "Gemini 3.1 Flash-Lite",
+     "releaseDate": "2026-03-03",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.04227297623142357
+     }
+    },
+    {
+     "id": "cd26a386-4873-46ff-b853-d239050025a2",
+     "slug": "gemma-4-31b",
+     "name": "Gemma 4 31B (Reasoning)",
+     "shortName": "Gemma 4 31B",
+     "releaseDate": "2026-04-02",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0
+     }
+    },
+    {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
      "slug": "claude-opus-5-5",
      "name": "Claude Opus 5.5 (Max, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (max with fallback)",
+     "shortName": "Claude Opus 5.5 (max)",
      "releaseDate": "2026-09-22",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3603,7 +4453,7 @@
      "id": "df5bf99d-d228-4715-b41b-19ca86118777",
      "slug": "claude-opus-5-5-xhigh",
      "name": "Claude Opus 5.5 (Xhigh, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (xhigh with fallback)",
+     "shortName": "Claude Opus 5.5 (xhigh)",
      "releaseDate": "2026-09-22",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3614,7 +4464,7 @@
      "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
      "slug": "claude-sonnet-5-5",
      "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (max with fallback)",
+     "shortName": "Claude Sonnet 5.5 (max)",
      "releaseDate": "2026-09-28",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3625,7 +4475,7 @@
      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
      "slug": "claude-opus-5-5-high",
      "name": "Claude Opus 5.5 (High, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (high with fallback)",
+     "shortName": "Claude Opus 5.5 (high)",
      "releaseDate": "2026-09-22",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3636,7 +4486,7 @@
      "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
      "slug": "claude-fable-5-1-xhigh",
      "name": "Claude Fable 5.1 (Xhigh, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (xhigh with fallback)",
+     "shortName": "Claude Fable 5.1 (xhigh)",
      "releaseDate": "2026-09-01",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3647,7 +4497,7 @@
      "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
      "slug": "claude-sonnet-5-5-xhigh",
      "name": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (xhigh with fallback)",
+     "shortName": "Claude Sonnet 5.5 (xhigh)",
      "releaseDate": "2026-09-28",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3658,7 +4508,7 @@
      "id": "3e87c73e-a257-495e-9730-367a66229811",
      "slug": "claude-fable-5-1",
      "name": "Claude Fable 5.1 (Max, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (max with fallback)",
+     "shortName": "Claude Fable 5.1 (max)",
      "releaseDate": "2026-09-01",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3669,7 +4519,7 @@
      "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
      "slug": "claude-opus-5-5-medium",
      "name": "Claude Opus 5.5 (Medium, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (medium with fallback)",
+     "shortName": "Claude Opus 5.5 (medium)",
      "releaseDate": "2026-09-22",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3680,7 +4530,7 @@
      "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
      "slug": "claude-fable-5-1-high",
      "name": "Claude Fable 5.1 (High, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (high with fallback)",
+     "shortName": "Claude Fable 5.1 (high)",
      "releaseDate": "2026-09-01",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3688,10 +4538,21 @@
      }
     },
     {
+     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+     "slug": "claude-opus-5",
+     "name": "Claude Opus 5 (Max)",
+     "shortName": "Claude Opus 5 (max)",
+     "releaseDate": "2026-07-24",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 5.860909051695462
+     }
+    },
+    {
      "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
      "slug": "claude-fable-5-1-medium",
      "name": "Claude Fable 5.1 (Medium, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (medium with fallback)",
+     "shortName": "Claude Fable 5.1 (medium)",
      "releaseDate": "2026-09-01",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3702,7 +4563,7 @@
      "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
      "slug": "claude-sonnet-5-5-high",
      "name": "Claude Sonnet 5.5 (High, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (high with fallback)",
+     "shortName": "Claude Sonnet 5.5 (high)",
      "releaseDate": "2026-09-28",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3713,7 +4574,7 @@
      "id": "05776db7-f5c0-40f7-b824-079160f8cfa8",
      "slug": "claude-fable-5-1-low",
      "name": "Claude Fable 5.1 (Low, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (low with fallback)",
+     "shortName": "Claude Fable 5.1 (low)",
      "releaseDate": "2026-09-01",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3735,7 +4596,7 @@
      "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
      "slug": "claude-opus-5-5-low",
      "name": "Claude Opus 5.5 (Low, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (low with fallback)",
+     "shortName": "Claude Opus 5.5 (low)",
      "releaseDate": "2026-09-22",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3757,7 +4618,7 @@
      "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
      "slug": "claude-sonnet-5-5-medium",
      "name": "Claude Sonnet 5.5 (Medium, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (medium with fallback)",
+     "shortName": "Claude Sonnet 5.5 (medium)",
      "releaseDate": "2026-09-28",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3779,7 +4640,7 @@
      "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
      "slug": "claude-sonnet-5-5-low",
      "name": "Claude Sonnet 5.5 (Low, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (low with fallback)",
+     "shortName": "Claude Sonnet 5.5 (low)",
      "releaseDate": "2026-09-28",
      "creatorName": "Anthropic",
      "costPerTask": {
@@ -3806,6 +4667,17 @@
      "creatorName": "Anthropic",
      "costPerTask": {
       "total": 0.020550484317698056
+     }
+    },
+    {
+     "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
+     "slug": "claude-4-5-haiku-reasoning",
+     "name": "Claude 4.5 Haiku (Reasoning)",
+     "shortName": "Claude 4.5 Haiku",
+     "releaseDate": "2025-10-15",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 0.15402477242284454
      }
     },
     {
@@ -3919,6 +4791,17 @@
      }
     },
     {
+     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+     "slug": "gpt-6-sol",
+     "name": "GPT-6 Sol (Max)",
+     "shortName": "GPT-6 Sol (max)",
+     "releaseDate": "2026-09-22",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.940874095959701
+     }
+    },
+    {
      "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
      "slug": "gpt-6-astra-low",
      "name": "GPT-6 Astra (Low)",
@@ -3963,6 +4846,17 @@
      }
     },
     {
+     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
+     "slug": "gpt-5-6-terra",
+     "name": "GPT-5.6 Terra (Max)",
+     "shortName": "GPT-5.6 Terra (max)",
+     "releaseDate": "2026-07-09",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 1.1565274803529837
+     }
+    },
+    {
      "id": "0d3c777f-6817-42d7-9bb9-223314bc5a57",
      "slug": "gpt-6-1-terra-non-reasoning",
      "name": "GPT-6.1 Terra (Non-reasoning)",
@@ -3993,6 +4887,17 @@
      "creatorName": "OpenAI",
      "costPerTask": {
       "total": 0.06586797886894176
+     }
+    },
+    {
+     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+     "slug": "gpt-5-6-luna",
+     "name": "GPT-5.6 Luna (Max)",
+     "shortName": "GPT-5.6 Luna (max)",
+     "releaseDate": "2026-07-09",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.15637705291479834
      }
     },
     {
@@ -4095,17 +5000,6 @@
      }
     },
     {
-     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
-     "slug": "gpt-5-6-terra",
-     "name": "GPT-5.6 Terra (Max)",
-     "shortName": "GPT-5.6 Terra (max)",
-     "releaseDate": "2026-07-09",
-     "creatorName": "OpenAI",
-     "costPerTask": {
-      "total": 1.1565274803529837
-     }
-    },
-    {
      "id": "cc4a20cd-09fe-4962-a430-119c815e85fa",
      "slug": "gpt-5-6-terra-low",
      "name": "GPT-5.6 Terra (Low)",
@@ -4133,6 +5027,17 @@
      "creatorName": "Meta",
      "costPerTask": {
       "total": 2.9062746209019426
+     }
+    },
+    {
+     "id": "38a98e3d-779b-49ec-b005-230a3a72088a",
+     "slug": "muse-wonder-high",
+     "name": "Muse Wonder (High)",
+     "shortName": "Muse Wonder (high)",
+     "releaseDate": "2026-10-12",
+     "creatorName": "Meta",
+     "costPerTask": {
+      "total": 1.9602864550846426
      }
     },
     {
@@ -4202,17 +5107,6 @@
      }
     },
     {
-     "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
-     "slug": "grok-4-7-high",
-     "name": "Grok 4.7 (High)",
-     "shortName": "Grok 4.7 (high)",
-     "releaseDate": "2026-09-21",
-     "creatorName": "SpaceXAI",
-     "costPerTask": {
-      "total": 2.234406297162975
-     }
-    },
-    {
      "id": "59627802-1546-422c-9a65-65b61c022d36",
      "slug": "grok-4-7",
      "name": "Grok 4.7 (Xhigh)",
@@ -4224,6 +5118,17 @@
      }
     },
     {
+     "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
+     "slug": "grok-4-7-high",
+     "name": "Grok 4.7 (High)",
+     "shortName": "Grok 4.7 (high)",
+     "releaseDate": "2026-09-21",
+     "creatorName": "SpaceXAI",
+     "costPerTask": {
+      "total": 2.234406297162975
+     }
+    },
+    {
      "id": "208c16f0-8c5b-4524-ac8a-ac74c02e80a9",
      "slug": "grok-4-7-low",
      "name": "Grok 4.7 (Low)",
@@ -4232,6 +5137,28 @@
      "creatorName": "SpaceXAI",
      "costPerTask": {
       "total": 0.7868788288055374
+     }
+    },
+    {
+     "id": "d6f43d0a-e8c4-447c-9ff7-5cf0a9d59aa3",
+     "slug": "grok-4-6-xhigh",
+     "name": "Grok 4.6 (Xhigh)",
+     "shortName": "Grok 4.6 (xhigh)",
+     "releaseDate": "2026-08-12",
+     "creatorName": "SpaceXAI",
+     "costPerTask": {
+      "total": 1.7107962742668463
+     }
+    },
+    {
+     "id": "d274918e-ea82-4951-8b37-8ed9ab898dbc",
+     "slug": "tencent-hy4",
+     "name": "Tencent Hy4",
+     "shortName": "Tencent Hy4",
+     "releaseDate": "2026-11-03",
+     "creatorName": "Tencent",
+     "costPerTask": {
+      "total": 0.5028569259307636
      }
     },
     {
@@ -4257,17 +5184,6 @@
      }
     },
     {
-     "id": "353c92f3-2148-4c2d-9231-aa7e1322a1fd",
-     "slug": "qwen3-8-27b-non-reasoning",
-     "name": "Qwen3.8 27B (Non-reasoning)",
-     "shortName": "Qwen3.8 27B (non-reasoning)",
-     "releaseDate": "2026-08-14",
-     "creatorName": "Alibaba",
-     "costPerTask": {
-      "total": 2.7872030561607284
-     }
-    },
-    {
      "id": "6657d7de-a2a9-40bc-a32f-86e80ad63698",
      "slug": "qwen3-8-27b-medium",
      "name": "Qwen3.8 27B (Medium)",
@@ -4287,6 +5203,17 @@
      "creatorName": "Alibaba",
      "costPerTask": {
       "total": 0.7893143436238308
+     }
+    },
+    {
+     "id": "353c92f3-2148-4c2d-9231-aa7e1322a1fd",
+     "slug": "qwen3-8-27b-non-reasoning",
+     "name": "Qwen3.8 27B (Non-reasoning)",
+     "shortName": "Qwen3.8 27B (non-reasoning)",
+     "releaseDate": "2026-08-14",
+     "creatorName": "Alibaba",
+     "costPerTask": {
+      "total": 2.7872030561607284
      }
     },
     {
@@ -4323,6 +5250,17 @@
      }
     },
     {
+     "id": "c3b66080-fdcb-48e4-8ade-6baf77921c7c",
+     "slug": "deepseek-v4-1-flash-1017-high",
+     "name": "DeepSeek V4.1 Flash 1017 (High)",
+     "shortName": "DeepSeek V4.1 Flash 1017 (high)",
+     "releaseDate": "2026-10-17",
+     "creatorName": "DeepSeek",
+     "costPerTask": {
+      "total": 0.16138173769188752
+     }
+    },
+    {
      "id": "83173329-c09a-41f1-a028-a282a5f908d7",
      "slug": "deepseek-v4-pro",
      "name": "DeepSeek V4 Pro 0813 (Max)",
@@ -4331,6 +5269,17 @@
      "creatorName": "DeepSeek",
      "costPerTask": {
       "total": 0.42696085219501045
+     }
+    },
+    {
+     "id": "5720fd2f-873a-4765-8640-a153b38bd64d",
+     "slug": "deepseek-v4-1-flash-1017-non-reasoning",
+     "name": "DeepSeek V4.1 Flash 1017 (Non-reasoning)",
+     "shortName": "DeepSeek V4.1 Flash 1017 (non-reasoning)",
+     "releaseDate": "2026-10-17",
+     "creatorName": "DeepSeek",
+     "costPerTask": {
+      "total": 0.2614886612470505
      }
     },
     {
@@ -4356,6 +5305,17 @@
      }
     },
     {
+     "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
+     "slug": "glm-5-3-flash",
+     "name": "GLM-5.3-Flash",
+     "shortName": "GLM-5.3-Flash",
+     "releaseDate": "2026-08-26",
+     "creatorName": "Z AI",
+     "costPerTask": {
+      "total": 0.3085977047438532
+     }
+    },
+    {
      "id": "cc1e488b-8ba4-464d-875d-690166b15ad3",
      "slug": "glm-5-3-low",
      "name": "GLM-5.3 (Low)",
@@ -4367,14 +5327,47 @@
      }
     },
     {
-     "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
-     "slug": "glm-5-3-flash",
-     "name": "GLM-5.3-Flash",
-     "shortName": "GLM-5.3-Flash",
-     "releaseDate": "2026-08-26",
+     "id": "f7a4ea75-e548-4069-80d4-9be8bc7c009b",
+     "slug": "glm-5-2",
+     "name": "GLM-5.2 (Max)",
+     "shortName": "GLM-5.2 (max)",
+     "releaseDate": "2026-06-16",
      "creatorName": "Z AI",
      "costPerTask": {
-      "total": 0.3085977047438532
+      "total": 0.9856632382202899
+     }
+    },
+    {
+     "id": "e2ed7885-d46b-4da7-a873-f12f88af0081",
+     "slug": "inkling-2-small",
+     "name": "Inkling 2 Small",
+     "shortName": "Inkling 2 Small",
+     "releaseDate": "2026-11-05",
+     "creatorName": "Thinking Machines",
+     "costPerTask": {
+      "total": 0.33035966035237746
+     }
+    },
+    {
+     "id": "7261504e-503c-4a66-a9d3-a3272cdf9ad6",
+     "slug": "inkling-small",
+     "name": "Inkling Small",
+     "shortName": "Inkling Small",
+     "releaseDate": "2026-07-30",
+     "creatorName": "Thinking Machines",
+     "costPerTask": {
+      "total": 0.0587229833104822
+     }
+    },
+    {
+     "id": "0de09623-2b1a-4c8d-86ef-7f5245d4e24b",
+     "slug": "inkling",
+     "name": "Inkling (Xhigh)",
+     "shortName": "Inkling (xhigh)",
+     "releaseDate": "2026-07-15",
+     "creatorName": "Thinking Machines",
+     "costPerTask": {
+      "total": 0.5084658044302373
      }
     },
     {
@@ -4466,14 +5459,47 @@
      }
     },
     {
-     "id": "34fc646a-0174-470e-9e62-d8df452210b3",
+     "id": "ea5019ae-b0b7-49a5-80b3-0e584807af0f",
      "slug": "mistral-large-4",
+     "name": "Mistral Large 4 (High)",
+     "shortName": "Mistral Large 4 (high)",
+     "releaseDate": "2026-10-29",
+     "creatorName": "Mistral",
+     "costPerTask": {
+      "total": 0.40809792091349306
+     }
+    },
+    {
+     "id": "34fc646a-0174-470e-9e62-d8df452210b3",
+     "slug": "mistral-large-4-preview",
      "name": "Mistral Large 4 Preview",
      "shortName": "Mistral Large 4 Preview",
      "releaseDate": "2026-10-06",
      "creatorName": "Mistral",
      "costPerTask": {
-      "total": 1.168853272368246
+      "total": 0.8813911073611997
+     }
+    },
+    {
+     "id": "27b24366-fd1a-44b7-8011-e24d7501318d",
+     "slug": "mistral-large-4-medium",
+     "name": "Mistral Large 4 (Medium)",
+     "shortName": "Mistral Large 4 (medium)",
+     "releaseDate": "2026-10-29",
+     "creatorName": "Mistral",
+     "costPerTask": {
+      "total": 0.18081292568086657
+     }
+    },
+    {
+     "id": "dd059b25-d82a-4ead-82a4-4adceaaec48b",
+     "slug": "mistral-medium-3-5",
+     "name": "Mistral Medium 3.5",
+     "shortName": "Mistral Medium 3.5",
+     "releaseDate": "2026-04-29",
+     "creatorName": "Mistral",
+     "costPerTask": {
+      "total": 0.3622953607826218
      }
     },
     {
@@ -4488,15 +5514,12 @@
      }
     },
     {
-     "id": "dd059b25-d82a-4ead-82a4-4adceaaec48b",
-     "slug": "mistral-medium-3-5",
-     "name": "Mistral Medium 3.5",
-     "shortName": "Mistral Medium 3.5",
-     "releaseDate": "2026-04-29",
-     "creatorName": "Mistral",
-     "costPerTask": {
-      "total": 0.3622953607826218
-     }
+     "id": "4cef9716-27a3-4ac3-9620-cd75135d7bbf",
+     "slug": "nanbeige4-3-33b",
+     "name": "Nanbeige4.3-33B",
+     "shortName": "Nanbeige4.3-33B",
+     "releaseDate": "2026-10-25",
+     "creatorName": "Nanbeige"
     },
     {
      "id": "bb3d7e75-8e22-4082-b9d6-1db0803e042f",
@@ -4528,7 +5551,7 @@
      "releaseDate": "2026-10-15",
      "creatorName": "NVIDIA",
      "costPerTask": {
-      "total": 0.19822856877347467
+      "total": 0.1827691869884966
      }
     },
     {
@@ -4543,6 +5566,17 @@
      }
     },
     {
+     "id": "29976311-665a-4b2f-ac72-557c33e0758e",
+     "slug": "nemotron-3-5-lightning",
+     "name": "Nemotron 3.5 Lightning",
+     "shortName": "Nemotron 3.5 Lightning",
+     "releaseDate": "2026-08-11",
+     "creatorName": "NVIDIA",
+     "costPerTask": {
+      "total": 0.09448697325227282
+     }
+    },
+    {
      "id": "9ee13921-62a4-425a-a22b-df3302198d93",
      "slug": "nvidia-nemotron-3-nano-4b",
      "name": "NVIDIA Nemotron 3 Nano 4B",
@@ -4551,26 +5585,12 @@
      "creatorName": "NVIDIA"
     },
     {
-     "id": "7261504e-503c-4a66-a9d3-a3272cdf9ad6",
-     "slug": "inkling-small",
-     "name": "Inkling Small",
-     "shortName": "Inkling Small",
-     "releaseDate": "2026-07-30",
-     "creatorName": "Thinking Machines",
-     "costPerTask": {
-      "total": 0.0587229833104822
-     }
-    },
-    {
-     "id": "0de09623-2b1a-4c8d-86ef-7f5245d4e24b",
-     "slug": "inkling",
-     "name": "Inkling (Xhigh)",
-     "shortName": "Inkling (xhigh)",
-     "releaseDate": "2026-07-15",
-     "creatorName": "Thinking Machines",
-     "costPerTask": {
-      "total": 0.5084658044302373
-     }
+     "id": "18721247-4e56-4cf7-9a9d-c71cc60c0961",
+     "slug": "k-exaone-2-0-0803",
+     "name": "K-EXAONE 2.0",
+     "shortName": "K-EXAONE 2.0",
+     "releaseDate": "2026-08-12",
+     "creatorName": "LG AI Research"
     },
     {
      "id": "2e9ff877-fd2c-4ce7-b631-7ca1bdb6d13e",
@@ -4581,6 +5601,55 @@
      "creatorName": "Cohere",
      "costPerTask": {
       "total": 0
+     }
+    },
+    {
+     "id": "1e9907e0-ffac-4595-b006-962e4f1da7cf",
+     "slug": "north-mini-code",
+     "name": "North Mini Code",
+     "shortName": "North Mini Code",
+     "releaseDate": "2026-06-09",
+     "creatorName": "Cohere",
+     "costPerTask": {
+      "total": 0
+     }
+    },
+    {
+     "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
+     "slug": "granite-4-2-8b",
+     "name": "Granite 4.2 8B",
+     "shortName": "Granite 4.2 8B",
+     "releaseDate": "2026-08-25",
+     "creatorName": "IBM",
+     "costPerTask": {
+      "total": 0.034686165429521236
+     }
+    },
+    {
+     "id": "0c64b008-20c3-408d-bd68-15136df8cd2c",
+     "slug": "granite-4-2-3b",
+     "name": "Granite 4.2 3B",
+     "shortName": "Granite 4.2 3B",
+     "releaseDate": "2026-08-25",
+     "creatorName": "IBM"
+    },
+    {
+     "id": "1071dea1-43e7-4fe9-b936-3034bb622b2e",
+     "slug": "granite-4-2-30b",
+     "name": "Granite 4.2 30B",
+     "shortName": "Granite 4.2 30B",
+     "releaseDate": "2026-08-25",
+     "creatorName": "IBM"
+    },
+    {
+     "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
+     "slug": "solar-pro4",
+     "name": "Solar Pro 4",
+     "shortName": "Solar Pro 4",
+     "releaseDate": "2026-08-06",
+     "creatorName": "Upstage",
+     "costPerTask": {
+      "total": 1.1996767632228837
      }
     },
     {
@@ -4629,7 +5698,7 @@
     [
      "Business Knowledge",
      "25%",
-     "AA-Omniscience Business Accuracy"
+     "AA-Omniscience v1.1 Business Accuracy"
     ],
     [
      "Long-Context",
@@ -4639,7 +5708,7 @@
     [
      "Non-Hallucination",
      "5%",
-     "AA-Omniscience Business Non-Hallucination"
+     "AA-Omniscience v1.1 Business Non-Hallucination"
     ]
    ]
   }

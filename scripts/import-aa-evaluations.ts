@@ -63,8 +63,8 @@ const evaluationConfigs: EvaluationConfig[] = [
   { id: "frontiercode-2-0", capture: "frontiercode-2-0", chart: "FrontierCode 2.0: Score", costChart: "FrontierCode 2.0: Score vs. Cost per Task", definition: percentageEvaluation("frontiercode-2-0", "FrontierCode 2.0", "https://artificialanalysis.ai/evaluations/frontiercode-2-0") },
   { id: "gdp-pdf", capture: "gdp-pdf", chart: "GDP.pdf: All-pass Rate", costChart: "GDP.pdf: All-pass Rate vs. Cost per Task" },
   { id: "critpt", capture: "critpt", chart: "CritPt: Score", costChart: "CritPt: Score vs. Cost per Task" },
-  { id: "aa-omniscience-accuracy", capture: "omniscience", chart: "AA-Omniscience Accuracy", costChart: "AA-Omniscience Index vs. Cost per Task" },
-  { id: "aa-omniscience-index", capture: "omniscience", chart: "AA-Omniscience Index: Score", costChart: "AA-Omniscience Index vs. Cost per Task" },
+  { id: "aa-omniscience-accuracy", capture: "omniscience", chart: "AA-Omniscience Accuracy", costChart: "AA-Omniscience Net Score vs. Cost per Task" },
+  { id: "aa-omniscience-index", capture: "omniscience", chart: "AA-Omniscience v1.1: Net Score", costChart: "AA-Omniscience Net Score vs. Cost per Task" },
   { id: "aa-lcr-v1-1", capture: "artificial-analysis-long-context-reasoning", chart: "AA-LCR v1.1: Score", costChart: "AA-LCR v1.1: Score vs. Cost per Task" },
   { id: "mmmu-pro", capture: "mmmu-pro", chart: "MMMU-Pro: Score", costChart: "MMMU-Pro: Score vs. Cost per Task" },
   { id: "finance-accounting", capture: "finance-and-accounting", chart: "Artificial Analysis Finance & Accounting Index", costChart: "Artificial Analysis Finance & Accounting Index vs. Cost per Task" },
@@ -295,7 +295,7 @@ for (const config of evaluationConfigs) {
     precise_cost_count: withCost,
     has_confidence_interval: withCi > 0,
     has_release_date: withRelease > 0,
-    notes: `${evaluation.notes.replace(/\s*Values refreshed from (?:the )?Artificial Analysis[^]*$/, "")} Values refreshed from the Artificial Analysis evaluation page captured ${capture.captured_at}.`.trim(),
+    notes: `${evaluation.notes.replace(/\s*Values refreshed from (?:the )?Artificial Analysis[^]*$/, "")} Values refreshed from the Artificial Analysis evaluation page captured ${capture.captured_at} (${rows.length} models).${config.id === "intelligence-index" ? " Intelligence Index v5.0.1 re-scoring replaces v5.0 scores, ranks, and task costs." : ""}`.trim(),
   };
   newEvaluations.push(evaluationRecord);
   newSnapshots.push({
