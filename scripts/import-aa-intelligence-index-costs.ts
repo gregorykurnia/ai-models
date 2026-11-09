@@ -103,9 +103,39 @@ const records = [...uniqueModels.values()].flatMap(model => {
 
 if (!records.length) throw new Error("The Artificial Analysis page contained no Intelligence Index task costs");
 
+const capturedAt = new Date().toISOString();
+const seconds = (value: unknown): number | null =>
+  typeof value === "number" && Number.isFinite(value) && value >= 0 ? value : null;
+const speedRecords = [...uniqueModels.values()].flatMap(model => {
+  const creator = model.creator as Record<string, unknown> | undefined;
+  if (typeof model.slug !== "string" || typeof model.name !== "string" || typeof creator?.name !== "string") return [];
+  const performance = model.performance as { headline?: { timeToFirstAnswerToken?: unknown } } | undefined;
+  // Encrypted manifests flatten performance.headline onto each model record.
+  const headline = performance?.headline ?? model.headline as { timeToFirstAnswerToken?: unknown } | undefined;
+  const evaluations = model.intelligenceIndexEvaluations as Array<{ slug?: unknown; timePerTask?: unknown }> | undefined;
+  const timePerTask = seconds(model.intelligenceIndexTimePerTask);
+  const firstAnswer = seconds(headline?.timeToFirstAnswerToken);
+  const evaluationTimes = Object.fromEntries((evaluations ?? []).flatMap(evaluation => {
+    const time = seconds(evaluation.timePerTask);
+    return typeof evaluation.slug === "string" && time !== null ? [[evaluation.slug, time]] : [];
+  }));
+  if (timePerTask === null && firstAnswer === null && !Object.keys(evaluationTimes).length) return [];
+  return [{
+    slug: model.slug,
+    name: model.name,
+    provider: creator.name,
+    url: `https://artificialanalysis.ai/models/${model.slug}`,
+    time_per_task_s: timePerTask,
+    first_answer_s: firstAnswer,
+    evaluation_times_s: evaluationTimes,
+    captured_at: capturedAt,
+  }];
+}).sort((a, b) => a.provider.localeCompare(b.provider) || a.name.localeCompare(b.name));
+if (!speedRecords.length) throw new Error("The Artificial Analysis page contained no model speed values");
+
 const snapshot = {
   source_url: sourceUrl,
-  captured_at: new Date().toISOString(),
+  captured_at: capturedAt,
   metric: "Cost per Intelligence Index task",
   metric_path: "intelligenceIndexCostPerTask.cost.total",
   model_count: uniqueModels.size,
@@ -114,3 +144,15 @@ const snapshot = {
 };
 await writeFile("data/intelligence-index-costs.json", `${JSON.stringify(snapshot, null, 2)}\n`);
 console.log(`Saved ${records.length} costs from ${uniqueModels.size} Artificial Analysis models to data/intelligence-index-costs.json`);
+const speedSnapshot = {
+  source_url: sourceUrl,
+  captured_at: capturedAt,
+  model_count: uniqueModels.size,
+  speed_count: speedRecords.length,
+  time_per_task_count: speedRecords.filter(record => record.time_per_task_s !== null).length,
+  first_answer_count: speedRecords.filter(record => record.first_answer_s !== null).length,
+  evaluation_time_count: speedRecords.filter(record => Object.keys(record.evaluation_times_s).length).length,
+  records: speedRecords,
+};
+await writeFile("data/aa-model-speed.json", `${JSON.stringify(speedSnapshot, null, 2)}\n`);
+console.log(`Saved ${speedSnapshot.speed_count} speed records from ${uniqueModels.size} Artificial Analysis models to data/aa-model-speed.json (${speedSnapshot.time_per_task_count} task times, ${speedSnapshot.first_answer_count} first answers, ${speedSnapshot.evaluation_time_count} models with evaluation times)`);

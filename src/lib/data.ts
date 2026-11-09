@@ -11,6 +11,7 @@ import { mergeBriefcaseRubricRefresh,type BriefcaseRubricRefreshSource } from ".
 import { mergeAaModelProfileOverlays,type AaModelProfileOverlay } from "./aa-model-profile-overlays";
 import { aggregateMaster } from "./master";
 import { getIntelligenceIndexTaskCostMap,intelligenceIndexCostCaptureLabel } from "./intelligence-index-costs";
+import { getModelSpeedMap } from "./model-speed";
 const componentSource=aaBriefcaseComponents as unknown as BriefcaseComponentsSource;
 const rubricRefreshSource=aaBriefcaseRubricRefresh as unknown as BriefcaseRubricRefreshSource;
 const profileOverlaySource=aaModelProfileOverlays as unknown as AaModelProfileOverlay;
@@ -89,5 +90,5 @@ export const getEvaluationDataset=cache(async(slug:string)=>{
 });
 export const getMasterDataset=cache(async()=>{
   const {evaluations,entries}=await getPublishedDataset();
-  return {evaluations,...aggregateMaster(evaluations,entries,getIntelligenceIndexTaskCostMap()),intelligenceIndexCostCaptureLabel};
+  return {evaluations,...aggregateMaster(evaluations,entries,getIntelligenceIndexTaskCostMap(),getModelSpeedMap()),intelligenceIndexCostCaptureLabel};
 });
