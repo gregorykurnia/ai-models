@@ -86,6 +86,16 @@ export function modelSpeedsForEntries(entries: Entry[]): Record<string, ModelSpe
   return result;
 }
 
+export function evaluationTimePerTask(evaluationId: string, speed: ModelSpeed | null | undefined): number | null {
+  const slug = evaluationSpeedSlugs[evaluationId];
+  // Choose the source for the whole page: a missing evaluation time stays missing.
+  return slug ? speed?.evaluation_times_s[slug] ?? null : speed?.time_per_task_s ?? null;
+}
+
+export function evaluationTimePerTaskLabel(evaluationId: string): string {
+  return evaluationSpeedSlugs[evaluationId] ? "Time per task" : "Time per Intelligence Index task";
+}
+
 function formatSeconds(value: number | null | undefined, divisor: number): string {
   return typeof value === "number" && Number.isFinite(value) && value >= 0 ? (value / divisor).toFixed(1) : "—";
 }

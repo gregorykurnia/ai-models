@@ -47,6 +47,8 @@ AA-Briefcase v1.1 Rubric Score, Analytical Quality Elo, and Presentation Elo are
 
 ## Implementation scope
 
+Time per Task (minutes) and First Answer (seconds to the first answer token on the creator’s API) come from `data/aa-model-speed.json`; evaluation pages use their AA evaluation time where available, otherwise Intelligence Index time for the whole page, while the master always uses Intelligence Index time. Missing values show a dash and sort last; speed does not affect Aggregate Score. Refresh with `npm run import:aa-index-costs`.
+
 Implementation covers the application shell, workbook importer, evaluation catalog, data definitions, reusable leaderboards, and the Task Suitability Planner with shared database saves. Automated refresh remains a later phase. Production launch is outside the product plan's initial implementation scope.
 
 ## Task suitability planner beta

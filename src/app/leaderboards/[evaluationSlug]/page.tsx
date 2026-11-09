@@ -5,6 +5,7 @@ import type { Evaluation } from "@/lib/contract";
 import Leaderboard from "@/components/leaderboard";
 import { PageHeader } from "@/components/ui/primitives";
 import { intelligenceIndexCostsForEntries,intelligenceIndexCostCaptureLabel } from "@/lib/intelligence-index-costs";
+import { evaluationTimePerTaskLabel,modelSpeedsForEntries,modelSpeedCaptureLabel } from "@/lib/model-speed";
 
 function ComponentIndexNav({ active, evaluations }: { active: Evaluation; evaluations: Evaluation[] }) {
   const related = evaluations.filter(evaluation => evaluation.metric_group === active.metric_group);
@@ -40,6 +41,7 @@ export default async function Page({ params }: { params: Promise<{ evaluationSlu
   if (!dataset) notFound();
   const {evaluations,evaluation,entries} = dataset;
   const taskCosts = intelligenceIndexCostsForEntries(entries);
+  const speeds = modelSpeedsForEntries(entries);
   const capturedDate = new Date(`${evaluation.captured_at}T00:00:00Z`).toLocaleDateString("en-GB", {
     day: "numeric", month: "short", year: "numeric", timeZone: "UTC",
   });
@@ -54,9 +56,10 @@ export default async function Page({ params }: { params: Promise<{ evaluationSlu
       ? <a href={evaluation.source_url} target="_blank" rel="noreferrer">Original source ↗</a>
       : "Source: supplied workbook"}</p>
     <p>Cost per Intelligence Index task uses Artificial Analysis profile values captured {intelligenceIndexCostCaptureLabel}, weighted across the Index evaluations. Workbook cost values mentioned in the source notes below are evaluation-specific.</p>
+    <p>{evaluationTimePerTaskLabel(evaluation.id)} (minutes) and First Answer (seconds to the first answer token on the creator’s API) use Artificial Analysis values captured {modelSpeedCaptureLabel}; dashes mean missing values and sort last.</p>
     </PageHeader>
     {evaluation.metric_group && <ComponentIndexNav active={evaluation} evaluations={evaluations} />}
     {evaluation.notes && <p>{evaluation.notes}</p>}
-    <Leaderboard entries={entries} evaluation={evaluation} taskCosts={taskCosts} />
+    <Leaderboard entries={entries} evaluation={evaluation} taskCosts={taskCosts} speeds={speeds} />
   </>;
 }

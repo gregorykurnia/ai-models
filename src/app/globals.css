@@ -1853,6 +1853,24 @@ a.ui-button:hover {
   text-align: right;
 }
 
+.ui-table th.speed-column {
+  min-width: 9.5rem;
+  max-width: 9.5rem;
+  white-space: normal;
+}
+
+.ui-table th.speed-column small {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  font-weight: var(--type-weight-regular);
+}
+
+.ui-table th.speed-column small > span {
+  white-space: nowrap;
+}
+
 @media (max-width: 640px) {
   .ui-card--default {
     padding: var(--card-padding-compact);
