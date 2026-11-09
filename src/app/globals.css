@@ -848,13 +848,14 @@ th.numeric {
 
 .metric-group {
   display: flex;
-  align-items: center;
+  align-items: stretch;
+  flex-direction: column;
   justify-content: space-between;
   gap: var(--space-6);
 }
 
 .metric-group-copy {
-  max-width: 23.75rem;
+  max-width: none;
 }
 
 .metric-group-copy .eyebrow {
@@ -866,7 +867,8 @@ th.numeric {
 }
 
 .metric-group-links {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   flex: 1;
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -875,13 +877,17 @@ th.numeric {
 
 .metric-group-link {
   display: flex;
-  min-width: 11.875rem;
+  min-width: 0;
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-3);
   border: var(--border-width-default) var(--border-style) var(--border-default);
   border-radius: var(--shape-radius-control);
   color: var(--text-primary);
+}
+
+.metric-group-link > .metric-indicator {
+  flex: 0 0 10px;
 }
 
 .metric-group-link[aria-current="page"] {
@@ -1371,6 +1377,7 @@ th.numeric {
   }
 
   .metric-group-links {
+    grid-template-columns: 1fr;
     justify-content: flex-start;
   }
 }
@@ -1854,8 +1861,8 @@ a.ui-button:hover {
 }
 
 .ui-table th.speed-column {
-  min-width: 9.5rem;
-  max-width: 9.5rem;
+  min-width: 10rem;
+  max-width: 13rem;
   white-space: normal;
 }
 
@@ -1868,7 +1875,106 @@ a.ui-button:hover {
 }
 
 .ui-table th.speed-column small > span {
+  display: block;
   white-space: nowrap;
+}
+
+.evaluation-page-header {
+  margin-bottom: var(--space-4);
+}
+
+.evaluation-page-header p {
+  margin: 0;
+}
+
+.evaluation-scroll-hint {
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+}
+
+.evaluation-table th {
+  vertical-align: top;
+  white-space: normal;
+}
+
+.evaluation-table .model {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 15rem;
+  max-width: 15rem;
+  border-right: var(--border-width-default) var(--border-style) var(--border-default);
+  background: var(--bg-surface);
+}
+
+.evaluation-table th.model {
+  z-index: 2;
+  background: var(--bg-muted);
+}
+
+.evaluation-table tbody tr:hover td.model {
+  background: var(--table-hover);
+}
+
+.evaluation-interval {
+  white-space: nowrap;
+}
+
+.evaluation-cards,
+.evaluation-mobile-sort {
+  display: none;
+}
+
+.evaluation-notes,
+.evaluation-leaderboard + .metric-group {
+  margin-top: var(--space-6);
+}
+
+.evaluation-notes summary {
+  cursor: pointer;
+  font-weight: var(--type-weight-semibold);
+}
+
+@media (max-width: 767px) {
+  .evaluation-table-view {
+    display: none;
+  }
+
+  .evaluation-mobile-sort {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-1) var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .evaluation-mobile-sort label {
+    grid-column: 1 / -1;
+    font-size: var(--font-size-caption);
+  }
+
+  .evaluation-cards {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .evaluation-card__head {
+    display: grid;
+    gap: var(--space-1);
+    overflow-wrap: anywhere;
+  }
+
+  .evaluation-card__head small,
+  .evaluation-card__interval {
+    color: var(--text-secondary);
+    font-size: var(--font-size-caption);
+  }
+
+  .evaluation-card .master-card__metrics {
+    margin-bottom: 0;
+  }
 }
 
 @media (max-width: 640px) {

@@ -1,28 +1,52 @@
-# Task 1.3 visual recheck — 2026-11-09
+# Task 1.3 — fresh-eyes corrections, 2026-11-09
 
-Recaptured the three evaluation pages at 1440×1000 and 390×844 from the local production build of
-`bdb081c`, using bundled data. Also recaptured About Data at both widths. Images matched the committed captures.
-Opened the six evaluation baselines, eight current key shots, and twelve timing/sticky-header crops with
-`view_image` at `detail: "original"`. The runner's own counting expression recognizes 26 distinct image paths.
-The previous opens used template-string paths, which its parser did not recognize; these opens use literal paths.
+Opened all twelve checker pictures in `/tmp/autorun-fresh-uRCXS1` at original resolution. The previous
+inspection wrongly accepted model-name fragments as ordinary scrolling. The browser check now requires
+visible model identity and both timing values on the initial phone screen. It failed on the long Analytical
+Quality Elo card before the final spacing correction, then passed.
 
-| Key shot | Observation from the image | Fault hunt |
-|---|---|---|
-| `terminal-bench-4-0-1440-timings.png` | The table sits inside the white card below the filters; its first visible timing pair is 61.1 / 184.4. Earlier model text is cut at the left scroll boundary; lower rows continue below the frame. Timing labels, dates and values are whole. | No overlap or clipping in the timing columns. |
-| `terminal-bench-4-0-390-timings.png` | The menu sits above the card; filters sit above the two timing headers. Cost fragments are clipped at the left table edge and the final visible row touches the bottom frame. Both timing columns are readable and unobstructed. | No timing text is hidden by the menu, card edge or another column. |
-| `aa-briefcase-analytical-quality-elo-1440-timings.png` | The component links sit above the ranking card. Timing values 49.3 / 417.7 sit under their headers; the next row shows two dashes. Earlier columns clip left and the next row continues below the frame. | No displaced values, missing-value overlap or clipped timing labels. |
-| `aa-briefcase-analytical-quality-elo-390-timings.png` | Both timing columns sit beneath the filters; the second row contains two separate dashes. Small cost fragments clip at the left scroll boundary; further rows continue below. Dates and labels are whole. | No collisions between dashes, values or headers. |
-| `finance-accounting-1440-timings.png` | The complete Intelligence Index timing label wraps above 28.7; First Answer sits above 74.0. The table is contained by the card, with earlier model text clipped left and more rows below the frame. | No truncated fallback wording or overlapping metadata. |
-| `finance-accounting-390-timings.png` | The fallback label wraps across three lines beside First Answer; dates sit below the labels and values align in their rows. Earlier cost fragments clip left; lower rows continue beyond the frame. | No overflow from the longer label into First Answer. |
-| `about-data-1440.png` | The new explanation sits between Evaluation task cost and Model variants inside the white card. Navigation stays beside it; all explanation text and the card's bottom border are visible. | No clipped or covered explanation text. |
-| `about-data-390.png` | The explanation wraps inside the card beneath the fixed navigation. Previous content continues above the frame; the next section starts below the card. The complete timing paragraph is readable. | No horizontal overflow or navigation overlap with the timing paragraph. |
+## Every flagged picture
 
-The 100% crops show intact header text, dates, row borders and matching copied headers. The left cuts in the
-full timing views come from scrolling to the last two columns; the task explicitly keeps these columns unfrozen.
-Baseline comparisons retain the existing navigation, filters, card styling and source-note layout. No application
-code correction was needed in this recheck.
+| Checker picture | Disposition |
+|---|---|
+| 01 Terminal desktop baseline | Fixed fractions under a percentage label and inconsistent precision: 67.17%, 59.60%, etc. Captured scores and raw numeric sorting remain unchanged. |
+| 02 Terminal phone baseline | Fixed the percentage display and notes hiding results. Detailed notes follow rankings; a named model and both timings now fit on the first screen. |
+| 03 Analytical desktop baseline | Fixed cost visibility, missing scroll hint, isolated CI slash, ragged component links and redundant “elo”. Primary columns fit together; CI stays on one line; related links have equal widths. |
+| 04 Analytical phone baseline | Fixed unequal component widths and shifted contents with one grid column and a fixed indicator slot. |
+| 05 Finance desktop baseline | Removed the false “integer score” annotation; retained the captured decimal values. |
+| 06 Finance phone baseline | Same label correction in the shared header. |
+| 07 Terminal desktop timings | Fixed lost model identity, dangling metadata separator and unexplained AA. Primary columns fit together, Model stays pinned, and the intro spells out Artificial Analysis (AA). Blue timings are working source links. |
+| 08 Terminal phone timings | Fixed unidentified rows and sliced cost glyphs using named cards with rank, provider, score, timings and cost. Blue timings remain working source links. |
+| 09 Analytical desktop timings | Fixed the unnamed missing-value row, CI wrapping, component layout and metadata separator. Muse Wonder Full (Max) is visibly associated with its dashes. |
+| 10 Analytical phone timings | Fixed unidentified rows and clipped cost fragments. Whole names and ranks appear above their values in cards. |
+| 11 Finance desktop timings | Fixed model fragments, excessive header wrapping/floating alignment and integer annotation. Fallback title is two lines; headers align at the top. Different timing-source wording is intentional. |
+| 12 Finance phone timings | Fixed unidentified rows, cost fragments and floating table headers. Named cards contain separately labelled, whole values. |
 
-Checks rerun: `check-evaluation-browser.mjs` passed for all three pages, including complete-cohort speed sorting,
-missing values last in both directions, search, header hit targets, page overflow and copied-header alignment;
-the two timing unit-test files passed all 10 tests; `npx tsc --noEmit -p tsconfig.json` passed. The local server
-and test browsers were stopped. Task 1.4 was not started.
+DECISION: not fixed blue timing values (07/08), because they link to the model's Artificial Analysis profile, matching the cost links.
+DECISION: not fixed different timing names (11), because the plan distinguishes evaluation-specific time from the page-wide Intelligence Index fallback; identical labels would conceal that difference.
+
+## Current pictures opened at original size
+
+| File | Observation from the picture |
+|---|---|
+| `terminal-bench-4-0-1440-timings.png` | Complete models sit beside percentages and both timings inside the white card. Timing headers and dates are whole; further metadata scrolls right and rows continue below. |
+| `terminal-bench-4-0-390-timings.png` | #1 Kimi K3.1 Pro sits above 67.17%, both timings, cost and release date. Navigation is above the card; no stray clipped digits or covered text. |
+| `aa-briefcase-analytical-quality-elo-1440-timings.png` | Complete model labels identify every visible timing row, including Muse Wonder Full (Max) with dashes. Further metadata scrolls right and rows continue below. |
+| `aa-briefcase-analytical-quality-elo-390-timings.png` | The long model name wraps whole above its score and both timing tiles. Cost and release details continue below the frame; the timing values remain whole. |
+| `finance-accounting-1440-timings.png` | Whole models and decimal scores accompany the complete two-line fallback timing title. Headers align at their tops; further metadata scrolls right and rows continue below. |
+| `finance-accounting-390-timings.png` | The named model sits above its score and labelled timing tiles. The fallback label wraps inside its tile; the bottom card edge continues below the frame, with both timings whole. |
+| `aa-briefcase-analytical-quality-elo-1440-components.png` | Three equal-width links share their top and bottom edges beneath the explanation. Selected styling does not shift text; nothing is clipped or covered. |
+| `aa-briefcase-analytical-quality-elo-390-components.png` | Three equal-width links stack beneath the explanation. Text starts align, including the selected middle link; titles and subtitles are whole. |
+
+Also opened the updated timing/header crops, copied-header crops, complete phone-card crops, and the exact
+row-two CI crop (`-20.47 / +20.47`) at 100%. Historical `*-before.png` files remain as baselines. Removed
+obsolete phone sticky-header crops because phone results now use cards.
+
+## Verification
+
+- All 12 related unit tests passed, including percentage conversion, fixed precision, source preservation and timing fallbacks.
+- TypeScript and the production build passed using bundled data and a demo Firebase project.
+- Complete-cohort browser sorts passed on all three evaluations in both directions, with dashes last. Phone sort controls and values also passed.
+- Layout/capture checks passed again after the final header-only adjustment: first-screen phone timings, pinned desktop model, readable labels, no page overflow, CI wrapping and aligned component links. Browsers and preview were stopped.
+
+Task 1.4 and the phase-wide review remain separate tasks.

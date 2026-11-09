@@ -47,19 +47,23 @@ export default async function Page({ params }: { params: Promise<{ evaluationSlu
   });
 
   return <>
-    <PageHeader>
+    <PageHeader className="evaluation-page-header">
     <div className="breadcrumb"><Link href="/">Evaluations</Link> / {evaluation.display_name}</div>
-    <div className="eyebrow">{evaluation.metric_label} · {evaluation.score_kind.replaceAll("_", " ")}</div>
+    <div className="eyebrow">{evaluation.metric_label}</div>
     <h1>{evaluation.display_name}</h1>
-    <p>{evaluation.source_title}</p>
     <p>As of {capturedDate} · {evaluation.row_count.toLocaleString()} ranked rows · {evaluation.source_url
       ? <a href={evaluation.source_url} target="_blank" rel="noreferrer">Original source ↗</a>
       : "Source: supplied workbook"}</p>
-    <p>Cost per Intelligence Index task uses Artificial Analysis profile values captured {intelligenceIndexCostCaptureLabel}, weighted across the Index evaluations. Workbook cost values mentioned in the source notes below are evaluation-specific.</p>
-    <p>{evaluationTimePerTaskLabel(evaluation.id)} (minutes) and First Answer (seconds to the first answer token on the creator’s API) use Artificial Analysis values captured {modelSpeedCaptureLabel}; dashes mean missing values and sort last.</p>
+    <p>Artificial Analysis (AA) timings · {modelSpeedCaptureLabel}</p>
     </PageHeader>
-    {evaluation.metric_group && <ComponentIndexNav active={evaluation} evaluations={evaluations} />}
-    {evaluation.notes && <p>{evaluation.notes}</p>}
     <Leaderboard entries={entries} evaluation={evaluation} taskCosts={taskCosts} speeds={speeds} />
+    {evaluation.metric_group && <ComponentIndexNav active={evaluation} evaluations={evaluations} />}
+    <details className="evaluation-notes panel">
+      <summary>Sources and timing notes</summary>
+      <p>{evaluation.source_title}</p>
+      <p>Cost per Intelligence Index task uses Artificial Analysis profile values captured {intelligenceIndexCostCaptureLabel}, weighted across the Index evaluations. Workbook cost values mentioned in the source notes below are evaluation-specific.</p>
+      <p>{evaluationTimePerTaskLabel(evaluation.id)} (minutes) and First Answer (seconds to the first answer token on the creator’s API) use Artificial Analysis values captured {modelSpeedCaptureLabel}; dashes mean missing values and sort last.</p>
+      {evaluation.notes && <p>{evaluation.notes}</p>}
+    </details>
   </>;
 }
