@@ -30,9 +30,9 @@ function speedValue(seconds:number|null|undefined,format:(seconds:number|null|un
   return value==="—"?<span className="muted">—</span>:<>{value}{unit?` ${unit}`:""}</>;
 }
 
-// Speed headers are narrow: break the detail line only before the date.
+// Speed headers are narrow: the unit and the date sit on their own lines, like the evaluation pages.
 function speedDetail(unit:string,date:string){
-  return <><span className="master-header-part">{unit} · AA ·</span> <span className="master-header-part">{date}</span></>;
+  return <><span className="master-header-part">{unit} · AA</span><span className="master-header-part">{date}</span></>;
 }
 
 function MasterCard({row,favorite,orderedEvaluations,sortedEvaluation,onToggleFavorite}:{row:MasterTableRow;favorite:boolean;orderedEvaluations:Evaluation[];sortedEvaluation?:Evaluation;onToggleFavorite:(identity:string)=>void}){
@@ -110,7 +110,7 @@ export default function MasterLeaderboard({rows,evaluations,costCapturedLabel,sp
     window.setTimeout(()=>URL.revokeObjectURL(url),0);
   },[sorted,orderedEvaluations]);
   const header=(key:string,label:string,sticky?:string)=><th scope="col" className={sticky??"numeric"} aria-sort={sort===key?(direction==="asc"?"ascending":"descending"):"none"}><Button variant="quiet" size="compact" onClick={()=>update({ms:key,md:sort===key&&direction==="asc"?"desc":"asc"})}>{label} {sort===key?(direction==="asc"?"↑":"↓"):"↕"}</Button></th>;
-  const metricHeader=(key:string,className:string,label:string,detail:ReactNode,title:string)=><th scope="col" className={`numeric ${className}`} aria-sort={sort===key?(direction==="asc"?"ascending":"descending"):"none"}><Button variant="quiet" size="compact" title={title} onClick={()=>update({ms:key,md:sort===key&&direction==="asc"?"desc":"asc"})}>{label} {sort===key?(direction==="asc"?"↑":"↓"):"↕"}<small>{detail}</small></Button></th>;
+  const metricHeader=(key:string,className:string,label:string,detail:ReactNode,title:string)=><th scope="col" className={`numeric ${className}`} aria-sort={sort===key?(direction==="asc"?"ascending":"descending"):"none"}><Button variant="quiet" size="compact" title={title} onClick={()=>update({ms:key,md:sort===key&&direction==="asc"?"desc":"asc"})}>{label}{"\u00a0"}{sort===key?(direction==="asc"?"↑":"↓"):"↕"}<small>{detail}</small></Button></th>;
   // Filter controls render twice: inline in the toolbar on tablet and desktop, and inside the mobile Filters drawer. Only one copy is visible at a time; the drawer copy uses its own IDs.
   const filterControls=(idPrefix:string,variant:"toolbar"|"drawer")=><>
       <label className="sr-only" htmlFor={`${idPrefix}master-provider`}>Master provider</label>

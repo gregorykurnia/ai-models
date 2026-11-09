@@ -15,7 +15,7 @@ import {
 import {
   evaluationSpeedSlugs, formatFirstAnswer, formatTimePerTask, getModelSpeed,
   getModelSpeedMap, modelSpeedCapturedAt, modelSpeedCount, modelSpeedEvaluationSlugs,
-  modelSpeedsForEntries, type ModelSpeed,
+  modelSpeedNameAliases, modelSpeedsForEntries, type ModelSpeed,
 } from "../src/lib/model-speed";
 
 const dataset = JSON.parse(await readFile(new URL("../data/leaderboards.json", import.meta.url), "utf8")) as Dataset;
@@ -60,6 +60,14 @@ test("importer keeps task-only, first-answer-only, evaluation-only and zero valu
   assert.ok(!speeds.records.some(record => record.slug === "invalid" || record.slug === "cost-only"));
   assert.match(stdout, /Saved 1 costs from 7 Artificial Analysis models/);
   assert.match(stdout, /Saved 5 speed records.*2 task times, 2 first answers, 1 models with evaluation times/);
+});
+
+test("speed lookup matches AA's named fallback to the sheet's adaptive-reasoning spelling", () => {
+  const fable = getModelSpeed("Anthropic", "Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback)");
+  assert.equal(fable?.slug, "claude-fable-5");
+  assert.equal(formatFirstAnswer(fable?.first_answer_s), "97.3");
+  assert.equal(getModelSpeed("Anthropic", "Claude Fable 5 (with fallback)"), null);
+  assert.deepEqual(modelSpeedNameAliases("Claude Opus 5.5 (High, Default Fallback)"), ["Claude Opus 5.5 (High, Default Fallback)"]);
 });
 
 test("speed lookup matches cost identity rules, exact effort variants and unique model fallback", () => {

@@ -672,6 +672,8 @@ button.primary:active:not(:disabled) {
 }
 
 .table-scroll {
+  /* Contains the absolutely positioned sr-only caption, which otherwise escapes .app-main and lengthens the page. */
+  position: relative;
   max-width: 100%;
   overflow: auto;
   overscroll-behavior-inline: contain;
@@ -987,6 +989,7 @@ th.numeric {
 }
 
 .master-header-part {
+  display: block;
   white-space: nowrap;
 }
 

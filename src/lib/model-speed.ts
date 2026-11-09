@@ -28,9 +28,20 @@ function addUnique(map: Map<string, ModelSpeed | null>, key: string, speed: Mode
   else if (previous && previous.slug !== speed.slug) map.set(key, null);
 }
 
+// AA writes a named fallback as "(Max, Opus 4.8 Fallback)"; our sheets spell it
+// "(Adaptive Reasoning, Max Effort, Opus 4.8 Fallback)". Default fallbacks are already
+// matched by masterIdentityKey, which stays unchanged so saved favorites keep their keys.
+export function modelSpeedNameAliases(model: string): string[] {
+  const alias = model.replace(/\((max|xhigh|high|medium|low),\s*(?!default\b)([^,()\s][^,()]*?)\s+fallback\)/i,
+    (_, effort: string, fallback: string) => `(Adaptive Reasoning, ${effort} Effort, ${fallback} Fallback)`);
+  return alias === model ? [model] : [model, alias];
+}
+
 for (const record of records) {
-  addUnique(speedsByIdentity, masterIdentityKey(record.provider, record.model), record);
-  addUnique(speedsByModel, masterIdentityKey("", record.model), record);
+  for (const name of modelSpeedNameAliases(record.model)) {
+    addUnique(speedsByIdentity, masterIdentityKey(record.provider, name), record);
+    addUnique(speedsByModel, masterIdentityKey("", name), record);
+  }
 }
 
 export const modelSpeedCapturedAt = snapshot.captured_at;

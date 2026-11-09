@@ -49,7 +49,10 @@ try {
   for(const column of speedColumns){
     const header=section.locator(`thead th${column.selector}`);
     assert.equal(await header.count(),1,`${column.label}: master header`);
-    assert.match(await header.locator("small").innerText(),new RegExp(`${column.unit} · AA ·`));
+    // Unit and capture date sit on their own lines, with no dangling separator (R1).
+    assert.match(await header.locator("small").innerText(),new RegExp(`^${column.unit} · AA\\n\\d{1,2} \\w{3} \\d{4}$`));
+    // The sort arrow stays on the label's last line instead of wrapping alone.
+    assert.match(await header.locator("button").innerText(),/\S\u00a0[↕↑↓]/);
     await header.getByRole("button",{name:new RegExp(`^${column.label}`)}).click();
     await page.waitForFunction(key=>new URL(location.href).searchParams.get("ms")===key,column.key);
     assert.equal(await header.getAttribute("aria-sort"),"ascending",`${column.label}: first click sorts ascending`);
@@ -156,6 +159,12 @@ try {
   for(const width of [320,360,390]){
     await page.setViewportSize({width,height:844});
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,`horizontal overflow at ${width}px`);
+  }
+  // Only .app-main scrolls: a taller page lets the top bar scroll away and the pinned table header float below a gap (R1).
+  for(const width of [390,768,1024,1440]){
+    await page.setViewportSize({width,height:900});
+    await page.waitForTimeout(100);
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollHeight>innerHeight+1),false,`page scrolls vertically at ${width}px`);
   }
   assert.deepEqual(errors,[]);
   console.log(JSON.stringify({speed_columns:speedResults,evaluation_speed_columns:true,source_link:href,search_csv_rows:resultCount,filter_csv_rows:filteredCount,keyboard_navigation:true,mobile_cards:true,mobile_speed_sorting:true,mobile_drawer:true,mobile_overflow:false,errors}));
