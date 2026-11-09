@@ -3,6 +3,7 @@ import {Suspense} from "react";
 import MasterLeaderboard from "@/components/master-leaderboard";
 import {getMasterDataset} from "@/lib/data";
 import {masterTableRows} from "@/lib/master";
+import {modelSpeedCaptureLabel} from "@/lib/model-speed";
 import {Card, EmptyState, PageHeader, Section, SectionHeader, Spinner} from "@/components/ui/primitives";
 import styles from "./home.module.css";
 
@@ -19,7 +20,7 @@ export default async function Home(){
     <Card density="compact"><div className="eyebrow">Task suitability planner</div><h2>Find the best model for a task</h2><p>Choose evaluations, set your priorities, and compare model suitability with transparent coverage.</p><Link href="/suitability">Create a task comparison →</Link></Card>
 
     <Suspense fallback={<div className="ui-loading-state"><Spinner label="Loading master leaderboard" /><span>Loading master leaderboard…</span></div>}>
-      <MasterLeaderboard rows={masterTableRows(rows)} evaluations={evaluations} costCapturedLabel={intelligenceIndexCostCaptureLabel}/>
+      <MasterLeaderboard rows={masterTableRows(rows)} evaluations={evaluations} costCapturedLabel={intelligenceIndexCostCaptureLabel} speedCapturedLabel={modelSpeedCaptureLabel}/>
     </Suspense>
 
     {evaluations.length===0

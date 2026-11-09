@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 // Supply the path to an installed Playwright module; no production dependency.
 const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||"playwright");
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH||undefined});
 try {
   const page=await browser.newPage();
   const errors=[];page.on("pageerror",e=>errors.push(e.message));

@@ -911,6 +911,8 @@ th.numeric {
   --master-model-width: 15.625rem;
   --master-provider-width: 7.5rem;
   --master-cost-width: 13.75rem;
+  --master-time-width: 7.5rem;
+  --master-first-width: 7.5rem;
 }
 
 .master table {
@@ -966,10 +968,67 @@ th.numeric {
   border-right: var(--border-width-default) var(--border-style) var(--border-default);
 }
 
+.master-time {
+  width: var(--master-time-width);
+  min-width: var(--master-time-width);
+  max-width: var(--master-time-width);
+}
+
+.master-first {
+  width: var(--master-first-width);
+  min-width: var(--master-first-width);
+  max-width: var(--master-first-width);
+}
+
+.master-header-part {
+  white-space: nowrap;
+}
+
+/* Long model names wrap beside the favorite star, not under it. */
+.master td.master-model > a {
+  display: inline-block;
+  max-width: calc(100% - 44px);
+  vertical-align: middle;
+}
+
 .master tbody tr:hover .master-model,
 .master tbody tr:hover .master-provider,
-.master tbody tr:hover .master-cost {
+.master tbody tr:hover .master-cost,
+.master tbody tr:hover .master-time,
+.master tbody tr:hover .master-first {
   background: var(--table-hover);
+}
+
+/* From 1280px the two speed columns join the frozen columns; the divider moves after First Answer. */
+@media (min-width: 1280px) {
+  /* Narrower frozen widths keep about two evaluation columns visible beside the five frozen ones. */
+  .master {
+    --master-model-width: 13rem;
+    --master-provider-width: 6.5rem;
+    --master-cost-width: 9.5rem;
+    --master-time-width: 6.5rem;
+    --master-first-width: 6.5rem;
+  }
+
+  .master-time,
+  .master-first {
+    position: sticky;
+    z-index: 1;
+    background: var(--bg-surface);
+  }
+
+  .master-cost {
+    border-right: 0;
+  }
+
+  .master-time {
+    left: calc(var(--master-model-width) + var(--master-provider-width) + var(--master-cost-width));
+  }
+
+  .master-first {
+    left: calc(var(--master-model-width) + var(--master-provider-width) + var(--master-cost-width) + var(--master-time-width));
+    border-right: var(--border-width-default) var(--border-style) var(--border-default);
+  }
 }
 
 .master th {
@@ -1072,7 +1131,7 @@ th.numeric {
 
 .master-card__metrics {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
   gap: var(--space-2);
   margin: 0;
 }
@@ -1082,6 +1141,10 @@ th.numeric {
   padding: var(--space-2);
   border-radius: var(--shape-radius-control);
   background: var(--bg-muted);
+}
+
+.master-card__metrics > .master-card__sorted {
+  grid-column: 1 / -1;
 }
 
 .master-card__metrics dt {
