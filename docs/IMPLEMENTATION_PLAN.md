@@ -17,10 +17,11 @@ only on the owner's release line.
 | Claude Fable 5.2 (Medium, Default Fallback) | `/models/claude-fable-5-2-medium` | … Medium Effort … |
 | Claude Fable 5.2 (Low, Default Fallback) | `/models/claude-fable-5-2-low` | … Low Effort … |
 | Muse Ember (Max) (Meta, released 2026-11-09) | `/models/muse-ember` | Muse Ember (Max) |
-| Muse Ember (Xhigh) | read from AA's model list | Muse Ember (Xhigh) |
+| Muse Ember (Xhigh) | `/models/muse-ember-xhigh` | Muse Ember (Xhigh) |
 
-On 2026-11-09 AA showed only Intelligence Index scores for these (Fable 5.2: 54–65, Muse Ember Max: 36); its
-per-evaluation results may still be coming in.
+A test capture on 2026-11-10 (four pages) found all seven on AA-Briefcase, Terminal-Bench 4.0 and FrontierCode 2.0,
+and the five Fable 5.2 rows on GDPval-AA (Muse Ember isn't listed there). Charts label them in lower case
+(`Claude Fable 5.2 (max)`, `Muse Ember (xhigh)`); the full names above come from the same captures.
 
 ## Decisions (defaults, so no task stops to ask)
 
