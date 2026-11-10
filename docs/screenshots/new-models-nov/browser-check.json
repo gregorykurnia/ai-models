@@ -1,0 +1,203 @@
+{
+  "master": {
+    "fable-1440": {
+      "count": 5,
+      "names": [
+        "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
+        "Claude Fable 5.2 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
+        "Claude Fable 5.2 (Adaptive Reasoning, High Effort, Default Fallback)",
+        "Claude Fable 5.2 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+        "Claude Fable 5.2 (Adaptive Reasoning, Low Effort, Default Fallback)"
+      ]
+    },
+    "muse-1440": {
+      "count": 2,
+      "names": [
+        "Muse Ember (Max)",
+        "Muse Ember (Xhigh)"
+      ]
+    },
+    "fable-390": {
+      "count": 5,
+      "names": [
+        "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
+        "Claude Fable 5.2 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
+        "Claude Fable 5.2 (Adaptive Reasoning, High Effort, Default Fallback)",
+        "Claude Fable 5.2 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+        "Claude Fable 5.2 (Adaptive Reasoning, Low Effort, Default Fallback)"
+      ]
+    },
+    "muse-390": {
+      "count": 2,
+      "names": [
+        "Muse Ember (Max)",
+        "Muse Ember (Xhigh)"
+      ]
+    }
+  },
+  "evaluations": {
+    "intelligence-index-1440": [
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
+        "rank": 1,
+        "score": "64.5636"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
+        "rank": 2,
+        "score": "62.2167"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, High Effort, Default Fallback)",
+        "rank": 3,
+        "score": "61.8219"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+        "rank": 9,
+        "score": "56.4083"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Low Effort, Default Fallback)",
+        "rank": 15,
+        "score": "53.9249"
+      },
+      {
+        "model": "Muse Ember (Max)",
+        "rank": 43,
+        "score": "36.0213"
+      },
+      {
+        "model": "Muse Ember (Xhigh)",
+        "rank": 50,
+        "score": "34.115"
+      }
+    ],
+    "intelligence-index-390": [
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
+        "rank": 1,
+        "score": "64.5636"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
+        "rank": 2,
+        "score": "62.2167"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, High Effort, Default Fallback)",
+        "rank": 3,
+        "score": "61.8219"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+        "rank": 9,
+        "score": "56.4083"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Low Effort, Default Fallback)",
+        "rank": 15,
+        "score": "53.9249"
+      },
+      {
+        "model": "Muse Ember (Max)",
+        "rank": 43,
+        "score": "36.0213"
+      },
+      {
+        "model": "Muse Ember (Xhigh)",
+        "rank": 50,
+        "score": "34.115"
+      }
+    ],
+    "terminal-bench-4-0-1440": [
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
+        "rank": 5,
+        "score": "61.62%"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, High Effort, Default Fallback)",
+        "rank": 7,
+        "score": "59.60%"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
+        "rank": 7,
+        "score": "59.60%"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+        "rank": 19,
+        "score": "55.05%"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Low Effort, Default Fallback)",
+        "rank": 21,
+        "score": "54.55%"
+      },
+      {
+        "model": "Muse Ember (Max)",
+        "rank": 42,
+        "score": "40.91%"
+      },
+      {
+        "model": "Muse Ember (Xhigh)",
+        "rank": 48,
+        "score": "35.35%"
+      }
+    ],
+    "terminal-bench-4-0-390": [
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Xhigh Effort, Default Fallback)",
+        "rank": 5,
+        "score": "61.62%"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, High Effort, Default Fallback)",
+        "rank": 7,
+        "score": "59.60%"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
+        "rank": 7,
+        "score": "59.60%"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Medium Effort, Default Fallback)",
+        "rank": 19,
+        "score": "55.05%"
+      },
+      {
+        "model": "Claude Fable 5.2 (Adaptive Reasoning, Low Effort, Default Fallback)",
+        "rank": 21,
+        "score": "54.55%"
+      },
+      {
+        "model": "Muse Ember (Max)",
+        "rank": 42,
+        "score": "40.91%"
+      },
+      {
+        "model": "Muse Ember (Xhigh)",
+        "rank": 48,
+        "score": "35.35%"
+      }
+    ]
+  },
+  "screenshots": [
+    "master-fable-1440.png",
+    "master-fable-1440-frozen.png",
+    "master-fable-name-crop.png",
+    "master-muse-1440.png",
+    "master-fable-390-first-screen.png",
+    "master-fable-390.png",
+    "master-fable-last-card-crop.png",
+    "master-muse-390-first-screen.png",
+    "master-muse-390.png",
+    "intelligence-index-1440.png",
+    "intelligence-index-390.png",
+    "terminal-bench-4-0-1440.png",
+    "terminal-bench-4-0-390.png"
+  ]
+}
