@@ -1,7 +1,7 @@
 {
  "key": "mmmu-pro",
  "source_url": "https://artificialanalysis.ai/evaluations/mmmu-pro",
- "captured_at": "2026-11-07",
+ "captured_at": "2026-11-10",
  "selectors": 6,
  "charts": [
   {
@@ -771,6 +771,15 @@
      "displayValue": "78%",
      "url": "/models/gpt-5-4",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "label": "Agnes 2.5 Pro Theta",
+     "tooltipLabel": "Agnes 2.5 Pro Theta",
+     "value": 0.784393063583815,
+     "displayValue": "78%",
+     "url": "/models/agnes-2-5-pro-theta",
+     "logo": "/img/logos/sapiens.svg"
     },
     {
      "id": "208c16f0-8c5b-4524-ac8a-ac74c02e80a9",
@@ -4523,6 +4532,14 @@
      "costPerTask": 0.00024158384393063582
     },
     {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "slug": "agnes-2-5-pro-theta",
+     "name": "Agnes 2.5 Pro Theta",
+     "shortName": "Agnes 2.5 Pro Theta",
+     "creatorName": "Sapiens AI",
+     "costPerTask": 0.0019026936994219654
+    },
+    {
      "id": "2e9ff877-fd2c-4ce7-b631-7ca1bdb6d13e",
      "slug": "command-a-plus",
      "name": "Command A+",
@@ -5097,6 +5114,13 @@
      "tooltipLabel": "Gemma 4 12B (Reasoning)",
      "url": "/models/gemma-4-12b",
      "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "label": "Agnes 2.5 Pro Theta",
+     "tooltipLabel": "Agnes 2.5 Pro Theta",
+     "url": "/models/agnes-2-5-pro-theta",
+     "logo": "/img/logos/sapiens.svg"
     },
     {
      "id": "2d28a13a-096e-475a-beb8-26bbd1c7d51c",
@@ -8523,6 +8547,22 @@
      "releaseDate": "2024-11-18"
     },
     {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "slug": "agnes-2-5-pro-theta",
+     "name": "Agnes 2.5 Pro Theta",
+     "shortName": "Agnes 2.5 Pro Theta",
+     "creatorName": "Sapiens AI",
+     "releaseDate": "2026-11-07"
+    },
+    {
+     "id": "f3a0e101-086f-44b3-a1b2-d23498f9716b",
+     "slug": "agnes-2-5-pro-beta",
+     "name": "Agnes 2.5 Pro Beta",
+     "shortName": "Agnes 2.5 Pro Beta",
+     "creatorName": "Sapiens AI",
+     "releaseDate": "2026-08-26"
+    },
+    {
      "id": "2e9ff877-fd2c-4ce7-b631-7ca1bdb6d13e",
      "slug": "command-a-plus",
      "name": "Command A+",
@@ -8777,14 +8817,6 @@
      "shortName": "Apriel-v1.5-15B-Thinker",
      "creatorName": "ServiceNow",
      "releaseDate": "2025-09-30"
-    },
-    {
-     "id": "f3a0e101-086f-44b3-a1b2-d23498f9716b",
-     "slug": "agnes-2-5-pro-beta",
-     "name": "Agnes 2.5 Pro Beta",
-     "shortName": "Agnes 2.5 Pro Beta",
-     "creatorName": "Sapiens AI",
-     "releaseDate": "2026-08-26"
     }
    ]
   }

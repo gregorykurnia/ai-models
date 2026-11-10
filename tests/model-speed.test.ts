@@ -65,7 +65,8 @@ test("importer keeps task-only, first-answer-only, evaluation-only and zero valu
 test("speed lookup matches AA's named fallback to the sheet's adaptive-reasoning spelling", () => {
   const fable = getModelSpeed("Anthropic", "Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback)");
   assert.equal(fable?.slug, "claude-fable-5");
-  assert.equal(formatFirstAnswer(fable?.first_answer_s), "97.3");
+  const captured = speedSource.records.find(record => record.slug === "claude-fable-5")!;
+  assert.equal(fable?.first_answer_s, captured.first_answer_s);
   assert.equal(getModelSpeed("Anthropic", "Claude Fable 5 (with fallback)"), null);
   assert.deepEqual(modelSpeedNameAliases("Claude Opus 5.5 (High, Default Fallback)"), ["Claude Opus 5.5 (High, Default Fallback)"]);
 });

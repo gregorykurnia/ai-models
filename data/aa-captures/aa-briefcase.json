@@ -1,7 +1,7 @@
 {
  "key": "aa-briefcase",
  "source_url": "https://artificialanalysis.ai/evaluations/aa-briefcase",
- "captured_at": "2026-11-07",
+ "captured_at": "2026-11-10",
  "selectors": 11,
  "charts": [
   {
@@ -28,13 +28,28 @@
      "url": "/models/claude-opus-5-5",
      "logo": "/img/logos/anthropic.svg",
      "mid": {
-      "value": 1799.89
+      "value": 1800.58
      },
      "lower": {
-      "value": 1789.01
+      "value": 1790.45
      },
      "upper": {
-      "value": 1811.68
+      "value": 1810.89
+     }
+    },
+    {
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "label": "Claude Fable 5.2 (max)",
+     "url": "/models/claude-fable-5-2",
+     "logo": "/img/logos/anthropic.svg",
+     "mid": {
+      "value": 1785.32
+     },
+     "lower": {
+      "value": 1773.79
+     },
+     "upper": {
+      "value": 1798.07
      }
     },
     {
@@ -68,6 +83,21 @@
      }
     },
     {
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "label": "Claude Fable 5.2 (xhigh)",
+     "url": "/models/claude-fable-5-2-xhigh",
+     "logo": "/img/logos/anthropic.svg",
+     "mid": {
+      "value": 1737.78
+     },
+     "lower": {
+      "value": 1727.89
+     },
+     "upper": {
+      "value": 1747.66
+     }
+    },
+    {
      "id": "e994a6e0-d36b-4dab-8ae1-c1b469e4d9e2",
      "label": "Muse Wonder Full (max)",
      "url": "/models/muse-wonder-full",
@@ -98,6 +128,21 @@
      }
     },
     {
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "label": "Claude Fable 5.2 (high)",
+     "url": "/models/claude-fable-5-2-high",
+     "logo": "/img/logos/anthropic.svg",
+     "mid": {
+      "value": 1677.44
+     },
+     "lower": {
+      "value": 1667.48
+     },
+     "upper": {
+      "value": 1687.4
+     }
+    },
+    {
      "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
      "label": "Kimi K3.1 Pro",
      "url": "/models/kimi-k3-1-pro",
@@ -106,10 +151,10 @@
       "value": 1674.17
      },
      "lower": {
-      "value": 1663.14
+      "value": 1664.53
      },
      "upper": {
-      "value": 1685.36
+      "value": 1685.51
      }
     },
     {
@@ -178,13 +223,13 @@
      "url": "/models/grok-4-7",
      "logo": "/img/logos/spacexai.svg",
      "mid": {
-      "value": 1637.4
+      "value": 1635.58
      },
      "lower": {
-      "value": 1628.16
+      "value": 1627.02
      },
      "upper": {
-      "value": 1646.86
+      "value": 1644.73
      }
     },
     {
@@ -230,6 +275,21 @@
      },
      "upper": {
       "value": 1636.9
+     }
+    },
+    {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "label": "Claude Fable 5.2 (medium)",
+     "url": "/models/claude-fable-5-2-medium",
+     "logo": "/img/logos/anthropic.svg",
+     "mid": {
+      "value": 1622.24
+     },
+     "lower": {
+      "value": 1613.04
+     },
+     "upper": {
+      "value": 1631.43
      }
     },
     {
@@ -283,13 +343,13 @@
      "url": "/models/qwen3-8-max",
      "logo": "/img/logos/alibaba.svg",
      "mid": {
-      "value": 1606.14
+      "value": 1604.55
      },
      "lower": {
-      "value": 1597.27
+      "value": 1596.14
      },
      "upper": {
-      "value": 1615.49
+      "value": 1613.39
      }
     },
     {
@@ -338,21 +398,6 @@
      }
     },
     {
-     "id": "7d064a11-6e78-4030-b535-cdf940615041",
-     "label": "Claude Haiku 5.5 (max)",
-     "url": "/models/claude-haiku-5-5",
-     "logo": "/img/logos/anthropic.svg",
-     "mid": {
-      "value": 1574.12
-     },
-     "lower": {
-      "value": 1564.22
-     },
-     "upper": {
-      "value": 1584.49
-     }
-    },
-    {
      "id": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
      "label": "Qwen3.8-Flash-Next",
      "url": "/models/qwen3-8-flash-next",
@@ -365,6 +410,21 @@
      },
      "upper": {
       "value": 1581.76
+     }
+    },
+    {
+     "id": "7d064a11-6e78-4030-b535-cdf940615041",
+     "label": "Claude Haiku 5.5 (max)",
+     "url": "/models/claude-haiku-5-5",
+     "logo": "/img/logos/anthropic.svg",
+     "mid": {
+      "value": 1572.67
+     },
+     "lower": {
+      "value": 1563.15
+     },
+     "upper": {
+      "value": 1582.54
      }
     },
     {
@@ -388,13 +448,13 @@
      "url": "/models/gpt-6-astra",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1568.59
+      "value": 1568.92
      },
      "lower": {
-      "value": 1560.4
+      "value": 1561.29
      },
      "upper": {
-      "value": 1577.16
+      "value": 1577.79
      }
     },
     {
@@ -410,6 +470,21 @@
      },
      "upper": {
       "value": 1578.45
+     }
+    },
+    {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "label": "Claude Fable 5.2 (low)",
+     "url": "/models/claude-fable-5-2-low",
+     "logo": "/img/logos/anthropic.svg",
+     "mid": {
+      "value": 1562.73
+     },
+     "lower": {
+      "value": 1553.18
+     },
+     "upper": {
+      "value": 1572.27
      }
     },
     {
@@ -433,13 +508,13 @@
      "url": "/models/gpt-6-1-sol",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1555.09
+      "value": 1554.66
      },
      "lower": {
-      "value": 1546.13
+      "value": 1545.76
      },
      "upper": {
-      "value": 1563.94
+      "value": 1562.92
      }
     },
     {
@@ -503,6 +578,21 @@
      }
     },
     {
+     "id": "7a64ffc4-36c3-4369-981e-73abdd6ff5e2",
+     "label": "Muse Ember (xhigh)",
+     "url": "/models/muse-ember-xhigh",
+     "logo": "/img/logos/meta.svg",
+     "mid": {
+      "value": 1526.95
+     },
+     "lower": {
+      "value": 1517.29
+     },
+     "upper": {
+      "value": 1536.6
+     }
+    },
+    {
      "id": "e2ed7885-d46b-4da7-a873-f12f88af0081",
      "label": "Inkling 2 Small",
      "url": "/models/inkling-2-small",
@@ -563,18 +653,33 @@
      }
     },
     {
+     "id": "dbf63365-127f-41ee-9e51-81173adb3502",
+     "label": "Muse Ember (max)",
+     "url": "/models/muse-ember",
+     "logo": "/img/logos/meta.svg",
+     "mid": {
+      "value": 1520.92
+     },
+     "lower": {
+      "value": 1510.36
+     },
+     "upper": {
+      "value": 1532.46
+     }
+    },
+    {
      "id": "24d8fdfe-6241-424e-b7b7-1b6efb06e4fb",
      "label": "MiMo-V2.6-Pro",
      "url": "/models/mimo-v2-6-pro",
      "logo": "/img/logos/xiaomi.svg",
      "mid": {
-      "value": 1511.88
+      "value": 1511.68
      },
      "lower": {
-      "value": 1502.89
+      "value": 1503.15
      },
      "upper": {
-      "value": 1521.13
+      "value": 1521.02
      }
     },
     {
@@ -635,6 +740,21 @@
      },
      "upper": {
       "value": 1503.91
+     }
+    },
+    {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "label": "Agnes 2.5 Pro Theta",
+     "url": "/models/agnes-2-5-pro-theta",
+     "logo": "/img/logos/sapiens.svg",
+     "mid": {
+      "value": 1495.96
+     },
+     "lower": {
+      "value": 1485.97
+     },
+     "upper": {
+      "value": 1505.96
      }
     },
     {
@@ -988,13 +1108,13 @@
      "url": "/models/gpt-6-1-terra",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1401.36
+      "value": 1402.61
      },
      "lower": {
-      "value": 1391.13
+      "value": 1392.43
      },
      "upper": {
-      "value": 1411.86
+      "value": 1412.95
      }
     },
     {
@@ -1153,13 +1273,13 @@
      "url": "/models/mistral-large-4",
      "logo": "/img/logos/mistral.svg",
      "mid": {
-      "value": 1348.31
+      "value": 1347.72
      },
      "lower": {
-      "value": 1337.32
+      "value": 1337.7
      },
      "upper": {
-      "value": 1358.9
+      "value": 1358.1
      }
     },
     {
@@ -1183,13 +1303,13 @@
      "url": "/models/gpt-6-luna",
      "logo": "/img/logos/openai.svg",
      "mid": {
-      "value": 1337.06
+      "value": 1337.11
      },
      "lower": {
-      "value": 1328.54
+      "value": 1328.58
      },
      "upper": {
-      "value": 1346.55
+      "value": 1346.49
      }
     },
     {
@@ -1828,13 +1948,13 @@
      "url": "/models/gemini-3-7-flash",
      "logo": "/img/logos/google.svg",
      "mid": {
-      "value": 1112.93
+      "value": 1113.24
      },
      "lower": {
-      "value": 1105.29
+      "value": 1105.55
      },
      "upper": {
-      "value": 1120.6
+      "value": 1121.36
      }
     },
     {
@@ -3623,9 +3743,9 @@
      }
     },
     {
-     "id": "36f73aaf-d38a-4b56-a2b3-d04d17186910",
-     "label": "gpt-oss-20b (high)",
-     "url": "/models/gpt-oss-20b",
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "label": "gpt-oss-120b (high)",
+     "url": "/models/gpt-oss-120b",
      "logo": "/img/logos/openai.svg",
      "mid": {
       "value": 0
@@ -3638,9 +3758,9 @@
      }
     },
     {
-     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
-     "label": "gpt-oss-120b (high)",
-     "url": "/models/gpt-oss-120b",
+     "id": "36f73aaf-d38a-4b56-a2b3-d04d17186910",
+     "label": "gpt-oss-20b (high)",
+     "url": "/models/gpt-oss-20b",
      "logo": "/img/logos/openai.svg",
      "mid": {
       "value": 0
@@ -3808,146 +3928,28 @@
    "title": "AA-Briefcase Elo vs. Cost per Task",
    "items": [
     {
-     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
-     "slug": "gemini-4-carbon",
-     "name": "Gemini 4 Carbon (High)",
-     "shortName": "Gemini 4 Carbon (high)",
-     "creatorName": "Google",
-     "totalCost": 742.6768255236545
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "slug": "claude-fable-5-2",
+     "name": "Claude Fable 5.2 (Max, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (max)",
+     "creatorName": "Anthropic",
+     "totalCost": 5400.989672689499
     },
     {
-     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
-     "slug": "gemini-4-carbon-medium",
-     "name": "Gemini 4 Carbon (Medium)",
-     "shortName": "Gemini 4 Carbon (medium)",
-     "creatorName": "Google",
-     "totalCost": 642.6468402327015
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "slug": "claude-fable-5-2-xhigh",
+     "name": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (xhigh)",
+     "creatorName": "Anthropic",
+     "totalCost": 2599.262048138018
     },
     {
-     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
-     "slug": "gemini-4-carbon-low",
-     "name": "Gemini 4 Carbon (Low)",
-     "shortName": "Gemini 4 Carbon (low)",
-     "creatorName": "Google",
-     "totalCost": 655.2049476662239
-    },
-    {
-     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
-     "slug": "gemini-4-argon",
-     "name": "Gemini 4 Argon (High)",
-     "shortName": "Gemini 4 Argon (high)",
-     "creatorName": "Google",
-     "totalCost": 1060.6503872415888
-    },
-    {
-     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
-     "slug": "gemini-3-8-flash",
-     "name": "Gemini 3.8 Flash (High)",
-     "shortName": "Gemini 3.8 Flash (high)",
-     "creatorName": "Google",
-     "totalCost": 684.5193933111171
-    },
-    {
-     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
-     "slug": "gemini-3-8-flash-medium",
-     "name": "Gemini 3.8 Flash (Medium)",
-     "shortName": "Gemini 3.8 Flash (medium)",
-     "creatorName": "Google",
-     "totalCost": 486.54597262163946
-    },
-    {
-     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
-     "slug": "gemini-3-8-flash-low",
-     "name": "Gemini 3.8 Flash (Low)",
-     "shortName": "Gemini 3.8 Flash (low)",
-     "creatorName": "Google"
-    },
-    {
-     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
-     "slug": "gemini-3-5-flash-lite",
-     "name": "Gemini 3.5 Flash-Lite",
-     "shortName": "Gemini 3.5 Flash-Lite",
-     "creatorName": "Google",
-     "totalCost": 14.026452718581588
-    },
-    {
-     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
-     "slug": "gemini-3-1-flash-lite-preview",
-     "name": "Gemini 3.1 Flash-Lite",
-     "shortName": "Gemini 3.1 Flash-Lite",
-     "creatorName": "Google",
-     "totalCost": 3.7077477233649
-    },
-    {
-     "id": "cd26a386-4873-46ff-b853-d239050025a2",
-     "slug": "gemma-4-31b",
-     "name": "Gemma 4 31B (Reasoning)",
-     "shortName": "Gemma 4 31B",
-     "creatorName": "Google",
-     "totalCost": 0
-    },
-    {
-     "id": "0097ebf5-124f-42f6-9463-33b00e711f03",
-     "slug": "gemini-3-5-flash",
-     "name": "Gemini 3.5 Flash (High)",
-     "shortName": "Gemini 3.5 Flash (high)",
-     "creatorName": "Google",
-     "totalCost": 697.4316519336649
-    },
-    {
-     "id": "27202e5f-c82d-4710-92e9-4317877d4883",
-     "slug": "gemini-2-5-pro",
-     "name": "Gemini 2.5 Pro",
-     "shortName": "Gemini 2.5 Pro",
-     "creatorName": "Google",
-     "totalCost": 42.82351814565037
-    },
-    {
-     "id": "5016ea75-7b0e-4737-a7e6-1062c6d90fd4",
-     "slug": "gemini-3-5-flash-medium",
-     "name": "Gemini 3.5 Flash (Medium)",
-     "shortName": "Gemini 3.5 Flash (medium)",
-     "creatorName": "Google",
-     "totalCost": 767.3887070742039
-    },
-    {
-     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
-     "slug": "gemma-4-26b-a4b",
-     "name": "Gemma 4 26B A4B (Reasoning)",
-     "shortName": "Gemma 4 26B A4B",
-     "creatorName": "Google",
-     "totalCost": 10.119760252010376
-    },
-    {
-     "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
-     "slug": "gemini-3-6-flash",
-     "name": "Gemini 3.6 Flash (High)",
-     "shortName": "Gemini 3.6 Flash (high)",
-     "creatorName": "Google",
-     "totalCost": 141.8502305413536
-    },
-    {
-     "id": "b2331108-72ed-415a-82d1-188633875bbc",
-     "slug": "gemini-3-7-flash",
-     "name": "Gemini 3.7 Flash (High)",
-     "shortName": "Gemini 3.7 Flash (high)",
-     "creatorName": "Google"
-    },
-    {
-     "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
-     "slug": "gemini-3-1-pro-preview",
-     "name": "Gemini 3.1 Pro Preview",
-     "shortName": "Gemini 3.1 Pro Preview",
-     "creatorName": "Google",
-     "totalCost": 116.76973867749194
-    },
-    {
-     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
-     "slug": "gemma-4-e4b",
-     "name": "Gemma 4 E4B (Reasoning)",
-     "shortName": "Gemma 4 E4B",
-     "creatorName": "Google",
-     "totalCost": 1.3086164999999998
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "slug": "claude-fable-5-2-high",
+     "name": "Claude Fable 5.2 (High, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (high)",
+     "creatorName": "Anthropic",
+     "totalCost": 1409.2777368533225
     },
     {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
@@ -3966,12 +3968,28 @@
      "totalCost": 1116.2228835567696
     },
     {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "slug": "claude-fable-5-2-medium",
+     "name": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (medium)",
+     "creatorName": "Anthropic",
+     "totalCost": 622.0073617173016
+    },
+    {
      "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
      "slug": "claude-sonnet-5-5",
      "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
      "shortName": "Claude Sonnet 5.5 (max)",
      "creatorName": "Anthropic",
      "totalCost": 1863.1257268253273
+    },
+    {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "slug": "claude-fable-5-2-low",
+     "name": "Claude Fable 5.2 (Low, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (low)",
+     "creatorName": "Anthropic",
+     "totalCost": 511.17679626160015
     },
     {
      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
@@ -4246,6 +4264,148 @@
      "totalCost": 477.68042993123333
     },
     {
+     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+     "slug": "gemini-4-carbon",
+     "name": "Gemini 4 Carbon (High)",
+     "shortName": "Gemini 4 Carbon (high)",
+     "creatorName": "Google",
+     "totalCost": 742.6768255236545
+    },
+    {
+     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
+     "slug": "gemini-4-carbon-medium",
+     "name": "Gemini 4 Carbon (Medium)",
+     "shortName": "Gemini 4 Carbon (medium)",
+     "creatorName": "Google",
+     "totalCost": 642.6468402327015
+    },
+    {
+     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
+     "slug": "gemini-4-carbon-low",
+     "name": "Gemini 4 Carbon (Low)",
+     "shortName": "Gemini 4 Carbon (low)",
+     "creatorName": "Google",
+     "totalCost": 655.2049476662239
+    },
+    {
+     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
+     "slug": "gemini-4-argon",
+     "name": "Gemini 4 Argon (High)",
+     "shortName": "Gemini 4 Argon (high)",
+     "creatorName": "Google",
+     "totalCost": 1060.6503872415888
+    },
+    {
+     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+     "slug": "gemini-3-8-flash",
+     "name": "Gemini 3.8 Flash (High)",
+     "shortName": "Gemini 3.8 Flash (high)",
+     "creatorName": "Google",
+     "totalCost": 684.5193933111171
+    },
+    {
+     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
+     "slug": "gemini-3-8-flash-medium",
+     "name": "Gemini 3.8 Flash (Medium)",
+     "shortName": "Gemini 3.8 Flash (medium)",
+     "creatorName": "Google",
+     "totalCost": 486.54597262163946
+    },
+    {
+     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
+     "slug": "gemini-3-8-flash-low",
+     "name": "Gemini 3.8 Flash (Low)",
+     "shortName": "Gemini 3.8 Flash (low)",
+     "creatorName": "Google"
+    },
+    {
+     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+     "slug": "gemini-3-5-flash-lite",
+     "name": "Gemini 3.5 Flash-Lite",
+     "shortName": "Gemini 3.5 Flash-Lite",
+     "creatorName": "Google",
+     "totalCost": 14.026452718581588
+    },
+    {
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "slug": "gemini-3-1-flash-lite-preview",
+     "name": "Gemini 3.1 Flash-Lite",
+     "shortName": "Gemini 3.1 Flash-Lite",
+     "creatorName": "Google",
+     "totalCost": 3.7077477233649
+    },
+    {
+     "id": "cd26a386-4873-46ff-b853-d239050025a2",
+     "slug": "gemma-4-31b",
+     "name": "Gemma 4 31B (Reasoning)",
+     "shortName": "Gemma 4 31B",
+     "creatorName": "Google",
+     "totalCost": 0
+    },
+    {
+     "id": "0097ebf5-124f-42f6-9463-33b00e711f03",
+     "slug": "gemini-3-5-flash",
+     "name": "Gemini 3.5 Flash (High)",
+     "shortName": "Gemini 3.5 Flash (high)",
+     "creatorName": "Google",
+     "totalCost": 697.4316519336649
+    },
+    {
+     "id": "27202e5f-c82d-4710-92e9-4317877d4883",
+     "slug": "gemini-2-5-pro",
+     "name": "Gemini 2.5 Pro",
+     "shortName": "Gemini 2.5 Pro",
+     "creatorName": "Google",
+     "totalCost": 42.82351814565037
+    },
+    {
+     "id": "5016ea75-7b0e-4737-a7e6-1062c6d90fd4",
+     "slug": "gemini-3-5-flash-medium",
+     "name": "Gemini 3.5 Flash (Medium)",
+     "shortName": "Gemini 3.5 Flash (medium)",
+     "creatorName": "Google",
+     "totalCost": 767.3887070742039
+    },
+    {
+     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
+     "slug": "gemma-4-26b-a4b",
+     "name": "Gemma 4 26B A4B (Reasoning)",
+     "shortName": "Gemma 4 26B A4B",
+     "creatorName": "Google",
+     "totalCost": 10.119760252010376
+    },
+    {
+     "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
+     "slug": "gemini-3-6-flash",
+     "name": "Gemini 3.6 Flash (High)",
+     "shortName": "Gemini 3.6 Flash (high)",
+     "creatorName": "Google",
+     "totalCost": 141.8502305413536
+    },
+    {
+     "id": "b2331108-72ed-415a-82d1-188633875bbc",
+     "slug": "gemini-3-7-flash",
+     "name": "Gemini 3.7 Flash (High)",
+     "shortName": "Gemini 3.7 Flash (high)",
+     "creatorName": "Google"
+    },
+    {
+     "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
+     "slug": "gemini-3-1-pro-preview",
+     "name": "Gemini 3.1 Pro Preview",
+     "shortName": "Gemini 3.1 Pro Preview",
+     "creatorName": "Google",
+     "totalCost": 116.76973867749194
+    },
+    {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "slug": "gemma-4-e4b",
+     "name": "Gemma 4 E4B (Reasoning)",
+     "shortName": "Gemma 4 E4B",
+     "creatorName": "Google",
+     "totalCost": 1.3086164999999998
+    },
+    {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
      "slug": "gpt-6-astra",
      "name": "GPT-6 Astra (Max)",
@@ -4444,6 +4604,14 @@
      "shortName": "GPT-6 Luna (non-reasoning)",
      "creatorName": "OpenAI",
      "totalCost": 1.8931839085824178
+    },
+    {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "slug": "gpt-oss-120b",
+     "name": "gpt-oss-120b (High)",
+     "shortName": "gpt-oss-120b (high)",
+     "creatorName": "OpenAI",
+     "totalCost": 51.52986765
     },
     {
      "id": "01459872-433a-4ab2-8e99-7083162172eb",
@@ -4694,14 +4862,6 @@
      "totalCost": 1.2373337161036013
     },
     {
-     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
-     "slug": "gpt-oss-120b",
-     "name": "gpt-oss-120b (High)",
-     "shortName": "gpt-oss-120b (high)",
-     "creatorName": "OpenAI",
-     "totalCost": 51.52986765
-    },
-    {
      "id": "ff2f3f3d-783f-4e27-8a39-47237501a313",
      "slug": "muse-wonder",
      "name": "Muse Wonder (Max)",
@@ -4726,6 +4886,22 @@
      "totalCost": 298.24816464748
     },
     {
+     "id": "dbf63365-127f-41ee-9e51-81173adb3502",
+     "slug": "muse-ember",
+     "name": "Muse Ember (Max)",
+     "shortName": "Muse Ember (max)",
+     "creatorName": "Meta",
+     "totalCost": 12.261320800576005
+    },
+    {
+     "id": "7a64ffc4-36c3-4369-981e-73abdd6ff5e2",
+     "slug": "muse-ember-xhigh",
+     "name": "Muse Ember (Xhigh)",
+     "shortName": "Muse Ember (xhigh)",
+     "creatorName": "Meta",
+     "totalCost": 9.241668967648
+    },
+    {
      "id": "3661c8fb-caf7-4118-aa18-65b84fea8e44",
      "slug": "muse-spark-open",
      "name": "Muse Spark Open (Xhigh)",
@@ -4739,7 +4915,7 @@
      "name": "Muse Glimmer (High)",
      "shortName": "Muse Glimmer (high)",
      "creatorName": "Meta",
-     "totalCost": 6.727800609000001
+     "totalCost": 7.036687157312128
     },
     {
      "id": "04ee6719-0327-463b-a1a1-70a6a78254f9",
@@ -5454,6 +5630,14 @@
      "totalCost": 1.57413723
     },
     {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "slug": "agnes-2-5-pro-theta",
+     "name": "Agnes 2.5 Pro Theta",
+     "shortName": "Agnes 2.5 Pro Theta",
+     "creatorName": "Sapiens AI",
+     "totalCost": 121.79803985655685
+    },
+    {
      "id": "bb3d7e75-8e22-4082-b9d6-1db0803e042f",
      "slug": "k2-horizon-375b-a23b",
      "name": "K2 Horizon 375B A23B",
@@ -5491,7 +5675,7 @@
      "name": "Nemotron 3.5 Lightning",
      "shortName": "Nemotron 3.5 Lightning",
      "creatorName": "NVIDIA",
-     "totalCost": 25.803993233540318
+     "totalCost": 27.94365356
     },
     {
      "id": "63872e9c-3377-4a6b-b477-7bba244c38e9",
@@ -5876,6 +6060,13 @@
      "logo": "/img/logos/upstage.svg"
     },
     {
+     "id": "7a64ffc4-36c3-4369-981e-73abdd6ff5e2",
+     "label": "Muse Ember (xhigh)",
+     "tooltipLabel": "Muse Ember (Xhigh)",
+     "url": "/models/muse-ember-xhigh",
+     "logo": "/img/logos/meta.svg"
+    },
+    {
      "id": "f6ccbe1d-bd7e-484b-9795-18cc9f91552d",
      "label": "Qwen3 235B A22B 2507",
      "tooltipLabel": "Qwen3 235B A22B 2507 (Reasoning)",
@@ -5923,6 +6114,13 @@
      "tooltipLabel": "Claude Haiku 5.5 (Medium)",
      "url": "/models/claude-haiku-5-5-medium",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "dbf63365-127f-41ee-9e51-81173adb3502",
+     "label": "Muse Ember (max)",
+     "tooltipLabel": "Muse Ember (Max)",
+     "url": "/models/muse-ember",
+     "logo": "/img/logos/meta.svg"
     },
     {
      "id": "016d330a-2141-4afa-b2fc-62b314423dc1",
@@ -6058,13 +6256,6 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "29976311-665a-4b2f-ac72-557c33e0758e",
-     "label": "Nemotron 3.5 Lightning",
-     "tooltipLabel": "Nemotron 3.5 Lightning",
-     "url": "/models/nemotron-3-5-lightning",
-     "logo": "/img/logos/nvidia.svg"
-    },
-    {
      "id": "948892b5-db03-4118-a4a8-ccd51ed871ea",
      "label": "Grok 4.3 (high)",
      "tooltipLabel": "Grok 4.3 (High)",
@@ -6084,6 +6275,13 @@
      "tooltipLabel": "GPT-5.6 Terra (Low)",
      "url": "/models/gpt-5-6-terra-low",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "29976311-665a-4b2f-ac72-557c33e0758e",
+     "label": "Nemotron 3.5 Lightning",
+     "tooltipLabel": "Nemotron 3.5 Lightning",
+     "url": "/models/nemotron-3-5-lightning",
+     "logo": "/img/logos/nvidia.svg"
     },
     {
      "id": "9b97a35e-6ac7-44d9-91c6-422fa678963e",
@@ -6548,6 +6746,13 @@
      "logo": "/img/logos/tencent-hy.svg"
     },
     {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "label": "Agnes 2.5 Pro Theta",
+     "tooltipLabel": "Agnes 2.5 Pro Theta",
+     "url": "/models/agnes-2-5-pro-theta",
+     "logo": "/img/logos/sapiens.svg"
+    },
+    {
      "id": "62ea3198-9866-4d9f-8406-a79ee78c7164",
      "label": "Solar Mini 4",
      "tooltipLabel": "Solar Mini 4",
@@ -6898,6 +7103,13 @@
      "logo": "/img/logos/google.svg"
     },
     {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "label": "Claude Fable 5.2 (low)",
+     "tooltipLabel": "Claude Fable 5.2 (Low, Default Fallback)",
+     "url": "/models/claude-fable-5-2-low",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
      "id": "cd684ea4-b475-4269-b001-d469d06d8a7a",
      "label": "GLM-5.3 (max)",
      "tooltipLabel": "GLM-5.3 (Max)",
@@ -6945,6 +7157,13 @@
      "tooltipLabel": "Kimi K3 (Max)",
      "url": "/models/kimi-k3",
      "logo": "/img/logos/kimi.jpg"
+    },
+    {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "label": "Claude Fable 5.2 (medium)",
+     "tooltipLabel": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "url": "/models/claude-fable-5-2-medium",
+     "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
@@ -7108,6 +7327,13 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "label": "Claude Fable 5.2 (high)",
+     "tooltipLabel": "Claude Fable 5.2 (High, Default Fallback)",
+     "url": "/models/claude-fable-5-2-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
      "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
      "label": "Claude Opus 5 (max)",
      "tooltipLabel": "Claude Opus 5 (Max)",
@@ -7155,6 +7381,20 @@
      "tooltipLabel": "Claude Fable 5.1 (Max, Default Fallback)",
      "url": "/models/claude-fable-5-1",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "label": "Claude Fable 5.2 (xhigh)",
+     "tooltipLabel": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "url": "/models/claude-fable-5-2-xhigh",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "label": "Claude Fable 5.2 (max)",
+     "tooltipLabel": "Claude Fable 5.2 (Max, Default Fallback)",
+     "url": "/models/claude-fable-5-2",
+     "logo": "/img/logos/anthropic.svg"
     }
    ]
   },
@@ -7162,74 +7402,25 @@
    "title": "AA-Briefcase Elo vs. Artificial Analysis Intelligence Index",
    "items": [
     {
-     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
-     "slug": "gemini-4-carbon",
-     "name": "Gemini 4 Carbon (High)",
-     "shortName": "Gemini 4 Carbon (high)",
-     "creatorName": "Google"
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "slug": "claude-fable-5-2",
+     "name": "Claude Fable 5.2 (Max, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (max)",
+     "creatorName": "Anthropic"
     },
     {
-     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
-     "slug": "gemini-4-carbon-medium",
-     "name": "Gemini 4 Carbon (Medium)",
-     "shortName": "Gemini 4 Carbon (medium)",
-     "creatorName": "Google"
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "slug": "claude-fable-5-2-xhigh",
+     "name": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (xhigh)",
+     "creatorName": "Anthropic"
     },
     {
-     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
-     "slug": "gemini-4-carbon-low",
-     "name": "Gemini 4 Carbon (Low)",
-     "shortName": "Gemini 4 Carbon (low)",
-     "creatorName": "Google"
-    },
-    {
-     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
-     "slug": "gemini-4-argon",
-     "name": "Gemini 4 Argon (High)",
-     "shortName": "Gemini 4 Argon (high)",
-     "creatorName": "Google"
-    },
-    {
-     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
-     "slug": "gemini-3-8-flash",
-     "name": "Gemini 3.8 Flash (High)",
-     "shortName": "Gemini 3.8 Flash (high)",
-     "creatorName": "Google"
-    },
-    {
-     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
-     "slug": "gemini-3-8-flash-medium",
-     "name": "Gemini 3.8 Flash (Medium)",
-     "shortName": "Gemini 3.8 Flash (medium)",
-     "creatorName": "Google"
-    },
-    {
-     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
-     "slug": "gemini-3-8-flash-low",
-     "name": "Gemini 3.8 Flash (Low)",
-     "shortName": "Gemini 3.8 Flash (low)",
-     "creatorName": "Google"
-    },
-    {
-     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
-     "slug": "gemini-3-5-flash-lite",
-     "name": "Gemini 3.5 Flash-Lite",
-     "shortName": "Gemini 3.5 Flash-Lite",
-     "creatorName": "Google"
-    },
-    {
-     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
-     "slug": "gemini-3-1-flash-lite-preview",
-     "name": "Gemini 3.1 Flash-Lite",
-     "shortName": "Gemini 3.1 Flash-Lite",
-     "creatorName": "Google"
-    },
-    {
-     "id": "cd26a386-4873-46ff-b853-d239050025a2",
-     "slug": "gemma-4-31b",
-     "name": "Gemma 4 31B (Reasoning)",
-     "shortName": "Gemma 4 31B",
-     "creatorName": "Google"
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "slug": "claude-fable-5-2-high",
+     "name": "Claude Fable 5.2 (High, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (high)",
+     "creatorName": "Anthropic"
     },
     {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
@@ -7246,10 +7437,24 @@
      "creatorName": "Anthropic"
     },
     {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "slug": "claude-fable-5-2-medium",
+     "name": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (medium)",
+     "creatorName": "Anthropic"
+    },
+    {
      "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
      "slug": "claude-sonnet-5-5",
      "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
      "shortName": "Claude Sonnet 5.5 (max)",
+     "creatorName": "Anthropic"
+    },
+    {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "slug": "claude-fable-5-2-low",
+     "name": "Claude Fable 5.2 (Low, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (low)",
      "creatorName": "Anthropic"
     },
     {
@@ -7384,6 +7589,76 @@
      "name": "Claude 4.5 Haiku (Reasoning)",
      "shortName": "Claude 4.5 Haiku",
      "creatorName": "Anthropic"
+    },
+    {
+     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+     "slug": "gemini-4-carbon",
+     "name": "Gemini 4 Carbon (High)",
+     "shortName": "Gemini 4 Carbon (high)",
+     "creatorName": "Google"
+    },
+    {
+     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
+     "slug": "gemini-4-carbon-medium",
+     "name": "Gemini 4 Carbon (Medium)",
+     "shortName": "Gemini 4 Carbon (medium)",
+     "creatorName": "Google"
+    },
+    {
+     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
+     "slug": "gemini-4-carbon-low",
+     "name": "Gemini 4 Carbon (Low)",
+     "shortName": "Gemini 4 Carbon (low)",
+     "creatorName": "Google"
+    },
+    {
+     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
+     "slug": "gemini-4-argon",
+     "name": "Gemini 4 Argon (High)",
+     "shortName": "Gemini 4 Argon (high)",
+     "creatorName": "Google"
+    },
+    {
+     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+     "slug": "gemini-3-8-flash",
+     "name": "Gemini 3.8 Flash (High)",
+     "shortName": "Gemini 3.8 Flash (high)",
+     "creatorName": "Google"
+    },
+    {
+     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
+     "slug": "gemini-3-8-flash-medium",
+     "name": "Gemini 3.8 Flash (Medium)",
+     "shortName": "Gemini 3.8 Flash (medium)",
+     "creatorName": "Google"
+    },
+    {
+     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
+     "slug": "gemini-3-8-flash-low",
+     "name": "Gemini 3.8 Flash (Low)",
+     "shortName": "Gemini 3.8 Flash (low)",
+     "creatorName": "Google"
+    },
+    {
+     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+     "slug": "gemini-3-5-flash-lite",
+     "name": "Gemini 3.5 Flash-Lite",
+     "shortName": "Gemini 3.5 Flash-Lite",
+     "creatorName": "Google"
+    },
+    {
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "slug": "gemini-3-1-flash-lite-preview",
+     "name": "Gemini 3.1 Flash-Lite",
+     "shortName": "Gemini 3.1 Flash-Lite",
+     "creatorName": "Google"
+    },
+    {
+     "id": "cd26a386-4873-46ff-b853-d239050025a2",
+     "slug": "gemma-4-31b",
+     "name": "Gemma 4 31B (Reasoning)",
+     "shortName": "Gemma 4 31B",
+     "creatorName": "Google"
     },
     {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
@@ -7561,6 +7836,13 @@
      "creatorName": "OpenAI"
     },
     {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "slug": "gpt-oss-120b",
+     "name": "gpt-oss-120b (High)",
+     "shortName": "gpt-oss-120b (high)",
+     "creatorName": "OpenAI"
+    },
+    {
      "id": "e994a6e0-d36b-4dab-8ae1-c1b469e4d9e2",
      "slug": "muse-wonder-full",
      "name": "Muse Wonder Full (Max)",
@@ -7586,6 +7868,20 @@
      "slug": "muse-spark-1-3",
      "name": "Muse Spark 1.3 (Max)",
      "shortName": "Muse Spark 1.3 (max)",
+     "creatorName": "Meta"
+    },
+    {
+     "id": "dbf63365-127f-41ee-9e51-81173adb3502",
+     "slug": "muse-ember",
+     "name": "Muse Ember (Max)",
+     "shortName": "Muse Ember (max)",
+     "creatorName": "Meta"
+    },
+    {
+     "id": "7a64ffc4-36c3-4369-981e-73abdd6ff5e2",
+     "slug": "muse-ember-xhigh",
+     "name": "Muse Ember (Xhigh)",
+     "shortName": "Muse Ember (xhigh)",
      "creatorName": "Meta"
     },
     {
@@ -7841,6 +8137,13 @@
      "creatorName": "Mistral"
     },
     {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "slug": "agnes-2-5-pro-theta",
+     "name": "Agnes 2.5 Pro Theta",
+     "shortName": "Agnes 2.5 Pro Theta",
+     "creatorName": "Sapiens AI"
+    },
+    {
      "id": "4cef9716-27a3-4ac3-9620-cd75135d7bbf",
      "slug": "nanbeige4-3-33b",
      "name": "Nanbeige4.3-33B",
@@ -7930,148 +8233,28 @@
    "title": "AA-Briefcase Elo vs. Release Date",
    "items": [
     {
-     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
-     "slug": "gemini-4-carbon",
-     "name": "Gemini 4 Carbon (High)",
-     "shortName": "Gemini 4 Carbon (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-10-28"
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "slug": "claude-fable-5-2",
+     "name": "Claude Fable 5.2 (Max, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (max)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
     },
     {
-     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
-     "slug": "gemini-4-carbon-medium",
-     "name": "Gemini 4 Carbon (Medium)",
-     "shortName": "Gemini 4 Carbon (medium)",
-     "creatorName": "Google",
-     "releaseDate": "2026-10-28"
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "slug": "claude-fable-5-2-xhigh",
+     "name": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (xhigh)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
     },
     {
-     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
-     "slug": "gemini-4-carbon-low",
-     "name": "Gemini 4 Carbon (Low)",
-     "shortName": "Gemini 4 Carbon (low)",
-     "creatorName": "Google",
-     "releaseDate": "2026-10-28"
-    },
-    {
-     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
-     "slug": "gemini-4-argon",
-     "name": "Gemini 4 Argon (High)",
-     "shortName": "Gemini 4 Argon (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-09-30"
-    },
-    {
-     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
-     "slug": "gemini-3-8-flash",
-     "name": "Gemini 3.8 Flash (High)",
-     "shortName": "Gemini 3.8 Flash (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-09-02"
-    },
-    {
-     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
-     "slug": "gemini-3-8-flash-medium",
-     "name": "Gemini 3.8 Flash (Medium)",
-     "shortName": "Gemini 3.8 Flash (medium)",
-     "creatorName": "Google",
-     "releaseDate": "2026-09-02"
-    },
-    {
-     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
-     "slug": "gemini-3-8-flash-low",
-     "name": "Gemini 3.8 Flash (Low)",
-     "shortName": "Gemini 3.8 Flash (low)",
-     "creatorName": "Google",
-     "releaseDate": "2026-09-02"
-    },
-    {
-     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
-     "slug": "gemini-3-5-flash-lite",
-     "name": "Gemini 3.5 Flash-Lite",
-     "shortName": "Gemini 3.5 Flash-Lite",
-     "creatorName": "Google",
-     "releaseDate": "2026-07-21"
-    },
-    {
-     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
-     "slug": "gemini-3-1-flash-lite-preview",
-     "name": "Gemini 3.1 Flash-Lite",
-     "shortName": "Gemini 3.1 Flash-Lite",
-     "creatorName": "Google",
-     "releaseDate": "2026-03-03"
-    },
-    {
-     "id": "cd26a386-4873-46ff-b853-d239050025a2",
-     "slug": "gemma-4-31b",
-     "name": "Gemma 4 31B (Reasoning)",
-     "shortName": "Gemma 4 31B",
-     "creatorName": "Google",
-     "releaseDate": "2026-04-02"
-    },
-    {
-     "id": "0097ebf5-124f-42f6-9463-33b00e711f03",
-     "slug": "gemini-3-5-flash",
-     "name": "Gemini 3.5 Flash (High)",
-     "shortName": "Gemini 3.5 Flash (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-05-19"
-    },
-    {
-     "id": "27202e5f-c82d-4710-92e9-4317877d4883",
-     "slug": "gemini-2-5-pro",
-     "name": "Gemini 2.5 Pro",
-     "shortName": "Gemini 2.5 Pro",
-     "creatorName": "Google",
-     "releaseDate": "2025-06-05"
-    },
-    {
-     "id": "5016ea75-7b0e-4737-a7e6-1062c6d90fd4",
-     "slug": "gemini-3-5-flash-medium",
-     "name": "Gemini 3.5 Flash (Medium)",
-     "shortName": "Gemini 3.5 Flash (medium)",
-     "creatorName": "Google",
-     "releaseDate": "2026-05-19"
-    },
-    {
-     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
-     "slug": "gemma-4-26b-a4b",
-     "name": "Gemma 4 26B A4B (Reasoning)",
-     "shortName": "Gemma 4 26B A4B",
-     "creatorName": "Google",
-     "releaseDate": "2026-04-02"
-    },
-    {
-     "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
-     "slug": "gemini-3-6-flash",
-     "name": "Gemini 3.6 Flash (High)",
-     "shortName": "Gemini 3.6 Flash (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-07-21"
-    },
-    {
-     "id": "b2331108-72ed-415a-82d1-188633875bbc",
-     "slug": "gemini-3-7-flash",
-     "name": "Gemini 3.7 Flash (High)",
-     "shortName": "Gemini 3.7 Flash (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-08-13"
-    },
-    {
-     "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
-     "slug": "gemini-3-1-pro-preview",
-     "name": "Gemini 3.1 Pro Preview",
-     "shortName": "Gemini 3.1 Pro Preview",
-     "creatorName": "Google",
-     "releaseDate": "2026-02-19"
-    },
-    {
-     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
-     "slug": "gemma-4-e4b",
-     "name": "Gemma 4 E4B (Reasoning)",
-     "shortName": "Gemma 4 E4B",
-     "creatorName": "Google",
-     "releaseDate": "2026-04-03"
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "slug": "claude-fable-5-2-high",
+     "name": "Claude Fable 5.2 (High, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (high)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
     },
     {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
@@ -8090,12 +8273,28 @@
      "releaseDate": "2026-09-22"
     },
     {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "slug": "claude-fable-5-2-medium",
+     "name": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (medium)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
+    },
+    {
      "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
      "slug": "claude-sonnet-5-5",
      "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
      "shortName": "Claude Sonnet 5.5 (max)",
      "creatorName": "Anthropic",
      "releaseDate": "2026-09-28"
+    },
+    {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "slug": "claude-fable-5-2-low",
+     "name": "Claude Fable 5.2 (Low, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (low)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
     },
     {
      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
@@ -8370,6 +8569,150 @@
      "releaseDate": "2026-07-24"
     },
     {
+     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+     "slug": "gemini-4-carbon",
+     "name": "Gemini 4 Carbon (High)",
+     "shortName": "Gemini 4 Carbon (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-10-28"
+    },
+    {
+     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
+     "slug": "gemini-4-carbon-medium",
+     "name": "Gemini 4 Carbon (Medium)",
+     "shortName": "Gemini 4 Carbon (medium)",
+     "creatorName": "Google",
+     "releaseDate": "2026-10-28"
+    },
+    {
+     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
+     "slug": "gemini-4-carbon-low",
+     "name": "Gemini 4 Carbon (Low)",
+     "shortName": "Gemini 4 Carbon (low)",
+     "creatorName": "Google",
+     "releaseDate": "2026-10-28"
+    },
+    {
+     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
+     "slug": "gemini-4-argon",
+     "name": "Gemini 4 Argon (High)",
+     "shortName": "Gemini 4 Argon (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-09-30"
+    },
+    {
+     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+     "slug": "gemini-3-8-flash",
+     "name": "Gemini 3.8 Flash (High)",
+     "shortName": "Gemini 3.8 Flash (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-09-02"
+    },
+    {
+     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
+     "slug": "gemini-3-8-flash-medium",
+     "name": "Gemini 3.8 Flash (Medium)",
+     "shortName": "Gemini 3.8 Flash (medium)",
+     "creatorName": "Google",
+     "releaseDate": "2026-09-02"
+    },
+    {
+     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
+     "slug": "gemini-3-8-flash-low",
+     "name": "Gemini 3.8 Flash (Low)",
+     "shortName": "Gemini 3.8 Flash (low)",
+     "creatorName": "Google",
+     "releaseDate": "2026-09-02"
+    },
+    {
+     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+     "slug": "gemini-3-5-flash-lite",
+     "name": "Gemini 3.5 Flash-Lite",
+     "shortName": "Gemini 3.5 Flash-Lite",
+     "creatorName": "Google",
+     "releaseDate": "2026-07-21"
+    },
+    {
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "slug": "gemini-3-1-flash-lite-preview",
+     "name": "Gemini 3.1 Flash-Lite",
+     "shortName": "Gemini 3.1 Flash-Lite",
+     "creatorName": "Google",
+     "releaseDate": "2026-03-03"
+    },
+    {
+     "id": "cd26a386-4873-46ff-b853-d239050025a2",
+     "slug": "gemma-4-31b",
+     "name": "Gemma 4 31B (Reasoning)",
+     "shortName": "Gemma 4 31B",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-02"
+    },
+    {
+     "id": "0097ebf5-124f-42f6-9463-33b00e711f03",
+     "slug": "gemini-3-5-flash",
+     "name": "Gemini 3.5 Flash (High)",
+     "shortName": "Gemini 3.5 Flash (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-05-19"
+    },
+    {
+     "id": "27202e5f-c82d-4710-92e9-4317877d4883",
+     "slug": "gemini-2-5-pro",
+     "name": "Gemini 2.5 Pro",
+     "shortName": "Gemini 2.5 Pro",
+     "creatorName": "Google",
+     "releaseDate": "2025-06-05"
+    },
+    {
+     "id": "5016ea75-7b0e-4737-a7e6-1062c6d90fd4",
+     "slug": "gemini-3-5-flash-medium",
+     "name": "Gemini 3.5 Flash (Medium)",
+     "shortName": "Gemini 3.5 Flash (medium)",
+     "creatorName": "Google",
+     "releaseDate": "2026-05-19"
+    },
+    {
+     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
+     "slug": "gemma-4-26b-a4b",
+     "name": "Gemma 4 26B A4B (Reasoning)",
+     "shortName": "Gemma 4 26B A4B",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-02"
+    },
+    {
+     "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
+     "slug": "gemini-3-6-flash",
+     "name": "Gemini 3.6 Flash (High)",
+     "shortName": "Gemini 3.6 Flash (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-07-21"
+    },
+    {
+     "id": "b2331108-72ed-415a-82d1-188633875bbc",
+     "slug": "gemini-3-7-flash",
+     "name": "Gemini 3.7 Flash (High)",
+     "shortName": "Gemini 3.7 Flash (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-08-13"
+    },
+    {
+     "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
+     "slug": "gemini-3-1-pro-preview",
+     "name": "Gemini 3.1 Pro Preview",
+     "shortName": "Gemini 3.1 Pro Preview",
+     "creatorName": "Google",
+     "releaseDate": "2026-02-19"
+    },
+    {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "slug": "gemma-4-e4b",
+     "name": "Gemma 4 E4B (Reasoning)",
+     "shortName": "Gemma 4 E4B",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-03"
+    },
+    {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
      "slug": "gpt-6-astra",
      "name": "GPT-6 Astra (Max)",
@@ -8568,6 +8911,14 @@
      "shortName": "GPT-6 Luna (non-reasoning)",
      "creatorName": "OpenAI",
      "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "slug": "gpt-oss-120b",
+     "name": "gpt-oss-120b (High)",
+     "shortName": "gpt-oss-120b (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2025-08-05"
     },
     {
      "id": "01459872-433a-4ab2-8e99-7083162172eb",
@@ -8818,14 +9169,6 @@
      "releaseDate": "2026-07-09"
     },
     {
-     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
-     "slug": "gpt-oss-120b",
-     "name": "gpt-oss-120b (High)",
-     "shortName": "gpt-oss-120b (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2025-08-05"
-    },
-    {
      "id": "e994a6e0-d36b-4dab-8ae1-c1b469e4d9e2",
      "slug": "muse-wonder-full",
      "name": "Muse Wonder Full (Max)",
@@ -8856,6 +9199,22 @@
      "shortName": "Muse Spark 1.3 (max)",
      "creatorName": "Meta",
      "releaseDate": "2026-09-02"
+    },
+    {
+     "id": "dbf63365-127f-41ee-9e51-81173adb3502",
+     "slug": "muse-ember",
+     "name": "Muse Ember (Max)",
+     "shortName": "Muse Ember (max)",
+     "creatorName": "Meta",
+     "releaseDate": "2026-11-09"
+    },
+    {
+     "id": "7a64ffc4-36c3-4369-981e-73abdd6ff5e2",
+     "slug": "muse-ember-xhigh",
+     "name": "Muse Ember (Xhigh)",
+     "shortName": "Muse Ember (xhigh)",
+     "creatorName": "Meta",
+     "releaseDate": "2026-11-09"
     },
     {
      "id": "3661c8fb-caf7-4118-aa18-65b84fea8e44",
@@ -9650,6 +10009,14 @@
      "releaseDate": "2025-12-09"
     },
     {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "slug": "agnes-2-5-pro-theta",
+     "name": "Agnes 2.5 Pro Theta",
+     "shortName": "Agnes 2.5 Pro Theta",
+     "creatorName": "Sapiens AI",
+     "releaseDate": "2026-11-07"
+    },
+    {
      "id": "4cef9716-27a3-4ac3-9620-cd75135d7bbf",
      "slug": "nanbeige4-3-33b",
      "name": "Nanbeige4.3-33B",
@@ -9979,12 +10346,20 @@
      "2",
      "Anthropic",
      "Claude Opus 5.5 (Max, Default Fallback)",
-     "1800",
-     "-11 / +12",
+     "1801",
+     "-10 / +10",
      "Sep 2026"
     ],
     [
      "3",
+     "Anthropic",
+     "Claude Fable 5.2 (Max, Default Fallback)",
+     "1785",
+     "-12 / +13",
+     "Nov 2026"
+    ],
+    [
+     "4",
      "Anthropic",
      "Claude Opus 5.5 (Xhigh, Default Fallback)",
      "1760",
@@ -9992,7 +10367,7 @@
      "Sep 2026"
     ],
     [
-     "4",
+     "5",
      "Anthropic",
      "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
      "1742",
@@ -10000,7 +10375,15 @@
      "Sep 2026"
     ],
     [
-     "5",
+     "6",
+     "Anthropic",
+     "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "1738",
+     "-10 / +10",
+     "Nov 2026"
+    ],
+    [
+     "7",
      "Meta",
      "Muse Wonder Full (Max)",
      "1729",
@@ -10008,7 +10391,7 @@
      "Oct 2026"
     ],
     [
-     "6",
+     "8",
      "Anthropic",
      "Claude Opus 5.5 (High, Default Fallback)",
      "1682",
@@ -10016,15 +10399,23 @@
      "Sep 2026"
     ],
     [
-     "7",
+     "9",
+     "Anthropic",
+     "Claude Fable 5.2 (High, Default Fallback)",
+     "1677",
+     "-10 / +10",
+     "Nov 2026"
+    ],
+    [
+     "10",
      "Kimi",
      "Kimi K3.1 Pro",
      "1674",
-     "-11 / +11",
+     "-10 / +11",
      "Oct 2026"
     ],
     [
-     "8",
+     "11",
      "Anthropic",
      "Claude Fable 5.1 (Max, Default Fallback)",
      "1669",
@@ -10032,7 +10423,7 @@
      "Sep 2026"
     ],
     [
-     "9",
+     "12",
      "Meta",
      "Muse Wonder (Max)",
      "1659",
@@ -10040,7 +10431,7 @@
      "Oct 2026"
     ],
     [
-     "10",
+     "13",
      "Anthropic",
      "Claude Opus 5 (Max)",
      "1655",
@@ -10048,7 +10439,7 @@
      "Jul 2026"
     ],
     [
-     "11",
+     "14",
      "Anthropic",
      "Claude Fable 5.1 (Xhigh, Default Fallback)",
      "1649",
@@ -10056,15 +10447,15 @@
      "Sep 2026"
     ],
     [
-     "12",
+     "15",
      "SpaceXAI",
      "Grok 4.7 (Xhigh)",
-     "1637",
+     "1636",
      "-9 / +9",
      "Sep 2026"
     ],
     [
-     "13",
+     "16",
      "Anthropic",
      "Claude Sonnet 5.5 (High, Default Fallback)",
      "1634",
@@ -10072,7 +10463,7 @@
      "Sep 2026"
     ],
     [
-     "14",
+     "17",
      "SpaceXAI",
      "Grok 4.7 (High)",
      "1629",
@@ -10080,7 +10471,7 @@
      "Sep 2026"
     ],
     [
-     "15",
+     "18",
      "Anthropic",
      "Claude Opus 5 (Xhigh)",
      "1629",
@@ -10088,7 +10479,15 @@
      "Jul 2026"
     ],
     [
-     "16",
+     "19",
+     "Anthropic",
+     "Claude Fable 5.2 (Medium, Default Fallback)",
+     "1622",
+     "-9 / +9",
+     "Nov 2026"
+    ],
+    [
+     "20",
      "Anthropic",
      "Claude Opus 5.5 (Medium, Default Fallback)",
      "1620",
@@ -10096,7 +10495,7 @@
      "Sep 2026"
     ],
     [
-     "17",
+     "21",
      "Google",
      "Gemini 4 Carbon (High)",
      "1611",
@@ -10104,7 +10503,7 @@
      "Oct 2026"
     ],
     [
-     "18",
+     "22",
      "Meta",
      "Muse Wonder (High)",
      "1610",
@@ -10112,15 +10511,15 @@
      "Oct 2026"
     ],
     [
-     "19",
+     "23",
      "Alibaba",
      "Qwen3.8 Max (0902)",
-     "1606",
-     "-9 / +9",
+     "1605",
+     "-8 / +9",
      "Sep 2026"
     ],
     [
-     "20",
+     "24",
      "Google",
      "Gemini 4 Carbon (Medium)",
      "1602",
@@ -10128,7 +10527,7 @@
      "Oct 2026"
     ],
     [
-     "21",
+     "25",
      "Meta",
      "Muse Spark 1.3 (Max)",
      "1581",
@@ -10136,7 +10535,7 @@
      "Sep 2026"
     ],
     [
-     "22",
+     "26",
      "Anthropic",
      "Claude Fable 5.1 (High, Default Fallback)",
      "1577",
@@ -10144,15 +10543,7 @@
      "Sep 2026"
     ],
     [
-     "23",
-     "Anthropic",
-     "Claude Haiku 5.5 (Max)",
-     "1574",
-     "-10 / +10",
-     "Oct 2026"
-    ],
-    [
-     "24",
+     "27",
      "Alibaba",
      "Qwen3.8-Flash-Next",
      "1574",
@@ -10160,7 +10551,15 @@
      "Aug 2026"
     ],
     [
-     "25",
+     "28",
+     "Anthropic",
+     "Claude Haiku 5.5 (Max)",
+     "1573",
+     "-10 / +10",
+     "Oct 2026"
+    ],
+    [
+     "29",
      "DeepSeek",
      "DeepSeek V4.1 Flash 1017 (Max)",
      "1570",
@@ -10168,7 +10567,7 @@
      "Oct 2026"
     ],
     [
-     "26",
+     "30",
      "OpenAI",
      "GPT-6 Astra (Max)",
      "1569",
@@ -10176,7 +10575,7 @@
      "Sep 2026"
     ],
     [
-     "27",
+     "31",
      "Google",
      "Gemini 4 Carbon (Low)",
      "1567",
@@ -10184,7 +10583,15 @@
      "Oct 2026"
     ],
     [
-     "28",
+     "32",
+     "Anthropic",
+     "Claude Fable 5.2 (Low, Default Fallback)",
+     "1563",
+     "-10 / +10",
+     "Nov 2026"
+    ],
+    [
+     "33",
      "Anthropic",
      "Claude Opus 5 (High)",
      "1557",
@@ -10192,15 +10599,15 @@
      "Jul 2026"
     ],
     [
-     "29",
+     "34",
      "OpenAI",
      "GPT-6.1 Sol (Max)",
      "1555",
-     "-9 / +9",
+     "-9 / +8",
      "Sep 2026"
     ],
     [
-     "30",
+     "35",
      "OpenAI",
      "GPT-6 Astra (Xhigh)",
      "1544",
@@ -10208,7 +10615,7 @@
      "Sep 2026"
     ],
     [
-     "31",
+     "36",
      "SpaceXAI",
      "Grok 4.6 (Xhigh)",
      "1541",
@@ -10216,7 +10623,7 @@
      "Aug 2026"
     ],
     [
-     "32",
+     "37",
      "Anthropic",
      "Claude Fable 5 (Max, Opus 4.8 Fallback)",
      "1535",
@@ -10224,7 +10631,7 @@
      "Jun 2026"
     ],
     [
-     "33",
+     "38",
      "SpaceXAI",
      "Grok 4.6 (High)",
      "1528",
@@ -10232,7 +10639,15 @@
      "Aug 2026"
     ],
     [
-     "34",
+     "39",
+     "Meta",
+     "Muse Ember (Xhigh)",
+     "1527",
+     "-10 / +10",
+     "Nov 2026"
+    ],
+    [
+     "40",
      "Thinking Machines",
      "Inkling 2 Small",
      "1527",
@@ -10240,7 +10655,7 @@
      "Nov 2026"
     ],
     [
-     "35",
+     "41",
      "Anthropic",
      "Claude Fable 5.1 (Medium, Default Fallback)",
      "1525",
@@ -10248,7 +10663,7 @@
      "Sep 2026"
     ],
     [
-     "36",
+     "42",
      "Anthropic",
      "Claude Haiku 5.5 (Xhigh)",
      "1523",
@@ -10256,7 +10671,7 @@
      "Oct 2026"
     ],
     [
-     "37",
+     "43",
      "InclusionAI",
      "Ling 3.1 Flash 1019",
      "1522",
@@ -10264,7 +10679,15 @@
      "Oct 2026"
     ],
     [
-     "38",
+     "44",
+     "Meta",
+     "Muse Ember (Max)",
+     "1521",
+     "-11 / +12",
+     "Nov 2026"
+    ],
+    [
+     "45",
      "Xiaomi",
      "MiMo-V2.6-Pro",
      "1512",
@@ -10272,7 +10695,7 @@
      "Sep 2026"
     ],
     [
-     "39",
+     "46",
      "OpenAI",
      "GPT-6 Astra (High)",
      "1505",
@@ -10280,7 +10703,7 @@
      "Sep 2026"
     ],
     [
-     "40",
+     "47",
      "OpenAI",
      "GPT-6.1 Sol (Xhigh)",
      "1503",
@@ -10288,7 +10711,7 @@
      "Sep 2026"
     ],
     [
-     "41",
+     "48",
      "Z AI",
      "GLM-5.3 (Max)",
      "1503",
@@ -10296,7 +10719,7 @@
      "Aug 2026"
     ],
     [
-     "42",
+     "49",
      "Kimi",
      "Kimi K3 (Max)",
      "1497",
@@ -10304,7 +10727,15 @@
      "Jul 2026"
     ],
     [
-     "43",
+     "50",
+     "Sapiens AI",
+     "Agnes 2.5 Pro Theta",
+     "1496",
+     "-10 / +10",
+     "Nov 2026"
+    ],
+    [
+     "51",
      "SpaceXAI",
      "Grok 4.7 (Low)",
      "1493",
@@ -10312,7 +10743,7 @@
      "Sep 2026"
     ],
     [
-     "44",
+     "52",
      "Xiaomi",
      "MiMo-V2.6-Flash",
      "1487",
@@ -10320,7 +10751,7 @@
      "Sep 2026"
     ],
     [
-     "45",
+     "53",
      "Google",
      "Gemini 4 Argon (High)",
      "1485",
@@ -10328,7 +10759,7 @@
      "Sep 2026"
     ],
     [
-     "46",
+     "54",
      "Meta",
      "Muse Spark 1.3 (Xhigh)",
      "1481",
@@ -10336,7 +10767,7 @@
      "Sep 2026"
     ],
     [
-     "47",
+     "55",
      "OpenAI",
      "GPT-5.6 Sol (Max)",
      "1479",
@@ -10344,7 +10775,7 @@
      "Jul 2026"
     ],
     [
-     "48",
+     "56",
      "Anthropic",
      "Claude Fable 5.1 (Low, Default Fallback)",
      "1478",
@@ -10352,7 +10783,7 @@
      "Sep 2026"
     ],
     [
-     "49",
+     "57",
      "SpaceXAI",
      "Grok 4.6 (Medium)",
      "1478",
@@ -10360,7 +10791,7 @@
      "Aug 2026"
     ],
     [
-     "50",
+     "58",
      "OpenAI",
      "GPT-6 Sol (Max)",
      "1476",
@@ -10368,7 +10799,7 @@
      "Sep 2026"
     ],
     [
-     "51",
+     "59",
      "MiniMax",
      "MiniMax-M3.1-Flash",
      "1476",
@@ -10376,7 +10807,7 @@
      "Oct 2026"
     ],
     [
-     "52",
+     "60",
      "OpenAI",
      "GPT-6.1 Sol (High)",
      "1469",
@@ -10384,7 +10815,7 @@
      "Sep 2026"
     ],
     [
-     "53",
+     "61",
      "OpenAI",
      "GPT-6 Astra (Medium)",
      "1461",
@@ -10392,7 +10823,7 @@
      "Sep 2026"
     ],
     [
-     "54",
+     "62",
      "Z AI",
      "GLM-5.3-Flash",
      "1451",
@@ -10400,7 +10831,7 @@
      "Aug 2026"
     ],
     [
-     "55",
+     "63",
      "Tencent",
      "Tencent Hy4",
      "1447",
@@ -10408,7 +10839,7 @@
      "Nov 2026"
     ],
     [
-     "56",
+     "64",
      "Anthropic",
      "Claude Haiku 5.5 (High)",
      "1441",
@@ -10416,7 +10847,7 @@
      "Oct 2026"
     ],
     [
-     "57",
+     "65",
      "Anthropic",
      "Claude Sonnet 5.5 (Medium, Default Fallback)",
      "1439",
@@ -10424,7 +10855,7 @@
      "Sep 2026"
     ],
     [
-     "58",
+     "66",
      "OpenAI",
      "GPT-5.6 Sol (Xhigh)",
      "1435",
@@ -10432,7 +10863,7 @@
      "Jul 2026"
     ],
     [
-     "59",
+     "67",
      "Anthropic",
      "Claude Opus 5 (Medium)",
      "1431",
@@ -10440,7 +10871,7 @@
      "Jul 2026"
     ],
     [
-     "60",
+     "68",
      "Alibaba",
      "Qwen3.8 2.4T A95B",
      "1430",
@@ -10448,7 +10879,7 @@
      "Aug 2026"
     ],
     [
-     "61",
+     "69",
      "DeepSeek",
      "DeepSeek V4.1 Flash 1017 (Non-reasoning)",
      "1425",
@@ -10456,7 +10887,7 @@
      "Oct 2026"
     ],
     [
-     "62",
+     "70",
      "StepFun",
      "Step 5 Preview",
      "1425",
@@ -10464,7 +10895,7 @@
      "Sep 2026"
     ],
     [
-     "63",
+     "71",
      "DeepSeek",
      "DeepSeek V4 Flash Vision (Max)",
      "1418",
@@ -10472,7 +10903,7 @@
      "Aug 2026"
     ],
     [
-     "64",
+     "72",
      "DeepSeek",
      "DeepSeek V4.1 Flash (Max)",
      "1417",
@@ -10480,7 +10911,7 @@
      "Sep 2026"
     ],
     [
-     "65",
+     "73",
      "DeepSeek",
      "DeepSeek V4.1 Flash 1017 (High)",
      "1416",
@@ -10488,15 +10919,15 @@
      "Oct 2026"
     ],
     [
-     "66",
+     "74",
      "OpenAI",
      "GPT-6.1 Terra (Max)",
-     "1401",
-     "-10 / +11",
+     "1403",
+     "-10 / +10",
      "Oct 2026"
     ],
     [
-     "67",
+     "75",
      "InclusionAI",
      "Ling 3.1 Flash",
      "1397",
@@ -10504,7 +10935,7 @@
      "Oct 2026"
     ],
     [
-     "68",
+     "76",
      "Mistral",
      "Mistral Large 4 Preview",
      "1393",
@@ -10512,7 +10943,7 @@
      "Oct 2026"
     ],
     [
-     "69",
+     "77",
      "Alibaba",
      "Qwen3.8 27B (Xhigh)",
      "1391",
@@ -10520,7 +10951,7 @@
      "Aug 2026"
     ],
     [
-     "70",
+     "78",
      "Alibaba",
      "Qwen3.8 Max",
      "1382",
@@ -10528,7 +10959,7 @@
      "Aug 2026"
     ],
     [
-     "71",
+     "79",
      "Alibaba",
      "Qwen3.8 27B (Medium)",
      "1372",
@@ -10536,7 +10967,7 @@
      "Aug 2026"
     ],
     [
-     "72",
+     "80",
      "OpenAI",
      "GPT-5.6 Sol (High)",
      "1368",
@@ -10544,7 +10975,7 @@
      "Jul 2026"
     ],
     [
-     "73",
+     "81",
      "Anthropic",
      "Claude Haiku 5.5 (Medium)",
      "1367",
@@ -10552,7 +10983,7 @@
      "Oct 2026"
     ],
     [
-     "74",
+     "82",
      "OpenAI",
      "GPT-6.1 Sol (Medium)",
      "1360",
@@ -10560,7 +10991,7 @@
      "Sep 2026"
     ],
     [
-     "75",
+     "83",
      "OpenAI",
      "GPT-6 Sol (Xhigh)",
      "1359",
@@ -10568,7 +10999,7 @@
      "Sep 2026"
     ],
     [
-     "76",
+     "84",
      "Anthropic",
      "Claude Sonnet 5 (Max)",
      "1356",
@@ -10576,15 +11007,15 @@
      "Jun 2026"
     ],
     [
-     "77",
+     "85",
      "Mistral",
      "Mistral Large 4 (High)",
      "1348",
-     "-11 / +11",
+     "-10 / +10",
      "Oct 2026"
     ],
     [
-     "78",
+     "86",
      "OpenAI",
      "GPT-5.6 Luna (Max)",
      "1339",
@@ -10592,7 +11023,7 @@
      "Jul 2026"
     ],
     [
-     "79",
+     "87",
      "OpenAI",
      "GPT-6 Luna (Max)",
      "1337",
@@ -10600,7 +11031,7 @@
      "Sep 2026"
     ],
     [
-     "80",
+     "88",
      "OpenAI",
      "GPT-6.1 Terra (Xhigh)",
      "1333",
@@ -10608,7 +11039,7 @@
      "Oct 2026"
     ],
     [
-     "81",
+     "89",
      "OpenAI",
      "GPT-5.6 Terra (Max)",
      "1333",
@@ -10616,7 +11047,7 @@
      "Jul 2026"
     ],
     [
-     "82",
+     "90",
      "OpenAI",
      "GPT-5.6 Terra (Xhigh)",
      "1330",
@@ -10624,7 +11055,7 @@
      "Jul 2026"
     ],
     [
-     "83",
+     "91",
      "Meta",
      "Muse Spark 1.2 (Xhigh)",
      "1324",
@@ -10632,7 +11063,7 @@
      "Aug 2026"
     ],
     [
-     "84",
+     "92",
      "Anthropic",
      "Claude Opus 4.8 (Max)",
      "1320",
@@ -10640,7 +11071,7 @@
      "May 2026"
     ],
     [
-     "85",
+     "93",
      "Institute of Foundation Models",
      "K2 Horizon 375B A23B",
      "1292",
@@ -10648,7 +11079,7 @@
      "Sep 2026"
     ],
     [
-     "86",
+     "94",
      "SpaceXAI",
      "Grok 4.6 (Low)",
      "1285",
@@ -10656,7 +11087,7 @@
      "Aug 2026"
     ],
     [
-     "87",
+     "95",
      "Anthropic",
      "Claude Opus 5.5 (Low, Default Fallback)",
      "1279",
@@ -10664,7 +11095,7 @@
      "Sep 2026"
     ],
     [
-     "88",
+     "96",
      "Meta",
      "Muse Spark Open (Xhigh)",
      "1279",
@@ -10672,7 +11103,7 @@
      "Oct 2026"
     ],
     [
-     "89",
+     "97",
      "SpaceXAI",
      "Grok 4.5 (High)",
      "1278",
@@ -10680,7 +11111,7 @@
      "Jul 2026"
     ],
     [
-     "90",
+     "98",
      "Anthropic",
      "Claude Sonnet 5 (Xhigh)",
      "1272",
@@ -10688,7 +11119,7 @@
      "Jun 2026"
     ],
     [
-     "91",
+     "99",
      "Alibaba",
      "Qwen3.8 27B (Low)",
      "1270",
@@ -10696,7 +11127,7 @@
      "Aug 2026"
     ],
     [
-     "92",
+     "100",
      "Anthropic",
      "Claude Sonnet 5.5 (Low, Default Fallback)",
      "1268",
@@ -10704,7 +11135,7 @@
      "Sep 2026"
     ],
     [
-     "93",
+     "101",
      "OpenAI",
      "GPT-5.6 Luna (Xhigh)",
      "1267",
@@ -10712,7 +11143,7 @@
      "Jul 2026"
     ],
     [
-     "94",
+     "102",
      "OpenAI",
      "GPT-6 Sol (High)",
      "1266",
@@ -10720,7 +11151,7 @@
      "Sep 2026"
     ],
     [
-     "95",
+     "103",
      "OpenAI",
      "GPT-6.1 Terra (High)",
      "1264",
@@ -10728,7 +11159,7 @@
      "Oct 2026"
     ],
     [
-     "96",
+     "104",
      "OpenAI",
      "GPT-6 Astra (Low)",
      "1256",
@@ -10736,7 +11167,7 @@
      "Sep 2026"
     ],
     [
-     "97",
+     "105",
      "DeepSeek",
      "DeepSeek V4 Flash 0731 (Max)",
      "1255",
@@ -10744,7 +11175,7 @@
      "Jul 2026"
     ],
     [
-     "98",
+     "106",
      "DeepSeek",
      "DeepSeek V4 Pro 0813 (Max)",
      "1253",
@@ -10752,7 +11183,7 @@
      "Aug 2026"
     ],
     [
-     "99",
+     "107",
      "Anthropic",
      "Claude Opus 4.7 (Max)",
      "1252",
@@ -10760,7 +11191,7 @@
      "Apr 2026"
     ],
     [
-     "100",
+     "108",
      "OpenAI",
      "GPT-5.6 Sol (Medium)",
      "1242",
@@ -10768,7 +11199,7 @@
      "Jul 2026"
     ],
     [
-     "101",
+     "109",
      "OpenAI",
      "GPT-6 Luna (Xhigh)",
      "1235",
@@ -10776,7 +11207,7 @@
      "Sep 2026"
     ],
     [
-     "102",
+     "110",
      "Z AI",
      "GLM-5.2 (Max)",
      "1226",
@@ -10784,7 +11215,7 @@
      "Jun 2026"
     ],
     [
-     "103",
+     "111",
      "OpenAI",
      "GPT-6.1 Terra (Non-reasoning)",
      "1226",
@@ -10792,7 +11223,7 @@
      "Oct 2026"
     ],
     [
-     "104",
+     "112",
      "Anthropic",
      "Claude Opus 5 (Low)",
      "1208",
@@ -10800,7 +11231,7 @@
      "Jul 2026"
     ],
     [
-     "105",
+     "113",
      "Google",
      "Gemini 3.8 Flash (High)",
      "1203",
@@ -10808,7 +11239,7 @@
      "Sep 2026"
     ],
     [
-     "106",
+     "114",
      "OpenAI",
      "GPT-5.6 Terra (High)",
      "1202",
@@ -10816,7 +11247,7 @@
      "Jul 2026"
     ],
     [
-     "107",
+     "115",
      "OpenAI",
      "GPT-6.1 Terra (Medium)",
      "1190",
@@ -10824,7 +11255,7 @@
      "Oct 2026"
     ],
     [
-     "108",
+     "116",
      "Mistral",
      "Mistral Large 4 (Medium)",
      "1188",
@@ -10832,7 +11263,7 @@
      "Oct 2026"
     ],
     [
-     "109",
+     "117",
      "OpenAI",
      "GPT-6 Luna (High)",
      "1187",
@@ -10840,7 +11271,7 @@
      "Sep 2026"
     ],
     [
-     "110",
+     "118",
      "Z AI",
      "GLM-5.3 (Low)",
      "1185",
@@ -10848,7 +11279,7 @@
      "Aug 2026"
     ],
     [
-     "111",
+     "119",
      "Google",
      "Gemini 3.8 Flash (Medium)",
      "1183",
@@ -10856,7 +11287,7 @@
      "Sep 2026"
     ],
     [
-     "112",
+     "120",
      "Anthropic",
      "Claude Sonnet 5 (High)",
      "1177",
@@ -10864,7 +11295,7 @@
      "Jun 2026"
     ],
     [
-     "113",
+     "121",
      "OpenAI",
      "GPT-5.6 Luna (High)",
      "1170",
@@ -10872,7 +11303,7 @@
      "Jul 2026"
     ],
     [
-     "114",
+     "122",
      "Institute of Foundation Models",
      "K2 Horizon MoVA 36B A4B",
      "1165",
@@ -10880,7 +11311,7 @@
      "Sep 2026"
     ],
     [
-     "115",
+     "123",
      "Nanbeige",
      "Nanbeige4.3-33B",
      "1162",
@@ -10888,7 +11319,7 @@
      "Oct 2026"
     ],
     [
-     "116",
+     "124",
      "OpenAI",
      "GPT-6 Sol (Medium)",
      "1149",
@@ -10896,7 +11327,7 @@
      "Sep 2026"
     ],
     [
-     "117",
+     "125",
      "OpenAI",
      "GPT-5.5 (Xhigh)",
      "1135",
@@ -10904,7 +11335,7 @@
      "Apr 2026"
     ],
     [
-     "118",
+     "126",
      "Multiverse Computing",
      "Quasar 438B (Max, Based on GLM-5.2)",
      "1124",
@@ -10912,7 +11343,7 @@
      "Aug 2026"
     ],
     [
-     "119",
+     "127",
      "DeepSeek",
      "DeepSeek V4.1 Flash (Non-reasoning)",
      "1120",
@@ -10920,7 +11351,7 @@
      "Sep 2026"
     ],
     [
-     "120",
+     "128",
      "Anthropic",
      "Claude Haiku 5.5 (Low)",
      "1114",
@@ -10928,7 +11359,7 @@
      "Oct 2026"
     ],
     [
-     "121",
+     "129",
      "OpenAI",
      "GPT-6.1 Sol (Low)",
      "1114",
@@ -10936,7 +11367,7 @@
      "Sep 2026"
     ],
     [
-     "122",
+     "130",
      "Google",
      "Gemini 3.7 Flash (High)",
      "1113",
@@ -10944,7 +11375,7 @@
      "Aug 2026"
     ],
     [
-     "123",
+     "131",
      "OpenAI",
      "GPT-6 Sol (Non-reasoning)",
      "1106",
@@ -10952,7 +11383,7 @@
      "Sep 2026"
     ],
     [
-     "124",
+     "132",
      "OpenAI",
      "GPT-6 Luna (Medium)",
      "1096",
@@ -10960,7 +11391,7 @@
      "Sep 2026"
     ],
     [
-     "125",
+     "133",
      "Upstage",
      "Solar Pro 4",
      "1093",
@@ -10968,7 +11399,7 @@
      "Aug 2026"
     ],
     [
-     "126",
+     "134",
      "China Mobile",
      "JT-4.1 Flash 236B A21B (Reasoning)",
      "1092",
@@ -10976,7 +11407,7 @@
      "Jul 2026"
     ],
     [
-     "127",
+     "135",
      "MiniMax",
      "MiniMax-M3",
      "1089",
@@ -10984,7 +11415,7 @@
      "Jun 2026"
     ],
     [
-     "128",
+     "136",
      "OpenAI",
      "GPT-5.5 (High)",
      "1088",
@@ -10992,7 +11423,7 @@
      "Apr 2026"
     ],
     [
-     "129",
+     "137",
      "OpenAI",
      "GPT-5.5 Instant (June 2026)",
      "1087",
@@ -11000,7 +11431,7 @@
      "Jun 2026"
     ],
     [
-     "130",
+     "138",
      "Anthropic",
      "Claude Opus 4.7 (Non-reasoning, High)",
      "1068",
@@ -11008,7 +11439,7 @@
      "Apr 2026"
     ],
     [
-     "131",
+     "139",
      "Anthropic",
      "Claude Sonnet 4.6 (Max)",
      "1062",
@@ -11016,7 +11447,7 @@
      "Feb 2026"
     ],
     [
-     "132",
+     "140",
      "Google",
      "Gemini 3.8 Flash (Low)",
      "1062",
@@ -11024,7 +11455,7 @@
      "Sep 2026"
     ],
     [
-     "133",
+     "141",
      "Anthropic",
      "Claude Sonnet 5 (Medium)",
      "1058",
@@ -11032,7 +11463,7 @@
      "Jun 2026"
     ],
     [
-     "134",
+     "142",
      "OpenAI",
      "GPT-5.6 Sol (Low)",
      "1044",
@@ -11040,7 +11471,7 @@
      "Jul 2026"
     ],
     [
-     "135",
+     "143",
      "DeepSeek",
      "DeepSeek V4 Flash 0420 (High)",
      "1041",
@@ -11048,7 +11479,7 @@
      "Apr 2026"
     ],
     [
-     "136",
+     "144",
      "OpenAI",
      "GPT-5.6 Terra (Medium)",
      "1039",
@@ -11056,7 +11487,7 @@
      "Jul 2026"
     ],
     [
-     "137",
+     "145",
      "OpenAI",
      "GPT-6.1 Terra (Low)",
      "1031",
@@ -11064,7 +11495,7 @@
      "Oct 2026"
     ],
     [
-     "138",
+     "146",
      "OpenAI",
      "GPT-5.6 Terra (Low)",
      "1015",
@@ -11072,7 +11503,7 @@
      "Jul 2026"
     ],
     [
-     "139",
+     "147",
      "Institute of Foundation Models",
      "K2 Horizon 7B",
      "1014",
@@ -11080,7 +11511,7 @@
      "Sep 2026"
     ],
     [
-     "140",
+     "148",
      "Apodex",
      "Apodex 1.1",
      "1012",
@@ -11088,7 +11519,7 @@
      "Aug 2026"
     ],
     [
-     "141",
+     "149",
      "OpenAI",
      "GPT-5.6 Sol (Non-reasoning)",
      "1007",
@@ -11096,7 +11527,7 @@
      "Jul 2026"
     ],
     [
-     "142",
+     "150",
      "OpenAI",
      "GPT-5.5 (Medium)",
      "1000",
@@ -11104,7 +11535,7 @@
      "Apr 2026"
     ],
     [
-     "143",
+     "151",
      "NVIDIA",
      "Nemotron 3.5 Super VL",
      "999",
@@ -11112,7 +11543,7 @@
      "Oct 2026"
     ],
     [
-     "144",
+     "152",
      "Motif Technologies",
      "Motif 3",
      "992",
@@ -11120,7 +11551,7 @@
      "Aug 2026"
     ],
     [
-     "145",
+     "153",
      "Kimi",
      "Kimi K3 (Low)",
      "985",
@@ -11128,7 +11559,7 @@
      "Jul 2026"
     ],
     [
-     "146",
+     "154",
      "InclusionAI",
      "Ling-3.0-flash-VL",
      "985",
@@ -11136,7 +11567,7 @@
      "Sep 2026"
     ],
     [
-     "147",
+     "155",
      "Reflection",
      "Beam 1.0",
      "976",
@@ -11144,7 +11575,7 @@
      "Oct 2026"
     ],
     [
-     "148",
+     "156",
      "Z AI",
      "GLM-5.1 (Reasoning)",
      "965",
@@ -11152,7 +11583,7 @@
      "Apr 2026"
     ],
     [
-     "149",
+     "157",
      "InclusionAI",
      "Ling-3.0-flash-Fin",
      "959",
@@ -11160,7 +11591,7 @@
      "Sep 2026"
     ],
     [
-     "150",
+     "158",
      "Google",
      "Gemini 3.6 Flash (High)",
      "956",
@@ -11168,7 +11599,7 @@
      "Jul 2026"
     ],
     [
-     "151",
+     "159",
      "Tencent",
      "Hy3",
      "947",
@@ -11176,7 +11607,7 @@
      "Jul 2026"
     ],
     [
-     "152",
+     "160",
      "OpenAI",
      "GPT-5.6 Terra (Non-reasoning)",
      "946",
@@ -11184,7 +11615,7 @@
      "Jul 2026"
     ],
     [
-     "153",
+     "161",
      "Nex AGI",
      "Nex-N2-Pro (Based on Qwen3.5-397B-A17B)",
      "940",
@@ -11192,7 +11623,7 @@
      "Jun 2026"
     ],
     [
-     "154",
+     "162",
      "OpenAI",
      "GPT-5.6 Luna (Medium)",
      "933",
@@ -11200,7 +11631,7 @@
      "Jul 2026"
     ],
     [
-     "155",
+     "163",
      "DeepSeek",
      "DeepSeek V4 Pro 0813 (Non-reasoning)",
      "928",
@@ -11208,7 +11639,7 @@
      "Aug 2026"
     ],
     [
-     "156",
+     "164",
      "Anthropic",
      "Claude Sonnet 5 (Low)",
      "927",
@@ -11216,7 +11647,7 @@
      "Jun 2026"
     ],
     [
-     "157",
+     "165",
      "DeepSeek",
      "DeepSeek V4 Pro 0424 (Max)",
      "922",
@@ -11224,7 +11655,7 @@
      "Apr 2026"
     ],
     [
-     "158",
+     "166",
      "Alibaba",
      "Qwen3.7 Max",
      "917",
@@ -11232,7 +11663,7 @@
      "May 2026"
     ],
     [
-     "159",
+     "167",
      "Alibaba",
      "Qwen3.7 Plus",
      "915",
@@ -11240,7 +11671,7 @@
      "Jun 2026"
     ],
     [
-     "160",
+     "168",
      "Thinking Machines",
      "Inkling Small",
      "913",
@@ -11248,7 +11679,7 @@
      "Jul 2026"
     ],
     [
-     "161",
+     "169",
      "NVIDIA",
      "Nemotron 3.5 Bolt 74B-A9B",
      "912",
@@ -11256,7 +11687,7 @@
      "Oct 2026"
     ],
     [
-     "162",
+     "170",
      "OpenAI",
      "GPT-6 Luna (Non-reasoning)",
      "903",
@@ -11264,7 +11695,7 @@
      "Sep 2026"
     ],
     [
-     "163",
+     "171",
      "Alibaba",
      "Qwen3.8 27B (Non-reasoning)",
      "901",
@@ -11272,7 +11703,7 @@
      "Aug 2026"
     ],
     [
-     "164",
+     "172",
      "OpenAI",
      "GPT-6 Sol (Low)",
      "886",
@@ -11280,7 +11711,7 @@
      "Sep 2026"
     ],
     [
-     "165",
+     "173",
      "Xiaomi",
      "MiMo-V2.5-Pro (Reasoning)",
      "884",
@@ -11288,7 +11719,7 @@
      "Apr 2026"
     ],
     [
-     "166",
+     "174",
      "Google",
      "Gemini 3.5 Flash (Medium)",
      "877",
@@ -11296,7 +11727,7 @@
      "May 2026"
     ],
     [
-     "167",
+     "175",
      "NVIDIA",
      "Nemotron 3 Ultra 550B A55B (Reasoning)",
      "877",
@@ -11304,7 +11735,7 @@
      "Jun 2026"
     ],
     [
-     "168",
+     "176",
      "Google",
      "Gemini 3.5 Flash (High)",
      "876",
@@ -11312,7 +11743,7 @@
      "May 2026"
     ],
     [
-     "169",
+     "177",
      "OpenAI",
      "GPT-5.3 Codex (Xhigh)",
      "868",
@@ -11320,7 +11751,7 @@
      "Feb 2026"
     ],
     [
-     "170",
+     "178",
      "Upstage",
      "Solar Mini 4",
      "868",
@@ -11328,7 +11759,7 @@
      "Sep 2026"
     ],
     [
-     "171",
+     "179",
      "Kimi",
      "Kimi K2.7 Code",
      "858",
@@ -11336,7 +11767,7 @@
      "Jun 2026"
     ],
     [
-     "172",
+     "180",
      "Meta",
      "Muse Spark 1.1 (Xhigh)",
      "851",
@@ -11344,7 +11775,7 @@
      "Jul 2026"
     ],
     [
-     "173",
+     "181",
      "DeepSeek",
      "DeepSeek V4 Flash 0420 (Max)",
      "836",
@@ -11352,7 +11783,7 @@
      "Apr 2026"
     ],
     [
-     "174",
+     "182",
      "Thinking Machines",
      "Inkling (Xhigh)",
      "833",
@@ -11360,7 +11791,7 @@
      "Jul 2026"
     ],
     [
-     "175",
+     "183",
      "Kimi",
      "Kimi K2.6 (Reasoning)",
      "820",
@@ -11368,7 +11799,7 @@
      "Apr 2026"
     ],
     [
-     "176",
+     "184",
      "Alibaba",
      "Qwen3.6 27B (Reasoning)",
      "816",
@@ -11376,7 +11807,7 @@
      "Apr 2026"
     ],
     [
-     "177",
+     "185",
      "InclusionAI",
      "Ling 3.0 Flash",
      "798",
@@ -11384,7 +11815,7 @@
      "Aug 2026"
     ],
     [
-     "178",
+     "186",
      "Institute of Foundation Models",
      "K2 Horizon 3.7B",
      "793",
@@ -11392,7 +11823,7 @@
      "Sep 2026"
     ],
     [
-     "179",
+     "187",
      "SpaceXAI",
      "Grok 4.3 (High)",
      "763",
@@ -11400,7 +11831,7 @@
      "Apr 2026"
     ],
     [
-     "180",
+     "188",
      "Xiaomi",
      "MiMo-V2.5",
      "754",
@@ -11408,7 +11839,7 @@
      "Apr 2026"
     ],
     [
-     "181",
+     "189",
      "OpenAI",
      "GPT-5.6 Luna (Low)",
      "741",
@@ -11416,7 +11847,7 @@
      "Jul 2026"
     ],
     [
-     "182",
+     "190",
      "OpenAI",
      "GPT-6 Luna (Low)",
      "740",
@@ -11424,7 +11855,7 @@
      "Sep 2026"
     ],
     [
-     "183",
+     "191",
      "LongCat",
      "LongCat 2.0",
      "740",
@@ -11432,7 +11863,7 @@
      "Jun 2026"
     ],
     [
-     "184",
+     "192",
      "SK Telecom",
      "A.X-K2",
      "739",
@@ -11440,7 +11871,7 @@
      "Aug 2026"
     ],
     [
-     "185",
+     "193",
      "SpaceXAI",
      "Grok 4.3 (Non-reasoning)",
      "724",
@@ -11448,7 +11879,7 @@
      "Apr 2026"
     ],
     [
-     "186",
+     "194",
      "OpenAI",
      "GPT-5.4 mini (Xhigh)",
      "720",
@@ -11456,7 +11887,7 @@
      "Mar 2026"
     ],
     [
-     "187",
+     "195",
      "MiniMax",
      "MiniMax-M2.7",
      "719",
@@ -11464,7 +11895,7 @@
      "Mar 2026"
     ],
     [
-     "188",
+     "196",
      "Anthropic",
      "Claude 4.5 Sonnet (Reasoning)",
      "714",
@@ -11472,7 +11903,7 @@
      "Sep 2025"
     ],
     [
-     "189",
+     "197",
      "Alibaba",
      "Qwen3.6 35B A3B (Reasoning)",
      "713",
@@ -11480,7 +11911,7 @@
      "Apr 2026"
     ],
     [
-     "190",
+     "198",
      "OpenAI",
      "GPT-5.6 Luna (Non-reasoning)",
      "707",
@@ -11488,7 +11919,7 @@
      "Jul 2026"
     ],
     [
-     "191",
+     "199",
      "OpenAI",
      "GPT-5.4 nano (Xhigh)",
      "674",
@@ -11496,7 +11927,7 @@
      "Mar 2026"
     ],
     [
-     "192",
+     "200",
      "InclusionAI",
      "Ring-2.6-1T",
      "658",
@@ -11504,7 +11935,7 @@
      "May 2026"
     ],
     [
-     "193",
+     "201",
      "Google",
      "Gemini 3.5 Flash-Lite",
      "651",
@@ -11512,7 +11943,7 @@
      "Jul 2026"
     ],
     [
-     "194",
+     "202",
      "LG AI Research",
      "K-EXAONE 2.0",
      "651",
@@ -11520,7 +11951,7 @@
      "Aug 2026"
     ],
     [
-     "195",
+     "203",
      "Meta",
      "Muse Spark",
      "646",
@@ -11528,7 +11959,7 @@
      "Apr 2026"
     ],
     [
-     "196",
+     "204",
      "Anthropic",
      "Claude 4.5 Haiku (Reasoning)",
      "617",
@@ -11536,7 +11967,7 @@
      "Oct 2025"
     ],
     [
-     "197",
+     "205",
      "KwaiKAT",
      "KAT-Coder-Pro V1",
      "602",
@@ -11544,7 +11975,7 @@
      "Nov 2025"
     ],
     [
-     "198",
+     "206",
      "Alibaba",
      "Qwen3.5 397B A17B (Reasoning)",
      "563",
@@ -11552,7 +11983,7 @@
      "Feb 2026"
     ],
     [
-     "199",
+     "207",
      "Mistral",
      "Mistral Medium 3.1",
      "531",
@@ -11560,7 +11991,7 @@
      "Aug 2025"
     ],
     [
-     "200",
+     "208",
      "Mistral",
      "Mistral Medium 3.5",
      "523",
@@ -11568,7 +11999,7 @@
      "Apr 2026"
     ],
     [
-     "201",
+     "209",
      "NVIDIA",
      "Nemotron 3.5 Lightning",
      "507",
@@ -11576,7 +12007,7 @@
      "Aug 2026"
     ],
     [
-     "202",
+     "210",
      "Alibaba",
      "Qwen3.5 122B A10B (Reasoning)",
      "497",
@@ -11584,7 +12015,7 @@
      "Feb 2026"
     ],
     [
-     "203",
+     "211",
      "Mistral",
      "Devstral Small 2",
      "496",
@@ -11592,7 +12023,7 @@
      "Dec 2025"
     ],
     [
-     "204",
+     "212",
      "Mistral",
      "Devstral 2",
      "483",
@@ -11600,7 +12031,7 @@
      "Dec 2025"
     ],
     [
-     "205",
+     "213",
      "Meta",
      "Muse Glimmer (High)",
      "478",
@@ -11608,7 +12039,7 @@
      "Aug 2026"
     ],
     [
-     "206",
+     "214",
      "InclusionAI",
      "Ling 3.0 Tiny",
      "476",
@@ -11616,7 +12047,7 @@
      "Aug 2026"
     ],
     [
-     "207",
+     "215",
      "DeepSeek",
      "DeepSeek V3.1 Terminus (Reasoning)",
      "459",
@@ -11624,7 +12055,7 @@
      "Sep 2025"
     ],
     [
-     "208",
+     "216",
      "Google",
      "Gemini 3.1 Pro Preview",
      "457",
@@ -11632,7 +12063,7 @@
      "Feb 2026"
     ],
     [
-     "209",
+     "217",
      "OpenAI",
      "GPT-5 mini (High)",
      "429",
@@ -11640,7 +12071,7 @@
      "Aug 2025"
     ],
     [
-     "210",
+     "218",
      "OpenBMB",
      "MiniCPM5-2B",
      "423",
@@ -11648,7 +12079,7 @@
      "Sep 2026"
     ],
     [
-     "211",
+     "219",
      "Alibaba",
      "Qwen3 Coder Next",
      "404",
@@ -11656,7 +12087,7 @@
      "Feb 2026"
     ],
     [
-     "212",
+     "220",
      "IBM",
      "Granite 4.2 30B",
      "395",
@@ -11664,7 +12095,7 @@
      "Aug 2026"
     ],
     [
-     "213",
+     "221",
      "Inception",
      "Mercury 2.5",
      "378",
@@ -11672,7 +12103,7 @@
      "Sep 2026"
     ],
     [
-     "214",
+     "222",
      "Google",
      "Gemma 4 31B (Reasoning)",
      "369",
@@ -11680,7 +12111,7 @@
      "Apr 2026"
     ],
     [
-     "215",
+     "223",
      "Cohere",
      "Command A+",
      "356",
@@ -11688,7 +12119,7 @@
      "May 2026"
     ],
     [
-     "216",
+     "224",
      "Alibaba",
      "Qwen3.5 9B (Reasoning)",
      "341",
@@ -11696,7 +12127,7 @@
      "Mar 2026"
     ],
     [
-     "217",
+     "225",
      "Google",
      "Gemma 4 26B A4B (Reasoning)",
      "316",
@@ -11704,7 +12135,7 @@
      "Apr 2026"
     ],
     [
-     "218",
+     "226",
      "Mistral",
      "Mistral Small 3.1",
      "314",
@@ -11712,7 +12143,7 @@
      "Mar 2025"
     ],
     [
-     "219",
+     "227",
      "IBM",
      "Granite 4.2 8B",
      "310",
@@ -11720,7 +12151,7 @@
      "Aug 2026"
     ],
     [
-     "220",
+     "228",
      "Google",
      "Gemini 2.5 Pro",
      "303",
@@ -11728,7 +12159,7 @@
      "Jun 2025"
     ],
     [
-     "221",
+     "229",
      "Inception",
      "Mercury 2",
      "266",
@@ -11736,7 +12167,7 @@
      "Feb 2026"
     ],
     [
-     "222",
+     "230",
      "Arcee AI",
      "Trinity Large Thinking",
      "256",
@@ -11744,7 +12175,7 @@
      "Apr 2026"
     ],
     [
-     "223",
+     "231",
      "Mistral",
      "Mistral Small 4 (Reasoning)",
      "241",
@@ -11752,7 +12183,7 @@
      "Mar 2026"
     ],
     [
-     "224",
+     "232",
      "Multiverse Computing",
      "HyperNova 60B 2605 (High, Based on gpt-oss-120b)",
      "232",
@@ -11760,7 +12191,7 @@
      "May 2026"
     ],
     [
-     "225",
+     "233",
      "Mistral",
      "Mistral Large 3",
      "229",
@@ -11768,7 +12199,7 @@
      "Dec 2025"
     ],
     [
-     "226",
+     "234",
      "Cohere",
      "North Mini Code",
      "212",
@@ -11776,7 +12207,7 @@
      "Jun 2026"
     ],
     [
-     "227",
+     "235",
      "Google",
      "Gemini 3.1 Flash-Lite",
      "208",
@@ -11784,7 +12215,7 @@
      "Mar 2026"
     ],
     [
-     "228",
+     "236",
      "Alibaba",
      "Qwen3 235B A22B 2507 (Reasoning)",
      "170",
@@ -11792,7 +12223,7 @@
      "Jul 2025"
     ],
     [
-     "229",
+     "237",
      "Celeris",
      "Celeris-1",
      "152",
@@ -11800,7 +12231,7 @@
      "Jul 2026"
     ],
     [
-     "230",
+     "238",
      "OpenAI",
      "o3-mini (High)",
      "142",
@@ -11808,7 +12239,7 @@
      "Jan 2025"
     ],
     [
-     "231",
+     "239",
      "Mistral",
      "Ministral 3 14B",
      "132",
@@ -11816,7 +12247,7 @@
      "Dec 2025"
     ],
     [
-     "232",
+     "240",
      "DeepSeek",
      "DeepSeek R1 (Jan '25)",
      "129",
@@ -11824,7 +12255,7 @@
      "Jan 2025"
     ],
     [
-     "233",
+     "241",
      "Upstage",
      "Solar Pro 3",
      "100",
@@ -11832,7 +12263,7 @@
      "Apr 2026"
     ],
     [
-     "234",
+     "242",
      "IBM",
      "Granite 4.2 3B",
      "99",
@@ -11840,7 +12271,7 @@
      "Aug 2026"
     ],
     [
-     "235",
+     "243",
      "DeepSeek",
      "DeepSeek V3 (Dec '24)",
      "78",
@@ -11848,7 +12279,7 @@
      "Dec 2024"
     ],
     [
-     "236",
+     "244",
      "NVIDIA",
      "NVIDIA Nemotron 3 Nano 30B A3B (Reasoning)",
      "78",
@@ -11856,7 +12287,7 @@
      "Dec 2025"
     ],
     [
-     "237",
+     "245",
      "Mistral",
      "Ministral 3 8B",
      "78",
@@ -11864,7 +12295,7 @@
      "Dec 2025"
     ],
     [
-     "238",
+     "246",
      "DeepSeek",
      "DeepSeek V3 0324",
      "69",
@@ -11872,7 +12303,7 @@
      "Mar 2025"
     ],
     [
-     "239",
+     "247",
      "Institute of Foundation Models",
      "K2 Think V2",
      "8",
@@ -11880,7 +12311,7 @@
      "Dec 2025"
     ],
     [
-     "240",
+     "248",
      "Alibaba",
      "Qwen3 30B A3B 2507 (Reasoning)",
      "6",
@@ -11888,7 +12319,15 @@
      "Jul 2025"
     ],
     [
-     "241",
+     "249",
+     "OpenAI",
+     "gpt-oss-120b (High)",
+     "0",
+     "-0 / +0",
+     "Aug 2025"
+    ],
+    [
+     "250",
      "NVIDIA",
      "NVIDIA Nemotron 3 Nano 4B",
      "0",
@@ -11896,7 +12335,7 @@
      "Mar 2026"
     ],
     [
-     "242",
+     "251",
      "OpenAI",
      "gpt-oss-20b (High)",
      "0",
@@ -11904,7 +12343,7 @@
      "Aug 2025"
     ],
     [
-     "243",
+     "252",
      "Mistral",
      "Mistral Small 3.2",
      "0",
@@ -11912,7 +12351,7 @@
      "Jun 2025"
     ],
     [
-     "244",
+     "253",
      "Alibaba",
      "Qwen3 14B (Reasoning)",
      "0",
@@ -11920,7 +12359,7 @@
      "Apr 2025"
     ],
     [
-     "245",
+     "254",
      "NVIDIA",
      "Nemotron 3 Super 120B A12B (Reasoning)",
      "0",
@@ -11928,7 +12367,7 @@
      "Mar 2026"
     ],
     [
-     "246",
+     "255",
      "Mistral",
      "Ministral 3 3B",
      "0",
@@ -11936,7 +12375,7 @@
      "Dec 2025"
     ],
     [
-     "247",
+     "256",
      "Meta",
      "Llama 4 Maverick",
      "0",
@@ -11944,7 +12383,7 @@
      "Apr 2025"
     ],
     [
-     "248",
+     "257",
      "Alibaba",
      "Qwen3 8B (Reasoning)",
      "0",
@@ -11952,7 +12391,7 @@
      "Apr 2025"
     ],
     [
-     "249",
+     "258",
      "Institute of Foundation Models",
      "K2 Horizon 0.9B",
      "0",
@@ -11960,7 +12399,7 @@
      "Sep 2026"
     ],
     [
-     "250",
+     "259",
      "Meta",
      "Llama 4 Scout",
      "0",
@@ -11968,7 +12407,7 @@
      "Apr 2025"
     ],
     [
-     "251",
+     "260",
      "Alibaba",
      "Qwen3 32B (Reasoning)",
      "0",
@@ -11976,20 +12415,12 @@
      "Apr 2025"
     ],
     [
-     "252",
+     "261",
      "Google",
      "Gemma 4 E4B (Reasoning)",
      "0",
      "-0 / +0",
      "Apr 2026"
-    ],
-    [
-     "253",
-     "OpenAI",
-     "gpt-oss-120b (High)",
-     "0",
-     "-0 / +0",
-     "Aug 2025"
     ]
    ]
   }

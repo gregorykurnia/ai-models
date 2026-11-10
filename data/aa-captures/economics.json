@@ -1,12 +1,39 @@
 {
  "key": "economics",
  "source_url": "https://artificialanalysis.ai/models/capabilities/economics",
- "captured_at": "2026-11-07",
+ "captured_at": "2026-11-10",
  "selectors": 8,
  "charts": [
   {
    "title": "Artificial Analysis Economics Index",
    "items": [
+    {
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "label": "Claude Fable 5.2 (max)",
+     "tooltipLabel": "Claude Fable 5.2 (Max, Default Fallback)",
+     "value": 66.5243666666667,
+     "displayValue": "67",
+     "url": "/models/claude-fable-5-2",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "label": "Claude Fable 5.2 (xhigh)",
+     "tooltipLabel": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "value": 64.0267,
+     "displayValue": "64",
+     "url": "/models/claude-fable-5-2-xhigh",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "label": "Claude Fable 5.2 (high)",
+     "tooltipLabel": "Claude Fable 5.2 (High, Default Fallback)",
+     "value": 62.7482666666667,
+     "displayValue": "63",
+     "url": "/models/claude-fable-5-2-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
     {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
      "label": "Claude Opus 5.5 (max)",
@@ -17,6 +44,15 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "label": "Claude Fable 5.2 (medium)",
+     "tooltipLabel": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "value": 60.25015,
+     "displayValue": "60",
+     "url": "/models/claude-fable-5-2-medium",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
      "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
      "label": "Gemini 4 Carbon (high)",
      "tooltipLabel": "Gemini 4 Carbon (High)",
@@ -24,6 +60,15 @@
      "displayValue": "60",
      "url": "/models/gemini-4-carbon",
      "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "label": "Claude Fable 5.2 (low)",
+     "tooltipLabel": "Claude Fable 5.2 (Low, Default Fallback)",
+     "value": 58.4928666666667,
+     "displayValue": "58",
+     "url": "/models/claude-fable-5-2-low",
+     "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "df5bf99d-d228-4715-b41b-19ca86118777",
@@ -422,6 +467,15 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "dbf63365-127f-41ee-9e51-81173adb3502",
+     "label": "Muse Ember (max)",
+     "tooltipLabel": "Muse Ember (Max)",
+     "value": 40.9526333333333,
+     "displayValue": "41",
+     "url": "/models/muse-ember",
+     "logo": "/img/logos/meta.svg"
+    },
+    {
      "id": "c441e158-a87d-4116-911b-93325e4b4f1c",
      "label": "GPT-6.1 Terra (medium)",
      "tooltipLabel": "GPT-6.1 Terra (Medium)",
@@ -429,6 +483,15 @@
      "displayValue": "41",
      "url": "/models/gpt-6-1-terra-medium",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "7a64ffc4-36c3-4369-981e-73abdd6ff5e2",
+     "label": "Muse Ember (xhigh)",
+     "tooltipLabel": "Muse Ember (Xhigh)",
+     "value": 40.4375166666667,
+     "displayValue": "40",
+     "url": "/models/muse-ember-xhigh",
+     "logo": "/img/logos/meta.svg"
     },
     {
      "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
@@ -627,6 +690,15 @@
      "displayValue": "34",
      "url": "/models/mistral-large-4-preview",
      "logo": "/img/logos/mistral.svg"
+    },
+    {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "label": "Agnes 2.5 Pro Theta",
+     "tooltipLabel": "Agnes 2.5 Pro Theta",
+     "value": 34.3694,
+     "displayValue": "34",
+     "url": "/models/agnes-2-5-pro-theta",
+     "logo": "/img/logos/sapiens.svg"
     },
     {
      "id": "af26fff4-8120-41be-a5f0-86aaea023f20",
@@ -1079,6 +1151,15 @@
      "logo": "/img/logos/google.svg"
     },
     {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "label": "gpt-oss-120b (high)",
+     "tooltipLabel": "gpt-oss-120b (High)",
+     "value": 9.01333333333333,
+     "displayValue": "9",
+     "url": "/models/gpt-oss-120b",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "9ee13921-62a4-425a-a22b-df3302198d93",
      "label": "Nemotron 3 Nano 4B",
      "tooltipLabel": "NVIDIA Nemotron 3 Nano 4B",
@@ -1198,11 +1279,25 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "7a64ffc4-36c3-4369-981e-73abdd6ff5e2",
+     "label": "Muse Ember (xhigh)",
+     "tooltipLabel": "Muse Ember (Xhigh)",
+     "url": "/models/muse-ember-xhigh",
+     "logo": "/img/logos/meta.svg"
+    },
+    {
      "id": "af26fff4-8120-41be-a5f0-86aaea023f20",
      "label": "Claude Haiku 5.5 (medium)",
      "tooltipLabel": "Claude Haiku 5.5 (Medium)",
      "url": "/models/claude-haiku-5-5-medium",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "dbf63365-127f-41ee-9e51-81173adb3502",
+     "label": "Muse Ember (max)",
+     "tooltipLabel": "Muse Ember (Max)",
+     "url": "/models/muse-ember",
+     "logo": "/img/logos/meta.svg"
     },
     {
      "id": "c955b262-a17f-4f1a-b097-6860b866295b",
@@ -1261,18 +1356,18 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "29976311-665a-4b2f-ac72-557c33e0758e",
-     "label": "Nemotron 3.5 Lightning",
-     "tooltipLabel": "Nemotron 3.5 Lightning",
-     "url": "/models/nemotron-3-5-lightning",
-     "logo": "/img/logos/nvidia.svg"
-    },
-    {
      "id": "0d3c777f-6817-42d7-9bb9-223314bc5a57",
      "label": "GPT-6.1 Terra (non-reasoning)",
      "tooltipLabel": "GPT-6.1 Terra (Non-reasoning)",
      "url": "/models/gpt-6-1-terra-non-reasoning",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "29976311-665a-4b2f-ac72-557c33e0758e",
+     "label": "Nemotron 3.5 Lightning",
+     "tooltipLabel": "Nemotron 3.5 Lightning",
+     "url": "/models/nemotron-3-5-lightning",
+     "logo": "/img/logos/nvidia.svg"
     },
     {
      "id": "e76e0fe5-93ca-4272-9359-2eb1740467d1",
@@ -1371,6 +1466,13 @@
      "tooltipLabel": "MiniMax-M3.1-Flash",
      "url": "/models/minimax-m3-1-flash",
      "logo": "/img/logos/minimax.svg"
+    },
+    {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "label": "gpt-oss-120b (high)",
+     "tooltipLabel": "gpt-oss-120b (High)",
+     "url": "/models/gpt-oss-120b",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "26e0f83a-ca98-4f34-94ac-7c5e251ee410",
@@ -1504,6 +1606,13 @@
      "tooltipLabel": "GPT-6.1 Sol (Xhigh)",
      "url": "/models/gpt-6-1-sol-xhigh",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "label": "Agnes 2.5 Pro Theta",
+     "tooltipLabel": "Agnes 2.5 Pro Theta",
+     "url": "/models/agnes-2-5-pro-theta",
+     "logo": "/img/logos/sapiens.svg"
     },
     {
      "id": "d274918e-ea82-4951-8b37-8ed9ab898dbc",
@@ -1723,6 +1832,13 @@
      "logo": "/img/logos/meta.svg"
     },
     {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "label": "Claude Fable 5.2 (low)",
+     "tooltipLabel": "Claude Fable 5.2 (Low, Default Fallback)",
+     "url": "/models/claude-fable-5-2-low",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
      "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
      "label": "Grok 4.7 (high)",
      "tooltipLabel": "Grok 4.7 (High)",
@@ -1749,6 +1865,13 @@
      "tooltipLabel": "Gemini 3.8 Flash (High)",
      "url": "/models/gemini-3-8-flash",
      "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "label": "Claude Fable 5.2 (medium)",
+     "tooltipLabel": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "url": "/models/claude-fable-5-2-medium",
+     "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
@@ -1849,6 +1972,13 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "label": "Claude Fable 5.2 (high)",
+     "tooltipLabel": "Claude Fable 5.2 (High, Default Fallback)",
+     "url": "/models/claude-fable-5-2-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
      "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
      "label": "Claude Opus 5 (max)",
      "tooltipLabel": "Claude Opus 5 (Max)",
@@ -1889,6 +2019,20 @@
      "tooltipLabel": "Claude Fable 5.1 (Max, Default Fallback)",
      "url": "/models/claude-fable-5-1",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "label": "Claude Fable 5.2 (xhigh)",
+     "tooltipLabel": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "url": "/models/claude-fable-5-2-xhigh",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "label": "Claude Fable 5.2 (max)",
+     "tooltipLabel": "Claude Fable 5.2 (Max, Default Fallback)",
+     "url": "/models/claude-fable-5-2",
+     "logo": "/img/logos/anthropic.svg"
     }
    ]
   },
@@ -1896,102 +2040,36 @@
    "title": "Artificial Analysis Economics Index vs. Cost per Task",
    "items": [
     {
-     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
-     "slug": "gemini-4-carbon",
-     "name": "Gemini 4 Carbon (High)",
-     "shortName": "Gemini 4 Carbon (high)",
-     "releaseDate": "2026-10-28",
-     "creatorName": "Google",
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "slug": "claude-fable-5-2",
+     "name": "Claude Fable 5.2 (Max, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (max)",
+     "releaseDate": "2026-11-09",
+     "creatorName": "Anthropic",
      "costPerTask": {
-      "total": 3.056236847688971
+      "total": 18.68349572981593
      }
     },
     {
-     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
-     "slug": "gemini-4-carbon-medium",
-     "name": "Gemini 4 Carbon (Medium)",
-     "shortName": "Gemini 4 Carbon (medium)",
-     "releaseDate": "2026-10-28",
-     "creatorName": "Google",
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "slug": "claude-fable-5-2-xhigh",
+     "name": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (xhigh)",
+     "releaseDate": "2026-11-09",
+     "creatorName": "Anthropic",
      "costPerTask": {
-      "total": 2.3946853130111037
+      "total": 9.076042383492366
      }
     },
     {
-     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
-     "slug": "gemini-4-carbon-low",
-     "name": "Gemini 4 Carbon (Low)",
-     "shortName": "Gemini 4 Carbon (low)",
-     "releaseDate": "2026-10-28",
-     "creatorName": "Google",
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "slug": "claude-fable-5-2-high",
+     "name": "Claude Fable 5.2 (High, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (high)",
+     "releaseDate": "2026-11-09",
+     "creatorName": "Anthropic",
      "costPerTask": {
-      "total": 2.389324566787552
-     }
-    },
-    {
-     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
-     "slug": "gemini-4-argon",
-     "name": "Gemini 4 Argon (High)",
-     "shortName": "Gemini 4 Argon (high)",
-     "releaseDate": "2026-09-30",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 3.700803576868974
-     }
-    },
-    {
-     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
-     "slug": "gemini-3-8-flash",
-     "name": "Gemini 3.8 Flash (High)",
-     "shortName": "Gemini 3.8 Flash (high)",
-     "releaseDate": "2026-09-02",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 2.3017173476361004
-     }
-    },
-    {
-     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
-     "slug": "gemini-3-8-flash-medium",
-     "name": "Gemini 3.8 Flash (Medium)",
-     "shortName": "Gemini 3.8 Flash (medium)",
-     "releaseDate": "2026-09-02",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 1.624997276639471
-     }
-    },
-    {
-     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
-     "slug": "gemini-3-8-flash-low",
-     "name": "Gemini 3.8 Flash (Low)",
-     "shortName": "Gemini 3.8 Flash (low)",
-     "releaseDate": "2026-09-02",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 0.018291570428571425
-     }
-    },
-    {
-     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
-     "slug": "gemini-3-5-flash-lite",
-     "name": "Gemini 3.5 Flash-Lite",
-     "shortName": "Gemini 3.5 Flash-Lite",
-     "releaseDate": "2026-07-21",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 0.05800515887340083
-     }
-    },
-    {
-     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
-     "slug": "gemini-3-1-flash-lite-preview",
-     "name": "Gemini 3.1 Flash-Lite",
-     "shortName": "Gemini 3.1 Flash-Lite",
-     "releaseDate": "2026-03-03",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 0.02214290626796121
+      "total": 5.015571544254909
      }
     },
     {
@@ -2017,6 +2095,17 @@
      }
     },
     {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "slug": "claude-fable-5-2-medium",
+     "name": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (medium)",
+     "releaseDate": "2026-11-09",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 2.335470626347148
+     }
+    },
+    {
      "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
      "slug": "claude-sonnet-5-5",
      "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
@@ -2025,6 +2114,17 @@
      "creatorName": "Anthropic",
      "costPerTask": {
       "total": 6.507797512397782
+     }
+    },
+    {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "slug": "claude-fable-5-2-low",
+     "name": "Claude Fable 5.2 (Low, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (low)",
+     "releaseDate": "2026-11-09",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 1.9521263842338468
      }
     },
     {
@@ -2234,6 +2334,105 @@
      "creatorName": "Anthropic",
      "costPerTask": {
       "total": 0.1543922551894772
+     }
+    },
+    {
+     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+     "slug": "gemini-4-carbon",
+     "name": "Gemini 4 Carbon (High)",
+     "shortName": "Gemini 4 Carbon (high)",
+     "releaseDate": "2026-10-28",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 3.056236847688971
+     }
+    },
+    {
+     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
+     "slug": "gemini-4-carbon-medium",
+     "name": "Gemini 4 Carbon (Medium)",
+     "shortName": "Gemini 4 Carbon (medium)",
+     "releaseDate": "2026-10-28",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 2.3946853130111037
+     }
+    },
+    {
+     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
+     "slug": "gemini-4-carbon-low",
+     "name": "Gemini 4 Carbon (Low)",
+     "shortName": "Gemini 4 Carbon (low)",
+     "releaseDate": "2026-10-28",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 2.389324566787552
+     }
+    },
+    {
+     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
+     "slug": "gemini-4-argon",
+     "name": "Gemini 4 Argon (High)",
+     "shortName": "Gemini 4 Argon (high)",
+     "releaseDate": "2026-09-30",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 3.700803576868974
+     }
+    },
+    {
+     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+     "slug": "gemini-3-8-flash",
+     "name": "Gemini 3.8 Flash (High)",
+     "shortName": "Gemini 3.8 Flash (high)",
+     "releaseDate": "2026-09-02",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 2.3017173476361004
+     }
+    },
+    {
+     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
+     "slug": "gemini-3-8-flash-medium",
+     "name": "Gemini 3.8 Flash (Medium)",
+     "shortName": "Gemini 3.8 Flash (medium)",
+     "releaseDate": "2026-09-02",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.624997276639471
+     }
+    },
+    {
+     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
+     "slug": "gemini-3-8-flash-low",
+     "name": "Gemini 3.8 Flash (Low)",
+     "shortName": "Gemini 3.8 Flash (low)",
+     "releaseDate": "2026-09-02",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.018291570428571425
+     }
+    },
+    {
+     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+     "slug": "gemini-3-5-flash-lite",
+     "name": "Gemini 3.5 Flash-Lite",
+     "shortName": "Gemini 3.5 Flash-Lite",
+     "releaseDate": "2026-07-21",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.05800515887340083
+     }
+    },
+    {
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "slug": "gemini-3-1-flash-lite-preview",
+     "name": "Gemini 3.1 Flash-Lite",
+     "shortName": "Gemini 3.1 Flash-Lite",
+     "releaseDate": "2026-03-03",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.02214290626796121
      }
     },
     {
@@ -2512,6 +2711,17 @@
      }
     },
     {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "slug": "gpt-oss-120b",
+     "name": "gpt-oss-120b (High)",
+     "shortName": "gpt-oss-120b (high)",
+     "releaseDate": "2025-08-05",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.17330310049293957
+     }
+    },
+    {
      "id": "26e0f83a-ca98-4f34-94ac-7c5e251ee410",
      "slug": "gpt-5-6-terra-medium",
      "name": "GPT-5.6 Terra (Medium)",
@@ -2600,6 +2810,28 @@
      }
     },
     {
+     "id": "dbf63365-127f-41ee-9e51-81173adb3502",
+     "slug": "muse-ember",
+     "name": "Muse Ember (Max)",
+     "shortName": "Muse Ember (max)",
+     "releaseDate": "2026-11-09",
+     "creatorName": "Meta",
+     "costPerTask": {
+      "total": 0.049543211250195625
+     }
+    },
+    {
+     "id": "7a64ffc4-36c3-4369-981e-73abdd6ff5e2",
+     "slug": "muse-ember-xhigh",
+     "name": "Muse Ember (Xhigh)",
+     "shortName": "Muse Ember (xhigh)",
+     "releaseDate": "2026-11-09",
+     "creatorName": "Meta",
+     "costPerTask": {
+      "total": 0.03738243091268571
+     }
+    },
+    {
      "id": "3661c8fb-caf7-4118-aa18-65b84fea8e44",
      "slug": "muse-spark-open",
      "name": "Muse Spark Open (Xhigh)",
@@ -2618,7 +2850,7 @@
      "releaseDate": "2026-08-10",
      "creatorName": "Meta",
      "costPerTask": {
-      "total": 0.02858730231725275
+      "total": 0.029605609619380645
      }
     },
     {
@@ -3040,6 +3272,17 @@
      }
     },
     {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "slug": "agnes-2-5-pro-theta",
+     "name": "Agnes 2.5 Pro Theta",
+     "shortName": "Agnes 2.5 Pro Theta",
+     "releaseDate": "2026-11-07",
+     "creatorName": "Sapiens AI",
+     "costPerTask": {
+      "total": 0.4080180543871105
+     }
+    },
+    {
      "id": "69468cce-7b5c-414a-b498-41df4c34df85",
      "slug": "reflection-beam",
      "name": "Beam 1.0",
@@ -3080,7 +3323,7 @@
      "releaseDate": "2026-08-11",
      "creatorName": "NVIDIA",
      "costPerTask": {
-      "total": 0.08688292264212193
+      "total": 0.09393674789418681
      }
     },
     {
@@ -3110,6 +3353,303 @@
   {
    "title": "Artificial Analysis Economics Index vs. Release Date",
    "items": [
+    {
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "slug": "claude-fable-5-2",
+     "name": "Claude Fable 5.2 (Max, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (max)",
+     "releaseDate": "2026-11-09",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 18.68349572981593
+     }
+    },
+    {
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "slug": "claude-fable-5-2-xhigh",
+     "name": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (xhigh)",
+     "releaseDate": "2026-11-09",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 9.076042383492366
+     }
+    },
+    {
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "slug": "claude-fable-5-2-high",
+     "name": "Claude Fable 5.2 (High, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (high)",
+     "releaseDate": "2026-11-09",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 5.015571544254909
+     }
+    },
+    {
+     "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
+     "slug": "claude-opus-5-5",
+     "name": "Claude Opus 5.5 (Max, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (max)",
+     "releaseDate": "2026-09-22",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 6.9019243618975965
+     }
+    },
+    {
+     "id": "df5bf99d-d228-4715-b41b-19ca86118777",
+     "slug": "claude-opus-5-5-xhigh",
+     "name": "Claude Opus 5.5 (Xhigh, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (xhigh)",
+     "releaseDate": "2026-09-22",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 3.9461232986772625
+     }
+    },
+    {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "slug": "claude-fable-5-2-medium",
+     "name": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (medium)",
+     "releaseDate": "2026-11-09",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 2.335470626347148
+     }
+    },
+    {
+     "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
+     "slug": "claude-sonnet-5-5",
+     "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (max)",
+     "releaseDate": "2026-09-28",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 6.507797512397782
+     }
+    },
+    {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "slug": "claude-fable-5-2-low",
+     "name": "Claude Fable 5.2 (Low, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (low)",
+     "releaseDate": "2026-11-09",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 1.9521263842338468
+     }
+    },
+    {
+     "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
+     "slug": "claude-opus-5-5-high",
+     "name": "Claude Opus 5.5 (High, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (high)",
+     "releaseDate": "2026-09-22",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 2.0560008838025365
+     }
+    },
+    {
+     "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
+     "slug": "claude-fable-5-1-xhigh",
+     "name": "Claude Fable 5.1 (Xhigh, Default Fallback)",
+     "shortName": "Claude Fable 5.1 (xhigh)",
+     "releaseDate": "2026-09-01",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 6.19088397555627
+     }
+    },
+    {
+     "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
+     "slug": "claude-sonnet-5-5-xhigh",
+     "name": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (xhigh)",
+     "releaseDate": "2026-09-28",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 2.2259775298436
+     }
+    },
+    {
+     "id": "3e87c73e-a257-495e-9730-367a66229811",
+     "slug": "claude-fable-5-1",
+     "name": "Claude Fable 5.1 (Max, Default Fallback)",
+     "shortName": "Claude Fable 5.1 (max)",
+     "releaseDate": "2026-09-01",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 8.02647571627054
+     }
+    },
+    {
+     "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
+     "slug": "claude-opus-5-5-medium",
+     "name": "Claude Opus 5.5 (Medium, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (medium)",
+     "releaseDate": "2026-09-22",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 1.4734823297012114
+     }
+    },
+    {
+     "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
+     "slug": "claude-fable-5-1-high",
+     "name": "Claude Fable 5.1 (High, Default Fallback)",
+     "shortName": "Claude Fable 5.1 (high)",
+     "releaseDate": "2026-09-01",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 3.9588350792653157
+     }
+    },
+    {
+     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
+     "slug": "claude-opus-5",
+     "name": "Claude Opus 5 (Max)",
+     "shortName": "Claude Opus 5 (max)",
+     "releaseDate": "2026-07-24",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 5.7729002073272575
+     }
+    },
+    {
+     "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
+     "slug": "claude-fable-5-1-medium",
+     "name": "Claude Fable 5.1 (Medium, Default Fallback)",
+     "shortName": "Claude Fable 5.1 (medium)",
+     "releaseDate": "2026-09-01",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 2.9893424969300577
+     }
+    },
+    {
+     "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
+     "slug": "claude-sonnet-5-5-high",
+     "name": "Claude Sonnet 5.5 (High, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (high)",
+     "releaseDate": "2026-09-28",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 1.0709209006803253
+     }
+    },
+    {
+     "id": "05776db7-f5c0-40f7-b824-079160f8cfa8",
+     "slug": "claude-fable-5-1-low",
+     "name": "Claude Fable 5.1 (Low, Default Fallback)",
+     "shortName": "Claude Fable 5.1 (low)",
+     "releaseDate": "2026-09-01",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 2.36279507147335
+     }
+    },
+    {
+     "id": "7d064a11-6e78-4030-b535-cdf940615041",
+     "slug": "claude-haiku-5-5",
+     "name": "Claude Haiku 5.5 (Max)",
+     "shortName": "Claude Haiku 5.5 (max)",
+     "releaseDate": "2026-10-07",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 0.22384840364008232
+     }
+    },
+    {
+     "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
+     "slug": "claude-opus-5-5-low",
+     "name": "Claude Opus 5.5 (Low, Default Fallback)",
+     "shortName": "Claude Opus 5.5 (low)",
+     "releaseDate": "2026-09-22",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 0.470969600037771
+     }
+    },
+    {
+     "id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
+     "slug": "claude-haiku-5-5-xhigh",
+     "name": "Claude Haiku 5.5 (Xhigh)",
+     "shortName": "Claude Haiku 5.5 (xhigh)",
+     "releaseDate": "2026-10-07",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 0.12009522306299358
+     }
+    },
+    {
+     "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
+     "slug": "claude-sonnet-5-5-medium",
+     "name": "Claude Sonnet 5.5 (Medium, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (medium)",
+     "releaseDate": "2026-09-28",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 0.4839531638270105
+     }
+    },
+    {
+     "id": "20829974-af06-497e-9f42-77fb958d43b9",
+     "slug": "claude-haiku-5-5-high",
+     "name": "Claude Haiku 5.5 (High)",
+     "shortName": "Claude Haiku 5.5 (high)",
+     "releaseDate": "2026-10-07",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 0.07315784804577448
+     }
+    },
+    {
+     "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
+     "slug": "claude-sonnet-5-5-low",
+     "name": "Claude Sonnet 5.5 (Low, Default Fallback)",
+     "shortName": "Claude Sonnet 5.5 (low)",
+     "releaseDate": "2026-09-28",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 0.3012060301387629
+     }
+    },
+    {
+     "id": "af26fff4-8120-41be-a5f0-86aaea023f20",
+     "slug": "claude-haiku-5-5-medium",
+     "name": "Claude Haiku 5.5 (Medium)",
+     "shortName": "Claude Haiku 5.5 (medium)",
+     "releaseDate": "2026-10-07",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 0.04415545289112806
+     }
+    },
+    {
+     "id": "42908ae3-d3bd-4934-be19-fbff93d3fde8",
+     "slug": "claude-haiku-5-5-low",
+     "name": "Claude Haiku 5.5 (Low)",
+     "shortName": "Claude Haiku 5.5 (low)",
+     "releaseDate": "2026-10-07",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 0.017560808844421755
+     }
+    },
+    {
+     "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
+     "slug": "claude-4-5-haiku-reasoning",
+     "name": "Claude 4.5 Haiku (Reasoning)",
+     "shortName": "Claude 4.5 Haiku",
+     "releaseDate": "2025-10-15",
+     "creatorName": "Anthropic",
+     "costPerTask": {
+      "total": 0.1543922551894772
+     }
+    },
     {
      "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
      "slug": "gemini-4-carbon",
@@ -3221,248 +3761,6 @@
      }
     },
     {
-     "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
-     "slug": "claude-opus-5-5",
-     "name": "Claude Opus 5.5 (Max, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (max)",
-     "releaseDate": "2026-09-22",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 6.9019243618975965
-     }
-    },
-    {
-     "id": "df5bf99d-d228-4715-b41b-19ca86118777",
-     "slug": "claude-opus-5-5-xhigh",
-     "name": "Claude Opus 5.5 (Xhigh, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (xhigh)",
-     "releaseDate": "2026-09-22",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 3.9461232986772625
-     }
-    },
-    {
-     "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
-     "slug": "claude-sonnet-5-5",
-     "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (max)",
-     "releaseDate": "2026-09-28",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 6.507797512397782
-     }
-    },
-    {
-     "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
-     "slug": "claude-opus-5-5-high",
-     "name": "Claude Opus 5.5 (High, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (high)",
-     "releaseDate": "2026-09-22",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 2.0560008838025365
-     }
-    },
-    {
-     "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
-     "slug": "claude-fable-5-1-xhigh",
-     "name": "Claude Fable 5.1 (Xhigh, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (xhigh)",
-     "releaseDate": "2026-09-01",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 6.19088397555627
-     }
-    },
-    {
-     "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
-     "slug": "claude-sonnet-5-5-xhigh",
-     "name": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (xhigh)",
-     "releaseDate": "2026-09-28",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 2.2259775298436
-     }
-    },
-    {
-     "id": "3e87c73e-a257-495e-9730-367a66229811",
-     "slug": "claude-fable-5-1",
-     "name": "Claude Fable 5.1 (Max, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (max)",
-     "releaseDate": "2026-09-01",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 8.02647571627054
-     }
-    },
-    {
-     "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
-     "slug": "claude-opus-5-5-medium",
-     "name": "Claude Opus 5.5 (Medium, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (medium)",
-     "releaseDate": "2026-09-22",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 1.4734823297012114
-     }
-    },
-    {
-     "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
-     "slug": "claude-fable-5-1-high",
-     "name": "Claude Fable 5.1 (High, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (high)",
-     "releaseDate": "2026-09-01",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 3.9588350792653157
-     }
-    },
-    {
-     "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
-     "slug": "claude-opus-5",
-     "name": "Claude Opus 5 (Max)",
-     "shortName": "Claude Opus 5 (max)",
-     "releaseDate": "2026-07-24",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 5.7729002073272575
-     }
-    },
-    {
-     "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
-     "slug": "claude-fable-5-1-medium",
-     "name": "Claude Fable 5.1 (Medium, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (medium)",
-     "releaseDate": "2026-09-01",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 2.9893424969300577
-     }
-    },
-    {
-     "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
-     "slug": "claude-sonnet-5-5-high",
-     "name": "Claude Sonnet 5.5 (High, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (high)",
-     "releaseDate": "2026-09-28",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 1.0709209006803253
-     }
-    },
-    {
-     "id": "05776db7-f5c0-40f7-b824-079160f8cfa8",
-     "slug": "claude-fable-5-1-low",
-     "name": "Claude Fable 5.1 (Low, Default Fallback)",
-     "shortName": "Claude Fable 5.1 (low)",
-     "releaseDate": "2026-09-01",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 2.36279507147335
-     }
-    },
-    {
-     "id": "7d064a11-6e78-4030-b535-cdf940615041",
-     "slug": "claude-haiku-5-5",
-     "name": "Claude Haiku 5.5 (Max)",
-     "shortName": "Claude Haiku 5.5 (max)",
-     "releaseDate": "2026-10-07",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 0.22384840364008232
-     }
-    },
-    {
-     "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
-     "slug": "claude-opus-5-5-low",
-     "name": "Claude Opus 5.5 (Low, Default Fallback)",
-     "shortName": "Claude Opus 5.5 (low)",
-     "releaseDate": "2026-09-22",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 0.470969600037771
-     }
-    },
-    {
-     "id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
-     "slug": "claude-haiku-5-5-xhigh",
-     "name": "Claude Haiku 5.5 (Xhigh)",
-     "shortName": "Claude Haiku 5.5 (xhigh)",
-     "releaseDate": "2026-10-07",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 0.12009522306299358
-     }
-    },
-    {
-     "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
-     "slug": "claude-sonnet-5-5-medium",
-     "name": "Claude Sonnet 5.5 (Medium, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (medium)",
-     "releaseDate": "2026-09-28",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 0.4839531638270105
-     }
-    },
-    {
-     "id": "20829974-af06-497e-9f42-77fb958d43b9",
-     "slug": "claude-haiku-5-5-high",
-     "name": "Claude Haiku 5.5 (High)",
-     "shortName": "Claude Haiku 5.5 (high)",
-     "releaseDate": "2026-10-07",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 0.07315784804577448
-     }
-    },
-    {
-     "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
-     "slug": "claude-sonnet-5-5-low",
-     "name": "Claude Sonnet 5.5 (Low, Default Fallback)",
-     "shortName": "Claude Sonnet 5.5 (low)",
-     "releaseDate": "2026-09-28",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 0.3012060301387629
-     }
-    },
-    {
-     "id": "af26fff4-8120-41be-a5f0-86aaea023f20",
-     "slug": "claude-haiku-5-5-medium",
-     "name": "Claude Haiku 5.5 (Medium)",
-     "shortName": "Claude Haiku 5.5 (medium)",
-     "releaseDate": "2026-10-07",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 0.04415545289112806
-     }
-    },
-    {
-     "id": "42908ae3-d3bd-4934-be19-fbff93d3fde8",
-     "slug": "claude-haiku-5-5-low",
-     "name": "Claude Haiku 5.5 (Low)",
-     "shortName": "Claude Haiku 5.5 (low)",
-     "releaseDate": "2026-10-07",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 0.017560808844421755
-     }
-    },
-    {
-     "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
-     "slug": "claude-4-5-haiku-reasoning",
-     "name": "Claude 4.5 Haiku (Reasoning)",
-     "shortName": "Claude 4.5 Haiku",
-     "releaseDate": "2025-10-15",
-     "creatorName": "Anthropic",
-     "costPerTask": {
-      "total": 0.1543922551894772
-     }
-    },
-    {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
      "slug": "gpt-6-astra",
      "name": "GPT-6 Astra (Max)",
@@ -3738,6 +4036,17 @@
      }
     },
     {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "slug": "gpt-oss-120b",
+     "name": "gpt-oss-120b (High)",
+     "shortName": "gpt-oss-120b (high)",
+     "releaseDate": "2025-08-05",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.17330310049293957
+     }
+    },
+    {
      "id": "26e0f83a-ca98-4f34-94ac-7c5e251ee410",
      "slug": "gpt-5-6-terra-medium",
      "name": "GPT-5.6 Terra (Medium)",
@@ -3834,6 +4143,28 @@
      }
     },
     {
+     "id": "dbf63365-127f-41ee-9e51-81173adb3502",
+     "slug": "muse-ember",
+     "name": "Muse Ember (Max)",
+     "shortName": "Muse Ember (max)",
+     "releaseDate": "2026-11-09",
+     "creatorName": "Meta",
+     "costPerTask": {
+      "total": 0.049543211250195625
+     }
+    },
+    {
+     "id": "7a64ffc4-36c3-4369-981e-73abdd6ff5e2",
+     "slug": "muse-ember-xhigh",
+     "name": "Muse Ember (Xhigh)",
+     "shortName": "Muse Ember (xhigh)",
+     "releaseDate": "2026-11-09",
+     "creatorName": "Meta",
+     "costPerTask": {
+      "total": 0.03738243091268571
+     }
+    },
+    {
      "id": "3661c8fb-caf7-4118-aa18-65b84fea8e44",
      "slug": "muse-spark-open",
      "name": "Muse Spark Open (Xhigh)",
@@ -3852,7 +4183,7 @@
      "releaseDate": "2026-08-10",
      "creatorName": "Meta",
      "costPerTask": {
-      "total": 0.02858730231725275
+      "total": 0.029605609619380645
      }
     },
     {
@@ -4274,6 +4605,17 @@
      }
     },
     {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "slug": "agnes-2-5-pro-theta",
+     "name": "Agnes 2.5 Pro Theta",
+     "shortName": "Agnes 2.5 Pro Theta",
+     "releaseDate": "2026-11-07",
+     "creatorName": "Sapiens AI",
+     "costPerTask": {
+      "total": 0.4080180543871105
+     }
+    },
+    {
      "id": "4cef9716-27a3-4ac3-9620-cd75135d7bbf",
      "slug": "nanbeige4-3-33b",
      "name": "Nanbeige4.3-33B",
@@ -4333,7 +4675,7 @@
      "releaseDate": "2026-08-11",
      "creatorName": "NVIDIA",
      "costPerTask": {
-      "total": 0.08688292264212193
+      "total": 0.09393674789418681
      }
     },
     {

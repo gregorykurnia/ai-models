@@ -1,12 +1,39 @@
 {
  "key": "critpt",
  "source_url": "https://artificialanalysis.ai/evaluations/critpt",
- "captured_at": "2026-11-07",
+ "captured_at": "2026-11-10",
  "selectors": 6,
  "charts": [
   {
    "title": "CritPt: Score",
    "items": [
+    {
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "label": "Claude Fable 5.2 (xhigh)",
+     "tooltipLabel": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "value": 0.357142857142857,
+     "displayValue": "35.7%",
+     "url": "/models/claude-fable-5-2-xhigh",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "label": "Claude Fable 5.2 (max)",
+     "tooltipLabel": "Claude Fable 5.2 (Max, Default Fallback)",
+     "value": 0.354285714285714,
+     "displayValue": "35.4%",
+     "url": "/models/claude-fable-5-2",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "label": "Claude Fable 5.2 (high)",
+     "tooltipLabel": "Claude Fable 5.2 (High, Default Fallback)",
+     "value": 0.328571428571429,
+     "displayValue": "32.9%",
+     "url": "/models/claude-fable-5-2-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
     {
      "id": "e994a6e0-d36b-4dab-8ae1-c1b469e4d9e2",
      "label": "Muse Wonder Full (max)",
@@ -107,6 +134,15 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "label": "Claude Fable 5.2 (medium)",
+     "tooltipLabel": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "value": 0.308571428571429,
+     "displayValue": "30.9%",
+     "url": "/models/claude-fable-5-2-medium",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
      "label": "Claude Opus 5.5 (high)",
      "tooltipLabel": "Claude Opus 5.5 (High, Default Fallback)",
@@ -176,6 +212,15 @@
      "value": 0.297142857142857,
      "displayValue": "29.7%",
      "url": "/models/claude-fable-5-1",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "label": "Claude Fable 5.2 (low)",
+     "tooltipLabel": "Claude Fable 5.2 (Low, Default Fallback)",
+     "value": 0.294285714285714,
+     "displayValue": "29.4%",
+     "url": "/models/claude-fable-5-2-low",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -915,6 +960,15 @@
      "displayValue": "15.1%",
      "url": "/models/muse-spark-1-1",
      "logo": "/img/logos/meta.svg"
+    },
+    {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "label": "Agnes 2.5 Pro Theta",
+     "tooltipLabel": "Agnes 2.5 Pro Theta",
+     "value": 0.151428571428571,
+     "displayValue": "15.1%",
+     "url": "/models/agnes-2-5-pro-theta",
+     "logo": "/img/logos/sapiens.svg"
     },
     {
      "id": "0904b596-8932-43bd-9b21-324f128e1723",
@@ -2186,6 +2240,15 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "label": "gpt-oss-120b (high)",
+     "tooltipLabel": "gpt-oss-120b (High)",
+     "value": 0.0114285714285714,
+     "displayValue": "1.1%",
+     "url": "/models/gpt-oss-120b",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "16c5b637-8bce-4252-81f2-1b87a36a4e4c",
      "label": "o3",
      "tooltipLabel": "o3",
@@ -2201,15 +2264,6 @@
      "value": 0.0114285714285714,
      "displayValue": "1.1%",
      "url": "/models/gpt-5-low",
-     "logo": "/img/logos/openai.svg"
-    },
-    {
-     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
-     "label": "gpt-oss-120b (high)",
-     "tooltipLabel": "gpt-oss-120b (High)",
-     "value": 0.0114285714285714,
-     "displayValue": "1.1%",
-     "url": "/models/gpt-oss-120b",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -5359,6 +5413,30 @@
    "title": "CritPt: Score vs. Cost per Task",
    "items": [
     {
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "slug": "claude-fable-5-2",
+     "name": "Claude Fable 5.2 (Max, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (max)",
+     "creatorName": "Anthropic",
+     "costPerTask": 4.163651885714286
+    },
+    {
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "slug": "claude-fable-5-2-xhigh",
+     "name": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (xhigh)",
+     "creatorName": "Anthropic",
+     "costPerTask": 2.5542921142857145
+    },
+    {
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "slug": "claude-fable-5-2-high",
+     "name": "Claude Fable 5.2 (High, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (high)",
+     "creatorName": "Anthropic",
+     "costPerTask": 1.3426812571428572
+    },
+    {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
      "slug": "claude-opus-5-5",
      "name": "Claude Opus 5.5 (Max, Default Fallback)",
@@ -5375,12 +5453,28 @@
      "costPerTask": 1.170762742857143
     },
     {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "slug": "claude-fable-5-2-medium",
+     "name": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (medium)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.5920003428571428
+    },
+    {
      "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
      "slug": "claude-sonnet-5-5",
      "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
      "shortName": "Claude Sonnet 5.5 (max)",
      "creatorName": "Anthropic",
      "costPerTask": 1.8915142857142857
+    },
+    {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "slug": "claude-fable-5-2-low",
+     "name": "Claude Fable 5.2 (Low, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (low)",
+     "creatorName": "Anthropic",
+     "costPerTask": 0.4542816
     },
     {
      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
@@ -5943,6 +6037,14 @@
      "costPerTask": 0.00076656
     },
     {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "slug": "gpt-oss-120b",
+     "name": "gpt-oss-120b (High)",
+     "shortName": "gpt-oss-120b (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.018508392857142855
+    },
+    {
      "id": "01459872-433a-4ab2-8e99-7083162172eb",
      "slug": "gpt-6-sol-low",
      "name": "GPT-6 Sol (Low)",
@@ -6493,14 +6595,6 @@
      "shortName": "GPT-5.5 Instant (May 2026)",
      "creatorName": "OpenAI",
      "costPerTask": 0.09696185714285716
-    },
-    {
-     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
-     "slug": "gpt-oss-120b",
-     "name": "gpt-oss-120b (High)",
-     "shortName": "gpt-oss-120b (high)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.018508392857142855
     },
     {
      "id": "fd4454ff-e703-46c0-a7f5-fa69af09486d",
@@ -8255,6 +8349,14 @@
      "costPerTask": 0.002506615714285714
     },
     {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "slug": "agnes-2-5-pro-theta",
+     "name": "Agnes 2.5 Pro Theta",
+     "shortName": "Agnes 2.5 Pro Theta",
+     "creatorName": "Sapiens AI",
+     "costPerTask": 0.03601962714285715
+    },
+    {
      "id": "bb3d7e75-8e22-4082-b9d6-1db0803e042f",
      "slug": "k2-horizon-375b-a23b",
      "name": "K2 Horizon 375B A23B",
@@ -9926,6 +10028,13 @@
      "logo": "/img/logos/mistral.svg"
     },
     {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "label": "Agnes 2.5 Pro Theta",
+     "tooltipLabel": "Agnes 2.5 Pro Theta",
+     "url": "/models/agnes-2-5-pro-theta",
+     "logo": "/img/logos/sapiens.svg"
+    },
+    {
      "id": "127de816-57d3-4037-8484-480a613cd413",
      "label": "MiMo-V2.6-Flash",
      "tooltipLabel": "MiMo-V2.6-Flash",
@@ -11151,6 +11260,13 @@
      "logo": "/img/logos/zai.svg"
     },
     {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "label": "Claude Fable 5.2 (low)",
+     "tooltipLabel": "Claude Fable 5.2 (Low, Default Fallback)",
+     "url": "/models/claude-fable-5-2-low",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
      "id": "effcd151-7c31-4437-af3d-e88daeae9385",
      "label": "Claude Sonnet 5 (medium)",
      "tooltipLabel": "Claude Sonnet 5 (Medium)",
@@ -11219,6 +11335,13 @@
      "tooltipLabel": "GPT-5.4 mini (Xhigh)",
      "url": "/models/gpt-5-4-mini",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "label": "Claude Fable 5.2 (medium)",
+     "tooltipLabel": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "url": "/models/claude-fable-5-2-medium",
+     "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
@@ -11389,6 +11512,13 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "label": "Claude Fable 5.2 (high)",
+     "tooltipLabel": "Claude Fable 5.2 (High, Default Fallback)",
+     "url": "/models/claude-fable-5-2-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
      "id": "ff51be8f-e362-4a7e-9043-687ba15de207",
      "label": "Claude Opus 5 (medium)",
      "tooltipLabel": "Claude Opus 5 (Medium)",
@@ -11466,6 +11596,13 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "label": "Claude Fable 5.2 (xhigh)",
+     "tooltipLabel": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "url": "/models/claude-fable-5-2-xhigh",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
      "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
      "label": "Claude Fable 5.1 (high)",
      "tooltipLabel": "Claude Fable 5.1 (High, Default Fallback)",
@@ -11491,6 +11628,13 @@
      "label": "Claude Sonnet 4.6 (max)",
      "tooltipLabel": "Claude Sonnet 4.6 (Max)",
      "url": "/models/claude-sonnet-4-6-adaptive",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "label": "Claude Fable 5.2 (max)",
+     "tooltipLabel": "Claude Fable 5.2 (Max, Default Fallback)",
+     "url": "/models/claude-fable-5-2",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -11534,6 +11678,30 @@
    "title": "CritPt: Score vs. Release Date",
    "items": [
     {
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "slug": "claude-fable-5-2",
+     "name": "Claude Fable 5.2 (Max, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (max)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
+    },
+    {
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "slug": "claude-fable-5-2-xhigh",
+     "name": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (xhigh)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
+    },
+    {
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "slug": "claude-fable-5-2-high",
+     "name": "Claude Fable 5.2 (High, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (high)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
+    },
+    {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
      "slug": "claude-opus-5-5",
      "name": "Claude Opus 5.5 (Max, Default Fallback)",
@@ -11550,12 +11718,28 @@
      "releaseDate": "2026-09-22"
     },
     {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "slug": "claude-fable-5-2-medium",
+     "name": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (medium)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
+    },
+    {
      "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
      "slug": "claude-sonnet-5-5",
      "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
      "shortName": "Claude Sonnet 5.5 (max)",
      "creatorName": "Anthropic",
      "releaseDate": "2026-09-28"
+    },
+    {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "slug": "claude-fable-5-2-low",
+     "name": "Claude Fable 5.2 (Low, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (low)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
     },
     {
      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
@@ -12158,6 +12342,14 @@
      "releaseDate": "2026-09-22"
     },
     {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "slug": "gpt-oss-120b",
+     "name": "gpt-oss-120b (High)",
+     "shortName": "gpt-oss-120b (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2025-08-05"
+    },
+    {
      "id": "01459872-433a-4ab2-8e99-7083162172eb",
      "slug": "gpt-6-sol-low",
      "name": "GPT-6 Sol (Low)",
@@ -12716,14 +12908,6 @@
      "shortName": "GPT-5.5 Instant (May 2026)",
      "creatorName": "OpenAI",
      "releaseDate": "2026-05-05"
-    },
-    {
-     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
-     "slug": "gpt-oss-120b",
-     "name": "gpt-oss-120b (High)",
-     "shortName": "gpt-oss-120b (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2025-08-05"
     },
     {
      "id": "fd4454ff-e703-46c0-a7f5-fa69af09486d",
@@ -15062,6 +15246,22 @@
      "releaseDate": "2025-12-09"
     },
     {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "slug": "agnes-2-5-pro-theta",
+     "name": "Agnes 2.5 Pro Theta",
+     "shortName": "Agnes 2.5 Pro Theta",
+     "creatorName": "Sapiens AI",
+     "releaseDate": "2026-11-07"
+    },
+    {
+     "id": "f3a0e101-086f-44b3-a1b2-d23498f9716b",
+     "slug": "agnes-2-5-pro-beta",
+     "name": "Agnes 2.5 Pro Beta",
+     "shortName": "Agnes 2.5 Pro Beta",
+     "creatorName": "Sapiens AI",
+     "releaseDate": "2026-08-26"
+    },
+    {
      "id": "bb3d7e75-8e22-4082-b9d6-1db0803e042f",
      "slug": "k2-horizon-375b-a23b",
      "name": "K2 Horizon 375B A23B",
@@ -16260,14 +16460,6 @@
      "shortName": "Cogito v2.1",
      "creatorName": "Deep Cogito",
      "releaseDate": "2025-11-18"
-    },
-    {
-     "id": "f3a0e101-086f-44b3-a1b2-d23498f9716b",
-     "slug": "agnes-2-5-pro-beta",
-     "name": "Agnes 2.5 Pro Beta",
-     "shortName": "Agnes 2.5 Pro Beta",
-     "creatorName": "Sapiens AI",
-     "releaseDate": "2026-08-26"
     },
     {
      "id": "fb112343-c82c-4b43-afea-996bd5101d62",

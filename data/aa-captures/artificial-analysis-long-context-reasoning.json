@@ -1,7 +1,7 @@
 {
  "key": "artificial-analysis-long-context-reasoning",
  "source_url": "https://artificialanalysis.ai/evaluations/artificial-analysis-long-context-reasoning",
- "captured_at": "2026-11-07",
+ "captured_at": "2026-11-10",
  "selectors": 6,
  "charts": [
   {
@@ -78,6 +78,15 @@
      "displayValue": "84.7%",
      "url": "/models/claude-fable-5-1-medium",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "label": "Agnes 2.5 Pro Theta",
+     "tooltipLabel": "Agnes 2.5 Pro Theta",
+     "value": 0.846666666666667,
+     "displayValue": "84.7%",
+     "url": "/models/agnes-2-5-pro-theta",
+     "logo": "/img/logos/sapiens.svg"
     },
     {
      "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
@@ -188,6 +197,24 @@
      "logo": "/img/logos/meta.svg"
     },
     {
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "label": "Claude Fable 5.2 (max)",
+     "tooltipLabel": "Claude Fable 5.2 (Max, Default Fallback)",
+     "value": 0.833333333333333,
+     "displayValue": "83.3%",
+     "url": "/models/claude-fable-5-2",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "label": "Claude Fable 5.2 (high)",
+     "tooltipLabel": "Claude Fable 5.2 (High, Default Fallback)",
+     "value": 0.833333333333333,
+     "displayValue": "83.3%",
+     "url": "/models/claude-fable-5-2-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
      "id": "a2e51d62-ea4e-4f15-8be0-be9dc1fb489d",
      "label": "GPT-6.1 Sol (medium)",
      "tooltipLabel": "GPT-6.1 Sol (Medium)",
@@ -242,15 +269,6 @@
      "logo": "/img/logos/upstage.svg"
     },
     {
-     "id": "eb0d4272-7204-42b9-b875-8866fed58548",
-     "label": "Gemini 3.7 Flash (medium)",
-     "tooltipLabel": "Gemini 3.7 Flash (Medium)",
-     "value": 0.83,
-     "displayValue": "83.0%",
-     "url": "/models/gemini-3-7-flash-medium",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
      "label": "Claude Fable 5.1 (xhigh)",
      "tooltipLabel": "Claude Fable 5.1 (Xhigh, Default Fallback)",
@@ -258,6 +276,15 @@
      "displayValue": "83.0%",
      "url": "/models/claude-fable-5-1-xhigh",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "eb0d4272-7204-42b9-b875-8866fed58548",
+     "label": "Gemini 3.7 Flash (medium)",
+     "tooltipLabel": "Gemini 3.7 Flash (Medium)",
+     "value": 0.83,
+     "displayValue": "83.0%",
+     "url": "/models/gemini-3-7-flash-medium",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
@@ -330,6 +357,15 @@
      "displayValue": "83.0%",
      "url": "/models/agnes-2-5-pro-beta",
      "logo": "/img/logos/sapiens.svg"
+    },
+    {
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "label": "Claude Fable 5.2 (xhigh)",
+     "tooltipLabel": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "value": 0.826666666666667,
+     "displayValue": "82.7%",
+     "url": "/models/claude-fable-5-2-xhigh",
+     "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
@@ -458,15 +494,6 @@
      "logo": "/img/logos/inclusionai.jpg"
     },
     {
-     "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
-     "label": "Gemini 3.1 Pro Preview",
-     "tooltipLabel": "Gemini 3.1 Pro Preview",
-     "value": 0.82,
-     "displayValue": "82.0%",
-     "url": "/models/gemini-3-1-pro-preview",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "23c86e4a-c769-43c0-a056-79e3cd15834f",
      "label": "Claude Sonnet 5 (max)",
      "tooltipLabel": "Claude Sonnet 5 (Max)",
@@ -483,6 +510,15 @@
      "displayValue": "82.0%",
      "url": "/models/claude-opus-5-medium",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
+     "label": "Gemini 3.1 Pro Preview",
+     "tooltipLabel": "Gemini 3.1 Pro Preview",
+     "value": 0.82,
+     "displayValue": "82.0%",
+     "url": "/models/gemini-3-1-pro-preview",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "a89c4b28-2d8c-456e-88ea-255fb51fd2b6",
@@ -548,15 +584,6 @@
      "logo": "/img/logos/nex.svg"
     },
     {
-     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
-     "label": "Gemini 3.8 Flash (high)",
-     "tooltipLabel": "Gemini 3.8 Flash (High)",
-     "value": 0.813333333333333,
-     "displayValue": "81.3%",
-     "url": "/models/gemini-3-8-flash",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "20928ba9-3a3f-415f-9519-b84ff64ecf34",
      "label": "Claude Opus 5 (low)",
      "tooltipLabel": "Claude Opus 5 (Low)",
@@ -564,6 +591,15 @@
      "displayValue": "81.3%",
      "url": "/models/claude-opus-5-low",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+     "label": "Gemini 3.8 Flash (high)",
+     "tooltipLabel": "Gemini 3.8 Flash (High)",
+     "value": 0.813333333333333,
+     "displayValue": "81.3%",
+     "url": "/models/gemini-3-8-flash",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "da2642fe-9f73-4788-b5af-24edcd55b37e",
@@ -638,15 +674,6 @@
      "logo": "/img/logos/spacexai.svg"
     },
     {
-     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
-     "label": "Gemini 3.8 Flash (low)",
-     "tooltipLabel": "Gemini 3.8 Flash (Low)",
-     "value": 0.806666666666667,
-     "displayValue": "80.7%",
-     "url": "/models/gemini-3-8-flash-low",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
      "label": "Claude Opus 5.5 (low)",
      "tooltipLabel": "Claude Opus 5.5 (Low, Default Fallback)",
@@ -654,6 +681,15 @@
      "displayValue": "80.7%",
      "url": "/models/claude-opus-5-5-low",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
+     "label": "Gemini 3.8 Flash (low)",
+     "tooltipLabel": "Gemini 3.8 Flash (Low)",
+     "value": 0.806666666666667,
+     "displayValue": "80.7%",
+     "url": "/models/gemini-3-8-flash-low",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
@@ -764,13 +800,22 @@
      "logo": "/img/logos/deepseek.svg"
     },
     {
-     "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
-     "label": "Gemini 3.6 Flash (high)",
-     "tooltipLabel": "Gemini 3.6 Flash (High)",
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "label": "Claude Fable 5.2 (medium)",
+     "tooltipLabel": "Claude Fable 5.2 (Medium, Default Fallback)",
      "value": 0.8,
      "displayValue": "80.0%",
-     "url": "/models/gemini-3-6-flash",
-     "logo": "/img/logos/google.svg"
+     "url": "/models/claude-fable-5-2-medium",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "label": "Claude Fable 5.2 (low)",
+     "tooltipLabel": "Claude Fable 5.2 (Low, Default Fallback)",
+     "value": 0.8,
+     "displayValue": "80.0%",
+     "url": "/models/claude-fable-5-2-low",
+     "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "df8d14e0-3997-4e4d-b4ad-9c047acc9c69",
@@ -780,6 +825,15 @@
      "displayValue": "80.0%",
      "url": "/models/claude-sonnet-4-6-adaptive",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
+     "label": "Gemini 3.6 Flash (high)",
+     "tooltipLabel": "Gemini 3.6 Flash (High)",
+     "value": 0.8,
+     "displayValue": "80.0%",
+     "url": "/models/gemini-3-6-flash",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "1f541ef3-913f-4eb2-9d07-0e93c7a9a5e3",
@@ -854,15 +908,6 @@
      "logo": "/img/logos/ifm.svg"
     },
     {
-     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
-     "label": "Gemini 4 Argon (high)",
-     "tooltipLabel": "Gemini 4 Argon (High)",
-     "value": 0.796666666666667,
-     "displayValue": "79.7%",
-     "url": "/models/gemini-4-argon",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
      "label": "Claude Sonnet 5.5 (xhigh)",
      "tooltipLabel": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
@@ -870,6 +915,15 @@
      "displayValue": "79.7%",
      "url": "/models/claude-sonnet-5-5-xhigh",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
+     "label": "Gemini 4 Argon (high)",
+     "tooltipLabel": "Gemini 4 Argon (High)",
+     "value": 0.796666666666667,
+     "displayValue": "79.7%",
+     "url": "/models/gemini-4-argon",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "092a3b0e-c5c8-45dc-bf1b-53673c8ff352",
@@ -944,15 +998,6 @@
      "logo": "/img/logos/minimax.svg"
     },
     {
-     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
-     "label": "Gemini 4 Carbon (high)",
-     "tooltipLabel": "Gemini 4 Carbon (High)",
-     "value": 0.793333333333333,
-     "displayValue": "79.3%",
-     "url": "/models/gemini-4-carbon",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
      "label": "Claude Opus 5 (max)",
      "tooltipLabel": "Claude Opus 5 (Max)",
@@ -960,6 +1005,15 @@
      "displayValue": "79.3%",
      "url": "/models/claude-opus-5",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+     "label": "Gemini 4 Carbon (high)",
+     "tooltipLabel": "Gemini 4 Carbon (High)",
+     "value": 0.793333333333333,
+     "displayValue": "79.3%",
+     "url": "/models/gemini-4-carbon",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "7d1229bc-deea-4717-ba5b-f59a35d991e3",
@@ -1070,15 +1124,6 @@
      "logo": "/img/logos/tencent-hy.svg"
     },
     {
-     "id": "ddfdaf64-3f8e-40a6-a492-608ee83a1351",
-     "label": "Gemini 3.7 Flash (low)",
-     "tooltipLabel": "Gemini 3.7 Flash (Low)",
-     "value": 0.786666666666667,
-     "displayValue": "78.7%",
-     "url": "/models/gemini-3-7-flash-low",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "e9a09db3-8fd6-41dd-ba2f-20e0a2bff7f2",
      "label": "Claude Opus 4.7 (max)",
      "tooltipLabel": "Claude Opus 4.7 (Max)",
@@ -1086,6 +1131,15 @@
      "displayValue": "78.7%",
      "url": "/models/claude-opus-4-7",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "ddfdaf64-3f8e-40a6-a492-608ee83a1351",
+     "label": "Gemini 3.7 Flash (low)",
+     "tooltipLabel": "Gemini 3.7 Flash (Low)",
+     "value": 0.786666666666667,
+     "displayValue": "78.7%",
+     "url": "/models/gemini-3-7-flash-low",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
@@ -1178,15 +1232,6 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "7c73c3be-7f51-4d14-bec8-d5789488df25",
-     "label": "Gemini 3 Flash",
-     "tooltipLabel": "Gemini 3 Flash Preview (Reasoning)",
-     "value": 0.78,
-     "displayValue": "78.0%",
-     "url": "/models/gemini-3-flash-reasoning",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
      "label": "Claude Sonnet 5.5 (high)",
      "tooltipLabel": "Claude Sonnet 5.5 (High, Default Fallback)",
@@ -1203,6 +1248,15 @@
      "displayValue": "78.0%",
      "url": "/models/claude-opus-4-6-adaptive",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "7c73c3be-7f51-4d14-bec8-d5789488df25",
+     "label": "Gemini 3 Flash",
+     "tooltipLabel": "Gemini 3 Flash Preview (Reasoning)",
+     "value": 0.78,
+     "displayValue": "78.0%",
+     "url": "/models/gemini-3-flash-reasoning",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "0904b596-8932-43bd-9b21-324f128e1723",
@@ -1430,24 +1484,6 @@
      "logo": "/img/logos/multiversecomputing.svg"
     },
     {
-     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
-     "label": "Gemini 3.5 Flash-Lite",
-     "tooltipLabel": "Gemini 3.5 Flash-Lite",
-     "value": 0.76,
-     "displayValue": "76.0%",
-     "url": "/models/gemini-3-5-flash-lite",
-     "logo": "/img/logos/google.svg"
-    },
-    {
-     "id": "d1122eff-ee85-4fdc-8a9f-23bee6590667",
-     "label": "Gemini 3 Pro Preview (high)",
-     "tooltipLabel": "Gemini 3 Pro Preview (High)",
-     "value": 0.76,
-     "displayValue": "76.0%",
-     "url": "/models/gemini-3-pro",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
      "label": "Claude Sonnet 5.5 (low)",
      "tooltipLabel": "Claude Sonnet 5.5 (Low, Default Fallback)",
@@ -1464,6 +1500,24 @@
      "displayValue": "76.0%",
      "url": "/models/claude-4-1-opus-thinking",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+     "label": "Gemini 3.5 Flash-Lite",
+     "tooltipLabel": "Gemini 3.5 Flash-Lite",
+     "value": 0.76,
+     "displayValue": "76.0%",
+     "url": "/models/gemini-3-5-flash-lite",
+     "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "d1122eff-ee85-4fdc-8a9f-23bee6590667",
+     "label": "Gemini 3 Pro Preview (high)",
+     "tooltipLabel": "Gemini 3 Pro Preview (High)",
+     "value": 0.76,
+     "displayValue": "76.0%",
+     "url": "/models/gemini-3-pro",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "5e965af0-ca5c-4f47-9ba9-06000508b84a",
@@ -1574,6 +1628,15 @@
      "logo": "/img/logos/motif.svg"
     },
     {
+     "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
+     "label": "Claude 4.5 Haiku",
+     "tooltipLabel": "Claude 4.5 Haiku (Reasoning)",
+     "value": 0.743333333333333,
+     "displayValue": "74.3%",
+     "url": "/models/claude-4-5-haiku-reasoning",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
      "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
      "label": "Gemini 3.1 Flash-Lite",
      "tooltipLabel": "Gemini 3.1 Flash-Lite",
@@ -1590,15 +1653,6 @@
      "displayValue": "74.3%",
      "url": "/models/gemini-3-5-flash-medium",
      "logo": "/img/logos/google.svg"
-    },
-    {
-     "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
-     "label": "Claude 4.5 Haiku",
-     "tooltipLabel": "Claude 4.5 Haiku (Reasoning)",
-     "value": 0.743333333333333,
-     "displayValue": "74.3%",
-     "url": "/models/claude-4-5-haiku-reasoning",
-     "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "806032ff-6252-4c22-ba99-a126e411b7a4",
@@ -3104,15 +3158,6 @@
      "logo": "/img/logos/google.svg"
     },
     {
-     "id": "71f51ea9-94fe-4635-a80d-4cfffbb685f4",
-     "label": "Gemini 2.5 Flash-Lite (Sep) (non-reasoning)",
-     "tooltipLabel": "Gemini 2.5 Flash-Lite Preview (Sep '25) (Non-reasoning)",
-     "value": 0.496666666666667,
-     "displayValue": "49.7%",
-     "url": "/models/gemini-2-5-flash-lite-preview-09-2025",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "c2b1e769-7aee-4669-8076-73918bdebf6c",
      "label": "Claude 4.5 Haiku (non-reasoning)",
      "tooltipLabel": "Claude 4.5 Haiku (Non-reasoning)",
@@ -3120,6 +3165,15 @@
      "displayValue": "49.7%",
      "url": "/models/claude-4-5-haiku",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "71f51ea9-94fe-4635-a80d-4cfffbb685f4",
+     "label": "Gemini 2.5 Flash-Lite (Sep) (non-reasoning)",
+     "tooltipLabel": "Gemini 2.5 Flash-Lite Preview (Sep '25) (Non-reasoning)",
+     "value": 0.496666666666667,
+     "displayValue": "49.7%",
+     "url": "/models/gemini-2-5-flash-lite-preview-09-2025",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "3fd96175-4ef1-434c-8795-f873aec2abc1",
@@ -5323,284 +5377,28 @@
    "title": "AA-LCR v1.1: Score vs. Cost per Task",
    "items": [
     {
-     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
-     "slug": "gemini-4-carbon",
-     "name": "Gemini 4 Carbon (High)",
-     "shortName": "Gemini 4 Carbon (high)",
-     "creatorName": "Google",
-     "costPerTask": 0.6193000000000001
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "slug": "claude-fable-5-2",
+     "name": "Claude Fable 5.2 (Max, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (max)",
+     "creatorName": "Anthropic",
+     "costPerTask": 1.28659224
     },
     {
-     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
-     "slug": "gemini-4-argon",
-     "name": "Gemini 4 Argon (High)",
-     "shortName": "Gemini 4 Argon (high)",
-     "creatorName": "Google",
-     "costPerTask": 0.47271300000000005
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "slug": "claude-fable-5-2-xhigh",
+     "name": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (xhigh)",
+     "creatorName": "Anthropic",
+     "costPerTask": 1.19565184
     },
     {
-     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
-     "slug": "gemini-3-8-flash",
-     "name": "Gemini 3.8 Flash (High)",
-     "shortName": "Gemini 3.8 Flash (high)",
-     "creatorName": "Google",
-     "costPerTask": 0.09881820000000001
-    },
-    {
-     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
-     "slug": "gemini-3-8-flash-medium",
-     "name": "Gemini 3.8 Flash (Medium)",
-     "shortName": "Gemini 3.8 Flash (medium)",
-     "creatorName": "Google",
-     "costPerTask": 0.08969201250000002
-    },
-    {
-     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
-     "slug": "gemini-3-8-flash-low",
-     "name": "Gemini 3.8 Flash (Low)",
-     "shortName": "Gemini 3.8 Flash (low)",
-     "creatorName": "Google",
-     "costPerTask": 0.0836080125
-    },
-    {
-     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
-     "slug": "gemini-3-5-flash-lite",
-     "name": "Gemini 3.5 Flash-Lite",
-     "shortName": "Gemini 3.5 Flash-Lite",
-     "creatorName": "Google",
-     "costPerTask": 0.0389708
-    },
-    {
-     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
-     "slug": "gemini-3-1-flash-lite-preview",
-     "name": "Gemini 3.1 Flash-Lite",
-     "shortName": "Gemini 3.1 Flash-Lite",
-     "creatorName": "Google",
-     "costPerTask": 0.027227365
-    },
-    {
-     "id": "cd26a386-4873-46ff-b853-d239050025a2",
-     "slug": "gemma-4-31b",
-     "name": "Gemma 4 31B (Reasoning)",
-     "shortName": "Gemma 4 31B",
-     "creatorName": "Google",
-     "costPerTask": 0
-    },
-    {
-     "id": "0097ebf5-124f-42f6-9463-33b00e711f03",
-     "slug": "gemini-3-5-flash",
-     "name": "Gemini 3.5 Flash (High)",
-     "shortName": "Gemini 3.5 Flash (high)",
-     "creatorName": "Google",
-     "costPerTask": 0.19050888
-    },
-    {
-     "id": "025ec6b6-df4a-449f-9a03-24e4388d6863",
-     "slug": "gemma-4-12b-non-reasoning",
-     "name": "Gemma 4 12B (Non-reasoning)",
-     "shortName": "Gemma 4 12B (non-reasoning)",
-     "creatorName": "Google",
-     "costPerTask": 0.010811989000000001
-    },
-    {
-     "id": "033ade17-d9ec-44e0-b792-b5f1fcd5ab4c",
-     "slug": "gemini-3-5-flash-minimal",
-     "name": "Gemini 3.5 Flash (Minimal)",
-     "shortName": "Gemini 3.5 Flash (minimal)",
-     "creatorName": "Google",
-     "costPerTask": 0.16297707000000003
-    },
-    {
-     "id": "1d81aa1c-64c8-442a-9c41-81b37e407b91",
-     "slug": "gemini-2-5-flash-lite",
-     "name": "Gemini 2.5 Flash-Lite (Non-reasoning)",
-     "shortName": "Gemini 2.5 Flash-Lite (non-reasoning)",
-     "creatorName": "Google",
-     "costPerTask": 0.009600194
-    },
-    {
-     "id": "219ed587-60c5-4a48-9517-8480e08d0ca1",
-     "slug": "gemini-2-5-flash-reasoning",
-     "name": "Gemini 2.5 Flash (Reasoning)",
-     "shortName": "Gemini 2.5 Flash",
-     "creatorName": "Google",
-     "costPerTask": 0.03304163499999999
-    },
-    {
-     "id": "222fb320-6e55-4672-846a-b6d5a24a45f4",
-     "slug": "gemma-3-4b",
-     "name": "Gemma 3 4B Instruct",
-     "shortName": "Gemma 3 4B",
-     "creatorName": "Google",
-     "costPerTask": 0
-    },
-    {
-     "id": "27202e5f-c82d-4710-92e9-4317877d4883",
-     "slug": "gemini-2-5-pro",
-     "name": "Gemini 2.5 Pro",
-     "shortName": "Gemini 2.5 Pro",
-     "creatorName": "Google",
-     "costPerTask": 0.136526375
-    },
-    {
-     "id": "2bfdd17a-e027-4068-a54e-b0e90a6df118",
-     "slug": "gemma-3-27b",
-     "name": "Gemma 3 27B Instruct",
-     "shortName": "Gemma 3 27B",
-     "creatorName": "Google",
-     "costPerTask": 0
-    },
-    {
-     "id": "2e6400f5-85ca-4ebc-ba8f-c2811a631138",
-     "slug": "gemma-3-12b",
-     "name": "Gemma 3 12B Instruct",
-     "shortName": "Gemma 3 12B",
-     "creatorName": "Google",
-     "costPerTask": 0
-    },
-    {
-     "id": "5016ea75-7b0e-4737-a7e6-1062c6d90fd4",
-     "slug": "gemini-3-5-flash-medium",
-     "name": "Gemini 3.5 Flash (Medium)",
-     "shortName": "Gemini 3.5 Flash (medium)",
-     "creatorName": "Google",
-     "costPerTask": 0.18324696
-    },
-    {
-     "id": "5303601c-8133-4f52-bc4e-5241ee6b3c10",
-     "slug": "gemma-4-e4b-non-reasoning",
-     "name": "Gemma 4 E4B (Non-reasoning)",
-     "shortName": "Gemma 4 E4B (non-reasoning)",
-     "creatorName": "Google",
-     "costPerTask": 0.0018051308000000001
-    },
-    {
-     "id": "6afbfb62-27e4-435e-9c85-d9fe1b92519e",
-     "slug": "gemini-2-5-flash",
-     "name": "Gemini 2.5 Flash (Non-reasoning)",
-     "shortName": "Gemini 2.5 Flash (non-reasoning)",
-     "creatorName": "Google",
-     "costPerTask": 0.008750138000000001
-    },
-    {
-     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
-     "slug": "gemma-4-26b-a4b",
-     "name": "Gemma 4 26B A4B (Reasoning)",
-     "shortName": "Gemma 4 26B A4B",
-     "creatorName": "Google",
-     "costPerTask": 0.0112044374
-    },
-    {
-     "id": "70882ec6-914c-41f0-9754-5e8f75005f77",
-     "slug": "gemma-4-26b-a4b-non-reasoning",
-     "name": "Gemma 4 26B A4B (Non-reasoning)",
-     "shortName": "Gemma 4 26B A4B (non-reasoning)",
-     "creatorName": "Google",
-     "costPerTask": 0.0124595699
-    },
-    {
-     "id": "71f51ea9-94fe-4635-a80d-4cfffbb685f4",
-     "slug": "gemini-2-5-flash-lite-preview-09-2025",
-     "name": "Gemini 2.5 Flash-Lite Preview (Sep '25) (Non-reasoning)",
-     "shortName": "Gemini 2.5 Flash-Lite (Sep) (non-reasoning)",
-     "creatorName": "Google",
-     "costPerTask": 0.009698262000000001
-    },
-    {
-     "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
-     "slug": "gemini-3-6-flash",
-     "name": "Gemini 3.6 Flash (High)",
-     "shortName": "Gemini 3.6 Flash (high)",
-     "creatorName": "Google",
-     "costPerTask": 0.08985480000000001
-    },
-    {
-     "id": "783a0ea2-1eef-422a-8c3d-f6d40d943f54",
-     "slug": "gemini-3-flash",
-     "name": "Gemini 3 Flash Preview (Non-reasoning)",
-     "shortName": "Gemini 3 Flash (non-reasoning)",
-     "creatorName": "Google",
-     "costPerTask": 0.04774127
-    },
-    {
-     "id": "7c73c3be-7f51-4d14-bec8-d5789488df25",
-     "slug": "gemini-3-flash-reasoning",
-     "name": "Gemini 3 Flash Preview (Reasoning)",
-     "shortName": "Gemini 3 Flash",
-     "creatorName": "Google",
-     "costPerTask": 0.06196175
-    },
-    {
-     "id": "84922739-425f-46e1-87ac-bb4268dcacbb",
-     "slug": "gemini-2-5-flash-lite-preview-09-2025-reasoning",
-     "name": "Gemini 2.5 Flash-Lite Preview (Sep '25) (Reasoning)",
-     "shortName": "Gemini 2.5 Flash-Lite (Sep)",
-     "creatorName": "Google",
-     "costPerTask": 0.010144262000000001
-    },
-    {
-     "id": "b2331108-72ed-415a-82d1-188633875bbc",
-     "slug": "gemini-3-7-flash",
-     "name": "Gemini 3.7 Flash (High)",
-     "shortName": "Gemini 3.7 Flash (high)",
-     "creatorName": "Google",
-     "costPerTask": 0.0893049375
-    },
-    {
-     "id": "b2f3191f-77d6-4155-8be6-330f0baa1ae5",
-     "slug": "gemini-3-pro-low",
-     "name": "Gemini 3 Pro Preview (Low)",
-     "shortName": "Gemini 3 Pro Preview (low)",
-     "creatorName": "Google",
-     "costPerTask": 0.20999532
-    },
-    {
-     "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
-     "slug": "gemini-3-1-pro-preview",
-     "name": "Gemini 3.1 Pro Preview",
-     "shortName": "Gemini 3.1 Pro Preview",
-     "creatorName": "Google",
-     "costPerTask": 0.21271927999999998
-    },
-    {
-     "id": "d0aa27aa-4705-4184-9a1d-483b78c9331c",
-     "slug": "gemma-4-31b-non-reasoning",
-     "name": "Gemma 4 31B (Non-reasoning)",
-     "shortName": "Gemma 4 31B (non-reasoning)",
-     "creatorName": "Google",
-     "costPerTask": 0.0177608709
-    },
-    {
-     "id": "d1122eff-ee85-4fdc-8a9f-23bee6590667",
-     "slug": "gemini-3-pro",
-     "name": "Gemini 3 Pro Preview (High)",
-     "shortName": "Gemini 3 Pro Preview (high)",
-     "creatorName": "Google",
-     "costPerTask": 0.2307486
-    },
-    {
-     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
-     "slug": "gemma-4-e4b",
-     "name": "Gemma 4 E4B (Reasoning)",
-     "shortName": "Gemma 4 E4B",
-     "creatorName": "Google",
-     "costPerTask": 0.0018755068000000001
-    },
-    {
-     "id": "f4e8194a-d0e6-48eb-92be-4307de5aeeec",
-     "slug": "gemini-2-5-flash-lite-reasoning",
-     "name": "Gemini 2.5 Flash-Lite (Reasoning)",
-     "shortName": "Gemini 2.5 Flash-Lite",
-     "creatorName": "Google",
-     "costPerTask": 0.010189278
-    },
-    {
-     "id": "feb02d3b-ff8d-4ed4-b165-13f8d4a7192c",
-     "slug": "gemma-4-12b",
-     "name": "Gemma 4 12B (Reasoning)",
-     "shortName": "Gemma 4 12B",
-     "creatorName": "Google",
-     "costPerTask": 0.013613410000000001
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "slug": "claude-fable-5-2-high",
+     "name": "Claude Fable 5.2 (High, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (high)",
+     "creatorName": "Anthropic",
+     "costPerTask": 1.17914344
     },
     {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
@@ -5619,12 +5417,28 @@
      "costPerTask": 0.5989231199999999
     },
     {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "slug": "claude-fable-5-2-medium",
+     "name": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (medium)",
+     "creatorName": "Anthropic",
+     "costPerTask": 1.17066424
+    },
+    {
      "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
      "slug": "claude-sonnet-5-5",
      "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
      "shortName": "Claude Sonnet 5.5 (max)",
      "creatorName": "Anthropic",
      "costPerTask": 0.33930086000000004
+    },
+    {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "slug": "claude-fable-5-2-low",
+     "name": "Claude Fable 5.2 (Low, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (low)",
+     "creatorName": "Anthropic",
+     "costPerTask": 1.16614304
     },
     {
      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
@@ -6003,6 +5817,286 @@
      "costPerTask": 0.7377514
     },
     {
+     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+     "slug": "gemini-4-carbon",
+     "name": "Gemini 4 Carbon (High)",
+     "shortName": "Gemini 4 Carbon (high)",
+     "creatorName": "Google",
+     "costPerTask": 0.6193000000000001
+    },
+    {
+     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
+     "slug": "gemini-4-argon",
+     "name": "Gemini 4 Argon (High)",
+     "shortName": "Gemini 4 Argon (high)",
+     "creatorName": "Google",
+     "costPerTask": 0.47271300000000005
+    },
+    {
+     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+     "slug": "gemini-3-8-flash",
+     "name": "Gemini 3.8 Flash (High)",
+     "shortName": "Gemini 3.8 Flash (high)",
+     "creatorName": "Google",
+     "costPerTask": 0.09881820000000001
+    },
+    {
+     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
+     "slug": "gemini-3-8-flash-medium",
+     "name": "Gemini 3.8 Flash (Medium)",
+     "shortName": "Gemini 3.8 Flash (medium)",
+     "creatorName": "Google",
+     "costPerTask": 0.08969201250000002
+    },
+    {
+     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
+     "slug": "gemini-3-8-flash-low",
+     "name": "Gemini 3.8 Flash (Low)",
+     "shortName": "Gemini 3.8 Flash (low)",
+     "creatorName": "Google",
+     "costPerTask": 0.0836080125
+    },
+    {
+     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+     "slug": "gemini-3-5-flash-lite",
+     "name": "Gemini 3.5 Flash-Lite",
+     "shortName": "Gemini 3.5 Flash-Lite",
+     "creatorName": "Google",
+     "costPerTask": 0.0389708
+    },
+    {
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "slug": "gemini-3-1-flash-lite-preview",
+     "name": "Gemini 3.1 Flash-Lite",
+     "shortName": "Gemini 3.1 Flash-Lite",
+     "creatorName": "Google",
+     "costPerTask": 0.027227365
+    },
+    {
+     "id": "cd26a386-4873-46ff-b853-d239050025a2",
+     "slug": "gemma-4-31b",
+     "name": "Gemma 4 31B (Reasoning)",
+     "shortName": "Gemma 4 31B",
+     "creatorName": "Google",
+     "costPerTask": 0
+    },
+    {
+     "id": "0097ebf5-124f-42f6-9463-33b00e711f03",
+     "slug": "gemini-3-5-flash",
+     "name": "Gemini 3.5 Flash (High)",
+     "shortName": "Gemini 3.5 Flash (high)",
+     "creatorName": "Google",
+     "costPerTask": 0.19050888
+    },
+    {
+     "id": "025ec6b6-df4a-449f-9a03-24e4388d6863",
+     "slug": "gemma-4-12b-non-reasoning",
+     "name": "Gemma 4 12B (Non-reasoning)",
+     "shortName": "Gemma 4 12B (non-reasoning)",
+     "creatorName": "Google",
+     "costPerTask": 0.010811989000000001
+    },
+    {
+     "id": "033ade17-d9ec-44e0-b792-b5f1fcd5ab4c",
+     "slug": "gemini-3-5-flash-minimal",
+     "name": "Gemini 3.5 Flash (Minimal)",
+     "shortName": "Gemini 3.5 Flash (minimal)",
+     "creatorName": "Google",
+     "costPerTask": 0.16297707000000003
+    },
+    {
+     "id": "1d81aa1c-64c8-442a-9c41-81b37e407b91",
+     "slug": "gemini-2-5-flash-lite",
+     "name": "Gemini 2.5 Flash-Lite (Non-reasoning)",
+     "shortName": "Gemini 2.5 Flash-Lite (non-reasoning)",
+     "creatorName": "Google",
+     "costPerTask": 0.009600194
+    },
+    {
+     "id": "219ed587-60c5-4a48-9517-8480e08d0ca1",
+     "slug": "gemini-2-5-flash-reasoning",
+     "name": "Gemini 2.5 Flash (Reasoning)",
+     "shortName": "Gemini 2.5 Flash",
+     "creatorName": "Google",
+     "costPerTask": 0.03304163499999999
+    },
+    {
+     "id": "222fb320-6e55-4672-846a-b6d5a24a45f4",
+     "slug": "gemma-3-4b",
+     "name": "Gemma 3 4B Instruct",
+     "shortName": "Gemma 3 4B",
+     "creatorName": "Google",
+     "costPerTask": 0
+    },
+    {
+     "id": "27202e5f-c82d-4710-92e9-4317877d4883",
+     "slug": "gemini-2-5-pro",
+     "name": "Gemini 2.5 Pro",
+     "shortName": "Gemini 2.5 Pro",
+     "creatorName": "Google",
+     "costPerTask": 0.136526375
+    },
+    {
+     "id": "2bfdd17a-e027-4068-a54e-b0e90a6df118",
+     "slug": "gemma-3-27b",
+     "name": "Gemma 3 27B Instruct",
+     "shortName": "Gemma 3 27B",
+     "creatorName": "Google",
+     "costPerTask": 0
+    },
+    {
+     "id": "2e6400f5-85ca-4ebc-ba8f-c2811a631138",
+     "slug": "gemma-3-12b",
+     "name": "Gemma 3 12B Instruct",
+     "shortName": "Gemma 3 12B",
+     "creatorName": "Google",
+     "costPerTask": 0
+    },
+    {
+     "id": "5016ea75-7b0e-4737-a7e6-1062c6d90fd4",
+     "slug": "gemini-3-5-flash-medium",
+     "name": "Gemini 3.5 Flash (Medium)",
+     "shortName": "Gemini 3.5 Flash (medium)",
+     "creatorName": "Google",
+     "costPerTask": 0.18324696
+    },
+    {
+     "id": "5303601c-8133-4f52-bc4e-5241ee6b3c10",
+     "slug": "gemma-4-e4b-non-reasoning",
+     "name": "Gemma 4 E4B (Non-reasoning)",
+     "shortName": "Gemma 4 E4B (non-reasoning)",
+     "creatorName": "Google",
+     "costPerTask": 0.0018051308000000001
+    },
+    {
+     "id": "6afbfb62-27e4-435e-9c85-d9fe1b92519e",
+     "slug": "gemini-2-5-flash",
+     "name": "Gemini 2.5 Flash (Non-reasoning)",
+     "shortName": "Gemini 2.5 Flash (non-reasoning)",
+     "creatorName": "Google",
+     "costPerTask": 0.008750138000000001
+    },
+    {
+     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
+     "slug": "gemma-4-26b-a4b",
+     "name": "Gemma 4 26B A4B (Reasoning)",
+     "shortName": "Gemma 4 26B A4B",
+     "creatorName": "Google",
+     "costPerTask": 0.0112044374
+    },
+    {
+     "id": "70882ec6-914c-41f0-9754-5e8f75005f77",
+     "slug": "gemma-4-26b-a4b-non-reasoning",
+     "name": "Gemma 4 26B A4B (Non-reasoning)",
+     "shortName": "Gemma 4 26B A4B (non-reasoning)",
+     "creatorName": "Google",
+     "costPerTask": 0.0124595699
+    },
+    {
+     "id": "71f51ea9-94fe-4635-a80d-4cfffbb685f4",
+     "slug": "gemini-2-5-flash-lite-preview-09-2025",
+     "name": "Gemini 2.5 Flash-Lite Preview (Sep '25) (Non-reasoning)",
+     "shortName": "Gemini 2.5 Flash-Lite (Sep) (non-reasoning)",
+     "creatorName": "Google",
+     "costPerTask": 0.009698262000000001
+    },
+    {
+     "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
+     "slug": "gemini-3-6-flash",
+     "name": "Gemini 3.6 Flash (High)",
+     "shortName": "Gemini 3.6 Flash (high)",
+     "creatorName": "Google",
+     "costPerTask": 0.08985480000000001
+    },
+    {
+     "id": "783a0ea2-1eef-422a-8c3d-f6d40d943f54",
+     "slug": "gemini-3-flash",
+     "name": "Gemini 3 Flash Preview (Non-reasoning)",
+     "shortName": "Gemini 3 Flash (non-reasoning)",
+     "creatorName": "Google",
+     "costPerTask": 0.04774127
+    },
+    {
+     "id": "7c73c3be-7f51-4d14-bec8-d5789488df25",
+     "slug": "gemini-3-flash-reasoning",
+     "name": "Gemini 3 Flash Preview (Reasoning)",
+     "shortName": "Gemini 3 Flash",
+     "creatorName": "Google",
+     "costPerTask": 0.06196175
+    },
+    {
+     "id": "84922739-425f-46e1-87ac-bb4268dcacbb",
+     "slug": "gemini-2-5-flash-lite-preview-09-2025-reasoning",
+     "name": "Gemini 2.5 Flash-Lite Preview (Sep '25) (Reasoning)",
+     "shortName": "Gemini 2.5 Flash-Lite (Sep)",
+     "creatorName": "Google",
+     "costPerTask": 0.010144262000000001
+    },
+    {
+     "id": "b2331108-72ed-415a-82d1-188633875bbc",
+     "slug": "gemini-3-7-flash",
+     "name": "Gemini 3.7 Flash (High)",
+     "shortName": "Gemini 3.7 Flash (high)",
+     "creatorName": "Google",
+     "costPerTask": 0.0893049375
+    },
+    {
+     "id": "b2f3191f-77d6-4155-8be6-330f0baa1ae5",
+     "slug": "gemini-3-pro-low",
+     "name": "Gemini 3 Pro Preview (Low)",
+     "shortName": "Gemini 3 Pro Preview (low)",
+     "creatorName": "Google",
+     "costPerTask": 0.20999532
+    },
+    {
+     "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
+     "slug": "gemini-3-1-pro-preview",
+     "name": "Gemini 3.1 Pro Preview",
+     "shortName": "Gemini 3.1 Pro Preview",
+     "creatorName": "Google",
+     "costPerTask": 0.21271927999999998
+    },
+    {
+     "id": "d0aa27aa-4705-4184-9a1d-483b78c9331c",
+     "slug": "gemma-4-31b-non-reasoning",
+     "name": "Gemma 4 31B (Non-reasoning)",
+     "shortName": "Gemma 4 31B (non-reasoning)",
+     "creatorName": "Google",
+     "costPerTask": 0.0177608709
+    },
+    {
+     "id": "d1122eff-ee85-4fdc-8a9f-23bee6590667",
+     "slug": "gemini-3-pro",
+     "name": "Gemini 3 Pro Preview (High)",
+     "shortName": "Gemini 3 Pro Preview (high)",
+     "creatorName": "Google",
+     "costPerTask": 0.2307486
+    },
+    {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "slug": "gemma-4-e4b",
+     "name": "Gemma 4 E4B (Reasoning)",
+     "shortName": "Gemma 4 E4B",
+     "creatorName": "Google",
+     "costPerTask": 0.0018755068000000001
+    },
+    {
+     "id": "f4e8194a-d0e6-48eb-92be-4307de5aeeec",
+     "slug": "gemini-2-5-flash-lite-reasoning",
+     "name": "Gemini 2.5 Flash-Lite (Reasoning)",
+     "shortName": "Gemini 2.5 Flash-Lite",
+     "creatorName": "Google",
+     "costPerTask": 0.010189278
+    },
+    {
+     "id": "feb02d3b-ff8d-4ed4-b165-13f8d4a7192c",
+     "slug": "gemma-4-12b",
+     "name": "Gemma 4 12B (Reasoning)",
+     "shortName": "Gemma 4 12B",
+     "creatorName": "Google",
+     "costPerTask": 0.013613410000000001
+    },
+    {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
      "slug": "gpt-6-astra",
      "name": "GPT-6 Astra (Max)",
@@ -6201,6 +6295,14 @@
      "shortName": "GPT-6 Luna (non-reasoning)",
      "creatorName": "OpenAI",
      "costPerTask": 0.009465072000000001
+    },
+    {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "slug": "gpt-oss-120b",
+     "name": "gpt-oss-120b (High)",
+     "shortName": "gpt-oss-120b (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.015391683
     },
     {
      "id": "01459872-433a-4ab2-8e99-7083162172eb",
@@ -6721,14 +6823,6 @@
      "shortName": "GPT-5.5 Instant (May 2026)",
      "creatorName": "OpenAI",
      "costPerTask": 0.4744323
-    },
-    {
-     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
-     "slug": "gpt-oss-120b",
-     "name": "gpt-oss-120b (High)",
-     "shortName": "gpt-oss-120b (high)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.015391683
     },
     {
      "id": "fd4454ff-e703-46c0-a7f5-fa69af09486d",
@@ -8067,6 +8161,14 @@
      "costPerTask": 0.014220921
     },
     {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "slug": "agnes-2-5-pro-theta",
+     "name": "Agnes 2.5 Pro Theta",
+     "shortName": "Agnes 2.5 Pro Theta",
+     "creatorName": "Sapiens AI",
+     "costPerTask": 0.011549601
+    },
+    {
      "id": "bb3d7e75-8e22-4082-b9d6-1db0803e042f",
      "slug": "k2-horizon-375b-a23b",
      "name": "K2 Horizon 375B A23B",
@@ -8812,6 +8914,13 @@
      "tooltipLabel": "Gemma 4 26B A4B (Reasoning)",
      "url": "/models/gemma-4-26b-a4b",
      "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "label": "Agnes 2.5 Pro Theta",
+     "tooltipLabel": "Agnes 2.5 Pro Theta",
+     "url": "/models/agnes-2-5-pro-theta",
+     "logo": "/img/logos/sapiens.svg"
     },
     {
      "id": "62ea3198-9866-4d9f-8406-a79ee78c7164",
@@ -11040,6 +11149,41 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "label": "Claude Fable 5.2 (low)",
+     "tooltipLabel": "Claude Fable 5.2 (Low, Default Fallback)",
+     "url": "/models/claude-fable-5-2-low",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "label": "Claude Fable 5.2 (medium)",
+     "tooltipLabel": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "url": "/models/claude-fable-5-2-medium",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "label": "Claude Fable 5.2 (high)",
+     "tooltipLabel": "Claude Fable 5.2 (High, Default Fallback)",
+     "url": "/models/claude-fable-5-2-high",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "label": "Claude Fable 5.2 (xhigh)",
+     "tooltipLabel": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "url": "/models/claude-fable-5-2-xhigh",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "label": "Claude Fable 5.2 (max)",
+     "tooltipLabel": "Claude Fable 5.2 (Max, Default Fallback)",
+     "url": "/models/claude-fable-5-2",
+     "logo": "/img/logos/anthropic.svg"
+    },
+    {
      "id": "ccbfa8c3-a762-480b-aade-34fb9697f98c",
      "label": "Claude 4.1 Opus",
      "tooltipLabel": "Claude 4.1 Opus (Reasoning)",
@@ -11108,380 +11252,28 @@
    "title": "AA-LCR v1.1: Score vs. Release Date",
    "items": [
     {
-     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
-     "slug": "gemini-4-carbon",
-     "name": "Gemini 4 Carbon (High)",
-     "shortName": "Gemini 4 Carbon (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-10-28"
+     "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+     "slug": "claude-fable-5-2",
+     "name": "Claude Fable 5.2 (Max, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (max)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
     },
     {
-     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
-     "slug": "gemini-4-argon",
-     "name": "Gemini 4 Argon (High)",
-     "shortName": "Gemini 4 Argon (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-09-30"
+     "id": "76942526-cc96-46b0-bc27-29561c53ed70",
+     "slug": "claude-fable-5-2-xhigh",
+     "name": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (xhigh)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
     },
     {
-     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
-     "slug": "gemini-3-8-flash",
-     "name": "Gemini 3.8 Flash (High)",
-     "shortName": "Gemini 3.8 Flash (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-09-02"
-    },
-    {
-     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
-     "slug": "gemini-3-8-flash-medium",
-     "name": "Gemini 3.8 Flash (Medium)",
-     "shortName": "Gemini 3.8 Flash (medium)",
-     "creatorName": "Google",
-     "releaseDate": "2026-09-02"
-    },
-    {
-     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
-     "slug": "gemini-3-8-flash-low",
-     "name": "Gemini 3.8 Flash (Low)",
-     "shortName": "Gemini 3.8 Flash (low)",
-     "creatorName": "Google",
-     "releaseDate": "2026-09-02"
-    },
-    {
-     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
-     "slug": "gemini-3-5-flash-lite",
-     "name": "Gemini 3.5 Flash-Lite",
-     "shortName": "Gemini 3.5 Flash-Lite",
-     "creatorName": "Google",
-     "releaseDate": "2026-07-21"
-    },
-    {
-     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
-     "slug": "gemini-3-1-flash-lite-preview",
-     "name": "Gemini 3.1 Flash-Lite",
-     "shortName": "Gemini 3.1 Flash-Lite",
-     "creatorName": "Google",
-     "releaseDate": "2026-03-03"
-    },
-    {
-     "id": "cd26a386-4873-46ff-b853-d239050025a2",
-     "slug": "gemma-4-31b",
-     "name": "Gemma 4 31B (Reasoning)",
-     "shortName": "Gemma 4 31B",
-     "creatorName": "Google",
-     "releaseDate": "2026-04-02"
-    },
-    {
-     "id": "0097ebf5-124f-42f6-9463-33b00e711f03",
-     "slug": "gemini-3-5-flash",
-     "name": "Gemini 3.5 Flash (High)",
-     "shortName": "Gemini 3.5 Flash (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-05-19"
-    },
-    {
-     "id": "025ec6b6-df4a-449f-9a03-24e4388d6863",
-     "slug": "gemma-4-12b-non-reasoning",
-     "name": "Gemma 4 12B (Non-reasoning)",
-     "shortName": "Gemma 4 12B (non-reasoning)",
-     "creatorName": "Google",
-     "releaseDate": "2026-06-03"
-    },
-    {
-     "id": "033ade17-d9ec-44e0-b792-b5f1fcd5ab4c",
-     "slug": "gemini-3-5-flash-minimal",
-     "name": "Gemini 3.5 Flash (Minimal)",
-     "shortName": "Gemini 3.5 Flash (minimal)",
-     "creatorName": "Google",
-     "releaseDate": "2026-05-19"
-    },
-    {
-     "id": "04781a0e-40f0-4e2a-a4e5-18e389364a79",
-     "slug": "gemma-3-270m",
-     "name": "Gemma 3 270M",
-     "shortName": "Gemma 3 270M",
-     "creatorName": "Google",
-     "releaseDate": "2025-08-14"
-    },
-    {
-     "id": "1d81aa1c-64c8-442a-9c41-81b37e407b91",
-     "slug": "gemini-2-5-flash-lite",
-     "name": "Gemini 2.5 Flash-Lite (Non-reasoning)",
-     "shortName": "Gemini 2.5 Flash-Lite (non-reasoning)",
-     "creatorName": "Google",
-     "releaseDate": "2025-06-17"
-    },
-    {
-     "id": "219ed587-60c5-4a48-9517-8480e08d0ca1",
-     "slug": "gemini-2-5-flash-reasoning",
-     "name": "Gemini 2.5 Flash (Reasoning)",
-     "shortName": "Gemini 2.5 Flash",
-     "creatorName": "Google",
-     "releaseDate": "2025-05-20"
-    },
-    {
-     "id": "222fb320-6e55-4672-846a-b6d5a24a45f4",
-     "slug": "gemma-3-4b",
-     "name": "Gemma 3 4B Instruct",
-     "shortName": "Gemma 3 4B",
-     "creatorName": "Google",
-     "releaseDate": "2025-03-12"
-    },
-    {
-     "id": "27202e5f-c82d-4710-92e9-4317877d4883",
-     "slug": "gemini-2-5-pro",
-     "name": "Gemini 2.5 Pro",
-     "shortName": "Gemini 2.5 Pro",
-     "creatorName": "Google",
-     "releaseDate": "2025-06-05"
-    },
-    {
-     "id": "2bfdd17a-e027-4068-a54e-b0e90a6df118",
-     "slug": "gemma-3-27b",
-     "name": "Gemma 3 27B Instruct",
-     "shortName": "Gemma 3 27B",
-     "creatorName": "Google",
-     "releaseDate": "2025-03-12"
-    },
-    {
-     "id": "2e6400f5-85ca-4ebc-ba8f-c2811a631138",
-     "slug": "gemma-3-12b",
-     "name": "Gemma 3 12B Instruct",
-     "shortName": "Gemma 3 12B",
-     "creatorName": "Google",
-     "releaseDate": "2025-03-12"
-    },
-    {
-     "id": "5016ea75-7b0e-4737-a7e6-1062c6d90fd4",
-     "slug": "gemini-3-5-flash-medium",
-     "name": "Gemini 3.5 Flash (Medium)",
-     "shortName": "Gemini 3.5 Flash (medium)",
-     "creatorName": "Google",
-     "releaseDate": "2026-05-19"
-    },
-    {
-     "id": "5303601c-8133-4f52-bc4e-5241ee6b3c10",
-     "slug": "gemma-4-e4b-non-reasoning",
-     "name": "Gemma 4 E4B (Non-reasoning)",
-     "shortName": "Gemma 4 E4B (non-reasoning)",
-     "creatorName": "Google",
-     "releaseDate": "2026-04-03"
-    },
-    {
-     "id": "6afbfb62-27e4-435e-9c85-d9fe1b92519e",
-     "slug": "gemini-2-5-flash",
-     "name": "Gemini 2.5 Flash (Non-reasoning)",
-     "shortName": "Gemini 2.5 Flash (non-reasoning)",
-     "creatorName": "Google",
-     "releaseDate": "2025-05-20"
-    },
-    {
-     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
-     "slug": "gemma-4-26b-a4b",
-     "name": "Gemma 4 26B A4B (Reasoning)",
-     "shortName": "Gemma 4 26B A4B",
-     "creatorName": "Google",
-     "releaseDate": "2026-04-02"
-    },
-    {
-     "id": "70882ec6-914c-41f0-9754-5e8f75005f77",
-     "slug": "gemma-4-26b-a4b-non-reasoning",
-     "name": "Gemma 4 26B A4B (Non-reasoning)",
-     "shortName": "Gemma 4 26B A4B (non-reasoning)",
-     "creatorName": "Google",
-     "releaseDate": "2026-04-02"
-    },
-    {
-     "id": "71f51ea9-94fe-4635-a80d-4cfffbb685f4",
-     "slug": "gemini-2-5-flash-lite-preview-09-2025",
-     "name": "Gemini 2.5 Flash-Lite Preview (Sep '25) (Non-reasoning)",
-     "shortName": "Gemini 2.5 Flash-Lite (Sep) (non-reasoning)",
-     "creatorName": "Google",
-     "releaseDate": "2025-09-25"
-    },
-    {
-     "id": "755d7281-2ed8-48c7-808f-709ec4cbfb71",
-     "slug": "gemma-4-e2b-non-reasoning",
-     "name": "Gemma 4 E2B (Non-reasoning)",
-     "shortName": "Gemma 4 E2B (non-reasoning)",
-     "creatorName": "Google",
-     "releaseDate": "2026-04-02"
-    },
-    {
-     "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
-     "slug": "gemini-3-6-flash",
-     "name": "Gemini 3.6 Flash (High)",
-     "shortName": "Gemini 3.6 Flash (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-07-21"
-    },
-    {
-     "id": "783a0ea2-1eef-422a-8c3d-f6d40d943f54",
-     "slug": "gemini-3-flash",
-     "name": "Gemini 3 Flash Preview (Non-reasoning)",
-     "shortName": "Gemini 3 Flash (non-reasoning)",
-     "creatorName": "Google",
-     "releaseDate": "2025-12-17"
-    },
-    {
-     "id": "7c73c3be-7f51-4d14-bec8-d5789488df25",
-     "slug": "gemini-3-flash-reasoning",
-     "name": "Gemini 3 Flash Preview (Reasoning)",
-     "shortName": "Gemini 3 Flash",
-     "creatorName": "Google",
-     "releaseDate": "2025-12-17"
-    },
-    {
-     "id": "84922739-425f-46e1-87ac-bb4268dcacbb",
-     "slug": "gemini-2-5-flash-lite-preview-09-2025-reasoning",
-     "name": "Gemini 2.5 Flash-Lite Preview (Sep '25) (Reasoning)",
-     "shortName": "Gemini 2.5 Flash-Lite (Sep)",
-     "creatorName": "Google",
-     "releaseDate": "2025-09-25"
-    },
-    {
-     "id": "877fdfc9-2026-477a-af96-e4fd602c0131",
-     "slug": "gemini-2-5-flash-preview-09-2025",
-     "name": "Gemini 2.5 Flash Preview (Sep '25) (Non-reasoning)",
-     "shortName": "Gemini 2.5 Flash (Sep) (non-reasoning)",
-     "creatorName": "Google",
-     "releaseDate": "2025-09-25"
-    },
-    {
-     "id": "a797eaf3-6d75-4f29-86a8-e1243ce52d43",
-     "slug": "gemma-3n-e4b",
-     "name": "Gemma 3n E4B Instruct",
-     "shortName": "Gemma 3n E4B",
-     "creatorName": "Google",
-     "releaseDate": "2025-06-26"
-    },
-    {
-     "id": "a8c67863-9d66-44dd-8d27-f58654ecde03",
-     "slug": "gemma-3n-e2b",
-     "name": "Gemma 3n E2B Instruct",
-     "shortName": "Gemma 3n E2B",
-     "creatorName": "Google",
-     "releaseDate": "2025-06-26"
-    },
-    {
-     "id": "b07aef0a-b192-46a1-b1c9-40b06d1b9061",
-     "slug": "gemma-4-e2b",
-     "name": "Gemma 4 E2B (Reasoning)",
-     "shortName": "Gemma 4 E2B",
-     "creatorName": "Google",
-     "releaseDate": "2026-04-02"
-    },
-    {
-     "id": "b2331108-72ed-415a-82d1-188633875bbc",
-     "slug": "gemini-3-7-flash",
-     "name": "Gemini 3.7 Flash (High)",
-     "shortName": "Gemini 3.7 Flash (high)",
-     "creatorName": "Google",
-     "releaseDate": "2026-08-13"
-    },
-    {
-     "id": "b2f3191f-77d6-4155-8be6-330f0baa1ae5",
-     "slug": "gemini-3-pro-low",
-     "name": "Gemini 3 Pro Preview (Low)",
-     "shortName": "Gemini 3 Pro Preview (low)",
-     "creatorName": "Google",
-     "releaseDate": "2025-11-18"
-    },
-    {
-     "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
-     "slug": "gemini-3-1-pro-preview",
-     "name": "Gemini 3.1 Pro Preview",
-     "shortName": "Gemini 3.1 Pro Preview",
-     "creatorName": "Google",
-     "releaseDate": "2026-02-19"
-    },
-    {
-     "id": "bcca0e70-7e80-4c07-b1fa-b33bcfb19e51",
-     "slug": "gemini-2-0-flash",
-     "name": "Gemini 2.0 Flash (Feb '25)",
-     "shortName": "Gemini 2.0 Flash",
-     "creatorName": "Google",
-     "releaseDate": "2025-02-05"
-    },
-    {
-     "id": "c3f12f61-9d57-4e2c-9106-5a82bb1cfee2",
-     "slug": "diffusiongemma-26b-a4b",
-     "name": "DiffusionGemma 26B A4B",
-     "shortName": "DiffusionGemma 26B A4B",
-     "creatorName": "Google",
-     "releaseDate": "2026-06-10"
-    },
-    {
-     "id": "c7667559-d9b6-43f1-8cd8-8bdbc78d190b",
-     "slug": "gemini-2-5-flash-preview-09-2025-reasoning",
-     "name": "Gemini 2.5 Flash Preview (Sep '25) (Reasoning)",
-     "shortName": "Gemini 2.5 Flash (Sep)",
-     "creatorName": "Google",
-     "releaseDate": "2025-09-25"
-    },
-    {
-     "id": "d0aa27aa-4705-4184-9a1d-483b78c9331c",
-     "slug": "gemma-4-31b-non-reasoning",
-     "name": "Gemma 4 31B (Non-reasoning)",
-     "shortName": "Gemma 4 31B (non-reasoning)",
-     "creatorName": "Google",
-     "releaseDate": "2026-04-02"
-    },
-    {
-     "id": "d1122eff-ee85-4fdc-8a9f-23bee6590667",
-     "slug": "gemini-3-pro",
-     "name": "Gemini 3 Pro Preview (High)",
-     "shortName": "Gemini 3 Pro Preview (high)",
-     "creatorName": "Google",
-     "releaseDate": "2025-11-18"
-    },
-    {
-     "id": "d1720545-d0a8-4c15-a53e-ef5ca99ac7ea",
-     "slug": "gemma-3-1b",
-     "name": "Gemma 3 1B Instruct",
-     "shortName": "Gemma 3 1B",
-     "creatorName": "Google",
-     "releaseDate": "2025-03-13"
-    },
-    {
-     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
-     "slug": "gemma-4-e4b",
-     "name": "Gemma 4 E4B (Reasoning)",
-     "shortName": "Gemma 4 E4B",
-     "creatorName": "Google",
-     "releaseDate": "2026-04-03"
-    },
-    {
-     "id": "ddfdaf64-3f8e-40a6-a492-608ee83a1351",
-     "slug": "gemini-3-7-flash-low",
-     "name": "Gemini 3.7 Flash (Low)",
-     "shortName": "Gemini 3.7 Flash (low)",
-     "creatorName": "Google",
-     "releaseDate": "2026-08-13"
-    },
-    {
-     "id": "eb0d4272-7204-42b9-b875-8866fed58548",
-     "slug": "gemini-3-7-flash-medium",
-     "name": "Gemini 3.7 Flash (Medium)",
-     "shortName": "Gemini 3.7 Flash (medium)",
-     "creatorName": "Google",
-     "releaseDate": "2026-08-13"
-    },
-    {
-     "id": "f4e8194a-d0e6-48eb-92be-4307de5aeeec",
-     "slug": "gemini-2-5-flash-lite-reasoning",
-     "name": "Gemini 2.5 Flash-Lite (Reasoning)",
-     "shortName": "Gemini 2.5 Flash-Lite",
-     "creatorName": "Google",
-     "releaseDate": "2025-06-17"
-    },
-    {
-     "id": "feb02d3b-ff8d-4ed4-b165-13f8d4a7192c",
-     "slug": "gemma-4-12b",
-     "name": "Gemma 4 12B (Reasoning)",
-     "shortName": "Gemma 4 12B",
-     "creatorName": "Google",
-     "releaseDate": "2026-06-03"
+     "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
+     "slug": "claude-fable-5-2-high",
+     "name": "Claude Fable 5.2 (High, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (high)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
     },
     {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
@@ -11500,12 +11292,28 @@
      "releaseDate": "2026-09-22"
     },
     {
+     "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
+     "slug": "claude-fable-5-2-medium",
+     "name": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (medium)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
+    },
+    {
      "id": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
      "slug": "claude-sonnet-5-5",
      "name": "Claude Sonnet 5.5 (Max, Default Fallback)",
      "shortName": "Claude Sonnet 5.5 (max)",
      "creatorName": "Anthropic",
      "releaseDate": "2026-09-28"
+    },
+    {
+     "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
+     "slug": "claude-fable-5-2-low",
+     "name": "Claude Fable 5.2 (Low, Default Fallback)",
+     "shortName": "Claude Fable 5.2 (low)",
+     "creatorName": "Anthropic",
+     "releaseDate": "2026-11-09"
     },
     {
      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
@@ -11908,6 +11716,382 @@
      "releaseDate": "2026-07-24"
     },
     {
+     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+     "slug": "gemini-4-carbon",
+     "name": "Gemini 4 Carbon (High)",
+     "shortName": "Gemini 4 Carbon (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-10-28"
+    },
+    {
+     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
+     "slug": "gemini-4-argon",
+     "name": "Gemini 4 Argon (High)",
+     "shortName": "Gemini 4 Argon (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-09-30"
+    },
+    {
+     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+     "slug": "gemini-3-8-flash",
+     "name": "Gemini 3.8 Flash (High)",
+     "shortName": "Gemini 3.8 Flash (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-09-02"
+    },
+    {
+     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
+     "slug": "gemini-3-8-flash-medium",
+     "name": "Gemini 3.8 Flash (Medium)",
+     "shortName": "Gemini 3.8 Flash (medium)",
+     "creatorName": "Google",
+     "releaseDate": "2026-09-02"
+    },
+    {
+     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
+     "slug": "gemini-3-8-flash-low",
+     "name": "Gemini 3.8 Flash (Low)",
+     "shortName": "Gemini 3.8 Flash (low)",
+     "creatorName": "Google",
+     "releaseDate": "2026-09-02"
+    },
+    {
+     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+     "slug": "gemini-3-5-flash-lite",
+     "name": "Gemini 3.5 Flash-Lite",
+     "shortName": "Gemini 3.5 Flash-Lite",
+     "creatorName": "Google",
+     "releaseDate": "2026-07-21"
+    },
+    {
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "slug": "gemini-3-1-flash-lite-preview",
+     "name": "Gemini 3.1 Flash-Lite",
+     "shortName": "Gemini 3.1 Flash-Lite",
+     "creatorName": "Google",
+     "releaseDate": "2026-03-03"
+    },
+    {
+     "id": "cd26a386-4873-46ff-b853-d239050025a2",
+     "slug": "gemma-4-31b",
+     "name": "Gemma 4 31B (Reasoning)",
+     "shortName": "Gemma 4 31B",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-02"
+    },
+    {
+     "id": "0097ebf5-124f-42f6-9463-33b00e711f03",
+     "slug": "gemini-3-5-flash",
+     "name": "Gemini 3.5 Flash (High)",
+     "shortName": "Gemini 3.5 Flash (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-05-19"
+    },
+    {
+     "id": "025ec6b6-df4a-449f-9a03-24e4388d6863",
+     "slug": "gemma-4-12b-non-reasoning",
+     "name": "Gemma 4 12B (Non-reasoning)",
+     "shortName": "Gemma 4 12B (non-reasoning)",
+     "creatorName": "Google",
+     "releaseDate": "2026-06-03"
+    },
+    {
+     "id": "033ade17-d9ec-44e0-b792-b5f1fcd5ab4c",
+     "slug": "gemini-3-5-flash-minimal",
+     "name": "Gemini 3.5 Flash (Minimal)",
+     "shortName": "Gemini 3.5 Flash (minimal)",
+     "creatorName": "Google",
+     "releaseDate": "2026-05-19"
+    },
+    {
+     "id": "04781a0e-40f0-4e2a-a4e5-18e389364a79",
+     "slug": "gemma-3-270m",
+     "name": "Gemma 3 270M",
+     "shortName": "Gemma 3 270M",
+     "creatorName": "Google",
+     "releaseDate": "2025-08-14"
+    },
+    {
+     "id": "1d81aa1c-64c8-442a-9c41-81b37e407b91",
+     "slug": "gemini-2-5-flash-lite",
+     "name": "Gemini 2.5 Flash-Lite (Non-reasoning)",
+     "shortName": "Gemini 2.5 Flash-Lite (non-reasoning)",
+     "creatorName": "Google",
+     "releaseDate": "2025-06-17"
+    },
+    {
+     "id": "219ed587-60c5-4a48-9517-8480e08d0ca1",
+     "slug": "gemini-2-5-flash-reasoning",
+     "name": "Gemini 2.5 Flash (Reasoning)",
+     "shortName": "Gemini 2.5 Flash",
+     "creatorName": "Google",
+     "releaseDate": "2025-05-20"
+    },
+    {
+     "id": "222fb320-6e55-4672-846a-b6d5a24a45f4",
+     "slug": "gemma-3-4b",
+     "name": "Gemma 3 4B Instruct",
+     "shortName": "Gemma 3 4B",
+     "creatorName": "Google",
+     "releaseDate": "2025-03-12"
+    },
+    {
+     "id": "27202e5f-c82d-4710-92e9-4317877d4883",
+     "slug": "gemini-2-5-pro",
+     "name": "Gemini 2.5 Pro",
+     "shortName": "Gemini 2.5 Pro",
+     "creatorName": "Google",
+     "releaseDate": "2025-06-05"
+    },
+    {
+     "id": "2bfdd17a-e027-4068-a54e-b0e90a6df118",
+     "slug": "gemma-3-27b",
+     "name": "Gemma 3 27B Instruct",
+     "shortName": "Gemma 3 27B",
+     "creatorName": "Google",
+     "releaseDate": "2025-03-12"
+    },
+    {
+     "id": "2e6400f5-85ca-4ebc-ba8f-c2811a631138",
+     "slug": "gemma-3-12b",
+     "name": "Gemma 3 12B Instruct",
+     "shortName": "Gemma 3 12B",
+     "creatorName": "Google",
+     "releaseDate": "2025-03-12"
+    },
+    {
+     "id": "5016ea75-7b0e-4737-a7e6-1062c6d90fd4",
+     "slug": "gemini-3-5-flash-medium",
+     "name": "Gemini 3.5 Flash (Medium)",
+     "shortName": "Gemini 3.5 Flash (medium)",
+     "creatorName": "Google",
+     "releaseDate": "2026-05-19"
+    },
+    {
+     "id": "5303601c-8133-4f52-bc4e-5241ee6b3c10",
+     "slug": "gemma-4-e4b-non-reasoning",
+     "name": "Gemma 4 E4B (Non-reasoning)",
+     "shortName": "Gemma 4 E4B (non-reasoning)",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-03"
+    },
+    {
+     "id": "6afbfb62-27e4-435e-9c85-d9fe1b92519e",
+     "slug": "gemini-2-5-flash",
+     "name": "Gemini 2.5 Flash (Non-reasoning)",
+     "shortName": "Gemini 2.5 Flash (non-reasoning)",
+     "creatorName": "Google",
+     "releaseDate": "2025-05-20"
+    },
+    {
+     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
+     "slug": "gemma-4-26b-a4b",
+     "name": "Gemma 4 26B A4B (Reasoning)",
+     "shortName": "Gemma 4 26B A4B",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-02"
+    },
+    {
+     "id": "70882ec6-914c-41f0-9754-5e8f75005f77",
+     "slug": "gemma-4-26b-a4b-non-reasoning",
+     "name": "Gemma 4 26B A4B (Non-reasoning)",
+     "shortName": "Gemma 4 26B A4B (non-reasoning)",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-02"
+    },
+    {
+     "id": "71f51ea9-94fe-4635-a80d-4cfffbb685f4",
+     "slug": "gemini-2-5-flash-lite-preview-09-2025",
+     "name": "Gemini 2.5 Flash-Lite Preview (Sep '25) (Non-reasoning)",
+     "shortName": "Gemini 2.5 Flash-Lite (Sep) (non-reasoning)",
+     "creatorName": "Google",
+     "releaseDate": "2025-09-25"
+    },
+    {
+     "id": "755d7281-2ed8-48c7-808f-709ec4cbfb71",
+     "slug": "gemma-4-e2b-non-reasoning",
+     "name": "Gemma 4 E2B (Non-reasoning)",
+     "shortName": "Gemma 4 E2B (non-reasoning)",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-02"
+    },
+    {
+     "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
+     "slug": "gemini-3-6-flash",
+     "name": "Gemini 3.6 Flash (High)",
+     "shortName": "Gemini 3.6 Flash (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-07-21"
+    },
+    {
+     "id": "783a0ea2-1eef-422a-8c3d-f6d40d943f54",
+     "slug": "gemini-3-flash",
+     "name": "Gemini 3 Flash Preview (Non-reasoning)",
+     "shortName": "Gemini 3 Flash (non-reasoning)",
+     "creatorName": "Google",
+     "releaseDate": "2025-12-17"
+    },
+    {
+     "id": "7c73c3be-7f51-4d14-bec8-d5789488df25",
+     "slug": "gemini-3-flash-reasoning",
+     "name": "Gemini 3 Flash Preview (Reasoning)",
+     "shortName": "Gemini 3 Flash",
+     "creatorName": "Google",
+     "releaseDate": "2025-12-17"
+    },
+    {
+     "id": "84922739-425f-46e1-87ac-bb4268dcacbb",
+     "slug": "gemini-2-5-flash-lite-preview-09-2025-reasoning",
+     "name": "Gemini 2.5 Flash-Lite Preview (Sep '25) (Reasoning)",
+     "shortName": "Gemini 2.5 Flash-Lite (Sep)",
+     "creatorName": "Google",
+     "releaseDate": "2025-09-25"
+    },
+    {
+     "id": "877fdfc9-2026-477a-af96-e4fd602c0131",
+     "slug": "gemini-2-5-flash-preview-09-2025",
+     "name": "Gemini 2.5 Flash Preview (Sep '25) (Non-reasoning)",
+     "shortName": "Gemini 2.5 Flash (Sep) (non-reasoning)",
+     "creatorName": "Google",
+     "releaseDate": "2025-09-25"
+    },
+    {
+     "id": "a797eaf3-6d75-4f29-86a8-e1243ce52d43",
+     "slug": "gemma-3n-e4b",
+     "name": "Gemma 3n E4B Instruct",
+     "shortName": "Gemma 3n E4B",
+     "creatorName": "Google",
+     "releaseDate": "2025-06-26"
+    },
+    {
+     "id": "a8c67863-9d66-44dd-8d27-f58654ecde03",
+     "slug": "gemma-3n-e2b",
+     "name": "Gemma 3n E2B Instruct",
+     "shortName": "Gemma 3n E2B",
+     "creatorName": "Google",
+     "releaseDate": "2025-06-26"
+    },
+    {
+     "id": "b07aef0a-b192-46a1-b1c9-40b06d1b9061",
+     "slug": "gemma-4-e2b",
+     "name": "Gemma 4 E2B (Reasoning)",
+     "shortName": "Gemma 4 E2B",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-02"
+    },
+    {
+     "id": "b2331108-72ed-415a-82d1-188633875bbc",
+     "slug": "gemini-3-7-flash",
+     "name": "Gemini 3.7 Flash (High)",
+     "shortName": "Gemini 3.7 Flash (high)",
+     "creatorName": "Google",
+     "releaseDate": "2026-08-13"
+    },
+    {
+     "id": "b2f3191f-77d6-4155-8be6-330f0baa1ae5",
+     "slug": "gemini-3-pro-low",
+     "name": "Gemini 3 Pro Preview (Low)",
+     "shortName": "Gemini 3 Pro Preview (low)",
+     "creatorName": "Google",
+     "releaseDate": "2025-11-18"
+    },
+    {
+     "id": "bbd93ebe-80da-4594-bb19-61e69d0331df",
+     "slug": "gemini-3-1-pro-preview",
+     "name": "Gemini 3.1 Pro Preview",
+     "shortName": "Gemini 3.1 Pro Preview",
+     "creatorName": "Google",
+     "releaseDate": "2026-02-19"
+    },
+    {
+     "id": "bcca0e70-7e80-4c07-b1fa-b33bcfb19e51",
+     "slug": "gemini-2-0-flash",
+     "name": "Gemini 2.0 Flash (Feb '25)",
+     "shortName": "Gemini 2.0 Flash",
+     "creatorName": "Google",
+     "releaseDate": "2025-02-05"
+    },
+    {
+     "id": "c3f12f61-9d57-4e2c-9106-5a82bb1cfee2",
+     "slug": "diffusiongemma-26b-a4b",
+     "name": "DiffusionGemma 26B A4B",
+     "shortName": "DiffusionGemma 26B A4B",
+     "creatorName": "Google",
+     "releaseDate": "2026-06-10"
+    },
+    {
+     "id": "c7667559-d9b6-43f1-8cd8-8bdbc78d190b",
+     "slug": "gemini-2-5-flash-preview-09-2025-reasoning",
+     "name": "Gemini 2.5 Flash Preview (Sep '25) (Reasoning)",
+     "shortName": "Gemini 2.5 Flash (Sep)",
+     "creatorName": "Google",
+     "releaseDate": "2025-09-25"
+    },
+    {
+     "id": "d0aa27aa-4705-4184-9a1d-483b78c9331c",
+     "slug": "gemma-4-31b-non-reasoning",
+     "name": "Gemma 4 31B (Non-reasoning)",
+     "shortName": "Gemma 4 31B (non-reasoning)",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-02"
+    },
+    {
+     "id": "d1122eff-ee85-4fdc-8a9f-23bee6590667",
+     "slug": "gemini-3-pro",
+     "name": "Gemini 3 Pro Preview (High)",
+     "shortName": "Gemini 3 Pro Preview (high)",
+     "creatorName": "Google",
+     "releaseDate": "2025-11-18"
+    },
+    {
+     "id": "d1720545-d0a8-4c15-a53e-ef5ca99ac7ea",
+     "slug": "gemma-3-1b",
+     "name": "Gemma 3 1B Instruct",
+     "shortName": "Gemma 3 1B",
+     "creatorName": "Google",
+     "releaseDate": "2025-03-13"
+    },
+    {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "slug": "gemma-4-e4b",
+     "name": "Gemma 4 E4B (Reasoning)",
+     "shortName": "Gemma 4 E4B",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-03"
+    },
+    {
+     "id": "ddfdaf64-3f8e-40a6-a492-608ee83a1351",
+     "slug": "gemini-3-7-flash-low",
+     "name": "Gemini 3.7 Flash (Low)",
+     "shortName": "Gemini 3.7 Flash (low)",
+     "creatorName": "Google",
+     "releaseDate": "2026-08-13"
+    },
+    {
+     "id": "eb0d4272-7204-42b9-b875-8866fed58548",
+     "slug": "gemini-3-7-flash-medium",
+     "name": "Gemini 3.7 Flash (Medium)",
+     "shortName": "Gemini 3.7 Flash (medium)",
+     "creatorName": "Google",
+     "releaseDate": "2026-08-13"
+    },
+    {
+     "id": "f4e8194a-d0e6-48eb-92be-4307de5aeeec",
+     "slug": "gemini-2-5-flash-lite-reasoning",
+     "name": "Gemini 2.5 Flash-Lite (Reasoning)",
+     "shortName": "Gemini 2.5 Flash-Lite",
+     "creatorName": "Google",
+     "releaseDate": "2025-06-17"
+    },
+    {
+     "id": "feb02d3b-ff8d-4ed4-b165-13f8d4a7192c",
+     "slug": "gemma-4-12b",
+     "name": "Gemma 4 12B (Reasoning)",
+     "shortName": "Gemma 4 12B",
+     "creatorName": "Google",
+     "releaseDate": "2026-06-03"
+    },
+    {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
      "slug": "gpt-6-astra",
      "name": "GPT-6 Astra (Max)",
@@ -12106,6 +12290,14 @@
      "shortName": "GPT-6 Luna (non-reasoning)",
      "creatorName": "OpenAI",
      "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "slug": "gpt-oss-120b",
+     "name": "gpt-oss-120b (High)",
+     "shortName": "gpt-oss-120b (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2025-08-05"
     },
     {
      "id": "01459872-433a-4ab2-8e99-7083162172eb",
@@ -12650,14 +12842,6 @@
      "shortName": "GPT-5 (ChatGPT)",
      "creatorName": "OpenAI",
      "releaseDate": "2025-08-07"
-    },
-    {
-     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
-     "slug": "gpt-oss-120b",
-     "name": "gpt-oss-120b (High)",
-     "shortName": "gpt-oss-120b (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2025-08-05"
     },
     {
      "id": "fd4454ff-e703-46c0-a7f5-fa69af09486d",
@@ -14660,6 +14844,22 @@
      "releaseDate": "2025-01-30"
     },
     {
+     "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
+     "slug": "agnes-2-5-pro-theta",
+     "name": "Agnes 2.5 Pro Theta",
+     "shortName": "Agnes 2.5 Pro Theta",
+     "creatorName": "Sapiens AI",
+     "releaseDate": "2026-11-07"
+    },
+    {
+     "id": "f3a0e101-086f-44b3-a1b2-d23498f9716b",
+     "slug": "agnes-2-5-pro-beta",
+     "name": "Agnes 2.5 Pro Beta",
+     "shortName": "Agnes 2.5 Pro Beta",
+     "creatorName": "Sapiens AI",
+     "releaseDate": "2026-08-26"
+    },
+    {
      "id": "bb3d7e75-8e22-4082-b9d6-1db0803e042f",
      "slug": "k2-horizon-375b-a23b",
      "name": "K2 Horizon 375B A23B",
@@ -15802,14 +16002,6 @@
      "shortName": "Cogito v2.1",
      "creatorName": "Deep Cogito",
      "releaseDate": "2025-11-18"
-    },
-    {
-     "id": "f3a0e101-086f-44b3-a1b2-d23498f9716b",
-     "slug": "agnes-2-5-pro-beta",
-     "name": "Agnes 2.5 Pro Beta",
-     "shortName": "Agnes 2.5 Pro Beta",
-     "creatorName": "Sapiens AI",
-     "releaseDate": "2026-08-26"
     },
     {
      "id": "fb112343-c82c-4b43-afea-996bd5101d62",
