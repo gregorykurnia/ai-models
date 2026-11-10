@@ -15,6 +15,7 @@ import {
 import { useId } from "react";
 import Link, { type LinkProps } from "next/link";
 import { StickyTableHeaders } from "@/components/ui/sticky-table-headers";
+import { TableScrollFrame } from "@/components/ui/table-scroll-frame";
 
 type Variant = "primary" | "secondary" | "quiet" | "destructive";
 type Size = "compact" | "default" | "large";
@@ -219,14 +220,15 @@ export function Skeleton({ className, ...props }: HTMLAttributes<HTMLDivElement>
   return <div {...props} aria-hidden="true" className={classes("ui-skeleton", className)} />;
 }
 
-export function TableScroll({ label, className, children, ...props }: HTMLAttributes<HTMLDivElement> & { label: string }) {
+export function TableScroll({ label, className, children, showOverflowCue = false, ...props }: HTMLAttributes<HTMLDivElement> & { label: string; showOverflowCue?: boolean }) {
   const regionId = useId();
-  return (
+  const region = (
     <div {...props} id={regionId} className={classes("table-scroll", className)} role="region" aria-label={label} tabIndex={props.tabIndex ?? 0}>
       {children}
       <StickyTableHeaders regionId={regionId} />
     </div>
   );
+  return showOverflowCue ? <TableScrollFrame regionId={regionId}>{region}</TableScrollFrame> : region;
 }
 
 export function Table({ className, ...props }: TableHTMLAttributes<HTMLTableElement>) {

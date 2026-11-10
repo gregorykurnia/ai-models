@@ -37,15 +37,28 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
   }
 
   async function screenshot(name){
-    await page.screenshot({path:join(output,name),animations:"disabled"});
+    const master=page.locator("#master-leaderboard");
+    const box=await master.count()?await master.boundingBox():null;
+    const clip=box&&page.viewportSize().width===1440?{x:0,y:0,width:1440,height:Math.ceil(box.y+box.height+24)}:undefined;
+    await page.screenshot({path:join(output,name),animations:"disabled",clip});
     report.screenshots.push(name);
+  }
+
+  async function checkScrollCue(section){
+    const region=section.locator(".table-scroll");
+    const cue=section.locator(".table-overflow-cue");
+    await cue.waitFor({state:"visible"});
+    await region.evaluate(element=>{element.scrollLeft=element.scrollWidth;});
+    await cue.waitFor({state:"hidden"});
+    await region.evaluate(element=>{element.scrollLeft=0;});
+    await cue.waitFor({state:"visible"});
   }
 
   // Keep the 390x844 first screen, then use a taller 390px capture to show every
   // card in one image without hiding, rearranging, or shrinking its content.
   async function phoneScreenshots(stem,section,firstScreen=false){
     await section.scrollIntoViewIfNeeded();
-    const align=()=>section.evaluate(element=>{element.closest(".app-main").scrollTop+=element.getBoundingClientRect().top-56;});
+    const align=()=>section.evaluate(element=>{element.closest(".app-main").scrollTop+=element.getBoundingClientRect().top-72;});
     await align();
     if(firstScreen)await screenshot(`${stem}-first-screen.png`);
     const height=firstScreen
@@ -55,21 +68,24 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
     if(firstScreen)await align();
     else await page.locator(".app-main").evaluate(element=>{element.scrollTop=0;});
     const box=await section.boundingBox();
-    const y=firstScreen?Math.floor(box.y):0;
-    await page.screenshot({path:join(output,`${stem}.png`),animations:"disabled",clip:{x:0,y,width:390,height:Math.ceil(box.y+box.height-y)}});
+    const notes=page.locator(".evaluation-notes");
+    const bottom=firstScreen?box.y+box.height:(await notes.boundingBox()).y+(await notes.boundingBox()).height;
+    await page.screenshot({path:join(output,`${stem}.png`),animations:"disabled",clip:{x:0,y:0,width:390,height:Math.ceil(bottom+16)}});
     report.screenshots.push(`${stem}.png`);
     if(stem==="master-fable-390"){
-      await section.locator(".master-card").last().screenshot({path:join(output,"master-fable-last-card-crop.png")});
+      const card=await section.locator(".master-card").last().boundingBox();
+      await page.screenshot({path:join(output,"master-fable-last-card-crop.png"),clip:{x:card.x-8,y:card.y-8,width:card.width+16,height:card.height+16}});
       report.screenshots.push("master-fable-last-card-crop.png");
     }
   }
 
   for(const width of [1440,390])for(const [query,slug,count] of groups){
-    await page.setViewportSize({width,height:width===390?844:1000});
+    await page.setViewportSize({width,height:width===390?844:1300});
     await page.goto(`${baseUrl}/?mq=${encodeURIComponent(query)}#master-leaderboard`);
     const section=page.locator("#master-leaderboard");
     const rows=section.locator(width===390?".master-card":"tbody tr");
     await rows.first().waitFor();
+    assert.match(await section.locator(".leaderboard-legend").innerText(),/— means no captured AA value\. Aggregate uses 9 of 20 evaluations/);
     assert.equal(await section.locator("#master-search").inputValue(),query);
     assert.equal(await rows.count(),count,`${query}: ${width}px count`);
     const names=await rows.locator(width===390?".master-card__title a":".master-model > a").allTextContents();
@@ -90,10 +106,19 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
       assert(layout.every(item=>item.sticky&&item.contained&&item.separate),`${query}: frozen names and stars do not overlap`);
       if(slug==="fable")assert(layout.every(item=>item.wrapped),"all long Fable names wrap");
       await section.scrollIntoViewIfNeeded();
+      assert.match(await section.locator(".master-cost small").first().innerText(),/^USD · AA\n\d{1,2} \w{3} \d{4}$/);
+      const aligned=await section.locator("tbody tr").evaluateAll(rows=>rows.every(row=>{
+        const number=element=>{const text=[...element.childNodes].find(node=>node.nodeType===Node.TEXT_NODE&&node.textContent.trim());const range=document.createRange();range.selectNodeContents(text);return range.getBoundingClientRect().y;};
+        return Math.abs(number(row.querySelector(".master-aggregate > span"))-number(row.querySelector(".master-cost a")))<1;
+      }));
+      assert(aligned,"aggregate values align with the single-line numbers");
+      await checkScrollCue(section);
       await audit(`${query}: desktop layout`,"#master-leaderboard");
       await screenshot(`master-${slug}-${width}.png`);
       if(slug==="fable"){
-        await section.locator(".table-scroll").evaluate(element=>{element.scrollLeft=900;});
+        const target=await section.getByRole("columnheader",{name:/^Terminal-Bench 4\.0/}).boundingBox();
+        const frozen=await section.locator("th.master-first").boundingBox();
+        await section.locator(".table-scroll").evaluate((element,left)=>{element.scrollLeft=left;},target.x-frozen.x-frozen.width);
         const positions=await section.locator("tbody .master-model").evaluateAll(cells=>cells.map(cell=>cell.getBoundingClientRect().left));
         assert(positions.every((left,index)=>Math.abs(left-layout[index].left)<1),"Model column stays frozen after horizontal scroll");
         await screenshot("master-fable-1440-frozen.png");
@@ -114,13 +139,15 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
     const section=page.locator(".evaluation-leaderboard");
     const rows=section.locator(width===390?".evaluation-card":".evaluation-table tbody tr");
     await rows.first().waitFor();
+    assert.equal(await page.locator(".evaluation-page-header .eyebrow").count(),0,"no repeated metric eyebrow above the evaluation title");
+    assert.match(await section.locator(".leaderboard-legend").innerText(),/— means no captured AA value.*Cost is per Intelligence Index task/);
     const entries=dataset.entries.filter(entry=>entry.evaluation_id===id&&groups.some(([query])=>entry.model.includes(query))).sort((a,b)=>a.source_row-b.source_row);
     assert.equal(entries.length,7,`${id}: AA scores all seven models`);
     assert.equal(await rows.count(),entries.length,`${id}: ${width}px rows`);
     const actual=[];
     for(let index=0;index<entries.length;index++){
       const entry=entries[index],row=rows.nth(index);
-      const score=id==="terminal-bench-4-0"?`${(entry.score_value*100).toFixed(2)}%`:entry.score_display;
+      const score=id==="terminal-bench-4-0"?`${(entry.score_value*100).toFixed(2)}%`:entry.score_value.toFixed(4);
       if(width===390){
         assert.equal(await row.getAttribute("data-model"),entry.model);
         assert.equal(await row.locator("strong").innerText(),`#${entry.source_rank} ${entry.model}`);
@@ -135,7 +162,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
     await page.locator(".app-main").evaluate(element=>{element.scrollTop=0;});
     await audit(`${id}: ${width}px layout`,".evaluation-leaderboard");
     if(width===390)await phoneScreenshots(`${id}-${width}`,section);
-    else await screenshot(`${id}-${width}.png`);
+    else {await checkScrollCue(section);await screenshot(`${id}-${width}.png`);}
     report.evaluations[`${id}-${width}`]=actual;
   }
   assert.deepEqual(consoleErrors,[],"no browser console errors in the new-model views");

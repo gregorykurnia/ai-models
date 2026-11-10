@@ -97,6 +97,7 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds}:{entri
       <Button size="compact" variant="quiet" onClick={()=>router.replace(pathname,{scroll:false})}>Clear filters</Button>
     </div>
     <p aria-live="polite">{sorted.length.toLocaleString()} results{state.provider.length?` · ${providerSelectionLabel(state.provider)}`:""}</p>
+    <HelperText className="leaderboard-legend">— means no captured AA value. Cost is per Intelligence Index task; see the time label for its task.</HelperText>
     <div className="evaluation-mobile-sort">
       <label htmlFor="evaluation-sort">Sort by</label>
       <Select id="evaluation-sort" value={allowedSort} onChange={event=>update({sort:event.target.value,direction:"asc"})}>
@@ -106,7 +107,7 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds}:{entri
     </div>
     <div className="evaluation-table-view">
       <p className="evaluation-scroll-hint">Scroll sideways for all columns ↔ · Model names stay visible.</p>
-      <TableScroll label={`${evaluation.display_name} source rankings, scroll horizontally for all columns`}>
+      <TableScroll showOverflowCue label={`${evaluation.display_name} source rankings, scroll horizontally for all columns`}>
         <Table className="evaluation-table" style={{tableLayout:"fixed",width:columns.reduce((sum,column)=>sum+columnWidths[columnId(column)],0)}}>
           <caption className="sr-only">{evaluation.display_name} source rankings</caption>
           <colgroup>{columns.map(column=><col key={columnId(column)} style={{width:columnWidths[columnId(column)]}}/>)}</colgroup>

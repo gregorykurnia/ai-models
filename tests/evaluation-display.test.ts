@@ -16,3 +16,13 @@ test("other evaluation displays retain their captured units and precision", () =
     assert.equal(evaluationScoreDisplay({ id }, { score_value: 1, score_display: display }), display);
   }
 });
+
+test("Intelligence Index scores align at four decimals without changing stored values", () => {
+  for (const [value, expected] of [[64.563595756626, "64.5636"], [34.11496086, "34.1150"], [0, "0.0000"]] as const) {
+    const captured = String(Number(value.toFixed(4)));
+    const entry = { score_value: value, score_display: captured };
+    assert.equal(evaluationScoreDisplay({ id: "intelligence-index" }, entry), expected);
+    assert.equal(entry.score_value, value);
+    assert.equal(entry.score_display, captured);
+  }
+});

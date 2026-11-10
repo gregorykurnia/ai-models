@@ -49,7 +49,6 @@ export default async function Page({ params }: { params: Promise<{ evaluationSlu
   return <>
     <PageHeader className="evaluation-page-header">
     <div className="breadcrumb"><Link href="/">Evaluations</Link> / {evaluation.display_name}</div>
-    <div className="eyebrow">{evaluation.metric_label}</div>
     <h1>{evaluation.display_name}</h1>
     <p>As of {capturedDate} · {evaluation.row_count.toLocaleString()} ranked rows · {evaluation.source_url
       ? <a href={evaluation.source_url} target="_blank" rel="noreferrer">Original source ↗</a>

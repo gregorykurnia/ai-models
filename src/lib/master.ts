@@ -36,7 +36,7 @@ const masterEvaluationLabels:Record<string,string>={
   "aa-omniscience-index":"Omniscience Index",
   "strategy-ops-index":"Strategy and Ops Index",
   "aa-briefcase-presentation-elo":"Presentation Elo",
-  "terminal-bench-4-0":"Terminal Bench",
+  "terminal-bench-4-0":"Terminal-Bench 4.0",
   "frontiercode-2-0":"FrontierCode 2.0",
   "intelligence-index":"Intelligence Index",
   "aa-briefcase-rubric-score":"Rubric Score",

@@ -1190,17 +1190,22 @@ th.numeric {
 
 .master-card__ranks summary::after,
 .master-intro-mobile summary::after {
-  content: "⌄";
+  content: "";
   margin-left: auto;
+  margin-top: -3px;
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
   color: var(--text-secondary);
-  font-size: var(--font-size-body);
-  line-height: 1;
+  transform: rotate(45deg);
   transition: transform var(--transition-disclosure);
 }
 
 .master-card__ranks[open] > summary::after,
 .master-intro-mobile[open] > summary::after {
-  transform: rotate(180deg);
+  transform: rotate(225deg);
 }
 
 .master-card__ranks dl {
@@ -1997,4 +2002,52 @@ a.ui-button:hover {
     animation: none;
     transition: none;
   }
+}
+
+/* A scroll cue remains visible even when the OS hides its scrollbars. */
+.table-scroll-frame {
+  position: relative;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.table-overflow-cue {
+  position: absolute;
+  z-index: 3;
+  inset: 1px 1px 1px auto;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: var(--space-1);
+  border-radius: 0 var(--shape-radius-control) var(--shape-radius-control) 0;
+  background: linear-gradient(to right, transparent, var(--bg-surface));
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .table-overflow-cue {
+    display: none;
+  }
+}
+
+.master tbody .master-aggregate > span {
+  display: block;
+  position: relative;
+}
+
+.master tbody .master-aggregate small {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  white-space: nowrap;
+}
+
+.leaderboard-legend {
+  margin: var(--space-2) 0 var(--space-4);
+}
+
+.toolbar.master-toolbar > .master-favorite-count {
+  font-weight: var(--type-weight-regular);
 }
