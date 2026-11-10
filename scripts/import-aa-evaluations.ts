@@ -286,7 +286,7 @@ for (const config of evaluationConfigs) {
   const withRelease = rows.filter(row => row.release).length;
   const evaluationRecord: Evaluation = {
     ...evaluation,
-    source_url: evaluation.source_url,
+    source_url: evaluation.source_url ?? capture.source_url,
     captured_at: capture.captured_at,
     source_asset_id: sourceAssetId,
     published_snapshot_id: snapshotId,

@@ -61,7 +61,9 @@ try {
     for (const width of [1440, 390]) {
       await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
       await navigate(slug);
-      assert.equal(await page.locator(".evaluation-page-header .eyebrow").textContent(), slug === "terminal-bench-4-0" ? "Score (%)" : slug === "finance-accounting" ? "Index Score" : "Analytical Quality Elo");
+      // The metric eyebrow above the title was removed (2026-11-10); the title stands alone.
+      assert.equal(await page.locator(".evaluation-page-header .eyebrow").count(), 0);
+      assert.equal(await page.locator(".evaluation-page-header h1").count(), 1);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
       if(width === 390) {
         const cards=card.locator(".evaluation-card");

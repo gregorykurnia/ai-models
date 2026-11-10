@@ -29,7 +29,7 @@ function EvaluationCard({entry,evaluation,speed,cost}:{entry:Entry;evaluation:Ev
     <dl className="master-card__metrics">
       <div><dt>{evaluationTimePerTaskLabel(evaluation.id)} (min)</dt><dd><SpeedValue speed={speed} seconds={evaluationTimePerTask(evaluation.id,speed)} format={formatTimePerTask}/></dd></div>
       <div><dt>First Answer (s)</dt><dd><SpeedValue speed={speed} seconds={speed?.first_answer_s??null} format={formatFirstAnswer}/></dd></div>
-      <div><dt>Cost / Index task</dt><dd>{cost?<a href={cost.url} target="_blank" rel="noreferrer">{costFormatter.format(cost.cost_usd)}</a>:"—"}</dd></div>
+      <div><dt>Cost / Intelligence Index task</dt><dd>{cost?<a href={cost.url} target="_blank" rel="noreferrer">{costFormatter.format(cost.cost_usd)}</a>:"—"}</dd></div>
       {evaluation.has_release_date&&<div><dt>Release date</dt><dd>{entry.release_date_label||"—"}</dd></div>}
     </dl>
     {evaluation.has_confidence_interval&&<p className="evaluation-card__interval">Elo CI: {entry.confidence_interval_display||"—"}</p>}
@@ -97,7 +97,7 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds}:{entri
       <Button size="compact" variant="quiet" onClick={()=>router.replace(pathname,{scroll:false})}>Clear filters</Button>
     </div>
     <p aria-live="polite">{sorted.length.toLocaleString()} results{state.provider.length?` · ${providerSelectionLabel(state.provider)}`:""}</p>
-    <HelperText className="leaderboard-legend">— means no captured AA value. Cost is per Intelligence Index task; see the time label for its task.</HelperText>
+    <HelperText className="leaderboard-legend">— means no captured AA value.</HelperText>
     <div className="evaluation-mobile-sort">
       <label htmlFor="evaluation-sort">Sort by</label>
       <Select id="evaluation-sort" value={allowedSort} onChange={event=>update({sort:event.target.value,direction:"asc"})}>

@@ -1,4 +1,5 @@
 import source from "../../data/aa-model-speed.json";
+import costSource from "../../data/intelligence-index-costs.json";
 import type { Entry } from "./contract";
 import { masterIdentityKey } from "./master";
 
@@ -42,6 +43,16 @@ for (const record of records) {
     addUnique(speedsByIdentity, masterIdentityKey(record.provider, name), record);
     addUnique(speedsByModel, masterIdentityKey("", name), record);
   }
+}
+
+// AA's speed payload names some models without their fallback ("Claude Haiku 5.5 (Max)"), while the
+// evaluation import writes the sheet's spelling into the cost file. Both carry AA's slug, so add that name too.
+const recordsBySlug = new Map(records.map(record => [record.slug, record]));
+for (const cost of (costSource as { records: Array<{ slug: string; name: string; provider: string }> }).records) {
+  const record = recordsBySlug.get(cost.slug);
+  if (!record || cost.name === record.model) continue;
+  addUnique(speedsByIdentity, masterIdentityKey(cost.provider, cost.name), record);
+  addUnique(speedsByModel, masterIdentityKey("", cost.name), record);
 }
 
 export const modelSpeedCapturedAt = snapshot.captured_at;

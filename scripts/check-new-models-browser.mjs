@@ -140,7 +140,13 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
     const rows=section.locator(width===390?".evaluation-card":".evaluation-table tbody tr");
     await rows.first().waitFor();
     assert.equal(await page.locator(".evaluation-page-header .eyebrow").count(),0,"no repeated metric eyebrow above the evaluation title");
-    assert.match(await section.locator(".leaderboard-legend").innerText(),/— means no captured AA value.*Cost is per Intelligence Index task/);
+    assert.equal(await section.locator(".leaderboard-legend").innerText(),"— means no captured AA value.");
+    if(width===390){
+      assert.equal(await rows.first().locator("dt").filter({hasText:"Cost /"}).innerText(),"Cost / Intelligence Index task");
+      // The first card's timing tiles stay on the first phone screen under the legend.
+      const tile=await rows.first().locator(".master-card__metrics > div").nth(1).boundingBox();
+      assert(tile.y+tile.height<=844,`${id}: first card's timings below the first phone screen`);
+    }
     const entries=dataset.entries.filter(entry=>entry.evaluation_id===id&&groups.some(([query])=>entry.model.includes(query))).sort((a,b)=>a.source_row-b.source_row);
     assert.equal(entries.length,7,`${id}: AA scores all seven models`);
     assert.equal(await rows.count(),entries.length,`${id}: ${width}px rows`);

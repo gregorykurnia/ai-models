@@ -36,6 +36,8 @@ for(const row of result.rows){
     cells++;
   }
 }
+// Every evaluation is now refreshed from an AA page; a missing link shows "Source: supplied workbook".
+for(const evaluation of d.evaluations)assert(evaluation.source_url,`${evaluation.id} has no source_url`);
 for(const evaluation of d.evaluations)for(const dir of ["asc","desc"]){
   const rows=sortMaster(result.rows,evaluation.id,dir);
   const firstMissing=rows.findIndex(r=>!r.cells[evaluation.id]);

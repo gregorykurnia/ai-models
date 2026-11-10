@@ -58,8 +58,8 @@ try {
   const errors = [];
   page.on("pageerror", error => errors.push(error.message));
   await page.goto(`${base}/suitability`, { waitUntil: "domcontentloaded", timeout: 60000 });
-  await page.getByLabel("Task title", { exact: true }).fill("Quota fallback comparison");
-  await page.getByLabel("Task description", { exact: true }).fill("Preserve these task settings and pinned results.");
+  await page.getByLabel(/^Task title\*?$/).fill("Quota fallback comparison");
+  await page.getByLabel(/^Task description\*?$/).fill("Preserve these task settings and pinned results.");
   const evaluations = page.getByRole("heading", { name: "2. Choose evaluations and weights" }).locator("..");
   await evaluations.getByRole("checkbox").nth(0).check();
   await evaluations.getByRole("checkbox").nth(1).check();
@@ -76,8 +76,8 @@ try {
   await results.locator("tbody tr").first().waitFor();
   assert.equal(await results.locator("tbody tr").first().locator("td").nth(1).innerText(), originalScore);
   await page.getByRole("button", { name: "Edit settings", exact: true }).click();
-  assert.equal(await page.getByLabel("Task description", { exact: true }).inputValue(), "Preserve these task settings and pinned results.");
-  await page.getByLabel("Task title", { exact: true }).fill("Edited browser comparison");
+  assert.equal(await page.getByLabel(/^Task description\*?$/).inputValue(), "Preserve these task settings and pinned results.");
+  await page.getByLabel(/^Task title\*?$/).fill("Edited browser comparison");
   await page.getByRole("button", { name: "Save in this browser", exact: true }).click();
   await page.getByRole("heading", { name: "Edited browser comparison", exact: true }).waitFor();
   assert.equal(page.url(), taskUrl, "Edits must preserve the task ID");
@@ -110,10 +110,10 @@ try {
   assert(await page.getByText("Saved to the shared library.", { exact: true }).isVisible());
   await page.getByRole("button", { name: "Edit settings", exact: true }).click();
   await page.evaluate(() => { IDBObjectStore.prototype.put = () => { throw new DOMException("Storage full", "QuotaExceededError"); }; });
-  await page.getByLabel("Task title", { exact: true }).fill("Must not report saved");
+  await page.getByLabel(/^Task title\*?$/).fill("Must not report saved");
   await page.getByRole("button", { name: "Save in this browser", exact: true }).click();
   await page.getByRole("alert").filter({ hasText: "The task was not saved." }).waitFor();
-  assert.equal(await page.getByLabel("Task title", { exact: true }).inputValue(), "Must not report saved");
+  assert.equal(await page.getByLabel(/^Task title\*?$/).inputValue(), "Must not report saved");
   assert.deepEqual(errors, []);
   console.log(JSON.stringify({ failedCloudFallback: true, reloadRetainsScores: true, editsKeepId: true, backupRoundTrip: true, laterSync: true, storageFailureIsExplicit: true }));
 } finally { await browser.close(); }

@@ -2015,13 +2015,14 @@ a.ui-button:hover {
   position: absolute;
   z-index: 3;
   inset: 1px 1px 1px auto;
-  width: 24px;
+  width: 28px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   padding-right: var(--space-1);
   border-radius: 0 var(--shape-radius-control) var(--shape-radius-control) 0;
-  background: linear-gradient(to right, transparent, var(--bg-surface));
+  /* Solid under the chevron so it never sits on cell text. */
+  background: linear-gradient(to right, transparent, var(--bg-surface) 60%);
   color: var(--text-secondary);
   pointer-events: none;
 }

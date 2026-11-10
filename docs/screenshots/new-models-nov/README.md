@@ -124,3 +124,13 @@ also include the notes summary and bottom margin. Crops retain native pixels.
 - LOOKED: terminal-bench-4-0-390.png · Header and title stand above seven bordered cards; ranks and percentages are whole, metric tiles stay inside their bases, and the notes summary and bottom margin are included.
 
 Shared UI code changed; the full check remains part of phase review R1, not this light-check task.
+
+## Phase 1 review (R1, 2026-11-10)
+
+Reshot after the review fixes; full-size crops are in `review/`.
+
+- LOOKED: review/terminal-bench-4-0-1440-right-edge.png · rows sit on their rules; "Anthropic" fades out under the cue and the chevron now sits on solid surface, not on text (before: on "Anthropic").
+- LOOKED: review/master-haiku-1440.png · five Haiku 5.5 rows now show Time per Task and First Answer (15.8/183.8 … 2.1/6.9; before: dashes); the last rank digit fades slightly under the cue but stays readable.
+- LOOKED: review/intelligence-index-1440-header.png · "Original source ↗" link replaces "Source: supplied workbook".
+- LOOKED: review/aa-briefcase-analytical-quality-elo-390-first-screen.png · one-line legend; the first card's two timing tiles end above the bottom edge (before: cut at 844 px).
+- LOOKED: review/terminal-bench-4-0-390-top.png · "Cost / Intelligence Index task" wraps inside its tile; the release-date tile in the same row grows with it.

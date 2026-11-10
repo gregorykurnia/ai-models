@@ -71,6 +71,20 @@ test("speed lookup matches AA's named fallback to the sheet's adaptive-reasoning
   assert.deepEqual(modelSpeedNameAliases("Claude Opus 5.5 (High, Default Fallback)"), ["Claude Opus 5.5 (High, Default Fallback)"]);
 });
 
+test("speed lookup reaches models AA names without their fallback through the cost file's slug", () => {
+  // AA's speed payload says "Claude Haiku 5.5 (Max)"; the sheets and the cost file say "... Default Fallback)".
+  for (const [effort, slug] of [["Max", "claude-haiku-5-5"], ["Xhigh", "claude-haiku-5-5-xhigh"], ["Medium", "claude-haiku-5-5-medium"]]) {
+    const speed = getModelSpeed("Anthropic", `Claude Haiku 5.5 (Adaptive Reasoning, ${effort} Effort, Default Fallback)`);
+    assert.equal(speed?.slug, slug);
+    assert.equal(speed?.time_per_task_s, speedSource.records.find(record => record.slug === slug)!.time_per_task_s);
+  }
+  const cost = getIntelligenceIndexTaskCostMap();
+  const { rows } = aggregateMaster(dataset.evaluations, dataset.entries, cost, getModelSpeedMap());
+  const withoutSpeed = rows.filter(row => row.intelligence_index_cost && !row.speed
+    && speedSource.records.some(record => record.slug === row.intelligence_index_cost!.slug));
+  assert.deepEqual(withoutSpeed.map(row => row.model), []);
+});
+
 test("speed lookup matches cost identity rules, exact effort variants and unique model fallback", () => {
   const opus = getModelSpeed("Anthropic", "Claude Opus 5.5 (high with fallback)");
   assert.ok(opus);

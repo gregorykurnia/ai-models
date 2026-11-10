@@ -58,6 +58,7 @@ Cost per Intelligence Index task is from `data/intelligence-index-costs.json`, T
 | Claude Fable 5.2 (Adaptive Reasoning, Low Effort, Default Fallback) | `claude-fable-5-2-low` | $3.097241904 | 392.5310868 | 6.538025213 |
 | Muse Ember (Max) | `muse-ember` | $0.1359356169 | - | - |
 | Muse Ember (Xhigh) | `muse-ember-xhigh` | $0.1162277983 | - | - |
+
 Muse Ember has no record in `data/aa-model-speed.json`, so its Time per Task and First Answer are dashes until AA publishes them.
 
 ## Spot checks against the capture JSON (2026-11-10)

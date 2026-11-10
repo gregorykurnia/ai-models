@@ -106,6 +106,7 @@ Cost per Intelligence Index task is from \`data/intelligence-index-costs.json\`,
 | Configuration | AA slug | Cost per Intelligence Index task (USD) | Time per Task (s) | First Answer (s) |
 | --- | --- | ---: | ---: | ---: |
 ${speedRows.join("\n")}
+
 Muse Ember has no record in \`data/aa-model-speed.json\`, so its Time per Task and First Answer are dashes until AA publishes them.
 
 ## Spot checks against the capture JSON (${cap})
