@@ -1,11 +1,13 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
+import { createHash } from "node:crypto";
 import { mkdtemp, mkdir, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 import { promisify } from "node:util";
 import speedSource from "../data/aa-model-speed.json";
+import { validateTimingCapture, type TimingCapture } from "../scripts/aa-speed-sources";
 import type { Dataset, Entry } from "../src/lib/contract";
 import { getIntelligenceIndexTaskCostMap } from "../src/lib/intelligence-index-costs";
 import {
@@ -20,6 +22,43 @@ import {
 
 const dataset = JSON.parse(await readFile(new URL("../data/leaderboards.json", import.meta.url), "utf8")) as Dataset;
 const execFileAsync = promisify(execFile);
+
+test("every captured speed has dated source evidence and every evaluation payload row reaches the runtime reader unchanged", async () => {
+  const capture = JSON.parse(await readFile(new URL("../data/aa-speed-captures.json", import.meta.url), "utf8")) as TimingCapture;
+  validateTimingCapture(capture, speedSource.captured_at);
+  assert.equal(speedSource.format_version, 2);
+  assert.equal(speedSource.speed_count, speedSource.records.length);
+  const sources = speedSource.sources as Record<string, { captured_at: string; source_url: string; sha256?: string }>;
+  const byId = new Map(speedSource.records.map(record => [record.aa_model_id, record]));
+  for (const record of speedSource.records) {
+    assert.equal(record.captured_at, speedSource.captured_at);
+    for (const metric of ["time_per_task_s", "first_answer_s"] as const) {
+      const sourceId = record.provenance[metric];
+      assert.equal(sourceId === null, record[metric] === null);
+      if (sourceId) {
+        assert.equal(sources[sourceId].captured_at, speedSource.captured_at);
+        assert.ok(sources[sourceId].source_url.startsWith("https://artificialanalysis.ai/"));
+      }
+    }
+    assert.deepEqual(Object.keys(record.provenance.evaluation_times_s).sort(), Object.keys(record.evaluation_times_s).sort());
+    for (const sourceId of Object.values(record.provenance.evaluation_times_s)) assert.ok(sources[sourceId as string]);
+  }
+  for (const chart of capture.evaluations) {
+    const sourceId = `evaluation:${chart.evaluation_slug}`;
+    assert.equal(sources[sourceId].captured_at, chart.captured_at);
+    assert.equal(sources[sourceId].source_url, chart.source_url);
+    assert.equal(sources[sourceId].sha256, createHash("sha256").update(JSON.stringify(chart)).digest("hex"));
+    for (const item of chart.items) {
+      const raw = byId.get(item.id);
+      assert.ok(raw, `${chart.evaluation_slug}: ${item.name} was lost`);
+      assert.equal((raw.provenance.evaluation_times_s as Record<string, string>)[chart.evaluation_slug], sourceId);
+      assert.equal((raw.evaluation_times_s as Record<string, number>)[chart.evaluation_slug], item.seconds);
+      const runtime = getModelSpeed(raw.provider, raw.name);
+      assert.ok(runtime, `${raw.name}: source does not reach the runtime reader`);
+      assert.equal(runtime.evaluation_times_s[chart.evaluation_slug], item.seconds);
+    }
+  }
+});
 
 test("importer keeps task-only, first-answer-only, evaluation-only and zero values without a cost", async t => {
   const directory = await mkdtemp(join(tmpdir(), "ai-models-speed-test-"));
