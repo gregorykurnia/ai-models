@@ -63,7 +63,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
   const dataset=await readNewModelsDataset();
   const coverage=await readFile(new URL("../docs/GEMINI_4_HYDROGEN_QWEN4_COVERAGE.md",import.meta.url),"utf8");
   const {expected,evaluations}=newModelsExpectations(dataset,coverage);
-  const screenshotEvaluations=new Set(["intelligence-index","terminal-bench-4-0"]);
+  const screenshotEvaluations=new Set(["intelligence-index","terminal-bench-4-0","aa-briefcase-analytical-quality-elo","scicode"]);
   const scores=new Map();
   const consoleErrors=[];
   const pageErrors=[];
@@ -105,6 +105,10 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
     const region=section.locator(".table-scroll");
     const cue=section.locator(".table-overflow-cue");
     await cue.waitFor({state:"visible"});
+    assert.equal(await cue.innerText(),"More columns →","scroll continuation is a readable caption");
+    const cueBox=await cue.boundingBox(),regionBox=await region.boundingBox();
+    assert(cueBox.y+cueBox.height<=regionBox.y,"scroll caption is above the table, clear of headers and rows");
+    assert(await cue.evaluate(element=>parseFloat(getComputedStyle(element).fontSize)>=12),"scroll caption uses at least the existing caption text size");
     await region.evaluate(element=>{element.scrollLeft=element.scrollWidth;});
     await cue.waitFor({state:"hidden"});
     await region.evaluate(element=>{element.scrollLeft=0;});
@@ -165,6 +169,9 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
       }));
       assert(layout.every(item=>item.sticky&&item.contained&&item.separate),`${query}: frozen names and stars do not overlap`);
       if(slug==="hydrogen")assert(layout.every(item=>item.wrapped),"all long Hydrogen names wrap");
+      const rankDates=await section.locator("thead small").allTextContents();
+      assert.equal(rankDates.filter(text=>text.startsWith("Rank ·")).length,dataset.evaluations.length,"all rank headers have capture dates");
+      assert(rankDates.filter(text=>text.startsWith("Rank ·")).every(text=>/^Rank · \d{1,2} [A-Z][a-z]{2} \d{4}$/.test(text)),"rank dates use the same readable format as cost and timing dates");
       await section.scrollIntoViewIfNeeded();
       assert.match(await section.locator(".master-cost small").first().innerText(),/^USD · AA\n\d{1,2} \w{3} \d{4}$/);
       const aligned=await section.locator("tbody tr").evaluateAll(rows=>rows.every(row=>{
@@ -176,6 +183,9 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
       await audit(`${query}: desktop layout`,"#master-leaderboard");
       await screenshot(`master-${slug}-${width}.png`);
       if(slug==="hydrogen"){
+        const frame=await section.locator(".table-scroll-frame").boundingBox();
+        await page.screenshot({path:join(output,"scroll-cue-crop.png"),clip:{x:frame.x+frame.width-280,y:frame.y-8,width:288,height:180}});
+        report.screenshots.push("scroll-cue-crop.png");
         const target=await section.getByRole("columnheader",{name:/^Terminal-Bench 4\.0/}).boundingBox();
         const frozen=await section.locator("th.master-first").boundingBox();
         await section.locator(".table-scroll").evaluate((element,left)=>{element.scrollLeft=left;},target.x-frozen.x-frozen.width);
@@ -187,6 +197,10 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
       }
     }else{
       assert.equal(await section.locator(".master-table-view").isVisible(),false);
+      assert(await rows.evaluateAll(cards=>cards.every(card=>{
+        const star=card.querySelector(".favorite-star").getBoundingClientRect(),tiles=card.querySelector(".master-card__metrics").getBoundingClientRect();
+        return star.width>=44&&star.height>=44&&Math.abs(star.left-tiles.left)<1;
+      })),"favorite button boxes align with the card metrics and keep their 44px touch area");
       await audit(`${query}: phone layout`,"#master-leaderboard");
       await phoneScreenshots(`master-${slug}-${width}`,section,true);
     }
@@ -208,11 +222,29 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
     const rows=section.locator(width===390?".evaluation-card":".evaluation-table tbody tr");
     await rows.first().waitFor();
     assert.equal(await page.locator(".evaluation-page-header .eyebrow").count(),0,"no repeated metric eyebrow above the evaluation title");
-    assert.equal(await section.locator(".leaderboard-legend").innerText(),"— means no captured AA value.");
+    assert.equal(await section.locator(".leaderboard-legend").innerText(),`— means no captured AA value.${evaluation.has_scoring_status?" Scoring status appears only when AA provides it.":""}`);
     if(width===390){
       assert.equal(await rows.first().locator("dt").filter({hasText:"Cost /"}).innerText(),"Cost / Intelligence Index task");
-      // The first card's timing tiles stay on the first phone screen under the legend.
+      const direction=section.getByRole("button",{name:"Reverse sort order",exact:true});
+      assert.equal(await direction.innerText(),"Asc ↑","evaluation and master phone controls use the same arrow order");
+      assert.match(await direction.getAttribute("class"),/ui-button--secondary/);
+      assert.match(await direction.getAttribute("class"),/ui-button--default/);
       if(screenshotEvaluations.has(id)){
+        await direction.click();
+        await page.waitForFunction(()=>new URL(location.href).searchParams.get("direction")==="desc");
+        assert.equal(await direction.innerText(),"Desc ↓");
+        const descending=[...entries].sort((a,b)=>b.source_rank-a.source_rank||a.source_row-b.source_row);
+        assert.deepEqual(await rows.evaluateAll(cards=>cards.map(card=>card.getAttribute("data-model"))),descending.map(entry=>entry.model),`${id}: reverse control sorts ranks descending`);
+        if(id==="intelligence-index"){
+          await direction.screenshot({path:join(output,"intelligence-index-390-sort-desc-crop.png")});
+          report.screenshots.push("intelligence-index-390-sort-desc-crop.png");
+        }
+        await direction.click();
+        await page.waitForFunction(()=>new URL(location.href).searchParams.get("direction")==="asc");
+        assert.equal(await direction.innerText(),"Asc ↑");
+      }
+      // The first card's timing tiles stay on the first phone screen under the legend.
+      if(id==="intelligence-index"||id==="terminal-bench-4-0"){
         const tile=await rows.first().locator(".master-card__metrics > div").nth(1).boundingBox();
         assert(tile.y+tile.height<=844,`${id}: first card's timings fit the first phone screen`);
       }
@@ -231,6 +263,13 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
         assert.equal(await row.locator('[data-column="source_rank"]').innerText(),String(entry.source_rank));
         assert.equal(await row.locator('[data-column="score_value"]').innerText(),score);
       }
+      if(width===390){
+        const status=row.locator(".evaluation-card__status");
+        if(entry.scoring_status)assert.equal(await status.innerText(),`AA scoring status: ${entry.scoring_status}`,`${id}: phone status is labelled and unchanged`);
+        else assert.equal(await status.count(),0,`${id}: no status is invented for an unlabelled model`);
+      }else if(evaluation.has_scoring_status){
+        assert.equal(await row.locator('[data-column="scoring_status"]').innerText(),entry.scoring_status||"—",`${id}: desktop and phone use the same captured scoring status`);
+      }
       const cost=getIntelligenceIndexTaskCost(entry.provider,entry.model),speed=getModelSpeed(entry.provider,entry.model);
       const metrics={
         cost_usd:cost?new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(cost.cost_usd):"—",
@@ -241,7 +280,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
         const cell=width===1440?row.locator(`[data-column="${key}"]`):row.locator("dt").filter({hasText:key==="cost_usd"?"Cost / Intelligence Index task":key==="time_per_task"?/^Time per /:"First Answer (s)"}).locator("+ dd");
         assert.equal(await cell.innerText(),value,`${id}: ${entry.model} ${key} at ${width}px`);
       }
-      actual.push({model:entry.model,rank:entry.source_rank,score,...metrics});
+      actual.push({model:entry.model,rank:entry.source_rank,score,...metrics,scoring_status:entry.scoring_status||null});
     }
     await page.locator(".app-main").evaluate(element=>{element.scrollTop=0;});
     await audit(`${id}: ${width}px layout`,".evaluation-leaderboard");
@@ -265,5 +304,5 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
   page.off("console",onConsole);
   page.off("pageerror",onPageError);
   await writeFile(join(output,"browser-check.json"),JSON.stringify(report,null,2)+"\n");
-  console.log(JSON.stringify({new_models:true,master_search_counts:groups.map(([, ,count])=>count),qwen_spaced_search:report.qwen_spaced_search.finds_qwen4_max,evaluations_checked:evaluations.length,evaluation_row_checks:Object.values(report.evaluations).reduce((sum,rows)=>sum+rows.length,0),evaluation_ranks:true,screenshots:report.screenshots.length}));
+  console.log(JSON.stringify({new_models:true,master_search_counts:groups.map(([, ,count])=>count),qwen_spaced_search:report.qwen_spaced_search.finds_qwen4_max,evaluations_checked:evaluations.length,evaluation_row_checks:Object.values(report.evaluations).reduce((sum,rows)=>sum+rows.length,0),evaluation_ranks:true,fresh_eyes_regressions:true,shared_evaluation_screens:[...screenshotEvaluations],screenshots:report.screenshots.length}));
 }

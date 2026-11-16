@@ -33,7 +33,7 @@ function EvaluationCard({entry,evaluation,speed,cost}:{entry:Entry;evaluation:Ev
       {evaluation.has_release_date&&<div><dt>Release date</dt><dd>{entry.release_date_label||"—"}</dd></div>}
     </dl>
     {evaluation.has_confidence_interval&&<p className="evaluation-card__interval">Elo CI: {entry.confidence_interval_display||"—"}</p>}
-    {entry.scoring_status&&<p>{entry.scoring_status}</p>}
+    {entry.scoring_status&&<p className="evaluation-card__status">AA scoring status: {entry.scoring_status}</p>}
   </li>;
 }
 
@@ -97,13 +97,13 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds}:{entri
       <Button size="compact" variant="quiet" onClick={()=>router.replace(pathname,{scroll:false})}>Clear filters</Button>
     </div>
     <p aria-live="polite">{sorted.length.toLocaleString()} results{state.provider.length?` · ${providerSelectionLabel(state.provider)}`:""}</p>
-    <HelperText className="leaderboard-legend">— means no captured AA value.</HelperText>
+    <HelperText className="leaderboard-legend">— means no captured AA value.{evaluation.has_scoring_status?" Scoring status appears only when AA provides it.":""}</HelperText>
     <div className="evaluation-mobile-sort">
       <label htmlFor="evaluation-sort">Sort by</label>
       <Select id="evaluation-sort" value={allowedSort} onChange={event=>update({sort:event.target.value,direction:"asc"})}>
         {columns.filter(column=>column.id!=="scoring_status").map(column=>{const id=column.id??("accessorKey" in column?String(column.accessorKey):"");return <option key={id} value={id}>{String(column.header)}</option>;})}
       </Select>
-      <Button variant="quiet" size="compact" aria-label="Reverse sort order" onClick={()=>update({direction:state.direction==="asc"?"desc":"asc"})}>{state.direction==="asc"?"↑ Asc":"↓ Desc"}</Button>
+      <Button variant="secondary" size="default" aria-label="Reverse sort order" title="Toggle sort direction" onClick={()=>update({direction:state.direction==="asc"?"desc":"asc"})}>{state.direction==="asc"?"Asc ↑":"Desc ↓"}</Button>
     </div>
     <div className="evaluation-table-view">
       <p className="evaluation-scroll-hint">Scroll sideways for all columns ↔ · Model names stay visible.</p>

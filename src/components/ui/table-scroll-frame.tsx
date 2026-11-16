@@ -16,7 +16,9 @@ export function TableScrollFrame({ regionId, children }: { regionId: string; chi
     return () => { observer.disconnect(); region.removeEventListener("scroll", update); };
   }, [regionId]);
   return <div className="table-scroll-frame">
+    <div className="table-overflow-cue-slot" aria-hidden="true">
+      {moreColumns && <span className="table-overflow-cue">More columns →</span>}
+    </div>
     {children}
-    {moreColumns && <span className="table-overflow-cue" aria-hidden="true">›</span>}
   </div>;
 }

@@ -2011,24 +2011,22 @@ a.ui-button:hover {
   max-width: 100%;
 }
 
-.table-overflow-cue {
-  position: absolute;
-  z-index: 3;
-  inset: 1px 1px 1px auto;
-  width: 28px;
+.table-overflow-cue-slot {
+  min-height: 1.25rem;
+  margin-bottom: var(--space-2);
   display: flex;
-  align-items: center;
   justify-content: flex-end;
-  padding-right: var(--space-1);
-  border-radius: 0 var(--shape-radius-control) var(--shape-radius-control) 0;
-  /* Solid under the chevron so it never sits on cell text. */
-  background: linear-gradient(to right, transparent, var(--bg-surface) 60%);
-  color: var(--text-secondary);
+}
+
+.table-overflow-cue {
+  color: var(--text-primary);
+  font-size: var(--font-size-caption);
+  font-weight: var(--type-weight-semibold);
   pointer-events: none;
 }
 
 @media (max-width: 767px) {
-  .table-overflow-cue {
+  .table-overflow-cue-slot {
     display: none;
   }
 }
