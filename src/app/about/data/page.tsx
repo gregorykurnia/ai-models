@@ -34,6 +34,6 @@ export default function DataPage() {
     <p>Intelligence Index v5.0.1 contains all 129 listed models in the 16 Nov 2026 capture, with re-scored results replacing v5.0. Scoring status follows Artificial Analysis’s estimated flag. Estimates still awaiting independent scoring keep that wording. The Cost per Intelligence Index task comes from the same page, with 121 available cost records.</p>
 
     <h2>Snapshot history and updates</h2>
-    <p>The evaluation leaderboards and AA-Briefcase component indexes were captured on 16 Nov 2026. That capture refreshes Intelligence Index v5.0.1 scores, ranks, and task costs. It retains AA-Omniscience v1.1, FrontierCode 2.0, and HLE-Diamond. Earlier snapshots, including the 29 Sep 2026 workbook, the 30 Sep and 7 Oct AA-Briefcase captures, and the 11, 20, 25 and 29 Oct evaluation captures, remain in the published history. Later imports create immutable snapshots; failed imports preserve the last published data.</p>
+    <p>The evaluation leaderboards and AA-Briefcase component indexes were captured on 16 Nov 2026. That capture refreshes Intelligence Index v5.0.1 scores, ranks, and task costs. It retains AA-Omniscience v1.1, FrontierCode 2.0, and HLE-Diamond. Earlier snapshots, including the 29 Sep 2026 workbook, the 30 Sep and 7 Oct AA-Briefcase captures, the 11, 20, 25 and 29 Oct evaluation captures, and the 7 and 10 Nov captures, remain in the published history. Later imports create immutable snapshots; failed imports preserve the last published data.</p>
   </article>;
 }
