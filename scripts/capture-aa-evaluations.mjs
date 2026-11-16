@@ -7,16 +7,12 @@ const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || "playwright")
 
 const pages = [
   { key: "aa-briefcase", url: "https://artificialanalysis.ai/evaluations/aa-briefcase" },
-  { key: "gdpval-aa", url: "https://artificialanalysis.ai/evaluations/gdpval-aa" },
   { key: "automationbench-aa", url: "https://artificialanalysis.ai/evaluations/automationbench-aa" },
   { key: "terminalbench-4-0", url: "https://artificialanalysis.ai/evaluations/terminalbench-4-0" },
-  { key: "scicode", url: "https://artificialanalysis.ai/evaluations/scicode" },
-  { key: "hle-diamond", url: "https://artificialanalysis.ai/evaluations/hle-diamond" },
   { key: "frontiercode-2-0", url: "https://artificialanalysis.ai/evaluations/frontiercode-2-0" },
   { key: "gdp-pdf", url: "https://artificialanalysis.ai/evaluations/gdp-pdf" },
   { key: "critpt", url: "https://artificialanalysis.ai/evaluations/critpt" },
   { key: "omniscience", url: "https://artificialanalysis.ai/evaluations/omniscience" },
-  { key: "artificial-analysis-long-context-reasoning", url: "https://artificialanalysis.ai/evaluations/artificial-analysis-long-context-reasoning" },
   { key: "mmmu-pro", url: "https://artificialanalysis.ai/evaluations/mmmu-pro" },
   { key: "finance-and-accounting", url: "https://artificialanalysis.ai/models/capabilities/finance-and-accounting" },
   { key: "economics", url: "https://artificialanalysis.ai/models/capabilities/economics" },

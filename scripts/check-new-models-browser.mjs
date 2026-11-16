@@ -29,7 +29,9 @@ export async function readNewModelsDataset(){
 export function newModelsExpectations(dataset,coverage){
   const familyEntries=dataset.entries.filter(entry=>/hydrogen|argon|qwen\s?4/i.test(entry.model));
   assert.deepEqual([...new Set(familyEntries.map(entry=>entry.model))].sort(),[...allModelNames].sort(),"exactly seven canonical family variants");
-  const auditRows=coverage.split("\n").filter(line=>/^\|[^|]+\| `[^`]+` \| `[^`]+` \|/.test(line));
+  // The audit predates the 2026-11-16 retirement of these four evaluations; their rows no longer have data to check.
+  const retired=["gdpval-aa-v2-1","scicode","hle-diamond","aa-lcr-v1-1"];
+  const auditRows=coverage.split("\n").filter(line=>/^\|[^|]+\| `[^`]+` \| `[^`]+` \|/.test(line)&&!retired.some(id=>line.includes(`| \`${id}\` |`)));
   assert.equal(auditRows.length,dataset.evaluations.length,"audit covers every bundled evaluation");
   const evaluations=dataset.evaluations.map(evaluation=>{
     const entries=familyEntries.filter(entry=>entry.evaluation_id===evaluation.id).sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row);
@@ -63,7 +65,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
   const dataset=await readNewModelsDataset();
   const coverage=await readFile(new URL("../docs/GEMINI_4_HYDROGEN_QWEN4_COVERAGE.md",import.meta.url),"utf8");
   const {expected,evaluations}=newModelsExpectations(dataset,coverage);
-  const screenshotEvaluations=new Set(["intelligence-index","terminal-bench-4-0","aa-briefcase-analytical-quality-elo","scicode"]);
+  const screenshotEvaluations=new Set(["intelligence-index","terminal-bench-4-0","aa-briefcase-analytical-quality-elo","critpt"]);
   const scores=new Map();
   const consoleErrors=[];
   const pageErrors=[];

@@ -9,12 +9,12 @@ const audit = await readFile(new URL("../docs/GEMINI_4_HYDROGEN_QWEN4_COVERAGE.m
 test("browser fixture includes all audit rows and all three merged Briefcase component evaluations", () => {
   const { expected, evaluations } = newModelsExpectations(dataset, audit);
   assert.equal(expected.length, 7);
-  assert.equal(evaluations.length, 20);
-  assert.equal(evaluations.reduce((sum, { entries }) => sum + entries.filter(entry => newModelNames.includes(entry.model)).length, 0), 96);
+  assert.equal(evaluations.length, 16);
+  assert.equal(evaluations.reduce((sum, { entries }) => sum + entries.filter(entry => newModelNames.includes(entry.model)).length, 0), 86);
   for (const id of ["aa-briefcase-rubric-score", "aa-briefcase-analytical-quality-elo", "aa-briefcase-presentation-elo"]) {
     assert.equal(evaluations.find(({ evaluation }) => evaluation.id === id)?.entries.length, 7);
   }
-  assert.equal(evaluations.find(({ evaluation }) => evaluation.id === "scicode")?.entries.filter(entry => newModelNames.includes(entry.model)).length, 1);
+  assert.equal(evaluations.find(({ evaluation }) => evaluation.id === "critpt")?.entries.filter(entry => newModelNames.includes(entry.model)).length, 1);
 });
 
 test("browser fixture follows source rank when capture rows are in a different order", () => {
@@ -54,6 +54,6 @@ test("browser fixture rejects the right name attached to the wrong provider", ()
 });
 
 test("browser fixture fails on an omitted evaluation or a stale audited rank", () => {
-  assert.throws(() => newModelsExpectations(dataset, audit.split("\n").filter(line => !line.startsWith("| SciCode |")).join("\n")), /audit covers every bundled evaluation/);
+  assert.throws(() => newModelsExpectations(dataset, audit.split("\n").filter(line => !line.startsWith("| CritPt |")).join("\n")), /audit covers every bundled evaluation/);
   assert.throws(() => newModelsExpectations(dataset, audit.replace("53.91922873 (#16)", "53.91922873 (#1)")), /intelligence-index: Gemini 4 Hydrogen \(Xhigh\) score and rank agree with audit/);
 });

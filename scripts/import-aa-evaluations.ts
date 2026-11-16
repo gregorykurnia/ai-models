@@ -55,17 +55,13 @@ const percentageEvaluation = (id: string, displayName: string, sourceUrl: string
 const evaluationConfigs: EvaluationConfig[] = [
   // AA-Briefcase lists 91 tasks; its cost series (totalCost) is the total for the run, so divide to get cost per task.
   { id: "briefcase-v1-1", capture: "aa-briefcase", chart: "AA-Briefcase Elo", costChart: "AA-Briefcase Elo vs. Cost per Task", eloSeries: true, costDivisor: 91 },
-  { id: "gdpval-aa-v2-1", capture: "gdpval-aa", chart: "GDPval-AA v2.1 Leaderboard", costChart: "GDPval-AA v2.1: Elo vs. Cost per Task", eloSeries: true },
   { id: "automationbench-aa", capture: "automationbench-aa", chart: "AutomationBench-AA: Score", costChart: "AutomationBench-AA: Score vs. Cost per Task" },
   { id: "terminal-bench-4-0", capture: "terminalbench-4-0", chart: "Terminal-Bench 4.0: Score", costChart: "Terminal-Bench 4.0: Score vs. Cost per Task" },
-  { id: "scicode", capture: "scicode", chart: "SciCode: Score", costChart: "SciCode: Score vs. Cost per Task" },
-  { id: "hle-diamond", capture: "hle-diamond", chart: "HLE-Diamond: Score", costChart: "HLE-Diamond: Score vs. Cost per Task", definition: percentageEvaluation("hle-diamond", "HLE-Diamond", "https://artificialanalysis.ai/evaluations/hle-diamond") },
   { id: "frontiercode-2-0", capture: "frontiercode-2-0", chart: "FrontierCode-AA 2.0: Score", costChart: "FrontierCode-AA 2.0: Score vs. Cost per Task", definition: percentageEvaluation("frontiercode-2-0", "FrontierCode 2.0", "https://artificialanalysis.ai/evaluations/frontiercode-2-0") },
   { id: "gdp-pdf", capture: "gdp-pdf", chart: "GDP.pdf: All-pass Rate", costChart: "GDP.pdf: All-pass Rate vs. Cost per Task" },
   { id: "critpt", capture: "critpt", chart: "CritPt: Score", costChart: "CritPt: Score vs. Cost per Task" },
   { id: "aa-omniscience-accuracy", capture: "omniscience", chart: "AA-Omniscience Accuracy", costChart: "AA-Omniscience Net Score vs. Cost per Task" },
   { id: "aa-omniscience-index", capture: "omniscience", chart: "AA-Omniscience v1.1: Net Score", costChart: "AA-Omniscience Net Score vs. Cost per Task" },
-  { id: "aa-lcr-v1-1", capture: "artificial-analysis-long-context-reasoning", chart: "AA-LCR v1.1: Score", costChart: "AA-LCR v1.1: Score vs. Cost per Task" },
   { id: "mmmu-pro", capture: "mmmu-pro", chart: "MMMU-Pro: Score", costChart: "MMMU-Pro: Score vs. Cost per Task" },
   { id: "finance-accounting", capture: "finance-and-accounting", chart: "Artificial Analysis Finance & Accounting Index", costChart: "Artificial Analysis Finance & Accounting Index vs. Cost per Task" },
   { id: "economics-index", capture: "economics", chart: "Artificial Analysis Economics Index", costChart: "Artificial Analysis Economics Index vs. Cost per Task" },
@@ -75,7 +71,8 @@ const evaluationConfigs: EvaluationConfig[] = [
 
 // Evaluations Artificial Analysis no longer publishes. The rebuild drops their rows; production hides them once
 // their Firestore evaluation doc loses its published_snapshot_id. HLE-Diamond replaced Humanity's Last Exam.
-const retiredEvaluationIds = new Set(["humanity-s-last-exam"]);
+// The owner retired GDPval-AA, SciCode, HLE-Diamond and AA-LCR on 2026-11-16 so they no longer factor in.
+const retiredEvaluationIds = new Set(["humanity-s-last-exam", "gdpval-aa-v2-1", "scicode", "hle-diamond", "aa-lcr-v1-1"]);
 
 // Models whose creator isn't listed in any chart on their evaluation page. The creator is taken from
 // the model's own AA page (captured 11 Oct 2026).

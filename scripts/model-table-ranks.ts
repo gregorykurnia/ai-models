@@ -33,12 +33,10 @@ const cols = [
   ["Strategy & Ops", "strategy-ops-index"],
   ["Finance", "finance-accounting"],
   ["Omniscience", "aa-omniscience-index"],
-  ["GDPval", "gdpval-aa-v2-1"],
   ["FrontierCode", "frontiercode-2-0"],
   ["Rubric", "aa-briefcase-rubric-score"],
   ["Briefcase", "briefcase-v1-1"],
   ["Economics", "economics-index"],
-  ["AA-LCR", "aa-lcr-v1-1"],
   ["Intelligence Index", "intelligence-index"],
 ] as const;
 

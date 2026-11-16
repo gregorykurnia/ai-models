@@ -76,12 +76,8 @@ export const evaluationSpeedSlugs: Readonly<Record<string, string | null>> = {
   "terminal-bench-4-0": "terminalbench-4-0",
   "frontiercode-2-0": "frontiercode-2-0",
   "gdp-pdf": "gdp-pdf",
-  "hle-diamond": "hle-diamond",
   // Our CritPt is the original benchmark, not AA's CritPt v2 Hard.
   "critpt": null,
-  "gdpval-aa-v2-1": null,
-  "scicode": null,
-  "aa-lcr-v1-1": null,
   "mmmu-pro": null,
   "finance-accounting": null,
   "economics-index": null,

@@ -19,14 +19,10 @@ const masterEvaluationOrder=[
   "aa-briefcase-rubric-score",
   "finance-accounting",
   "economics-index",
-  "aa-lcr-v1-1",
   "briefcase-v1-1",
-  "gdpval-aa-v2-1",
   "automationbench-aa",
-  "hle-diamond",
   "critpt",
   "mmmu-pro",
-  "scicode",
   "gdp-pdf",
   "aa-omniscience-accuracy",
 ] as const;
@@ -42,7 +38,6 @@ const masterEvaluationLabels:Record<string,string>={
   "aa-briefcase-rubric-score":"Rubric Score",
   "finance-accounting":"Finance and Accounting",
   "economics-index":"Economics",
-  "aa-lcr-v1-1":"AA LCR",
 };
 
 export function orderMasterEvaluations<T extends Pick<Evaluation,"id">>(evaluations:ReadonlyArray<T>):T[]{
