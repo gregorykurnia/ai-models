@@ -60,7 +60,7 @@ const evaluationConfigs: EvaluationConfig[] = [
   { id: "terminal-bench-4-0", capture: "terminalbench-4-0", chart: "Terminal-Bench 4.0: Score", costChart: "Terminal-Bench 4.0: Score vs. Cost per Task" },
   { id: "scicode", capture: "scicode", chart: "SciCode: Score", costChart: "SciCode: Score vs. Cost per Task" },
   { id: "hle-diamond", capture: "hle-diamond", chart: "HLE-Diamond: Score", costChart: "HLE-Diamond: Score vs. Cost per Task", definition: percentageEvaluation("hle-diamond", "HLE-Diamond", "https://artificialanalysis.ai/evaluations/hle-diamond") },
-  { id: "frontiercode-2-0", capture: "frontiercode-2-0", chart: "FrontierCode 2.0: Score", costChart: "FrontierCode 2.0: Score vs. Cost per Task", definition: percentageEvaluation("frontiercode-2-0", "FrontierCode 2.0", "https://artificialanalysis.ai/evaluations/frontiercode-2-0") },
+  { id: "frontiercode-2-0", capture: "frontiercode-2-0", chart: "FrontierCode-AA 2.0: Score", costChart: "FrontierCode-AA 2.0: Score vs. Cost per Task", definition: percentageEvaluation("frontiercode-2-0", "FrontierCode 2.0", "https://artificialanalysis.ai/evaluations/frontiercode-2-0") },
   { id: "gdp-pdf", capture: "gdp-pdf", chart: "GDP.pdf: All-pass Rate", costChart: "GDP.pdf: All-pass Rate vs. Cost per Task" },
   { id: "critpt", capture: "critpt", chart: "CritPt: Score", costChart: "CritPt: Score vs. Cost per Task" },
   { id: "aa-omniscience-accuracy", capture: "omniscience", chart: "AA-Omniscience Accuracy", costChart: "AA-Omniscience Net Score vs. Cost per Task" },

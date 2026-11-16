@@ -1,10 +1,10 @@
 {
   "source_url": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
-  "captured_at": "2026-11-10T00:00:00.000Z",
+  "captured_at": "2026-11-16T00:00:00.000Z",
   "metric": "Cost per Intelligence Index task",
   "metric_path": "intelligenceIndexCostPerTask",
-  "model_count": 118,
-  "cost_count": 111,
+  "model_count": 129,
+  "cost_count": 121,
   "records": [
     {
       "slug": "claude-fable-5-2",
@@ -12,7 +12,7 @@
       "provider": "Anthropic",
       "cost_usd": 26.53855780398091,
       "url": "https://artificialanalysis.ai/models/claude-fable-5-2",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-fable-5-2-xhigh",
@@ -20,7 +20,7 @@
       "provider": "Anthropic",
       "cost_usd": 14.828587632511116,
       "url": "https://artificialanalysis.ai/models/claude-fable-5-2-xhigh",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-fable-5-2-high",
@@ -28,7 +28,7 @@
       "provider": "Anthropic",
       "cost_usd": 9.078414777860381,
       "url": "https://artificialanalysis.ai/models/claude-fable-5-2-high",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-opus-5-5",
@@ -36,7 +36,7 @@
       "provider": "Anthropic",
       "cost_usd": 10.036409719512749,
       "url": "https://artificialanalysis.ai/models/claude-opus-5-5",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-opus-5-5-xhigh",
@@ -44,7 +44,7 @@
       "provider": "Anthropic",
       "cost_usd": 6.047194490848774,
       "url": "https://artificialanalysis.ai/models/claude-opus-5-5-xhigh",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-fable-5-2-medium",
@@ -52,7 +52,7 @@
       "provider": "Anthropic",
       "cost_usd": 3.8026050641787634,
       "url": "https://artificialanalysis.ai/models/claude-fable-5-2-medium",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-sonnet-5-5",
@@ -60,7 +60,7 @@
       "provider": "Anthropic",
       "cost_usd": 10.020621343395753,
       "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-fable-5-2-low",
@@ -68,7 +68,7 @@
       "provider": "Anthropic",
       "cost_usd": 3.097241904274546,
       "url": "https://artificialanalysis.ai/models/claude-fable-5-2-low",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-opus-5-5-high",
@@ -76,7 +76,7 @@
       "provider": "Anthropic",
       "cost_usd": 3.4646622820973185,
       "url": "https://artificialanalysis.ai/models/claude-opus-5-5-high",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-fable-5-1-xhigh",
@@ -84,7 +84,7 @@
       "provider": "Anthropic",
       "cost_usd": 10.847474706140272,
       "url": "https://artificialanalysis.ai/models/claude-fable-5-1-xhigh",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-sonnet-5-5-xhigh",
@@ -92,7 +92,7 @@
       "provider": "Anthropic",
       "cost_usd": 4.091984916321919,
       "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-xhigh",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-fable-5-1",
@@ -100,7 +100,7 @@
       "provider": "Anthropic",
       "cost_usd": 12.993997201178466,
       "url": "https://artificialanalysis.ai/models/claude-fable-5-1",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-opus-5-5-medium",
@@ -108,7 +108,7 @@
       "provider": "Anthropic",
       "cost_usd": 2.4510894376611723,
       "url": "https://artificialanalysis.ai/models/claude-opus-5-5-medium",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-fable-5-1-high",
@@ -116,7 +116,7 @@
       "provider": "Anthropic",
       "cost_usd": 7.539956160226559,
       "url": "https://artificialanalysis.ai/models/claude-fable-5-1-high",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-opus-5",
@@ -124,7 +124,7 @@
       "provider": "Anthropic",
       "cost_usd": 11.821495652976125,
       "url": "https://artificialanalysis.ai/models/claude-opus-5",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-fable-5-1-medium",
@@ -132,7 +132,7 @@
       "provider": "Anthropic",
       "cost_usd": 5.564264690221474,
       "url": "https://artificialanalysis.ai/models/claude-fable-5-1-medium",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-sonnet-5-5-high",
@@ -140,7 +140,7 @@
       "provider": "Anthropic",
       "cost_usd": 1.6361294399784785,
       "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-high",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-fable-5-1-low",
@@ -148,7 +148,7 @@
       "provider": "Anthropic",
       "cost_usd": 4.471135894646431,
       "url": "https://artificialanalysis.ai/models/claude-fable-5-1-low",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-haiku-5-5",
@@ -156,7 +156,7 @@
       "provider": "Anthropic",
       "cost_usd": 0.41100741536816304,
       "url": "https://artificialanalysis.ai/models/claude-haiku-5-5",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-opus-5-5-low",
@@ -164,7 +164,7 @@
       "provider": "Anthropic",
       "cost_usd": 0.9755293224458845,
       "url": "https://artificialanalysis.ai/models/claude-opus-5-5-low",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-haiku-5-5-xhigh",
@@ -172,7 +172,7 @@
       "provider": "Anthropic",
       "cost_usd": 0.24836110126596478,
       "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-xhigh",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-sonnet-5-5-medium",
@@ -180,7 +180,7 @@
       "provider": "Anthropic",
       "cost_usd": 0.7806560352024481,
       "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-medium",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-haiku-5-5-high",
@@ -188,7 +188,7 @@
       "provider": "Anthropic",
       "cost_usd": 0.15856031956679498,
       "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-high",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-sonnet-5-5-low",
@@ -196,7 +196,7 @@
       "provider": "Anthropic",
       "cost_usd": 0.5113424463897498,
       "url": "https://artificialanalysis.ai/models/claude-sonnet-5-5-low",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-haiku-5-5-medium",
@@ -204,7 +204,7 @@
       "provider": "Anthropic",
       "cost_usd": 0.0917645584066771,
       "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-medium",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-haiku-5-5-low",
@@ -212,7 +212,7 @@
       "provider": "Anthropic",
       "cost_usd": 0.043757686381988486,
       "url": "https://artificialanalysis.ai/models/claude-haiku-5-5-low",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "claude-4-5-haiku-reasoning",
@@ -220,39 +220,71 @@
       "provider": "Anthropic",
       "cost_usd": 0.5317769104171033,
       "url": "https://artificialanalysis.ai/models/claude-4-5-haiku-reasoning",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gemini-4-carbon",
       "name": "Gemini 4 Carbon (High)",
       "provider": "Google",
-      "cost_usd": 7.755545745286556,
+      "cost_usd": 5.484780948230178,
       "url": "https://artificialanalysis.ai/models/gemini-4-carbon",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gemini-4-carbon-medium",
       "name": "Gemini 4 Carbon (Medium)",
       "provider": "Google",
-      "cost_usd": 6.585776867225546,
+      "cost_usd": 4.677653677420589,
       "url": "https://artificialanalysis.ai/models/gemini-4-carbon-medium",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gemini-4-carbon-low",
       "name": "Gemini 4 Carbon (Low)",
       "provider": "Google",
-      "cost_usd": 7.186577262951972,
+      "cost_usd": 5.221404723668021,
       "url": "https://artificialanalysis.ai/models/gemini-4-carbon-low",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
+    },
+    {
+      "slug": "gemini-4-hydrogen",
+      "name": "Gemini 4 Hydrogen (Xhigh)",
+      "provider": "Google",
+      "cost_usd": 3.1601590757006157,
+      "url": "https://artificialanalysis.ai/models/gemini-4-hydrogen",
+      "profile_captured_at": "2026-11-16"
+    },
+    {
+      "slug": "gemini-4-hydrogen-high",
+      "name": "Gemini 4 Hydrogen (High)",
+      "provider": "Google",
+      "cost_usd": 1.8733140062520008,
+      "url": "https://artificialanalysis.ai/models/gemini-4-hydrogen-high",
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gemini-4-argon",
       "name": "Gemini 4 Argon (High)",
       "provider": "Google",
-      "cost_usd": 9.946608711550533,
+      "cost_usd": 4.973304355775267,
       "url": "https://artificialanalysis.ai/models/gemini-4-argon",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
+    },
+    {
+      "slug": "gemini-4-argon-medium",
+      "name": "Gemini 4 Argon (Medium)",
+      "provider": "Google",
+      "cost_usd": 4.314621569087732,
+      "url": "https://artificialanalysis.ai/models/gemini-4-argon-medium",
+      "profile_captured_at": "2026-11-16"
+    },
+    {
+      "slug": "gemini-4-hydrogen-medium",
+      "name": "Gemini 4 Hydrogen (Medium)",
+      "provider": "Google",
+      "cost_usd": 0.7979866055252406,
+      "url": "https://artificialanalysis.ai/models/gemini-4-hydrogen-medium",
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gemini-3-8-flash",
@@ -260,7 +292,7 @@
       "provider": "Google",
       "cost_usd": 7.766006178152514,
       "url": "https://artificialanalysis.ai/models/gemini-3-8-flash",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gemini-3-8-flash-medium",
@@ -268,7 +300,15 @@
       "provider": "Google",
       "cost_usd": 6.258586089480771,
       "url": "https://artificialanalysis.ai/models/gemini-3-8-flash-medium",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
+    },
+    {
+      "slug": "gemini-4-hydrogen-low",
+      "name": "Gemini 4 Hydrogen (Low)",
+      "provider": "Google",
+      "cost_usd": 0.2922227000200506,
+      "url": "https://artificialanalysis.ai/models/gemini-4-hydrogen-low",
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gemini-3-5-flash-lite",
@@ -276,7 +316,7 @@
       "provider": "Google",
       "cost_usd": 0.6929018557975878,
       "url": "https://artificialanalysis.ai/models/gemini-3-5-flash-lite",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gemini-3-1-flash-lite-preview",
@@ -284,7 +324,7 @@
       "provider": "Google",
       "cost_usd": 0.19445134743611814,
       "url": "https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-astra",
@@ -292,7 +332,7 @@
       "provider": "OpenAI",
       "cost_usd": 6.244666943602518,
       "url": "https://artificialanalysis.ai/models/gpt-6-astra",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-astra-xhigh",
@@ -300,7 +340,7 @@
       "provider": "OpenAI",
       "cost_usd": 3.6589264906126227,
       "url": "https://artificialanalysis.ai/models/gpt-6-astra-xhigh",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-astra-high",
@@ -308,7 +348,7 @@
       "provider": "OpenAI",
       "cost_usd": 3.2385719685518306,
       "url": "https://artificialanalysis.ai/models/gpt-6-astra-high",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-1-sol",
@@ -316,7 +356,7 @@
       "provider": "OpenAI",
       "cost_usd": 1.2720632679446995,
       "url": "https://artificialanalysis.ai/models/gpt-6-1-sol",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-1-sol-xhigh",
@@ -324,7 +364,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.7639949356156494,
       "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-xhigh",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-astra-medium",
@@ -332,7 +372,7 @@
       "provider": "OpenAI",
       "cost_usd": 2.732438933013427,
       "url": "https://artificialanalysis.ai/models/gpt-6-astra-medium",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-1-terra",
@@ -340,7 +380,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.961108031081634,
       "url": "https://artificialanalysis.ai/models/gpt-6-1-terra",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-1-sol-high",
@@ -348,7 +388,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.5909853515780825,
       "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-high",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-1-sol-medium",
@@ -356,7 +396,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.3593898648025732,
       "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-medium",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-1-terra-xhigh",
@@ -364,7 +404,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.40068900166662513,
       "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-xhigh",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-sol",
@@ -372,7 +412,7 @@
       "provider": "OpenAI",
       "cost_usd": 2.465800491412395,
       "url": "https://artificialanalysis.ai/models/gpt-6-sol",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-astra-low",
@@ -380,7 +420,7 @@
       "provider": "OpenAI",
       "cost_usd": 1.4237229635663595,
       "url": "https://artificialanalysis.ai/models/gpt-6-astra-low",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-1-terra-high",
@@ -388,7 +428,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.2592796466169722,
       "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-high",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-1-terra-medium",
@@ -396,7 +436,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.16880458238389412,
       "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-medium",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-1-sol-low",
@@ -404,7 +444,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.16147357831822573,
       "url": "https://artificialanalysis.ai/models/gpt-6-1-sol-low",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-5-6-terra",
@@ -412,7 +452,7 @@
       "provider": "OpenAI",
       "cost_usd": 3.734901899414753,
       "url": "https://artificialanalysis.ai/models/gpt-5-6-terra",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-1-terra-non-reasoning",
@@ -420,7 +460,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.22589585897456366,
       "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-non-reasoning",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-1-terra-low",
@@ -428,7 +468,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.07133756205169729,
       "url": "https://artificialanalysis.ai/models/gpt-6-1-terra-low",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-luna",
@@ -436,7 +476,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.15195575732105837,
       "url": "https://artificialanalysis.ai/models/gpt-6-luna",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-5-6-luna",
@@ -444,7 +484,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.3312633263840317,
       "url": "https://artificialanalysis.ai/models/gpt-5-6-luna",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-luna-xhigh",
@@ -452,7 +492,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.10409320921120957,
       "url": "https://artificialanalysis.ai/models/gpt-6-luna-xhigh",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-luna-high",
@@ -460,7 +500,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.07294776473194697,
       "url": "https://artificialanalysis.ai/models/gpt-6-luna-high",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-luna-medium",
@@ -468,7 +508,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.042201836106537785,
       "url": "https://artificialanalysis.ai/models/gpt-6-luna-medium",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-luna-low",
@@ -476,7 +516,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.005115255188520391,
       "url": "https://artificialanalysis.ai/models/gpt-6-luna-low",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-6-luna-non-reasoning",
@@ -484,7 +524,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.07141741932294249,
       "url": "https://artificialanalysis.ai/models/gpt-6-luna-non-reasoning",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "gpt-oss-120b",
@@ -492,7 +532,7 @@
       "provider": "OpenAI",
       "cost_usd": 0.34534207651823257,
       "url": "https://artificialanalysis.ai/models/gpt-oss-120b",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "muse-wonder",
@@ -500,7 +540,7 @@
       "provider": "Meta",
       "cost_usd": 6.9520364786062245,
       "url": "https://artificialanalysis.ai/models/muse-wonder",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "muse-wonder-high",
@@ -508,7 +548,7 @@
       "provider": "Meta",
       "cost_usd": 4.560546278670271,
       "url": "https://artificialanalysis.ai/models/muse-wonder-high",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "muse-spark-1-3",
@@ -516,7 +556,7 @@
       "provider": "Meta",
       "cost_usd": 2.3857813858107244,
       "url": "https://artificialanalysis.ai/models/muse-spark-1-3",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "muse-ember",
@@ -524,7 +564,7 @@
       "provider": "Meta",
       "cost_usd": 0.1359356168986363,
       "url": "https://artificialanalysis.ai/models/muse-ember",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "muse-ember-xhigh",
@@ -532,7 +572,7 @@
       "provider": "Meta",
       "cost_usd": 0.1162277983030469,
       "url": "https://artificialanalysis.ai/models/muse-ember-xhigh",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "muse-spark-open",
@@ -540,15 +580,15 @@
       "provider": "Meta",
       "cost_usd": 2.0176680435839316,
       "url": "https://artificialanalysis.ai/models/muse-spark-open",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "muse-glimmer",
       "name": "Muse Glimmer (High)",
       "provider": "Meta",
-      "cost_usd": 0.16950439773904172,
+      "cost_usd": 0.17820832971071474,
       "url": "https://artificialanalysis.ai/models/muse-glimmer",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "kimi-k3-1-pro",
@@ -556,7 +596,7 @@
       "provider": "Kimi",
       "cost_usd": 3.6812002895742055,
       "url": "https://artificialanalysis.ai/models/kimi-k3-1-pro",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "kimi-k3-low",
@@ -564,47 +604,15 @@
       "provider": "Kimi",
       "cost_usd": 2.368773852349091,
       "url": "https://artificialanalysis.ai/models/kimi-k3-low",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
-      "slug": "grok-4-7",
-      "name": "Grok 4.7 (Xhigh)",
-      "provider": "SpaceXAI",
-      "cost_usd": 7.771539401587139,
-      "url": "https://artificialanalysis.ai/models/grok-4-7",
-      "profile_captured_at": "2026-11-10"
-    },
-    {
-      "slug": "grok-4-7-high",
-      "name": "Grok 4.7 (High)",
-      "provider": "SpaceXAI",
-      "cost_usd": 6.18359556537658,
-      "url": "https://artificialanalysis.ai/models/grok-4-7-high",
-      "profile_captured_at": "2026-11-10"
-    },
-    {
-      "slug": "grok-4-7-low",
-      "name": "Grok 4.7 (Low)",
-      "provider": "SpaceXAI",
-      "cost_usd": 2.9222013011913153,
-      "url": "https://artificialanalysis.ai/models/grok-4-7-low",
-      "profile_captured_at": "2026-11-10"
-    },
-    {
-      "slug": "grok-4-6-xhigh",
-      "name": "Grok 4.6 (Xhigh)",
-      "provider": "SpaceXAI",
-      "cost_usd": 4.678631982547866,
-      "url": "https://artificialanalysis.ai/models/grok-4-6-xhigh",
-      "profile_captured_at": "2026-11-10"
-    },
-    {
-      "slug": "tencent-hy4",
-      "name": "Tencent Hy4",
-      "provider": "Tencent",
-      "cost_usd": 1.0311060706397974,
-      "url": "https://artificialanalysis.ai/models/tencent-hy4",
-      "profile_captured_at": "2026-11-10"
+      "slug": "qwen4-max",
+      "name": "Qwen4 Max",
+      "provider": "Alibaba",
+      "cost_usd": 3.2681327300897323,
+      "url": "https://artificialanalysis.ai/models/qwen4-max",
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "qwen3-8-max",
@@ -612,7 +620,15 @@
       "provider": "Alibaba",
       "cost_usd": 10.023891571541945,
       "url": "https://artificialanalysis.ai/models/qwen3-8-max",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
+    },
+    {
+      "slug": "qwen3-8-flash-next",
+      "name": "Qwen3.8-Flash-Next",
+      "provider": "Alibaba",
+      "cost_usd": 0.5693810918846318,
+      "url": "https://artificialanalysis.ai/models/qwen3-8-flash-next",
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "qwen3-8-27b",
@@ -620,7 +636,7 @@
       "provider": "Alibaba",
       "cost_usd": 3.5295494751410654,
       "url": "https://artificialanalysis.ai/models/qwen3-8-27b",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "qwen3-8-27b-medium",
@@ -628,7 +644,7 @@
       "provider": "Alibaba",
       "cost_usd": 2.1600047179927624,
       "url": "https://artificialanalysis.ai/models/qwen3-8-27b-medium",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "qwen3-8-27b-low",
@@ -636,7 +652,7 @@
       "provider": "Alibaba",
       "cost_usd": 1.9059046111258202,
       "url": "https://artificialanalysis.ai/models/qwen3-8-27b-low",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "qwen3-8-27b-non-reasoning",
@@ -644,7 +660,47 @@
       "provider": "Alibaba",
       "cost_usd": 3.7729435511821583,
       "url": "https://artificialanalysis.ai/models/qwen3-8-27b-non-reasoning",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
+    },
+    {
+      "slug": "grok-4-7",
+      "name": "Grok 4.7 (Xhigh)",
+      "provider": "SpaceXAI",
+      "cost_usd": 7.771539401587139,
+      "url": "https://artificialanalysis.ai/models/grok-4-7",
+      "profile_captured_at": "2026-11-16"
+    },
+    {
+      "slug": "grok-4-7-high",
+      "name": "Grok 4.7 (High)",
+      "provider": "SpaceXAI",
+      "cost_usd": 6.18359556537658,
+      "url": "https://artificialanalysis.ai/models/grok-4-7-high",
+      "profile_captured_at": "2026-11-16"
+    },
+    {
+      "slug": "grok-4-7-low",
+      "name": "Grok 4.7 (Low)",
+      "provider": "SpaceXAI",
+      "cost_usd": 2.9222013011913153,
+      "url": "https://artificialanalysis.ai/models/grok-4-7-low",
+      "profile_captured_at": "2026-11-16"
+    },
+    {
+      "slug": "grok-4-6-xhigh",
+      "name": "Grok 4.6 (Xhigh)",
+      "provider": "SpaceXAI",
+      "cost_usd": 4.678631982547866,
+      "url": "https://artificialanalysis.ai/models/grok-4-6-xhigh",
+      "profile_captured_at": "2026-11-16"
+    },
+    {
+      "slug": "tencent-hy4",
+      "name": "Tencent Hy4",
+      "provider": "Tencent",
+      "cost_usd": 1.0311060706397974,
+      "url": "https://artificialanalysis.ai/models/tencent-hy4",
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "deepseek-v4-1-flash-1017",
@@ -652,7 +708,7 @@
       "provider": "DeepSeek",
       "cost_usd": 0.60210514783598,
       "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "deepseek-v4-1-flash-1017-high",
@@ -660,7 +716,7 @@
       "provider": "DeepSeek",
       "cost_usd": 0.45619449806633267,
       "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017-high",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "deepseek-v4-pro",
@@ -668,7 +724,15 @@
       "provider": "DeepSeek",
       "cost_usd": 1.7691338076407441,
       "url": "https://artificialanalysis.ai/models/deepseek-v4-pro",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
+    },
+    {
+      "slug": "deepseek-v4-pro-high",
+      "name": "DeepSeek V4 Pro 0813 (High)",
+      "provider": "DeepSeek",
+      "cost_usd": 0.8485312855493328,
+      "url": "https://artificialanalysis.ai/models/deepseek-v4-pro-high",
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "deepseek-v4-1-flash-1017-non-reasoning",
@@ -676,7 +740,7 @@
       "provider": "DeepSeek",
       "cost_usd": 0.4254202455035728,
       "url": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017-non-reasoning",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "deepseek-v4-pro-non-reasoning",
@@ -684,7 +748,7 @@
       "provider": "DeepSeek",
       "cost_usd": 0.9769879356486032,
       "url": "https://artificialanalysis.ai/models/deepseek-v4-pro-non-reasoning",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "glm-5-3",
@@ -692,7 +756,7 @@
       "provider": "Z AI",
       "cost_usd": 5.009264601719954,
       "url": "https://artificialanalysis.ai/models/glm-5-3",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "glm-5-3-flash",
@@ -700,7 +764,7 @@
       "provider": "Z AI",
       "cost_usd": 0.5833103440014082,
       "url": "https://artificialanalysis.ai/models/glm-5-3-flash",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "glm-5-3-low",
@@ -708,7 +772,7 @@
       "provider": "Z AI",
       "cost_usd": 1.5749301149593384,
       "url": "https://artificialanalysis.ai/models/glm-5-3-low",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "inkling-2-small",
@@ -716,7 +780,7 @@
       "provider": "Thinking Machines",
       "cost_usd": 1.1784281349617984,
       "url": "https://artificialanalysis.ai/models/inkling-2-small",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "inkling-small",
@@ -724,7 +788,7 @@
       "provider": "Thinking Machines",
       "cost_usd": 0.20316116043899832,
       "url": "https://artificialanalysis.ai/models/inkling-small",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "inkling",
@@ -732,7 +796,7 @@
       "provider": "Thinking Machines",
       "cost_usd": 1.3519575079737436,
       "url": "https://artificialanalysis.ai/models/inkling",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "mimo-v2-6-pro",
@@ -740,7 +804,7 @@
       "provider": "Xiaomi",
       "cost_usd": 0.25718036275876155,
       "url": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "mimo-v2-6-flash",
@@ -748,15 +812,15 @@
       "provider": "Xiaomi",
       "cost_usd": 0.12852987084014672,
       "url": "https://artificialanalysis.ai/models/mimo-v2-6-flash",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
-      "slug": "ling-3-1-flash-1019",
+      "slug": "ling-3-1-flash",
       "name": "Ling 3.1 Flash 1019",
       "provider": "InclusionAI",
       "cost_usd": 3.185145018337793,
-      "url": "https://artificialanalysis.ai/models/ling-3-1-flash-1019",
-      "profile_captured_at": "2026-11-10"
+      "url": "https://artificialanalysis.ai/models/ling-3-1-flash",
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "minimax-m3-1-flash",
@@ -764,7 +828,7 @@
       "provider": "MiniMax",
       "cost_usd": 0.49097067348453205,
       "url": "https://artificialanalysis.ai/models/minimax-m3-1-flash",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "minimax-m3",
@@ -772,7 +836,7 @@
       "provider": "MiniMax",
       "cost_usd": 1.2850974407373852,
       "url": "https://artificialanalysis.ai/models/minimax-m3",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "step-5",
@@ -780,7 +844,7 @@
       "provider": "StepFun",
       "cost_usd": 2.3452525606205166,
       "url": "https://artificialanalysis.ai/models/step-5",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "mistral-large-4",
@@ -788,7 +852,7 @@
       "provider": "Mistral",
       "cost_usd": 2.0617306268126856,
       "url": "https://artificialanalysis.ai/models/mistral-large-4",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "mistral-large-4-preview",
@@ -796,7 +860,7 @@
       "provider": "Mistral",
       "cost_usd": 4.208903290646695,
       "url": "https://artificialanalysis.ai/models/mistral-large-4-preview",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "mistral-large-4-medium",
@@ -804,7 +868,7 @@
       "provider": "Mistral",
       "cost_usd": 1.4120973060945472,
       "url": "https://artificialanalysis.ai/models/mistral-large-4-medium",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "mistral-medium-3-5",
@@ -812,7 +876,7 @@
       "provider": "Mistral",
       "cost_usd": 1.0390849688366068,
       "url": "https://artificialanalysis.ai/models/mistral-medium-3-5",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "mistral-small-4",
@@ -820,7 +884,7 @@
       "provider": "Mistral",
       "cost_usd": 0.03990856296103761,
       "url": "https://artificialanalysis.ai/models/mistral-small-4",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "agnes-2-5-pro-theta",
@@ -828,7 +892,7 @@
       "provider": "Sapiens AI",
       "cost_usd": 0.5746675567739363,
       "url": "https://artificialanalysis.ai/models/agnes-2-5-pro-theta",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "k2-horizon-375b-a23b",
@@ -836,7 +900,7 @@
       "provider": "Institute of Foundation Models",
       "cost_usd": 0,
       "url": "https://artificialanalysis.ai/models/k2-horizon-375b-a23b",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "reflection-beam",
@@ -844,23 +908,39 @@
       "provider": "Reflection",
       "cost_usd": 0.28440671352465285,
       "url": "https://artificialanalysis.ai/models/reflection-beam",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
+    },
+    {
+      "slug": "solar-pro4",
+      "name": "Solar Pro 4",
+      "provider": "Upstage",
+      "cost_usd": 0.9557366659448332,
+      "url": "https://artificialanalysis.ai/models/solar-pro4",
+      "profile_captured_at": "2026-11-16"
+    },
+    {
+      "slug": "apodex-1-1",
+      "name": "Apodex 1.1",
+      "provider": "Apodex",
+      "cost_usd": 0.764236100822604,
+      "url": "https://artificialanalysis.ai/models/apodex-1-1",
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "nemotron-3-5-super-vl",
       "name": "Nemotron 3.5 Super VL",
       "provider": "NVIDIA",
-      "cost_usd": 0.5196327287868884,
+      "cost_usd": 0.5574566144919201,
       "url": "https://artificialanalysis.ai/models/nemotron-3-5-super-vl",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "nvidia-nemotron-3-ultra-550b-a55b",
       "name": "Nemotron 3 Ultra 550B A55B (Reasoning)",
       "provider": "NVIDIA",
-      "cost_usd": 2.2257365504312134,
+      "cost_usd": 2.2102962660498227,
       "url": "https://artificialanalysis.ai/models/nvidia-nemotron-3-ultra-550b-a55b",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "nemotron-3-5-lightning",
@@ -868,7 +948,7 @@
       "provider": "NVIDIA",
       "cost_usd": 0.31445225066768195,
       "url": "https://artificialanalysis.ai/models/nemotron-3-5-lightning",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "command-a-plus",
@@ -876,7 +956,7 @@
       "provider": "Cohere",
       "cost_usd": 0,
       "url": "https://artificialanalysis.ai/models/command-a-plus",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "north-mini-code",
@@ -884,7 +964,7 @@
       "provider": "Cohere",
       "cost_usd": 0,
       "url": "https://artificialanalysis.ai/models/north-mini-code",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     },
     {
       "slug": "granite-4-2-8b",
@@ -892,7 +972,7 @@
       "provider": "IBM",
       "cost_usd": 0.0404628507686443,
       "url": "https://artificialanalysis.ai/models/granite-4-2-8b",
-      "profile_captured_at": "2026-11-10"
+      "profile_captured_at": "2026-11-16"
     }
   ]
 }

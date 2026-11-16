@@ -1,7 +1,7 @@
 {
  "key": "finance-and-accounting",
  "source_url": "https://artificialanalysis.ai/models/capabilities/finance-and-accounting",
- "captured_at": "2026-11-10",
+ "captured_at": "2026-11-16",
  "selectors": 8,
  "charts": [
   {
@@ -22,7 +22,7 @@
      "tooltipLabel": "Claude Fable 5.2 (Xhigh, Default Fallback)",
      "value": 63.2692454263345,
      "displayValue": "63",
-     "url": "/models/claude-fable-5-2-xhigh",
+     "url": "/models/claude-fable-5-2",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -31,7 +31,7 @@
      "tooltipLabel": "Claude Fable 5.2 (High, Default Fallback)",
      "value": 62.6859144738353,
      "displayValue": "63",
-     "url": "/models/claude-fable-5-2-high",
+     "url": "/models/claude-fable-5-2",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -49,7 +49,7 @@
      "tooltipLabel": "Claude Fable 5.2 (Medium, Default Fallback)",
      "value": 60.0155795972227,
      "displayValue": "60",
-     "url": "/models/claude-fable-5-2-medium",
+     "url": "/models/claude-fable-5-2",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -58,7 +58,7 @@
      "tooltipLabel": "Gemini 4 Carbon (Medium)",
      "value": 59.6137824469157,
      "displayValue": "60",
-     "url": "/models/gemini-4-carbon-medium",
+     "url": "/models/gemini-4-carbon",
      "logo": "/img/logos/google.svg"
     },
     {
@@ -76,8 +76,17 @@
      "tooltipLabel": "Claude Fable 5.2 (Low, Default Fallback)",
      "value": 58.3685248287898,
      "displayValue": "58",
-     "url": "/models/claude-fable-5-2-low",
+     "url": "/models/claude-fable-5-2",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "dad0e3b1-e3e7-477a-99f9-c14457a91114",
+     "label": "Gemini 4 Hydrogen (xhigh)",
+     "tooltipLabel": "Gemini 4 Hydrogen (Xhigh)",
+     "value": 58.0535003156912,
+     "displayValue": "58",
+     "url": "/models/gemini-4-hydrogen",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
@@ -94,7 +103,7 @@
      "tooltipLabel": "GPT-6 Astra (Xhigh)",
      "value": 56.8096263991207,
      "displayValue": "57",
-     "url": "/models/gpt-6-astra-xhigh",
+     "url": "/models/gpt-6-astra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -112,8 +121,17 @@
      "tooltipLabel": "GPT-6 Astra (High)",
      "value": 56.1335113153242,
      "displayValue": "56",
-     "url": "/models/gpt-6-astra-high",
+     "url": "/models/gpt-6-astra",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "dae0262d-26a4-44d1-925a-6f2731cbda6a",
+     "label": "Gemini 4 Hydrogen (high)",
+     "tooltipLabel": "Gemini 4 Hydrogen (High)",
+     "value": 56.0830351887958,
+     "displayValue": "56",
+     "url": "/models/gemini-4-hydrogen",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
@@ -121,7 +139,7 @@
      "tooltipLabel": "Gemini 4 Carbon (Low)",
      "value": 55.9832561650072,
      "displayValue": "56",
-     "url": "/models/gemini-4-carbon-low",
+     "url": "/models/gemini-4-carbon",
      "logo": "/img/logos/google.svg"
     },
     {
@@ -148,7 +166,7 @@
      "tooltipLabel": "Claude Opus 5.5 (Xhigh, Default Fallback)",
      "value": 55.7196722784794,
      "displayValue": "56",
-     "url": "/models/claude-opus-5-5-xhigh",
+     "url": "/models/claude-opus-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -166,8 +184,17 @@
      "tooltipLabel": "GPT-6.1 Sol (Xhigh)",
      "value": 55.2093271255729,
      "displayValue": "55",
-     "url": "/models/gpt-6-1-sol-xhigh",
+     "url": "/models/gpt-6-1-sol",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "fef6625d-9097-45f6-95c0-bcaa06e3d8e1",
+     "label": "Qwen4 Max",
+     "tooltipLabel": "Qwen4 Max",
+     "value": 54.1068956216928,
+     "displayValue": "54",
+     "url": "/models/qwen4-max",
+     "logo": "/img/logos/alibaba.svg"
     },
     {
      "id": "3e87c73e-a257-495e-9730-367a66229811",
@@ -184,7 +211,7 @@
      "tooltipLabel": "GPT-6 Astra (Medium)",
      "value": 53.6912677793874,
      "displayValue": "54",
-     "url": "/models/gpt-6-astra-medium",
+     "url": "/models/gpt-6-astra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -193,7 +220,7 @@
      "tooltipLabel": "Claude Fable 5.1 (Xhigh, Default Fallback)",
      "value": 53.5087433827613,
      "displayValue": "54",
-     "url": "/models/claude-fable-5-1-xhigh",
+     "url": "/models/claude-fable-5-1",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -211,7 +238,7 @@
      "tooltipLabel": "Claude Opus 5.5 (High, Default Fallback)",
      "value": 53.2549918691223,
      "displayValue": "53",
-     "url": "/models/claude-opus-5-5-high",
+     "url": "/models/claude-opus-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -220,8 +247,17 @@
      "tooltipLabel": "GPT-6.1 Sol (High)",
      "value": 53.1781388593173,
      "displayValue": "53",
-     "url": "/models/gpt-6-1-sol-high",
+     "url": "/models/gpt-6-1-sol",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "48e6f735-f2bc-418f-b99f-3dc5a0ddda77",
+     "label": "Gemini 4 Argon (medium)",
+     "tooltipLabel": "Gemini 4 Argon (Medium)",
+     "value": 52.8515277027573,
+     "displayValue": "53",
+     "url": "/models/gemini-4-argon",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "59627802-1546-422c-9a65-65b61c022d36",
@@ -231,6 +267,15 @@
      "displayValue": "52",
      "url": "/models/grok-4-7",
      "logo": "/img/logos/spacexai.svg"
+    },
+    {
+     "id": "f0537484-af30-4a8a-bf34-368c552e5cfd",
+     "label": "Gemini 4 Hydrogen (medium)",
+     "tooltipLabel": "Gemini 4 Hydrogen (Medium)",
+     "value": 51.4150556762616,
+     "displayValue": "51",
+     "url": "/models/gemini-4-hydrogen",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "ff2f3f3d-783f-4e27-8a39-47237501a313",
@@ -247,7 +292,7 @@
      "tooltipLabel": "Claude Opus 5.5 (Medium, Default Fallback)",
      "value": 50.7452385339505,
      "displayValue": "51",
-     "url": "/models/claude-opus-5-5-medium",
+     "url": "/models/claude-opus-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -256,7 +301,7 @@
      "tooltipLabel": "Grok 4.7 (High)",
      "value": 50.6208482262075,
      "displayValue": "51",
-     "url": "/models/grok-4-7-high",
+     "url": "/models/grok-4-7",
      "logo": "/img/logos/spacexai.svg"
     },
     {
@@ -265,7 +310,7 @@
      "tooltipLabel": "GPT-6.1 Sol (Medium)",
      "value": 50.6023483555565,
      "displayValue": "51",
-     "url": "/models/gpt-6-1-sol-medium",
+     "url": "/models/gpt-6-1-sol",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -274,7 +319,7 @@
      "tooltipLabel": "Muse Wonder (High)",
      "value": 50.1120810904672,
      "displayValue": "50",
-     "url": "/models/muse-wonder-high",
+     "url": "/models/muse-wonder",
      "logo": "/img/logos/meta.svg"
     },
     {
@@ -292,7 +337,7 @@
      "tooltipLabel": "Claude Fable 5.1 (High, Default Fallback)",
      "value": 49.613221296493,
      "displayValue": "50",
-     "url": "/models/claude-fable-5-1-high",
+     "url": "/models/claude-fable-5-1",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -319,7 +364,7 @@
      "tooltipLabel": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
      "value": 48.5212650885985,
      "displayValue": "49",
-     "url": "/models/claude-sonnet-5-5-xhigh",
+     "url": "/models/claude-sonnet-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -328,7 +373,7 @@
      "tooltipLabel": "GPT-6 Astra (Low)",
      "value": 48.1205454168035,
      "displayValue": "48",
-     "url": "/models/gpt-6-astra-low",
+     "url": "/models/gpt-6-astra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -337,7 +382,7 @@
      "tooltipLabel": "Claude Fable 5.1 (Low, Default Fallback)",
      "value": 47.7191038674897,
      "displayValue": "48",
-     "url": "/models/claude-fable-5-1-low",
+     "url": "/models/claude-fable-5-1",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -346,7 +391,7 @@
      "tooltipLabel": "GPT-6.1 Terra (Xhigh)",
      "value": 47.6360436870371,
      "displayValue": "48",
-     "url": "/models/gpt-6-1-terra-xhigh",
+     "url": "/models/gpt-6-1-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -355,7 +400,7 @@
      "tooltipLabel": "Grok 4.6 (Xhigh)",
      "value": 47.5647575859105,
      "displayValue": "48",
-     "url": "/models/grok-4-6-xhigh",
+     "url": "/models/grok-4-6",
      "logo": "/img/logos/spacexai.svg"
     },
     {
@@ -364,7 +409,7 @@
      "tooltipLabel": "Claude Fable 5.1 (Medium, Default Fallback)",
      "value": 47.4692081853624,
      "displayValue": "47",
-     "url": "/models/claude-fable-5-1-medium",
+     "url": "/models/claude-fable-5-1",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -382,7 +427,7 @@
      "tooltipLabel": "Muse Spark 1.3 (Xhigh)",
      "value": 46.1758089273181,
      "displayValue": "46",
-     "url": "/models/muse-spark-1-3-xhigh",
+     "url": "/models/muse-spark-1-3",
      "logo": "/img/logos/meta.svg"
     },
     {
@@ -391,7 +436,7 @@
      "tooltipLabel": "Grok 4.7 (Low)",
      "value": 45.2985648731271,
      "displayValue": "45",
-     "url": "/models/grok-4-7-low",
+     "url": "/models/grok-4-7",
      "logo": "/img/logos/spacexai.svg"
     },
     {
@@ -418,7 +463,7 @@
      "tooltipLabel": "Claude Sonnet 5.5 (High, Default Fallback)",
      "value": 44.4603944050062,
      "displayValue": "44",
-     "url": "/models/claude-sonnet-5-5-high",
+     "url": "/models/claude-sonnet-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -436,7 +481,7 @@
      "tooltipLabel": "GPT-6.1 Sol (Low)",
      "value": 44.2501029657453,
      "displayValue": "44",
-     "url": "/models/gpt-6-1-sol-low",
+     "url": "/models/gpt-6-1-sol",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -445,7 +490,7 @@
      "tooltipLabel": "GPT-6.1 Terra (High)",
      "value": 44.2078975186639,
      "displayValue": "44",
-     "url": "/models/gpt-6-1-terra-high",
+     "url": "/models/gpt-6-1-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -454,7 +499,7 @@
      "tooltipLabel": "Muse Ember (Xhigh)",
      "value": 43.5822058276212,
      "displayValue": "44",
-     "url": "/models/muse-ember-xhigh",
+     "url": "/models/muse-ember",
      "logo": "/img/logos/meta.svg"
     },
     {
@@ -472,7 +517,7 @@
      "tooltipLabel": "Ling 3.1 Flash 1019",
      "value": 42.5771940432937,
      "displayValue": "43",
-     "url": "/models/ling-3-1-flash-1019",
+     "url": "/models/ling-3-1-flash",
      "logo": "/img/logos/inclusionai.jpg"
     },
     {
@@ -481,7 +526,7 @@
      "tooltipLabel": "GPT-6.1 Terra (Medium)",
      "value": 42.4945442070845,
      "displayValue": "42",
-     "url": "/models/gpt-6-1-terra-medium",
+     "url": "/models/gpt-6-1-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -499,7 +544,7 @@
      "tooltipLabel": "Claude Opus 5.5 (Low, Default Fallback)",
      "value": 42.1737543788105,
      "displayValue": "42",
-     "url": "/models/claude-opus-5-5-low",
+     "url": "/models/claude-opus-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -535,7 +580,7 @@
      "tooltipLabel": "Gemini 3.8 Flash (Medium)",
      "value": 41.7310061851194,
      "displayValue": "42",
-     "url": "/models/gemini-3-8-flash-medium",
+     "url": "/models/gemini-3-8-flash",
      "logo": "/img/logos/google.svg"
     },
     {
@@ -548,12 +593,21 @@
      "logo": "/img/logos/alibaba.svg"
     },
     {
+     "id": "88c68c50-03c1-458a-9292-bd398c27adc5",
+     "label": "Gemini 4 Hydrogen (low)",
+     "tooltipLabel": "Gemini 4 Hydrogen (Low)",
+     "value": 41.1676007325708,
+     "displayValue": "41",
+     "url": "/models/gemini-4-hydrogen",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
      "label": "Claude Haiku 5.5 (xhigh)",
      "tooltipLabel": "Claude Haiku 5.5 (Xhigh)",
      "value": 41.1066144916647,
      "displayValue": "41",
-     "url": "/models/claude-haiku-5-5-xhigh",
+     "url": "/models/claude-haiku-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -562,7 +616,7 @@
      "tooltipLabel": "Claude Sonnet 5.5 (Medium, Default Fallback)",
      "value": 40.6892181692654,
      "displayValue": "41",
-     "url": "/models/claude-sonnet-5-5-medium",
+     "url": "/models/claude-sonnet-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -571,7 +625,7 @@
      "tooltipLabel": "Step 5 Preview",
      "value": 40.5321595936584,
      "displayValue": "41",
-     "url": "/models/step-5",
+     "url": "/models/step-5-preview",
      "logo": "/img/logos/stepfun.svg"
     },
     {
@@ -580,7 +634,7 @@
      "tooltipLabel": "DeepSeek V4.1 Flash 1017 (High)",
      "value": 39.4723998156743,
      "displayValue": "39",
-     "url": "/models/deepseek-v4-1-flash-1017-high",
+     "url": "/models/deepseek-v4-1-flash-1017",
      "logo": "/img/logos/deepseek.svg"
     },
     {
@@ -652,7 +706,7 @@
      "tooltipLabel": "GPT-6.1 Terra (Low)",
      "value": 37.9429994237995,
      "displayValue": "38",
-     "url": "/models/gpt-6-1-terra-low",
+     "url": "/models/gpt-6-1-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -661,7 +715,7 @@
      "tooltipLabel": "Claude Haiku 5.5 (High)",
      "value": 37.8427189755884,
      "displayValue": "38",
-     "url": "/models/claude-haiku-5-5-high",
+     "url": "/models/claude-haiku-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -670,7 +724,7 @@
      "tooltipLabel": "DeepSeek V4.1 Flash 1017 (Non-reasoning)",
      "value": 37.232941193884,
      "displayValue": "37",
-     "url": "/models/deepseek-v4-1-flash-1017-non-reasoning",
+     "url": "/models/deepseek-v4-1-flash-1017",
      "logo": "/img/logos/deepseek.svg"
     },
     {
@@ -697,7 +751,7 @@
      "tooltipLabel": "Claude Sonnet 5.5 (Low, Default Fallback)",
      "value": 35.9444624559601,
      "displayValue": "36",
-     "url": "/models/claude-sonnet-5-5-low",
+     "url": "/models/claude-sonnet-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -715,7 +769,7 @@
      "tooltipLabel": "Claude Haiku 5.5 (Medium)",
      "value": 34.87744718367,
      "displayValue": "35",
-     "url": "/models/claude-haiku-5-5-medium",
+     "url": "/models/claude-haiku-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -733,8 +787,17 @@
      "tooltipLabel": "Mistral Large 4 (Medium)",
      "value": 34.5961213074107,
      "displayValue": "35",
-     "url": "/models/mistral-large-4-medium",
+     "url": "/models/mistral-large-4",
      "logo": "/img/logos/mistral.svg"
+    },
+    {
+     "id": "b268d7c1-5a0b-41c1-9590-1d89e66cf156",
+     "label": "JT-4.1 Flash 236B A21B",
+     "tooltipLabel": "JT-4.1 Flash 236B A21B",
+     "value": 34.5542054798701,
+     "displayValue": "35",
+     "url": "/models/jt-4-1-flash-236b-a21b",
+     "logo": "/img/logos/china-mobile.png"
     },
     {
      "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
@@ -751,7 +814,7 @@
      "tooltipLabel": "Gemini 3.8 Flash (Low)",
      "value": 33.584945500173,
      "displayValue": "34",
-     "url": "/models/gemini-3-8-flash-low",
+     "url": "/models/gemini-3-8-flash",
      "logo": "/img/logos/google.svg"
     },
     {
@@ -760,7 +823,7 @@
      "tooltipLabel": "GPT-6.1 Terra (Non-reasoning)",
      "value": 33.5307937278189,
      "displayValue": "34",
-     "url": "/models/gpt-6-1-terra-non-reasoning",
+     "url": "/models/gpt-6-1-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -805,7 +868,7 @@
      "tooltipLabel": "GPT-5.6 Terra (Xhigh)",
      "value": 31.4494891116379,
      "displayValue": "31",
-     "url": "/models/gpt-5-6-terra-xhigh",
+     "url": "/models/gpt-5-6-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -814,7 +877,7 @@
      "tooltipLabel": "GLM-5.3 (Low)",
      "value": 31.1892724362964,
      "displayValue": "31",
-     "url": "/models/glm-5-3-low",
+     "url": "/models/glm-5-3",
      "logo": "/img/logos/zai.svg"
     },
     {
@@ -823,7 +886,7 @@
      "tooltipLabel": "GPT-6 Luna (Xhigh)",
      "value": 30.5505719071355,
      "displayValue": "31",
-     "url": "/models/gpt-6-luna-xhigh",
+     "url": "/models/gpt-6-luna",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -850,7 +913,7 @@
      "tooltipLabel": "Qwen3.8 27B (Medium)",
      "value": 29.3007482515731,
      "displayValue": "29",
-     "url": "/models/qwen3-8-27b-medium",
+     "url": "/models/qwen3-8-27b",
      "logo": "/img/logos/alibaba.svg"
     },
     {
@@ -859,7 +922,7 @@
      "tooltipLabel": "GPT-6 Luna (High)",
      "value": 29.2597336990213,
      "displayValue": "29",
-     "url": "/models/gpt-6-luna-high",
+     "url": "/models/gpt-6-luna",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -868,7 +931,7 @@
      "tooltipLabel": "GPT-5.6 Terra (High)",
      "value": 28.7059116505959,
      "displayValue": "29",
-     "url": "/models/gpt-5-6-terra-high",
+     "url": "/models/gpt-5-6-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -877,7 +940,7 @@
      "tooltipLabel": "Claude Haiku 5.5 (Low)",
      "value": 28.5069247096344,
      "displayValue": "29",
-     "url": "/models/claude-haiku-5-5-low",
+     "url": "/models/claude-haiku-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -886,7 +949,7 @@
      "tooltipLabel": "Solar Pro 4",
      "value": 28.3818992709952,
      "displayValue": "28",
-     "url": "/models/solar-pro4",
+     "url": "/models/solar-pro-4",
      "logo": "/img/logos/upstage.svg"
     },
     {
@@ -895,7 +958,7 @@
      "tooltipLabel": "Qwen3.8 27B (Low)",
      "value": 28.3330467961731,
      "displayValue": "28",
-     "url": "/models/qwen3-8-27b-low",
+     "url": "/models/qwen3-8-27b",
      "logo": "/img/logos/alibaba.svg"
     },
     {
@@ -904,8 +967,17 @@
      "tooltipLabel": "Kimi K3 (Low)",
      "value": 28.2631525583262,
      "displayValue": "28",
-     "url": "/models/kimi-k3-low",
+     "url": "/models/kimi-k3",
      "logo": "/img/logos/kimi.jpg"
+    },
+    {
+     "id": "e94c7595-a320-4c88-8f07-d9fd50fc4595",
+     "label": "DeepSeek V4 Pro 0813 (high)",
+     "tooltipLabel": "DeepSeek V4 Pro 0813 (High)",
+     "value": 27.9649343587929,
+     "displayValue": "28",
+     "url": "/models/deepseek-v4-pro",
+     "logo": "/img/logos/deepseek.svg"
     },
     {
      "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
@@ -922,7 +994,7 @@
      "tooltipLabel": "GPT-6 Luna (Medium)",
      "value": 26.28493125715,
      "displayValue": "26",
-     "url": "/models/gpt-6-luna-medium",
+     "url": "/models/gpt-6-luna",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -940,7 +1012,7 @@
      "tooltipLabel": "Nemotron 3 Ultra 550B A55B (Reasoning)",
      "value": 24.2009755041212,
      "displayValue": "24",
-     "url": "/models/nvidia-nemotron-3-ultra-550b-a55b",
+     "url": "/models/nemotron-3-ultra-550b-a55b",
      "logo": "/img/logos/nvidia.svg"
     },
     {
@@ -976,7 +1048,7 @@
      "tooltipLabel": "GPT-5.6 Terra (Medium)",
      "value": 23.142391298808,
      "displayValue": "23",
-     "url": "/models/gpt-5-6-terra-medium",
+     "url": "/models/gpt-5-6-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -985,7 +1057,7 @@
      "tooltipLabel": "GPT-5.6 Terra (Low)",
      "value": 22.8310446972942,
      "displayValue": "23",
-     "url": "/models/gpt-5-6-terra-low",
+     "url": "/models/gpt-5-6-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -994,8 +1066,17 @@
      "tooltipLabel": "Qwen3.8 27B (Non-reasoning)",
      "value": 22.2477116516955,
      "displayValue": "22",
-     "url": "/models/qwen3-8-27b-non-reasoning",
+     "url": "/models/qwen3-8-27b",
      "logo": "/img/logos/alibaba.svg"
+    },
+    {
+     "id": "08242385-ee91-4de6-be7f-271a6d9780ce",
+     "label": "Apodex 1.1",
+     "tooltipLabel": "Apodex 1.1",
+     "value": 21.4232354728995,
+     "displayValue": "21",
+     "url": "/models/apodex-1-1",
+     "logo": "/img/logos/apodex.svg"
     },
     {
      "id": "d4f5b250-be37-4801-85e6-32fda4179337",
@@ -1003,7 +1084,7 @@
      "tooltipLabel": "DeepSeek V4 Pro 0813 (Non-reasoning)",
      "value": 19.6645392137014,
      "displayValue": "20",
-     "url": "/models/deepseek-v4-pro-non-reasoning",
+     "url": "/models/deepseek-v4-pro",
      "logo": "/img/logos/deepseek.svg"
     },
     {
@@ -1012,7 +1093,7 @@
      "tooltipLabel": "Claude 4.5 Haiku (Reasoning)",
      "value": 19.4401596899225,
      "displayValue": "19",
-     "url": "/models/claude-4-5-haiku-reasoning",
+     "url": "/models/claude-4-5-haiku",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -1021,7 +1102,7 @@
      "tooltipLabel": "GPT-6 Luna (Non-reasoning)",
      "value": 19.0186577385863,
      "displayValue": "19",
-     "url": "/models/gpt-6-luna-non-reasoning",
+     "url": "/models/gpt-6-luna",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -1030,7 +1111,7 @@
      "tooltipLabel": "K-EXAONE 2.0",
      "value": 18.500842904474,
      "displayValue": "19",
-     "url": "/models/k-exaone-2-0-0803",
+     "url": "/models/k-exaone-2-0",
      "logo": "/img/logos/lg.png"
     },
     {
@@ -1039,7 +1120,7 @@
      "tooltipLabel": "GPT-6 Luna (Low)",
      "value": 17.1753161436098,
      "displayValue": "17",
-     "url": "/models/gpt-6-luna-low",
+     "url": "/models/gpt-6-luna",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -1057,7 +1138,7 @@
      "tooltipLabel": "GPT-5.6 Terra (Non-reasoning)",
      "value": 16.1918761843274,
      "displayValue": "16",
-     "url": "/models/gpt-5-6-terra-non-reasoning",
+     "url": "/models/gpt-5-6-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -1102,7 +1183,7 @@
      "tooltipLabel": "Gemini 3.1 Flash-Lite",
      "value": 12.111506077665,
      "displayValue": "12",
-     "url": "/models/gemini-3-1-flash-lite-preview",
+     "url": "/models/gemini-3-1-flash-lite",
      "logo": "/img/logos/google.svg"
     },
     {
@@ -1205,14 +1286,14 @@
      "id": "bf9708d8-933d-44f6-affa-b696a7a650c9",
      "label": "GPT-6 Luna (low)",
      "tooltipLabel": "GPT-6 Luna (Low)",
-     "url": "/models/gpt-6-luna-low",
+     "url": "/models/gpt-6-luna",
      "logo": "/img/logos/openai.svg"
     },
     {
      "id": "63cb48ea-0b0c-4e07-8ded-6d28dec4fa28",
      "label": "GPT-6 Luna (non-reasoning)",
      "tooltipLabel": "GPT-6 Luna (Non-reasoning)",
-     "url": "/models/gpt-6-luna-non-reasoning",
+     "url": "/models/gpt-6-luna",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -1226,35 +1307,35 @@
      "id": "36667da0-9222-4967-adbb-f7efa15ad213",
      "label": "GPT-6 Luna (medium)",
      "tooltipLabel": "GPT-6 Luna (Medium)",
-     "url": "/models/gpt-6-luna-medium",
+     "url": "/models/gpt-6-luna",
      "logo": "/img/logos/openai.svg"
     },
     {
      "id": "42908ae3-d3bd-4934-be19-fbff93d3fde8",
      "label": "Claude Haiku 5.5 (low)",
      "tooltipLabel": "Claude Haiku 5.5 (Low)",
-     "url": "/models/claude-haiku-5-5-low",
+     "url": "/models/claude-haiku-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "7d1229bc-deea-4717-ba5b-f59a35d991e3",
      "label": "GPT-6 Luna (high)",
      "tooltipLabel": "GPT-6 Luna (High)",
-     "url": "/models/gpt-6-luna-high",
+     "url": "/models/gpt-6-luna",
      "logo": "/img/logos/openai.svg"
     },
     {
      "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
      "label": "Gemini 3.1 Flash-Lite",
      "tooltipLabel": "Gemini 3.1 Flash-Lite",
-     "url": "/models/gemini-3-1-flash-lite-preview",
+     "url": "/models/gemini-3-1-flash-lite",
      "logo": "/img/logos/google.svg"
     },
     {
      "id": "19813eb2-460a-475c-af65-810bb8660fec",
      "label": "GPT-6 Luna (xhigh)",
      "tooltipLabel": "GPT-6 Luna (Xhigh)",
-     "url": "/models/gpt-6-luna-xhigh",
+     "url": "/models/gpt-6-luna",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -1265,6 +1346,13 @@
      "logo": "/img/logos/ibm.svg"
     },
     {
+     "id": "7a64ffc4-36c3-4369-981e-73abdd6ff5e2",
+     "label": "Muse Ember (xhigh)",
+     "tooltipLabel": "Muse Ember (Xhigh)",
+     "url": "/models/muse-ember",
+     "logo": "/img/logos/meta.svg"
+    },
+    {
      "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
      "label": "Muse Glimmer (high)",
      "tooltipLabel": "Muse Glimmer (High)",
@@ -1272,24 +1360,17 @@
      "logo": "/img/logos/meta.svg"
     },
     {
-     "id": "7a64ffc4-36c3-4369-981e-73abdd6ff5e2",
-     "label": "Muse Ember (xhigh)",
-     "tooltipLabel": "Muse Ember (Xhigh)",
-     "url": "/models/muse-ember-xhigh",
-     "logo": "/img/logos/meta.svg"
-    },
-    {
      "id": "c955b262-a17f-4f1a-b097-6860b866295b",
      "label": "GPT-6.1 Terra (low)",
      "tooltipLabel": "GPT-6.1 Terra (Low)",
-     "url": "/models/gpt-6-1-terra-low",
+     "url": "/models/gpt-6-1-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
      "id": "af26fff4-8120-41be-a5f0-86aaea023f20",
      "label": "Claude Haiku 5.5 (medium)",
      "tooltipLabel": "Claude Haiku 5.5 (Medium)",
-     "url": "/models/claude-haiku-5-5-medium",
+     "url": "/models/claude-haiku-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -1324,7 +1405,7 @@
      "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
      "label": "Gemini 3.8 Flash (low)",
      "tooltipLabel": "Gemini 3.8 Flash (Low)",
-     "url": "/models/gemini-3-8-flash-low",
+     "url": "/models/gemini-3-8-flash",
      "logo": "/img/logos/google.svg"
     },
     {
@@ -1338,7 +1419,7 @@
      "id": "20829974-af06-497e-9f42-77fb958d43b9",
      "label": "Claude Haiku 5.5 (high)",
      "tooltipLabel": "Claude Haiku 5.5 (High)",
-     "url": "/models/claude-haiku-5-5-high",
+     "url": "/models/claude-haiku-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -1352,22 +1433,29 @@
      "id": "c441e158-a87d-4116-911b-93325e4b4f1c",
      "label": "GPT-6.1 Terra (medium)",
      "tooltipLabel": "GPT-6.1 Terra (Medium)",
-     "url": "/models/gpt-6-1-terra-medium",
+     "url": "/models/gpt-6-1-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
      "id": "0d3c777f-6817-42d7-9bb9-223314bc5a57",
      "label": "GPT-6.1 Terra (non-reasoning)",
      "tooltipLabel": "GPT-6.1 Terra (Non-reasoning)",
-     "url": "/models/gpt-6-1-terra-non-reasoning",
+     "url": "/models/gpt-6-1-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
      "id": "e76e0fe5-93ca-4272-9359-2eb1740467d1",
      "label": "GPT-6.1 Sol (low)",
      "tooltipLabel": "GPT-6.1 Sol (Low)",
-     "url": "/models/gpt-6-1-sol-low",
+     "url": "/models/gpt-6-1-sol",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "88c68c50-03c1-458a-9292-bd398c27adc5",
+     "label": "Gemini 4 Hydrogen (low)",
+     "tooltipLabel": "Gemini 4 Hydrogen (Low)",
+     "url": "/models/gemini-4-hydrogen",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "29976311-665a-4b2f-ac72-557c33e0758e",
@@ -1380,14 +1468,14 @@
      "id": "ea3e1f50-f62d-41d2-849a-9af0413e4d37",
      "label": "GPT-6.1 Terra (high)",
      "tooltipLabel": "GPT-6.1 Terra (High)",
-     "url": "/models/gpt-6-1-terra-high",
+     "url": "/models/gpt-6-1-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
      "id": "41b5bf5e-daf6-42d9-b8d1-60e340a3028d",
      "label": "Claude Haiku 5.5 (xhigh)",
      "tooltipLabel": "Claude Haiku 5.5 (Xhigh)",
-     "url": "/models/claude-haiku-5-5-xhigh",
+     "url": "/models/claude-haiku-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -1401,28 +1489,28 @@
      "id": "9b97a35e-6ac7-44d9-91c6-422fa678963e",
      "label": "GPT-5.6 Terra (non-reasoning)",
      "tooltipLabel": "GPT-5.6 Terra (Non-reasoning)",
-     "url": "/models/gpt-5-6-terra-non-reasoning",
+     "url": "/models/gpt-5-6-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
      "id": "c3b66080-fdcb-48e4-8ade-6baf77921c7c",
      "label": "DeepSeek V4.1 Flash 1017 (high)",
      "tooltipLabel": "DeepSeek V4.1 Flash 1017 (High)",
-     "url": "/models/deepseek-v4-1-flash-1017-high",
+     "url": "/models/deepseek-v4-1-flash-1017",
      "logo": "/img/logos/deepseek.svg"
     },
     {
      "id": "d4f5b250-be37-4801-85e6-32fda4179337",
      "label": "DeepSeek V4 Pro 0813 (non-reasoning)",
      "tooltipLabel": "DeepSeek V4 Pro 0813 (Non-reasoning)",
-     "url": "/models/deepseek-v4-pro-non-reasoning",
+     "url": "/models/deepseek-v4-pro",
      "logo": "/img/logos/deepseek.svg"
     },
     {
      "id": "cc4a20cd-09fe-4962-a430-119c815e85fa",
      "label": "GPT-5.6 Terra (low)",
      "tooltipLabel": "GPT-5.6 Terra (Low)",
-     "url": "/models/gpt-5-6-terra-low",
+     "url": "/models/gpt-5-6-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -1436,15 +1524,22 @@
      "id": "a6340098-d7ae-462d-b372-0a0a67fc44b4",
      "label": "Claude 4.5 Haiku",
      "tooltipLabel": "Claude 4.5 Haiku (Reasoning)",
-     "url": "/models/claude-4-5-haiku-reasoning",
+     "url": "/models/claude-4-5-haiku",
      "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "e8d443ba-8aca-4830-a186-ae869bb9c6fe",
      "label": "GPT-6.1 Terra (xhigh)",
      "tooltipLabel": "GPT-6.1 Terra (Xhigh)",
-     "url": "/models/gpt-6-1-terra-xhigh",
+     "url": "/models/gpt-6-1-terra",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "27b24366-fd1a-44b7-8011-e24d7501318d",
+     "label": "Mistral Large 4 (medium)",
+     "tooltipLabel": "Mistral Large 4 (Medium)",
+     "url": "/models/mistral-large-4",
+     "logo": "/img/logos/mistral.svg"
     },
     {
      "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
@@ -1454,17 +1549,10 @@
      "logo": "/img/logos/nvidia.svg"
     },
     {
-     "id": "27b24366-fd1a-44b7-8011-e24d7501318d",
-     "label": "Mistral Large 4 (medium)",
-     "tooltipLabel": "Mistral Large 4 (Medium)",
-     "url": "/models/mistral-large-4-medium",
-     "logo": "/img/logos/mistral.svg"
-    },
-    {
      "id": "26e0f83a-ca98-4f34-94ac-7c5e251ee410",
      "label": "GPT-5.6 Terra (medium)",
      "tooltipLabel": "GPT-5.6 Terra (Medium)",
-     "url": "/models/gpt-5-6-terra-medium",
+     "url": "/models/gpt-5-6-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -1485,7 +1573,7 @@
      "id": "a2e51d62-ea4e-4f15-8be0-be9dc1fb489d",
      "label": "GPT-6.1 Sol (medium)",
      "tooltipLabel": "GPT-6.1 Sol (Medium)",
-     "url": "/models/gpt-6-1-sol-medium",
+     "url": "/models/gpt-6-1-sol",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -1506,28 +1594,35 @@
      "id": "512d17ef-13d2-4f65-bf9b-154b0dec7e8d",
      "label": "Kimi K3 (low)",
      "tooltipLabel": "Kimi K3 (Low)",
-     "url": "/models/kimi-k3-low",
+     "url": "/models/kimi-k3",
      "logo": "/img/logos/kimi.jpg"
     },
     {
      "id": "5720fd2f-873a-4765-8640-a153b38bd64d",
      "label": "DeepSeek V4.1 Flash 1017 (non-reasoning)",
      "tooltipLabel": "DeepSeek V4.1 Flash 1017 (Non-reasoning)",
-     "url": "/models/deepseek-v4-1-flash-1017-non-reasoning",
+     "url": "/models/deepseek-v4-1-flash-1017",
      "logo": "/img/logos/deepseek.svg"
+    },
+    {
+     "id": "f0537484-af30-4a8a-bf34-368c552e5cfd",
+     "label": "Gemini 4 Hydrogen (medium)",
+     "tooltipLabel": "Gemini 4 Hydrogen (Medium)",
+     "url": "/models/gemini-4-hydrogen",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "cc1e488b-8ba4-464d-875d-690166b15ad3",
      "label": "GLM-5.3 (low)",
      "tooltipLabel": "GLM-5.3 (Low)",
-     "url": "/models/glm-5-3-low",
+     "url": "/models/glm-5-3",
      "logo": "/img/logos/zai.svg"
     },
     {
      "id": "5b52def2-ac9b-4465-ad80-91ea8079e253",
      "label": "Nemotron 3 Ultra",
      "tooltipLabel": "Nemotron 3 Ultra 550B A55B (Reasoning)",
-     "url": "/models/nvidia-nemotron-3-ultra-550b-a55b",
+     "url": "/models/nemotron-3-ultra-550b-a55b",
      "logo": "/img/logos/nvidia.svg"
     },
     {
@@ -1541,14 +1636,21 @@
      "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
      "label": "Claude Sonnet 5.5 (low)",
      "tooltipLabel": "Claude Sonnet 5.5 (Low, Default Fallback)",
-     "url": "/models/claude-sonnet-5-5-low",
+     "url": "/models/claude-sonnet-5-5",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "e94c7595-a320-4c88-8f07-d9fd50fc4595",
+     "label": "DeepSeek V4 Pro 0813 (high)",
+     "tooltipLabel": "DeepSeek V4 Pro 0813 (High)",
+     "url": "/models/deepseek-v4-pro",
+     "logo": "/img/logos/deepseek.svg"
     },
     {
      "id": "3b84fee3-b70a-41bc-819e-5fbdef9a0042",
      "label": "GPT-6.1 Sol (high)",
      "tooltipLabel": "GPT-6.1 Sol (High)",
-     "url": "/models/gpt-6-1-sol-high",
+     "url": "/models/gpt-6-1-sol",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -1583,7 +1685,7 @@
      "id": "81972fba-1219-477e-bbfb-18c656a63ff7",
      "label": "GPT-5.6 Terra (high)",
      "tooltipLabel": "GPT-5.6 Terra (High)",
-     "url": "/models/gpt-5-6-terra-high",
+     "url": "/models/gpt-5-6-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -1594,10 +1696,17 @@
      "logo": "/img/logos/deepseek.svg"
     },
     {
+     "id": "08242385-ee91-4de6-be7f-271a6d9780ce",
+     "label": "Apodex 1.1",
+     "tooltipLabel": "Apodex 1.1",
+     "url": "/models/apodex-1-1",
+     "logo": "/img/logos/apodex.svg"
+    },
+    {
      "id": "092a3b0e-c5c8-45dc-bf1b-53673c8ff352",
      "label": "GPT-6.1 Sol (xhigh)",
      "tooltipLabel": "GPT-6.1 Sol (Xhigh)",
-     "url": "/models/gpt-6-1-sol-xhigh",
+     "url": "/models/gpt-6-1-sol",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -1618,7 +1727,7 @@
      "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
      "label": "Claude Opus 5.5 (low)",
      "tooltipLabel": "Claude Opus 5.5 (Low, Default Fallback)",
-     "url": "/models/claude-opus-5-5-low",
+     "url": "/models/claude-opus-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -1632,7 +1741,7 @@
      "id": "042e8a37-fcd0-40f4-8f41-99215fb68eda",
      "label": "Claude Sonnet 5.5 (medium)",
      "tooltipLabel": "Claude Sonnet 5.5 (Medium, Default Fallback)",
-     "url": "/models/claude-sonnet-5-5-medium",
+     "url": "/models/claude-sonnet-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -1660,35 +1769,42 @@
      "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
      "label": "GPT-6 Astra (low)",
      "tooltipLabel": "GPT-6 Astra (Low)",
-     "url": "/models/gpt-6-astra-low",
+     "url": "/models/gpt-6-astra",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "dae0262d-26a4-44d1-925a-6f2731cbda6a",
+     "label": "Gemini 4 Hydrogen (high)",
+     "tooltipLabel": "Gemini 4 Hydrogen (High)",
+     "url": "/models/gemini-4-hydrogen",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "9e30696f-16fa-4b4f-ba53-161895a85fed",
      "label": "GPT-5.6 Terra (xhigh)",
      "tooltipLabel": "GPT-5.6 Terra (Xhigh)",
-     "url": "/models/gpt-5-6-terra-xhigh",
+     "url": "/models/gpt-5-6-terra",
      "logo": "/img/logos/openai.svg"
     },
     {
      "id": "208c16f0-8c5b-4524-ac8a-ac74c02e80a9",
      "label": "Grok 4.7 (low)",
      "tooltipLabel": "Grok 4.7 (Low)",
-     "url": "/models/grok-4-7-low",
+     "url": "/models/grok-4-7",
      "logo": "/img/logos/spacexai.svg"
     },
     {
      "id": "7e30585f-fad7-40df-a8cb-03c1d96df38a",
      "label": "Qwen3.8 27B (low)",
      "tooltipLabel": "Qwen3.8 27B (Low)",
-     "url": "/models/qwen3-8-27b-low",
+     "url": "/models/qwen3-8-27b",
      "logo": "/img/logos/alibaba.svg"
     },
     {
      "id": "094ea3e3-ce41-419e-8bd1-723389663158",
      "label": "Step 5 Preview",
      "tooltipLabel": "Step 5 Preview",
-     "url": "/models/step-5",
+     "url": "/models/step-5-preview",
      "logo": "/img/logos/stepfun.svg"
     },
     {
@@ -1723,14 +1839,14 @@
      "id": "d5170215-69be-4129-849b-26d8d8825bfc",
      "label": "Muse Spark 1.3 (xhigh)",
      "tooltipLabel": "Muse Spark 1.3 (Xhigh)",
-     "url": "/models/muse-spark-1-3-xhigh",
+     "url": "/models/muse-spark-1-3",
      "logo": "/img/logos/meta.svg"
     },
     {
      "id": "6657d7de-a2a9-40bc-a32f-86e80ad63698",
      "label": "Qwen3.8 27B (medium)",
      "tooltipLabel": "Qwen3.8 27B (Medium)",
-     "url": "/models/qwen3-8-27b-medium",
+     "url": "/models/qwen3-8-27b",
      "logo": "/img/logos/alibaba.svg"
     },
     {
@@ -1751,7 +1867,7 @@
      "id": "268525e2-f873-4178-bc07-e6a0ee1f002d",
      "label": "Claude Sonnet 5.5 (high)",
      "tooltipLabel": "Claude Sonnet 5.5 (High, Default Fallback)",
-     "url": "/models/claude-sonnet-5-5-high",
+     "url": "/models/claude-sonnet-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -1765,15 +1881,22 @@
      "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
      "label": "Solar Pro 4",
      "tooltipLabel": "Solar Pro 4",
-     "url": "/models/solar-pro4",
+     "url": "/models/solar-pro-4",
      "logo": "/img/logos/upstage.svg"
     },
     {
      "id": "539ed227-38f4-4bea-a015-117057c14b18",
      "label": "Ling 3.1 Flash 1019",
      "tooltipLabel": "Ling 3.1 Flash 1019",
-     "url": "/models/ling-3-1-flash-1019",
+     "url": "/models/ling-3-1-flash",
      "logo": "/img/logos/inclusionai.jpg"
+    },
+    {
+     "id": "dad0e3b1-e3e7-477a-99f9-c14457a91114",
+     "label": "Gemini 4 Hydrogen (xhigh)",
+     "tooltipLabel": "Gemini 4 Hydrogen (Xhigh)",
+     "url": "/models/gemini-4-hydrogen",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "8df710d3-9dae-4498-9b4e-9818238e6f31",
@@ -1786,36 +1909,57 @@
      "id": "e97a4ef5-e817-480e-9595-12f81dc4974f",
      "label": "GPT-6 Astra (medium)",
      "tooltipLabel": "GPT-6 Astra (Medium)",
-     "url": "/models/gpt-6-astra-medium",
+     "url": "/models/gpt-6-astra",
      "logo": "/img/logos/openai.svg"
     },
     {
      "id": "ea9e0da6-169f-43c6-92f5-730a10d6ff8d",
      "label": "Claude Opus 5.5 (medium)",
      "tooltipLabel": "Claude Opus 5.5 (Medium, Default Fallback)",
-     "url": "/models/claude-opus-5-5-medium",
+     "url": "/models/claude-opus-5-5",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "48e6f735-f2bc-418f-b99f-3dc5a0ddda77",
+     "label": "Gemini 4 Argon (medium)",
+     "tooltipLabel": "Gemini 4 Argon (Medium)",
+     "url": "/models/gemini-4-argon",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "d6f43d0a-e8c4-447c-9ff7-5cf0a9d59aa3",
      "label": "Grok 4.6 (xhigh)",
      "tooltipLabel": "Grok 4.6 (Xhigh)",
-     "url": "/models/grok-4-6-xhigh",
+     "url": "/models/grok-4-6",
      "logo": "/img/logos/spacexai.svg"
     },
     {
      "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
      "label": "Gemini 3.8 Flash (medium)",
      "tooltipLabel": "Gemini 3.8 Flash (Medium)",
-     "url": "/models/gemini-3-8-flash-medium",
+     "url": "/models/gemini-3-8-flash",
      "logo": "/img/logos/google.svg"
     },
     {
      "id": "e05a4828-0536-4876-870d-a235023f992b",
      "label": "GPT-6 Astra (high)",
      "tooltipLabel": "GPT-6 Astra (High)",
-     "url": "/models/gpt-6-astra-high",
+     "url": "/models/gpt-6-astra",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
+     "label": "Gemini 4 Carbon (medium)",
+     "tooltipLabel": "Gemini 4 Carbon (Medium)",
+     "url": "/models/gemini-4-carbon",
+     "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
+     "label": "Gemini 4 Carbon (low)",
+     "tooltipLabel": "Gemini 4 Carbon (Low)",
+     "url": "/models/gemini-4-carbon",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "cd684ea4-b475-4269-b001-d469d06d8a7a",
@@ -1825,59 +1969,80 @@
      "logo": "/img/logos/zai.svg"
     },
     {
+     "id": "fef6625d-9097-45f6-95c0-bcaa06e3d8e1",
+     "label": "Qwen4 Max",
+     "tooltipLabel": "Qwen4 Max",
+     "url": "/models/qwen4-max",
+     "logo": "/img/logos/alibaba.svg"
+    },
+    {
+     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
+     "label": "Gemini 4 Argon (high)",
+     "tooltipLabel": "Gemini 4 Argon (High)",
+     "url": "/models/gemini-4-argon",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "38a98e3d-779b-49ec-b005-230a3a72088a",
      "label": "Muse Wonder (high)",
      "tooltipLabel": "Muse Wonder (High)",
-     "url": "/models/muse-wonder-high",
+     "url": "/models/muse-wonder",
      "logo": "/img/logos/meta.svg"
     },
     {
      "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
      "label": "Claude Fable 5.2 (low)",
      "tooltipLabel": "Claude Fable 5.2 (Low, Default Fallback)",
-     "url": "/models/claude-fable-5-2-low",
+     "url": "/models/claude-fable-5-2",
      "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "f314eade-2232-44bf-a3ab-9b326bc67de6",
      "label": "Claude Opus 5.5 (high)",
      "tooltipLabel": "Claude Opus 5.5 (High, Default Fallback)",
-     "url": "/models/claude-opus-5-5-high",
+     "url": "/models/claude-opus-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
      "label": "Grok 4.7 (high)",
      "tooltipLabel": "Grok 4.7 (High)",
-     "url": "/models/grok-4-7-high",
+     "url": "/models/grok-4-7",
      "logo": "/img/logos/spacexai.svg"
+    },
+    {
+     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+     "label": "Gemini 4 Carbon (high)",
+     "tooltipLabel": "Gemini 4 Carbon (High)",
+     "url": "/models/gemini-4-carbon",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
      "label": "Claude Sonnet 5.5 (xhigh)",
      "tooltipLabel": "Claude Sonnet 5.5 (Xhigh, Default Fallback)",
-     "url": "/models/claude-sonnet-5-5-xhigh",
+     "url": "/models/claude-sonnet-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "1f541ef3-913f-4eb2-9d07-0e93c7a9a5e3",
      "label": "GPT-6 Astra (xhigh)",
      "tooltipLabel": "GPT-6 Astra (Xhigh)",
-     "url": "/models/gpt-6-astra-xhigh",
+     "url": "/models/gpt-6-astra",
      "logo": "/img/logos/openai.svg"
     },
     {
      "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
      "label": "Claude Fable 5.2 (medium)",
      "tooltipLabel": "Claude Fable 5.2 (Medium, Default Fallback)",
-     "url": "/models/claude-fable-5-2-medium",
+     "url": "/models/claude-fable-5-2",
      "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "05776db7-f5c0-40f7-b824-079160f8cfa8",
      "label": "Claude Fable 5.1 (low)",
      "tooltipLabel": "Claude Fable 5.1 (Low, Default Fallback)",
-     "url": "/models/claude-fable-5-1-low",
+     "url": "/models/claude-fable-5-1",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -1888,24 +2053,10 @@
      "logo": "/img/logos/kimi.jpg"
     },
     {
-     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
-     "label": "Gemini 4 Carbon (low)",
-     "tooltipLabel": "Gemini 4 Carbon (Low)",
-     "url": "/models/gemini-4-carbon-low",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
      "label": "Gemini 3.8 Flash (high)",
      "tooltipLabel": "Gemini 3.8 Flash (High)",
      "url": "/models/gemini-3-8-flash",
-     "logo": "/img/logos/google.svg"
-    },
-    {
-     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
-     "label": "Gemini 4 Carbon (medium)",
-     "tooltipLabel": "Gemini 4 Carbon (Medium)",
-     "url": "/models/gemini-4-carbon-medium",
      "logo": "/img/logos/google.svg"
     },
     {
@@ -1919,7 +2070,7 @@
      "id": "353c92f3-2148-4c2d-9231-aa7e1322a1fd",
      "label": "Qwen3.8 27B (non-reasoning)",
      "tooltipLabel": "Qwen3.8 27B (Non-reasoning)",
-     "url": "/models/qwen3-8-27b-non-reasoning",
+     "url": "/models/qwen3-8-27b",
      "logo": "/img/logos/alibaba.svg"
     },
     {
@@ -1933,15 +2084,8 @@
      "id": "3b7de71c-e034-4591-8ca6-6b6be2fa471f",
      "label": "Claude Fable 5.1 (medium)",
      "tooltipLabel": "Claude Fable 5.1 (Medium, Default Fallback)",
-     "url": "/models/claude-fable-5-1-medium",
+     "url": "/models/claude-fable-5-1",
      "logo": "/img/logos/anthropic.svg"
-    },
-    {
-     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
-     "label": "Gemini 4 Carbon (high)",
-     "tooltipLabel": "Gemini 4 Carbon (High)",
-     "url": "/models/gemini-4-carbon",
-     "logo": "/img/logos/google.svg"
     },
     {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
@@ -1951,31 +2095,24 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
-     "label": "Gemini 4 Argon (high)",
-     "tooltipLabel": "Gemini 4 Argon (High)",
-     "url": "/models/gemini-4-argon",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "9d7d72cd-d95d-45a0-b109-4ad292c9aabd",
      "label": "Claude Fable 5.1 (high)",
      "tooltipLabel": "Claude Fable 5.1 (High, Default Fallback)",
-     "url": "/models/claude-fable-5-1-high",
+     "url": "/models/claude-fable-5-1",
      "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "df5bf99d-d228-4715-b41b-19ca86118777",
      "label": "Claude Opus 5.5 (xhigh)",
      "tooltipLabel": "Claude Opus 5.5 (Xhigh, Default Fallback)",
-     "url": "/models/claude-opus-5-5-xhigh",
+     "url": "/models/claude-opus-5-5",
      "logo": "/img/logos/anthropic.svg"
     },
     {
      "id": "fdc1913b-9497-45ef-83f7-17dae756f37e",
      "label": "Claude Fable 5.2 (high)",
      "tooltipLabel": "Claude Fable 5.2 (High, Default Fallback)",
-     "url": "/models/claude-fable-5-2-high",
+     "url": "/models/claude-fable-5-2",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -1996,7 +2133,7 @@
      "id": "9b166bf3-42db-4f63-8338-1c4a1244ffe8",
      "label": "Claude Fable 5.1 (xhigh)",
      "tooltipLabel": "Claude Fable 5.1 (Xhigh, Default Fallback)",
-     "url": "/models/claude-fable-5-1-xhigh",
+     "url": "/models/claude-fable-5-1",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -2024,7 +2161,7 @@
      "id": "76942526-cc96-46b0-bc27-29561c53ed70",
      "label": "Claude Fable 5.2 (xhigh)",
      "tooltipLabel": "Claude Fable 5.2 (Xhigh, Default Fallback)",
-     "url": "/models/claude-fable-5-2-xhigh",
+     "url": "/models/claude-fable-5-2",
      "logo": "/img/logos/anthropic.svg"
     },
     {
@@ -2344,7 +2481,7 @@
      "releaseDate": "2026-10-28",
      "creatorName": "Google",
      "costPerTask": {
-      "total": 3.02235424478383
+      "total": 2.074535463263766
      }
     },
     {
@@ -2355,7 +2492,7 @@
      "releaseDate": "2026-10-28",
      "creatorName": "Google",
      "costPerTask": {
-      "total": 2.435802266400096
+      "total": 1.7053334871597696
      }
     },
     {
@@ -2366,7 +2503,29 @@
      "releaseDate": "2026-10-28",
      "creatorName": "Google",
      "costPerTask": {
-      "total": 2.3724887750808894
+      "total": 1.728460802768611
+     }
+    },
+    {
+     "id": "dad0e3b1-e3e7-477a-99f9-c14457a91114",
+     "slug": "gemini-4-hydrogen",
+     "name": "Gemini 4 Hydrogen (Xhigh)",
+     "shortName": "Gemini 4 Hydrogen (xhigh)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.310621154319251
+     }
+    },
+    {
+     "id": "dae0262d-26a4-44d1-925a-6f2731cbda6a",
+     "slug": "gemini-4-hydrogen-high",
+     "name": "Gemini 4 Hydrogen (High)",
+     "shortName": "Gemini 4 Hydrogen (high)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.6293876517963809
      }
     },
     {
@@ -2377,7 +2536,29 @@
      "releaseDate": "2026-09-30",
      "creatorName": "Google",
      "costPerTask": {
-      "total": 3.724134926675559
+      "total": 1.8620674633377794
+     }
+    },
+    {
+     "id": "48e6f735-f2bc-418f-b99f-3dc5a0ddda77",
+     "slug": "gemini-4-argon-medium",
+     "name": "Gemini 4 Argon (Medium)",
+     "shortName": "Gemini 4 Argon (medium)",
+     "releaseDate": "2026-09-30",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.4940535182563603
+     }
+    },
+    {
+     "id": "f0537484-af30-4a8a-bf34-368c552e5cfd",
+     "slug": "gemini-4-hydrogen-medium",
+     "name": "Gemini 4 Hydrogen (Medium)",
+     "shortName": "Gemini 4 Hydrogen (medium)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.25330406482143536
      }
     },
     {
@@ -2400,6 +2581,17 @@
      "creatorName": "Google",
      "costPerTask": {
       "total": 1.6899906365856312
+     }
+    },
+    {
+     "id": "88c68c50-03c1-458a-9292-bd398c27adc5",
+     "slug": "gemini-4-hydrogen-low",
+     "name": "Gemini 4 Hydrogen (Low)",
+     "shortName": "Gemini 4 Hydrogen (low)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.09255246228211751
      }
     },
     {
@@ -2850,7 +3042,7 @@
      "releaseDate": "2026-08-10",
      "creatorName": "Meta",
      "costPerTask": {
-      "total": 0.035773162554956404
+      "total": 0.03802391397239909
      }
     },
     {
@@ -2887,58 +3079,14 @@
      }
     },
     {
-     "id": "59627802-1546-422c-9a65-65b61c022d36",
-     "slug": "grok-4-7",
-     "name": "Grok 4.7 (Xhigh)",
-     "shortName": "Grok 4.7 (xhigh)",
-     "releaseDate": "2026-09-21",
-     "creatorName": "SpaceXAI",
+     "id": "fef6625d-9097-45f6-95c0-bcaa06e3d8e1",
+     "slug": "qwen4-max",
+     "name": "Qwen4 Max",
+     "shortName": "Qwen4 Max",
+     "releaseDate": "2026-11-16",
+     "creatorName": "Alibaba",
      "costPerTask": {
-      "total": 2.580143536647555
-     }
-    },
-    {
-     "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
-     "slug": "grok-4-7-high",
-     "name": "Grok 4.7 (High)",
-     "shortName": "Grok 4.7 (high)",
-     "releaseDate": "2026-09-21",
-     "creatorName": "SpaceXAI",
-     "costPerTask": {
-      "total": 2.0645565116455558
-     }
-    },
-    {
-     "id": "208c16f0-8c5b-4524-ac8a-ac74c02e80a9",
-     "slug": "grok-4-7-low",
-     "name": "Grok 4.7 (Low)",
-     "shortName": "Grok 4.7 (low)",
-     "releaseDate": "2026-09-21",
-     "creatorName": "SpaceXAI",
-     "costPerTask": {
-      "total": 0.7009823334196701
-     }
-    },
-    {
-     "id": "d6f43d0a-e8c4-447c-9ff7-5cf0a9d59aa3",
-     "slug": "grok-4-6-xhigh",
-     "name": "Grok 4.6 (Xhigh)",
-     "shortName": "Grok 4.6 (xhigh)",
-     "releaseDate": "2026-08-12",
-     "creatorName": "SpaceXAI",
-     "costPerTask": {
-      "total": 1.5743594842868602
-     }
-    },
-    {
-     "id": "d274918e-ea82-4951-8b37-8ed9ab898dbc",
-     "slug": "tencent-hy4",
-     "name": "Tencent Hy4",
-     "shortName": "Tencent Hy4",
-     "releaseDate": "2026-11-03",
-     "creatorName": "Tencent",
-     "costPerTask": {
-      "total": 0.4602194594618377
+      "total": 1.8596923897495323
      }
     },
     {
@@ -2950,6 +3098,17 @@
      "creatorName": "Alibaba",
      "costPerTask": {
       "total": 5.96388743351379
+     }
+    },
+    {
+     "id": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
+     "slug": "qwen3-8-flash-next",
+     "name": "Qwen3.8-Flash-Next",
+     "shortName": "Qwen3.8-Flash-Next",
+     "releaseDate": "2026-08-26",
+     "creatorName": "Alibaba",
+     "costPerTask": {
+      "total": 0.4891053314709071
      }
     },
     {
@@ -3008,14 +3167,58 @@
      }
     },
     {
-     "id": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
-     "slug": "qwen3-8-flash-next",
-     "name": "Qwen3.8-Flash-Next",
-     "shortName": "Qwen3.8-Flash-Next",
-     "releaseDate": "2026-08-26",
-     "creatorName": "Alibaba",
+     "id": "59627802-1546-422c-9a65-65b61c022d36",
+     "slug": "grok-4-7",
+     "name": "Grok 4.7 (Xhigh)",
+     "shortName": "Grok 4.7 (xhigh)",
+     "releaseDate": "2026-09-21",
+     "creatorName": "SpaceXAI",
      "costPerTask": {
-      "total": 0.4891053314709071
+      "total": 2.580143536647555
+     }
+    },
+    {
+     "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
+     "slug": "grok-4-7-high",
+     "name": "Grok 4.7 (High)",
+     "shortName": "Grok 4.7 (high)",
+     "releaseDate": "2026-09-21",
+     "creatorName": "SpaceXAI",
+     "costPerTask": {
+      "total": 2.0645565116455558
+     }
+    },
+    {
+     "id": "208c16f0-8c5b-4524-ac8a-ac74c02e80a9",
+     "slug": "grok-4-7-low",
+     "name": "Grok 4.7 (Low)",
+     "shortName": "Grok 4.7 (low)",
+     "releaseDate": "2026-09-21",
+     "creatorName": "SpaceXAI",
+     "costPerTask": {
+      "total": 0.7009823334196701
+     }
+    },
+    {
+     "id": "d6f43d0a-e8c4-447c-9ff7-5cf0a9d59aa3",
+     "slug": "grok-4-6-xhigh",
+     "name": "Grok 4.6 (Xhigh)",
+     "shortName": "Grok 4.6 (xhigh)",
+     "releaseDate": "2026-08-12",
+     "creatorName": "SpaceXAI",
+     "costPerTask": {
+      "total": 1.5743594842868602
+     }
+    },
+    {
+     "id": "d274918e-ea82-4951-8b37-8ed9ab898dbc",
+     "slug": "tencent-hy4",
+     "name": "Tencent Hy4",
+     "shortName": "Tencent Hy4",
+     "releaseDate": "2026-11-03",
+     "creatorName": "Tencent",
+     "costPerTask": {
+      "total": 0.4602194594618377
      }
     },
     {
@@ -3049,6 +3252,17 @@
      "creatorName": "DeepSeek",
      "costPerTask": {
       "total": 0.3612238096085628
+     }
+    },
+    {
+     "id": "e94c7595-a320-4c88-8f07-d9fd50fc4595",
+     "slug": "deepseek-v4-pro-high",
+     "name": "DeepSeek V4 Pro 0813 (High)",
+     "shortName": "DeepSeek V4 Pro 0813 (high)",
+     "releaseDate": "2026-08-13",
+     "creatorName": "DeepSeek",
+     "costPerTask": {
+      "total": 0.29148753340920575
      }
     },
     {
@@ -3174,7 +3388,7 @@
     },
     {
      "id": "539ed227-38f4-4bea-a015-117057c14b18",
-     "slug": "ling-3-1-flash-1019",
+     "slug": "ling-3-1-flash",
      "name": "Ling 3.1 Flash 1019",
      "shortName": "Ling 3.1 Flash 1019",
      "releaseDate": "2026-10-22",
@@ -3294,6 +3508,28 @@
      }
     },
     {
+     "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
+     "slug": "solar-pro4",
+     "name": "Solar Pro 4",
+     "shortName": "Solar Pro 4",
+     "releaseDate": "2026-08-06",
+     "creatorName": "Upstage",
+     "costPerTask": {
+      "total": 1.1561413244544356
+     }
+    },
+    {
+     "id": "08242385-ee91-4de6-be7f-271a6d9780ce",
+     "slug": "apodex-1-1",
+     "name": "Apodex 1.1",
+     "shortName": "Apodex 1.1",
+     "releaseDate": "2026-08-30",
+     "creatorName": "Apodex",
+     "costPerTask": {
+      "total": 0.3637871600705477
+     }
+    },
+    {
      "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
      "slug": "nemotron-3-5-super-vl",
      "name": "Nemotron 3.5 Super VL",
@@ -3301,7 +3537,7 @@
      "releaseDate": "2026-10-15",
      "creatorName": "NVIDIA",
      "costPerTask": {
-      "total": 0.15771123792171424
+      "total": 0.1691042030376814
      }
     },
     {
@@ -3312,7 +3548,7 @@
      "releaseDate": "2026-06-04",
      "creatorName": "NVIDIA",
      "costPerTask": {
-      "total": 0.26740411978685324
+      "total": 0.26167111300329315
      }
     },
     {
@@ -3335,17 +3571,6 @@
      "creatorName": "IBM",
      "costPerTask": {
       "total": 0.029811891862779227
-     }
-    },
-    {
-     "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
-     "slug": "solar-pro4",
-     "name": "Solar Pro 4",
-     "shortName": "Solar Pro 4",
-     "releaseDate": "2026-08-06",
-     "creatorName": "Upstage",
-     "costPerTask": {
-      "total": 1.1561413244544356
      }
     }
    ]
@@ -3658,7 +3883,7 @@
      "releaseDate": "2026-10-28",
      "creatorName": "Google",
      "costPerTask": {
-      "total": 3.02235424478383
+      "total": 2.074535463263766
      }
     },
     {
@@ -3669,7 +3894,7 @@
      "releaseDate": "2026-10-28",
      "creatorName": "Google",
      "costPerTask": {
-      "total": 2.435802266400096
+      "total": 1.7053334871597696
      }
     },
     {
@@ -3680,7 +3905,29 @@
      "releaseDate": "2026-10-28",
      "creatorName": "Google",
      "costPerTask": {
-      "total": 2.3724887750808894
+      "total": 1.728460802768611
+     }
+    },
+    {
+     "id": "dad0e3b1-e3e7-477a-99f9-c14457a91114",
+     "slug": "gemini-4-hydrogen",
+     "name": "Gemini 4 Hydrogen (Xhigh)",
+     "shortName": "Gemini 4 Hydrogen (xhigh)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.310621154319251
+     }
+    },
+    {
+     "id": "dae0262d-26a4-44d1-925a-6f2731cbda6a",
+     "slug": "gemini-4-hydrogen-high",
+     "name": "Gemini 4 Hydrogen (High)",
+     "shortName": "Gemini 4 Hydrogen (high)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.6293876517963809
      }
     },
     {
@@ -3691,7 +3938,29 @@
      "releaseDate": "2026-09-30",
      "creatorName": "Google",
      "costPerTask": {
-      "total": 3.724134926675559
+      "total": 1.8620674633377794
+     }
+    },
+    {
+     "id": "48e6f735-f2bc-418f-b99f-3dc5a0ddda77",
+     "slug": "gemini-4-argon-medium",
+     "name": "Gemini 4 Argon (Medium)",
+     "shortName": "Gemini 4 Argon (medium)",
+     "releaseDate": "2026-09-30",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.4940535182563603
+     }
+    },
+    {
+     "id": "f0537484-af30-4a8a-bf34-368c552e5cfd",
+     "slug": "gemini-4-hydrogen-medium",
+     "name": "Gemini 4 Hydrogen (Medium)",
+     "shortName": "Gemini 4 Hydrogen (medium)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.25330406482143536
      }
     },
     {
@@ -3714,6 +3983,17 @@
      "creatorName": "Google",
      "costPerTask": {
       "total": 1.6899906365856312
+     }
+    },
+    {
+     "id": "88c68c50-03c1-458a-9292-bd398c27adc5",
+     "slug": "gemini-4-hydrogen-low",
+     "name": "Gemini 4 Hydrogen (Low)",
+     "shortName": "Gemini 4 Hydrogen (low)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.09255246228211751
      }
     },
     {
@@ -4183,7 +4463,7 @@
      "releaseDate": "2026-08-10",
      "creatorName": "Meta",
      "costPerTask": {
-      "total": 0.035773162554956404
+      "total": 0.03802391397239909
      }
     },
     {
@@ -4220,58 +4500,14 @@
      }
     },
     {
-     "id": "59627802-1546-422c-9a65-65b61c022d36",
-     "slug": "grok-4-7",
-     "name": "Grok 4.7 (Xhigh)",
-     "shortName": "Grok 4.7 (xhigh)",
-     "releaseDate": "2026-09-21",
-     "creatorName": "SpaceXAI",
+     "id": "fef6625d-9097-45f6-95c0-bcaa06e3d8e1",
+     "slug": "qwen4-max",
+     "name": "Qwen4 Max",
+     "shortName": "Qwen4 Max",
+     "releaseDate": "2026-11-16",
+     "creatorName": "Alibaba",
      "costPerTask": {
-      "total": 2.580143536647555
-     }
-    },
-    {
-     "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
-     "slug": "grok-4-7-high",
-     "name": "Grok 4.7 (High)",
-     "shortName": "Grok 4.7 (high)",
-     "releaseDate": "2026-09-21",
-     "creatorName": "SpaceXAI",
-     "costPerTask": {
-      "total": 2.0645565116455558
-     }
-    },
-    {
-     "id": "208c16f0-8c5b-4524-ac8a-ac74c02e80a9",
-     "slug": "grok-4-7-low",
-     "name": "Grok 4.7 (Low)",
-     "shortName": "Grok 4.7 (low)",
-     "releaseDate": "2026-09-21",
-     "creatorName": "SpaceXAI",
-     "costPerTask": {
-      "total": 0.7009823334196701
-     }
-    },
-    {
-     "id": "d6f43d0a-e8c4-447c-9ff7-5cf0a9d59aa3",
-     "slug": "grok-4-6-xhigh",
-     "name": "Grok 4.6 (Xhigh)",
-     "shortName": "Grok 4.6 (xhigh)",
-     "releaseDate": "2026-08-12",
-     "creatorName": "SpaceXAI",
-     "costPerTask": {
-      "total": 1.5743594842868602
-     }
-    },
-    {
-     "id": "d274918e-ea82-4951-8b37-8ed9ab898dbc",
-     "slug": "tencent-hy4",
-     "name": "Tencent Hy4",
-     "shortName": "Tencent Hy4",
-     "releaseDate": "2026-11-03",
-     "creatorName": "Tencent",
-     "costPerTask": {
-      "total": 0.4602194594618377
+      "total": 1.8596923897495323
      }
     },
     {
@@ -4283,6 +4519,17 @@
      "creatorName": "Alibaba",
      "costPerTask": {
       "total": 5.96388743351379
+     }
+    },
+    {
+     "id": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
+     "slug": "qwen3-8-flash-next",
+     "name": "Qwen3.8-Flash-Next",
+     "shortName": "Qwen3.8-Flash-Next",
+     "releaseDate": "2026-08-26",
+     "creatorName": "Alibaba",
+     "costPerTask": {
+      "total": 0.4891053314709071
      }
     },
     {
@@ -4341,14 +4588,58 @@
      }
     },
     {
-     "id": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
-     "slug": "qwen3-8-flash-next",
-     "name": "Qwen3.8-Flash-Next",
-     "shortName": "Qwen3.8-Flash-Next",
-     "releaseDate": "2026-08-26",
-     "creatorName": "Alibaba",
+     "id": "59627802-1546-422c-9a65-65b61c022d36",
+     "slug": "grok-4-7",
+     "name": "Grok 4.7 (Xhigh)",
+     "shortName": "Grok 4.7 (xhigh)",
+     "releaseDate": "2026-09-21",
+     "creatorName": "SpaceXAI",
      "costPerTask": {
-      "total": 0.4891053314709071
+      "total": 2.580143536647555
+     }
+    },
+    {
+     "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
+     "slug": "grok-4-7-high",
+     "name": "Grok 4.7 (High)",
+     "shortName": "Grok 4.7 (high)",
+     "releaseDate": "2026-09-21",
+     "creatorName": "SpaceXAI",
+     "costPerTask": {
+      "total": 2.0645565116455558
+     }
+    },
+    {
+     "id": "208c16f0-8c5b-4524-ac8a-ac74c02e80a9",
+     "slug": "grok-4-7-low",
+     "name": "Grok 4.7 (Low)",
+     "shortName": "Grok 4.7 (low)",
+     "releaseDate": "2026-09-21",
+     "creatorName": "SpaceXAI",
+     "costPerTask": {
+      "total": 0.7009823334196701
+     }
+    },
+    {
+     "id": "d6f43d0a-e8c4-447c-9ff7-5cf0a9d59aa3",
+     "slug": "grok-4-6-xhigh",
+     "name": "Grok 4.6 (Xhigh)",
+     "shortName": "Grok 4.6 (xhigh)",
+     "releaseDate": "2026-08-12",
+     "creatorName": "SpaceXAI",
+     "costPerTask": {
+      "total": 1.5743594842868602
+     }
+    },
+    {
+     "id": "d274918e-ea82-4951-8b37-8ed9ab898dbc",
+     "slug": "tencent-hy4",
+     "name": "Tencent Hy4",
+     "shortName": "Tencent Hy4",
+     "releaseDate": "2026-11-03",
+     "creatorName": "Tencent",
+     "costPerTask": {
+      "total": 0.4602194594618377
      }
     },
     {
@@ -4382,6 +4673,17 @@
      "creatorName": "DeepSeek",
      "costPerTask": {
       "total": 0.3612238096085628
+     }
+    },
+    {
+     "id": "e94c7595-a320-4c88-8f07-d9fd50fc4595",
+     "slug": "deepseek-v4-pro-high",
+     "name": "DeepSeek V4 Pro 0813 (High)",
+     "shortName": "DeepSeek V4 Pro 0813 (high)",
+     "releaseDate": "2026-08-13",
+     "creatorName": "DeepSeek",
+     "costPerTask": {
+      "total": 0.29148753340920575
      }
     },
     {
@@ -4507,7 +4809,7 @@
     },
     {
      "id": "539ed227-38f4-4bea-a015-117057c14b18",
-     "slug": "ling-3-1-flash-1019",
+     "slug": "ling-3-1-flash",
      "name": "Ling 3.1 Flash 1019",
      "shortName": "Ling 3.1 Flash 1019",
      "releaseDate": "2026-10-22",
@@ -4624,6 +4926,14 @@
      "creatorName": "Nanbeige"
     },
     {
+     "id": "b268d7c1-5a0b-41c1-9590-1d89e66cf156",
+     "slug": "jt-4-1-flash-236b-a21b",
+     "name": "JT-4.1 Flash 236B A21B",
+     "shortName": "JT-4.1 Flash 236B A21B",
+     "releaseDate": "2026-11-11",
+     "creatorName": "China Mobile"
+    },
+    {
      "id": "bb3d7e75-8e22-4082-b9d6-1db0803e042f",
      "slug": "k2-horizon-375b-a23b",
      "name": "K2 Horizon 375B A23B",
@@ -4646,6 +4956,28 @@
      }
     },
     {
+     "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
+     "slug": "solar-pro4",
+     "name": "Solar Pro 4",
+     "shortName": "Solar Pro 4",
+     "releaseDate": "2026-08-06",
+     "creatorName": "Upstage",
+     "costPerTask": {
+      "total": 1.1561413244544356
+     }
+    },
+    {
+     "id": "08242385-ee91-4de6-be7f-271a6d9780ce",
+     "slug": "apodex-1-1",
+     "name": "Apodex 1.1",
+     "shortName": "Apodex 1.1",
+     "releaseDate": "2026-08-30",
+     "creatorName": "Apodex",
+     "costPerTask": {
+      "total": 0.3637871600705477
+     }
+    },
+    {
      "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
      "slug": "nemotron-3-5-super-vl",
      "name": "Nemotron 3.5 Super VL",
@@ -4653,7 +4985,7 @@
      "releaseDate": "2026-10-15",
      "creatorName": "NVIDIA",
      "costPerTask": {
-      "total": 0.15771123792171424
+      "total": 0.1691042030376814
      }
     },
     {
@@ -4664,7 +4996,7 @@
      "releaseDate": "2026-06-04",
      "creatorName": "NVIDIA",
      "costPerTask": {
-      "total": 0.26740411978685324
+      "total": 0.26167111300329315
      }
     },
     {
@@ -4688,7 +5020,7 @@
     },
     {
      "id": "18721247-4e56-4cf7-9a9d-c71cc60c0961",
-     "slug": "k-exaone-2-0-0803",
+     "slug": "k-exaone-2-0",
      "name": "K-EXAONE 2.0",
      "shortName": "K-EXAONE 2.0",
      "releaseDate": "2026-08-12",
@@ -4742,17 +5074,6 @@
      "shortName": "Granite 4.2 30B",
      "releaseDate": "2026-08-25",
      "creatorName": "IBM"
-    },
-    {
-     "id": "15c4cbd7-b9aa-42c8-9ce5-5abbde0e6963",
-     "slug": "solar-pro4",
-     "name": "Solar Pro 4",
-     "shortName": "Solar Pro 4",
-     "releaseDate": "2026-08-06",
-     "creatorName": "Upstage",
-     "costPerTask": {
-      "total": 1.1561413244544356
-     }
     }
    ]
   }
