@@ -1,20 +1,77 @@
 import assert from "node:assert/strict";
-import {mkdir,readFile,writeFile} from "node:fs/promises";
+import {mkdir,readFile,rm,writeFile} from "node:fs/promises";
 import {join} from "node:path";
+import {mergeBriefcaseComponents} from "../src/lib/aa-briefcase.ts";
+import {mergeBriefcaseRubricRefresh} from "../src/lib/aa-briefcase-rubric-refresh.ts";
+import {mergeAaModelProfileOverlays} from "../src/lib/aa-model-profile-overlays.ts";
+import {evaluationScoreDisplay} from "../src/lib/evaluation-display.ts";
+import {getIntelligenceIndexTaskCost} from "../src/lib/intelligence-index-costs.ts";
+import {evaluationTimePerTask,getModelSpeed,formatTimePerTask,formatFirstAnswer} from "../src/lib/model-speed.ts";
 
-// Optional focused pass for check-master-browser.mjs. Reads bundled snapshots only.
+export const newModelNames=[
+  ...["Xhigh","High","Medium","Low"].map(effort=>`Gemini 4 Hydrogen (${effort})`),
+  "Gemini 4 Argon (Medium)","Qwen4 Max",
+];
+const allModelNames=[...newModelNames,"Gemini 4 Argon (High)"];
+const groups=[["Hydrogen","hydrogen",4],["Argon","argon",2],["Qwen4","qwen4",1]];
+const readJson=async file=>JSON.parse(await readFile(new URL(`../data/${file}`,import.meta.url),"utf8"));
+
+export async function readNewModelsDataset(){
+  const [base,components,overlays,rubric]=await Promise.all([
+    "leaderboards.json","aa-briefcase-components.json","aa-model-profile-overlays.json","aa-briefcase-rubric-refresh.json",
+  ].map(readJson));
+  return mergeBriefcaseRubricRefresh(mergeAaModelProfileOverlays(mergeBriefcaseComponents(base,components),overlays),rubric);
+}
+
+// Fail before opening a browser if a missing/duplicate/spelling variant or a stale
+// coverage audit would otherwise make this pass silently check fewer models.
+/** @param {import("../src/lib/contract").Dataset} dataset @param {string} coverage */
+export function newModelsExpectations(dataset,coverage){
+  const familyEntries=dataset.entries.filter(entry=>/hydrogen|argon|qwen\s?4/i.test(entry.model));
+  assert.deepEqual([...new Set(familyEntries.map(entry=>entry.model))].sort(),[...allModelNames].sort(),"exactly seven canonical family variants");
+  const auditRows=coverage.split("\n").filter(line=>/^\|[^|]+\| `[^`]+` \| `[^`]+` \|/.test(line));
+  assert.equal(auditRows.length,dataset.evaluations.length,"audit covers every bundled evaluation");
+  const evaluations=dataset.evaluations.map(evaluation=>{
+    const entries=familyEntries.filter(entry=>entry.evaluation_id===evaluation.id).sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row);
+    for(const name of allModelNames){
+      const matches=entries.filter(entry=>entry.model===name);
+      assert(matches.length<=1,`${evaluation.id}: duplicate ${name}`);
+      if(matches.length)assert.equal(matches[0].provider,name.startsWith("Qwen")?"Alibaba":"Google",`${evaluation.id}: ${name} provider`);
+    }
+    const audit=auditRows.find(line=>line.includes(`| \`${evaluation.id}\` |`));
+    assert(audit,`${evaluation.id}: coverage audit row exists`);
+    const cells=audit.split("|").slice(5,-1).map(cell=>cell.trim());
+    assert.equal(cells.length,newModelNames.length,`${evaluation.id}: six coverage cells`);
+    newModelNames.forEach((name,index)=>{
+      const entry=entries.find(entry=>entry.model===name),cell=cells[index];
+      if(!entry)assert.match(cell,/^not on AA \(captured \d{4}-\d{2}-\d{2}\)$/,`${evaluation.id}: ${name} absence agrees with audit`);
+      else assert.equal(cell,`${Number(entry.score_value.toPrecision(10))} (#${entry.source_rank})`,`${evaluation.id}: ${name} score and rank agree with audit`);
+    });
+    return {evaluation,entries};
+  }).filter(({entries})=>entries.length);
+  const index=evaluations.find(({evaluation})=>evaluation.id==="intelligence-index");
+  assert(index,"bundled Intelligence Index exists");
+  assert.deepEqual(index.entries.map(entry=>entry.model).sort(),[...allModelNames].sort(),"seven distinct configurations in the bundled index");
+  return {expected:index.entries,evaluations};
+}
+
+// Optional focused pass for check-master-browser.mjs (node --import tsx).
+// Reads the same merged bundled snapshots as src/lib/data.ts; never Firestore.
 export async function checkNewModelsBrowser(page,baseUrl,output){
-  const dataset=JSON.parse(await readFile(new URL("../data/leaderboards.json",import.meta.url),"utf8"));
-  const groups=[["Fable 5.2","fable",5],["Muse Ember","muse",2]];
-  const evaluationIds=["intelligence-index","terminal-bench-4-0"];
-  const expected=dataset.entries.filter(entry=>entry.evaluation_id==="intelligence-index"&&groups.some(([query])=>entry.model.includes(query)));
-  assert.equal(expected.length,7,"seven distinct new configurations in the bundled index");
+  await mkdir(output,{recursive:true});
+  await rm(join(output,"browser-check.json"),{force:true});
+  const dataset=await readNewModelsDataset();
+  const coverage=await readFile(new URL("../docs/GEMINI_4_HYDROGEN_QWEN4_COVERAGE.md",import.meta.url),"utf8");
+  const {expected,evaluations}=newModelsExpectations(dataset,coverage);
+  const screenshotEvaluations=new Set(["intelligence-index","terminal-bench-4-0"]);
   const scores=new Map();
   const consoleErrors=[];
+  const pageErrors=[];
   const onConsole=message=>{if(message.type()==="error")consoleErrors.push(message.text());};
+  const onPageError=error=>pageErrors.push(error.message);
   page.on("console",onConsole);
+  page.on("pageerror",onPageError);
   const report={master:{},evaluations:{},screenshots:[]};
-  await mkdir(output,{recursive:true});
 
   async function audit(label,selector){
     const faults=await page.evaluate(selector=>{
@@ -72,10 +129,12 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
     const bottom=firstScreen?box.y+box.height:(await notes.boundingBox()).y+(await notes.boundingBox()).height;
     await page.screenshot({path:join(output,`${stem}.png`),animations:"disabled",clip:{x:0,y:0,width:390,height:Math.ceil(bottom+16)}});
     report.screenshots.push(`${stem}.png`);
-    if(stem==="master-fable-390"){
-      const card=await section.locator(".master-card").last().boundingBox();
-      await page.screenshot({path:join(output,"master-fable-last-card-crop.png"),clip:{x:card.x-8,y:card.y-8,width:card.width+16,height:card.height+16}});
-      report.screenshots.push("master-fable-last-card-crop.png");
+    if(stem==="master-hydrogen-390"){
+      for(const [label,card] of [["first",section.locator(".master-card").first()],["last",section.locator(".master-card").last()]]){
+        const box=await card.boundingBox(),name=`master-hydrogen-${label}-card-crop.png`;
+        await page.screenshot({path:join(output,name),clip:{x:box.x-8,y:box.y-8,width:box.width+16,height:box.height+16}});
+        report.screenshots.push(name);
+      }
     }
   }
 
@@ -88,6 +147,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
     assert.match(await section.locator(".leaderboard-legend").innerText(),/— means no captured AA value\. Aggregate uses 9 of 20 evaluations/);
     assert.equal(await section.locator("#master-search").inputValue(),query);
     assert.equal(await rows.count(),count,`${query}: ${width}px count`);
+    assert.match(await section.locator('p[aria-live="polite"]').first().innerText(),new RegExp(`^${count} model${count===1?"":"s"} ·`),`${query}: result-count wording`);
     const names=await rows.locator(width===390?".master-card__title a":".master-model > a").allTextContents();
     assert.deepEqual([...names].sort(),expected.filter(entry=>entry.model.includes(query)).map(entry=>entry.model).sort());
     for(let index=0;index<count;index++){
@@ -104,7 +164,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
           separate:text.left>=favorite.right,wrapped:text.height>parseFloat(getComputedStyle(link).lineHeight)*1.5,left:box.left};
       }));
       assert(layout.every(item=>item.sticky&&item.contained&&item.separate),`${query}: frozen names and stars do not overlap`);
-      if(slug==="fable")assert(layout.every(item=>item.wrapped),"all long Fable names wrap");
+      if(slug==="hydrogen")assert(layout.every(item=>item.wrapped),"all long Hydrogen names wrap");
       await section.scrollIntoViewIfNeeded();
       assert.match(await section.locator(".master-cost small").first().innerText(),/^USD · AA\n\d{1,2} \w{3} \d{4}$/);
       const aligned=await section.locator("tbody tr").evaluateAll(rows=>rows.every(row=>{
@@ -115,15 +175,15 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
       await checkScrollCue(section);
       await audit(`${query}: desktop layout`,"#master-leaderboard");
       await screenshot(`master-${slug}-${width}.png`);
-      if(slug==="fable"){
+      if(slug==="hydrogen"){
         const target=await section.getByRole("columnheader",{name:/^Terminal-Bench 4\.0/}).boundingBox();
         const frozen=await section.locator("th.master-first").boundingBox();
         await section.locator(".table-scroll").evaluate((element,left)=>{element.scrollLeft=left;},target.x-frozen.x-frozen.width);
         const positions=await section.locator("tbody .master-model").evaluateAll(cells=>cells.map(cell=>cell.getBoundingClientRect().left));
         assert(positions.every((left,index)=>Math.abs(left-layout[index].left)<1),"Model column stays frozen after horizontal scroll");
-        await screenshot("master-fable-1440-frozen.png");
-        await section.locator("tbody .master-model").first().screenshot({path:join(output,"master-fable-name-crop.png")});
-        report.screenshots.push("master-fable-name-crop.png");
+        await screenshot("master-hydrogen-1440-frozen.png");
+        await section.locator("tbody .master-model").first().screenshot({path:join(output,"master-hydrogen-name-crop.png")});
+        report.screenshots.push("master-hydrogen-name-crop.png");
       }
     }else{
       assert.equal(await section.locator(".master-table-view").isVisible(),false);
@@ -133,9 +193,17 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
     report.master[`${slug}-${width}`]={count,names};
   }
 
-  for(const id of evaluationIds)for(const width of [1440,390]){
+  await page.setViewportSize({width:1440,height:900});
+  await page.goto(`${baseUrl}/?mq=Qwen%204#master-leaderboard`);
+  assert.equal(await page.locator("#master-search").inputValue(),"Qwen 4");
+  report.qwen_spaced_search={query:"Qwen 4",names:await page.locator("#master-leaderboard tbody .master-model > a").allTextContents()};
+  report.qwen_spaced_search.finds_qwen4_max=report.qwen_spaced_search.names.includes("Qwen4 Max");
+
+  for(const {evaluation,entries} of evaluations)for(const width of [1440,390]){
+    const id=evaluation.id;
     await page.setViewportSize({width,height:width===390?844:1200});
-    await page.goto(`${baseUrl}/leaderboards/${id}?q=${encodeURIComponent("Fable 5.2, Muse Ember")}`);
+    const response=await page.goto(`${baseUrl}/leaderboards/${evaluation.slug}?q=${encodeURIComponent(groups.map(([query])=>query).join(", "))}`);
+    assert.equal(response.status(),200,`${id}: evaluation loads`);
     const section=page.locator(".evaluation-leaderboard");
     const rows=section.locator(width===390?".evaluation-card":".evaluation-table tbody tr");
     await rows.first().waitFor();
@@ -144,35 +212,58 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
     if(width===390){
       assert.equal(await rows.first().locator("dt").filter({hasText:"Cost /"}).innerText(),"Cost / Intelligence Index task");
       // The first card's timing tiles stay on the first phone screen under the legend.
-      const tile=await rows.first().locator(".master-card__metrics > div").nth(1).boundingBox();
-      assert(tile.y+tile.height<=844,`${id}: first card's timings below the first phone screen`);
+      if(screenshotEvaluations.has(id)){
+        const tile=await rows.first().locator(".master-card__metrics > div").nth(1).boundingBox();
+        assert(tile.y+tile.height<=844,`${id}: first card's timings fit the first phone screen`);
+      }
     }
-    const entries=dataset.entries.filter(entry=>entry.evaluation_id===id&&groups.some(([query])=>entry.model.includes(query))).sort((a,b)=>a.source_row-b.source_row);
-    assert.equal(entries.length,7,`${id}: AA scores all seven models`);
     assert.equal(await rows.count(),entries.length,`${id}: ${width}px rows`);
     const actual=[];
     for(let index=0;index<entries.length;index++){
       const entry=entries[index],row=rows.nth(index);
-      const score=id==="terminal-bench-4-0"?`${(entry.score_value*100).toFixed(2)}%`:entry.score_value.toFixed(4);
+      const score=evaluationScoreDisplay(evaluation,entry);
       if(width===390){
-        assert.equal(await row.getAttribute("data-model"),entry.model);
+        assert.equal(await row.getAttribute("data-model"),entry.model,`${id}: phone row ${index+1}`);
         assert.equal(await row.locator("strong").innerText(),`#${entry.source_rank} ${entry.model}`);
         assert((await row.locator(".evaluation-card__head small").innerText()).endsWith(score),`${entry.model}: phone score`);
       }else{
-        assert.equal(await row.locator('[data-column="model"]').innerText(),entry.model);
+        assert.equal(await row.locator('[data-column="model"]').innerText(),entry.model,`${id}: desktop row ${index+1}`);
         assert.equal(await row.locator('[data-column="source_rank"]').innerText(),String(entry.source_rank));
         assert.equal(await row.locator('[data-column="score_value"]').innerText(),score);
       }
-      actual.push({model:entry.model,rank:entry.source_rank,score});
+      const cost=getIntelligenceIndexTaskCost(entry.provider,entry.model),speed=getModelSpeed(entry.provider,entry.model);
+      const metrics={
+        cost_usd:cost?new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(cost.cost_usd):"—",
+        time_per_task:formatTimePerTask(evaluationTimePerTask(id,speed)),
+        first_answer:formatFirstAnswer(speed?.first_answer_s),
+      };
+      for(const [key,value] of Object.entries(metrics)){
+        const cell=width===1440?row.locator(`[data-column="${key}"]`):row.locator("dt").filter({hasText:key==="cost_usd"?"Cost / Intelligence Index task":key==="time_per_task"?/^Time per /:"First Answer (s)"}).locator("+ dd");
+        assert.equal(await cell.innerText(),value,`${id}: ${entry.model} ${key} at ${width}px`);
+      }
+      actual.push({model:entry.model,rank:entry.source_rank,score,...metrics});
     }
     await page.locator(".app-main").evaluate(element=>{element.scrollTop=0;});
     await audit(`${id}: ${width}px layout`,".evaluation-leaderboard");
-    if(width===390)await phoneScreenshots(`${id}-${width}`,section);
-    else {await checkScrollCue(section);await screenshot(`${id}-${width}.png`);}
+    if(screenshotEvaluations.has(id)){
+      if(width===390){
+        await screenshot(`${id}-${width}-first-screen.png`);
+        await phoneScreenshots(`${id}-${width}`,section);
+      }else {await checkScrollCue(section);await screenshot(`${id}-${width}.png`);}
+    }
     report.evaluations[`${id}-${width}`]=actual;
   }
+  for(const width of [1440,390]){
+    await page.setViewportSize({width,height:width===390?844:1000});
+    await page.goto(`${baseUrl}/about/data`);
+    assert.match(await page.locator(".ui-page-header").innerText(),/captured from Artificial Analysis on 16 Nov 2026\./);
+    await audit(`about data: ${width}px layout`,"article");
+    await screenshot(`about-data-${width}.png`);
+  }
   assert.deepEqual(consoleErrors,[],"no browser console errors in the new-model views");
+  assert.deepEqual(pageErrors,[],"no browser page errors in the new-model views");
   page.off("console",onConsole);
+  page.off("pageerror",onPageError);
   await writeFile(join(output,"browser-check.json"),JSON.stringify(report,null,2)+"\n");
-  console.log(JSON.stringify({new_models:true,master_search_counts:[5,2],evaluation_ranks:true,screenshots:report.screenshots.length}));
+  console.log(JSON.stringify({new_models:true,master_search_counts:groups.map(([, ,count])=>count),qwen_spaced_search:report.qwen_spaced_search.finds_qwen4_max,evaluations_checked:evaluations.length,evaluation_row_checks:Object.values(report.evaluations).reduce((sum,rows)=>sum+rows.length,0),evaluation_ranks:true,screenshots:report.screenshots.length}));
 }
