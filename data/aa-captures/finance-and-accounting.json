@@ -1,7 +1,7 @@
 {
  "key": "finance-and-accounting",
  "source_url": "https://artificialanalysis.ai/models/capabilities/finance-and-accounting",
- "captured_at": "2026-11-16",
+ "captured_at": "2026-11-17",
  "selectors": 8,
  "charts": [
   {
@@ -44,10 +44,28 @@
      "logo": "/img/logos/google.svg"
     },
     {
+     "id": "75c1b0b8-9db3-4c7e-95be-d74e59defee4",
+     "label": "GPT-6.2 Astra (max)",
+     "tooltipLabel": "GPT-6.2 Astra (Max)",
+     "value": 60.9040689518801,
+     "displayValue": "61",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "592572d5-f789-4106-abbc-fadf2206d10b",
+     "label": "GPT-6.2 Astra (xhigh)",
+     "tooltipLabel": "GPT-6.2 Astra (Xhigh)",
+     "value": 60.2010181364069,
+     "displayValue": "60",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
      "label": "Claude Fable 5.2 (medium)",
      "tooltipLabel": "Claude Fable 5.2 (Medium, Default Fallback)",
-     "value": 60.0155795972227,
+     "value": 59.9440295972227,
      "displayValue": "60",
      "url": "/models/claude-fable-5-2",
      "logo": "/img/logos/anthropic.svg"
@@ -69,6 +87,15 @@
      "displayValue": "59",
      "url": "/models/claude-opus-5-5",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "fe959a7a-944c-4ba8-8e41-349712599b39",
+     "label": "GPT-6.2 Astra (high)",
+     "tooltipLabel": "GPT-6.2 Astra (High)",
+     "value": 58.9611385675165,
+     "displayValue": "59",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "cfc7acb1-d903-4858-9b6c-6c7776caf8f9",
@@ -95,6 +122,15 @@
      "value": 57.3776245156695,
      "displayValue": "57",
      "url": "/models/gpt-6-astra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "a1a84b18-e8c9-48fb-8e04-6003bd9f6ff4",
+     "label": "GPT-6.2 Sol (max)",
+     "tooltipLabel": "GPT-6.2 Sol (Max)",
+     "value": 57.2061223535043,
+     "displayValue": "57",
+     "url": "/models/gpt-6-2-sol",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -170,6 +206,15 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "27c326a6-ec9b-415f-a29e-b1f4927484dc",
+     "label": "GPT-6.2 Sol (xhigh)",
+     "tooltipLabel": "GPT-6.2 Sol (Xhigh)",
+     "value": 55.4500514500154,
+     "displayValue": "55",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "e994a6e0-d36b-4dab-8ae1-c1b469e4d9e2",
      "label": "Muse Wonder Full (max)",
      "tooltipLabel": "Muse Wonder Full (Max)",
@@ -185,6 +230,24 @@
      "value": 55.2093271255729,
      "displayValue": "55",
      "url": "/models/gpt-6-1-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "cd85e412-c43f-4535-bf8e-5ba113d97ca3",
+     "label": "GPT-6.2 Sol (high)",
+     "tooltipLabel": "GPT-6.2 Sol (High)",
+     "value": 54.8045133818589,
+     "displayValue": "55",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "8cec011f-c959-4726-8668-2ee2409a6bca",
+     "label": "GPT-6.2 Astra (medium)",
+     "tooltipLabel": "GPT-6.2 Astra (Medium)",
+     "value": 54.5457297528931,
+     "displayValue": "55",
+     "url": "/models/gpt-6-2-astra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -267,6 +330,15 @@
      "displayValue": "52",
      "url": "/models/grok-4-7",
      "logo": "/img/logos/spacexai.svg"
+    },
+    {
+     "id": "82b37079-56d9-4451-8a1a-22b0a921f4f8",
+     "label": "GPT-6.2 Sol (medium)",
+     "tooltipLabel": "GPT-6.2 Sol (Medium)",
+     "value": 51.5655753831382,
+     "displayValue": "52",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "f0537484-af30-4a8a-bf34-368c552e5cfd",
@@ -440,6 +512,15 @@
      "logo": "/img/logos/spacexai.svg"
     },
     {
+     "id": "cc93ecfd-845e-455d-9642-6799d7133b7e",
+     "label": "GPT-6.2 Astra (low)",
+     "tooltipLabel": "GPT-6.2 Astra (Low)",
+     "value": 45.0928814907591,
+     "displayValue": "45",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "b112af07-3bd5-4647-b09f-b23204361bb2",
      "label": "Qwen3.8 Max (0902)",
      "tooltipLabel": "Qwen3.8 Max (0902)",
@@ -537,6 +618,15 @@
      "displayValue": "42",
      "url": "/models/gemini-3-8-flash",
      "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "a77965fb-2117-4e2c-bd8b-80b5579a7e7e",
+     "label": "GPT-6.2 Sol (low)",
+     "tooltipLabel": "GPT-6.2 Sol (Low)",
+     "value": 42.3220731136245,
+     "displayValue": "42",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "4416ca93-fde6-4b7b-abbc-3a6be109cc3d",
@@ -1079,6 +1169,15 @@
      "logo": "/img/logos/apodex.svg"
     },
     {
+     "id": "8215372b-66ff-457b-855e-e8abeafc9571",
+     "label": "A.X-K2",
+     "tooltipLabel": "A.X-K2",
+     "value": 21.2215512962523,
+     "displayValue": "21",
+     "url": "/models/a-x-k2",
+     "logo": "/img/logos/sktelecom.svg"
+    },
+    {
      "id": "d4f5b250-be37-4801-85e6-32fda4179337",
      "label": "DeepSeek V4 Pro 0813 (non-reasoning)",
      "tooltipLabel": "DeepSeek V4 Pro 0813 (Non-reasoning)",
@@ -1176,6 +1275,15 @@
      "displayValue": "15",
      "url": "/models/granite-4-2-8b",
      "logo": "/img/logos/ibm.svg"
+    },
+    {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "label": "Gemma 4 E4B",
+     "tooltipLabel": "Gemma 4 E4B (Reasoning)",
+     "value": 14.2716666666667,
+     "displayValue": "14",
+     "url": "/models/gemma-4-e4b",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
@@ -1288,6 +1396,13 @@
      "tooltipLabel": "GPT-6 Luna (Low)",
      "url": "/models/gpt-6-luna",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "label": "Gemma 4 E4B",
+     "tooltipLabel": "Gemma 4 E4B (Reasoning)",
+     "url": "/models/gemma-4-e4b",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "63cb48ea-0b0c-4e07-8ded-6d28dec4fa28",
@@ -1444,6 +1559,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "a77965fb-2117-4e2c-bd8b-80b5579a7e7e",
+     "label": "GPT-6.2 Sol (low)",
+     "tooltipLabel": "GPT-6.2 Sol (Low)",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "e76e0fe5-93ca-4272-9359-2eb1740467d1",
      "label": "GPT-6.1 Sol (low)",
      "tooltipLabel": "GPT-6.1 Sol (Low)",
@@ -1577,6 +1699,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "82b37079-56d9-4451-8a1a-22b0a921f4f8",
+     "label": "GPT-6.2 Sol (medium)",
+     "tooltipLabel": "GPT-6.2 Sol (Medium)",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "7d064a11-6e78-4030-b535-cdf940615041",
      "label": "Claude Haiku 5.5 (max)",
      "tooltipLabel": "Claude Haiku 5.5 (Max)",
@@ -1596,6 +1725,13 @@
      "tooltipLabel": "Kimi K3 (Low)",
      "url": "/models/kimi-k3",
      "logo": "/img/logos/kimi.jpg"
+    },
+    {
+     "id": "cc93ecfd-845e-455d-9642-6799d7133b7e",
+     "label": "GPT-6.2 Astra (low)",
+     "tooltipLabel": "GPT-6.2 Astra (Low)",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "5720fd2f-873a-4765-8640-a153b38bd64d",
@@ -1631,6 +1767,13 @@
      "tooltipLabel": "Mistral Medium 3.5",
      "url": "/models/mistral-medium-3-5",
      "logo": "/img/logos/mistral.svg"
+    },
+    {
+     "id": "cd85e412-c43f-4535-bf8e-5ba113d97ca3",
+     "label": "GPT-6.2 Sol (high)",
+     "tooltipLabel": "GPT-6.2 Sol (High)",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
@@ -1696,6 +1839,13 @@
      "logo": "/img/logos/deepseek.svg"
     },
     {
+     "id": "27c326a6-ec9b-415f-a29e-b1f4927484dc",
+     "label": "GPT-6.2 Sol (xhigh)",
+     "tooltipLabel": "GPT-6.2 Sol (Xhigh)",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "08242385-ee91-4de6-be7f-271a6d9780ce",
      "label": "Apodex 1.1",
      "tooltipLabel": "Apodex 1.1",
@@ -1759,11 +1909,25 @@
      "logo": "/img/logos/alibaba.svg"
     },
     {
+     "id": "8cec011f-c959-4726-8668-2ee2409a6bca",
+     "label": "GPT-6.2 Astra (medium)",
+     "tooltipLabel": "GPT-6.2 Astra (Medium)",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "3661c8fb-caf7-4118-aa18-65b84fea8e44",
      "label": "Muse Spark Open (xhigh)",
      "tooltipLabel": "Muse Spark Open (Xhigh)",
      "url": "/models/muse-spark-open",
      "logo": "/img/logos/meta.svg"
+    },
+    {
+     "id": "a1a84b18-e8c9-48fb-8e04-6003bd9f6ff4",
+     "label": "GPT-6.2 Sol (max)",
+     "tooltipLabel": "GPT-6.2 Sol (Max)",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
@@ -1850,6 +2014,13 @@
      "logo": "/img/logos/alibaba.svg"
     },
     {
+     "id": "fe959a7a-944c-4ba8-8e41-349712599b39",
+     "label": "GPT-6.2 Astra (high)",
+     "tooltipLabel": "GPT-6.2 Astra (High)",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "b01dee41-c62b-48ed-8d16-984adc405e5c",
      "label": "Qwen3.8 27B (xhigh)",
      "tooltipLabel": "Qwen3.8 27B (Xhigh)",
@@ -1890,6 +2061,13 @@
      "tooltipLabel": "Ling 3.1 Flash 1019",
      "url": "/models/ling-3-1-flash",
      "logo": "/img/logos/inclusionai.jpg"
+    },
+    {
+     "id": "592572d5-f789-4106-abbc-fadf2206d10b",
+     "label": "GPT-6.2 Astra (xhigh)",
+     "tooltipLabel": "GPT-6.2 Astra (Xhigh)",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "dad0e3b1-e3e7-477a-99f9-c14457a91114",
@@ -2002,6 +2180,13 @@
      "tooltipLabel": "Claude Opus 5.5 (High, Default Fallback)",
      "url": "/models/claude-opus-5-5",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "75c1b0b8-9db3-4c7e-95be-d74e59defee4",
+     "label": "GPT-6.2 Astra (max)",
+     "tooltipLabel": "GPT-6.2 Astra (Max)",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "272f5f03-aea9-4675-a244-2b753b618cdf",
@@ -2474,157 +2659,58 @@
      }
     },
     {
-     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
-     "slug": "gemini-4-carbon",
-     "name": "Gemini 4 Carbon (High)",
-     "shortName": "Gemini 4 Carbon (high)",
-     "releaseDate": "2026-10-28",
-     "creatorName": "Google",
+     "id": "75c1b0b8-9db3-4c7e-95be-d74e59defee4",
+     "slug": "gpt-6-2-astra",
+     "name": "GPT-6.2 Astra (Max)",
+     "shortName": "GPT-6.2 Astra (max)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
      "costPerTask": {
-      "total": 2.074535463263766
+      "total": 2.0258800445632024
      }
     },
     {
-     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
-     "slug": "gemini-4-carbon-medium",
-     "name": "Gemini 4 Carbon (Medium)",
-     "shortName": "Gemini 4 Carbon (medium)",
-     "releaseDate": "2026-10-28",
-     "creatorName": "Google",
+     "id": "592572d5-f789-4106-abbc-fadf2206d10b",
+     "slug": "gpt-6-2-astra-xhigh",
+     "name": "GPT-6.2 Astra (Xhigh)",
+     "shortName": "GPT-6.2 Astra (xhigh)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
      "costPerTask": {
-      "total": 1.7053334871597696
+      "total": 1.262633664295636
      }
     },
     {
-     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
-     "slug": "gemini-4-carbon-low",
-     "name": "Gemini 4 Carbon (Low)",
-     "shortName": "Gemini 4 Carbon (low)",
-     "releaseDate": "2026-10-28",
-     "creatorName": "Google",
+     "id": "fe959a7a-944c-4ba8-8e41-349712599b39",
+     "slug": "gpt-6-2-astra-high",
+     "name": "GPT-6.2 Astra (High)",
+     "shortName": "GPT-6.2 Astra (high)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
      "costPerTask": {
-      "total": 1.728460802768611
+      "total": 1.0048458619505196
      }
     },
     {
-     "id": "dad0e3b1-e3e7-477a-99f9-c14457a91114",
-     "slug": "gemini-4-hydrogen",
-     "name": "Gemini 4 Hydrogen (Xhigh)",
-     "shortName": "Gemini 4 Hydrogen (xhigh)",
-     "releaseDate": "2026-11-12",
-     "creatorName": "Google",
+     "id": "a1a84b18-e8c9-48fb-8e04-6003bd9f6ff4",
+     "slug": "gpt-6-2-sol",
+     "name": "GPT-6.2 Sol (Max)",
+     "shortName": "GPT-6.2 Sol (max)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
      "costPerTask": {
-      "total": 1.310621154319251
+      "total": 0.5600170954025689
      }
     },
     {
-     "id": "dae0262d-26a4-44d1-925a-6f2731cbda6a",
-     "slug": "gemini-4-hydrogen-high",
-     "name": "Gemini 4 Hydrogen (High)",
-     "shortName": "Gemini 4 Hydrogen (high)",
-     "releaseDate": "2026-11-12",
-     "creatorName": "Google",
+     "id": "8cec011f-c959-4726-8668-2ee2409a6bca",
+     "slug": "gpt-6-2-astra-medium",
+     "name": "GPT-6.2 Astra (Medium)",
+     "shortName": "GPT-6.2 Astra (medium)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
      "costPerTask": {
-      "total": 0.6293876517963809
-     }
-    },
-    {
-     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
-     "slug": "gemini-4-argon",
-     "name": "Gemini 4 Argon (High)",
-     "shortName": "Gemini 4 Argon (high)",
-     "releaseDate": "2026-09-30",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 1.8620674633377794
-     }
-    },
-    {
-     "id": "48e6f735-f2bc-418f-b99f-3dc5a0ddda77",
-     "slug": "gemini-4-argon-medium",
-     "name": "Gemini 4 Argon (Medium)",
-     "shortName": "Gemini 4 Argon (medium)",
-     "releaseDate": "2026-09-30",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 1.4940535182563603
-     }
-    },
-    {
-     "id": "f0537484-af30-4a8a-bf34-368c552e5cfd",
-     "slug": "gemini-4-hydrogen-medium",
-     "name": "Gemini 4 Hydrogen (Medium)",
-     "shortName": "Gemini 4 Hydrogen (medium)",
-     "releaseDate": "2026-11-12",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 0.25330406482143536
-     }
-    },
-    {
-     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
-     "slug": "gemini-3-8-flash",
-     "name": "Gemini 3.8 Flash (High)",
-     "shortName": "Gemini 3.8 Flash (high)",
-     "releaseDate": "2026-09-02",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 2.3726334396547526
-     }
-    },
-    {
-     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
-     "slug": "gemini-3-8-flash-medium",
-     "name": "Gemini 3.8 Flash (Medium)",
-     "shortName": "Gemini 3.8 Flash (medium)",
-     "releaseDate": "2026-09-02",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 1.6899906365856312
-     }
-    },
-    {
-     "id": "88c68c50-03c1-458a-9292-bd398c27adc5",
-     "slug": "gemini-4-hydrogen-low",
-     "name": "Gemini 4 Hydrogen (Low)",
-     "shortName": "Gemini 4 Hydrogen (low)",
-     "releaseDate": "2026-11-12",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 0.09255246228211751
-     }
-    },
-    {
-     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
-     "slug": "gemini-3-8-flash-low",
-     "name": "Gemini 3.8 Flash (Low)",
-     "shortName": "Gemini 3.8 Flash (low)",
-     "releaseDate": "2026-09-02",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 0.07143520286015756
-     }
-    },
-    {
-     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
-     "slug": "gemini-3-5-flash-lite",
-     "name": "Gemini 3.5 Flash-Lite",
-     "shortName": "Gemini 3.5 Flash-Lite",
-     "releaseDate": "2026-07-21",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 0.07197619182444612
-     }
-    },
-    {
-     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
-     "slug": "gemini-3-1-flash-lite-preview",
-     "name": "Gemini 3.1 Flash-Lite",
-     "shortName": "Gemini 3.1 Flash-Lite",
-     "releaseDate": "2026-03-03",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 0.02567213942299807
+      "total": 0.5114302025522468
      }
     },
     {
@@ -2639,6 +2725,17 @@
      }
     },
     {
+     "id": "27c326a6-ec9b-415f-a29e-b1f4927484dc",
+     "slug": "gpt-6-2-sol-xhigh",
+     "name": "GPT-6.2 Sol (Xhigh)",
+     "shortName": "GPT-6.2 Sol (xhigh)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.3634138156982211
+     }
+    },
+    {
      "id": "1f541ef3-913f-4eb2-9d07-0e93c7a9a5e3",
      "slug": "gpt-6-astra-xhigh",
      "name": "GPT-6 Astra (Xhigh)",
@@ -2647,6 +2744,17 @@
      "creatorName": "OpenAI",
      "costPerTask": {
       "total": 2.2816064935090163
+     }
+    },
+    {
+     "id": "cd85e412-c43f-4535-bf8e-5ba113d97ca3",
+     "slug": "gpt-6-2-sol-high",
+     "name": "GPT-6.2 Sol (High)",
+     "shortName": "GPT-6.2 Sol (high)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.2848617339446186
      }
     },
     {
@@ -2669,6 +2777,17 @@
      "creatorName": "OpenAI",
      "costPerTask": {
       "total": 0.7681543186770655
+     }
+    },
+    {
+     "id": "82b37079-56d9-4451-8a1a-22b0a921f4f8",
+     "slug": "gpt-6-2-sol-medium",
+     "name": "GPT-6.2 Sol (Medium)",
+     "shortName": "GPT-6.2 Sol (medium)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.19580530846179023
      }
     },
     {
@@ -2727,6 +2846,17 @@
      }
     },
     {
+     "id": "cc93ecfd-845e-455d-9642-6799d7133b7e",
+     "slug": "gpt-6-2-astra-low",
+     "name": "GPT-6.2 Astra (Low)",
+     "shortName": "GPT-6.2 Astra (low)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.24095703378780295
+     }
+    },
+    {
      "id": "e8d443ba-8aca-4830-a186-ae869bb9c6fe",
      "slug": "gpt-6-1-terra-xhigh",
      "name": "GPT-6.1 Terra (Xhigh)",
@@ -2768,6 +2898,17 @@
      "creatorName": "OpenAI",
      "costPerTask": {
       "total": 0.10596318485512
+     }
+    },
+    {
+     "id": "a77965fb-2117-4e2c-bd8b-80b5579a7e7e",
+     "slug": "gpt-6-2-sol-low",
+     "name": "GPT-6.2 Sol (Low)",
+     "shortName": "GPT-6.2 Sol (low)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.0847553852400121
      }
     },
     {
@@ -2966,6 +3107,171 @@
      "creatorName": "OpenAI",
      "costPerTask": {
       "total": 0.1393442029012161
+     }
+    },
+    {
+     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+     "slug": "gemini-4-carbon",
+     "name": "Gemini 4 Carbon (High)",
+     "shortName": "Gemini 4 Carbon (high)",
+     "releaseDate": "2026-10-28",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 2.074535463263766
+     }
+    },
+    {
+     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
+     "slug": "gemini-4-carbon-medium",
+     "name": "Gemini 4 Carbon (Medium)",
+     "shortName": "Gemini 4 Carbon (medium)",
+     "releaseDate": "2026-10-28",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.7053334871597696
+     }
+    },
+    {
+     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
+     "slug": "gemini-4-carbon-low",
+     "name": "Gemini 4 Carbon (Low)",
+     "shortName": "Gemini 4 Carbon (low)",
+     "releaseDate": "2026-10-28",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.728460802768611
+     }
+    },
+    {
+     "id": "dad0e3b1-e3e7-477a-99f9-c14457a91114",
+     "slug": "gemini-4-hydrogen",
+     "name": "Gemini 4 Hydrogen (Xhigh)",
+     "shortName": "Gemini 4 Hydrogen (xhigh)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.310621154319251
+     }
+    },
+    {
+     "id": "dae0262d-26a4-44d1-925a-6f2731cbda6a",
+     "slug": "gemini-4-hydrogen-high",
+     "name": "Gemini 4 Hydrogen (High)",
+     "shortName": "Gemini 4 Hydrogen (high)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.6293876517963809
+     }
+    },
+    {
+     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
+     "slug": "gemini-4-argon",
+     "name": "Gemini 4 Argon (High)",
+     "shortName": "Gemini 4 Argon (high)",
+     "releaseDate": "2026-09-30",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.8620674633377794
+     }
+    },
+    {
+     "id": "48e6f735-f2bc-418f-b99f-3dc5a0ddda77",
+     "slug": "gemini-4-argon-medium",
+     "name": "Gemini 4 Argon (Medium)",
+     "shortName": "Gemini 4 Argon (medium)",
+     "releaseDate": "2026-09-30",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.4940535182563603
+     }
+    },
+    {
+     "id": "f0537484-af30-4a8a-bf34-368c552e5cfd",
+     "slug": "gemini-4-hydrogen-medium",
+     "name": "Gemini 4 Hydrogen (Medium)",
+     "shortName": "Gemini 4 Hydrogen (medium)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.25330406482143536
+     }
+    },
+    {
+     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+     "slug": "gemini-3-8-flash",
+     "name": "Gemini 3.8 Flash (High)",
+     "shortName": "Gemini 3.8 Flash (high)",
+     "releaseDate": "2026-09-02",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 2.3726334396547526
+     }
+    },
+    {
+     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
+     "slug": "gemini-3-8-flash-medium",
+     "name": "Gemini 3.8 Flash (Medium)",
+     "shortName": "Gemini 3.8 Flash (medium)",
+     "releaseDate": "2026-09-02",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.6899906365856312
+     }
+    },
+    {
+     "id": "88c68c50-03c1-458a-9292-bd398c27adc5",
+     "slug": "gemini-4-hydrogen-low",
+     "name": "Gemini 4 Hydrogen (Low)",
+     "shortName": "Gemini 4 Hydrogen (low)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.09255246228211751
+     }
+    },
+    {
+     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
+     "slug": "gemini-3-8-flash-low",
+     "name": "Gemini 3.8 Flash (Low)",
+     "shortName": "Gemini 3.8 Flash (low)",
+     "releaseDate": "2026-09-02",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.07143520286015756
+     }
+    },
+    {
+     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+     "slug": "gemini-3-5-flash-lite",
+     "name": "Gemini 3.5 Flash-Lite",
+     "shortName": "Gemini 3.5 Flash-Lite",
+     "releaseDate": "2026-07-21",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.07197619182444612
+     }
+    },
+    {
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "slug": "gemini-3-1-flash-lite-preview",
+     "name": "Gemini 3.1 Flash-Lite",
+     "shortName": "Gemini 3.1 Flash-Lite",
+     "releaseDate": "2026-03-03",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.02567213942299807
+     }
+    },
+    {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "slug": "gemma-4-e4b",
+     "name": "Gemma 4 E4B (Reasoning)",
+     "shortName": "Gemma 4 E4B",
+     "releaseDate": "2026-04-03",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.0044856650128362345
      }
     },
     {
@@ -3876,168 +4182,58 @@
      }
     },
     {
-     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
-     "slug": "gemini-4-carbon",
-     "name": "Gemini 4 Carbon (High)",
-     "shortName": "Gemini 4 Carbon (high)",
-     "releaseDate": "2026-10-28",
-     "creatorName": "Google",
+     "id": "75c1b0b8-9db3-4c7e-95be-d74e59defee4",
+     "slug": "gpt-6-2-astra",
+     "name": "GPT-6.2 Astra (Max)",
+     "shortName": "GPT-6.2 Astra (max)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
      "costPerTask": {
-      "total": 2.074535463263766
+      "total": 2.0258800445632024
      }
     },
     {
-     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
-     "slug": "gemini-4-carbon-medium",
-     "name": "Gemini 4 Carbon (Medium)",
-     "shortName": "Gemini 4 Carbon (medium)",
-     "releaseDate": "2026-10-28",
-     "creatorName": "Google",
+     "id": "592572d5-f789-4106-abbc-fadf2206d10b",
+     "slug": "gpt-6-2-astra-xhigh",
+     "name": "GPT-6.2 Astra (Xhigh)",
+     "shortName": "GPT-6.2 Astra (xhigh)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
      "costPerTask": {
-      "total": 1.7053334871597696
+      "total": 1.262633664295636
      }
     },
     {
-     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
-     "slug": "gemini-4-carbon-low",
-     "name": "Gemini 4 Carbon (Low)",
-     "shortName": "Gemini 4 Carbon (low)",
-     "releaseDate": "2026-10-28",
-     "creatorName": "Google",
+     "id": "fe959a7a-944c-4ba8-8e41-349712599b39",
+     "slug": "gpt-6-2-astra-high",
+     "name": "GPT-6.2 Astra (High)",
+     "shortName": "GPT-6.2 Astra (high)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
      "costPerTask": {
-      "total": 1.728460802768611
+      "total": 1.0048458619505196
      }
     },
     {
-     "id": "dad0e3b1-e3e7-477a-99f9-c14457a91114",
-     "slug": "gemini-4-hydrogen",
-     "name": "Gemini 4 Hydrogen (Xhigh)",
-     "shortName": "Gemini 4 Hydrogen (xhigh)",
-     "releaseDate": "2026-11-12",
-     "creatorName": "Google",
+     "id": "a1a84b18-e8c9-48fb-8e04-6003bd9f6ff4",
+     "slug": "gpt-6-2-sol",
+     "name": "GPT-6.2 Sol (Max)",
+     "shortName": "GPT-6.2 Sol (max)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
      "costPerTask": {
-      "total": 1.310621154319251
+      "total": 0.5600170954025689
      }
     },
     {
-     "id": "dae0262d-26a4-44d1-925a-6f2731cbda6a",
-     "slug": "gemini-4-hydrogen-high",
-     "name": "Gemini 4 Hydrogen (High)",
-     "shortName": "Gemini 4 Hydrogen (high)",
-     "releaseDate": "2026-11-12",
-     "creatorName": "Google",
+     "id": "8cec011f-c959-4726-8668-2ee2409a6bca",
+     "slug": "gpt-6-2-astra-medium",
+     "name": "GPT-6.2 Astra (Medium)",
+     "shortName": "GPT-6.2 Astra (medium)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
      "costPerTask": {
-      "total": 0.6293876517963809
-     }
-    },
-    {
-     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
-     "slug": "gemini-4-argon",
-     "name": "Gemini 4 Argon (High)",
-     "shortName": "Gemini 4 Argon (high)",
-     "releaseDate": "2026-09-30",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 1.8620674633377794
-     }
-    },
-    {
-     "id": "48e6f735-f2bc-418f-b99f-3dc5a0ddda77",
-     "slug": "gemini-4-argon-medium",
-     "name": "Gemini 4 Argon (Medium)",
-     "shortName": "Gemini 4 Argon (medium)",
-     "releaseDate": "2026-09-30",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 1.4940535182563603
-     }
-    },
-    {
-     "id": "f0537484-af30-4a8a-bf34-368c552e5cfd",
-     "slug": "gemini-4-hydrogen-medium",
-     "name": "Gemini 4 Hydrogen (Medium)",
-     "shortName": "Gemini 4 Hydrogen (medium)",
-     "releaseDate": "2026-11-12",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 0.25330406482143536
-     }
-    },
-    {
-     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
-     "slug": "gemini-3-8-flash",
-     "name": "Gemini 3.8 Flash (High)",
-     "shortName": "Gemini 3.8 Flash (high)",
-     "releaseDate": "2026-09-02",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 2.3726334396547526
-     }
-    },
-    {
-     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
-     "slug": "gemini-3-8-flash-medium",
-     "name": "Gemini 3.8 Flash (Medium)",
-     "shortName": "Gemini 3.8 Flash (medium)",
-     "releaseDate": "2026-09-02",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 1.6899906365856312
-     }
-    },
-    {
-     "id": "88c68c50-03c1-458a-9292-bd398c27adc5",
-     "slug": "gemini-4-hydrogen-low",
-     "name": "Gemini 4 Hydrogen (Low)",
-     "shortName": "Gemini 4 Hydrogen (low)",
-     "releaseDate": "2026-11-12",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 0.09255246228211751
-     }
-    },
-    {
-     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
-     "slug": "gemini-3-8-flash-low",
-     "name": "Gemini 3.8 Flash (Low)",
-     "shortName": "Gemini 3.8 Flash (low)",
-     "releaseDate": "2026-09-02",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 0.07143520286015756
-     }
-    },
-    {
-     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
-     "slug": "gemini-3-5-flash-lite",
-     "name": "Gemini 3.5 Flash-Lite",
-     "shortName": "Gemini 3.5 Flash-Lite",
-     "releaseDate": "2026-07-21",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 0.07197619182444612
-     }
-    },
-    {
-     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
-     "slug": "gemini-3-1-flash-lite-preview",
-     "name": "Gemini 3.1 Flash-Lite",
-     "shortName": "Gemini 3.1 Flash-Lite",
-     "releaseDate": "2026-03-03",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 0.02567213942299807
-     }
-    },
-    {
-     "id": "cd26a386-4873-46ff-b853-d239050025a2",
-     "slug": "gemma-4-31b",
-     "name": "Gemma 4 31B (Reasoning)",
-     "shortName": "Gemma 4 31B",
-     "releaseDate": "2026-04-02",
-     "creatorName": "Google",
-     "costPerTask": {
-      "total": 0
+      "total": 0.5114302025522468
      }
     },
     {
@@ -4052,6 +4248,17 @@
      }
     },
     {
+     "id": "27c326a6-ec9b-415f-a29e-b1f4927484dc",
+     "slug": "gpt-6-2-sol-xhigh",
+     "name": "GPT-6.2 Sol (Xhigh)",
+     "shortName": "GPT-6.2 Sol (xhigh)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.3634138156982211
+     }
+    },
+    {
      "id": "1f541ef3-913f-4eb2-9d07-0e93c7a9a5e3",
      "slug": "gpt-6-astra-xhigh",
      "name": "GPT-6 Astra (Xhigh)",
@@ -4060,6 +4267,17 @@
      "creatorName": "OpenAI",
      "costPerTask": {
       "total": 2.2816064935090163
+     }
+    },
+    {
+     "id": "cd85e412-c43f-4535-bf8e-5ba113d97ca3",
+     "slug": "gpt-6-2-sol-high",
+     "name": "GPT-6.2 Sol (High)",
+     "shortName": "GPT-6.2 Sol (high)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.2848617339446186
      }
     },
     {
@@ -4082,6 +4300,17 @@
      "creatorName": "OpenAI",
      "costPerTask": {
       "total": 0.7681543186770655
+     }
+    },
+    {
+     "id": "82b37079-56d9-4451-8a1a-22b0a921f4f8",
+     "slug": "gpt-6-2-sol-medium",
+     "name": "GPT-6.2 Sol (Medium)",
+     "shortName": "GPT-6.2 Sol (medium)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.19580530846179023
      }
     },
     {
@@ -4140,6 +4369,17 @@
      }
     },
     {
+     "id": "cc93ecfd-845e-455d-9642-6799d7133b7e",
+     "slug": "gpt-6-2-astra-low",
+     "name": "GPT-6.2 Astra (Low)",
+     "shortName": "GPT-6.2 Astra (low)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.24095703378780295
+     }
+    },
+    {
      "id": "e8d443ba-8aca-4830-a186-ae869bb9c6fe",
      "slug": "gpt-6-1-terra-xhigh",
      "name": "GPT-6.1 Terra (Xhigh)",
@@ -4181,6 +4421,17 @@
      "creatorName": "OpenAI",
      "costPerTask": {
       "total": 0.10596318485512
+     }
+    },
+    {
+     "id": "a77965fb-2117-4e2c-bd8b-80b5579a7e7e",
+     "slug": "gpt-6-2-sol-low",
+     "name": "GPT-6.2 Sol (Low)",
+     "shortName": "GPT-6.2 Sol (low)",
+     "releaseDate": "2026-11-17",
+     "creatorName": "OpenAI",
+     "costPerTask": {
+      "total": 0.0847553852400121
      }
     },
     {
@@ -4379,6 +4630,182 @@
      "creatorName": "OpenAI",
      "costPerTask": {
       "total": 0.1393442029012161
+     }
+    },
+    {
+     "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+     "slug": "gemini-4-carbon",
+     "name": "Gemini 4 Carbon (High)",
+     "shortName": "Gemini 4 Carbon (high)",
+     "releaseDate": "2026-10-28",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 2.074535463263766
+     }
+    },
+    {
+     "id": "0d3eaafd-54ed-4f78-bdd7-05a2db883986",
+     "slug": "gemini-4-carbon-medium",
+     "name": "Gemini 4 Carbon (Medium)",
+     "shortName": "Gemini 4 Carbon (medium)",
+     "releaseDate": "2026-10-28",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.7053334871597696
+     }
+    },
+    {
+     "id": "b3866703-a9f7-4ea2-8f3f-b361c90aaf0e",
+     "slug": "gemini-4-carbon-low",
+     "name": "Gemini 4 Carbon (Low)",
+     "shortName": "Gemini 4 Carbon (low)",
+     "releaseDate": "2026-10-28",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.728460802768611
+     }
+    },
+    {
+     "id": "dad0e3b1-e3e7-477a-99f9-c14457a91114",
+     "slug": "gemini-4-hydrogen",
+     "name": "Gemini 4 Hydrogen (Xhigh)",
+     "shortName": "Gemini 4 Hydrogen (xhigh)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.310621154319251
+     }
+    },
+    {
+     "id": "dae0262d-26a4-44d1-925a-6f2731cbda6a",
+     "slug": "gemini-4-hydrogen-high",
+     "name": "Gemini 4 Hydrogen (High)",
+     "shortName": "Gemini 4 Hydrogen (high)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.6293876517963809
+     }
+    },
+    {
+     "id": "d366dfa1-d940-4788-aa73-d298c45699b3",
+     "slug": "gemini-4-argon",
+     "name": "Gemini 4 Argon (High)",
+     "shortName": "Gemini 4 Argon (high)",
+     "releaseDate": "2026-09-30",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.8620674633377794
+     }
+    },
+    {
+     "id": "48e6f735-f2bc-418f-b99f-3dc5a0ddda77",
+     "slug": "gemini-4-argon-medium",
+     "name": "Gemini 4 Argon (Medium)",
+     "shortName": "Gemini 4 Argon (medium)",
+     "releaseDate": "2026-09-30",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.4940535182563603
+     }
+    },
+    {
+     "id": "f0537484-af30-4a8a-bf34-368c552e5cfd",
+     "slug": "gemini-4-hydrogen-medium",
+     "name": "Gemini 4 Hydrogen (Medium)",
+     "shortName": "Gemini 4 Hydrogen (medium)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.25330406482143536
+     }
+    },
+    {
+     "id": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+     "slug": "gemini-3-8-flash",
+     "name": "Gemini 3.8 Flash (High)",
+     "shortName": "Gemini 3.8 Flash (high)",
+     "releaseDate": "2026-09-02",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 2.3726334396547526
+     }
+    },
+    {
+     "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
+     "slug": "gemini-3-8-flash-medium",
+     "name": "Gemini 3.8 Flash (Medium)",
+     "shortName": "Gemini 3.8 Flash (medium)",
+     "releaseDate": "2026-09-02",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 1.6899906365856312
+     }
+    },
+    {
+     "id": "88c68c50-03c1-458a-9292-bd398c27adc5",
+     "slug": "gemini-4-hydrogen-low",
+     "name": "Gemini 4 Hydrogen (Low)",
+     "shortName": "Gemini 4 Hydrogen (low)",
+     "releaseDate": "2026-11-12",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.09255246228211751
+     }
+    },
+    {
+     "id": "f6db039b-0f3b-485c-9d7f-982988e44f26",
+     "slug": "gemini-3-8-flash-low",
+     "name": "Gemini 3.8 Flash (Low)",
+     "shortName": "Gemini 3.8 Flash (low)",
+     "releaseDate": "2026-09-02",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.07143520286015756
+     }
+    },
+    {
+     "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
+     "slug": "gemini-3-5-flash-lite",
+     "name": "Gemini 3.5 Flash-Lite",
+     "shortName": "Gemini 3.5 Flash-Lite",
+     "releaseDate": "2026-07-21",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.07197619182444612
+     }
+    },
+    {
+     "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
+     "slug": "gemini-3-1-flash-lite-preview",
+     "name": "Gemini 3.1 Flash-Lite",
+     "shortName": "Gemini 3.1 Flash-Lite",
+     "releaseDate": "2026-03-03",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.02567213942299807
+     }
+    },
+    {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "slug": "gemma-4-e4b",
+     "name": "Gemma 4 E4B (Reasoning)",
+     "shortName": "Gemma 4 E4B",
+     "releaseDate": "2026-04-03",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0.0044856650128362345
+     }
+    },
+    {
+     "id": "cd26a386-4873-46ff-b853-d239050025a2",
+     "slug": "gemma-4-31b",
+     "name": "Gemma 4 31B (Reasoning)",
+     "shortName": "Gemma 4 31B",
+     "releaseDate": "2026-04-02",
+     "creatorName": "Google",
+     "costPerTask": {
+      "total": 0
      }
     },
     {
@@ -5017,6 +5444,14 @@
      "shortName": "Nemotron 3 Nano 4B",
      "releaseDate": "2026-03-16",
      "creatorName": "NVIDIA"
+    },
+    {
+     "id": "8215372b-66ff-457b-855e-e8abeafc9571",
+     "slug": "a-x-k2",
+     "name": "A.X-K2",
+     "shortName": "A.X-K2",
+     "releaseDate": "2026-08-12",
+     "creatorName": "SK Telecom"
     },
     {
      "id": "18721247-4e56-4cf7-9a9d-c71cc60c0961",

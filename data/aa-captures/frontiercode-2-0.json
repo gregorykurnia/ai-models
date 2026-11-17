@@ -1,7 +1,7 @@
 {
  "key": "frontiercode-2-0",
  "source_url": "https://artificialanalysis.ai/evaluations/frontiercode-2-0",
- "captured_at": "2026-11-16",
+ "captured_at": "2026-11-17",
  "selectors": 6,
  "charts": [
   {
@@ -15,6 +15,15 @@
      "displayValue": "49.1%",
      "url": "/models/claude-fable-5-2",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "592572d5-f789-4106-abbc-fadf2206d10b",
+     "label": "GPT-6.2 Astra (xhigh)",
+     "tooltipLabel": "GPT-6.2 Astra (Xhigh)",
+     "value": 0.489513383838384,
+     "displayValue": "49.0%",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "593f2d23-247b-41c9-a679-cebd225f0a9a",
@@ -35,6 +44,24 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "fe959a7a-944c-4ba8-8e41-349712599b39",
+     "label": "GPT-6.2 Astra (high)",
+     "tooltipLabel": "GPT-6.2 Astra (High)",
+     "value": 0.471319444444444,
+     "displayValue": "47.1%",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "8cec011f-c959-4726-8668-2ee2409a6bca",
+     "label": "GPT-6.2 Astra (medium)",
+     "tooltipLabel": "GPT-6.2 Astra (Medium)",
+     "value": 0.46559797979798,
+     "displayValue": "46.6%",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
      "label": "Claude Opus 5.5 (max)",
      "tooltipLabel": "Claude Opus 5.5 (Max, Default Fallback)",
@@ -44,6 +71,24 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "75c1b0b8-9db3-4c7e-95be-d74e59defee4",
+     "label": "GPT-6.2 Astra (max)",
+     "tooltipLabel": "GPT-6.2 Astra (Max)",
+     "value": 0.453801767676768,
+     "displayValue": "45.4%",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "a1a84b18-e8c9-48fb-8e04-6003bd9f6ff4",
+     "label": "GPT-6.2 Sol (max)",
+     "tooltipLabel": "GPT-6.2 Sol (Max)",
+     "value": 0.443797727272727,
+     "displayValue": "44.4%",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "df5bf99d-d228-4715-b41b-19ca86118777",
      "label": "Claude Opus 5.5 (xhigh)",
      "tooltipLabel": "Claude Opus 5.5 (Xhigh, Default Fallback)",
@@ -51,6 +96,15 @@
      "displayValue": "43.8%",
      "url": "/models/claude-opus-5-5",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "27c326a6-ec9b-415f-a29e-b1f4927484dc",
+     "label": "GPT-6.2 Sol (xhigh)",
+     "tooltipLabel": "GPT-6.2 Sol (Xhigh)",
+     "value": 0.427523484848485,
+     "displayValue": "42.8%",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
@@ -89,6 +143,15 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "82b37079-56d9-4451-8a1a-22b0a921f4f8",
+     "label": "GPT-6.2 Sol (medium)",
+     "tooltipLabel": "GPT-6.2 Sol (Medium)",
+     "value": 0.413984848484848,
+     "displayValue": "41.4%",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "0c9b4e05-9259-42cc-b40e-d6acbbeaa7e8",
      "label": "Claude Fable 5.2 (medium)",
      "tooltipLabel": "Claude Fable 5.2 (Medium, Default Fallback)",
@@ -114,6 +177,15 @@
      "displayValue": "40.6%",
      "url": "/models/gemini-4-carbon",
      "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "cd85e412-c43f-4535-bf8e-5ba113d97ca3",
+     "label": "GPT-6.2 Sol (high)",
+     "tooltipLabel": "GPT-6.2 Sol (High)",
+     "value": 0.40224898989899,
+     "displayValue": "40.2%",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "e05a4828-0536-4876-870d-a235023f992b",
@@ -296,6 +368,15 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "cc93ecfd-845e-455d-9642-6799d7133b7e",
+     "label": "GPT-6.2 Astra (low)",
+     "tooltipLabel": "GPT-6.2 Astra (Low)",
+     "value": 0.326629292929293,
+     "displayValue": "32.7%",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "3e87c73e-a257-495e-9730-367a66229811",
      "label": "Claude Fable 5.1 (max)",
      "tooltipLabel": "Claude Fable 5.1 (Max, Default Fallback)",
@@ -321,6 +402,15 @@
      "displayValue": "31.4%",
      "url": "/models/tencent-hy4",
      "logo": "/img/logos/tencent-hy.svg"
+    },
+    {
+     "id": "a77965fb-2117-4e2c-bd8b-80b5579a7e7e",
+     "label": "GPT-6.2 Sol (low)",
+     "tooltipLabel": "GPT-6.2 Sol (Low)",
+     "value": 0.313682323232323,
+     "displayValue": "31.4%",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "b8fc61f7-5e9a-49e6-8547-6ac56db24627",
@@ -1133,15 +1223,6 @@
      "logo": "/img/logos/cohere.svg"
     },
     {
-     "id": "cd26a386-4873-46ff-b853-d239050025a2",
-     "label": "Gemma 4 31B",
-     "tooltipLabel": "Gemma 4 31B (Reasoning)",
-     "value": 0,
-     "displayValue": "0.0%",
-     "url": "/models/gemma-4-31b",
-     "logo": "/img/logos/google.svg"
-    },
-    {
      "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
      "label": "gpt-oss-120b (high)",
      "tooltipLabel": "gpt-oss-120b (High)",
@@ -1149,6 +1230,24 @@
      "displayValue": "0.0%",
      "url": "/models/gpt-oss-120b",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "label": "Gemma 4 E4B",
+     "tooltipLabel": "Gemma 4 E4B (Reasoning)",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/gemma-4-e4b",
+     "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "cd26a386-4873-46ff-b853-d239050025a2",
+     "label": "Gemma 4 31B",
+     "tooltipLabel": "Gemma 4 31B (Reasoning)",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/gemma-4-31b",
+     "logo": "/img/logos/google.svg"
     },
     {
      "id": "3fd96175-4ef1-434c-8795-f873aec2abc1",
@@ -1178,6 +1277,15 @@
      "logo": "/img/logos/nvidia.svg"
     },
     {
+     "id": "8215372b-66ff-457b-855e-e8abeafc9571",
+     "label": "A.X-K2",
+     "tooltipLabel": "A.X-K2",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/a-x-k2",
+     "logo": "/img/logos/sktelecom.svg"
+    },
+    {
      "id": "2e9ff877-fd2c-4ce7-b631-7ca1bdb6d13e",
      "label": "Command A+",
      "tooltipLabel": "Command A+",
@@ -1203,15 +1311,6 @@
      "displayValue": "0.0%",
      "url": "/models/granite-4-2-3b",
      "logo": "/img/logos/ibm.svg"
-    },
-    {
-     "id": "8215372b-66ff-457b-855e-e8abeafc9571",
-     "label": "A.X-K2",
-     "tooltipLabel": "A.X-K2",
-     "value": 0,
-     "displayValue": "0.0%",
-     "url": "/models/a-x-k2",
-     "logo": "/img/logos/sktelecom.svg"
     }
    ]
   },
@@ -1443,6 +1542,294 @@
      "costPerTask": 15.477760579709052
     },
     {
+     "id": "75c1b0b8-9db3-4c7e-95be-d74e59defee4",
+     "slug": "gpt-6-2-astra",
+     "name": "GPT-6.2 Astra (Max)",
+     "shortName": "GPT-6.2 Astra (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 5.865657373006691
+    },
+    {
+     "id": "592572d5-f789-4106-abbc-fadf2206d10b",
+     "slug": "gpt-6-2-astra-xhigh",
+     "name": "GPT-6.2 Astra (Xhigh)",
+     "shortName": "GPT-6.2 Astra (xhigh)",
+     "creatorName": "OpenAI",
+     "costPerTask": 3.74829180355069
+    },
+    {
+     "id": "fe959a7a-944c-4ba8-8e41-349712599b39",
+     "slug": "gpt-6-2-astra-high",
+     "name": "GPT-6.2 Astra (High)",
+     "shortName": "GPT-6.2 Astra (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 3.078304650879487
+    },
+    {
+     "id": "a1a84b18-e8c9-48fb-8e04-6003bd9f6ff4",
+     "slug": "gpt-6-2-sol",
+     "name": "GPT-6.2 Sol (Max)",
+     "shortName": "GPT-6.2 Sol (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 1.297752418271957
+    },
+    {
+     "id": "8cec011f-c959-4726-8668-2ee2409a6bca",
+     "slug": "gpt-6-2-astra-medium",
+     "name": "GPT-6.2 Astra (Medium)",
+     "shortName": "GPT-6.2 Astra (medium)",
+     "creatorName": "OpenAI",
+     "costPerTask": 1.9112463927316319
+    },
+    {
+     "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
+     "slug": "gpt-6-astra",
+     "name": "GPT-6 Astra (Max)",
+     "shortName": "GPT-6 Astra (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 6.538762177543924
+    },
+    {
+     "id": "27c326a6-ec9b-415f-a29e-b1f4927484dc",
+     "slug": "gpt-6-2-sol-xhigh",
+     "name": "GPT-6.2 Sol (Xhigh)",
+     "shortName": "GPT-6.2 Sol (xhigh)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.8014741106984872
+    },
+    {
+     "id": "1f541ef3-913f-4eb2-9d07-0e93c7a9a5e3",
+     "slug": "gpt-6-astra-xhigh",
+     "name": "GPT-6 Astra (Xhigh)",
+     "shortName": "GPT-6 Astra (xhigh)",
+     "creatorName": "OpenAI",
+     "costPerTask": 4.043001526196351
+    },
+    {
+     "id": "cd85e412-c43f-4535-bf8e-5ba113d97ca3",
+     "slug": "gpt-6-2-sol-high",
+     "name": "GPT-6.2 Sol (High)",
+     "shortName": "GPT-6.2 Sol (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.6579175925962701
+    },
+    {
+     "id": "e05a4828-0536-4876-870d-a235023f992b",
+     "slug": "gpt-6-astra-high",
+     "name": "GPT-6 Astra (High)",
+     "shortName": "GPT-6 Astra (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 3.765686918431571
+    },
+    {
+     "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
+     "slug": "gpt-6-1-sol",
+     "name": "GPT-6.1 Sol (Max)",
+     "shortName": "GPT-6.1 Sol (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 1.130379974115731
+    },
+    {
+     "id": "82b37079-56d9-4451-8a1a-22b0a921f4f8",
+     "slug": "gpt-6-2-sol-medium",
+     "name": "GPT-6.2 Sol (Medium)",
+     "shortName": "GPT-6.2 Sol (medium)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.4577401116991813
+    },
+    {
+     "id": "092a3b0e-c5c8-45dc-bf1b-53673c8ff352",
+     "slug": "gpt-6-1-sol-xhigh",
+     "name": "GPT-6.1 Sol (Xhigh)",
+     "shortName": "GPT-6.1 Sol (xhigh)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.7028196642979474
+    },
+    {
+     "id": "e97a4ef5-e817-480e-9595-12f81dc4974f",
+     "slug": "gpt-6-astra-medium",
+     "name": "GPT-6 Astra (Medium)",
+     "shortName": "GPT-6 Astra (medium)",
+     "creatorName": "OpenAI",
+     "costPerTask": 2.795366062360042
+    },
+    {
+     "id": "b0c462cf-f2d0-4126-9434-28db9502219f",
+     "slug": "gpt-6-1-terra",
+     "name": "GPT-6.1 Terra (Max)",
+     "shortName": "GPT-6.1 Terra (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 1.292514818220151
+    },
+    {
+     "id": "3b84fee3-b70a-41bc-819e-5fbdef9a0042",
+     "slug": "gpt-6-1-sol-high",
+     "name": "GPT-6.1 Sol (High)",
+     "shortName": "GPT-6.1 Sol (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.6299191586051633
+    },
+    {
+     "id": "a2e51d62-ea4e-4f15-8be0-be9dc1fb489d",
+     "slug": "gpt-6-1-sol-medium",
+     "name": "GPT-6.1 Sol (Medium)",
+     "shortName": "GPT-6.1 Sol (medium)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.4106751202936059
+    },
+    {
+     "id": "cc93ecfd-845e-455d-9642-6799d7133b7e",
+     "slug": "gpt-6-2-astra-low",
+     "name": "GPT-6.2 Astra (Low)",
+     "shortName": "GPT-6.2 Astra (low)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.8076797472908273
+    },
+    {
+     "id": "e8d443ba-8aca-4830-a186-ae869bb9c6fe",
+     "slug": "gpt-6-1-terra-xhigh",
+     "name": "GPT-6.1 Terra (Xhigh)",
+     "shortName": "GPT-6.1 Terra (xhigh)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.5702096533167891
+    },
+    {
+     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+     "slug": "gpt-6-sol",
+     "name": "GPT-6 Sol (Max)",
+     "shortName": "GPT-6 Sol (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 2.3392348024676943
+    },
+    {
+     "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
+     "slug": "gpt-6-astra-low",
+     "name": "GPT-6 Astra (Low)",
+     "shortName": "GPT-6 Astra (low)",
+     "creatorName": "OpenAI",
+     "costPerTask": 1.337250818047692
+    },
+    {
+     "id": "ea3e1f50-f62d-41d2-849a-9af0413e4d37",
+     "slug": "gpt-6-1-terra-high",
+     "name": "GPT-6.1 Terra (High)",
+     "shortName": "GPT-6.1 Terra (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.39185184394450456
+    },
+    {
+     "id": "a77965fb-2117-4e2c-bd8b-80b5579a7e7e",
+     "slug": "gpt-6-2-sol-low",
+     "name": "GPT-6.2 Sol (Low)",
+     "shortName": "GPT-6.2 Sol (low)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.22356119102844949
+    },
+    {
+     "id": "c441e158-a87d-4116-911b-93325e4b4f1c",
+     "slug": "gpt-6-1-terra-medium",
+     "name": "GPT-6.1 Terra (Medium)",
+     "shortName": "GPT-6.1 Terra (medium)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.2574807812691339
+    },
+    {
+     "id": "e76e0fe5-93ca-4272-9359-2eb1740467d1",
+     "slug": "gpt-6-1-sol-low",
+     "name": "GPT-6.1 Sol (Low)",
+     "shortName": "GPT-6.1 Sol (low)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.20107058846793002
+    },
+    {
+     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
+     "slug": "gpt-5-6-terra",
+     "name": "GPT-5.6 Terra (Max)",
+     "shortName": "GPT-5.6 Terra (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 3.703846764628822
+    },
+    {
+     "id": "0d3c777f-6817-42d7-9bb9-223314bc5a57",
+     "slug": "gpt-6-1-terra-non-reasoning",
+     "name": "GPT-6.1 Terra (Non-reasoning)",
+     "shortName": "GPT-6.1 Terra (non-reasoning)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.42539114789472715
+    },
+    {
+     "id": "c955b262-a17f-4f1a-b097-6860b866295b",
+     "slug": "gpt-6-1-terra-low",
+     "name": "GPT-6.1 Terra (Low)",
+     "shortName": "GPT-6.1 Terra (low)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.1066556125306252
+    },
+    {
+     "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
+     "slug": "gpt-6-luna",
+     "name": "GPT-6 Luna (Max)",
+     "shortName": "GPT-6 Luna (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.17592337388331286
+    },
+    {
+     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+     "slug": "gpt-5-6-luna",
+     "name": "GPT-5.6 Luna (Max)",
+     "shortName": "GPT-5.6 Luna (max)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.37647344202683425
+    },
+    {
+     "id": "19813eb2-460a-475c-af65-810bb8660fec",
+     "slug": "gpt-6-luna-xhigh",
+     "name": "GPT-6 Luna (Xhigh)",
+     "shortName": "GPT-6 Luna (xhigh)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.11031972115250702
+    },
+    {
+     "id": "7d1229bc-deea-4717-ba5b-f59a35d991e3",
+     "slug": "gpt-6-luna-high",
+     "name": "GPT-6 Luna (High)",
+     "shortName": "GPT-6 Luna (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.0844377488234868
+    },
+    {
+     "id": "36667da0-9222-4967-adbb-f7efa15ad213",
+     "slug": "gpt-6-luna-medium",
+     "name": "GPT-6 Luna (Medium)",
+     "shortName": "GPT-6 Luna (medium)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.05281446423055469
+    },
+    {
+     "id": "bf9708d8-933d-44f6-affa-b696a7a650c9",
+     "slug": "gpt-6-luna-low",
+     "name": "GPT-6 Luna (Low)",
+     "shortName": "GPT-6 Luna (low)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.0073303264905827965
+    },
+    {
+     "id": "63cb48ea-0b0c-4e07-8ded-6d28dec4fa28",
+     "slug": "gpt-6-luna-non-reasoning",
+     "name": "GPT-6 Luna (Non-reasoning)",
+     "shortName": "GPT-6 Luna (non-reasoning)",
+     "creatorName": "OpenAI",
+     "costPerTask": 0.12944562258154715
+    },
+    {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "slug": "gpt-oss-120b",
+     "name": "gpt-oss-120b (High)",
+     "shortName": "gpt-oss-120b (high)",
+     "creatorName": "OpenAI",
+     "costPerTask": 1.2219287113636361
+    },
+    {
      "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
      "slug": "gemini-4-carbon",
      "name": "Gemini 4 Carbon (High)",
@@ -1555,220 +1942,20 @@
      "costPerTask": 0.7599862788589363
     },
     {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "slug": "gemma-4-e4b",
+     "name": "Gemma 4 E4B (Reasoning)",
+     "shortName": "Gemma 4 E4B",
+     "creatorName": "Google",
+     "costPerTask": 0.025924247727272726
+    },
+    {
      "id": "cd26a386-4873-46ff-b853-d239050025a2",
      "slug": "gemma-4-31b",
      "name": "Gemma 4 31B (Reasoning)",
      "shortName": "Gemma 4 31B",
      "creatorName": "Google",
      "costPerTask": 0
-    },
-    {
-     "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
-     "slug": "gpt-6-astra",
-     "name": "GPT-6 Astra (Max)",
-     "shortName": "GPT-6 Astra (max)",
-     "creatorName": "OpenAI",
-     "costPerTask": 6.538762177543924
-    },
-    {
-     "id": "1f541ef3-913f-4eb2-9d07-0e93c7a9a5e3",
-     "slug": "gpt-6-astra-xhigh",
-     "name": "GPT-6 Astra (Xhigh)",
-     "shortName": "GPT-6 Astra (xhigh)",
-     "creatorName": "OpenAI",
-     "costPerTask": 4.043001526196351
-    },
-    {
-     "id": "e05a4828-0536-4876-870d-a235023f992b",
-     "slug": "gpt-6-astra-high",
-     "name": "GPT-6 Astra (High)",
-     "shortName": "GPT-6 Astra (high)",
-     "creatorName": "OpenAI",
-     "costPerTask": 3.765686918431571
-    },
-    {
-     "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
-     "slug": "gpt-6-1-sol",
-     "name": "GPT-6.1 Sol (Max)",
-     "shortName": "GPT-6.1 Sol (max)",
-     "creatorName": "OpenAI",
-     "costPerTask": 1.130379974115731
-    },
-    {
-     "id": "092a3b0e-c5c8-45dc-bf1b-53673c8ff352",
-     "slug": "gpt-6-1-sol-xhigh",
-     "name": "GPT-6.1 Sol (Xhigh)",
-     "shortName": "GPT-6.1 Sol (xhigh)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.7028196642979474
-    },
-    {
-     "id": "e97a4ef5-e817-480e-9595-12f81dc4974f",
-     "slug": "gpt-6-astra-medium",
-     "name": "GPT-6 Astra (Medium)",
-     "shortName": "GPT-6 Astra (medium)",
-     "creatorName": "OpenAI",
-     "costPerTask": 2.795366062360042
-    },
-    {
-     "id": "b0c462cf-f2d0-4126-9434-28db9502219f",
-     "slug": "gpt-6-1-terra",
-     "name": "GPT-6.1 Terra (Max)",
-     "shortName": "GPT-6.1 Terra (max)",
-     "creatorName": "OpenAI",
-     "costPerTask": 1.292514818220151
-    },
-    {
-     "id": "3b84fee3-b70a-41bc-819e-5fbdef9a0042",
-     "slug": "gpt-6-1-sol-high",
-     "name": "GPT-6.1 Sol (High)",
-     "shortName": "GPT-6.1 Sol (high)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.6299191586051633
-    },
-    {
-     "id": "a2e51d62-ea4e-4f15-8be0-be9dc1fb489d",
-     "slug": "gpt-6-1-sol-medium",
-     "name": "GPT-6.1 Sol (Medium)",
-     "shortName": "GPT-6.1 Sol (medium)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.4106751202936059
-    },
-    {
-     "id": "e8d443ba-8aca-4830-a186-ae869bb9c6fe",
-     "slug": "gpt-6-1-terra-xhigh",
-     "name": "GPT-6.1 Terra (Xhigh)",
-     "shortName": "GPT-6.1 Terra (xhigh)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.5702096533167891
-    },
-    {
-     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
-     "slug": "gpt-6-sol",
-     "name": "GPT-6 Sol (Max)",
-     "shortName": "GPT-6 Sol (max)",
-     "creatorName": "OpenAI",
-     "costPerTask": 2.3392348024676943
-    },
-    {
-     "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
-     "slug": "gpt-6-astra-low",
-     "name": "GPT-6 Astra (Low)",
-     "shortName": "GPT-6 Astra (low)",
-     "creatorName": "OpenAI",
-     "costPerTask": 1.337250818047692
-    },
-    {
-     "id": "ea3e1f50-f62d-41d2-849a-9af0413e4d37",
-     "slug": "gpt-6-1-terra-high",
-     "name": "GPT-6.1 Terra (High)",
-     "shortName": "GPT-6.1 Terra (high)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.39185184394450456
-    },
-    {
-     "id": "c441e158-a87d-4116-911b-93325e4b4f1c",
-     "slug": "gpt-6-1-terra-medium",
-     "name": "GPT-6.1 Terra (Medium)",
-     "shortName": "GPT-6.1 Terra (medium)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.2574807812691339
-    },
-    {
-     "id": "e76e0fe5-93ca-4272-9359-2eb1740467d1",
-     "slug": "gpt-6-1-sol-low",
-     "name": "GPT-6.1 Sol (Low)",
-     "shortName": "GPT-6.1 Sol (low)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.20107058846793002
-    },
-    {
-     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
-     "slug": "gpt-5-6-terra",
-     "name": "GPT-5.6 Terra (Max)",
-     "shortName": "GPT-5.6 Terra (max)",
-     "creatorName": "OpenAI",
-     "costPerTask": 3.703846764628822
-    },
-    {
-     "id": "0d3c777f-6817-42d7-9bb9-223314bc5a57",
-     "slug": "gpt-6-1-terra-non-reasoning",
-     "name": "GPT-6.1 Terra (Non-reasoning)",
-     "shortName": "GPT-6.1 Terra (non-reasoning)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.42539114789472715
-    },
-    {
-     "id": "c955b262-a17f-4f1a-b097-6860b866295b",
-     "slug": "gpt-6-1-terra-low",
-     "name": "GPT-6.1 Terra (Low)",
-     "shortName": "GPT-6.1 Terra (low)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.1066556125306252
-    },
-    {
-     "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
-     "slug": "gpt-6-luna",
-     "name": "GPT-6 Luna (Max)",
-     "shortName": "GPT-6 Luna (max)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.17592337388331286
-    },
-    {
-     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
-     "slug": "gpt-5-6-luna",
-     "name": "GPT-5.6 Luna (Max)",
-     "shortName": "GPT-5.6 Luna (max)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.37647344202683425
-    },
-    {
-     "id": "19813eb2-460a-475c-af65-810bb8660fec",
-     "slug": "gpt-6-luna-xhigh",
-     "name": "GPT-6 Luna (Xhigh)",
-     "shortName": "GPT-6 Luna (xhigh)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.11031972115250702
-    },
-    {
-     "id": "7d1229bc-deea-4717-ba5b-f59a35d991e3",
-     "slug": "gpt-6-luna-high",
-     "name": "GPT-6 Luna (High)",
-     "shortName": "GPT-6 Luna (high)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.0844377488234868
-    },
-    {
-     "id": "36667da0-9222-4967-adbb-f7efa15ad213",
-     "slug": "gpt-6-luna-medium",
-     "name": "GPT-6 Luna (Medium)",
-     "shortName": "GPT-6 Luna (medium)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.05281446423055469
-    },
-    {
-     "id": "bf9708d8-933d-44f6-affa-b696a7a650c9",
-     "slug": "gpt-6-luna-low",
-     "name": "GPT-6 Luna (Low)",
-     "shortName": "GPT-6 Luna (low)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.0073303264905827965
-    },
-    {
-     "id": "63cb48ea-0b0c-4e07-8ded-6d28dec4fa28",
-     "slug": "gpt-6-luna-non-reasoning",
-     "name": "GPT-6 Luna (Non-reasoning)",
-     "shortName": "GPT-6 Luna (non-reasoning)",
-     "creatorName": "OpenAI",
-     "costPerTask": 0.12944562258154715
-    },
-    {
-     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
-     "slug": "gpt-oss-120b",
-     "name": "gpt-oss-120b (High)",
-     "shortName": "gpt-oss-120b (high)",
-     "creatorName": "OpenAI",
-     "costPerTask": 1.2219287113636361
     },
     {
      "id": "ff2f3f3d-783f-4e27-8a39-47237501a313",
@@ -2251,6 +2438,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "label": "Gemma 4 E4B",
+     "tooltipLabel": "Gemma 4 E4B (Reasoning)",
+     "url": "/models/gemma-4-e4b",
+     "logo": "/img/logos/google.svg"
+    },
+    {
      "id": "42908ae3-d3bd-4934-be19-fbff93d3fde8",
      "label": "Claude Haiku 5.5 (low)",
      "tooltipLabel": "Claude Haiku 5.5 (Low)",
@@ -2356,6 +2550,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "a77965fb-2117-4e2c-bd8b-80b5579a7e7e",
+     "label": "GPT-6.2 Sol (low)",
+     "tooltipLabel": "GPT-6.2 Sol (Low)",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "bbc2ffea-cf6b-43be-8c41-1769347e234d",
      "label": "Claude Sonnet 5.5 (low)",
      "tooltipLabel": "Claude Sonnet 5.5 (Low, Default Fallback)",
@@ -2440,6 +2641,13 @@
      "logo": "/img/logos/zai.svg"
     },
     {
+     "id": "82b37079-56d9-4451-8a1a-22b0a921f4f8",
+     "label": "GPT-6.2 Sol (medium)",
+     "tooltipLabel": "GPT-6.2 Sol (Medium)",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "7d064a11-6e78-4030-b535-cdf940615041",
      "label": "Claude Haiku 5.5 (max)",
      "tooltipLabel": "Claude Haiku 5.5 (Max)",
@@ -2510,6 +2718,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "cd85e412-c43f-4535-bf8e-5ba113d97ca3",
+     "label": "GPT-6.2 Sol (high)",
+     "tooltipLabel": "GPT-6.2 Sol (High)",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
      "label": "Agnes 2.5 Pro Theta",
      "tooltipLabel": "Agnes 2.5 Pro Theta",
@@ -2536,6 +2751,20 @@
      "tooltipLabel": "Claude Sonnet 5.5 (High, Default Fallback)",
      "url": "/models/claude-sonnet-5-5",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "27c326a6-ec9b-415f-a29e-b1f4927484dc",
+     "label": "GPT-6.2 Sol (xhigh)",
+     "tooltipLabel": "GPT-6.2 Sol (Xhigh)",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "cc93ecfd-845e-455d-9642-6799d7133b7e",
+     "label": "GPT-6.2 Astra (low)",
+     "tooltipLabel": "GPT-6.2 Astra (Low)",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "5720fd2f-873a-4765-8640-a153b38bd64d",
@@ -2629,6 +2858,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "a1a84b18-e8c9-48fb-8e04-6003bd9f6ff4",
+     "label": "GPT-6.2 Sol (max)",
+     "tooltipLabel": "GPT-6.2 Sol (Max)",
+     "url": "/models/gpt-6-2-sol",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "d4f5b250-be37-4801-85e6-32fda4179337",
      "label": "DeepSeek V4 Pro 0813 (non-reasoning)",
      "tooltipLabel": "DeepSeek V4 Pro 0813 (Non-reasoning)",
@@ -2690,6 +2926,13 @@
      "tooltipLabel": "DeepSeek V4 Pro 0813 (Max)",
      "url": "/models/deepseek-v4-pro",
      "logo": "/img/logos/deepseek.svg"
+    },
+    {
+     "id": "8cec011f-c959-4726-8668-2ee2409a6bca",
+     "label": "GPT-6.2 Astra (medium)",
+     "tooltipLabel": "GPT-6.2 Astra (Medium)",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "dd059b25-d82a-4ead-82a4-4adceaaec48b",
@@ -2811,6 +3054,13 @@
      "logo": "/img/logos/meta.svg"
     },
     {
+     "id": "fe959a7a-944c-4ba8-8e41-349712599b39",
+     "label": "GPT-6.2 Astra (high)",
+     "tooltipLabel": "GPT-6.2 Astra (High)",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
      "id": "0de09623-2b1a-4c8d-86ef-7f5245d4e24b",
      "label": "Inkling (xhigh)",
      "tooltipLabel": "Inkling (Xhigh)",
@@ -2836,6 +3086,13 @@
      "label": "GPT-5.6 Terra (max)",
      "tooltipLabel": "GPT-5.6 Terra (Max)",
      "url": "/models/gpt-5-6-terra",
+     "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "592572d5-f789-4106-abbc-fadf2206d10b",
+     "label": "GPT-6.2 Astra (xhigh)",
+     "tooltipLabel": "GPT-6.2 Astra (Xhigh)",
+     "url": "/models/gpt-6-2-astra",
      "logo": "/img/logos/openai.svg"
     },
     {
@@ -2907,6 +3164,13 @@
      "tooltipLabel": "Qwen3.8 27B (Non-reasoning)",
      "url": "/models/qwen3-8-27b",
      "logo": "/img/logos/alibaba.svg"
+    },
+    {
+     "id": "75c1b0b8-9db3-4c7e-95be-d74e59defee4",
+     "label": "GPT-6.2 Astra (max)",
+     "tooltipLabel": "GPT-6.2 Astra (Max)",
+     "url": "/models/gpt-6-2-astra",
+     "logo": "/img/logos/openai.svg"
     },
     {
      "id": "cd684ea4-b475-4269-b001-d469d06d8a7a",
@@ -3313,6 +3577,294 @@
      "releaseDate": "2026-06-30"
     },
     {
+     "id": "75c1b0b8-9db3-4c7e-95be-d74e59defee4",
+     "slug": "gpt-6-2-astra",
+     "name": "GPT-6.2 Astra (Max)",
+     "shortName": "GPT-6.2 Astra (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-11-17"
+    },
+    {
+     "id": "592572d5-f789-4106-abbc-fadf2206d10b",
+     "slug": "gpt-6-2-astra-xhigh",
+     "name": "GPT-6.2 Astra (Xhigh)",
+     "shortName": "GPT-6.2 Astra (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-11-17"
+    },
+    {
+     "id": "fe959a7a-944c-4ba8-8e41-349712599b39",
+     "slug": "gpt-6-2-astra-high",
+     "name": "GPT-6.2 Astra (High)",
+     "shortName": "GPT-6.2 Astra (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-11-17"
+    },
+    {
+     "id": "a1a84b18-e8c9-48fb-8e04-6003bd9f6ff4",
+     "slug": "gpt-6-2-sol",
+     "name": "GPT-6.2 Sol (Max)",
+     "shortName": "GPT-6.2 Sol (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-11-17"
+    },
+    {
+     "id": "8cec011f-c959-4726-8668-2ee2409a6bca",
+     "slug": "gpt-6-2-astra-medium",
+     "name": "GPT-6.2 Astra (Medium)",
+     "shortName": "GPT-6.2 Astra (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-11-17"
+    },
+    {
+     "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
+     "slug": "gpt-6-astra",
+     "name": "GPT-6 Astra (Max)",
+     "shortName": "GPT-6 Astra (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-03"
+    },
+    {
+     "id": "27c326a6-ec9b-415f-a29e-b1f4927484dc",
+     "slug": "gpt-6-2-sol-xhigh",
+     "name": "GPT-6.2 Sol (Xhigh)",
+     "shortName": "GPT-6.2 Sol (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-11-17"
+    },
+    {
+     "id": "1f541ef3-913f-4eb2-9d07-0e93c7a9a5e3",
+     "slug": "gpt-6-astra-xhigh",
+     "name": "GPT-6 Astra (Xhigh)",
+     "shortName": "GPT-6 Astra (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-03"
+    },
+    {
+     "id": "cd85e412-c43f-4535-bf8e-5ba113d97ca3",
+     "slug": "gpt-6-2-sol-high",
+     "name": "GPT-6.2 Sol (High)",
+     "shortName": "GPT-6.2 Sol (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-11-17"
+    },
+    {
+     "id": "e05a4828-0536-4876-870d-a235023f992b",
+     "slug": "gpt-6-astra-high",
+     "name": "GPT-6 Astra (High)",
+     "shortName": "GPT-6 Astra (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-03"
+    },
+    {
+     "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
+     "slug": "gpt-6-1-sol",
+     "name": "GPT-6.1 Sol (Max)",
+     "shortName": "GPT-6.1 Sol (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-29"
+    },
+    {
+     "id": "82b37079-56d9-4451-8a1a-22b0a921f4f8",
+     "slug": "gpt-6-2-sol-medium",
+     "name": "GPT-6.2 Sol (Medium)",
+     "shortName": "GPT-6.2 Sol (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-11-17"
+    },
+    {
+     "id": "092a3b0e-c5c8-45dc-bf1b-53673c8ff352",
+     "slug": "gpt-6-1-sol-xhigh",
+     "name": "GPT-6.1 Sol (Xhigh)",
+     "shortName": "GPT-6.1 Sol (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-29"
+    },
+    {
+     "id": "e97a4ef5-e817-480e-9595-12f81dc4974f",
+     "slug": "gpt-6-astra-medium",
+     "name": "GPT-6 Astra (Medium)",
+     "shortName": "GPT-6 Astra (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-03"
+    },
+    {
+     "id": "b0c462cf-f2d0-4126-9434-28db9502219f",
+     "slug": "gpt-6-1-terra",
+     "name": "GPT-6.1 Terra (Max)",
+     "shortName": "GPT-6.1 Terra (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-10-26"
+    },
+    {
+     "id": "3b84fee3-b70a-41bc-819e-5fbdef9a0042",
+     "slug": "gpt-6-1-sol-high",
+     "name": "GPT-6.1 Sol (High)",
+     "shortName": "GPT-6.1 Sol (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-29"
+    },
+    {
+     "id": "a2e51d62-ea4e-4f15-8be0-be9dc1fb489d",
+     "slug": "gpt-6-1-sol-medium",
+     "name": "GPT-6.1 Sol (Medium)",
+     "shortName": "GPT-6.1 Sol (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-29"
+    },
+    {
+     "id": "cc93ecfd-845e-455d-9642-6799d7133b7e",
+     "slug": "gpt-6-2-astra-low",
+     "name": "GPT-6.2 Astra (Low)",
+     "shortName": "GPT-6.2 Astra (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-11-17"
+    },
+    {
+     "id": "e8d443ba-8aca-4830-a186-ae869bb9c6fe",
+     "slug": "gpt-6-1-terra-xhigh",
+     "name": "GPT-6.1 Terra (Xhigh)",
+     "shortName": "GPT-6.1 Terra (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-10-26"
+    },
+    {
+     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
+     "slug": "gpt-6-sol",
+     "name": "GPT-6 Sol (Max)",
+     "shortName": "GPT-6 Sol (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
+     "slug": "gpt-6-astra-low",
+     "name": "GPT-6 Astra (Low)",
+     "shortName": "GPT-6 Astra (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-03"
+    },
+    {
+     "id": "ea3e1f50-f62d-41d2-849a-9af0413e4d37",
+     "slug": "gpt-6-1-terra-high",
+     "name": "GPT-6.1 Terra (High)",
+     "shortName": "GPT-6.1 Terra (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-10-26"
+    },
+    {
+     "id": "a77965fb-2117-4e2c-bd8b-80b5579a7e7e",
+     "slug": "gpt-6-2-sol-low",
+     "name": "GPT-6.2 Sol (Low)",
+     "shortName": "GPT-6.2 Sol (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-11-17"
+    },
+    {
+     "id": "c441e158-a87d-4116-911b-93325e4b4f1c",
+     "slug": "gpt-6-1-terra-medium",
+     "name": "GPT-6.1 Terra (Medium)",
+     "shortName": "GPT-6.1 Terra (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-10-26"
+    },
+    {
+     "id": "e76e0fe5-93ca-4272-9359-2eb1740467d1",
+     "slug": "gpt-6-1-sol-low",
+     "name": "GPT-6.1 Sol (Low)",
+     "shortName": "GPT-6.1 Sol (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-29"
+    },
+    {
+     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
+     "slug": "gpt-5-6-terra",
+     "name": "GPT-5.6 Terra (Max)",
+     "shortName": "GPT-5.6 Terra (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "0d3c777f-6817-42d7-9bb9-223314bc5a57",
+     "slug": "gpt-6-1-terra-non-reasoning",
+     "name": "GPT-6.1 Terra (Non-reasoning)",
+     "shortName": "GPT-6.1 Terra (non-reasoning)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-10-26"
+    },
+    {
+     "id": "c955b262-a17f-4f1a-b097-6860b866295b",
+     "slug": "gpt-6-1-terra-low",
+     "name": "GPT-6.1 Terra (Low)",
+     "shortName": "GPT-6.1 Terra (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-10-26"
+    },
+    {
+     "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
+     "slug": "gpt-6-luna",
+     "name": "GPT-6 Luna (Max)",
+     "shortName": "GPT-6 Luna (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
+     "slug": "gpt-5-6-luna",
+     "name": "GPT-5.6 Luna (Max)",
+     "shortName": "GPT-5.6 Luna (max)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-07-09"
+    },
+    {
+     "id": "19813eb2-460a-475c-af65-810bb8660fec",
+     "slug": "gpt-6-luna-xhigh",
+     "name": "GPT-6 Luna (Xhigh)",
+     "shortName": "GPT-6 Luna (xhigh)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "7d1229bc-deea-4717-ba5b-f59a35d991e3",
+     "slug": "gpt-6-luna-high",
+     "name": "GPT-6 Luna (High)",
+     "shortName": "GPT-6 Luna (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "36667da0-9222-4967-adbb-f7efa15ad213",
+     "slug": "gpt-6-luna-medium",
+     "name": "GPT-6 Luna (Medium)",
+     "shortName": "GPT-6 Luna (medium)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "bf9708d8-933d-44f6-affa-b696a7a650c9",
+     "slug": "gpt-6-luna-low",
+     "name": "GPT-6 Luna (Low)",
+     "shortName": "GPT-6 Luna (low)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "63cb48ea-0b0c-4e07-8ded-6d28dec4fa28",
+     "slug": "gpt-6-luna-non-reasoning",
+     "name": "GPT-6 Luna (Non-reasoning)",
+     "shortName": "GPT-6 Luna (non-reasoning)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2026-09-22"
+    },
+    {
+     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+     "slug": "gpt-oss-120b",
+     "name": "gpt-oss-120b (High)",
+     "shortName": "gpt-oss-120b (high)",
+     "creatorName": "OpenAI",
+     "releaseDate": "2025-08-05"
+    },
+    {
      "id": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
      "slug": "gemini-4-carbon",
      "name": "Gemini 4 Carbon (High)",
@@ -3425,220 +3977,20 @@
      "releaseDate": "2026-03-03"
     },
     {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "slug": "gemma-4-e4b",
+     "name": "Gemma 4 E4B (Reasoning)",
+     "shortName": "Gemma 4 E4B",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-03"
+    },
+    {
      "id": "cd26a386-4873-46ff-b853-d239050025a2",
      "slug": "gemma-4-31b",
      "name": "Gemma 4 31B (Reasoning)",
      "shortName": "Gemma 4 31B",
      "creatorName": "Google",
      "releaseDate": "2026-04-02"
-    },
-    {
-     "id": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
-     "slug": "gpt-6-astra",
-     "name": "GPT-6 Astra (Max)",
-     "shortName": "GPT-6 Astra (max)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-03"
-    },
-    {
-     "id": "1f541ef3-913f-4eb2-9d07-0e93c7a9a5e3",
-     "slug": "gpt-6-astra-xhigh",
-     "name": "GPT-6 Astra (Xhigh)",
-     "shortName": "GPT-6 Astra (xhigh)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-03"
-    },
-    {
-     "id": "e05a4828-0536-4876-870d-a235023f992b",
-     "slug": "gpt-6-astra-high",
-     "name": "GPT-6 Astra (High)",
-     "shortName": "GPT-6 Astra (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-03"
-    },
-    {
-     "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
-     "slug": "gpt-6-1-sol",
-     "name": "GPT-6.1 Sol (Max)",
-     "shortName": "GPT-6.1 Sol (max)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-29"
-    },
-    {
-     "id": "092a3b0e-c5c8-45dc-bf1b-53673c8ff352",
-     "slug": "gpt-6-1-sol-xhigh",
-     "name": "GPT-6.1 Sol (Xhigh)",
-     "shortName": "GPT-6.1 Sol (xhigh)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-29"
-    },
-    {
-     "id": "e97a4ef5-e817-480e-9595-12f81dc4974f",
-     "slug": "gpt-6-astra-medium",
-     "name": "GPT-6 Astra (Medium)",
-     "shortName": "GPT-6 Astra (medium)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-03"
-    },
-    {
-     "id": "b0c462cf-f2d0-4126-9434-28db9502219f",
-     "slug": "gpt-6-1-terra",
-     "name": "GPT-6.1 Terra (Max)",
-     "shortName": "GPT-6.1 Terra (max)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-10-26"
-    },
-    {
-     "id": "3b84fee3-b70a-41bc-819e-5fbdef9a0042",
-     "slug": "gpt-6-1-sol-high",
-     "name": "GPT-6.1 Sol (High)",
-     "shortName": "GPT-6.1 Sol (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-29"
-    },
-    {
-     "id": "a2e51d62-ea4e-4f15-8be0-be9dc1fb489d",
-     "slug": "gpt-6-1-sol-medium",
-     "name": "GPT-6.1 Sol (Medium)",
-     "shortName": "GPT-6.1 Sol (medium)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-29"
-    },
-    {
-     "id": "e8d443ba-8aca-4830-a186-ae869bb9c6fe",
-     "slug": "gpt-6-1-terra-xhigh",
-     "name": "GPT-6.1 Terra (Xhigh)",
-     "shortName": "GPT-6.1 Terra (xhigh)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-10-26"
-    },
-    {
-     "id": "c50ea08c-88c0-4eb7-85b8-27f2bbf6d527",
-     "slug": "gpt-6-sol",
-     "name": "GPT-6 Sol (Max)",
-     "shortName": "GPT-6 Sol (max)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "a3f8100d-e38f-408b-b0fa-0085dae18dc1",
-     "slug": "gpt-6-astra-low",
-     "name": "GPT-6 Astra (Low)",
-     "shortName": "GPT-6 Astra (low)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-03"
-    },
-    {
-     "id": "ea3e1f50-f62d-41d2-849a-9af0413e4d37",
-     "slug": "gpt-6-1-terra-high",
-     "name": "GPT-6.1 Terra (High)",
-     "shortName": "GPT-6.1 Terra (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-10-26"
-    },
-    {
-     "id": "c441e158-a87d-4116-911b-93325e4b4f1c",
-     "slug": "gpt-6-1-terra-medium",
-     "name": "GPT-6.1 Terra (Medium)",
-     "shortName": "GPT-6.1 Terra (medium)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-10-26"
-    },
-    {
-     "id": "e76e0fe5-93ca-4272-9359-2eb1740467d1",
-     "slug": "gpt-6-1-sol-low",
-     "name": "GPT-6.1 Sol (Low)",
-     "shortName": "GPT-6.1 Sol (low)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-29"
-    },
-    {
-     "id": "bcf8db0a-3bb6-4d82-9516-0f57370c85a6",
-     "slug": "gpt-5-6-terra",
-     "name": "GPT-5.6 Terra (Max)",
-     "shortName": "GPT-5.6 Terra (max)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "0d3c777f-6817-42d7-9bb9-223314bc5a57",
-     "slug": "gpt-6-1-terra-non-reasoning",
-     "name": "GPT-6.1 Terra (Non-reasoning)",
-     "shortName": "GPT-6.1 Terra (non-reasoning)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-10-26"
-    },
-    {
-     "id": "c955b262-a17f-4f1a-b097-6860b866295b",
-     "slug": "gpt-6-1-terra-low",
-     "name": "GPT-6.1 Terra (Low)",
-     "shortName": "GPT-6.1 Terra (low)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-10-26"
-    },
-    {
-     "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
-     "slug": "gpt-6-luna",
-     "name": "GPT-6 Luna (Max)",
-     "shortName": "GPT-6 Luna (max)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
-     "slug": "gpt-5-6-luna",
-     "name": "GPT-5.6 Luna (Max)",
-     "shortName": "GPT-5.6 Luna (max)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-07-09"
-    },
-    {
-     "id": "19813eb2-460a-475c-af65-810bb8660fec",
-     "slug": "gpt-6-luna-xhigh",
-     "name": "GPT-6 Luna (Xhigh)",
-     "shortName": "GPT-6 Luna (xhigh)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "7d1229bc-deea-4717-ba5b-f59a35d991e3",
-     "slug": "gpt-6-luna-high",
-     "name": "GPT-6 Luna (High)",
-     "shortName": "GPT-6 Luna (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "36667da0-9222-4967-adbb-f7efa15ad213",
-     "slug": "gpt-6-luna-medium",
-     "name": "GPT-6 Luna (Medium)",
-     "shortName": "GPT-6 Luna (medium)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "bf9708d8-933d-44f6-affa-b696a7a650c9",
-     "slug": "gpt-6-luna-low",
-     "name": "GPT-6 Luna (Low)",
-     "shortName": "GPT-6 Luna (low)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "63cb48ea-0b0c-4e07-8ded-6d28dec4fa28",
-     "slug": "gpt-6-luna-non-reasoning",
-     "name": "GPT-6 Luna (Non-reasoning)",
-     "shortName": "GPT-6 Luna (non-reasoning)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2026-09-22"
-    },
-    {
-     "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
-     "slug": "gpt-oss-120b",
-     "name": "gpt-oss-120b (High)",
-     "shortName": "gpt-oss-120b (high)",
-     "creatorName": "OpenAI",
-     "releaseDate": "2025-08-05"
     },
     {
      "id": "e994a6e0-d36b-4dab-8ae1-c1b469e4d9e2",
@@ -4113,6 +4465,14 @@
      "releaseDate": "2026-03-16"
     },
     {
+     "id": "8215372b-66ff-457b-855e-e8abeafc9571",
+     "slug": "a-x-k2",
+     "name": "A.X-K2",
+     "shortName": "A.X-K2",
+     "creatorName": "SK Telecom",
+     "releaseDate": "2026-08-12"
+    },
+    {
      "id": "18721247-4e56-4cf7-9a9d-c71cc60c0961",
      "slug": "k-exaone-2-0",
      "name": "K-EXAONE 2.0",
@@ -4151,14 +4511,6 @@
      "shortName": "Granite 4.2 3B",
      "creatorName": "IBM",
      "releaseDate": "2026-08-25"
-    },
-    {
-     "id": "8215372b-66ff-457b-855e-e8abeafc9571",
-     "slug": "a-x-k2",
-     "name": "A.X-K2",
-     "shortName": "A.X-K2",
-     "creatorName": "SK Telecom",
-     "releaseDate": "2026-08-12"
     }
    ]
   }

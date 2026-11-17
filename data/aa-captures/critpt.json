@@ -1,7 +1,7 @@
 {
  "key": "critpt",
  "source_url": "https://artificialanalysis.ai/evaluations/critpt",
- "captured_at": "2026-11-16",
+ "captured_at": "2026-11-17",
  "selectors": 6,
  "charts": [
   {
@@ -6679,6 +6679,14 @@
      "costPerTask": 0.06913496071428571
     },
     {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "slug": "gemma-4-e4b",
+     "name": "Gemma 4 E4B (Reasoning)",
+     "shortName": "Gemma 4 E4B",
+     "creatorName": "Google",
+     "costPerTask": 0.0008257788571428572
+    },
+    {
      "id": "cd26a386-4873-46ff-b853-d239050025a2",
      "slug": "gemma-4-31b",
      "name": "Gemma 4 31B (Reasoning)",
@@ -6877,14 +6885,6 @@
      "shortName": "Gemma 3 1B",
      "creatorName": "Google",
      "costPerTask": 0
-    },
-    {
-     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
-     "slug": "gemma-4-e4b",
-     "name": "Gemma 4 E4B (Reasoning)",
-     "shortName": "Gemma 4 E4B",
-     "creatorName": "Google",
-     "costPerTask": 0.0008257788571428572
     },
     {
      "id": "f4e8194a-d0e6-48eb-92be-4307de5aeeec",
@@ -12962,6 +12962,14 @@
      "releaseDate": "2026-03-03"
     },
     {
+     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
+     "slug": "gemma-4-e4b",
+     "name": "Gemma 4 E4B (Reasoning)",
+     "shortName": "Gemma 4 E4B",
+     "creatorName": "Google",
+     "releaseDate": "2026-04-03"
+    },
+    {
      "id": "cd26a386-4873-46ff-b853-d239050025a2",
      "slug": "gemma-4-31b",
      "name": "Gemma 4 31B (Reasoning)",
@@ -13248,14 +13256,6 @@
      "shortName": "Gemma 3 1B",
      "creatorName": "Google",
      "releaseDate": "2025-03-13"
-    },
-    {
-     "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
-     "slug": "gemma-4-e4b",
-     "name": "Gemma 4 E4B (Reasoning)",
-     "shortName": "Gemma 4 E4B",
-     "creatorName": "Google",
-     "releaseDate": "2026-04-03"
     },
     {
      "id": "ddfdaf64-3f8e-40a6-a492-608ee83a1351",
@@ -15586,6 +15586,14 @@
      "releaseDate": "2026-07-15"
     },
     {
+     "id": "8215372b-66ff-457b-855e-e8abeafc9571",
+     "slug": "a-x-k2",
+     "name": "A.X-K2",
+     "shortName": "A.X-K2",
+     "creatorName": "SK Telecom",
+     "releaseDate": "2026-08-12"
+    },
+    {
      "id": "18721247-4e56-4cf7-9a9d-c71cc60c0961",
      "slug": "k-exaone-2-0",
      "name": "K-EXAONE 2.0",
@@ -16336,14 +16344,6 @@
      "shortName": "Celeris-1",
      "creatorName": "Celeris",
      "releaseDate": "2026-07-24"
-    },
-    {
-     "id": "8215372b-66ff-457b-855e-e8abeafc9571",
-     "slug": "a-x-k2",
-     "name": "A.X-K2",
-     "shortName": "A.X-K2",
-     "creatorName": "SK Telecom",
-     "releaseDate": "2026-08-12"
     },
     {
      "id": "8ca48626-ff5e-48b3-8401-38081376d706",

@@ -44,7 +44,7 @@ await withSpeedCaptureLock(async () => {
           throw new Error("Complete EvaluationDataProvider.selectedModels timing payload is missing");
         });
         if (!unitEvidence) {
-          // The official loader divides tool milliseconds by 1000 before adding to evalTimePerTask.
+          // The shared loader defines the unit but may be bundled with a later evaluation page.
           const scripts = await page.locator("script[src]").evaluateAll(elements => elements.map(element => element.src));
           for (const url of scripts) {
             if (!url.startsWith("https://artificialanalysis.ai/")) continue;
@@ -58,7 +58,6 @@ await withSpeedCaptureLock(async () => {
             unitEvidence = { source_url: url, captured_at: new Date().toISOString(), sha256: createHash("sha256").update(code).digest("hex"), excerpt };
             break;
           }
-          if (!unitEvidence) throw new Error("Official evalTimePerTask seconds definition is missing");
         }
         evaluations.push({ evaluation_slug: source.slug, source_url: source.url, captured_at: new Date().toISOString(),
           ...captured, unit: "seconds", metric_path: "EvaluationDataProvider.selectedModels[].evalTimePerTask",
@@ -73,6 +72,7 @@ await withSpeedCaptureLock(async () => {
       }
     }
     if (failures.length) throw new Error(`Timing capture incomplete: ${failures.join("; ")}`);
+    if (!unitEvidence) throw new Error("Official evalTimePerTask seconds definition is missing");
     const capture = { format_version: 1, unit_evidence: unitEvidence, evaluations };
     validateTimingCapture(capture, new Date().toISOString());
     const output = "data/aa-speed-captures.json";
