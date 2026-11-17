@@ -46,7 +46,13 @@ const efforts = ["Max", "Xhigh", "High", "Medium", "Low"];
 const groups: [string, Pair[]][] = [
   ["Claude", ["Opus", "Sonnet", "Haiku"].flatMap(m => efforts.map((e): Pair => [`${m} 5.5 ${e === "Xhigh" ? "xHigh" : e}`, claude(m, e)]))],
   ["Fable", [...[...efforts].reverse().map((e): Pair => [`Fable 5.2 ${e === "Xhigh" ? "xHigh" : e}`, claude("Fable 5.2", e)]), ["Fable 5.1 High", claude("Fable 5.1", "High")], ["Fable 5.1 Max", claude("Fable 5.1", "Max")]]],
-  ["GPT", efforts.flatMap(e => [["Astra", "GPT-6 Astra"], ["Sol", "GPT-6.1 Sol"], ["Terra", "GPT-6.1 Terra"]].map(([s, n]): Pair => [`${s} ${e === "Xhigh" ? "xHigh" : e}`, `${n} (${e})`]))],
+  ["GPT", efforts.flatMap(e => [
+    ["Astra", "GPT-6 Astra"],
+    ["Sol", "GPT-6.1 Sol"],
+    ["Terra", "GPT-6.1 Terra"],
+    ["Sol 6.2", "GPT-6.2 Sol"],
+    ["Astra 6.2", "GPT-6.2 Astra"],
+  ].map(([s, n]): Pair => [`${s} ${e === "Xhigh" ? "xHigh" : e}`, `${n} (${e})`]))],
   ["Free", [
     ["DeepSeek V4.1 Flash 1017 Max", "DeepSeek V4.1 Flash 1017 (Max)"], ["DeepSeek V4.1 Flash 1017 High", "DeepSeek V4.1 Flash 1017 (High)"],
     ["DeepSeek V4.1 Flash 1017 Non-reasoning", "DeepSeek V4.1 Flash 1017 (Non-reasoning)"], ["DeepSeek V4.1 Flash Max", "DeepSeek V4.1 Flash (Max)"],
@@ -85,4 +91,4 @@ for (const kind of ["Ranks", "Scores"] as const) {
     out.push("");
   }
 }
-console.log(out.join("\n"));
+console.log(out.join("\n").trimEnd());
