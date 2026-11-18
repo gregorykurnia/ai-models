@@ -1086,7 +1086,7 @@ th.numeric {
   cursor: default;
 }
 
-/* Phone view: model cards replace the wide table below 768px. */
+/* Phone view defaults to cards below 768px. */
 .master-cards,
 .master-intro-mobile,
 .master-mobile-controls {
@@ -1269,7 +1269,6 @@ th.numeric {
 }
 
 .master-mobile-controls__filters {
-  grid-column: 1 / -1;
   width: 100%;
   justify-content: center;
 }
@@ -1302,6 +1301,50 @@ th.numeric {
 
   .master-cards {
     display: grid;
+  }
+
+  .master--phone-table .master-table-view {
+    display: block;
+  }
+
+  .master--phone-table .master-cards {
+    display: none;
+  }
+
+  .master {
+    --master-model-width: 7.5rem;
+  }
+
+  .master-model {
+    border-right: var(--border-width-default) var(--border-style) var(--border-default);
+  }
+
+  .master td.master-model {
+    padding-inline: var(--space-2);
+  }
+
+  .master-provider,
+  .master-cost {
+    position: static;
+  }
+
+  .master th:is([data-evaluation="frontiercode-2-0"], [data-evaluation="swe-atlas-qna-aa"]) {
+    width: 6rem;
+    max-width: 6rem;
+    white-space: normal;
+  }
+
+  .master th[data-evaluation="frontiercode-2-0"] {
+    width: 6.5rem;
+    max-width: 6.5rem;
+  }
+
+  .master th:is([data-evaluation="frontiercode-2-0"], [data-evaluation="swe-atlas-qna-aa"]) > button {
+    padding-inline: var(--space-1);
+  }
+
+  .master--phone-table .table-overflow-cue-slot:not(:empty) {
+    display: flex;
   }
 
   .master-intro {

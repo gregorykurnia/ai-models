@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { evaluationTimePerTask, getModelSpeed } from "../src/lib/model-speed.ts";
+import { checkSweAtlasEvaluation, sweAtlasSlug } from "./check-swe-atlas-qna-browser.mjs";
 
 // Run with node --import tsx; supply an installed Playwright module as in the master check.
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || "playwright");
@@ -10,8 +11,10 @@ const evaluations = [
   ["terminal-bench-4-0", "Time per task"],
   ["aa-briefcase-analytical-quality-elo", "Time per task"],
   ["finance-accounting", "Time per Intelligence Index task"],
+  [sweAtlasSlug],
 ].filter(([slug]) => !process.env.EVALUATION_SLUG || process.env.EVALUATION_SLUG === slug);
-await mkdir(output, { recursive: true });
+assert(evaluations.length, `Unknown EVALUATION_SLUG: ${process.env.EVALUATION_SLUG}`);
+if (evaluations.some(([slug]) => slug !== sweAtlasSlug)) await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ headless: true, executablePath: process.env.CHROME_PATH || undefined });
 const errors = [];
 try {
@@ -26,6 +29,10 @@ try {
   };
 
   for (const [slug, label] of evaluations) {
+    if (slug === sweAtlasSlug) {
+      await checkSweAtlasEvaluation(page, base);
+      continue;
+    }
     await page.setViewportSize({ width: 1440, height: 1000 });
     // Check complete cohorts, including the 253-row component's second page.
     if(process.env.CAPTURE_ONLY!=="1") for (const sort of ["time_per_task", "first_answer"]) {
