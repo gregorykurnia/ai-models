@@ -19,10 +19,10 @@ test("browser fixture includes all audit rows and all three merged Briefcase com
 
 test("browser fixture follows source rank when capture rows are in a different order", () => {
   const { evaluations } = newModelsExpectations(dataset, audit);
-  for (const id of ["aa-briefcase-analytical-quality-elo", "aa-briefcase-presentation-elo"]) {
+  for (const [id, rank] of [["aa-briefcase-analytical-quality-elo", 7], ["aa-briefcase-presentation-elo", 10]] as const) {
     const briefcase = evaluations.find(({ evaluation }) => evaluation.id === id)!;
     assert.equal(briefcase.entries[0].model, "Qwen4 Max");
-    assert.equal(briefcase.entries[0].source_rank, 7);
+    assert.equal(briefcase.entries[0].source_rank, rank);
   }
 });
 
@@ -55,5 +55,7 @@ test("browser fixture rejects the right name attached to the wrong provider", ()
 
 test("browser fixture fails on an omitted evaluation or a stale audited rank", () => {
   assert.throws(() => newModelsExpectations(dataset, audit.split("\n").filter(line => !line.startsWith("| CritPt |")).join("\n")), /audit covers every bundled evaluation/);
-  assert.throws(() => newModelsExpectations(dataset, audit.replace("53.91922873 (#16)", "53.91922873 (#1)")), /intelligence-index: Gemini 4 Hydrogen \(Xhigh\) score and rank agree with audit/);
+  const wrongRank = audit.replace(/(^\| Intelligence Index \|.*? \| )([\d.]+) \(#\d+\)/m, "$1$2 (#999)");
+  assert.notEqual(wrongRank, audit);
+  assert.throws(() => newModelsExpectations(dataset, wrongRank), /intelligence-index: Gemini 4 Hydrogen \(Xhigh\) score and rank agree with audit/);
 });
