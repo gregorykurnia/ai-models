@@ -1,3 +1,69 @@
+# New models: GPT-6.2 Astra and GPT-6.2 Sol (five efforts each)
+
+Makes sure every GPT-6.2 Astra and Sol configuration Artificial Analysis (AA) scores is on the master leaderboard and
+on each evaluation where AA scores it, checks it in the browser, and brings the rest of
+`~/.claude/playbooks/plans-and-models.md` onto the same capture. Earlier plans:
+[IMPLEMENTATION_PLAN-done.md](IMPLEMENTATION_PLAN-done.md) (Gemini 4 Hydrogen, Argon Medium and Qwen4 Max: phase done,
+release folded into O1 below).
+
+Working branch: `gemini-4-hydrogen-qwen4` (the GPT-6.2 capture `217fd80` is already on it, above the unreleased
+Hydrogen work). Every task commits and pushes there. `main` deploys to production and moves only on O1.
+
+## What the owner asked (2026-11-18)
+
+"Make sure that all the new GPT Astra and Sol models are in the app."
+
+Simplest design that meets it: the data is already imported (`217fd80`, AA capture of 2026-11-17), so this plan
+proves it rather than rebuilding it: one audit, one browser check, the playbook ranks, a review and the release. No
+new code paths. The two new-model scripts (`scripts/audit-new-models-coverage.ts`,
+`scripts/check-new-models-browser.mjs`) get a model-set argument (`gpt-6.2`, `hydrogen`) instead of a new copy each, so the Hydrogen checks keep running
+until that release is live.
+
+## Models (in the 2026-11-18 capture)
+
+| Name on the leaderboard | AA name in the captures | Evaluations with a score (of 18) |
+|---|---|---|
+| GPT-6.2 Astra (Low / Medium / High / Xhigh / Max) | `GPT-6.2 Astra (low)` … `(max)` | 17 (legacy CritPt absent on AA) |
+| GPT-6.2 Sol (Low / Medium / High / Xhigh / Max) | `GPT-6.2 Sol (low)` … `(max)` | 16 (legacy CritPt and MMMU-Pro absent on AA) |
+
+Checked 2026-11-18 with `aggregateMaster` on the bundled data: each of the ten is exactly one master row, provider
+OpenAI. Older rows (GPT-6 Astra, GPT-6 Sol, GPT-6.1 Sol, GPT-5.6 Sol) stay as they are.
+
+## Decisions (defaults, so no task stops to ask)
+
+- **AA is the source; invent nothing.** A model joins an evaluation only where AA scores it. A gap where AA shows no
+  score stays a dash and the audit names it with the page checked.
+- **Recapture only if AA has moved.** If 1.1 finds AA now shows a GPT-6.2 Astra or Sol score or configuration our
+  17 Nov capture lacks (a CritPt or MMMU-Pro score, a Non-reasoning or other new effort), 1.2 runs the full refresh.
+  Otherwise 1.2 is ticked "not needed" in its first minutes.
+- **Search terms:** the master search splits on commas and matches substrings, so "GPT-6.2 Astra" and "GPT-6.2 Sol"
+  each find exactly five rows.
+- **Local checks use bundled data.** `.env.local` sets no `DATA_SOURCE`, so builds and browser checks read the files,
+  not Firestore.
+- **Playbook:** the GPT table there already uses the 17 Nov ranks; the Claude, free-model and Hydrogen tables and the
+  prose figures that cite them still use 16 Nov. 1.4 moves them to 17 Nov from `docs/model-table-ranks-2026-11-17.md`
+  so one file never mixes two captures. No pick changes without the owner's word; the task lists any pick the new
+  numbers would suggest.
+
+## Before the run
+
+- [x] Branch `gemini-4-hydrogen-qwen4` pushed with upstream; GPT-6.2 capture committed (`217fd80`, ranks `39679dd`).
+
+## Phase 1: check and release
+
+| # | Task | Pick | Why | Done |
+|---|---|---|---|---|
+| 1.1 | **AA gap check and coverage audit** [no look]. Give `scripts/audit-new-models-coverage.ts` a model-set argument (`--set gpt-6.2`, `--set hydrogen`; today's Hydrogen, Argon and Qwen list becomes the `hydrogen` set, unchanged) and add the ten GPT-6.2 rows (provider OpenAI) as `gpt-6.2`, writing `docs/GPT_6_2_ASTRA_SOL_COVERAGE.md`: one row per evaluation in `data/leaderboards.json`, one column per model, each cell the stored value and its rank (`source_rank`) or "not on AA (captured 2026-11-17)", traced to its capture file; plus Intelligence Index cost per task, Time per Task and First Answer per model. Its fuzzy check lists every master row matching `/gpt-6\.2/i` and fails unless that list is exactly the set. Then on live AA: open each model's page and the CritPt, MMMU-Pro, Terminal-Bench 4.0 and FrontierCode pages, list every GPT-6.2 Astra or Sol configuration AA shows (efforts, Non-reasoning, minis), and compare our stored Intelligence Index, Terminal-Bench 4.0 and FrontierCode scores for all ten with AA's. Read: Models and Decisions above; `docs/GEMINI_4_HYDROGEN_QWEN4_COVERAGE.md` for the layout. **Done when**: `--set gpt-6.2` and `--set hydrogen` both pass; the "not on AA" cells are exactly CritPt for all ten and MMMU-Pro for the five Sol (15 and 14 scores), or each other gap is confirmed on its AA page and named; the fuzzy list is exactly the ten; the doc ends with a "What AA shows now that we lack" list, holding every configuration, score or difference beyond rounding the live check found (empty if none). | Sol Max | Checks facts against AA (Omniscience 29; xHigh and High 37, 38) and changes a script | 2026-11-18 · both sets pass, 15 gaps confirmed, CritPt v2 scores listed |
+| 1.2 | **Refresh if AA moved** [no look]. If 1.1's last list is empty, tick this row "not needed" and stop. Otherwise run the full refresh: capture all AA pages and both Briefcase tabs, `capture:aa-speed`, `import:briefcase-components`, `import:aa-index-costs`, `import:aa-evaluations` last (steps and `PLAYWRIGHT_MODULE` in `docs/DATA_DICTIONARY.md` and `docs/AA_BRIEFCASE_RUBRIC_REFRESH_PROMPT.md`), update the capture date in `docs/DATA_DICTIONARY.md` and `src/app/about/data/page.tsx`, run `scripts/model-table-ranks.ts` into `docs/model-table-ranks-<date>.md`. A new GPT-6.2 configuration goes into this plan's Models table, the `gpt-6.2` set in both scripts and 1.3's search counts. **Done when**: every item on 1.1's list is on the leaderboard or named as still missing on AA; both audit sets pass again; `validate-master.ts`, the rubric, suitability and model-speed tests and `tsc` pass; a second `import:aa-evaluations` changes no file; no model or evaluation row count shrinks unless the commit body names why; the commit body lists row counts before → after. | Sol Max | Imports can corrupt every leaderboard; the last refreshes ran cleanly on Sol | 2026-11-18 · both CritPt v2 subsets imported, checks passed, repeat import identical |
+| 1.3 | **Browser check** [look]. Give `scripts/check-new-models-browser.mjs` the same `gpt-6.2` / `hydrogen` sets (the Hydrogen pass, Qwen spaced search included, stays as it is) with groups `GPT-6.2 Astra` ×5 and `GPT-6.2 Sol` ×5. Production build (`next build`; webpack if Turbopack hits the sandbox port limit), `next start` via the node `next` bin so killing `$!` frees the port, run `scripts/check-master-browser.mjs` with both sets (confirm both passes ran in its output), stop the server by its PID. Screenshots to `docs/screenshots/new-models-gpt-6-2/`. **Done when**: both passes pass, including the per-evaluation row check on every evaluation 1.1 lists for the ten, and asserting each of them shows a dash (not 0 or blank) in the master's CritPt cell and that no Sol row is on the MMMU-Pro page; the searches "gpt-6.2 sol" (lowercase) find five and "GPT-6.2 Astra, GPT-6.2 Sol" find ten (whether "GPT 6.2 Sol" finds them is recorded in the commit body, not fixed); shots at 1440px and 390px of the master searched for "GPT-6.2 Astra" and "GPT-6.2 Sol" show five rows or cards each, the full name with its effort readable, so no two look alike and none could be GPT-6 Astra; shots of Intelligence Index and Terminal-Bench 4.0 at both widths show the ten at the ranks the audit gives, names fitting their column, cost, Time per Task and First Answer filled or a dash; a shot of `/about/data` shows 2026-11-17 (or 1.2's date), fixed here if it doesn't. | Sol High | A check run (build, server, browser, shots): Terminal Bench 17 for $0.56 | 2026-11-18 · both sets passed all 18 evaluations, 1440px and 390px screenshots checked |
+| 1.4 | **Playbook on one capture** [no look]. In `~/.claude/playbooks/plans-and-models.md`: redo every rank in "Model choice for coding implementation" (Claude table and its Fable 5.2 table), "Free models: backup only" and "Gemini 4 Hydrogen: compare only" from `docs/model-table-ranks-2026-11-17.md` (or 1.2's newer file), with their "capture of" dates and "out of N" counts, then every prose figure in the file that cites a Claude, Fable, free or Hydrogen rank (such as "Opus 5.5 High: 16, 24" in the GPT bullets). Leave the GPT table's numbers unless 1.2 ran. Grep `~/.claude/playbooks/new-app.md` and `blank-slate-redesign.md` for rank figures and update any that moved. Commit only those files in `~/.claude` (branch `main`, upstream `origin/main`; leave its untracked `__pycache__` folders alone) and push. If the Codex sandbox refuses the write or the push outside this repo, don't work around it: save the edited files to `docs/playbook-1.4/` here, commit them on this branch, and say so in the final message; R1 copies them into `~/.claude` and pushes. Read: those sections only. **Done when**: every table cell matches the rank file; the commit body lists each prose figure changed (old → new) and each "out of N" count; the two other playbooks are grepped and any moved figure changed; the final message lists any pick the new numbers would change, and changes none. | Sol Max | Mostly copying ranks from the rank file, checked cell by cell in R1 | 2026-11-18 · 18 Nov ranks verified, R1 handoff in `docs/playbook-1.4/` |
+| R1 | **Phase 1 review**: the diff from `main` (Hydrogen work and GPT-6.2 capture included), the 1.1 audit against the captures, the 1.3 shots, the 1.4 tables against the rank file. Quick fixes only; the rest become fix rows under this one. **Done when**: if `docs/playbook-1.4/` exists, its files are copied into `~/.claude/playbooks/`, committed and pushed there, and the folder is deleted here; three of the ten models' "What AA shows now" checks are redone on live AA and agree with 1.1; the 1.4 tables match the rank file cell by cell; every FINDING is fixed or has a fix row; if a fix touched data or a page, both browser passes run again and pass. | Opus 5.5 High | Other family from most of the build || 2026-11-18 · playbook pushed (`~/.claude` 5b00d26), 444 cells match, 3 prose figures fixed, 3 models agree live; F1–F2 |
+| 1.F1 | **Fix: capture completeness** [no look]. `scripts/capture-aa-evaluations.mjs` `expandSelectors` swallows every failure and only the two CritPt v2 pages check that the score chart holds all "N of M models"; a failed "Select all" on any other page silently captures a partial list, and the importer rebuilds that evaluation from it (rows dropped, ranks shifted). Make every page's score chart pass the same check (selector reads "M of M", chart length M) and throw otherwise, reading the selector that belongs to the score chart, not `.first()`. Don't recapture into `data/`: prove it on a temp folder (`cd` into an empty folder so `data/aa-captures` lands there). **Done when**: a live run of all 14 pages into a temp folder passes; with the "Select all" click forced to fail (env flag or a one-off edit, reverted) the run throws naming the page; `tests/aa-evaluations-import.test.ts` and `tsc` pass. | Sol Max | Capture feeds every leaderboard | 2026-11-18 · 14 live pages verified, forced click rejected, import tests and tsc passed |
+| 1.F2 | **Fix: master dash and browser checks** [look]. (a) `src/components/master-leaderboard.tsx` `MissingEvaluationRank`: the CritPt dash's only text is `title="Not ranked"`, so screen readers hear a dash; keep the visible dash, hide it from assistive tech and add an `sr-only` "Not ranked", and update the dash assertions in `scripts/check-new-models-browser.mjs` (lines ~265-310) to read the visible text. (b) `scripts/check-master-browser.mjs` ~118: after ArrowRight also assert the region's `scrollLeft` grew; read `aria-sort` and row text with retrying `expect`-style waits, not once after the URL changes. (c) `src/components/leaderboard.tsx:109`: the static "Scroll sideways for all columns ↔" hint shows beside the frame's own "More columns →" cue (Intelligence Index at 1440px); drop the static hint or show it only when the cue doesn't, and stop `.table-overflow-cue-slot` reserving an empty line when no cue shows (keep the layout from jumping on scroll). **Done when**: both browser passes (`gpt-6.2`, `hydrogen`) and `check-master-browser.mjs` pass on a production build; an axe or accessibility-tree read of a master CritPt cell gives "Not ranked"; shots of Intelligence Index at 1440px and 390px show one scroll cue, no empty gap above the table. | Sol Max | Page change, checked in the browser | 2026-11-18 · local production build, both model sets and master passed · CritPt accessibility tree and 1440px/390px shots checked |
+| O1 | *owner*: release with `git push origin gemini-4-hydrogen-qwen4:main`, then straight away in a Claude session in this folder say "publish the data" (checks, `npm run publish:data`, Firestore read-back per `CLAUDE.md`); production reads Firestore, so the new models show only after the publish. On the live site, search the master for "GPT-6.2 Astra", "GPT-6.2 Sol" and "Hydrogen", open Terminal-Bench 4.0, and check `/about/data` shows the capture date. | — | — | 2026-11-18 · `e2d9b70` live, 18 snapshots verified, phone and desktop checks passed |
+
+---
+
 # New models: Gemini 4 Hydrogen (four efforts), Gemini 4 Argon (Medium), Qwen4 Max
 
 Adds six Artificial Analysis (AA) model configurations to the master leaderboard and to every individual
