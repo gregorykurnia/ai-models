@@ -106,7 +106,6 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds}:{entri
       <Button variant="secondary" size="default" aria-label="Reverse sort order" title="Toggle sort direction" onClick={()=>update({direction:state.direction==="asc"?"desc":"asc"})}>{state.direction==="asc"?"Asc ↑":"Desc ↓"}</Button>
     </div>
     <div className="evaluation-table-view">
-      <p className="evaluation-scroll-hint">Scroll sideways for all columns ↔ · Model names stay visible.</p>
       <TableScroll showOverflowCue label={`${evaluation.display_name} source rankings, scroll horizontally for all columns`}>
         <Table className="evaluation-table" style={{tableLayout:"fixed",width:columns.reduce((sum,column)=>sum+columnWidths[columnId(column)],0)}}>
           <caption className="sr-only">{evaluation.display_name} source rankings</caption>

@@ -9,8 +9,10 @@ export function TableScrollFrame({ regionId, children }: { regionId: string; chi
     const region = document.getElementById(regionId);
     if (!region) return;
     const update = () => {
-      setEarlierColumns(region.scrollLeft > 1);
-      setMoreColumns(region.scrollWidth - region.clientWidth - region.scrollLeft > 1);
+      const overflow = region.scrollWidth - region.clientWidth;
+      const scrollLeft = region.scrollLeft;
+      setEarlierColumns(overflow > 1 && scrollLeft > 0);
+      setMoreColumns(overflow > 1 && overflow - scrollLeft > 1);
     };
     const observer = new ResizeObserver(update);
     observer.observe(region);

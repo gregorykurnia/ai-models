@@ -1906,11 +1906,6 @@ a.ui-button:hover {
   margin: 0;
 }
 
-.evaluation-scroll-hint {
-  color: var(--text-secondary);
-  font-size: var(--font-size-caption);
-}
-
 .evaluation-table th {
   vertical-align: top;
   white-space: normal;
@@ -2032,6 +2027,10 @@ a.ui-button:hover {
   min-height: 1.25rem;
   margin-bottom: var(--space-2);
   display: flex;
+}
+
+.table-overflow-cue-slot:empty {
+  display: none;
 }
 
 .table-overflow-cue {

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { createRequire } from "node:module";
 
 function csvRows(csv){
   const rows=[];let row=[],cell="",quoted=false;
@@ -35,7 +36,9 @@ const speedColumns=[
 ];
 const speedCsvHeaders=["Model","Provider","Cost Per Intelligence Index Task (USD)","Time per Task (minutes)","First Answer (seconds)"];
 // Supply the path to an installed Playwright module; no production dependency.
-const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||"playwright");
+const playwrightModule=process.env.PLAYWRIGHT_MODULE||"playwright";
+const {chromium}=await import(playwrightModule);
+const {expect}=createRequire(import.meta.resolve(playwrightModule))("playwright/test");
 const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH||undefined});
 try {
   const page=await browser.newPage();
@@ -44,10 +47,13 @@ try {
   await page.setViewportSize({width:1440,height:900});
   await page.goto(`${baseUrl}/#master-leaderboard`);
   const section=page.locator("#master-leaderboard");
-  await section.locator("tbody tr").first().waitFor();
+  const desktopTable=section.locator(".master-table-view > table");
+  const desktopRows=desktopTable.locator("tbody tr");
+  const resultSummary=section.locator("p[aria-live='polite']").first();
+  await desktopRows.first().waitFor();
   const speedResults={};
   for(const column of speedColumns){
-    const header=section.locator(`thead th${column.selector}`);
+    const header=desktopTable.locator(`thead th${column.selector}`);
     assert.equal(await header.count(),1,`${column.label}: master header`);
     // Unit and capture date sit on their own lines, with no dangling separator (R1).
     assert.match(await header.locator("small").innerText(),new RegExp(`^${column.unit} · AA\\n\\d{1,2} \\w{3} \\d{4}$`));
@@ -55,20 +61,19 @@ try {
     assert.match(await header.locator("button").innerText(),/\S\u00a0[↕↑↓]/);
     await header.getByRole("button",{name:new RegExp(`^${column.label}`)}).click();
     await page.waitForFunction(key=>new URL(location.href).searchParams.get("ms")===key,column.key);
-    assert.equal(await header.getAttribute("aria-sort"),"ascending",`${column.label}: first click sorts ascending`);
-    assert.match(await section.locator(".master-sort-summary").innerText(),new RegExp(`Sorted by ${column.label}.* ↑$`,"i"));
+    await expect(header,`${column.label}: first click sorts ascending`).toHaveAttribute("aria-sort","ascending");
+    await expect(section.locator(".master-sort-summary")).toHaveText(new RegExp(`Sorted by ${column.label}.* ↑$`,"i"));
     const [headers,...rows]=csvRows(await exportCsv(page,section));
     assert.deepEqual(headers.slice(0,5),speedCsvHeaders);
     const values=rows.map(row=>row[column.csvColumn]===""?null:Number(row[column.csvColumn]));
     assertFastestFirst(values,column.label);
     assert(values.includes(null),`${column.label}: exercise missing speeds`);
-    const visible=await section.locator("tbody tr").evaluateAll((trs,selector)=>trs.map(tr=>[
-      tr.querySelector(".master-model a").textContent,tr.querySelector(selector).textContent,
-    ]),column.selector);
-    assert(visible.length>1,`${column.label}: populated table`);
-    assert.deepEqual(visible,rows.slice(0,visible.length).map(row=>[
+    const expected=rows.slice(0,25).map(row=>[
       row[0],row[column.csvColumn]===""?"—":Number(row[column.csvColumn]).toFixed(1),
-    ]),`${column.label}: visible table agrees with sorted CSV`);
+    ]);
+    await expect.poll(()=>desktopRows.evaluateAll((trs,selector)=>trs.map(tr=>[
+      tr.querySelector(".master-model a")?.textContent,tr.querySelector(selector)?.textContent,
+    ]),column.selector),{message:`${column.label}: first page agrees with sorted CSV`}).toEqual(expected);
     speedResults[column.key]={rows:rows.length,missing:values.filter(value=>value===null).length};
   }
 
@@ -87,8 +92,8 @@ try {
   }
 
   await page.goto(`${baseUrl}/?mq=GPT#master-leaderboard`);
-  await section.locator("tbody tr").first().waitFor();
-  const resultText=await section.locator("p[aria-live='polite']").first().textContent();
+  await desktopRows.first().waitFor();
+  const resultText=await resultSummary.textContent();
   const resultCount=Number(resultText?.match(/^[\d,]+/)?.[0].replaceAll(",","")||0);
   const downloadPromise=page.waitForEvent("download");
   await section.getByRole("button",{name:"Export CSV"}).click();
@@ -99,7 +104,8 @@ try {
   await section.locator("#master-provider").click();
   await section.getByRole("checkbox",{name:"OpenAI",exact:true}).click();
   await page.waitForFunction(()=>new URL(location.href).searchParams.get("mp")==="OpenAI");
-  const filteredText=await section.locator("p[aria-live='polite']").first().textContent();
+  await expect(resultSummary).toContainText("· OpenAI ·");
+  const filteredText=await resultSummary.textContent();
   const filteredCount=Number(filteredText?.match(/^[\d,]+/)?.[0].replaceAll(",","")||0);
   const filteredDownloadPromise=page.waitForEvent("download");
   await section.getByRole("button",{name:"Export CSV"}).click();
@@ -107,16 +113,23 @@ try {
   const filteredCsv=await readFile(await filteredDownload.path(),"utf8");
   assert.equal(filteredCsv.split(/\r?\n/).filter(Boolean).length,filteredCount+1);
   assert(filteredCsv.split(/\r?\n/).filter(Boolean).slice(1).every(row=>row.includes(",OpenAI,")));
-  await section.getByRole("button",{name:/AutomationBench-AA/}).click();
+  const automationSort=desktopTable.getByRole("button",{name:/AutomationBench-AA/});
+  await automationSort.click();
   await page.waitForURL(/ms=automationbench-aa/);
-  const link=section.locator("tbody .source-rank").first();
+  await expect(automationSort.locator("..")).toHaveAttribute("aria-sort","ascending");
+  const link=desktopRows.locator(".source-rank").first();
   const href=await link.getAttribute("href");
   await Promise.all([page.waitForURL(/leaderboards/),link.click()]);
   assert(await page.locator("#model-search").inputValue());
-  await page.goBack();await section.locator("tbody tr").first().waitFor();
+  await page.goBack();await desktopRows.first().waitFor();
   assert(page.url().includes("ms=automationbench-aa"));
-  await section.locator(".table-scroll").focus();await page.keyboard.press("ArrowRight");
-  assert(await section.locator(".table-scroll").evaluate(e=>e===document.activeElement));
+  const region=section.locator(".master-table-view");
+  await region.evaluate(element=>{element.scrollLeft=0;});
+  await region.focus();
+  const scrollStart=await region.evaluate(element=>element.scrollLeft);
+  await page.keyboard.press("ArrowRight");
+  await expect(region).toBeFocused();
+  await expect.poll(()=>region.evaluate(element=>element.scrollLeft),{message:"ArrowRight scrolls the master table"}).toBeGreaterThan(scrollStart);
 
   // Phone pass: cards replace the table below 768px.
   const cards=section.locator(".master-card");
@@ -128,17 +141,21 @@ try {
   for(const column of speedColumns){
     await section.locator("#master-mobile-sort").selectOption(column.key);
     await page.waitForFunction(key=>new URL(location.href).searchParams.get("ms")===key,column.key);
-    const values=await cards.evaluateAll((cs,label)=>cs.map(card=>{
-      const metric=[...card.querySelectorAll("dt")].find(dt=>dt.textContent===label);
-      return metric?.nextElementSibling?.textContent;
-    }),column.mobileLabel);
-    assert(values.every(value=>value==="—"||/^\d+\.\d (min|s)$/.test(value)),`${column.label}: phone card metric`);
-    assertFastestFirst(values.map(value=>value==="—"?null:parseFloat(value)),`${column.label}: phone sort`);
+    await expect(async()=>{
+      const values=await cards.evaluateAll((cs,label)=>cs.map(card=>{
+        const metric=[...card.querySelectorAll("dt")].find(dt=>dt.textContent===label);
+        return metric?.nextElementSibling?.textContent;
+      }),column.mobileLabel);
+      assert(values.every(value=>value==="—"||/^\d+\.\d (min|s)$/.test(value)),`${column.label}: phone card metric`);
+      assertFastestFirst(values.map(value=>value==="—"?null:parseFloat(value)),`${column.label}: phone sort`);
+    }).toPass({timeout:5000});
   }
   await section.locator("#master-mobile-sort").selectOption("aggregate-score");
   await page.waitForURL(/ms=aggregate-score/);
-  const aggregates=await cards.evaluateAll(cs=>cs.map(c=>parseFloat(c.querySelector(".master-card__metrics dd span")?.childNodes[0]?.textContent)).filter(Number.isFinite));
-  assert(aggregates.length>1&&aggregates.every((value,index)=>index===0||aggregates[index-1]<=value));
+  await expect(async()=>{
+    const aggregates=await cards.evaluateAll(cs=>cs.map(c=>parseFloat(c.querySelector(".master-card__metrics dd span")?.childNodes[0]?.textContent)).filter(Number.isFinite));
+    assert(aggregates.length>1&&aggregates.every((value,index)=>index===0||aggregates[index-1]<=value));
+  }).toPass({timeout:5000});
   const star=cards.first().getByRole("button",{name:/^(Add|Remove) .* to favorites$/});
   await star.click();
   assert.equal(await star.getAttribute("aria-pressed"),"true");

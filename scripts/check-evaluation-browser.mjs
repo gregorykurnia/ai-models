@@ -98,7 +98,7 @@ try {
         const headers=table.locator("th.speed-column");
         assert((await headers.nth(0).textContent()).startsWith(label));
         assert((await headers.nth(1).textContent()).startsWith("First Answer"));
-        assert.equal(await card.locator(".evaluation-scroll-hint").isVisible(),true);
+        await card.getByText("More columns →",{exact:true}).waitFor({state:"visible"});
         await page.screenshot({path:`${output}/${slug}-${width}-after.png`});
         await card.locator(".table-scroll").evaluate(element=>{element.scrollLeft=element.scrollWidth;});
         const endModel=await table.locator("tbody td.model").first().boundingBox();

@@ -38,7 +38,7 @@ function speedDetail(unit:string,date:string){
 
 function MissingEvaluationRank({evaluationId}:{evaluationId:string}){
   return evaluationId==="critpt"
-    ? <span className="muted" title="Not ranked">—</span>
+    ? <span className="muted relative"><span aria-hidden="true" title="Not ranked">—</span><span className="sr-only">Not ranked</span></span>
     : <span className="muted">Not ranked</span>;
 }
 
