@@ -1,7 +1,7 @@
 {
  "key": "gdp-pdf",
  "source_url": "https://artificialanalysis.ai/evaluations/gdp-pdf",
- "captured_at": "2026-11-17",
+ "captured_at": "2026-11-18",
  "selectors": 6,
  "charts": [
   {
@@ -2411,6 +2411,15 @@
      "logo": "/img/logos/nvidia.svg"
     },
     {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "label": "LFM3-1.7B",
+     "tooltipLabel": "LFM3-1.7B",
+     "value": 0.004,
+     "displayValue": "0.4%",
+     "url": "/models/lfm3-1-7b",
+     "logo": "/img/logos/liquidai.svg"
+    },
+    {
      "id": "2bfdd17a-e027-4068-a54e-b0e90a6df118",
      "label": "Gemma 3 27B",
      "tooltipLabel": "Gemma 3 27B Instruct",
@@ -2463,6 +2472,15 @@
      "displayValue": "0.0%",
      "url": "/models/ministral-3-3b",
      "logo": "/img/logos/mistral.svg"
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "label": "LFM3-VL-2B",
+     "tooltipLabel": "LFM3-VL-2B",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/lfm3-vl-2b",
+     "logo": "/img/logos/liquidai.svg"
     }
    ]
   },
@@ -4150,14 +4168,6 @@
      "costPerTask": 0.0049043027
     },
     {
-     "id": "eb4ba465-3fcd-4065-9fe2-e8225e7b2c6c",
-     "slug": "ring-2-6-1t",
-     "name": "Ring-2.6-1T",
-     "shortName": "Ring-2.6-1T",
-     "creatorName": "InclusionAI",
-     "costPerTask": 0.024486517
-    },
-    {
      "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
      "slug": "minimax-m3-1-flash",
      "name": "MiniMax-M3.1-Flash",
@@ -4339,7 +4349,7 @@
      "name": "Nemotron 3.5 Super VL",
      "shortName": "Nemotron 3.5 Super VL",
      "creatorName": "NVIDIA",
-     "costPerTask": 0.02021154
+     "costPerTask": 0.0160613875
     },
     {
      "id": "5b52def2-ac9b-4465-ad80-91ea8079e253",
@@ -4388,6 +4398,22 @@
      "shortName": "North Mini Code",
      "creatorName": "Cohere",
      "costPerTask": 0
+    },
+    {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "slug": "lfm3-1-7b",
+     "name": "LFM3-1.7B",
+     "shortName": "LFM3-1.7B",
+     "creatorName": "Liquid AI",
+     "costPerTask": 0.0037473196000000005
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "slug": "lfm3-vl-2b",
+     "name": "LFM3-VL-2B",
+     "shortName": "LFM3-VL-2B",
+     "creatorName": "Liquid AI",
+     "costPerTask": 0.007103471
     },
     {
      "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
@@ -4540,6 +4566,13 @@
      "logo": "/img/logos/nvidia.svg"
     },
     {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "label": "LFM3-1.7B",
+     "tooltipLabel": "LFM3-1.7B",
+     "url": "/models/lfm3-1-7b",
+     "logo": "/img/logos/liquidai.svg"
+    },
+    {
      "id": "4559e9f0-8aad-4681-89fb-68cb915e0f16",
      "label": "Qwen3 14B",
      "tooltipLabel": "Qwen3 14B (Reasoning)",
@@ -4594,6 +4627,13 @@
      "tooltipLabel": "DeepSeek V4 Flash 0420 (High)",
      "url": "/models/deepseek-v4-flash-0420",
      "logo": "/img/logos/deepseek.svg"
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "label": "LFM3-VL-2B",
+     "tooltipLabel": "LFM3-VL-2B",
+     "url": "/models/lfm3-vl-2b",
+     "logo": "/img/logos/liquidai.svg"
     },
     {
      "id": "8014c311-fa23-4a4b-8485-8a864db8a113",
@@ -4729,6 +4769,13 @@
      "logo": "/img/logos/meta.svg"
     },
     {
+     "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
+     "label": "Nemotron 3.5 Super VL",
+     "tooltipLabel": "Nemotron 3.5 Super VL",
+     "url": "/models/nemotron-3-5-super-vl",
+     "logo": "/img/logos/nvidia.svg"
+    },
+    {
      "id": "63cb48ea-0b0c-4e07-8ded-6d28dec4fa28",
      "label": "GPT-6 Luna (non-reasoning)",
      "tooltipLabel": "GPT-6 Luna (Non-reasoning)",
@@ -4776,13 +4823,6 @@
      "tooltipLabel": "MiMo-V2.6-Flash",
      "url": "/models/mimo-v2-6-flash",
      "logo": "/img/logos/xiaomi.svg"
-    },
-    {
-     "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
-     "label": "Nemotron 3.5 Super VL",
-     "tooltipLabel": "Nemotron 3.5 Super VL",
-     "url": "/models/nemotron-3-5-super-vl",
-     "logo": "/img/logos/nvidia.svg"
     },
     {
      "id": "af26fff4-8120-41be-a5f0-86aaea023f20",
@@ -4846,13 +4886,6 @@
      "tooltipLabel": "DeepSeek V4.1 Flash (Non-reasoning)",
      "url": "/models/deepseek-v4-1-flash",
      "logo": "/img/logos/deepseek.svg"
-    },
-    {
-     "id": "eb4ba465-3fcd-4065-9fe2-e8225e7b2c6c",
-     "label": "Ring-2.6-1T",
-     "tooltipLabel": "Ring-2.6-1T",
-     "url": "/models/ring-2-6-1t",
-     "logo": "/img/logos/inclusionai.jpg"
     },
     {
      "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",

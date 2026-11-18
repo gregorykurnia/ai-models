@@ -1,7 +1,7 @@
 {
  "key": "terminalbench-4-0",
  "source_url": "https://artificialanalysis.ai/evaluations/terminalbench-4-0",
- "captured_at": "2026-11-17",
+ "captured_at": "2026-11-18",
  "selectors": 6,
  "charts": [
   {
@@ -2357,6 +2357,24 @@
      "logo": "/img/logos/lg.png"
     },
     {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "label": "LFM3-1.7B",
+     "tooltipLabel": "LFM3-1.7B",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/lfm3-1-7b",
+     "logo": "/img/logos/liquidai.svg"
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "label": "LFM3-VL-2B",
+     "tooltipLabel": "LFM3-VL-2B",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/lfm3-vl-2b",
+     "logo": "/img/logos/liquidai.svg"
+    },
+    {
      "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
      "label": "Granite 4.2 8B",
      "tooltipLabel": "Granite 4.2 8B",
@@ -3928,7 +3946,7 @@
      "name": "DeepSeek V4.1 Flash (Non-reasoning)",
      "shortName": "DeepSeek V4.1 Flash (non-reasoning)",
      "creatorName": "DeepSeek",
-     "costPerTask": 1.5633642807448938
+     "costPerTask": 1.1094682799847817
     },
     {
      "id": "75e1c197-f239-4361-a9d6-66dccfead236",
@@ -3976,7 +3994,7 @@
      "name": "DeepSeek V4.1 Flash (Max)",
      "shortName": "DeepSeek V4.1 Flash (max)",
      "creatorName": "DeepSeek",
-     "costPerTask": 1.4105834818759944
+     "costPerTask": 1.3864484326008462
     },
     {
      "id": "fe4c0848-e284-4e52-a79d-cdc28392f1a9",
@@ -4097,14 +4115,6 @@
      "shortName": "Ling 3.0 Flash",
      "creatorName": "InclusionAI",
      "costPerTask": 0.12501417210141172
-    },
-    {
-     "id": "eb4ba465-3fcd-4065-9fe2-e8225e7b2c6c",
-     "slug": "ring-2-6-1t",
-     "name": "Ring-2.6-1T",
-     "shortName": "Ring-2.6-1T",
-     "creatorName": "InclusionAI",
-     "costPerTask": 0.920109393939394
     },
     {
      "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
@@ -4288,7 +4298,7 @@
      "name": "Nemotron 3.5 Super VL",
      "shortName": "Nemotron 3.5 Super VL",
      "creatorName": "NVIDIA",
-     "costPerTask": 0.7848472019075369
+     "costPerTask": 0.6805052012716911
     },
     {
      "id": "5b52def2-ac9b-4465-ad80-91ea8079e253",
@@ -4337,6 +4347,22 @@
      "shortName": "North Mini Code",
      "creatorName": "Cohere",
      "costPerTask": 0
+    },
+    {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "slug": "lfm3-1-7b",
+     "name": "LFM3-1.7B",
+     "shortName": "LFM3-1.7B",
+     "creatorName": "Liquid AI",
+     "costPerTask": 0.3421614256806061
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "slug": "lfm3-vl-2b",
+     "name": "LFM3-VL-2B",
+     "shortName": "LFM3-VL-2B",
+     "creatorName": "Liquid AI",
+     "costPerTask": 0.1608086984145455
     },
     {
      "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
@@ -4650,6 +4676,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "label": "LFM3-VL-2B",
+     "tooltipLabel": "LFM3-VL-2B",
+     "url": "/models/lfm3-vl-2b",
+     "logo": "/img/logos/liquidai.svg"
+    },
+    {
      "id": "5c3bdc0d-abab-4526-8079-34de4089bb4a",
      "label": "LongCat 2.0",
      "tooltipLabel": "LongCat 2.0",
@@ -4767,6 +4800,13 @@
      "tooltipLabel": "GPT-5.6 Terra (Medium)",
      "url": "/models/gpt-5-6-terra",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "label": "LFM3-1.7B",
+     "tooltipLabel": "LFM3-1.7B",
+     "url": "/models/lfm3-1-7b",
+     "logo": "/img/logos/liquidai.svg"
     },
     {
      "id": "29976311-665a-4b2f-ac72-557c33e0758e",
@@ -4951,6 +4991,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
+     "label": "Nemotron 3.5 Super VL",
+     "tooltipLabel": "Nemotron 3.5 Super VL",
+     "url": "/models/nemotron-3-5-super-vl",
+     "logo": "/img/logos/nvidia.svg"
+    },
+    {
      "id": "d8ddb241-b3e4-4c25-a6a3-72eb1b30c541",
      "label": "DeepSeek V4 Flash (max)",
      "tooltipLabel": "DeepSeek V4 Flash 0420 (Max)",
@@ -4977,13 +5024,6 @@
      "tooltipLabel": "DeepSeek V4.1 Flash 1017 (High)",
      "url": "/models/deepseek-v4-1-flash-1017",
      "logo": "/img/logos/deepseek.svg"
-    },
-    {
-     "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
-     "label": "Nemotron 3.5 Super VL",
-     "tooltipLabel": "Nemotron 3.5 Super VL",
-     "url": "/models/nemotron-3-5-super-vl",
-     "logo": "/img/logos/nvidia.svg"
     },
     {
      "id": "d4dd600d-0d8e-4d6e-ad18-0cb8f7d6c4d0",
@@ -5042,13 +5082,6 @@
      "logo": "/img/logos/zai.svg"
     },
     {
-     "id": "eb4ba465-3fcd-4065-9fe2-e8225e7b2c6c",
-     "label": "Ring-2.6-1T",
-     "tooltipLabel": "Ring-2.6-1T",
-     "url": "/models/ring-2-6-1t",
-     "logo": "/img/logos/inclusionai.jpg"
-    },
-    {
      "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
      "label": "MiniMax-M3.1-Flash",
      "tooltipLabel": "MiniMax-M3.1-Flash",
@@ -5089,6 +5122,13 @@
      "tooltipLabel": "Gemini 3.5 Flash-Lite",
      "url": "/models/gemini-3-5-flash-lite",
      "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "73c96f99-0de3-4668-a4bd-b106a0fe18f2",
+     "label": "DeepSeek V4.1 Flash (non-reasoning)",
+     "tooltipLabel": "DeepSeek V4.1 Flash (Non-reasoning)",
+     "url": "/models/deepseek-v4-1-flash",
+     "logo": "/img/logos/deepseek.svg"
     },
     {
      "id": "780a4a85-17ff-4175-a8dd-ebca4823e61b",
@@ -5159,13 +5199,6 @@
      "tooltipLabel": "GPT-6.1 Terra (Max)",
      "url": "/models/gpt-6-1-terra",
      "logo": "/img/logos/openai.svg"
-    },
-    {
-     "id": "73c96f99-0de3-4668-a4bd-b106a0fe18f2",
-     "label": "DeepSeek V4.1 Flash (non-reasoning)",
-     "tooltipLabel": "DeepSeek V4.1 Flash (Non-reasoning)",
-     "url": "/models/deepseek-v4-1-flash",
-     "logo": "/img/logos/deepseek.svg"
     },
     {
      "id": "9e30696f-16fa-4b4f-ba53-161895a85fed",
@@ -8153,6 +8186,22 @@
      "shortName": "North Mini Code",
      "creatorName": "Cohere",
      "releaseDate": "2026-06-09"
+    },
+    {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "slug": "lfm3-1-7b",
+     "name": "LFM3-1.7B",
+     "shortName": "LFM3-1.7B",
+     "creatorName": "Liquid AI",
+     "releaseDate": "2026-10-27"
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "slug": "lfm3-vl-2b",
+     "name": "LFM3-VL-2B",
+     "shortName": "LFM3-VL-2B",
+     "creatorName": "Liquid AI",
+     "releaseDate": "2026-10-27"
     },
     {
      "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",

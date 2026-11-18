@@ -1,8 +1,8 @@
 {
   "source_url": "https://artificialanalysis.ai/evaluations/aa-briefcase?results=rubric-score",
   "source_title": "AA-Briefcase v1.1: Agentic Knowledge Work Benchmark",
-  "captured_at": "2026-11-17",
-  "source_model_count": 279,
+  "captured_at": "2026-11-18",
+  "source_model_count": 281,
   "models": [
     {
       "id": "2f3c4dc9-a450-4303-8697-0237257cf08f",
@@ -1755,11 +1755,18 @@
       "source_row": 242
     },
     {
+      "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+      "provider": "Liquid AI",
+      "name": "LFM3-1.7B",
+      "rubric_score": 0.054136874361593465,
+      "source_row": 255
+    },
+    {
       "id": "076f2674-bc4b-4925-be59-50832eb8c090",
       "provider": "OpenAI",
       "name": "o3-mini (High)",
       "rubric_score": 0.045454545454545456,
-      "source_row": 261
+      "source_row": 262
     },
     {
       "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
@@ -1787,14 +1794,14 @@
       "provider": "Alibaba",
       "name": "Qwen3 235B A22B 2507 (Reasoning)",
       "rubric_score": 0.047474747474747475,
-      "source_row": 257
+      "source_row": 258
     },
     {
       "id": "0e34f05c-387e-4968-be15-ccec4a55d8c1",
       "provider": "DeepSeek",
       "name": "DeepSeek R1 (Jan '25)",
       "rubric_score": 0.04171011470281543,
-      "source_row": 262
+      "source_row": 263
     },
     {
       "id": "8014c311-fa23-4a4b-8485-8a864db8a113",
@@ -1808,154 +1815,161 @@
       "provider": "Mistral",
       "name": "Ministral 3 14B",
       "rubric_score": 0.049029622063329927,
-      "source_row": 255
+      "source_row": 256
     },
     {
       "id": "76dcf6ef-39ea-4be0-b693-b88da25b4caf",
       "provider": "NVIDIA",
       "name": "NVIDIA Nemotron 3 Nano 30B A3B (Reasoning)",
       "rubric_score": 0.029471544715447155,
-      "source_row": 271
+      "source_row": 272
     },
     {
       "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
       "provider": "OpenAI",
       "name": "gpt-oss-120b (High)",
       "rubric_score": 0.023232323232323233,
-      "source_row": 274
+      "source_row": 275
     },
     {
       "id": "36f73aaf-d38a-4b56-a2b3-d04d17186910",
       "provider": "OpenAI",
       "name": "gpt-oss-20b (High)",
       "rubric_score": 0.024242424242424242,
-      "source_row": 273
+      "source_row": 274
     },
     {
       "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
       "provider": "Google",
       "name": "Gemma 4 E4B (Reasoning)",
       "rubric_score": 0.01919191919191919,
-      "source_row": 275
+      "source_row": 277
     },
     {
       "id": "922c69c7-9037-43c6-8bcf-a1c555e7f3eb",
       "provider": "Meta",
       "name": "Llama 4 Maverick",
       "rubric_score": 0.00909090909090909,
-      "source_row": 276
+      "source_row": 278
     },
     {
       "id": "adf9a85e-abc3-4f28-937b-db6655cc5238",
       "provider": "Meta",
       "name": "Llama 4 Scout",
       "rubric_score": 0.007164790174002047,
-      "source_row": 277
+      "source_row": 279
     },
     {
       "id": "4559e9f0-8aad-4681-89fb-68cb915e0f16",
       "provider": "Alibaba",
       "name": "Qwen3 14B (Reasoning)",
       "rubric_score": 0.02889576883384933,
-      "source_row": 272
+      "source_row": 273
     },
     {
       "id": "5e0164b3-d902-4bcb-a1b2-83b4f4cd6143",
       "provider": "Alibaba",
       "name": "Qwen3 30B A3B 2507 (Reasoning)",
       "rubric_score": 0.04081632653061224,
-      "source_row": 264
+      "source_row": 265
     },
     {
       "id": "9dba61f5-78ee-4190-8d1d-8e7063ffd386",
       "provider": "Alibaba",
       "name": "Qwen3 8B (Reasoning)",
       "rubric_score": 0.03232323232323232,
-      "source_row": 270
+      "source_row": 271
     },
     {
       "id": "b00ecd62-a53f-4aed-b833-3e9d6b0170ba",
       "provider": "Alibaba",
       "name": "Qwen3 32B (Reasoning)",
       "rubric_score": 0.03939393939393939,
-      "source_row": 265
+      "source_row": 266
     },
     {
       "id": "43fc5506-c5ed-4dee-9b85-962bf7ae3986",
       "provider": "DeepSeek",
       "name": "DeepSeek V3 (Dec '24)",
       "rubric_score": 0.047474747474747475,
-      "source_row": 258
+      "source_row": 259
     },
     {
       "id": "75e1c197-f239-4361-a9d6-66dccfead236",
       "provider": "DeepSeek",
       "name": "DeepSeek V3 0324",
       "rubric_score": 0.032989690721649485,
-      "source_row": 269
+      "source_row": 270
     },
     {
       "id": "43da3718-3d6e-40dd-901a-05664179ff7f",
       "provider": "Mistral",
       "name": "Mistral Small 3.2",
       "rubric_score": 0.034623217922606926,
-      "source_row": 268
+      "source_row": 269
     },
     {
       "id": "66f4ce73-9a9b-4b49-9c6e-bedb9bfdc720",
       "provider": "Mistral",
       "name": "Ministral 3 3B",
       "rubric_score": 0.03664921465968586,
-      "source_row": 266
+      "source_row": 267
     },
     {
       "id": "9741f3c2-cbb1-4a3f-99ee-7bd7384d9038",
       "provider": "Mistral",
       "name": "Ministral 3 8B",
       "rubric_score": 0.04564315352697095,
-      "source_row": 260
+      "source_row": 261
     },
     {
       "id": "5a49ef80-3af5-404b-8ac0-e1b230ae95de",
       "provider": "Institute of Foundation Models",
       "name": "K2 Think V2",
       "rubric_score": 0.0411946446961895,
-      "source_row": 263
+      "source_row": 264
     },
     {
       "id": "9e9fb958-87f5-4835-a761-26102ef25898",
       "provider": "Institute of Foundation Models",
       "name": "K2 Horizon 0.9B",
       "rubric_score": 0,
-      "source_row": 279
+      "source_row": 281
     },
     {
       "id": "b89c4faf-219e-4171-a1aa-e3bd2fd0a924",
       "provider": "Upstage",
       "name": "Solar Pro 3",
       "rubric_score": 0.049029622063329927,
-      "source_row": 256
+      "source_row": 257
     },
     {
       "id": "9ee13921-62a4-425a-a22b-df3302198d93",
       "provider": "NVIDIA",
       "name": "NVIDIA Nemotron 3 Nano 4B",
       "rubric_score": 0.03535353535353535,
-      "source_row": 267
+      "source_row": 268
     },
     {
       "id": "63872e9c-3377-4a6b-b477-7bba244c38e9",
       "provider": "NVIDIA",
       "name": "Nemotron 3 Super 120B A12B (Reasoning)",
       "rubric_score": 0.006060606060606061,
-      "source_row": 278
+      "source_row": 280
+    },
+    {
+      "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+      "provider": "Liquid AI",
+      "name": "LFM3-VL-2B",
+      "rubric_score": 0.021212121212121213,
+      "source_row": 276
     },
     {
       "id": "0c64b008-20c3-408d-bd68-15136df8cd2c",
       "provider": "IBM",
       "name": "Granite 4.2 3B",
       "rubric_score": 0.047474747474747475,
-      "source_row": 259
+      "source_row": 260
     }
   ]
 }

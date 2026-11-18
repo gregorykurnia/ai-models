@@ -1,7 +1,7 @@
 {
  "key": "frontiercode-2-0",
  "source_url": "https://artificialanalysis.ai/evaluations/frontiercode-2-0",
- "captured_at": "2026-11-17",
+ "captured_at": "2026-11-18",
  "selectors": 6,
  "charts": [
   {
@@ -1295,6 +1295,24 @@
      "logo": "/img/logos/cohere.svg"
     },
     {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "label": "LFM3-1.7B",
+     "tooltipLabel": "LFM3-1.7B",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/lfm3-1-7b",
+     "logo": "/img/logos/liquidai.svg"
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "label": "LFM3-VL-2B",
+     "tooltipLabel": "LFM3-VL-2B",
+     "value": 0,
+     "displayValue": "0.0%",
+     "url": "/models/lfm3-vl-2b",
+     "logo": "/img/logos/liquidai.svg"
+    },
+    {
      "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
      "label": "Granite 4.2 8B",
      "tooltipLabel": "Granite 4.2 8B",
@@ -2355,7 +2373,7 @@
      "name": "Nemotron 3.5 Super VL",
      "shortName": "Nemotron 3.5 Super VL",
      "creatorName": "NVIDIA",
-     "costPerTask": 1.4227621890217717
+     "costPerTask": 1.2243854420498679
     },
     {
      "id": "5b52def2-ac9b-4465-ad80-91ea8079e253",
@@ -2388,6 +2406,22 @@
      "shortName": "North Mini Code",
      "creatorName": "Cohere",
      "costPerTask": 0
+    },
+    {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "slug": "lfm3-1-7b",
+     "name": "LFM3-1.7B",
+     "shortName": "LFM3-1.7B",
+     "creatorName": "Liquid AI",
+     "costPerTask": 0.5102132144866668
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "slug": "lfm3-vl-2b",
+     "name": "LFM3-VL-2B",
+     "shortName": "LFM3-VL-2B",
+     "creatorName": "Liquid AI",
+     "costPerTask": 0.2736031164448485
     },
     {
      "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
@@ -2585,6 +2619,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "label": "LFM3-VL-2B",
+     "tooltipLabel": "LFM3-VL-2B",
+     "url": "/models/lfm3-vl-2b",
+     "logo": "/img/logos/liquidai.svg"
+    },
+    {
      "id": "69468cce-7b5c-414a-b498-41df4c34df85",
      "label": "Beam 1.0",
      "tooltipLabel": "Beam 1.0",
@@ -2688,6 +2729,13 @@
      "tooltipLabel": "Muse Glimmer (High)",
      "url": "/models/muse-glimmer",
      "logo": "/img/logos/meta.svg"
+    },
+    {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "label": "LFM3-1.7B",
+     "tooltipLabel": "LFM3-1.7B",
+     "url": "/models/lfm3-1-7b",
+     "logo": "/img/logos/liquidai.svg"
     },
     {
      "id": "f151fd0b-2139-40cf-a3ec-995e8cedc592",
@@ -2837,6 +2885,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
+     "label": "Nemotron 3.5 Super VL",
+     "tooltipLabel": "Nemotron 3.5 Super VL",
+     "url": "/models/nemotron-3-5-super-vl",
+     "logo": "/img/logos/nvidia.svg"
+    },
+    {
      "id": "e2ed7885-d46b-4da7-a873-f12f88af0081",
      "label": "Inkling 2 Small",
      "tooltipLabel": "Inkling 2 Small",
@@ -2884,13 +2939,6 @@
      "tooltipLabel": "Tencent Hy4",
      "url": "/models/tencent-hy4",
      "logo": "/img/logos/tencent-hy.svg"
-    },
-    {
-     "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
-     "label": "Nemotron 3.5 Super VL",
-     "tooltipLabel": "Nemotron 3.5 Super VL",
-     "url": "/models/nemotron-3-5-super-vl",
-     "logo": "/img/logos/nvidia.svg"
     },
     {
      "id": "cc1e488b-8ba4-464d-875d-690166b15ad3",
@@ -4495,6 +4543,22 @@
      "shortName": "North Mini Code",
      "creatorName": "Cohere",
      "releaseDate": "2026-06-09"
+    },
+    {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "slug": "lfm3-1-7b",
+     "name": "LFM3-1.7B",
+     "shortName": "LFM3-1.7B",
+     "creatorName": "Liquid AI",
+     "releaseDate": "2026-10-27"
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "slug": "lfm3-vl-2b",
+     "name": "LFM3-VL-2B",
+     "shortName": "LFM3-VL-2B",
+     "creatorName": "Liquid AI",
+     "releaseDate": "2026-10-27"
     },
     {
      "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",

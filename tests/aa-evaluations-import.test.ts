@@ -8,10 +8,11 @@ import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import { test } from "node:test";
 import type { Dataset } from "../src/lib/contract";
+import { aggregateMaster, masterLeaderboardCsv, masterTableRows, orderMasterEvaluations } from "../src/lib/master";
 
 const execFileAsync = promisify(execFile);
 
-test("AA import reads renamed FrontierCode score and cost charts, stays repeatable, and rejects bad captures", async t => {
+test("AA import preserves FrontierCode and separate CritPt datasets, rejects bad captures, and supports reruns", async t => {
   const directory = await mkdtemp(join(tmpdir(), "ai-models-evaluations-test-"));
   t.after(() => rm(directory, { recursive: true, force: true }));
   const data = join(directory, "data");
@@ -49,6 +50,39 @@ test("AA import reads renamed FrontierCode score and cost charts, stays repeatab
   const expectedCosts = costChart.items.filter((item: { costPerTask?: number }) => typeof item.costPerTask === "number");
   assert.ok(expectedCosts.length > 0);
   assert.equal(rows.filter(row => row.cost_usd !== null).length, expectedCosts.length);
+  const subsets = ["critpt-v2-full", "critpt-v2-hard"];
+  const { rows: masterRows } = aggregateMaster(dataset.evaluations, dataset.entries);
+  const model = masterRows.find(row => row.provider === "OpenAI" && row.model === "GPT-6.2 Astra (Max)");
+  assert.ok(model);
+  assert.equal(model.cells.critpt, undefined);
+  const order = orderMasterEvaluations(dataset.evaluations).map(evaluation => evaluation.id);
+  assert.deepEqual(order.slice(order.indexOf("critpt") + 1, order.indexOf("critpt") + 3), subsets);
+  const csvHeader = masterLeaderboardCsv(masterTableRows([model]), dataset.evaluations).split("\n")[0];
+  assert.match(csvHeader, /CritPt,CritPt v2 \(Full Set\),CritPt v2 \(Hard Subset\)/);
+  for (const id of subsets) {
+    const subset = JSON.parse(await readFile(join(data, `aa-captures/${id}.json`), "utf8"));
+    const evaluation = dataset.evaluations.find(evaluation => evaluation.id === id);
+    assert.ok(evaluation);
+    assert.equal(evaluation.source_url, subset.source_url);
+    assert.equal(evaluation.score_kind, "percentage");
+    assert.ok(model.cells[id].href.startsWith(`/leaderboards/${id}?q=`));
+    const title = id === "critpt-v2-hard" ? "CritPt v2 (Hard Subset): Score" : "CritPt v2: Score";
+    const scores = subset.charts.find((chart: { title: string }) => chart.title === title).items;
+    const costs = new Map<string, number>(subset.charts.find((chart: { title: string }) => chart.title === `${title} vs. Cost per Task`).items
+      .map((item: { id: string; costPerTask: number }) => [item.id, item.costPerTask]));
+    const entries = dataset.entries.filter(entry => entry.evaluation_id === id);
+    assert.equal(evaluation.row_count, scores.length);
+    assert.equal(entries.length, scores.length);
+    const entriesById = new Map(entries.map(entry => [entry.id, entry]));
+    for (const score of scores) {
+      const entry = entriesById.get(hash(`${evaluation.published_snapshot_id}:${score.id}:${id}`).slice(0, 24));
+      assert.ok(entry);
+      assert.equal(entry.score_value, score.value * 100);
+      assert.equal(entry.cost_usd, costs.get(score.id) ?? null);
+      assert.equal(entry.source_rank, entries.filter(row => row.score_value > entry.score_value).length + 1);
+    }
+  }
+  assert.notEqual(model.cells[subsets[0]].entry.score_value, model.cells[subsets[1]].entry.score_value);
   const outputs = ["leaderboards.json", "intelligence-index-costs.json"];
   const saved = await Promise.all(outputs.map(file => readFile(join(data, file), "utf8")));
   await run();
@@ -64,6 +98,36 @@ test("AA import reads renamed FrontierCode score and cost charts, stays repeatab
   assert.deepEqual(await Promise.all(outputs.map(file => readFile(join(data, file), "utf8"))), saved);
   scoreChart.items.pop();
   await writeFile(captureFile, JSON.stringify(capture));
-  await run();
+
+  const hardPath = join(data, "aa-captures/critpt-v2-hard.json");
+  const hardText = await readFile(hardPath, "utf8");
+  const hard = JSON.parse(hardText);
+  const hardScore = hard.charts.find((chart: { title: string }) => chart.title === "CritPt v2 (Hard Subset): Score");
+  const item = hardScore.items[0];
+  const duplicate = { ...item, id: "duplicate-model", name: model.model.toLowerCase(), creatorName: model.provider };
+  const badHard = [
+    { change: { ...hard, source_url: hard.source_url.split("?")[0] }, error: /unexpected capture URL/ },
+    { change: { ...hard, charts: [{ ...hardScore, items: [] }] }, error: /has no scores/ },
+    { change: { ...hard, charts: [{ ...hardScore, items: [{ ...item, value: null }] }] }, error: /invalid value/ },
+    { change: { ...hard, charts: [{ ...hardScore, items: [{ ...item, value: 1.01 }] }] }, error: /invalid value/ },
+    { change: { ...hard, charts: [{ ...hardScore, items: [{ ...item, id: "blank-name", name: " " }] }] }, error: /missing model name/ },
+    { change: { ...hard, charts: [{ ...hardScore, items: [...hardScore.items, duplicate] }] }, error: /duplicate model/ },
+  ];
+  for (const { change, error } of badHard) {
+    await writeFile(hardPath, JSON.stringify(change));
+    await assert.rejects(run, error);
+    assert.deepEqual(await Promise.all(outputs.map(file => readFile(join(data, file), "utf8"))), saved);
+  }
+  await rm(hardPath);
+  await assert.rejects(run, /ENOENT.*critpt-v2-hard/);
   assert.deepEqual(await Promise.all(outputs.map(file => readFile(join(data, file), "utf8"))), saved);
+  await writeFile(hardPath, hardText);
+  await Promise.all([run(), run()]);
+  assert.deepEqual(await Promise.all(outputs.map(file => readFile(join(data, file), "utf8"))), saved);
+  const longName = `Model ${"with a long name ".repeat(25).trim()}`;
+  hardScore.items.push({ ...duplicate, id: "long-model", name: longName, value: 0 });
+  await writeFile(hardPath, JSON.stringify(hard));
+  await run();
+  const expanded = JSON.parse(await readFile(join(data, "leaderboards.json"), "utf8")) as Dataset;
+  assert.ok(expanded.entries.some(entry => entry.evaluation_id === "critpt-v2-hard" && entry.model === longName && entry.score_value === 0));
 });

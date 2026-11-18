@@ -22,6 +22,8 @@ const masterEvaluationOrder=[
   "briefcase-v1-1",
   "automationbench-aa",
   "critpt",
+  "critpt-v2-full",
+  "critpt-v2-hard",
   "mmmu-pro",
   "gdp-pdf",
   "aa-omniscience-accuracy",

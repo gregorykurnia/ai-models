@@ -1,7 +1,7 @@
 {
  "key": "finance-and-accounting",
  "source_url": "https://artificialanalysis.ai/models/capabilities/finance-and-accounting",
- "captured_at": "2026-11-17",
+ "captured_at": "2026-11-18",
  "selectors": 8,
  "charts": [
   {
@@ -1232,6 +1232,15 @@
      "logo": "/img/logos/cohere.svg"
     },
     {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "label": "LFM3-1.7B",
+     "tooltipLabel": "LFM3-1.7B",
+     "value": 16.761820057717,
+     "displayValue": "17",
+     "url": "/models/lfm3-1-7b",
+     "logo": "/img/logos/liquidai.svg"
+    },
+    {
      "id": "9b97a35e-6ac7-44d9-91c6-422fa678963e",
      "label": "GPT-5.6 Terra (non-reasoning)",
      "tooltipLabel": "GPT-5.6 Terra (Non-reasoning)",
@@ -1356,6 +1365,15 @@
      "displayValue": "4",
      "url": "/models/nvidia-nemotron-3-nano-4b",
      "logo": "/img/logos/nvidia.svg"
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "label": "LFM3-VL-2B",
+     "tooltipLabel": "LFM3-VL-2B",
+     "value": 3.95811594202899,
+     "displayValue": "4",
+     "url": "/models/lfm3-vl-2b",
+     "logo": "/img/logos/liquidai.svg"
     }
    ]
   },
@@ -1510,6 +1528,13 @@
      "logo": "/img/logos/xiaomi.svg"
     },
     {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "label": "LFM3-1.7B",
+     "tooltipLabel": "LFM3-1.7B",
+     "url": "/models/lfm3-1-7b",
+     "logo": "/img/logos/liquidai.svg"
+    },
+    {
      "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
      "label": "GPT-6 Luna (max)",
      "tooltipLabel": "GPT-6 Luna (Max)",
@@ -1536,6 +1561,13 @@
      "tooltipLabel": "Claude Haiku 5.5 (High)",
      "url": "/models/claude-haiku-5-5",
      "logo": "/img/logos/anthropic.svg"
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "label": "LFM3-VL-2B",
+     "tooltipLabel": "LFM3-VL-2B",
+     "url": "/models/lfm3-vl-2b",
+     "logo": "/img/logos/liquidai.svg"
     },
     {
      "id": "69468cce-7b5c-414a-b498-41df4c34df85",
@@ -1650,6 +1682,13 @@
      "logo": "/img/logos/anthropic.svg"
     },
     {
+     "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
+     "label": "Nemotron 3.5 Super VL",
+     "tooltipLabel": "Nemotron 3.5 Super VL",
+     "url": "/models/nemotron-3-5-super-vl",
+     "logo": "/img/logos/nvidia.svg"
+    },
+    {
      "id": "e8d443ba-8aca-4830-a186-ae869bb9c6fe",
      "label": "GPT-6.1 Terra (xhigh)",
      "tooltipLabel": "GPT-6.1 Terra (Xhigh)",
@@ -1662,13 +1701,6 @@
      "tooltipLabel": "Mistral Large 4 (Medium)",
      "url": "/models/mistral-large-4",
      "logo": "/img/logos/mistral.svg"
-    },
-    {
-     "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
-     "label": "Nemotron 3.5 Super VL",
-     "tooltipLabel": "Nemotron 3.5 Super VL",
-     "url": "/models/nemotron-3-5-super-vl",
-     "logo": "/img/logos/nvidia.svg"
     },
     {
      "id": "26e0f83a-ca98-4f34-94ac-7c5e251ee410",
@@ -3843,7 +3875,7 @@
      "releaseDate": "2026-10-15",
      "creatorName": "NVIDIA",
      "costPerTask": {
-      "total": 0.1691042030376814
+      "total": 0.14631827280574713
      }
     },
     {
@@ -3866,6 +3898,28 @@
      "creatorName": "NVIDIA",
      "costPerTask": {
       "total": 0.09589722454198285
+     }
+    },
+    {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "slug": "lfm3-1-7b",
+     "name": "LFM3-1.7B",
+     "shortName": "LFM3-1.7B",
+     "releaseDate": "2026-10-27",
+     "creatorName": "Liquid AI",
+     "costPerTask": {
+      "total": 0.05384932371157939
+     }
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "slug": "lfm3-vl-2b",
+     "name": "LFM3-VL-2B",
+     "shortName": "LFM3-VL-2B",
+     "releaseDate": "2026-10-27",
+     "creatorName": "Liquid AI",
+     "costPerTask": {
+      "total": 0.07271807184005466
      }
     },
     {
@@ -5412,7 +5466,7 @@
      "releaseDate": "2026-10-15",
      "creatorName": "NVIDIA",
      "costPerTask": {
-      "total": 0.1691042030376814
+      "total": 0.14631827280574713
      }
     },
     {
@@ -5481,6 +5535,28 @@
      "creatorName": "Cohere",
      "costPerTask": {
       "total": 0
+     }
+    },
+    {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "slug": "lfm3-1-7b",
+     "name": "LFM3-1.7B",
+     "shortName": "LFM3-1.7B",
+     "releaseDate": "2026-10-27",
+     "creatorName": "Liquid AI",
+     "costPerTask": {
+      "total": 0.05384932371157939
+     }
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "slug": "lfm3-vl-2b",
+     "name": "LFM3-VL-2B",
+     "shortName": "LFM3-VL-2B",
+     "releaseDate": "2026-10-27",
+     "creatorName": "Liquid AI",
+     "costPerTask": {
+      "total": 0.07271807184005466
      }
     },
     {

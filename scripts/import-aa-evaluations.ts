@@ -2,7 +2,7 @@
 // Replaces the Sep 29 workbook rows for these evaluations, keeps the AA-Briefcase component
 // evaluations and the rest of the dataset, and rewrites data/intelligence-index-costs.json.
 import { createHash } from "node:crypto";
-import { readFile, rename, writeFile } from "node:fs/promises";
+import { readFile, rename, rm, writeFile } from "node:fs/promises";
 import { entrySchema, type Dataset, type Entry, type Evaluation } from "../src/lib/contract";
 import { masterIdentityKey } from "../src/lib/master";
 import { mergeBriefcaseComponents, type BriefcaseComponentsSource } from "../src/lib/aa-briefcase";
@@ -27,6 +27,8 @@ type EvaluationConfig = {
   costChart?: string;
   // Value and confidence interval come from "mid/lower/upper" series when true, otherwise "value".
   eloSeries?: boolean;
+  // Some score charts supply fractions even though their display uses percentages.
+  scoreMultiplier?: number;
   // The chart reports the benchmark's total cost; the leaderboard stores the cost per task.
   costDivisor?: number;
   // Metadata for an evaluation the dataset doesn't hold yet. Existing evaluations keep their stored record.
@@ -52,6 +54,11 @@ const percentageEvaluation = (id: string, displayName: string, sourceUrl: string
   notes: "",
 });
 
+const critptV2Subsets = [
+  { id: "critpt-v2-full", name: "CritPt v2 (Full Set)", chart: "CritPt v2: Score", url: "https://artificialanalysis.ai/evaluations/critpt-v2" },
+  { id: "critpt-v2-hard", name: "CritPt v2 (Hard Subset)", chart: "CritPt v2 (Hard Subset): Score", url: "https://artificialanalysis.ai/evaluations/critpt-v2?critpt-subset=hard" },
+];
+
 const evaluationConfigs: EvaluationConfig[] = [
   // AA-Briefcase lists 91 tasks; its cost series (totalCost) is the total for the run, so divide to get cost per task.
   { id: "briefcase-v1-1", capture: "aa-briefcase", chart: "AA-Briefcase Elo", costChart: "AA-Briefcase Elo vs. Cost per Task", eloSeries: true, costDivisor: 91 },
@@ -60,6 +67,11 @@ const evaluationConfigs: EvaluationConfig[] = [
   { id: "frontiercode-2-0", capture: "frontiercode-2-0", chart: "FrontierCode-AA 2.0: Score", costChart: "FrontierCode-AA 2.0: Score vs. Cost per Task", definition: percentageEvaluation("frontiercode-2-0", "FrontierCode 2.0", "https://artificialanalysis.ai/evaluations/frontiercode-2-0") },
   { id: "gdp-pdf", capture: "gdp-pdf", chart: "GDP.pdf: All-pass Rate", costChart: "GDP.pdf: All-pass Rate vs. Cost per Task" },
   { id: "critpt", capture: "critpt", chart: "CritPt: Score", costChart: "CritPt: Score vs. Cost per Task" },
+  ...critptV2Subsets.map(({ id, name, chart, url }) => ({
+    id, capture: id, chart, costChart: `${chart} vs. Cost per Task`,
+    scoreMultiplier: 100,
+    definition: percentageEvaluation(id, name, url),
+  })),
   { id: "aa-omniscience-accuracy", capture: "omniscience", chart: "AA-Omniscience Accuracy", costChart: "AA-Omniscience Net Score vs. Cost per Task" },
   { id: "aa-omniscience-index", capture: "omniscience", chart: "AA-Omniscience v1.1: Net Score", costChart: "AA-Omniscience Net Score vs. Cost per Task" },
   { id: "mmmu-pro", capture: "mmmu-pro", chart: "MMMU-Pro: Score", costChart: "MMMU-Pro: Score vs. Cost per Task" },
@@ -187,6 +199,10 @@ for (const config of evaluationConfigs) {
   const capture = captures.get(config.capture)!;
   const chart = capture.charts.find(item => item.title === config.chart);
   if (!chart) throw new Error(`${config.id}: chart "${config.chart}" is missing from ${config.capture}`);
+  if (!chart.items.length) throw new Error(`${config.id}: chart "${config.chart}" has no scores`);
+  if (config.definition?.source_url && capture.source_url !== config.definition.source_url) {
+    throw new Error(`${config.id}: unexpected capture URL ${capture.source_url}`);
+  }
   const costChart = config.costChart ? capture.charts.find(item => item.title === config.costChart) : undefined;
   const costById = new Map<string, number>();
   for (const row of costChart?.items ?? []) {
@@ -195,14 +211,18 @@ for (const config of evaluationConfigs) {
   }
   const rows = chart.items.map(item => {
     const mid = config.eloSeries ? item.mid : null;
-    const value = mid ? Number(mid.value) : Number(item.value);
+    const rawValue = mid ? mid.value : item.value;
+    const value = rawValue * (config.scoreMultiplier ?? 1);
     const rawName = nameById.get(item.id) ?? item.tooltipLabel ?? item.label;
     const slug = typeof item.url === "string" ? item.url.split("/").pop() : undefined;
     const provider = providerById.get(item.id)
       ?? (item.logo ? creatorByLogo.get(item.logo) : undefined)
       ?? (slug ? creatorOverrides[slug] : undefined);
+    if (typeof rawName !== "string" || !rawName.trim()) throw new Error(`${config.id}: missing model name for ${item.id}`);
     if (!provider) throw new Error(`${config.id}: no creator for ${rawName} (${item.id})`);
-    if (!Number.isFinite(value)) throw new Error(`${config.id}: invalid value for ${rawName}`);
+    if (!Number.isFinite(rawValue) || (config.definition?.score_kind === "percentage" && (value < 0 || value > 100))) {
+      throw new Error(`${config.id}: invalid value for ${rawName}`);
+    }
     const ci = mid && item.lower && item.upper
       ? { low: Number(item.lower.value) - value, high: Number(item.upper.value) - value }
       : null;
@@ -348,7 +368,6 @@ const costSnapshot = {
   cost_count: intelligenceIndexCosts.length,
   records: intelligenceIndexCosts,
 };
-await writeFile("data/intelligence-index-costs.json", `${JSON.stringify(costSnapshot, null, 2)}\n`);
 
 // Old rows and snapshots for the rebuilt evaluations are replaced; everything else is kept.
 const keptEntries = dataset.entries.filter(entry => !replacedEvaluationIds.has(entry.evaluation_id));
@@ -386,6 +405,14 @@ const componentSource = JSON.parse(await readFile("data/aa-briefcase-components.
 const rubricSource = JSON.parse(await readFile("data/aa-briefcase-rubric-refresh.json", "utf8")) as BriefcaseRubricRefreshSource;
 const complete = mergeBriefcaseRubricRefresh(mergeBriefcaseComponents(rebuilt, componentSource), rubricSource);
 
-await writeFile("data/leaderboards.json.tmp", JSON.stringify(complete));
-await rename("data/leaderboards.json.tmp", "data/leaderboards.json");
+const outputs = [
+  { path: "data/intelligence-index-costs.json", text: `${JSON.stringify(costSnapshot, null, 2)}\n` },
+  { path: "data/leaderboards.json", text: JSON.stringify(complete) },
+].map(output => ({ ...output, staging: `${output.path}.${process.pid}.tmp` }));
+try {
+  for (const { staging, text } of outputs) await writeFile(staging, text);
+  for (const { staging, path } of outputs) await rename(staging, path);
+} finally {
+  await Promise.all(outputs.map(({ staging }) => rm(staging, { force: true })));
+}
 console.log(`Rebuilt ${replacedEvaluationIds.size} evaluations with ${newEntries.length} rows; ${intelligenceIndexCosts.length} intelligence index task costs.`);

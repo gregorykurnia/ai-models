@@ -9,12 +9,15 @@ const audit = await readFile(new URL("../docs/GEMINI_4_HYDROGEN_QWEN4_COVERAGE.m
 test("browser fixture includes all audit rows and all three merged Briefcase component evaluations", () => {
   const { expected, evaluations } = newModelsExpectations(dataset, audit);
   assert.equal(expected.length, 7);
-  assert.equal(evaluations.length, 16);
-  assert.equal(evaluations.reduce((sum, { entries }) => sum + entries.filter(entry => newModelNames.includes(entry.model)).length, 0), 86);
+  assert.equal(evaluations.length, 18);
+  assert.equal(evaluations.reduce((sum, { entries }) => sum + entries.filter(entry => newModelNames.includes(entry.model)).length, 0), 98);
   for (const id of ["aa-briefcase-rubric-score", "aa-briefcase-analytical-quality-elo", "aa-briefcase-presentation-elo"]) {
     assert.equal(evaluations.find(({ evaluation }) => evaluation.id === id)?.entries.length, 7);
   }
   assert.equal(evaluations.find(({ evaluation }) => evaluation.id === "critpt")?.entries.filter(entry => newModelNames.includes(entry.model)).length, 1);
+  for (const id of ["critpt-v2-full", "critpt-v2-hard"]) {
+    assert.equal(evaluations.find(({ evaluation }) => evaluation.id === id)?.entries.filter(entry => newModelNames.includes(entry.model)).length, 6);
+  }
 });
 
 test("browser fixture follows source rank when capture rows are in a different order", () => {

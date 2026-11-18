@@ -1,7 +1,7 @@
 {
  "key": "mmmu-pro",
  "source_url": "https://artificialanalysis.ai/evaluations/mmmu-pro",
- "captured_at": "2026-11-17",
+ "captured_at": "2026-11-18",
  "selectors": 6,
  "charts": [
   {
@@ -2483,6 +2483,15 @@
      "logo": "/img/logos/mistral.svg"
     },
     {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "label": "LFM3-VL-2B",
+     "tooltipLabel": "LFM3-VL-2B",
+     "value": 0.474566473988439,
+     "displayValue": "47%",
+     "url": "/models/lfm3-vl-2b",
+     "logo": "/img/logos/liquidai.svg"
+    },
+    {
      "id": "3cf875b8-b6b5-42c0-ad70-617d5be59d00",
      "label": "Qwen3 VL 8B",
      "tooltipLabel": "Qwen3 VL 8B Instruct",
@@ -3847,7 +3856,7 @@
      "name": "Gemma 4 26B A4B (Reasoning)",
      "shortName": "Gemma 4 26B A4B",
      "creatorName": "Google",
-     "costPerTask": 0.0022113355606936417
+     "costPerTask": 0.0022137794797687863
     },
     {
      "id": "70882ec6-914c-41f0-9754-5e8f75005f77",
@@ -4634,6 +4643,14 @@
      "costPerTask": 0
     },
     {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "slug": "lfm3-vl-2b",
+     "name": "LFM3-VL-2B",
+     "shortName": "LFM3-VL-2B",
+     "creatorName": "Liquid AI",
+     "costPerTask": 0.0016520080924855491
+    },
+    {
      "id": "0081ab31-d10a-44a0-a10d-eee5533fec65",
      "slug": "glm-4-5v",
      "name": "GLM-4.5V (Non-reasoning)",
@@ -5149,6 +5166,13 @@
      "tooltipLabel": "GPT-6.1 Terra (Medium)",
      "url": "/models/gpt-6-1-terra",
      "logo": "/img/logos/openai.svg"
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "label": "LFM3-VL-2B",
+     "tooltipLabel": "LFM3-VL-2B",
+     "url": "/models/lfm3-vl-2b",
+     "logo": "/img/logos/liquidai.svg"
     },
     {
      "id": "d3e20e76-9e1a-45b6-b809-ad6aa37430cf",
@@ -8711,6 +8735,22 @@
      "releaseDate": "2026-05-20"
     },
     {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "slug": "lfm3-vl-2b",
+     "name": "LFM3-VL-2B",
+     "shortName": "LFM3-VL-2B",
+     "creatorName": "Liquid AI",
+     "releaseDate": "2026-10-27"
+    },
+    {
+     "id": "3c5289e5-1c62-434c-bc44-c51c39f640a1",
+     "slug": "lfm2-5-vl-1-6b",
+     "name": "LFM2.5-VL-1.6B",
+     "shortName": "LFM2.5-VL-1.6B",
+     "creatorName": "Liquid AI",
+     "releaseDate": "2026-01-05"
+    },
+    {
      "id": "0081ab31-d10a-44a0-a10d-eee5533fec65",
      "slug": "glm-4-5v",
      "name": "GLM-4.5V (Non-reasoning)",
@@ -8845,14 +8885,6 @@
      "shortName": "Phi-4 Multimodal",
      "creatorName": "Microsoft",
      "releaseDate": "2025-02-26"
-    },
-    {
-     "id": "3c5289e5-1c62-434c-bc44-c51c39f640a1",
-     "slug": "lfm2-5-vl-1-6b",
-     "name": "LFM2.5-VL-1.6B",
-     "shortName": "LFM2.5-VL-1.6B",
-     "creatorName": "Liquid AI",
-     "releaseDate": "2026-01-05"
     },
     {
      "id": "3ef6db79-1dfa-4780-8c4b-affe2740d9ac",

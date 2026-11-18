@@ -1,7 +1,7 @@
 {
   "source_url": "https://artificialanalysis.ai/evaluations/aa-briefcase?results=rubric-score",
   "source_title": "AA-Briefcase v1.1: Agentic Knowledge Work Benchmark",
-  "captured_at": "2026-11-17",
+  "captured_at": "2026-11-18",
   "source_tabs": {
     "rubric": "AA-Briefcase Rubric Score (%)",
     "quality_elos": "Analytical Quality & Presentation Elo"
@@ -4758,6 +4758,25 @@
       }
     },
     {
+      "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+      "provider": "Liquid AI",
+      "name": "LFM3-1.7B",
+      "release_date": "2026-10-27",
+      "rubric_score": 0.054136874361593465,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 150.57,
+      "presentation_ci": {
+        "elo": 150.57,
+        "lower95ci": 131.97,
+        "upper95ci": 169.17
+      }
+    },
+    {
       "id": "076f2674-bc4b-4925-be59-50832eb8c090",
       "provider": "OpenAI",
       "name": "o3-mini (High)",
@@ -5276,6 +5295,25 @@
       "name": "Nemotron 3 Super 120B A12B (Reasoning)",
       "release_date": "2026-03-11",
       "rubric_score": 0.006060606060606061,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+      "provider": "Liquid AI",
+      "name": "LFM3-VL-2B",
+      "release_date": "2026-10-27",
+      "rubric_score": 0.021212121212121213,
       "analytical_quality_elo": 0,
       "analytical_quality_ci": {
         "elo": 0,

@@ -178,6 +178,7 @@ test("every local evaluation has an explicit slug mapping or page-wide fallback"
     "terminal-bench-4-0": "terminalbench-4-0",
     "frontiercode-2-0": "frontiercode-2-0",
     "gdp-pdf": "gdp-pdf",
+    "critpt-v2-hard": "critpt-v2-hard",
   };
   for (const evaluation of dataset.evaluations) {
     assert.equal(evaluationSpeedSlugs[evaluation.id], expected[evaluation.id as keyof typeof expected] ?? null);

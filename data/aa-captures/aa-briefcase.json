@@ -1,7 +1,7 @@
 {
  "key": "aa-briefcase",
  "source_url": "https://artificialanalysis.ai/evaluations/aa-briefcase",
- "captured_at": "2026-11-17",
+ "captured_at": "2026-11-18",
  "selectors": 11,
  "charts": [
   {
@@ -3773,6 +3773,21 @@
      }
     },
     {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "label": "LFM3-1.7B",
+     "url": "/models/lfm3-1-7b",
+     "logo": "/img/logos/liquidai.svg",
+     "mid": {
+      "value": 223.45
+     },
+     "lower": {
+      "value": 213.94
+     },
+     "upper": {
+      "value": 232.96
+     }
+    },
+    {
      "id": "1e9907e0-ffac-4595-b006-962e4f1da7cf",
      "label": "North Mini Code",
      "url": "/models/north-mini-code",
@@ -4182,6 +4197,21 @@
      "label": "Nemotron 3 Super",
      "url": "/models/nvidia-nemotron-3-super-120b-a12b",
      "logo": "/img/logos/nvidia.svg",
+     "mid": {
+      "value": 0
+     },
+     "lower": {
+      "value": 0
+     },
+     "upper": {
+      "value": 0
+     }
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "label": "LFM3-VL-2B",
+     "url": "/models/lfm3-vl-2b",
+     "logo": "/img/logos/liquidai.svg",
      "mid": {
       "value": 0
      },
@@ -5226,7 +5256,7 @@
      "name": "Gemma 4 26B A4B (Reasoning)",
      "shortName": "Gemma 4 26B A4B",
      "creatorName": "Google",
-     "totalCost": 11.07489139080415
+     "totalCost": 11.54216088340467
     },
     {
      "id": "78332c88-fe60-42c8-af9d-3617e44cf1f5",
@@ -5714,7 +5744,7 @@
      "name": "DeepSeek V4.1 Flash (Non-reasoning)",
      "shortName": "DeepSeek V4.1 Flash (non-reasoning)",
      "creatorName": "DeepSeek",
-     "totalCost": 16.66683523820399
+     "totalCost": 13.061255585136413
     },
     {
      "id": "75e1c197-f239-4361-a9d6-66dccfead236",
@@ -5762,7 +5792,7 @@
      "name": "DeepSeek V4.1 Flash (Max)",
      "shortName": "DeepSeek V4.1 Flash (max)",
      "creatorName": "DeepSeek",
-     "totalCost": 60.203002042714694
+     "totalCost": 59.376424958488286
     },
     {
      "id": "fe4c0848-e284-4e52-a79d-cdc28392f1a9",
@@ -5897,14 +5927,6 @@
      "shortName": "Ling 3.0 Flash",
      "creatorName": "InclusionAI",
      "totalCost": 2.84237094690579
-    },
-    {
-     "id": "eb4ba465-3fcd-4065-9fe2-e8225e7b2c6c",
-     "slug": "ring-2-6-1t",
-     "name": "Ring-2.6-1T",
-     "shortName": "Ring-2.6-1T",
-     "creatorName": "InclusionAI",
-     "totalCost": 68.6183147
     },
     {
      "id": "d49c8680-e29b-400e-9511-824f7ddebe07",
@@ -6088,7 +6110,7 @@
      "name": "Nemotron 3.5 Super VL",
      "shortName": "Nemotron 3.5 Super VL",
      "creatorName": "NVIDIA",
-     "totalCost": 46.08971244204848
+     "totalCost": 39.748040244698984
     },
     {
      "id": "5b52def2-ac9b-4465-ad80-91ea8079e253",
@@ -6137,6 +6159,22 @@
      "shortName": "North Mini Code",
      "creatorName": "Cohere",
      "totalCost": 0
+    },
+    {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "slug": "lfm3-1-7b",
+     "name": "LFM3-1.7B",
+     "shortName": "LFM3-1.7B",
+     "creatorName": "Liquid AI",
+     "totalCost": 14.037355525400004
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "slug": "lfm3-vl-2b",
+     "name": "LFM3-VL-2B",
+     "shortName": "LFM3-VL-2B",
+     "creatorName": "Liquid AI",
+     "totalCost": 20.722904223520004
     },
     {
      "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
@@ -6520,6 +6558,13 @@
      "logo": "/img/logos/inceptionlabs.svg"
     },
     {
+     "id": "73c96f99-0de3-4668-a4bd-b106a0fe18f2",
+     "label": "DeepSeek V4.1 Flash (non-reasoning)",
+     "tooltipLabel": "DeepSeek V4.1 Flash (Non-reasoning)",
+     "url": "/models/deepseek-v4-1-flash",
+     "logo": "/img/logos/deepseek.svg"
+    },
+    {
      "id": "127de816-57d3-4037-8484-480a613cd413",
      "label": "MiMo-V2.6-Flash",
      "tooltipLabel": "MiMo-V2.6-Flash",
@@ -6532,6 +6577,13 @@
      "tooltipLabel": "Gemini 3.5 Flash-Lite",
      "url": "/models/gemini-3-5-flash-lite",
      "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "label": "LFM3-1.7B",
+     "tooltipLabel": "LFM3-1.7B",
+     "url": "/models/lfm3-1-7b",
+     "logo": "/img/logos/liquidai.svg"
     },
     {
      "id": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
@@ -6567,13 +6619,6 @@
      "tooltipLabel": "GPT-6.2 Sol (Low)",
      "url": "/models/gpt-6-2-sol",
      "logo": "/img/logos/openai.svg"
-    },
-    {
-     "id": "73c96f99-0de3-4668-a4bd-b106a0fe18f2",
-     "label": "DeepSeek V4.1 Flash (non-reasoning)",
-     "tooltipLabel": "DeepSeek V4.1 Flash (Non-reasoning)",
-     "url": "/models/deepseek-v4-1-flash",
-     "logo": "/img/logos/deepseek.svg"
     },
     {
      "id": "c441e158-a87d-4116-911b-93325e4b4f1c",
@@ -6623,6 +6668,13 @@
      "tooltipLabel": "Grok 4.3 (Non-reasoning)",
      "url": "/models/grok-4-3",
      "logo": "/img/logos/spacexai.svg"
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "label": "LFM3-VL-2B",
+     "tooltipLabel": "LFM3-VL-2B",
+     "url": "/models/lfm3-vl-2b",
+     "logo": "/img/logos/liquidai.svg"
     },
     {
      "id": "a87fce42-eea3-4e45-a96d-fe057814f371",
@@ -6786,6 +6838,13 @@
      "logo": "/img/logos/openai.svg"
     },
     {
+     "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
+     "label": "Nemotron 3.5 Super VL",
+     "tooltipLabel": "Nemotron 3.5 Super VL",
+     "url": "/models/nemotron-3-5-super-vl",
+     "logo": "/img/logos/nvidia.svg"
+    },
+    {
      "id": "27b24366-fd1a-44b7-8011-e24d7501318d",
      "label": "Mistral Large 4 (medium)",
      "tooltipLabel": "Mistral Large 4 (Medium)",
@@ -6819,13 +6878,6 @@
      "tooltipLabel": "Gemini 2.5 Pro",
      "url": "/models/gemini-2-5-pro",
      "logo": "/img/logos/google.svg"
-    },
-    {
-     "id": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
-     "label": "Nemotron 3.5 Super VL",
-     "tooltipLabel": "Nemotron 3.5 Super VL",
-     "url": "/models/nemotron-3-5-super-vl",
-     "logo": "/img/logos/nvidia.svg"
     },
     {
      "id": "82b37079-56d9-4451-8a1a-22b0a921f4f8",
@@ -6959,13 +7011,6 @@
      "tooltipLabel": "Qwen3.5 397B A17B (Reasoning)",
      "url": "/models/qwen3-5-397b-a17b",
      "logo": "/img/logos/alibaba.svg"
-    },
-    {
-     "id": "eb4ba465-3fcd-4065-9fe2-e8225e7b2c6c",
-     "label": "Ring-2.6-1T",
-     "tooltipLabel": "Ring-2.6-1T",
-     "url": "/models/ring-2-6-1t",
-     "logo": "/img/logos/inclusionai.jpg"
     },
     {
      "id": "e94c7595-a320-4c88-8f07-d9fd50fc4595",
@@ -8875,6 +8920,20 @@
      "name": "North Mini Code",
      "shortName": "North Mini Code",
      "creatorName": "Cohere"
+    },
+    {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "slug": "lfm3-1-7b",
+     "name": "LFM3-1.7B",
+     "shortName": "LFM3-1.7B",
+     "creatorName": "Liquid AI"
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "slug": "lfm3-vl-2b",
+     "name": "LFM3-VL-2B",
+     "shortName": "LFM3-VL-2B",
+     "creatorName": "Liquid AI"
     },
     {
      "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
@@ -11016,6 +11075,22 @@
      "releaseDate": "2026-06-09"
     },
     {
+     "id": "c76e1f60-9766-4ac5-8717-2837a05924af",
+     "slug": "lfm3-1-7b",
+     "name": "LFM3-1.7B",
+     "shortName": "LFM3-1.7B",
+     "creatorName": "Liquid AI",
+     "releaseDate": "2026-10-27"
+    },
+    {
+     "id": "2b17227e-a229-474f-a86d-0dacb76212ca",
+     "slug": "lfm3-vl-2b",
+     "name": "LFM3-VL-2B",
+     "shortName": "LFM3-VL-2B",
+     "creatorName": "Liquid AI",
+     "releaseDate": "2026-10-27"
+    },
+    {
      "id": "adfae555-f489-4f3e-9064-c6b7fcdd0783",
      "slug": "granite-4-2-8b",
      "name": "Granite 4.2 8B",
@@ -13151,6 +13226,14 @@
     ],
     [
      "252",
+     "Liquid AI",
+     "LFM3-1.7B",
+     "223",
+     "-10 / +10",
+     "Oct 2026"
+    ],
+    [
+     "253",
      "Cohere",
      "North Mini Code",
      "213",
@@ -13158,7 +13241,7 @@
      "Jun 2026"
     ],
     [
-     "253",
+     "254",
      "Google",
      "Gemini 3.1 Flash-Lite",
      "208",
@@ -13166,7 +13249,7 @@
      "Mar 2026"
     ],
     [
-     "254",
+     "255",
      "Alibaba",
      "Qwen3 235B A22B 2507 (Reasoning)",
      "170",
@@ -13174,7 +13257,7 @@
      "Jul 2025"
     ],
     [
-     "255",
+     "256",
      "Celeris",
      "Celeris-1",
      "152",
@@ -13182,7 +13265,7 @@
      "Jul 2026"
     ],
     [
-     "256",
+     "257",
      "OpenAI",
      "o3-mini (High)",
      "143",
@@ -13190,7 +13273,7 @@
      "Jan 2025"
     ],
     [
-     "257",
+     "258",
      "Mistral",
      "Ministral 3 14B",
      "132",
@@ -13198,7 +13281,7 @@
      "Dec 2025"
     ],
     [
-     "258",
+     "259",
      "DeepSeek",
      "DeepSeek R1 (Jan '25)",
      "129",
@@ -13206,7 +13289,7 @@
      "Jan 2025"
     ],
     [
-     "259",
+     "260",
      "Upstage",
      "Solar Pro 3",
      "100",
@@ -13214,7 +13297,7 @@
      "Apr 2026"
     ],
     [
-     "260",
+     "261",
      "IBM",
      "Granite 4.2 3B",
      "99",
@@ -13222,7 +13305,7 @@
      "Aug 2026"
     ],
     [
-     "261",
+     "262",
      "DeepSeek",
      "DeepSeek V3 (Dec '24)",
      "78",
@@ -13230,7 +13313,7 @@
      "Dec 2024"
     ],
     [
-     "262",
+     "263",
      "NVIDIA",
      "NVIDIA Nemotron 3 Nano 30B A3B (Reasoning)",
      "78",
@@ -13238,7 +13321,7 @@
      "Dec 2025"
     ],
     [
-     "263",
+     "264",
      "Mistral",
      "Ministral 3 8B",
      "78",
@@ -13246,7 +13329,7 @@
      "Dec 2025"
     ],
     [
-     "264",
+     "265",
      "DeepSeek",
      "DeepSeek V3 0324",
      "69",
@@ -13254,7 +13337,7 @@
      "Mar 2025"
     ],
     [
-     "265",
+     "266",
      "Institute of Foundation Models",
      "K2 Think V2",
      "8",
@@ -13262,7 +13345,7 @@
      "Dec 2025"
     ],
     [
-     "266",
+     "267",
      "Alibaba",
      "Qwen3 30B A3B 2507 (Reasoning)",
      "6",
@@ -13270,7 +13353,7 @@
      "Jul 2025"
     ],
     [
-     "267",
+     "268",
      "Google",
      "Gemma 4 E4B (Reasoning)",
      "0",
@@ -13278,7 +13361,7 @@
      "Apr 2026"
     ],
     [
-     "268",
+     "269",
      "OpenAI",
      "gpt-oss-120b (High)",
      "0",
@@ -13286,7 +13369,7 @@
      "Aug 2025"
     ],
     [
-     "269",
+     "270",
      "NVIDIA",
      "NVIDIA Nemotron 3 Nano 4B",
      "0",
@@ -13294,7 +13377,15 @@
      "Mar 2026"
     ],
     [
-     "270",
+     "271",
+     "Liquid AI",
+     "LFM3-VL-2B",
+     "0",
+     "-0 / +0",
+     "Oct 2026"
+    ],
+    [
+     "272",
      "OpenAI",
      "gpt-oss-20b (High)",
      "0",
@@ -13302,7 +13393,7 @@
      "Aug 2025"
     ],
     [
-     "271",
+     "273",
      "Mistral",
      "Mistral Small 3.2",
      "0",
@@ -13310,7 +13401,7 @@
      "Jun 2025"
     ],
     [
-     "272",
+     "274",
      "Alibaba",
      "Qwen3 14B (Reasoning)",
      "0",
@@ -13318,7 +13409,7 @@
      "Apr 2025"
     ],
     [
-     "273",
+     "275",
      "NVIDIA",
      "Nemotron 3 Super 120B A12B (Reasoning)",
      "0",
@@ -13326,7 +13417,7 @@
      "Mar 2026"
     ],
     [
-     "274",
+     "276",
      "Mistral",
      "Ministral 3 3B",
      "0",
@@ -13334,7 +13425,7 @@
      "Dec 2025"
     ],
     [
-     "275",
+     "277",
      "Meta",
      "Llama 4 Maverick",
      "0",
@@ -13342,7 +13433,7 @@
      "Apr 2025"
     ],
     [
-     "276",
+     "278",
      "Alibaba",
      "Qwen3 8B (Reasoning)",
      "0",
@@ -13350,7 +13441,7 @@
      "Apr 2025"
     ],
     [
-     "277",
+     "279",
      "Institute of Foundation Models",
      "K2 Horizon 0.9B",
      "0",
@@ -13358,7 +13449,7 @@
      "Sep 2026"
     ],
     [
-     "278",
+     "280",
      "Meta",
      "Llama 4 Scout",
      "0",
@@ -13366,7 +13457,7 @@
      "Apr 2025"
     ],
     [
-     "279",
+     "281",
      "Alibaba",
      "Qwen3 32B (Reasoning)",
      "0",

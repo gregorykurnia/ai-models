@@ -12,6 +12,8 @@ const pages = [
   { key: "frontiercode-2-0", url: "https://artificialanalysis.ai/evaluations/frontiercode-2-0" },
   { key: "gdp-pdf", url: "https://artificialanalysis.ai/evaluations/gdp-pdf" },
   { key: "critpt", url: "https://artificialanalysis.ai/evaluations/critpt" },
+  { key: "critpt-v2-full", url: "https://artificialanalysis.ai/evaluations/critpt-v2", completeScoreChart: "CritPt v2: Score" },
+  { key: "critpt-v2-hard", url: "https://artificialanalysis.ai/evaluations/critpt-v2?critpt-subset=hard", completeScoreChart: "CritPt v2 (Hard Subset): Score" },
   { key: "omniscience", url: "https://artificialanalysis.ai/evaluations/omniscience" },
   { key: "mmmu-pro", url: "https://artificialanalysis.ai/evaluations/mmmu-pro" },
   { key: "finance-and-accounting", url: "https://artificialanalysis.ai/models/capabilities/finance-and-accounting" },
@@ -39,10 +41,11 @@ function slim(item) {
 await mkdir(outDir, { recursive: true });
 const capturedAt = new Date().toISOString().slice(0, 10);
 const browser = await chromium.launch({ headless: true });
+const modelSelectors = page => page.locator("button").filter({ hasText: /\d+ of \d+ models/ });
 
 async function expandSelectors(page) {
   // Each chart has a "N of M models" selector; select all so the charts carry the full model list.
-  const selectors = page.locator("button").filter({ hasText: /\d+ of \d+ models/ });
+  const selectors = modelSelectors(page);
   const count = await selectors.count();
   for (let i = 0; i < count; i++) {
     try {
@@ -66,7 +69,8 @@ const selected = only ? pages.filter(target => only.includes(target.key)) : page
 
 for (const target of selected) {
   const page = await browser.newPage({ viewport: { width: 1600, height: 1000 } });
-  await page.goto(target.url, { waitUntil: "networkidle", timeout: 120000 });
+  const response = await page.goto(target.url, { waitUntil: "networkidle", timeout: 120000 });
+  if (!response?.ok()) throw new Error(`${target.key}: HTTP ${response?.status()}`);
   await page.waitForTimeout(1000);
   const selectors = await expandSelectors(page);
   await page.waitForTimeout(800);
@@ -114,6 +118,16 @@ for (const target of selected) {
   captured.charts = captured.charts
     .filter(chart => USED_CHART.test(chart.title) && !UNUSED_CHART.test(chart.title))
     .map(chart => ({ ...chart, items: chart.items.map(slim) }));
+  if (target.completeScoreChart) {
+    // Check the resolved subset URL and fully expanded score selector.
+    const selector = await modelSelectors(page).first().innerText({ timeout: 5000 });
+    const counts = /^(\d+) of (\d+) models$/.exec(selector.trim());
+    const chart = captured.charts.find(item => item.title === target.completeScoreChart);
+    if (new URL(page.url()).searchParams.get("critpt-subset") !== new URL(target.url).searchParams.get("critpt-subset")
+      || !counts || counts[1] !== counts[2] || !chart?.items.length || chart.items.length !== Number(counts[2])) {
+      throw new Error(`${target.key}: incomplete score chart (${selector}, ${chart?.items.length ?? 0} scores)`);
+    }
+  }
   const file = { key: target.key, source_url: target.url, captured_at: capturedAt, selectors, ...captured };
   await writeFile(`${outDir}/${target.key}.json`, `${JSON.stringify(file, null, 1)}\n`);
   console.log(`${target.key}: charts ${captured.charts.map(c => `${c.title.slice(0, 40)}=${c.items.length}`).join(" | ")}; tables ${captured.tables.length}`);

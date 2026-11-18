@@ -33,7 +33,7 @@ async function workspace(t: TestContext): Promise<string> {
 test("both sets write their own report and GPT-6.2 covers every bundled evaluation", async t => {
   const cwd = await workspace(t);
   const [gpt, hydrogen] = await Promise.all([audit(cwd, "--set", "gpt-6.2"), audit(cwd, "--set", "hydrogen")]);
-  assert.match(gpt.stdout, /10 master rows.*145 filled, 15 absent/);
+  assert.match(gpt.stdout, /10 master rows.*165 filled, 15 absent/);
   assert.match(hydrogen.stdout, /7 master rows/);
   const [report, legacyReport] = await Promise.all([
     readFile(join(cwd, gptReport), "utf8"), readFile(join(cwd, hydrogenReport), "utf8"),
