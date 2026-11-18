@@ -225,7 +225,8 @@ async function capturePage(page, target, capturedAt) {
       .filter(chart => USED_CHART.test(chart.title) && !UNUSED_CHART.test(chart.title))
       .map(({ title, items }) => ({ title, items: items.map(slim) }));
   }
-  return { key: target.key, source_url: target.url, captured_at: capturedAt, selectors, ...captured };
+  const sourceUrl = target.breakdownSeries ? response.url() : target.url;
+  return { key: target.key, source_url: sourceUrl, captured_at: capturedAt, selectors, ...captured };
 }
 
 async function captureTarget(browser, target, capturedAt) {
@@ -255,12 +256,17 @@ async function captureTarget(browser, target, capturedAt) {
   }
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  const { values: { only: key } } = parseArgs({ options: { only: { type: "string" } } });
+export function selectCaptureTargets(args, envOnly) {
+  const { values: { only: key } } = parseArgs({ args, options: { only: { type: "string" } } });
   // Keep AA_CAPTURE_ONLY=key1,key2 for existing scripts. The CLI flag takes precedence.
-  const only = key === undefined ? process.env.AA_CAPTURE_ONLY?.split(",") : [key];
+  const only = key === undefined ? envOnly?.split(",") : [key];
   const selected = only ? pages.filter(target => only.includes(target.key)) : pages;
   if (key !== undefined && !selected.length) throw new Error(`Unknown capture key "${key}"`);
+  return selected;
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  const selected = selectCaptureTargets(process.argv.slice(2), process.env.AA_CAPTURE_ONLY);
   const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || "playwright");
   await mkdir(outDir, { recursive: true });
   const capturedAt = new Date().toISOString().slice(0, 10);

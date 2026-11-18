@@ -1,14 +1,14 @@
 # SWE-Atlas-QnA capture
 
-Captured on 2026-11-18 UTC. At **Performance → Score by Benchmark**, **Select all** changed the selector to **39 of 39 models**. The capture holds one score for each of those 39 setups. The separate **Router models** toggle adds an opt-in Devin Fusion CLI setup that mixes Claude Opus 5.5 Max and GPT-6 Luna High. [Artificial Analysis Coding Agent Index](https://artificialanalysis.ai/agents/coding)
+Captured on 2026-11-18 UTC. At **Performance → Score by Benchmark**, **Select all** changed the selector to **39 of 39 models**. The capture holds one score for each of those 39 setups. The page redirects from `/agents/coding` to `/agents/coding-agents`, the URL recorded in the capture. AA lists the mixed-model Devin Fusion CLI setup behind the separate **Router models** toggle. [Artificial Analysis Coding Agent Index](https://artificialanalysis.ai/agents/coding-agents)
 
-The capture reads the chart's `items[].components[]` entry with `key === "swe-atlas-qna"` and stores its `meanReward` fraction as `value` in the `SWE-Atlas-QnA-AA: Score` chart. FrontierCode and Terminal-Bench have separate keys, `frontiercode-v2.0` and `terminal-bench-v4`. The composite score appears on the **Index** tab. The inventory converts the raw fraction to a percentage. [Capture JSON](../data/aa-captures/swe-atlas-qna-aa.json)
+The capture reads the chart's `items[].components[]` entry with `key === "swe-atlas-qna"` and stores its `meanReward` fraction as `value` in the `SWE-Atlas-QnA-AA: Score` chart. Each score and setup name come from the same chart item. FrontierCode and Terminal-Bench have separate keys, `frontiercode-v2.0` and `terminal-bench-v4`. The composite score appears on the **Index** tab. The inventory converts the raw fraction to a percentage. [Capture JSON](../data/aa-captures/swe-atlas-qna-aa.json)
 
-With all setups selected in the browser, the SWE-Atlas-QnA-AA tooltips showed **66** for Claude Code with Claude Opus 5.5 Max (Default Fallback), **64** for Claude Code with Claude Sonnet 5.5 Max (Default Fallback), and **34** for Claude Code with Claude Haiku 5.5 Max. These are the captured pass rates rounded to whole numbers by AA. [Artificial Analysis Coding Agent Index](https://artificialanalysis.ai/agents/coding)
+On the dedicated **SWE-Atlas-QnA-AA** tab, hovering each matching bar confirmed AA's whole-number score. Claude Code showed **66** for Opus 5.5 Max (Default Fallback), **64** for Sonnet 5.5 Max (Default Fallback), and **34** for Haiku 5.5 Max. The same check showed **36** for Codex with GPT-6.2 Astra Low, **46** for Codex with GPT-6.2 Sol Max, **60** for Antigravity CLI with Gemini 4 Hydrogen Xhigh, and **69** for Muse Code with Muse Wonder Full Max. [Artificial Analysis Coding Agent Index](https://artificialanalysis.ai/agents/coding-agents)
 
-**35 setups map to distinct master rows.** The live chart includes five efforts each for GPT-6.2 Astra and Sol and several lower-effort Claude runs. AA reports Max effort for Kimi Code CLI's Kimi K3.1 Pro, whose master row uses the model name without an effort suffix. Max is the model's API default. [AA run settings](https://artificialanalysis.ai/agents/coding-agents/comparisons/deepseek-harness-vs-kimi-code-cli), [Moonshot model card](https://huggingface.co/moonshotai/Kimi-K3.1-Pro/blob/main/README.md)
+**All 39 setups map to distinct master rows by model and effort.** Step 5 Preview, Qwen3.8 Max, and Beam 1.0 use the same names on AA and the master. AA reports Max effort for Kimi Code CLI's Kimi K3.1 Pro, whose master row uses the model name without an effort suffix. Max is the model's API default. [AA run settings](https://artificialanalysis.ai/agents/coding-agents/comparisons/deepseek-harness-vs-kimi-code-cli), [Moonshot model card](https://huggingface.co/moonshotai/Kimi-K3.1-Pro/blob/main/README.md)
 
-| AA setup | SWE-Atlas-QnA pass rate | Master row or reason |
+| AA setup (agent and model) | SWE-Atlas-QnA pass rate | Master row |
 | --- | ---: | --- |
 | Claude Code - Claude Fable 5.2 (Xhigh, Default Fallback) | 62.0968% | Claude Fable 5.2 (Adaptive Reasoning, Xhigh Effort, Default Fallback) |
 | Claude Code - Claude Fable 5.2 (High, Default Fallback) | 61.8280% | Claude Fable 5.2 (Adaptive Reasoning, High Effort, Default Fallback) |
@@ -37,15 +37,15 @@ With all setups selected in the browser, the SWE-Atlas-QnA-AA tooltips showed **
 | Muse Code - Muse Wonder (Max) | 61.5591% | Muse Wonder (Max) |
 | Grok Build - Grok 4.7 (Xhigh) | 62.9032% | Grok 4.7 (Xhigh) |
 | Mistral Vibe - Mistral Large 4 (High) | 58.8710% | Mistral Large 4 (High) |
-| Opencode - GLM-5.3 (Max) | 58.6022% | left out — third-party OpenCode harness for a Z AI model |
+| Opencode - GLM-5.3 (Max) | 58.6022% | GLM-5.3 (Max) |
 | Muse Code - Muse Ember (Max) | 54.8387% | Muse Ember (Max) |
 | Codex - GPT-6.2 Sol (Low) | 42.4731% | GPT-6.2 Sol (Low) |
 | DeepSeek Harness - DeepSeek V4.1 Flash 1017 (Max) | 61.5591% | DeepSeek V4.1 Flash 1017 (Max) |
 | Muse Code - Muse Spark 1.3 (Max) | 58.6022% | Muse Spark 1.3 (Max) |
-| Claude Code - Step 5 Preview | 58.6022% | left out — Anthropic's agent running a StepFun model |
+| Claude Code - Step 5 Preview | 58.6022% | Step 5 Preview |
 | Codex - GPT-6.2 Astra (Low) | 36.2903% | GPT-6.2 Astra (Low) |
-| Claude Code - Qwen3.8 Max | 56.1828% | left out — Anthropic's agent running Alibaba's model |
+| Claude Code - Qwen3.8 Max | 56.1828% | Qwen3.8 Max |
 | Mistral Vibe - Mistral Large 4 (Medium) | 44.6237% | Mistral Large 4 (Medium) |
 | Claude Code - Claude Haiku 5.5 (Max) | 33.8710% | Claude Haiku 5.5 (Adaptive Reasoning, Max Effort, Default Fallback) |
 | Codex - GPT-6 Luna (Max) | 38.4409% | GPT-6 Luna (Max) |
-| Mirror - Beam 1.0 | 37.6344% | left out — AA gives no reasoning effort for this setup |
+| Mirror - Beam 1.0 | 37.6344% | Beam 1.0 |

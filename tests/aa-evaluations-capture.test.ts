@@ -6,7 +6,7 @@ import { join } from "node:path";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
-import { readBenchmarkItems } from "../scripts/capture-aa-evaluations.mjs";
+import { readBenchmarkItems, selectCaptureTargets } from "../scripts/capture-aa-evaluations.mjs";
 
 const seriesKey = "swe-atlas-qna";
 const setup = (id: string, displayLabel: string, meanReward: unknown = 0.65) => ({
@@ -26,6 +26,14 @@ function read(items: unknown[], chartSeries = seriesKey) {
     },
   }, seriesKey);
 }
+
+test("capture without --only keeps all evaluation targets and adds SWE-Atlas-QnA", () => {
+  assert.deepEqual(selectCaptureTargets([], undefined).map(target => target.key), [
+    "aa-briefcase", "automationbench-aa", "terminalbench-4-0", "frontiercode-2-0", "swe-atlas-qna-aa",
+    "gdp-pdf", "critpt", "critpt-v2-full", "critpt-v2-hard", "omniscience", "mmmu-pro",
+    "finance-and-accounting", "economics", "strategy-and-ops", "artificial-analysis-intelligence-index",
+  ]);
+});
 
 test("captures the SWE-Atlas-QnA fraction from the breakdown, including zero and long setup labels", () => {
   const longName = "Coding team with a long name ".repeat(25).trim();
