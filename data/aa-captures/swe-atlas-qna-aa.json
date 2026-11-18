@@ -1,0 +1,369 @@
+{
+ "key": "swe-atlas-qna-aa",
+ "source_url": "https://artificialanalysis.ai/agents/coding",
+ "captured_at": "2026-11-18",
+ "selectors": 1,
+ "charts": [
+  {
+   "title": "SWE-Atlas-QnA-AA: Score",
+   "seriesKey": "swe-atlas-qna",
+   "selectorLabels": [
+    "39 of 39 models"
+   ],
+   "items": [
+    {
+     "id": "9820ee072540fb8c51becfc2b1f274c8",
+     "name": "Claude Code - Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "value": 0.620967741935484,
+     "agentCreator": "Anthropic",
+     "creatorName": "Anthropic",
+     "modelName": "Claude Fable 5.2 (Xhigh, Default Fallback)",
+     "effort": "xhigh"
+    },
+    {
+     "id": "37d7db5622db33bcc5c6824d564246e7",
+     "name": "Claude Code - Claude Fable 5.2 (High, Default Fallback)",
+     "value": 0.618279569892473,
+     "agentCreator": "Anthropic",
+     "creatorName": "Anthropic",
+     "modelName": "Claude Fable 5.2 (High, Default Fallback)",
+     "effort": "high"
+    },
+    {
+     "id": "e594775f1aa1026d8fa9385fa35f68b4",
+     "name": "Claude Code - Claude Opus 5.5 (Max, Default Fallback)",
+     "value": 0.658602150537634,
+     "agentCreator": "Anthropic",
+     "creatorName": "Anthropic",
+     "modelName": "Claude Opus 5.5 (Max, Default Fallback)",
+     "effort": "max"
+    },
+    {
+     "id": "4d278d53a18fbdcb5138d11466ea0b1b",
+     "name": "Claude Code - Claude Sonnet 5.5 (Max, Default Fallback)",
+     "value": 0.64247311827957,
+     "agentCreator": "Anthropic",
+     "creatorName": "Anthropic",
+     "modelName": "Claude Sonnet 5.5 (Max, Default Fallback)",
+     "effort": "max"
+    },
+    {
+     "id": "78442b1eea1f0b696ab08b6d12ec9354",
+     "name": "Claude Code - Claude Fable 5.2 (Max, Default Fallback)",
+     "value": 0.604838709677419,
+     "agentCreator": "Anthropic",
+     "creatorName": "Anthropic",
+     "modelName": "Claude Fable 5.2 (Max, Default Fallback)",
+     "effort": "max"
+    },
+    {
+     "id": "7814cb87040ea234c69eca79cd85486d",
+     "name": "Antigravity CLI - Gemini 4 Carbon (High)",
+     "value": 0.637096774193548,
+     "agentCreator": "Google",
+     "creatorName": "Google",
+     "modelName": "Gemini 4 Carbon (High)",
+     "effort": "high"
+    },
+    {
+     "id": "e9150db5061429910b5341e4f8bdc7a1",
+     "name": "Muse Code - Muse Wonder Full (Max)",
+     "value": 0.688172043010753,
+     "agentCreator": "Meta",
+     "creatorName": "Meta",
+     "modelName": "Muse Wonder Full (Max)",
+     "effort": "max"
+    },
+    {
+     "id": "7853ef55ffc046be0c351cb5ba7d0290",
+     "name": "Codex - GPT-6.2 Astra (Max)",
+     "value": 0.551075268817204,
+     "agentCreator": "OpenAI",
+     "creatorName": "OpenAI",
+     "modelName": "GPT-6.2 Astra (Max)",
+     "effort": "max"
+    },
+    {
+     "id": "d2d75a8abf0ca8d8888f99cff7bee543",
+     "name": "Codex - GPT-6.2 Astra (Xhigh)",
+     "value": 0.537634408602151,
+     "agentCreator": "OpenAI",
+     "creatorName": "OpenAI",
+     "modelName": "GPT-6.2 Astra (Xhigh)",
+     "effort": "xhigh"
+    },
+    {
+     "id": "97f24b3f300fe06034101d053f3a894b",
+     "name": "Codex - GPT-6 Astra (Max)",
+     "value": 0.591397849462366,
+     "agentCreator": "OpenAI",
+     "creatorName": "OpenAI",
+     "modelName": "GPT-6 Astra (Max)",
+     "effort": "max"
+    },
+    {
+     "id": "b02d0ed1020688cc426aebb910ee1cd8",
+     "name": "Claude Code - Claude Fable 5.2 (Medium, Default Fallback)",
+     "value": 0.637096774193548,
+     "agentCreator": "Anthropic",
+     "creatorName": "Anthropic",
+     "modelName": "Claude Fable 5.2 (Medium, Default Fallback)",
+     "effort": "medium"
+    },
+    {
+     "id": "98e53b1f02eee089dc8221078e300b3e",
+     "name": "Claude Code - Claude Fable 5.1 (Max, Default Fallback)",
+     "value": 0.663978494623656,
+     "agentCreator": "Anthropic",
+     "creatorName": "Anthropic",
+     "modelName": "Claude Fable 5.1 (Max, Default Fallback)",
+     "effort": "max"
+    },
+    {
+     "id": "8e5d9d2dc96b716e4d0b96706efc4548",
+     "name": "Antigravity CLI - Gemini 4 Hydrogen (Xhigh)",
+     "value": 0.602150537634409,
+     "agentCreator": "Google",
+     "creatorName": "Google",
+     "modelName": "Gemini 4 Hydrogen (Xhigh)",
+     "effort": "xhigh"
+    },
+    {
+     "id": "f60010d6306ed860deef16152e949af3",
+     "name": "Codex - GPT-6.2 Astra (High)",
+     "value": 0.545698924731183,
+     "agentCreator": "OpenAI",
+     "creatorName": "OpenAI",
+     "modelName": "GPT-6.2 Astra (High)",
+     "effort": "high"
+    },
+    {
+     "id": "5146f276cbceb4e9fdeb5834609f805b",
+     "name": "Codex - GPT-6.1 Sol (Max)",
+     "value": 0.599462365591398,
+     "agentCreator": "OpenAI",
+     "creatorName": "OpenAI",
+     "modelName": "GPT-6.1 Sol (Max)",
+     "effort": "max"
+    },
+    {
+     "id": "2b66aa9f8afa482977259846d9b207ba",
+     "name": "Codex - GPT-6.2 Sol (Xhigh)",
+     "value": 0.513440860215054,
+     "agentCreator": "OpenAI",
+     "creatorName": "OpenAI",
+     "modelName": "GPT-6.2 Sol (Xhigh)",
+     "effort": "xhigh"
+    },
+    {
+     "id": "eae5a29e0ed56a9c2aa5b6e82dd082e2",
+     "name": "Codex - GPT-6.2 Astra (Medium)",
+     "value": 0.537634408602151,
+     "agentCreator": "OpenAI",
+     "creatorName": "OpenAI",
+     "modelName": "GPT-6.2 Astra (Medium)",
+     "effort": "medium"
+    },
+    {
+     "id": "1fece3eef716cd9668b972cced54606c",
+     "name": "Codex - GPT-6.1 Terra (Max)",
+     "value": 0.540322580645161,
+     "agentCreator": "OpenAI",
+     "creatorName": "OpenAI",
+     "modelName": "GPT-6.1 Terra (Max)",
+     "effort": "max"
+    },
+    {
+     "id": "291529f5989be92da6395f4bb93da395",
+     "name": "Kimi Code CLI - Kimi K3.1 Pro",
+     "value": 0.567204301075269,
+     "agentCreator": "Kimi",
+     "creatorName": "Kimi",
+     "modelName": "Kimi K3.1 Pro",
+     "effort": "max"
+    },
+    {
+     "id": "eb55a750b7784b3f03c16efc3c39e1ff",
+     "name": "Codex - GPT-6.2 Sol (Max)",
+     "value": 0.462365591397849,
+     "agentCreator": "OpenAI",
+     "creatorName": "OpenAI",
+     "modelName": "GPT-6.2 Sol (Max)",
+     "effort": "max"
+    },
+    {
+     "id": "09e56f8cd938c59b1a9a600141535ab0",
+     "name": "Claude Code - Claude Fable 5.2 (Low, Default Fallback)",
+     "value": 0.599462365591398,
+     "agentCreator": "Anthropic",
+     "creatorName": "Anthropic",
+     "modelName": "Claude Fable 5.2 (Low, Default Fallback)",
+     "effort": "low"
+    },
+    {
+     "id": "c4f606fc3bab9772d3e2ab6c95ebed5a",
+     "name": "Codex - GPT-6.2 Sol (High)",
+     "value": 0.505376344086022,
+     "agentCreator": "OpenAI",
+     "creatorName": "OpenAI",
+     "modelName": "GPT-6.2 Sol (High)",
+     "effort": "high"
+    },
+    {
+     "id": "bdeb89e3a86551106e671c63fa1415bc",
+     "name": "Antigravity CLI - Gemini 4 Argon (High)",
+     "value": 0.551075268817204,
+     "agentCreator": "Google",
+     "creatorName": "Google",
+     "modelName": "Gemini 4 Argon (High)",
+     "effort": "high"
+    },
+    {
+     "id": "2827f8a25558cdb94dfada79c70b0d8c",
+     "name": "Codex - GPT-6.2 Sol (Medium)",
+     "value": 0.502688172043011,
+     "agentCreator": "OpenAI",
+     "creatorName": "OpenAI",
+     "modelName": "GPT-6.2 Sol (Medium)",
+     "effort": "medium"
+    },
+    {
+     "id": "f83b8dc1b834e06b1dd1142e29bc77fc",
+     "name": "Muse Code - Muse Wonder (Max)",
+     "value": 0.615591397849462,
+     "agentCreator": "Meta",
+     "creatorName": "Meta",
+     "modelName": "Muse Wonder (Max)",
+     "effort": "max"
+    },
+    {
+     "id": "7989f86ae8d744efb7608655672ab296",
+     "name": "Grok Build - Grok 4.7 (Xhigh)",
+     "value": 0.629032258064516,
+     "agentCreator": "SpaceXAI",
+     "creatorName": "SpaceXAI",
+     "modelName": "Grok 4.7 (Xhigh)",
+     "effort": "xhigh"
+    },
+    {
+     "id": "ad1f505937d9446886b286573593bd42",
+     "name": "Mistral Vibe - Mistral Large 4 (High)",
+     "value": 0.588709677419355,
+     "agentCreator": "Mistral",
+     "creatorName": "Mistral",
+     "modelName": "Mistral Large 4 (High)",
+     "effort": "high"
+    },
+    {
+     "id": "5188996d2a6dad5165cdeebb51f983fe",
+     "name": "Opencode - GLM-5.3 (Max)",
+     "value": 0.586021505376344,
+     "agentCreator": "OpenCode",
+     "creatorName": "Z AI",
+     "modelName": "GLM-5.3 (Max)",
+     "effort": "max"
+    },
+    {
+     "id": "ab4f6cb89f990484067eca06109875b3",
+     "name": "Muse Code - Muse Ember (Max)",
+     "value": 0.548387096774193,
+     "agentCreator": "Meta",
+     "creatorName": "Meta",
+     "modelName": "Muse Ember (Max)",
+     "effort": "max"
+    },
+    {
+     "id": "8178a0ab530e25e65f53d836ef248eae",
+     "name": "Codex - GPT-6.2 Sol (Low)",
+     "value": 0.424731182795699,
+     "agentCreator": "OpenAI",
+     "creatorName": "OpenAI",
+     "modelName": "GPT-6.2 Sol (Low)",
+     "effort": "low"
+    },
+    {
+     "id": "4553886307abc03b6a785a5e0a54bcec",
+     "name": "DeepSeek Harness - DeepSeek V4.1 Flash 1017 (Max)",
+     "value": 0.615591397849462,
+     "agentCreator": "DeepSeek",
+     "creatorName": "DeepSeek",
+     "modelName": "DeepSeek V4.1 Flash 1017 (Max)",
+     "effort": "max"
+    },
+    {
+     "id": "8180f45e6f53fc70033de79909aa3b6c",
+     "name": "Muse Code - Muse Spark 1.3 (Max)",
+     "value": 0.586021505376344,
+     "agentCreator": "Meta",
+     "creatorName": "Meta",
+     "modelName": "Muse Spark 1.3 (Max)",
+     "effort": "max"
+    },
+    {
+     "id": "b4fbcf18275aad4049cd12448d37af9f",
+     "name": "Claude Code - Step 5 Preview",
+     "value": 0.586021505376344,
+     "agentCreator": "Anthropic",
+     "creatorName": "StepFun",
+     "modelName": "Step 5 Preview",
+     "effort": null
+    },
+    {
+     "id": "e7d93c34f5c806bec7608750fc56e91a",
+     "name": "Codex - GPT-6.2 Astra (Low)",
+     "value": 0.362903225806452,
+     "agentCreator": "OpenAI",
+     "creatorName": "OpenAI",
+     "modelName": "GPT-6.2 Astra (Low)",
+     "effort": "low"
+    },
+    {
+     "id": "6e872dc3aa0bc90635d8ae831e28f074",
+     "name": "Claude Code - Qwen3.8 Max",
+     "value": 0.561827956989248,
+     "agentCreator": "Anthropic",
+     "creatorName": "Alibaba",
+     "modelName": "Qwen3.8 Max",
+     "effort": null
+    },
+    {
+     "id": "da3088d1680debe97b7b536e6908c548",
+     "name": "Mistral Vibe - Mistral Large 4 (Medium)",
+     "value": 0.446236559139785,
+     "agentCreator": "Mistral",
+     "creatorName": "Mistral",
+     "modelName": "Mistral Large 4 (Medium)",
+     "effort": "medium"
+    },
+    {
+     "id": "2b8b120200b4dc63bb579d5a53b52b70",
+     "name": "Claude Code - Claude Haiku 5.5 (Max)",
+     "value": 0.338709677419355,
+     "agentCreator": "Anthropic",
+     "creatorName": "Anthropic",
+     "modelName": "Claude Haiku 5.5 (Max)",
+     "effort": "max"
+    },
+    {
+     "id": "44059b1749b7773326c3ee04acbfaba2",
+     "name": "Codex - GPT-6 Luna (Max)",
+     "value": 0.384408602150538,
+     "agentCreator": "OpenAI",
+     "creatorName": "OpenAI",
+     "modelName": "GPT-6 Luna (Max)",
+     "effort": "max"
+    },
+    {
+     "id": "e00a520b90336304cd56ead289bb59f2",
+     "name": "Mirror - Beam 1.0",
+     "value": 0.376344086021506,
+     "agentCreator": "Reflection",
+     "creatorName": "Reflection",
+     "modelName": "Beam 1.0",
+     "effort": null
+    }
+   ]
+  }
+ ],
+ "tables": []
+}

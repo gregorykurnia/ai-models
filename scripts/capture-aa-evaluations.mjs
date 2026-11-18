@@ -1,14 +1,20 @@
-// Captures the raw chart and table data behind each Artificial Analysis evaluation page.
+// Captures the raw chart and table data behind Artificial Analysis evaluation pages.
 // Run with a Playwright module path, e.g. PLAYWRIGHT_MODULE=/path/to/playwright/index.mjs node scripts/capture-aa-evaluations.mjs
+// Pass --only <key> to capture one page.
 // Output: data/aa-captures/<page>.json, consumed by scripts/import-aa-evaluations.ts.
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, open, rename, rm, writeFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
+import { parseArgs } from "node:util";
 
 const pages = [
   { key: "aa-briefcase", url: "https://artificialanalysis.ai/evaluations/aa-briefcase", scoreCharts: ["AA-Briefcase Elo"] },
   { key: "automationbench-aa", url: "https://artificialanalysis.ai/evaluations/automationbench-aa", scoreCharts: ["AutomationBench-AA: Score"] },
   { key: "terminalbench-4-0", url: "https://artificialanalysis.ai/evaluations/terminalbench-4-0", scoreCharts: ["Terminal-Bench 4.0: Score"] },
   { key: "frontiercode-2-0", url: "https://artificialanalysis.ai/evaluations/frontiercode-2-0", scoreCharts: ["FrontierCode-AA 2.0: Score"] },
+  {
+    key: "swe-atlas-qna-aa", url: "https://artificialanalysis.ai/agents/coding",
+    scoreCharts: ["SWE-Atlas-QnA-AA: Score"], breakdownSeries: "swe-atlas-qna",
+  },
   { key: "gdp-pdf", url: "https://artificialanalysis.ai/evaluations/gdp-pdf", scoreCharts: ["GDP.pdf: All-pass Rate"] },
   { key: "critpt", url: "https://artificialanalysis.ai/evaluations/critpt", scoreCharts: ["CritPt: Score"] },
   { key: "critpt-v2-full", url: "https://artificialanalysis.ai/evaluations/critpt-v2", scoreCharts: ["CritPt v2: Score"] },
@@ -47,9 +53,13 @@ function slim(item) {
   for (const key of ["mid", "lower", "upper"]) if (item[key]?.value !== undefined) out[key] = { value: item[key].value };
   return out;
 }
-async function expandSelectors(page) {
+function modelSelectors(scope) {
+  return scope.locator("button[aria-controls]").filter({ hasText: MODEL_SELECTOR_LABEL });
+}
+
+async function expandSelectors(page, scope) {
   // AA can remove controls after selecting models. Keep each menu's identity as the page updates.
-  const menuIds = await page.locator("button[aria-controls]").filter({ hasText: MODEL_SELECTOR_LABEL })
+  const menuIds = await modelSelectors(scope)
     .evaluateAll(buttons => buttons.map(button => button.getAttribute("aria-controls")));
   for (const [i, menuId] of menuIds.entries()) {
     const id = JSON.stringify(menuId);
@@ -94,18 +104,57 @@ export function assertCompleteScoreChart(charts, title) {
   }
 }
 
-async function capturePage(page, target, capturedAt) {
-  const response = await page.goto(target.url, { waitUntil: "networkidle", timeout: 120000 });
-  if (!response?.ok()) throw new Error(`HTTP ${response?.status()}`);
-  const url = new URL(target.url);
-  if (url.pathname === "/evaluations/critpt-v2"
-    && new URL(page.url()).searchParams.get("critpt-subset") !== url.searchParams.get("critpt-subset")) {
-    throw new Error(`unexpected CritPt subset URL ${page.url()}`);
+async function openPerformanceBreakdown(page) {
+  const tab = page.getByRole("tab", { name: "Score by Benchmark", exact: true });
+  await tab.click({ timeout: 10000 });
+  const panelId = await tab.getAttribute("aria-controls");
+  if (!panelId) throw new Error("Performance breakdown tab has no chart panel");
+  const panel = page.locator(`[id=${JSON.stringify(panelId)}]`);
+  await panel.locator(".recharts-wrapper").waitFor({ timeout: 10000 });
+  return panel;
+}
+
+// Playwright runs this function in the browser against the breakdown's chart wrapper.
+export function readBenchmarkItems(wrapper, seriesKey) {
+  const fiberKey = Object.keys(wrapper).find(key => key.startsWith("__reactFiber"));
+  for (let fiber = wrapper[fiberKey], depth = 0; fiber && depth < 150; fiber = fiber.return, depth++) {
+    const { items, legends } = fiber.memoizedProps ?? {};
+    if (!Array.isArray(items) || !Array.isArray(legends) || !legends.some(legend => legend.id === seriesKey)) continue;
+    const ids = new Set();
+    const names = new Set();
+    return items.map(({ row, components }) => {
+      const name = row?.displayLabel?.trim();
+      const id = row?.id?.trim();
+      if (!id || !name) throw new Error("missing setup ID or name in Performance breakdown");
+      if (ids.has(id.toLowerCase()) || names.has(name.toLowerCase())) throw new Error(`duplicate setup "${name}"`);
+      ids.add(id.toLowerCase());
+      names.add(name.toLowerCase());
+      const matches = Array.isArray(components) ? components.filter(component => component?.key === seriesKey) : [];
+      const value = matches[0]?.meanReward;
+      if (matches.length !== 1 || !Number.isFinite(value) || value < 0 || value > 1) {
+        throw new Error(`expected one valid "${seriesKey}" score for "${name}"`);
+      }
+      return {
+        id, name, value,
+        agentCreator: row.agentCreator?.name ?? null,
+        creatorName: row.modelCreators?.length === 1 ? row.modelCreators[0].name : null,
+        modelName: row.model?.name ?? null,
+        effort: row.model?.effort?.slug ?? null,
+      };
+    });
   }
-  await page.waitForTimeout(1000);
-  const selectors = await expandSelectors(page);
-  await page.waitForTimeout(800);
-  const captured = await page.evaluate(selectorSource => {
+  throw new Error(`missing "${seriesKey}" series in Performance breakdown`);
+}
+
+async function captureBenchmarkChart(panel, target) {
+  const seriesKey = target.breakdownSeries;
+  const items = await panel.locator(".recharts-wrapper").evaluate(readBenchmarkItems, seriesKey);
+  const selectorLabels = (await modelSelectors(panel).allInnerTexts()).map(label => label.trim());
+  return { charts: [{ title: target.scoreCharts[0], seriesKey, selectorLabels, items }], tables: [] };
+}
+
+async function captureEvaluationCharts(page) {
+  return page.evaluate(selectorSource => {
     const selectorPattern = new RegExp(selectorSource);
     const charts = [];
     for (const wrapper of document.querySelectorAll(".recharts-wrapper")) {
@@ -151,20 +200,67 @@ async function capturePage(page, target, capturedAt) {
     }
     return { charts, tables };
   }, MODEL_SELECTOR_LABEL.source);
+}
+
+async function capturePage(page, target, capturedAt) {
+  const response = await page.goto(target.url, { waitUntil: "networkidle", timeout: 120000 });
+  if (!response?.ok()) throw new Error(`HTTP ${response?.status()}`);
+  const url = new URL(target.url);
+  await page.waitForTimeout(1000);
+  if (url.pathname === "/evaluations/critpt-v2") {
+    if (new URL(page.url()).searchParams.get("critpt-subset") !== url.searchParams.get("critpt-subset")) {
+      throw new Error(`unexpected CritPt subset URL ${page.url()}`);
+    }
+    // The Hard URL can render the Full controls before the client mounts the requested chart.
+    await page.getByRole("heading", { name: target.scoreCharts[0], exact: true }).scrollIntoViewIfNeeded({ timeout: 15000 });
+  }
+  const scope = target.breakdownSeries ? await openPerformanceBreakdown(page) : page;
+  const selectors = await expandSelectors(page, scope);
+  await page.waitForTimeout(800);
+  const captured = target.breakdownSeries ? await captureBenchmarkChart(scope, target) : await captureEvaluationCharts(page);
   for (const title of target.scoreCharts) assertCompleteScoreChart(captured.charts, title);
   // Keep the score, Elo, index, cost, and release charts; the import reads only these.
-  captured.charts = captured.charts
-    .filter(chart => USED_CHART.test(chart.title) && !UNUSED_CHART.test(chart.title))
-    .map(({ title, items }) => ({ title, items: items.map(slim) }));
-  const file = { key: target.key, source_url: target.url, captured_at: capturedAt, selectors, ...captured };
-  await writeFile(`${outDir}/${target.key}.json`, `${JSON.stringify(file, null, 1)}\n`);
-  console.log(`${target.key}: charts ${captured.charts.map(c => `${c.title.slice(0, 40)}=${c.items.length}`).join(" | ")}; tables ${captured.tables.length}`);
+  if (!target.breakdownSeries) {
+    captured.charts = captured.charts
+      .filter(chart => USED_CHART.test(chart.title) && !UNUSED_CHART.test(chart.title))
+      .map(({ title, items }) => ({ title, items: items.map(slim) }));
+  }
+  return { key: target.key, source_url: target.url, captured_at: capturedAt, selectors, ...captured };
+}
+
+async function captureTarget(browser, target, capturedAt) {
+  const lockPath = `${outDir}/.${target.key}.lock`;
+  const lock = await open(lockPath, "wx").catch(error => {
+    if (error.code === "EEXIST") {
+      throw new Error(`capture is already running (${lockPath}; check the recorded PID before removing a leftover lock)`);
+    }
+    throw error;
+  });
+  try {
+    await lock.writeFile(`${process.pid}\n`);
+    const page = await browser.newPage({ viewport: { width: 1600, height: 1000 } });
+    const file = await capturePage(page, target, capturedAt);
+    await page.close();
+    const temporary = `${outDir}/.${target.key}.tmp`;
+    try {
+      await writeFile(temporary, `${JSON.stringify(file, null, 1)}\n`);
+      await rename(temporary, `${outDir}/${target.key}.json`);
+    } finally {
+      await rm(temporary, { force: true });
+    }
+    console.log(`${target.key}: charts ${file.charts.map(c => `${c.title.slice(0, 40)}=${c.items.length}`).join(" | ")}; tables ${file.tables.length}`);
+  } finally {
+    await lock.close();
+    await rm(lockPath);
+  }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  // AA_CAPTURE_ONLY=key1,key2 limits the run to those pages; by default every page is captured.
-  const only = process.env.AA_CAPTURE_ONLY?.split(",");
+  const { values: { only: key } } = parseArgs({ options: { only: { type: "string" } } });
+  // Keep AA_CAPTURE_ONLY=key1,key2 for existing scripts. The CLI flag takes precedence.
+  const only = key === undefined ? process.env.AA_CAPTURE_ONLY?.split(",") : [key];
   const selected = only ? pages.filter(target => only.includes(target.key)) : pages;
+  if (key !== undefined && !selected.length) throw new Error(`Unknown capture key "${key}"`);
   const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || "playwright");
   await mkdir(outDir, { recursive: true });
   const capturedAt = new Date().toISOString().slice(0, 10);
@@ -172,9 +268,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   try {
     for (const target of selected) {
       try {
-        const page = await browser.newPage({ viewport: { width: 1600, height: 1000 } });
-        await capturePage(page, target, capturedAt);
-        await page.close();
+        await captureTarget(browser, target, capturedAt);
       } catch (cause) {
         throw new Error(`${target.key}: ${cause.message}`, { cause });
       }
