@@ -46,7 +46,7 @@ test("browser fixture rejects duplicate entries and alternate spelling or case",
   for (const model of ["Qwen 4 Max", "qwen4 max", "Gemini 4 Hydrogen (Very Long Unknown Effort)"]) {
     const alternate = structuredClone(dataset);
     alternate.entries.push({ ...original, model });
-    assert.throws(() => newModelsExpectations(alternate, audit), /exactly seven canonical family variants/);
+    assert.throws(() => newModelsExpectations(alternate, audit), /hydrogen: exact canonical family variants/);
   }
 });
 
@@ -61,4 +61,31 @@ test("browser fixture fails on an omitted evaluation or a stale audited rank", (
   const wrongRank = audit.replace(/(^\| Intelligence Index \|.*? \| )([\d.]+) \(#\d+\)/m, "$1$2 (#999)");
   assert.notEqual(wrongRank, audit);
   assert.throws(() => newModelsExpectations(dataset, wrongRank), /intelligence-index: Gemini 4 Hydrogen \(Xhigh\) score and rank agree with audit/);
+});
+
+const gptAudit = await readFile(new URL("../docs/GPT_6_2_ASTRA_SOL_COVERAGE.md", import.meta.url), "utf8");
+
+test("GPT-6.2 browser fixture keeps empty CritPt and the Astra-only MMMU-Pro for browser checks", () => {
+  const { expected, evaluations } = newModelsExpectations(dataset, gptAudit, "gpt-6.2");
+  assert.equal(expected.length, 10);
+  assert.equal(evaluations.length, 18);
+  assert.equal(evaluations.reduce((sum, { entries }) => sum + entries.length, 0), 165);
+  assert.deepEqual(evaluations.find(({ evaluation }) => evaluation.id === "critpt")?.entries, []);
+  const mmmu = evaluations.find(({ evaluation }) => evaluation.id === "mmmu-pro")?.entries;
+  assert.equal(mmmu?.length, 5);
+  assert(mmmu?.every(entry => entry.model.startsWith("GPT-6.2 Astra")));
+});
+
+test("GPT-6.2 browser fixture fails on changed ranks, duplicate rows, and unexpected model spellings", () => {
+  const original = dataset.entries.find(entry => entry.evaluation_id === "intelligence-index" && entry.model === "GPT-6.2 Sol (Max)")!;
+  const wrongRank = gptAudit.replace(/(^\| Intelligence Index \|.*? \| )([\d.]+) \(#\d+\)/m, "$1$2 (#999)");
+  assert.notEqual(wrongRank, gptAudit);
+  assert.throws(() => newModelsExpectations(dataset, wrongRank, "gpt-6.2"), /intelligence-index: GPT-6.2 Astra \(Low\) score and rank agree with audit/);
+  for (const [model, error] of [
+    [original.model, /intelligence-index: duplicate GPT-6.2 Sol/],
+    ["gpt-6.2 Sol (Max)", /gpt-6.2: exact canonical family variants/],
+  ] as const) {
+    const entries = [...dataset.entries, { ...original, id: original.id + "-duplicate", model }];
+    assert.throws(() => newModelsExpectations({ ...dataset, entries }, gptAudit, "gpt-6.2"), error);
+  }
 });

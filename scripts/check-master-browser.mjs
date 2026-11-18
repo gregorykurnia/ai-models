@@ -166,9 +166,14 @@ try {
     await page.waitForTimeout(100);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollHeight>innerHeight+1),false,`page scrolls vertically at ${width}px`);
   }
-  if(process.env.NEW_MODELS_SCREENSHOT_DIR){
-    const {checkNewModelsBrowser}=await import("./check-new-models-browser.mjs");
-    await checkNewModelsBrowser(page,baseUrl,process.env.NEW_MODELS_SCREENSHOT_DIR);
+  for(const [set,output] of [
+    ["hydrogen",process.env.NEW_MODELS_SCREENSHOT_DIR],
+    ["gpt-6.2",process.env.GPT_6_2_SCREENSHOT_DIR],
+  ]){
+    if(output){
+      const {checkNewModelsBrowser}=await import("./check-new-models-browser.mjs");
+      await checkNewModelsBrowser(page,baseUrl,output,set);
+    }
   }
   assert.deepEqual(errors,[]);
   console.log(JSON.stringify({speed_columns:speedResults,evaluation_speed_columns:true,source_link:href,search_csv_rows:resultCount,filter_csv_rows:filteredCount,keyboard_navigation:true,mobile_cards:true,mobile_speed_sorting:true,mobile_drawer:true,mobile_overflow:false,errors}));

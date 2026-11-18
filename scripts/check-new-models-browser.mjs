@@ -13,7 +13,34 @@ export const newModelNames=[
   "Gemini 4 Argon (Medium)","Qwen4 Max",
 ];
 const allModelNames=[...newModelNames,"Gemini 4 Argon (High)"];
-const groups=[["Hydrogen","hydrogen",4],["Argon","argon",2],["Qwen4","qwen4",1]];
+const gptModelNames=["Astra","Sol"].flatMap(family=>
+  ["Low","Medium","High","Xhigh","Max"].map(effort=>`GPT-6.2 ${family} (${effort})`),
+);
+const modelSets={
+  hydrogen:{
+    audit:"GEMINI_4_HYDROGEN_QWEN4_COVERAGE.md",
+    names:newModelNames,
+    allNames:allModelNames,
+    pattern:/hydrogen|argon|qwen\s?4/i,
+    provider:name=>name.startsWith("Qwen")?"Alibaba":"Google",
+    groups:[["Hydrogen","hydrogen",4],["Argon","argon",2],["Qwen4","qwen4",1]],
+    screenshots:["intelligence-index","terminal-bench-4-0","aa-briefcase-analytical-quality-elo","critpt"],
+  },
+  "gpt-6.2":{
+    audit:"GPT_6_2_ASTRA_SOL_COVERAGE.md",
+    names:gptModelNames,
+    allNames:gptModelNames,
+    pattern:/gpt-6\.2/i,
+    provider:()=>"OpenAI",
+    groups:[["GPT-6.2 Astra","gpt-6-2-astra",5],["GPT-6.2 Sol","gpt-6-2-sol",5]],
+    screenshots:["intelligence-index","terminal-bench-4-0"],
+  },
+};
+
+function modelSet(name){
+  assert(Object.hasOwn(modelSets,name),`Unknown browser model set: ${name}`);
+  return modelSets[name];
+}
 const readJson=async file=>JSON.parse(await readFile(new URL(`../data/${file}`,import.meta.url),"utf8"));
 
 export async function readNewModelsDataset(){
@@ -26,46 +53,50 @@ export async function readNewModelsDataset(){
 // Fail before opening a browser if a missing/duplicate/spelling variant or a stale
 // coverage audit would otherwise make this pass silently check fewer models.
 /** @param {import("../src/lib/contract").Dataset} dataset @param {string} coverage */
-export function newModelsExpectations(dataset,coverage){
-  const familyEntries=dataset.entries.filter(entry=>/hydrogen|argon|qwen\s?4/i.test(entry.model));
-  assert.deepEqual([...new Set(familyEntries.map(entry=>entry.model))].sort(),[...allModelNames].sort(),"exactly seven canonical family variants");
+export function newModelsExpectations(dataset,coverage,setName="hydrogen"){
+  const set=modelSet(setName);
+  const familyEntries=dataset.entries.filter(entry=>set.pattern.test(entry.model));
+  const canonicalNames=[...set.allNames].sort();
+  assert.deepEqual([...new Set(familyEntries.map(entry=>entry.model))].sort(),canonicalNames,`${setName}: exact canonical family variants`);
   // The audit predates the 2026-11-16 retirement of these four evaluations; their rows no longer have data to check.
-  const retired=["gdpval-aa-v2-1","scicode","hle-diamond","aa-lcr-v1-1"];
+  const retired=setName==="hydrogen"?["gdpval-aa-v2-1","scicode","hle-diamond","aa-lcr-v1-1"]:[];
   const auditRows=coverage.split("\n").filter(line=>/^\|[^|]+\| `[^`]+` \| `[^`]+` \|/.test(line)&&!retired.some(id=>line.includes(`| \`${id}\` |`)));
   assert.equal(auditRows.length,dataset.evaluations.length,"audit covers every bundled evaluation");
   const evaluations=dataset.evaluations.map(evaluation=>{
     const entries=familyEntries.filter(entry=>entry.evaluation_id===evaluation.id).sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row);
-    for(const name of allModelNames){
+    for(const name of set.allNames){
       const matches=entries.filter(entry=>entry.model===name);
       assert(matches.length<=1,`${evaluation.id}: duplicate ${name}`);
-      if(matches.length)assert.equal(matches[0].provider,name.startsWith("Qwen")?"Alibaba":"Google",`${evaluation.id}: ${name} provider`);
+      if(matches.length)assert.equal(matches[0].provider,set.provider(name),`${evaluation.id}: ${name} provider`);
     }
     const audit=auditRows.find(line=>line.includes(`| \`${evaluation.id}\` |`));
     assert(audit,`${evaluation.id}: coverage audit row exists`);
     const cells=audit.split("|").slice(5,-1).map(cell=>cell.trim());
-    assert.equal(cells.length,newModelNames.length,`${evaluation.id}: six coverage cells`);
-    newModelNames.forEach((name,index)=>{
+    assert.equal(cells.length,set.names.length,`${evaluation.id}: one coverage cell per audited name`);
+    set.names.forEach((name,index)=>{
       const entry=entries.find(entry=>entry.model===name),cell=cells[index];
       if(!entry)assert.match(cell,/^not on AA \(captured \d{4}-\d{2}-\d{2}\)$/,`${evaluation.id}: ${name} absence agrees with audit`);
       else assert.equal(cell,`${Number(entry.score_value.toPrecision(10))} (#${entry.source_rank})`,`${evaluation.id}: ${name} score and rank agree with audit`);
     });
     return {evaluation,entries};
-  }).filter(({entries})=>entries.length);
+  });
   const index=evaluations.find(({evaluation})=>evaluation.id==="intelligence-index");
   assert(index,"bundled Intelligence Index exists");
-  assert.deepEqual(index.entries.map(entry=>entry.model).sort(),[...allModelNames].sort(),"seven distinct configurations in the bundled index");
-  return {expected:index.entries,evaluations};
+  assert.deepEqual(index.entries.map(entry=>entry.model).sort(),canonicalNames,"all canonical configurations in the bundled index");
+  return {expected:index.entries,evaluations:setName==="hydrogen"?evaluations.filter(({entries})=>entries.length):evaluations};
 }
 
 // Optional focused pass for check-master-browser.mjs (node --import tsx).
 // Reads the same merged bundled snapshots as src/lib/data.ts; never Firestore.
-export async function checkNewModelsBrowser(page,baseUrl,output){
+export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydrogen"){
+  const {audit:auditFile,groups,screenshots}=modelSet(setName);
+  const gpt=setName==="gpt-6.2";
   await mkdir(output,{recursive:true});
   await rm(join(output,"browser-check.json"),{force:true});
   const dataset=await readNewModelsDataset();
-  const coverage=await readFile(new URL("../docs/GEMINI_4_HYDROGEN_QWEN4_COVERAGE.md",import.meta.url),"utf8");
-  const {expected,evaluations}=newModelsExpectations(dataset,coverage);
-  const screenshotEvaluations=new Set(["intelligence-index","terminal-bench-4-0","aa-briefcase-analytical-quality-elo","critpt"]);
+  const coverage=await readFile(new URL(`../docs/${auditFile}`,import.meta.url),"utf8");
+  const {expected,evaluations}=newModelsExpectations(dataset,coverage,setName);
+  const screenshotEvaluations=new Set(screenshots);
   const scores=new Map();
   const consoleErrors=[];
   const pageErrors=[];
@@ -73,14 +104,14 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
   const onPageError=error=>pageErrors.push(error.message);
   page.on("console",onConsole);
   page.on("pageerror",onPageError);
-  const report={master:{},evaluations:{},screenshots:[]};
+  const report={set:setName,master:{},evaluations:{},screenshots:[]};
 
   async function audit(label,selector){
     const faults=await page.evaluate(selector=>{
       const faults=[];
       if(document.documentElement.scrollWidth>innerWidth)faults.push("horizontal page overflow");
       const root=document.querySelector(selector);
-      for(const element of root.querySelectorAll("a,button,strong,dt,dd")){
+      for(const element of root.querySelectorAll('a,button,strong,dt,dd,[data-column="model"]')){
         const box=element.getBoundingClientRect();
         if(!box.width||!box.height)continue;
         if(element.scrollWidth>element.clientWidth+1)faults.push(`text overflow: ${element.textContent}`);
@@ -96,9 +127,10 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
   }
 
   async function screenshot(name){
-    const master=page.locator("#master-leaderboard");
-    const box=await master.count()?await master.boundingBox():null;
-    const clip=box&&page.viewportSize().width===1440?{x:0,y:0,width:1440,height:Math.ceil(box.y+box.height+24)}:undefined;
+    const {width,height}=page.viewportSize();
+    const end=page.locator(gpt?"#master-leaderboard, .evaluation-notes":"#master-leaderboard");
+    const box=width===1440&&await end.count()?await end.boundingBox():null;
+    const clip=box?{x:0,y:0,width,height:Math.min(height,Math.ceil(box.y+box.height+24))}:undefined;
     await page.screenshot({path:join(output,name),animations:"disabled",clip});
     report.screenshots.push(name);
   }
@@ -150,7 +182,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
     const section=page.locator("#master-leaderboard");
     const rows=section.locator(width===390?".master-card":"tbody tr");
     await rows.first().waitFor();
-    assert.match(await section.locator(".leaderboard-legend").innerText(),/— means no captured AA value\. Aggregate uses 9 of 20 evaluations/);
+    assert.equal(await section.locator(".leaderboard-legend").innerText(),`— means no captured AA value. Aggregate uses 9 of ${dataset.evaluations.length} evaluations.`);
     assert.equal(await section.locator("#master-search").inputValue(),query);
     assert.equal(await rows.count(),count,`${query}: ${width}px count`);
     assert.match(await section.locator('p[aria-live="polite"]').first().innerText(),new RegExp(`^${count} model${count===1?"":"s"} ·`),`${query}: result-count wording`);
@@ -183,6 +215,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
       assert(aligned,"aggregate values align with the single-line numbers");
       await checkScrollCue(section);
       await audit(`${query}: desktop layout`,"#master-leaderboard");
+      if(gpt)await section.evaluate(element=>{element.closest(".app-main").scrollTop+=element.getBoundingClientRect().top-24;});
       await screenshot(`master-${slug}-${width}.png`);
       if(slug==="hydrogen"){
         const frame=await section.locator(".table-scroll-frame").boundingBox();
@@ -207,25 +240,79 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
       await phoneScreenshots(`master-${slug}-${width}`,section,true);
     }
     report.master[`${slug}-${width}`]={count,names};
+    if(gpt){
+      if(width===390){
+        for(const card of await rows.all())await card.locator(".master-card__ranks summary").click();
+        const values=rows.locator(".master-card__ranks dt").filter({hasText:/^CritPt$/}).locator("+ dd");
+        assert.deepEqual(await values.allInnerTexts(),Array(count).fill("—"),`${query}: all phone CritPt ranks are dashes`);
+        const name=`master-${slug}-critpt-390-crop.png`;
+        await values.first().locator("..").screenshot({path:join(output,name),animations:"disabled"});
+        report.screenshots.push(name);
+      }else{
+        const column=await section.getByRole("columnheader",{name:/^CritPt [↕↑↓]/}).evaluate(header=>header.cellIndex);
+        const values=await rows.evaluateAll((rows,column)=>rows.map(row=>row.cells[column].innerText),column);
+        assert.deepEqual(values,Array(count).fill("—"),`${query}: all desktop CritPt ranks are dashes`);
+      }
+      report.master[`${slug}-${width}`].critpt_dashes=count;
+    }
   }
 
   await page.setViewportSize({width:1440,height:900});
-  await page.goto(`${baseUrl}/?mq=Qwen%204#master-leaderboard`);
-  assert.equal(await page.locator("#master-search").inputValue(),"Qwen 4");
-  report.qwen_spaced_search={query:"Qwen 4",names:await page.locator("#master-leaderboard tbody .master-model > a").allTextContents()};
-  report.qwen_spaced_search.finds_qwen4_max=report.qwen_spaced_search.names.includes("Qwen4 Max");
+  const masterNames=page.locator("#master-leaderboard tbody .master-model > a");
+  if(gpt){
+    await page.setViewportSize({width:1440,height:1300});
+    await page.goto(`${baseUrl}/?mq=GPT-6.2%20Astra#master-leaderboard`);
+    const search=page.locator("#master-search");
+    const allNames=expected.map(entry=>entry.model).sort();
+    report.master_searches={};
+    for(const query of ["gpt-6.2 sol","GPT-6.2 Astra, GPT-6.2 Sol","GPT 6.2 Sol"]){
+      await search.fill(query);
+      await page.waitForFunction(query=>new URL(location.href).searchParams.get("mq")===query,query);
+      const names=(await masterNames.allTextContents()).sort();
+      if(query==="gpt-6.2 sol")assert.deepEqual(names,allNames.filter(name=>name.startsWith("GPT-6.2 Sol")),query);
+      if(query==="GPT-6.2 Astra, GPT-6.2 Sol"){
+        assert.deepEqual(names,allNames,query);
+        const section=page.locator("#master-leaderboard");
+        await section.evaluate(element=>{element.closest(".app-main").scrollTop+=element.getBoundingClientRect().top-24;});
+        const target=await section.getByRole("columnheader",{name:/^CritPt [↕↑↓]/}).boundingBox();
+        const frozen=await section.locator("th.master-first").boundingBox();
+        await section.locator(".table-scroll").evaluate((element,left)=>{element.scrollLeft=left;},target.x-frozen.x-frozen.width);
+        await screenshot("master-critpt-1440.png");
+      }
+      report.master_searches[query]=names;
+    }
+    await page.setViewportSize({width:390,height:844});
+    const combined=encodeURIComponent(groups.map(([query])=>query).join(", "));
+    await page.goto(`${baseUrl}/?mq=${combined}&ms=critpt#master-leaderboard`);
+    const sortedRanks=page.locator("#master-leaderboard .master-card__sorted");
+    assert.deepEqual(await sortedRanks.locator("dt").allInnerTexts(),Array(allNames.length).fill("CritPt"));
+    assert.deepEqual(await sortedRanks.locator("dd").allInnerTexts(),Array(allNames.length).fill("—"),"all sorted phone CritPt tiles are dashes");
+  }else{
+    await page.goto(`${baseUrl}/?mq=Qwen%204#master-leaderboard`);
+    assert.equal(await page.locator("#master-search").inputValue(),"Qwen 4");
+    report.qwen_spaced_search={query:"Qwen 4",names:await masterNames.allTextContents()};
+    report.qwen_spaced_search.finds_qwen4_max=report.qwen_spaced_search.names.includes("Qwen4 Max");
+  }
 
   for(const {evaluation,entries} of evaluations)for(const width of [1440,390]){
     const id=evaluation.id;
     await page.setViewportSize({width,height:width===390?844:1200});
-    const response=await page.goto(`${baseUrl}/leaderboards/${evaluation.slug}?q=${encodeURIComponent(groups.map(([query])=>query).join(", "))}`);
-    assert.equal(response.status(),200,`${id}: evaluation loads`);
+    if(width===1440){
+      const response=await page.goto(`${baseUrl}/leaderboards/${evaluation.slug}?q=${encodeURIComponent(groups.map(([query])=>query).join(", "))}`);
+      assert.equal(response.status(),200,`${id}: evaluation loads`);
+    }
     const section=page.locator(".evaluation-leaderboard");
-    const rows=section.locator(width===390?".evaluation-card":".evaluation-table tbody tr");
-    await rows.first().waitFor();
+    const rows=section.locator(width===390?".evaluation-card":".evaluation-table tbody tr:has([data-column=\"model\"])");
+    if(entries.length)await rows.first().waitFor();
+    else await section.locator(width===390?".evaluation-cards .empty":".evaluation-table .empty").waitFor({state:"visible"});
+    assert.equal(await rows.count(),entries.length,`${id}: ${width}px rows`);
+    if(gpt&&id==="mmmu-pro"){
+      const modelNames=await (width===390?rows.locator("strong"):rows.locator('[data-column="model"]')).allTextContents();
+      assert(modelNames.every(name=>!/GPT-6\.2 Sol/i.test(name)),`MMMU-Pro: no Sol rows at ${width}px`);
+    }
     assert.equal(await page.locator(".evaluation-page-header .eyebrow").count(),0,"no repeated metric eyebrow above the evaluation title");
     assert.equal(await section.locator(".leaderboard-legend").innerText(),`— means no captured AA value.${evaluation.has_scoring_status?" Scoring status appears only when AA provides it.":""}`);
-    if(width===390){
+    if(width===390&&entries.length){
       assert.equal(await rows.first().locator("dt").filter({hasText:"Cost /"}).innerText(),"Cost / Intelligence Index task");
       const direction=section.getByRole("button",{name:"Reverse sort order",exact:true});
       assert.equal(await direction.innerText(),"Asc ↑","evaluation and master phone controls use the same arrow order");
@@ -237,7 +324,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
         assert.equal(await direction.innerText(),"Desc ↓");
         const descending=[...entries].sort((a,b)=>b.source_rank-a.source_rank||a.source_row-b.source_row);
         assert.deepEqual(await rows.evaluateAll(cards=>cards.map(card=>card.getAttribute("data-model"))),descending.map(entry=>entry.model),`${id}: reverse control sorts ranks descending`);
-        if(id==="intelligence-index"){
+        if(!gpt&&id==="intelligence-index"){
           await direction.screenshot({path:join(output,"intelligence-index-390-sort-desc-crop.png")});
           report.screenshots.push("intelligence-index-390-sort-desc-crop.png");
         }
@@ -251,26 +338,43 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
         assert(tile.y+tile.height<=844,`${id}: first card's timings fit the first phone screen`);
       }
     }
-    assert.equal(await rows.count(),entries.length,`${id}: ${width}px rows`);
+    const displayed=await rows.evaluateAll((rows,mobile)=>rows.map(row=>{
+      const text=selector=>row.querySelector(selector)?.innerText;
+      const cell=key=>text(`[data-column="${key}"]`);
+      const metric=label=>[...row.querySelectorAll("dt")].find(term=>term.textContent.startsWith(label))?.nextElementSibling?.innerText;
+      if(mobile)return {
+        model:row.getAttribute("data-model"),
+        title:text(".evaluation-card__head strong"),
+        score:text(".evaluation-card__head small"),
+        scoring_status:text(".evaluation-card__status"),
+        cost_usd:metric("Cost / Intelligence Index task"),
+        time_per_task:metric("Time per "),
+        first_answer:metric("First Answer (s)"),
+      };
+      return {
+        model:cell("model"),
+        rank:cell("source_rank"),
+        score:cell("score_value"),
+        scoring_status:cell("scoring_status"),
+        cost_usd:cell("cost_usd"),
+        time_per_task:cell("time_per_task"),
+        first_answer:cell("first_answer"),
+      };
+    }),width===390);
     const actual=[];
     for(let index=0;index<entries.length;index++){
-      const entry=entries[index],row=rows.nth(index);
+      const entry=entries[index],row=displayed[index];
       const score=evaluationScoreDisplay(evaluation,entry);
+      assert.equal(row.model,entry.model,`${id}: ${width}px row ${index+1}`);
       if(width===390){
-        assert.equal(await row.getAttribute("data-model"),entry.model,`${id}: phone row ${index+1}`);
-        assert.equal(await row.locator("strong").innerText(),`#${entry.source_rank} ${entry.model}`);
-        assert((await row.locator(".evaluation-card__head small").innerText()).endsWith(score),`${entry.model}: phone score`);
+        assert.equal(row.title,`#${entry.source_rank} ${entry.model}`);
+        assert(row.score?.endsWith(score),`${entry.model}: phone score`);
+        const status=entry.scoring_status?`AA scoring status: ${entry.scoring_status}`:undefined;
+        assert.equal(row.scoring_status,status,`${id}: phone uses the captured scoring status`);
       }else{
-        assert.equal(await row.locator('[data-column="model"]').innerText(),entry.model,`${id}: desktop row ${index+1}`);
-        assert.equal(await row.locator('[data-column="source_rank"]').innerText(),String(entry.source_rank));
-        assert.equal(await row.locator('[data-column="score_value"]').innerText(),score);
-      }
-      if(width===390){
-        const status=row.locator(".evaluation-card__status");
-        if(entry.scoring_status)assert.equal(await status.innerText(),`AA scoring status: ${entry.scoring_status}`,`${id}: phone status is labelled and unchanged`);
-        else assert.equal(await status.count(),0,`${id}: no status is invented for an unlabelled model`);
-      }else if(evaluation.has_scoring_status){
-        assert.equal(await row.locator('[data-column="scoring_status"]').innerText(),entry.scoring_status||"—",`${id}: desktop and phone use the same captured scoring status`);
+        assert.equal(row.rank,String(entry.source_rank));
+        assert.equal(row.score,score);
+        if(evaluation.has_scoring_status)assert.equal(row.scoring_status,entry.scoring_status||"—",`${id}: desktop uses the captured scoring status`);
       }
       const cost=getIntelligenceIndexTaskCost(entry.provider,entry.model),speed=getModelSpeed(entry.provider,entry.model);
       const metrics={
@@ -279,8 +383,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
         first_answer:formatFirstAnswer(speed?.first_answer_s),
       };
       for(const [key,value] of Object.entries(metrics)){
-        const cell=width===1440?row.locator(`[data-column="${key}"]`):row.locator("dt").filter({hasText:key==="cost_usd"?"Cost / Intelligence Index task":key==="time_per_task"?/^Time per /:"First Answer (s)"}).locator("+ dd");
-        assert.equal(await cell.innerText(),value,`${id}: ${entry.model} ${key} at ${width}px`);
+        assert.equal(row[key],value,`${id}: ${entry.model} ${key} at ${width}px`);
       }
       actual.push({model:entry.model,rank:entry.source_rank,score,...metrics,scoring_status:entry.scoring_status||null});
     }
@@ -294,10 +397,12 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
     }
     report.evaluations[`${id}-${width}`]=actual;
   }
+  const capturedAt=dataset.evaluations.find(evaluation=>evaluation.id==="intelligence-index").captured_at;
+  const date=new Intl.DateTimeFormat("en-GB",{day:"numeric",month:"short",year:"numeric",timeZone:"UTC"}).format(new Date(capturedAt));
   for(const width of [1440,390]){
     await page.setViewportSize({width,height:width===390?844:1000});
     await page.goto(`${baseUrl}/about/data`);
-    assert.match(await page.locator(".ui-page-header").innerText(),/captured from Artificial Analysis on 16 Nov 2026\./);
+    assert((await page.locator(".ui-page-header").innerText()).includes(`captured from Artificial Analysis on ${date}.`),`about data: displays ${date}`);
     await audit(`about data: ${width}px layout`,"article");
     await screenshot(`about-data-${width}.png`);
   }
@@ -306,5 +411,6 @@ export async function checkNewModelsBrowser(page,baseUrl,output){
   page.off("console",onConsole);
   page.off("pageerror",onPageError);
   await writeFile(join(output,"browser-check.json"),JSON.stringify(report,null,2)+"\n");
-  console.log(JSON.stringify({new_models:true,master_search_counts:groups.map(([, ,count])=>count),qwen_spaced_search:report.qwen_spaced_search.finds_qwen4_max,evaluations_checked:evaluations.length,evaluation_row_checks:Object.values(report.evaluations).reduce((sum,rows)=>sum+rows.length,0),evaluation_ranks:true,fresh_eyes_regressions:true,shared_evaluation_screens:[...screenshotEvaluations],screenshots:report.screenshots.length}));
+  const searches=gpt?{master_searches:Object.fromEntries(Object.entries(report.master_searches).map(([query,names])=>[query,names.length]))}:{qwen_spaced_search:report.qwen_spaced_search.finds_qwen4_max};
+  console.log(JSON.stringify({new_models:true,set:setName,master_search_counts:groups.map(([, ,count])=>count),...searches,evaluations_checked:evaluations.length,evaluation_row_checks:Object.values(report.evaluations).reduce((sum,rows)=>sum+rows.length,0),evaluation_ranks:true,fresh_eyes_regressions:true,shared_evaluation_screens:[...screenshotEvaluations],screenshots:report.screenshots.length}));
 }

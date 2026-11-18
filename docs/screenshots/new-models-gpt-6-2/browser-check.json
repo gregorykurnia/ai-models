@@ -1,0 +1,3132 @@
+{
+  "set": "gpt-6.2",
+  "master": {
+    "gpt-6-2-astra-1440": {
+      "count": 5,
+      "names": [
+        "GPT-6.2 Astra (Max)",
+        "GPT-6.2 Astra (Xhigh)",
+        "GPT-6.2 Astra (High)",
+        "GPT-6.2 Astra (Medium)",
+        "GPT-6.2 Astra (Low)"
+      ],
+      "critpt_dashes": 5
+    },
+    "gpt-6-2-sol-1440": {
+      "count": 5,
+      "names": [
+        "GPT-6.2 Sol (Max)",
+        "GPT-6.2 Sol (Xhigh)",
+        "GPT-6.2 Sol (High)",
+        "GPT-6.2 Sol (Medium)",
+        "GPT-6.2 Sol (Low)"
+      ],
+      "critpt_dashes": 5
+    },
+    "gpt-6-2-astra-390": {
+      "count": 5,
+      "names": [
+        "GPT-6.2 Astra (Max)",
+        "GPT-6.2 Astra (Xhigh)",
+        "GPT-6.2 Astra (High)",
+        "GPT-6.2 Astra (Medium)",
+        "GPT-6.2 Astra (Low)"
+      ],
+      "critpt_dashes": 5
+    },
+    "gpt-6-2-sol-390": {
+      "count": 5,
+      "names": [
+        "GPT-6.2 Sol (Max)",
+        "GPT-6.2 Sol (Xhigh)",
+        "GPT-6.2 Sol (High)",
+        "GPT-6.2 Sol (Medium)",
+        "GPT-6.2 Sol (Low)"
+      ],
+      "critpt_dashes": 5
+    }
+  },
+  "evaluations": {
+    "briefcase-v1-1-1440": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 16,
+        "score": "1643.35",
+        "cost_usd": "$4.00",
+        "time_per_task": "15.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 23,
+        "score": "1611.92",
+        "cost_usd": "$1.01",
+        "time_per_task": "13.6",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 28,
+        "score": "1593.51",
+        "cost_usd": "$2.52",
+        "time_per_task": "10.0",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 30,
+        "score": "1577.37",
+        "cost_usd": "$0.65",
+        "time_per_task": "9.3",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 35,
+        "score": "1569.97",
+        "cost_usd": "$2.07",
+        "time_per_task": "8.2",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 43,
+        "score": "1539.62",
+        "cost_usd": "$0.56",
+        "time_per_task": "7.7",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 57,
+        "score": "1498.07",
+        "cost_usd": "$0.41",
+        "time_per_task": "5.8",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 85,
+        "score": "1409.26",
+        "cost_usd": "$1.62",
+        "time_per_task": "4.6",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 123,
+        "score": "1229.87",
+        "cost_usd": "$0.18",
+        "time_per_task": "2.8",
+        "first_answer": "1.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 161,
+        "score": "1038.17",
+        "cost_usd": "$0.66",
+        "time_per_task": "2.3",
+        "first_answer": "2.7",
+        "scoring_status": null
+      }
+    ],
+    "briefcase-v1-1-390": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 16,
+        "score": "1643.35",
+        "cost_usd": "$4.00",
+        "time_per_task": "15.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 23,
+        "score": "1611.92",
+        "cost_usd": "$1.01",
+        "time_per_task": "13.6",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 28,
+        "score": "1593.51",
+        "cost_usd": "$2.52",
+        "time_per_task": "10.0",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 30,
+        "score": "1577.37",
+        "cost_usd": "$0.65",
+        "time_per_task": "9.3",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 35,
+        "score": "1569.97",
+        "cost_usd": "$2.07",
+        "time_per_task": "8.2",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 43,
+        "score": "1539.62",
+        "cost_usd": "$0.56",
+        "time_per_task": "7.7",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 57,
+        "score": "1498.07",
+        "cost_usd": "$0.41",
+        "time_per_task": "5.8",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 85,
+        "score": "1409.26",
+        "cost_usd": "$1.62",
+        "time_per_task": "4.6",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 123,
+        "score": "1229.87",
+        "cost_usd": "$0.18",
+        "time_per_task": "2.8",
+        "first_answer": "1.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 161,
+        "score": "1038.17",
+        "cost_usd": "$0.66",
+        "time_per_task": "2.3",
+        "first_answer": "2.7",
+        "scoring_status": null
+      }
+    ],
+    "automationbench-aa-1440": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 4,
+        "score": "0.772484",
+        "cost_usd": "$4.00",
+        "time_per_task": "2.8",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 7,
+        "score": "0.760566",
+        "cost_usd": "$2.52",
+        "time_per_task": "2.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 8,
+        "score": "0.760181",
+        "cost_usd": "$2.07",
+        "time_per_task": "1.9",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 13,
+        "score": "0.728349",
+        "cost_usd": "$1.62",
+        "time_per_task": "1.6",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 20,
+        "score": "0.712783",
+        "cost_usd": "$1.01",
+        "time_per_task": "2.3",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 21,
+        "score": "0.705525",
+        "cost_usd": "$0.65",
+        "time_per_task": "2.0",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 22,
+        "score": "0.702814",
+        "cost_usd": "$0.41",
+        "time_per_task": "1.5",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 23,
+        "score": "0.698533",
+        "cost_usd": "$0.56",
+        "time_per_task": "1.7",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 27,
+        "score": "0.685727",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.3",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 52,
+        "score": "0.632341",
+        "cost_usd": "$0.18",
+        "time_per_task": "1.2",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "automationbench-aa-390": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 4,
+        "score": "0.772484",
+        "cost_usd": "$4.00",
+        "time_per_task": "2.8",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 7,
+        "score": "0.760566",
+        "cost_usd": "$2.52",
+        "time_per_task": "2.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 8,
+        "score": "0.760181",
+        "cost_usd": "$2.07",
+        "time_per_task": "1.9",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 13,
+        "score": "0.728349",
+        "cost_usd": "$1.62",
+        "time_per_task": "1.6",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 20,
+        "score": "0.712783",
+        "cost_usd": "$1.01",
+        "time_per_task": "2.3",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 21,
+        "score": "0.705525",
+        "cost_usd": "$0.65",
+        "time_per_task": "2.0",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 22,
+        "score": "0.702814",
+        "cost_usd": "$0.41",
+        "time_per_task": "1.5",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 23,
+        "score": "0.698533",
+        "cost_usd": "$0.56",
+        "time_per_task": "1.7",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 27,
+        "score": "0.685727",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.3",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 52,
+        "score": "0.632341",
+        "cost_usd": "$0.18",
+        "time_per_task": "1.2",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "terminal-bench-4-0-1440": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 3,
+        "score": "64.14%",
+        "cost_usd": "$4.00",
+        "time_per_task": "14.6",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 3,
+        "score": "64.14%",
+        "cost_usd": "$2.52",
+        "time_per_task": "8.3",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 9,
+        "score": "60.10%",
+        "cost_usd": "$2.07",
+        "time_per_task": "6.5",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 9,
+        "score": "60.10%",
+        "cost_usd": "$1.01",
+        "time_per_task": "10.7",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 17,
+        "score": "58.59%",
+        "cost_usd": "$1.62",
+        "time_per_task": "4.4",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 17,
+        "score": "58.59%",
+        "cost_usd": "$0.56",
+        "time_per_task": "6.5",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 23,
+        "score": "56.06%",
+        "cost_usd": "$0.41",
+        "time_per_task": "5.0",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 23,
+        "score": "56.06%",
+        "cost_usd": "$0.65",
+        "time_per_task": "7.5",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 40,
+        "score": "51.01%",
+        "cost_usd": "$0.66",
+        "time_per_task": "2.1",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 60,
+        "score": "37.88%",
+        "cost_usd": "$0.18",
+        "time_per_task": "2.6",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "terminal-bench-4-0-390": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 3,
+        "score": "64.14%",
+        "cost_usd": "$4.00",
+        "time_per_task": "14.6",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 3,
+        "score": "64.14%",
+        "cost_usd": "$2.52",
+        "time_per_task": "8.3",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 9,
+        "score": "60.10%",
+        "cost_usd": "$2.07",
+        "time_per_task": "6.5",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 9,
+        "score": "60.10%",
+        "cost_usd": "$1.01",
+        "time_per_task": "10.7",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 17,
+        "score": "58.59%",
+        "cost_usd": "$1.62",
+        "time_per_task": "4.4",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 17,
+        "score": "58.59%",
+        "cost_usd": "$0.56",
+        "time_per_task": "6.5",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 23,
+        "score": "56.06%",
+        "cost_usd": "$0.41",
+        "time_per_task": "5.0",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 23,
+        "score": "56.06%",
+        "cost_usd": "$0.65",
+        "time_per_task": "7.5",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 40,
+        "score": "51.01%",
+        "cost_usd": "$0.66",
+        "time_per_task": "2.1",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 60,
+        "score": "37.88%",
+        "cost_usd": "$0.18",
+        "time_per_task": "2.6",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "gdp-pdf-1440": [
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 13,
+        "score": "0.3",
+        "cost_usd": "$1.01",
+        "time_per_task": "1.4",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 16,
+        "score": "0.298",
+        "cost_usd": "$4.00",
+        "time_per_task": "2.5",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 18,
+        "score": "0.292",
+        "cost_usd": "$0.41",
+        "time_per_task": "0.3",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 20,
+        "score": "0.288",
+        "cost_usd": "$0.56",
+        "time_per_task": "0.4",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 22,
+        "score": "0.286",
+        "cost_usd": "$2.07",
+        "time_per_task": "0.4",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 22,
+        "score": "0.286",
+        "cost_usd": "$0.18",
+        "time_per_task": "0.2",
+        "first_answer": "1.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 26,
+        "score": "0.284",
+        "cost_usd": "$1.62",
+        "time_per_task": "0.3",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 26,
+        "score": "0.284",
+        "cost_usd": "$0.65",
+        "time_per_task": "0.7",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 31,
+        "score": "0.28",
+        "cost_usd": "$0.66",
+        "time_per_task": "0.2",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 31,
+        "score": "0.28",
+        "cost_usd": "$2.52",
+        "time_per_task": "0.8",
+        "first_answer": "44.6",
+        "scoring_status": null
+      }
+    ],
+    "gdp-pdf-390": [
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 13,
+        "score": "0.3",
+        "cost_usd": "$1.01",
+        "time_per_task": "1.4",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 16,
+        "score": "0.298",
+        "cost_usd": "$4.00",
+        "time_per_task": "2.5",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 18,
+        "score": "0.292",
+        "cost_usd": "$0.41",
+        "time_per_task": "0.3",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 20,
+        "score": "0.288",
+        "cost_usd": "$0.56",
+        "time_per_task": "0.4",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 22,
+        "score": "0.286",
+        "cost_usd": "$2.07",
+        "time_per_task": "0.4",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 22,
+        "score": "0.286",
+        "cost_usd": "$0.18",
+        "time_per_task": "0.2",
+        "first_answer": "1.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 26,
+        "score": "0.284",
+        "cost_usd": "$1.62",
+        "time_per_task": "0.3",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 26,
+        "score": "0.284",
+        "cost_usd": "$0.65",
+        "time_per_task": "0.7",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 31,
+        "score": "0.28",
+        "cost_usd": "$0.66",
+        "time_per_task": "0.2",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 31,
+        "score": "0.28",
+        "cost_usd": "$2.52",
+        "time_per_task": "0.8",
+        "first_answer": "44.6",
+        "scoring_status": null
+      }
+    ],
+    "critpt-1440": [],
+    "critpt-390": [],
+    "aa-omniscience-accuracy-1440": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 6,
+        "score": "0.685667",
+        "cost_usd": "$4.00",
+        "time_per_task": "1.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 8,
+        "score": "0.672",
+        "cost_usd": "$2.52",
+        "time_per_task": "0.3",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 10,
+        "score": "0.663333",
+        "cost_usd": "$2.07",
+        "time_per_task": "0.2",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 15,
+        "score": "0.641667",
+        "cost_usd": "$1.62",
+        "time_per_task": "0.0",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 20,
+        "score": "0.616333",
+        "cost_usd": "$1.01",
+        "time_per_task": "1.0",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 22,
+        "score": "0.614333",
+        "cost_usd": "$0.56",
+        "time_per_task": "0.1",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 27,
+        "score": "0.607",
+        "cost_usd": "$0.65",
+        "time_per_task": "0.4",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 28,
+        "score": "0.606333",
+        "cost_usd": "$0.66",
+        "time_per_task": "0.0",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 32,
+        "score": "0.591667",
+        "cost_usd": "$0.41",
+        "time_per_task": "0.0",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 37,
+        "score": "0.546333",
+        "cost_usd": "$0.18",
+        "time_per_task": "0.0",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "aa-omniscience-accuracy-390": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 6,
+        "score": "0.685667",
+        "cost_usd": "$4.00",
+        "time_per_task": "1.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 8,
+        "score": "0.672",
+        "cost_usd": "$2.52",
+        "time_per_task": "0.3",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 10,
+        "score": "0.663333",
+        "cost_usd": "$2.07",
+        "time_per_task": "0.2",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 15,
+        "score": "0.641667",
+        "cost_usd": "$1.62",
+        "time_per_task": "0.0",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 20,
+        "score": "0.616333",
+        "cost_usd": "$1.01",
+        "time_per_task": "1.0",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 22,
+        "score": "0.614333",
+        "cost_usd": "$0.56",
+        "time_per_task": "0.1",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 27,
+        "score": "0.607",
+        "cost_usd": "$0.65",
+        "time_per_task": "0.4",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 28,
+        "score": "0.606333",
+        "cost_usd": "$0.66",
+        "time_per_task": "0.0",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 32,
+        "score": "0.591667",
+        "cost_usd": "$0.41",
+        "time_per_task": "0.0",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 37,
+        "score": "0.546333",
+        "cost_usd": "$0.18",
+        "time_per_task": "0.0",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "mmmu-pro-1440": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 1,
+        "score": "0.894798",
+        "cost_usd": "$4.00",
+        "time_per_task": "10.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 4,
+        "score": "0.879191",
+        "cost_usd": "$2.52",
+        "time_per_task": "6.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 5,
+        "score": "0.876879",
+        "cost_usd": "$2.07",
+        "time_per_task": "4.9",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 11,
+        "score": "0.861272",
+        "cost_usd": "$1.62",
+        "time_per_task": "3.7",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 17,
+        "score": "0.850867",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.5",
+        "first_answer": "2.7",
+        "scoring_status": null
+      }
+    ],
+    "mmmu-pro-390": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 1,
+        "score": "0.894798",
+        "cost_usd": "$4.00",
+        "time_per_task": "10.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 4,
+        "score": "0.879191",
+        "cost_usd": "$2.52",
+        "time_per_task": "6.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 5,
+        "score": "0.876879",
+        "cost_usd": "$2.07",
+        "time_per_task": "4.9",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 11,
+        "score": "0.861272",
+        "cost_usd": "$1.62",
+        "time_per_task": "3.7",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 17,
+        "score": "0.850867",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.5",
+        "first_answer": "2.7",
+        "scoring_status": null
+      }
+    ],
+    "finance-accounting-1440": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 5,
+        "score": "60.9041",
+        "cost_usd": "$4.00",
+        "time_per_task": "10.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 6,
+        "score": "60.201",
+        "cost_usd": "$2.52",
+        "time_per_task": "6.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 10,
+        "score": "58.9611",
+        "cost_usd": "$2.07",
+        "time_per_task": "4.9",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 14,
+        "score": "57.2061",
+        "cost_usd": "$1.01",
+        "time_per_task": "7.9",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 23,
+        "score": "55.4501",
+        "cost_usd": "$0.65",
+        "time_per_task": "5.1",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 26,
+        "score": "54.8045",
+        "cost_usd": "$0.56",
+        "time_per_task": "4.2",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 27,
+        "score": "54.5457",
+        "cost_usd": "$1.62",
+        "time_per_task": "3.7",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 37,
+        "score": "51.5656",
+        "cost_usd": "$0.41",
+        "time_per_task": "3.1",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 57,
+        "score": "45.0929",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.5",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 69,
+        "score": "42.3221",
+        "cost_usd": "$0.18",
+        "time_per_task": "1.4",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "finance-accounting-390": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 5,
+        "score": "60.9041",
+        "cost_usd": "$4.00",
+        "time_per_task": "10.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 6,
+        "score": "60.201",
+        "cost_usd": "$2.52",
+        "time_per_task": "6.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 10,
+        "score": "58.9611",
+        "cost_usd": "$2.07",
+        "time_per_task": "4.9",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 14,
+        "score": "57.2061",
+        "cost_usd": "$1.01",
+        "time_per_task": "7.9",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 23,
+        "score": "55.4501",
+        "cost_usd": "$0.65",
+        "time_per_task": "5.1",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 26,
+        "score": "54.8045",
+        "cost_usd": "$0.56",
+        "time_per_task": "4.2",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 27,
+        "score": "54.5457",
+        "cost_usd": "$1.62",
+        "time_per_task": "3.7",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 37,
+        "score": "51.5656",
+        "cost_usd": "$0.41",
+        "time_per_task": "3.1",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 57,
+        "score": "45.0929",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.5",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 69,
+        "score": "42.3221",
+        "cost_usd": "$0.18",
+        "time_per_task": "1.4",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "economics-index-1440": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 4,
+        "score": "61.0752",
+        "cost_usd": "$4.00",
+        "time_per_task": "10.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 8,
+        "score": "59.0271",
+        "cost_usd": "$2.52",
+        "time_per_task": "6.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 10,
+        "score": "58.147",
+        "cost_usd": "$2.07",
+        "time_per_task": "4.9",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 13,
+        "score": "57.3506",
+        "cost_usd": "$1.01",
+        "time_per_task": "7.9",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 20,
+        "score": "55.4372",
+        "cost_usd": "$0.65",
+        "time_per_task": "5.1",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 25,
+        "score": "54.6573",
+        "cost_usd": "$0.56",
+        "time_per_task": "4.2",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 31,
+        "score": "52.8007",
+        "cost_usd": "$1.62",
+        "time_per_task": "3.7",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 36,
+        "score": "51.0954",
+        "cost_usd": "$0.41",
+        "time_per_task": "3.1",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 57,
+        "score": "43.562",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.5",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 64,
+        "score": "41.4642",
+        "cost_usd": "$0.18",
+        "time_per_task": "1.4",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "economics-index-390": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 4,
+        "score": "61.0752",
+        "cost_usd": "$4.00",
+        "time_per_task": "10.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 8,
+        "score": "59.0271",
+        "cost_usd": "$2.52",
+        "time_per_task": "6.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 10,
+        "score": "58.147",
+        "cost_usd": "$2.07",
+        "time_per_task": "4.9",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 13,
+        "score": "57.3506",
+        "cost_usd": "$1.01",
+        "time_per_task": "7.9",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 20,
+        "score": "55.4372",
+        "cost_usd": "$0.65",
+        "time_per_task": "5.1",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 25,
+        "score": "54.6573",
+        "cost_usd": "$0.56",
+        "time_per_task": "4.2",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 31,
+        "score": "52.8007",
+        "cost_usd": "$1.62",
+        "time_per_task": "3.7",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 36,
+        "score": "51.0954",
+        "cost_usd": "$0.41",
+        "time_per_task": "3.1",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 57,
+        "score": "43.562",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.5",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 64,
+        "score": "41.4642",
+        "cost_usd": "$0.18",
+        "time_per_task": "1.4",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "strategy-ops-index-1440": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 4,
+        "score": "63.2844",
+        "cost_usd": "$4.00",
+        "time_per_task": "10.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 6,
+        "score": "61.9889",
+        "cost_usd": "$2.52",
+        "time_per_task": "6.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 7,
+        "score": "61.5564",
+        "cost_usd": "$2.07",
+        "time_per_task": "4.9",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 11,
+        "score": "59.402",
+        "cost_usd": "$1.01",
+        "time_per_task": "7.9",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 16,
+        "score": "57.9551",
+        "cost_usd": "$0.56",
+        "time_per_task": "4.2",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 18,
+        "score": "57.8705",
+        "cost_usd": "$0.65",
+        "time_per_task": "5.1",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 25,
+        "score": "57.3136",
+        "cost_usd": "$1.62",
+        "time_per_task": "3.7",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 31,
+        "score": "56.3279",
+        "cost_usd": "$0.41",
+        "time_per_task": "3.1",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 61,
+        "score": "48.593",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.5",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 64,
+        "score": "48.4225",
+        "cost_usd": "$0.18",
+        "time_per_task": "1.4",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "strategy-ops-index-390": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 4,
+        "score": "63.2844",
+        "cost_usd": "$4.00",
+        "time_per_task": "10.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 6,
+        "score": "61.9889",
+        "cost_usd": "$2.52",
+        "time_per_task": "6.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 7,
+        "score": "61.5564",
+        "cost_usd": "$2.07",
+        "time_per_task": "4.9",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 11,
+        "score": "59.402",
+        "cost_usd": "$1.01",
+        "time_per_task": "7.9",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 16,
+        "score": "57.9551",
+        "cost_usd": "$0.56",
+        "time_per_task": "4.2",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 18,
+        "score": "57.8705",
+        "cost_usd": "$0.65",
+        "time_per_task": "5.1",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 25,
+        "score": "57.3136",
+        "cost_usd": "$1.62",
+        "time_per_task": "3.7",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 31,
+        "score": "56.3279",
+        "cost_usd": "$0.41",
+        "time_per_task": "3.1",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 61,
+        "score": "48.593",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.5",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 64,
+        "score": "48.4225",
+        "cost_usd": "$0.18",
+        "time_per_task": "1.4",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "aa-omniscience-index-1440": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 7,
+        "score": "50",
+        "cost_usd": "$4.00",
+        "time_per_task": "1.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 8,
+        "score": "48.2667",
+        "cost_usd": "$2.52",
+        "time_per_task": "0.3",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 10,
+        "score": "46.7667",
+        "cost_usd": "$2.07",
+        "time_per_task": "0.2",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 15,
+        "score": "44.7667",
+        "cost_usd": "$1.62",
+        "time_per_task": "0.0",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 29,
+        "score": "40.3667",
+        "cost_usd": "$1.01",
+        "time_per_task": "1.0",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 36,
+        "score": "38.6667",
+        "cost_usd": "$0.66",
+        "time_per_task": "0.0",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 37,
+        "score": "38.6",
+        "cost_usd": "$0.65",
+        "time_per_task": "0.4",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 38,
+        "score": "38.3",
+        "cost_usd": "$0.56",
+        "time_per_task": "0.1",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 43,
+        "score": "34.2",
+        "cost_usd": "$0.41",
+        "time_per_task": "0.0",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 59,
+        "score": "24.7667",
+        "cost_usd": "$0.18",
+        "time_per_task": "0.0",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "aa-omniscience-index-390": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 7,
+        "score": "50",
+        "cost_usd": "$4.00",
+        "time_per_task": "1.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 8,
+        "score": "48.2667",
+        "cost_usd": "$2.52",
+        "time_per_task": "0.3",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 10,
+        "score": "46.7667",
+        "cost_usd": "$2.07",
+        "time_per_task": "0.2",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 15,
+        "score": "44.7667",
+        "cost_usd": "$1.62",
+        "time_per_task": "0.0",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 29,
+        "score": "40.3667",
+        "cost_usd": "$1.01",
+        "time_per_task": "1.0",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 36,
+        "score": "38.6667",
+        "cost_usd": "$0.66",
+        "time_per_task": "0.0",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 37,
+        "score": "38.6",
+        "cost_usd": "$0.65",
+        "time_per_task": "0.4",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 38,
+        "score": "38.3",
+        "cost_usd": "$0.56",
+        "time_per_task": "0.1",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 43,
+        "score": "34.2",
+        "cost_usd": "$0.41",
+        "time_per_task": "0.0",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 59,
+        "score": "24.7667",
+        "cost_usd": "$0.18",
+        "time_per_task": "0.0",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "intelligence-index-1440": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 3,
+        "score": "62.1388",
+        "cost_usd": "$4.00",
+        "time_per_task": "10.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 5,
+        "score": "61.5602",
+        "cost_usd": "$2.52",
+        "time_per_task": "6.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 6,
+        "score": "60.0882",
+        "cost_usd": "$2.07",
+        "time_per_task": "4.9",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 11,
+        "score": "57.2576",
+        "cost_usd": "$1.01",
+        "time_per_task": "7.9",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 12,
+        "score": "56.9986",
+        "cost_usd": "$1.62",
+        "time_per_task": "3.7",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 15,
+        "score": "55.7351",
+        "cost_usd": "$0.65",
+        "time_per_task": "5.1",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 17,
+        "score": "54.8899",
+        "cost_usd": "$0.56",
+        "time_per_task": "4.2",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 24,
+        "score": "52.6777",
+        "cost_usd": "$0.41",
+        "time_per_task": "3.1",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 41,
+        "score": "45.6504",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.5",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 52,
+        "score": "40.5525",
+        "cost_usd": "$0.18",
+        "time_per_task": "1.4",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "intelligence-index-390": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 3,
+        "score": "62.1388",
+        "cost_usd": "$4.00",
+        "time_per_task": "10.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 5,
+        "score": "61.5602",
+        "cost_usd": "$2.52",
+        "time_per_task": "6.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 6,
+        "score": "60.0882",
+        "cost_usd": "$2.07",
+        "time_per_task": "4.9",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 11,
+        "score": "57.2576",
+        "cost_usd": "$1.01",
+        "time_per_task": "7.9",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 12,
+        "score": "56.9986",
+        "cost_usd": "$1.62",
+        "time_per_task": "3.7",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 15,
+        "score": "55.7351",
+        "cost_usd": "$0.65",
+        "time_per_task": "5.1",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 17,
+        "score": "54.8899",
+        "cost_usd": "$0.56",
+        "time_per_task": "4.2",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 24,
+        "score": "52.6777",
+        "cost_usd": "$0.41",
+        "time_per_task": "3.1",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 41,
+        "score": "45.6504",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.5",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 52,
+        "score": "40.5525",
+        "cost_usd": "$0.18",
+        "time_per_task": "1.4",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "frontiercode-2-0-1440": [
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 2,
+        "score": "0.489513",
+        "cost_usd": "$2.52",
+        "time_per_task": "7.4",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 5,
+        "score": "0.471319",
+        "cost_usd": "$2.07",
+        "time_per_task": "5.6",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 6,
+        "score": "0.465598",
+        "cost_usd": "$1.62",
+        "time_per_task": "3.6",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 8,
+        "score": "0.453802",
+        "cost_usd": "$4.00",
+        "time_per_task": "12.8",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 9,
+        "score": "0.443798",
+        "cost_usd": "$1.01",
+        "time_per_task": "7.9",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 11,
+        "score": "0.427523",
+        "cost_usd": "$0.65",
+        "time_per_task": "5.0",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 16,
+        "score": "0.413985",
+        "cost_usd": "$0.41",
+        "time_per_task": "3.0",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 20,
+        "score": "0.402249",
+        "cost_usd": "$0.56",
+        "time_per_task": "4.1",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 41,
+        "score": "0.326629",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.7",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 45,
+        "score": "0.313682",
+        "cost_usd": "$0.18",
+        "time_per_task": "1.7",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "frontiercode-2-0-390": [
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 2,
+        "score": "0.489513",
+        "cost_usd": "$2.52",
+        "time_per_task": "7.4",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 5,
+        "score": "0.471319",
+        "cost_usd": "$2.07",
+        "time_per_task": "5.6",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 6,
+        "score": "0.465598",
+        "cost_usd": "$1.62",
+        "time_per_task": "3.6",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 8,
+        "score": "0.453802",
+        "cost_usd": "$4.00",
+        "time_per_task": "12.8",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 9,
+        "score": "0.443798",
+        "cost_usd": "$1.01",
+        "time_per_task": "7.9",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 11,
+        "score": "0.427523",
+        "cost_usd": "$0.65",
+        "time_per_task": "5.0",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 16,
+        "score": "0.413985",
+        "cost_usd": "$0.41",
+        "time_per_task": "3.0",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 20,
+        "score": "0.402249",
+        "cost_usd": "$0.56",
+        "time_per_task": "4.1",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 41,
+        "score": "0.326629",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.7",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 45,
+        "score": "0.313682",
+        "cost_usd": "$0.18",
+        "time_per_task": "1.7",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "critpt-v2-full-1440": [
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 4,
+        "score": "83.7143",
+        "cost_usd": "$2.07",
+        "time_per_task": "4.9",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 4,
+        "score": "83.7143",
+        "cost_usd": "$4.00",
+        "time_per_task": "10.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 9,
+        "score": "83.1429",
+        "cost_usd": "$2.52",
+        "time_per_task": "6.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 17,
+        "score": "81.4286",
+        "cost_usd": "$1.62",
+        "time_per_task": "3.7",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 25,
+        "score": "78.5714",
+        "cost_usd": "$1.01",
+        "time_per_task": "7.9",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 27,
+        "score": "78.2857",
+        "cost_usd": "$0.41",
+        "time_per_task": "3.1",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 27,
+        "score": "78.2857",
+        "cost_usd": "$0.65",
+        "time_per_task": "5.1",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 30,
+        "score": "77.7143",
+        "cost_usd": "$0.56",
+        "time_per_task": "4.2",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 34,
+        "score": "77.1429",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.5",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 50,
+        "score": "71.4286",
+        "cost_usd": "$0.18",
+        "time_per_task": "1.4",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "critpt-v2-full-390": [
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 4,
+        "score": "83.7143",
+        "cost_usd": "$2.07",
+        "time_per_task": "4.9",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 4,
+        "score": "83.7143",
+        "cost_usd": "$4.00",
+        "time_per_task": "10.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 9,
+        "score": "83.1429",
+        "cost_usd": "$2.52",
+        "time_per_task": "6.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 17,
+        "score": "81.4286",
+        "cost_usd": "$1.62",
+        "time_per_task": "3.7",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 25,
+        "score": "78.5714",
+        "cost_usd": "$1.01",
+        "time_per_task": "7.9",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 27,
+        "score": "78.2857",
+        "cost_usd": "$0.41",
+        "time_per_task": "3.1",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 27,
+        "score": "78.2857",
+        "cost_usd": "$0.65",
+        "time_per_task": "5.1",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 30,
+        "score": "77.7143",
+        "cost_usd": "$0.56",
+        "time_per_task": "4.2",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 34,
+        "score": "77.1429",
+        "cost_usd": "$0.66",
+        "time_per_task": "1.5",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 50,
+        "score": "71.4286",
+        "cost_usd": "$0.18",
+        "time_per_task": "1.4",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "critpt-v2-hard-1440": [
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 5,
+        "score": "71.5",
+        "cost_usd": "$2.07",
+        "time_per_task": "2.2",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 5,
+        "score": "71.5",
+        "cost_usd": "$4.00",
+        "time_per_task": "6.8",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 9,
+        "score": "70.5",
+        "cost_usd": "$2.52",
+        "time_per_task": "3.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 18,
+        "score": "67.5",
+        "cost_usd": "$1.62",
+        "time_per_task": "1.0",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 24,
+        "score": "64",
+        "cost_usd": "$0.41",
+        "time_per_task": "1.4",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 26,
+        "score": "62.5",
+        "cost_usd": "$1.01",
+        "time_per_task": "4.8",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 26,
+        "score": "62.5",
+        "cost_usd": "$0.65",
+        "time_per_task": "3.1",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 30,
+        "score": "61.5",
+        "cost_usd": "$0.56",
+        "time_per_task": "2.3",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 34,
+        "score": "61",
+        "cost_usd": "$0.66",
+        "time_per_task": "0.5",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 43,
+        "score": "58",
+        "cost_usd": "$0.18",
+        "time_per_task": "0.5",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "critpt-v2-hard-390": [
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 5,
+        "score": "71.5",
+        "cost_usd": "$2.07",
+        "time_per_task": "2.2",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 5,
+        "score": "71.5",
+        "cost_usd": "$4.00",
+        "time_per_task": "6.8",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 9,
+        "score": "70.5",
+        "cost_usd": "$2.52",
+        "time_per_task": "3.2",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 18,
+        "score": "67.5",
+        "cost_usd": "$1.62",
+        "time_per_task": "1.0",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 24,
+        "score": "64",
+        "cost_usd": "$0.41",
+        "time_per_task": "1.4",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 26,
+        "score": "62.5",
+        "cost_usd": "$1.01",
+        "time_per_task": "4.8",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 26,
+        "score": "62.5",
+        "cost_usd": "$0.65",
+        "time_per_task": "3.1",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 30,
+        "score": "61.5",
+        "cost_usd": "$0.56",
+        "time_per_task": "2.3",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 34,
+        "score": "61",
+        "cost_usd": "$0.66",
+        "time_per_task": "0.5",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 43,
+        "score": "58",
+        "cost_usd": "$0.18",
+        "time_per_task": "0.5",
+        "first_answer": "1.8",
+        "scoring_status": null
+      }
+    ],
+    "aa-briefcase-rubric-score-1440": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 19,
+        "score": "59.19%",
+        "cost_usd": "$4.00",
+        "time_per_task": "15.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 30,
+        "score": "56.36%",
+        "cost_usd": "$2.52",
+        "time_per_task": "10.0",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 35,
+        "score": "55.45%",
+        "cost_usd": "$2.07",
+        "time_per_task": "8.2",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 47,
+        "score": "52.73%",
+        "cost_usd": "$1.01",
+        "time_per_task": "13.6",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 55,
+        "score": "51.82%",
+        "cost_usd": "$0.65",
+        "time_per_task": "9.3",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 67,
+        "score": "49.9%",
+        "cost_usd": "$0.56",
+        "time_per_task": "7.7",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 73,
+        "score": "48.18%",
+        "cost_usd": "$0.41",
+        "time_per_task": "5.8",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 77,
+        "score": "47.68%",
+        "cost_usd": "$1.62",
+        "time_per_task": "4.6",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 123,
+        "score": "36.87%",
+        "cost_usd": "$0.18",
+        "time_per_task": "2.8",
+        "first_answer": "1.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 149,
+        "score": "31.31%",
+        "cost_usd": "$0.66",
+        "time_per_task": "2.3",
+        "first_answer": "2.7",
+        "scoring_status": null
+      }
+    ],
+    "aa-briefcase-rubric-score-390": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 19,
+        "score": "59.19%",
+        "cost_usd": "$4.00",
+        "time_per_task": "15.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 30,
+        "score": "56.36%",
+        "cost_usd": "$2.52",
+        "time_per_task": "10.0",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 35,
+        "score": "55.45%",
+        "cost_usd": "$2.07",
+        "time_per_task": "8.2",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 47,
+        "score": "52.73%",
+        "cost_usd": "$1.01",
+        "time_per_task": "13.6",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 55,
+        "score": "51.82%",
+        "cost_usd": "$0.65",
+        "time_per_task": "9.3",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 67,
+        "score": "49.9%",
+        "cost_usd": "$0.56",
+        "time_per_task": "7.7",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 73,
+        "score": "48.18%",
+        "cost_usd": "$0.41",
+        "time_per_task": "5.8",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 77,
+        "score": "47.68%",
+        "cost_usd": "$1.62",
+        "time_per_task": "4.6",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 123,
+        "score": "36.87%",
+        "cost_usd": "$0.18",
+        "time_per_task": "2.8",
+        "first_answer": "1.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 149,
+        "score": "31.31%",
+        "cost_usd": "$0.66",
+        "time_per_task": "2.3",
+        "first_answer": "2.7",
+        "scoring_status": null
+      }
+    ],
+    "aa-briefcase-analytical-quality-elo-1440": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 36,
+        "score": "1741",
+        "cost_usd": "$4.00",
+        "time_per_task": "15.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 40,
+        "score": "1709",
+        "cost_usd": "$1.01",
+        "time_per_task": "13.6",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 47,
+        "score": "1679",
+        "cost_usd": "$2.52",
+        "time_per_task": "10.0",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 47,
+        "score": "1679",
+        "cost_usd": "$0.65",
+        "time_per_task": "9.3",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 51,
+        "score": "1671",
+        "cost_usd": "$2.07",
+        "time_per_task": "8.2",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 54,
+        "score": "1648",
+        "cost_usd": "$0.56",
+        "time_per_task": "7.7",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 65,
+        "score": "1627",
+        "cost_usd": "$0.41",
+        "time_per_task": "5.8",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 90,
+        "score": "1482",
+        "cost_usd": "$1.62",
+        "time_per_task": "4.6",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 113,
+        "score": "1318",
+        "cost_usd": "$0.18",
+        "time_per_task": "2.8",
+        "first_answer": "1.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 154,
+        "score": "1033",
+        "cost_usd": "$0.66",
+        "time_per_task": "2.3",
+        "first_answer": "2.7",
+        "scoring_status": null
+      }
+    ],
+    "aa-briefcase-analytical-quality-elo-390": [
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 36,
+        "score": "1741",
+        "cost_usd": "$4.00",
+        "time_per_task": "15.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 40,
+        "score": "1709",
+        "cost_usd": "$1.01",
+        "time_per_task": "13.6",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 47,
+        "score": "1679",
+        "cost_usd": "$2.52",
+        "time_per_task": "10.0",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 47,
+        "score": "1679",
+        "cost_usd": "$0.65",
+        "time_per_task": "9.3",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 51,
+        "score": "1671",
+        "cost_usd": "$2.07",
+        "time_per_task": "8.2",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 54,
+        "score": "1648",
+        "cost_usd": "$0.56",
+        "time_per_task": "7.7",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 65,
+        "score": "1627",
+        "cost_usd": "$0.41",
+        "time_per_task": "5.8",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 90,
+        "score": "1482",
+        "cost_usd": "$1.62",
+        "time_per_task": "4.6",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 113,
+        "score": "1318",
+        "cost_usd": "$0.18",
+        "time_per_task": "2.8",
+        "first_answer": "1.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 154,
+        "score": "1033",
+        "cost_usd": "$0.66",
+        "time_per_task": "2.3",
+        "first_answer": "2.7",
+        "scoring_status": null
+      }
+    ],
+    "aa-briefcase-presentation-elo-1440": [
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 4,
+        "score": "1703",
+        "cost_usd": "$1.01",
+        "time_per_task": "13.6",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 6,
+        "score": "1662",
+        "cost_usd": "$4.00",
+        "time_per_task": "15.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 9,
+        "score": "1657",
+        "cost_usd": "$0.65",
+        "time_per_task": "9.3",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 15,
+        "score": "1614",
+        "cost_usd": "$2.52",
+        "time_per_task": "10.0",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 19,
+        "score": "1594",
+        "cost_usd": "$0.56",
+        "time_per_task": "7.7",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 24,
+        "score": "1578",
+        "cost_usd": "$2.07",
+        "time_per_task": "8.2",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 33,
+        "score": "1534",
+        "cost_usd": "$0.41",
+        "time_per_task": "5.8",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 74,
+        "score": "1404",
+        "cost_usd": "$1.62",
+        "time_per_task": "4.6",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 126,
+        "score": "1206",
+        "cost_usd": "$0.18",
+        "time_per_task": "2.8",
+        "first_answer": "1.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 170,
+        "score": "1006",
+        "cost_usd": "$0.66",
+        "time_per_task": "2.3",
+        "first_answer": "2.7",
+        "scoring_status": null
+      }
+    ],
+    "aa-briefcase-presentation-elo-390": [
+      {
+        "model": "GPT-6.2 Sol (Max)",
+        "rank": 4,
+        "score": "1703",
+        "cost_usd": "$1.01",
+        "time_per_task": "13.6",
+        "first_answer": "61.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Max)",
+        "rank": 6,
+        "score": "1662",
+        "cost_usd": "$4.00",
+        "time_per_task": "15.7",
+        "first_answer": "147.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Xhigh)",
+        "rank": 9,
+        "score": "1657",
+        "cost_usd": "$0.65",
+        "time_per_task": "9.3",
+        "first_answer": "23.0",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Xhigh)",
+        "rank": 15,
+        "score": "1614",
+        "cost_usd": "$2.52",
+        "time_per_task": "10.0",
+        "first_answer": "44.6",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (High)",
+        "rank": 19,
+        "score": "1594",
+        "cost_usd": "$0.56",
+        "time_per_task": "7.7",
+        "first_answer": "7.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (High)",
+        "rank": 24,
+        "score": "1578",
+        "cost_usd": "$2.07",
+        "time_per_task": "8.2",
+        "first_answer": "16.9",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Medium)",
+        "rank": 33,
+        "score": "1534",
+        "cost_usd": "$0.41",
+        "time_per_task": "5.8",
+        "first_answer": "2.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Medium)",
+        "rank": 74,
+        "score": "1404",
+        "cost_usd": "$1.62",
+        "time_per_task": "4.6",
+        "first_answer": "2.7",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Sol (Low)",
+        "rank": 126,
+        "score": "1206",
+        "cost_usd": "$0.18",
+        "time_per_task": "2.8",
+        "first_answer": "1.8",
+        "scoring_status": null
+      },
+      {
+        "model": "GPT-6.2 Astra (Low)",
+        "rank": 170,
+        "score": "1006",
+        "cost_usd": "$0.66",
+        "time_per_task": "2.3",
+        "first_answer": "2.7",
+        "scoring_status": null
+      }
+    ]
+  },
+  "screenshots": [
+    "master-gpt-6-2-astra-1440.png",
+    "master-gpt-6-2-sol-1440.png",
+    "master-gpt-6-2-astra-390-first-screen.png",
+    "master-gpt-6-2-astra-390.png",
+    "master-gpt-6-2-astra-critpt-390-crop.png",
+    "master-gpt-6-2-sol-390-first-screen.png",
+    "master-gpt-6-2-sol-390.png",
+    "master-gpt-6-2-sol-critpt-390-crop.png",
+    "master-critpt-1440.png",
+    "terminal-bench-4-0-1440.png",
+    "terminal-bench-4-0-390-first-screen.png",
+    "terminal-bench-4-0-390.png",
+    "intelligence-index-1440.png",
+    "intelligence-index-390-first-screen.png",
+    "intelligence-index-390.png",
+    "about-data-1440.png",
+    "about-data-390.png"
+  ],
+  "master_searches": {
+    "gpt-6.2 sol": [
+      "GPT-6.2 Sol (High)",
+      "GPT-6.2 Sol (Low)",
+      "GPT-6.2 Sol (Max)",
+      "GPT-6.2 Sol (Medium)",
+      "GPT-6.2 Sol (Xhigh)"
+    ],
+    "GPT-6.2 Astra, GPT-6.2 Sol": [
+      "GPT-6.2 Astra (High)",
+      "GPT-6.2 Astra (Low)",
+      "GPT-6.2 Astra (Max)",
+      "GPT-6.2 Astra (Medium)",
+      "GPT-6.2 Astra (Xhigh)",
+      "GPT-6.2 Sol (High)",
+      "GPT-6.2 Sol (Low)",
+      "GPT-6.2 Sol (Max)",
+      "GPT-6.2 Sol (Medium)",
+      "GPT-6.2 Sol (Xhigh)"
+    ],
+    "GPT 6.2 Sol": []
+  }
+}
