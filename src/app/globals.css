@@ -332,7 +332,7 @@ textarea:disabled {
   text-decoration: none;
 }
 
-.app-navigation__link[aria-current="page"] {
+.app-navigation__link[aria-current] {
   border-left-color: var(--primary);
   background: var(--selected-bg);
   color: var(--primary);
@@ -1253,6 +1253,17 @@ th.numeric {
   font-weight: var(--type-weight-semibold);
 }
 
+.master-mobile-controls select {
+  color: var(--text-primary);
+  font-weight: var(--type-weight-regular);
+}
+
+@media (max-width: 767px) {
+  .master-sort-summary {
+    display: none;
+  }
+}
+
 .master-mobile-controls > .ui-button:not(.master-mobile-controls__filters) {
   min-height: 44px;
 }
@@ -1980,6 +1991,12 @@ a.ui-button:hover {
     font-size: var(--font-size-caption);
   }
 
+  .evaluation-card__score {
+    color: var(--text-primary);
+    font-size: var(--font-size-ui);
+    font-weight: var(--type-weight-semibold);
+  }
+
   .evaluation-card .master-card__metrics {
     margin-bottom: 0;
   }
@@ -2015,7 +2032,6 @@ a.ui-button:hover {
   min-height: 1.25rem;
   margin-bottom: var(--space-2);
   display: flex;
-  justify-content: flex-end;
 }
 
 .table-overflow-cue {
@@ -2025,21 +2041,19 @@ a.ui-button:hover {
   pointer-events: none;
 }
 
+.table-overflow-cue--more {
+  margin-inline-start: auto;
+}
+
 @media (max-width: 767px) {
   .table-overflow-cue-slot {
     display: none;
   }
 }
 
-.master tbody .master-aggregate > span {
-  display: block;
-  position: relative;
-}
-
 .master tbody .master-aggregate small {
-  position: absolute;
-  top: 100%;
-  right: 0;
+  display: inline;
+  margin: 0 0 0 var(--space-2);
   white-space: nowrap;
 }
 

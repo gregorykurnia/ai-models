@@ -56,6 +56,7 @@ try {
     await header.getByRole("button",{name:new RegExp(`^${column.label}`)}).click();
     await page.waitForFunction(key=>new URL(location.href).searchParams.get("ms")===key,column.key);
     assert.equal(await header.getAttribute("aria-sort"),"ascending",`${column.label}: first click sorts ascending`);
+    assert.match(await section.locator(".master-sort-summary").innerText(),new RegExp(`Sorted by ${column.label}.* ↑$`,"i"));
     const [headers,...rows]=csvRows(await exportCsv(page,section));
     assert.deepEqual(headers.slice(0,5),speedCsvHeaders);
     const values=rows.map(row=>row[column.csvColumn]===""?null:Number(row[column.csvColumn]));

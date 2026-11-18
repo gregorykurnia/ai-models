@@ -14,7 +14,7 @@ const links = [
 ] as const;
 
 function isCurrentPath(pathname: string, href: string) {
-  if (href === "/") return pathname === "/";
+  if (href === "/") return pathname === "/" || pathname.startsWith("/leaderboards/");
   if (href === "/suitability/saved") return pathname === href;
   if (href === "/suitability") return pathname === href || (pathname.startsWith("/suitability/") && pathname !== "/suitability/saved");
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -38,7 +38,7 @@ function Navigation({ pathname, onNavigate }: { pathname: string; onNavigate?: (
             className="app-navigation__link"
             href={item.href}
             key={item.href}
-            aria-current={current ? "page" : undefined}
+            aria-current={current ? (item.href === "/" && pathname !== "/" ? "location" : "page") : undefined}
             onClick={onNavigate}
           >
             <NavIcon name={item.icon} />

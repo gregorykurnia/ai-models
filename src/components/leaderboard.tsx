@@ -24,7 +24,7 @@ function EvaluationCard({entry,evaluation,speed,cost}:{entry:Entry;evaluation:Ev
   return <li className="master-card evaluation-card" data-model={entry.model} data-provider={entry.provider}>
     <div className="evaluation-card__head">
       <strong>#{entry.source_rank} {entry.model}</strong>
-      <small>{entry.provider} · {evaluation.metric_label}: {evaluationScoreDisplay(evaluation,entry)}</small>
+      <small>{entry.provider} · <span className="evaluation-card__score">{evaluation.metric_label}: {evaluationScoreDisplay(evaluation,entry)}</span></small>
     </div>
     <dl className="master-card__metrics">
       <div><dt>{evaluationTimePerTaskLabel(evaluation.id)} (min)</dt><dd><SpeedValue speed={speed} seconds={evaluationTimePerTask(evaluation.id,speed)} format={formatTimePerTask}/></dd></div>

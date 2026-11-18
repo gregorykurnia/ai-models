@@ -97,6 +97,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
   const coverage=await readFile(new URL(`../docs/${auditFile}`,import.meta.url),"utf8");
   const {expected,evaluations}=newModelsExpectations(dataset,coverage,setName);
   const screenshotEvaluations=new Set(screenshots);
+  const sharedScreens=new Set(gpt?["critpt-v2-full","frontiercode-2-0","mmmu-pro"]:[]);
   const scores=new Map();
   const consoleErrors=[];
   const pageErrors=[];
@@ -111,7 +112,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
       const faults=[];
       if(document.documentElement.scrollWidth>innerWidth)faults.push("horizontal page overflow");
       const root=document.querySelector(selector);
-      for(const element of root.querySelectorAll('a,button,strong,dt,dd,[data-column="model"]')){
+      for(const element of root.querySelectorAll('a,button,strong,dt,dd,.evaluation-card__score,[data-column="model"]')){
         const box=element.getBoundingClientRect();
         if(!box.width||!box.height)continue;
         if(element.scrollWidth>element.clientWidth+1)faults.push(`text overflow: ${element.textContent}`);
@@ -127,26 +128,35 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
   }
 
   async function screenshot(name){
-    const {width,height}=page.viewportSize();
-    const end=page.locator(gpt?"#master-leaderboard, .evaluation-notes":"#master-leaderboard");
-    const box=width===1440&&await end.count()?await end.boundingBox():null;
-    const clip=box?{x:0,y:0,width,height:Math.min(height,Math.ceil(box.y+box.height+24))}:undefined;
-    await page.screenshot({path:join(output,name),animations:"disabled",clip});
+    const {width}=page.viewportSize();
+    if(width===1440){
+      const end=page.locator("#master-leaderboard, .evaluation-notes");
+      const box=await end.count()?await end.boundingBox():null;
+      if(box)await page.setViewportSize({width,height:Math.ceil(box.y+box.height+24)});
+      const footer=await page.locator(".app-rail__footer").boundingBox();
+      assert(footer&&footer.y+footer.height<=page.viewportSize().height,"whole desktop sidebar footer is in frame");
+    }
+    await page.screenshot({path:join(output,name),animations:"disabled"});
     report.screenshots.push(name);
   }
 
   async function checkScrollCue(section){
     const region=section.locator(".table-scroll");
-    const cue=section.locator(".table-overflow-cue");
+    const cue=section.locator(".table-overflow-cue--more");
+    const earlier=section.locator(".table-overflow-cue--earlier");
     await cue.waitFor({state:"visible"});
+    assert.equal(await earlier.count(),0,"no earlier columns at the left edge");
     assert.equal(await cue.innerText(),"More columns →","scroll continuation is a readable caption");
     const cueBox=await cue.boundingBox(),regionBox=await region.boundingBox();
     assert(cueBox.y+cueBox.height<=regionBox.y,"scroll caption is above the table, clear of headers and rows");
     assert(await cue.evaluate(element=>parseFloat(getComputedStyle(element).fontSize)>=12),"scroll caption uses at least the existing caption text size");
     await region.evaluate(element=>{element.scrollLeft=element.scrollWidth;});
     await cue.waitFor({state:"hidden"});
+    await earlier.waitFor({state:"visible"});
+    assert.equal(await earlier.innerText(),"← Earlier columns");
     await region.evaluate(element=>{element.scrollLeft=0;});
     await cue.waitFor({state:"visible"});
+    await earlier.waitFor({state:"hidden"});
   }
 
   // Keep the 390x844 first screen, then use a taller 390px capture to show every
@@ -182,10 +192,10 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
     const section=page.locator("#master-leaderboard");
     const rows=section.locator(width===390?".master-card":"tbody tr");
     await rows.first().waitFor();
-    assert.equal(await section.locator(".leaderboard-legend").innerText(),`— means no captured AA value. Aggregate uses 9 of ${dataset.evaluations.length} evaluations.`);
+    assert.equal(await section.locator(".leaderboard-legend").innerText(),`— and “Not ranked” mean no captured AA value. Aggregate uses 9 of ${dataset.evaluations.length} evaluations.`);
     assert.equal(await section.locator("#master-search").inputValue(),query);
     assert.equal(await rows.count(),count,`${query}: ${width}px count`);
-    assert.match(await section.locator('p[aria-live="polite"]').first().innerText(),new RegExp(`^${count} model${count===1?"":"s"} ·`),`${query}: result-count wording`);
+    assert.match(await section.locator('p[aria-live="polite"]').first().innerText(),new RegExp(`^${count} model${count===1?"":"s"}(?: ·|$)`),`${query}: result-count wording`);
     const names=await rows.locator(width===390?".master-card__title a":".master-model > a").allTextContents();
     assert.deepEqual([...names].sort(),expected.filter(entry=>entry.model.includes(query)).map(entry=>entry.model).sort());
     for(let index=0;index<count;index++){
@@ -195,6 +205,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
       else assert.equal(score,scores.get(names[index]),`${names[index]}: phone aggregate agrees with desktop`);
     }
     if(width===1440){
+      assert.equal((await section.locator(".master-sort-summary").innerText()).trim(),"· Sorted by Intelligence Index rank ↑");
       const layout=await section.locator("tbody .master-model").evaluateAll(cells=>cells.map(cell=>{
         const link=cell.querySelector("a"),star=cell.querySelector("button");
         const box=cell.getBoundingClientRect(),text=link.getBoundingClientRect(),favorite=star.getBoundingClientRect();
@@ -210,12 +221,15 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
       assert.match(await section.locator(".master-cost small").first().innerText(),/^USD · AA\n\d{1,2} \w{3} \d{4}$/);
       const aligned=await section.locator("tbody tr").evaluateAll(rows=>rows.every(row=>{
         const number=element=>{const text=[...element.childNodes].find(node=>node.nodeType===Node.TEXT_NODE&&node.textContent.trim());const range=document.createRange();range.selectNodeContents(text);return range.getBoundingClientRect().y;};
-        return Math.abs(number(row.querySelector(".master-aggregate > span"))-number(row.querySelector(".master-cost a")))<1;
+        const aggregate=row.querySelector(".master-aggregate > span");
+        const caption=aggregate.querySelector("small").getBoundingClientRect();
+        return Math.abs(number(aggregate)-number(row.querySelector(".master-cost a")))<1 &&
+          row.getBoundingClientRect().bottom-caption.bottom>=8;
       }));
-      assert(aligned,"aggregate values align with the single-line numbers");
+      assert(aligned,"aggregate values align with the numbers and their captions clear the row divider");
       await checkScrollCue(section);
       await audit(`${query}: desktop layout`,"#master-leaderboard");
-      if(gpt)await section.evaluate(element=>{element.closest(".app-main").scrollTop+=element.getBoundingClientRect().top-24;});
+      await section.evaluate(element=>{element.closest(".app-main").scrollTop+=element.getBoundingClientRect().top-24;});
       await screenshot(`master-${slug}-${width}.png`);
       if(slug==="hydrogen"){
         const frame=await section.locator(".table-scroll-frame").boundingBox();
@@ -232,6 +246,10 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
       }
     }else{
       assert.equal(await section.locator(".master-table-view").isVisible(),false);
+      assert(await section.locator("#master-mobile-sort").evaluate(select=>{
+        const style=getComputedStyle(select),label=getComputedStyle(select.parentElement);
+        return !select.disabled&&style.color!==label.color&&Number(style.fontWeight)<Number(label.fontWeight);
+      }),"phone sort shows an enabled, primary-text selection");
       assert(await rows.evaluateAll(cards=>cards.every(card=>{
         const star=card.querySelector(".favorite-star").getBoundingClientRect(),tiles=card.querySelector(".master-card__metrics").getBoundingClientRect();
         return star.width>=44&&star.height>=44&&Math.abs(star.left-tiles.left)<1;
@@ -277,6 +295,9 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
         const target=await section.getByRole("columnheader",{name:/^CritPt [↕↑↓]/}).boundingBox();
         const frozen=await section.locator("th.master-first").boundingBox();
         await section.locator(".table-scroll").evaluate((element,left)=>{element.scrollLeft=left;},target.x-frozen.x-frozen.width);
+        await section.getByText("← Earlier columns",{exact:true}).waitFor({state:"visible"});
+        const lastRow=await section.locator("tbody tr").last().boundingBox();
+        assert(lastRow.y+lastRow.height<=page.viewportSize().height,"all ten CritPt rows are within the desktop viewport");
         await screenshot("master-critpt-1440.png");
       }
       report.master_searches[query]=names;
@@ -300,6 +321,9 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
     if(width===1440){
       const response=await page.goto(`${baseUrl}/leaderboards/${evaluation.slug}?q=${encodeURIComponent(groups.map(([query])=>query).join(", "))}`);
       assert.equal(response.status(),200,`${id}: evaluation loads`);
+      const current=page.locator(".app-rail .app-navigation__link[aria-current]");
+      assert.equal(await current.innerText(),"Evaluations",`${id}: evaluation navigation section is selected`);
+      assert.equal(await current.getAttribute("aria-current"),"location");
     }
     const section=page.locator(".evaluation-leaderboard");
     const rows=section.locator(width===390?".evaluation-card":".evaluation-table tbody tr:has([data-column=\"model\"])");
@@ -345,7 +369,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
       if(mobile)return {
         model:row.getAttribute("data-model"),
         title:text(".evaluation-card__head strong"),
-        score:text(".evaluation-card__head small"),
+        score:text(".evaluation-card__score"),
         scoring_status:text(".evaluation-card__status"),
         cost_usd:metric("Cost / Intelligence Index task"),
         time_per_task:metric("Time per "),
@@ -368,7 +392,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
       assert.equal(row.model,entry.model,`${id}: ${width}px row ${index+1}`);
       if(width===390){
         assert.equal(row.title,`#${entry.source_rank} ${entry.model}`);
-        assert(row.score?.endsWith(score),`${entry.model}: phone score`);
+        assert.equal(row.score,`${evaluation.metric_label}: ${score}`,`${entry.model}: phone score`);
         const status=entry.scoring_status?`AA scoring status: ${entry.scoring_status}`:undefined;
         assert.equal(row.scoring_status,status,`${id}: phone uses the captured scoring status`);
       }else{
@@ -389,9 +413,17 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
     }
     await page.locator(".app-main").evaluate(element=>{element.scrollTop=0;});
     await audit(`${id}: ${width}px layout`,".evaluation-leaderboard");
-    if(screenshotEvaluations.has(id)){
+    if(screenshotEvaluations.has(id)||sharedScreens.has(id)){
       if(width===390){
-        await screenshot(`${id}-${width}-first-screen.png`);
+        if(screenshotEvaluations.has(id))await screenshot(`${id}-${width}-first-screen.png`);
+        if(gpt&&id==="intelligence-index"){
+          await page.getByRole("button",{name:"Menu",exact:true}).click();
+          const menu=page.getByRole("dialog",{name:"Navigation",exact:true});
+          assert.equal(await menu.locator('[aria-current="location"]').innerText(),"Evaluations");
+          await screenshot("intelligence-index-390-menu.png");
+          await menu.getByRole("button",{name:"Close Navigation"}).click();
+          await menu.waitFor({state:"hidden"});
+        }
         await phoneScreenshots(`${id}-${width}`,section);
       }else {await checkScrollCue(section);await screenshot(`${id}-${width}.png`);}
     }
