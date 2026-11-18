@@ -2,27 +2,36 @@
 // Run with a Playwright module path, e.g. PLAYWRIGHT_MODULE=/path/to/playwright/index.mjs node scripts/capture-aa-evaluations.mjs
 // Output: data/aa-captures/<page>.json, consumed by scripts/import-aa-evaluations.ts.
 import { mkdir, writeFile } from "node:fs/promises";
-
-const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || "playwright");
+import { pathToFileURL } from "node:url";
 
 const pages = [
-  { key: "aa-briefcase", url: "https://artificialanalysis.ai/evaluations/aa-briefcase" },
-  { key: "automationbench-aa", url: "https://artificialanalysis.ai/evaluations/automationbench-aa" },
-  { key: "terminalbench-4-0", url: "https://artificialanalysis.ai/evaluations/terminalbench-4-0" },
-  { key: "frontiercode-2-0", url: "https://artificialanalysis.ai/evaluations/frontiercode-2-0" },
-  { key: "gdp-pdf", url: "https://artificialanalysis.ai/evaluations/gdp-pdf" },
-  { key: "critpt", url: "https://artificialanalysis.ai/evaluations/critpt" },
-  { key: "critpt-v2-full", url: "https://artificialanalysis.ai/evaluations/critpt-v2", completeScoreChart: "CritPt v2: Score" },
-  { key: "critpt-v2-hard", url: "https://artificialanalysis.ai/evaluations/critpt-v2?critpt-subset=hard", completeScoreChart: "CritPt v2 (Hard Subset): Score" },
-  { key: "omniscience", url: "https://artificialanalysis.ai/evaluations/omniscience" },
-  { key: "mmmu-pro", url: "https://artificialanalysis.ai/evaluations/mmmu-pro" },
-  { key: "finance-and-accounting", url: "https://artificialanalysis.ai/models/capabilities/finance-and-accounting" },
-  { key: "economics", url: "https://artificialanalysis.ai/models/capabilities/economics" },
-  { key: "strategy-and-ops", url: "https://artificialanalysis.ai/models/capabilities/strategy-and-ops" },
-  { key: "artificial-analysis-intelligence-index", url: "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index" },
+  { key: "aa-briefcase", url: "https://artificialanalysis.ai/evaluations/aa-briefcase", scoreCharts: ["AA-Briefcase Elo"] },
+  { key: "automationbench-aa", url: "https://artificialanalysis.ai/evaluations/automationbench-aa", scoreCharts: ["AutomationBench-AA: Score"] },
+  { key: "terminalbench-4-0", url: "https://artificialanalysis.ai/evaluations/terminalbench-4-0", scoreCharts: ["Terminal-Bench 4.0: Score"] },
+  { key: "frontiercode-2-0", url: "https://artificialanalysis.ai/evaluations/frontiercode-2-0", scoreCharts: ["FrontierCode-AA 2.0: Score"] },
+  { key: "gdp-pdf", url: "https://artificialanalysis.ai/evaluations/gdp-pdf", scoreCharts: ["GDP.pdf: All-pass Rate"] },
+  { key: "critpt", url: "https://artificialanalysis.ai/evaluations/critpt", scoreCharts: ["CritPt: Score"] },
+  { key: "critpt-v2-full", url: "https://artificialanalysis.ai/evaluations/critpt-v2", scoreCharts: ["CritPt v2: Score"] },
+  { key: "critpt-v2-hard", url: "https://artificialanalysis.ai/evaluations/critpt-v2?critpt-subset=hard", scoreCharts: ["CritPt v2 (Hard Subset): Score"] },
+  {
+    key: "omniscience", url: "https://artificialanalysis.ai/evaluations/omniscience",
+    scoreCharts: ["AA-Omniscience v1.1: Net Score", "AA-Omniscience Accuracy"],
+  },
+  { key: "mmmu-pro", url: "https://artificialanalysis.ai/evaluations/mmmu-pro", scoreCharts: ["MMMU-Pro: Score"] },
+  {
+    key: "finance-and-accounting", url: "https://artificialanalysis.ai/models/capabilities/finance-and-accounting",
+    scoreCharts: ["Artificial Analysis Finance & Accounting Index"],
+  },
+  { key: "economics", url: "https://artificialanalysis.ai/models/capabilities/economics", scoreCharts: ["Artificial Analysis Economics Index"] },
+  { key: "strategy-and-ops", url: "https://artificialanalysis.ai/models/capabilities/strategy-and-ops", scoreCharts: ["Artificial Analysis Strategy & Ops Index"] },
+  {
+    key: "artificial-analysis-intelligence-index", url: "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
+    scoreCharts: ["Artificial Analysis Intelligence Index: Score"],
+  },
 ];
 
 const outDir = "data/aa-captures";
+const MODEL_SELECTOR_LABEL = /^(\d+)\s+of\s+(\d+)\s+models$/;
 // Keep only the fields the import reads; chart tooltips hold React element trees that aren't data.
 const KEEP = ["id", "slug", "name", "shortName", "label", "tooltipLabel", "value", "displayValue", "url", "logo",
   "creatorName", "creatorLogo", "releaseDate", "intelligenceIndexIsEstimated", "intelligenceIndexCostPerTask", "totalCost"];
@@ -38,43 +47,66 @@ function slim(item) {
   for (const key of ["mid", "lower", "upper"]) if (item[key]?.value !== undefined) out[key] = { value: item[key].value };
   return out;
 }
-await mkdir(outDir, { recursive: true });
-const capturedAt = new Date().toISOString().slice(0, 10);
-const browser = await chromium.launch({ headless: true });
-const modelSelectors = page => page.locator("button").filter({ hasText: /\d+ of \d+ models/ });
-
 async function expandSelectors(page) {
-  // Each chart has a "N of M models" selector; select all so the charts carry the full model list.
-  const selectors = modelSelectors(page);
-  const count = await selectors.count();
-  for (let i = 0; i < count; i++) {
+  // AA can remove controls after selecting models. Keep each menu's identity as the page updates.
+  const menuIds = await page.locator("button[aria-controls]").filter({ hasText: MODEL_SELECTOR_LABEL })
+    .evaluateAll(buttons => buttons.map(button => button.getAttribute("aria-controls")));
+  for (const [i, menuId] of menuIds.entries()) {
+    const id = JSON.stringify(menuId);
+    const selector = page.locator(`button[aria-controls=${id}]`);
+    const label = await selector.evaluateAll(async ([button]) => {
+      if (!button) return null;
+      button.scrollIntoView({ block: "center", behavior: "instant" });
+      // Give the lazy chart a frame to mount before moving on.
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      return button.isConnected ? button.innerText.trim() : null;
+    });
+    if (label === null) continue;
+    const counts = MODEL_SELECTOR_LABEL.exec(label);
+    if (counts && counts[1] === counts[2]) continue;
     try {
-      await selectors.nth(i).scrollIntoViewIfNeeded({ timeout: 4000 });
-      await selectors.nth(i).click({ timeout: 8000 });
-      await page.waitForTimeout(400);
-      await page.getByText("Select all", { exact: true }).last().click({ timeout: 4000 });
+      await selector.click({ timeout: 8000 });
+      const menu = page.locator(`[id=${id}]`);
+      // AA may update the URL after selection. The score check verifies the result.
+      await menu.getByText("Select all", { exact: true }).click({ timeout: 8000, noWaitAfter: true });
       await page.waitForTimeout(300);
       await page.keyboard.press("Escape");
       await page.waitForTimeout(300);
-    } catch {
-      await page.keyboard.press("Escape").catch(() => {});
+    } catch (cause) {
+      throw new Error(`failed to select all models in selector ${i + 1} (${label})`, { cause });
     }
   }
-  return count;
+  return menuIds.length;
 }
 
-// AA_CAPTURE_ONLY=key1,key2 limits the run to those pages; by default every page is captured.
-const only = process.env.AA_CAPTURE_ONLY?.split(",");
-const selected = only ? pages.filter(target => only.includes(target.key)) : pages;
+/** @param {{ title: string, selectorLabels: string[], items: unknown[] }[]} charts @param {string} title */
+export function assertCompleteScoreChart(charts, title) {
+  const matches = charts.filter(chart => chart.title === title);
+  if (matches.length !== 1) throw new Error(`expected one score chart "${title}", found ${matches.length}`);
+  const { selectorLabels, items } = matches[0];
+  if (selectorLabels.length !== 1) {
+    throw new Error(`score chart "${title}" needs one model selector, found ${selectorLabels.length}`);
+  }
+  const label = selectorLabels[0];
+  const counts = MODEL_SELECTOR_LABEL.exec(label);
+  if (!counts || counts[1] !== counts[2] || !items.length || items.length !== Number(counts[2])) {
+    throw new Error(`incomplete score chart "${title}" (${label}, ${items.length} scores)`);
+  }
+}
 
-for (const target of selected) {
-  const page = await browser.newPage({ viewport: { width: 1600, height: 1000 } });
+async function capturePage(page, target, capturedAt) {
   const response = await page.goto(target.url, { waitUntil: "networkidle", timeout: 120000 });
-  if (!response?.ok()) throw new Error(`${target.key}: HTTP ${response?.status()}`);
+  if (!response?.ok()) throw new Error(`HTTP ${response?.status()}`);
+  const url = new URL(target.url);
+  if (url.pathname === "/evaluations/critpt-v2"
+    && new URL(page.url()).searchParams.get("critpt-subset") !== url.searchParams.get("critpt-subset")) {
+    throw new Error(`unexpected CritPt subset URL ${page.url()}`);
+  }
   await page.waitForTimeout(1000);
   const selectors = await expandSelectors(page);
   await page.waitForTimeout(800);
-  const captured = await page.evaluate(() => {
+  const captured = await page.evaluate(selectorSource => {
+    const selectorPattern = new RegExp(selectorSource);
     const charts = [];
     for (const wrapper of document.querySelectorAll(".recharts-wrapper")) {
       let title = "";
@@ -84,6 +116,10 @@ for (const target of selected) {
         const heading = card && card.querySelector("h1,h2,h3,h4");
         if (heading) { title = heading.innerText.trim(); break; }
       }
+      // A selector belongs to this chart only when both are in the same chart card.
+      const selectorLabels = card?.querySelectorAll(".recharts-wrapper").length === 1
+        ? [...card.querySelectorAll("button")].map(button => button.innerText.trim()).filter(label => selectorPattern.test(label))
+        : [];
       // The chart's React props hold the series; take the longest array of model records.
       const key = Object.keys(wrapper).find(k => k.startsWith("__reactFiber"));
       let fiber = key ? wrapper[key] : null;
@@ -103,6 +139,7 @@ for (const target of selected) {
       }
       charts.push({
         title,
+        selectorLabels,
         items: best.map(item => JSON.parse(JSON.stringify(item))),
       });
     }
@@ -113,24 +150,36 @@ for (const target of selected) {
       if (headers.length && rows.length) tables.push({ headers, rows });
     }
     return { charts, tables };
-  });
+  }, MODEL_SELECTOR_LABEL.source);
+  for (const title of target.scoreCharts) assertCompleteScoreChart(captured.charts, title);
   // Keep the score, Elo, index, cost, and release charts; the import reads only these.
   captured.charts = captured.charts
     .filter(chart => USED_CHART.test(chart.title) && !UNUSED_CHART.test(chart.title))
-    .map(chart => ({ ...chart, items: chart.items.map(slim) }));
-  if (target.completeScoreChart) {
-    // Check the resolved subset URL and fully expanded score selector.
-    const selector = await modelSelectors(page).first().innerText({ timeout: 5000 });
-    const counts = /^(\d+) of (\d+) models$/.exec(selector.trim());
-    const chart = captured.charts.find(item => item.title === target.completeScoreChart);
-    if (new URL(page.url()).searchParams.get("critpt-subset") !== new URL(target.url).searchParams.get("critpt-subset")
-      || !counts || counts[1] !== counts[2] || !chart?.items.length || chart.items.length !== Number(counts[2])) {
-      throw new Error(`${target.key}: incomplete score chart (${selector}, ${chart?.items.length ?? 0} scores)`);
-    }
-  }
+    .map(({ title, items }) => ({ title, items: items.map(slim) }));
   const file = { key: target.key, source_url: target.url, captured_at: capturedAt, selectors, ...captured };
   await writeFile(`${outDir}/${target.key}.json`, `${JSON.stringify(file, null, 1)}\n`);
   console.log(`${target.key}: charts ${captured.charts.map(c => `${c.title.slice(0, 40)}=${c.items.length}`).join(" | ")}; tables ${captured.tables.length}`);
-  await page.close();
 }
-await browser.close();
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  // AA_CAPTURE_ONLY=key1,key2 limits the run to those pages; by default every page is captured.
+  const only = process.env.AA_CAPTURE_ONLY?.split(",");
+  const selected = only ? pages.filter(target => only.includes(target.key)) : pages;
+  const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || "playwright");
+  await mkdir(outDir, { recursive: true });
+  const capturedAt = new Date().toISOString().slice(0, 10);
+  const browser = await chromium.launch({ headless: true });
+  try {
+    for (const target of selected) {
+      try {
+        const page = await browser.newPage({ viewport: { width: 1600, height: 1000 } });
+        await capturePage(page, target, capturedAt);
+        await page.close();
+      } catch (cause) {
+        throw new Error(`${target.key}: ${cause.message}`, { cause });
+      }
+    }
+  } finally {
+    await browser.close();
+  }
+}

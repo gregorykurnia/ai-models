@@ -7,10 +7,35 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import { test } from "node:test";
+import { assertCompleteScoreChart } from "../scripts/capture-aa-evaluations.mjs";
 import type { Dataset } from "../src/lib/contract";
 import { aggregateMaster, masterLeaderboardCsv, masterTableRows, orderMasterEvaluations } from "../src/lib/master";
 
 const execFileAsync = promisify(execFile);
+
+test("AA capture requires the score chart's own complete selector and matching row count", () => {
+  const score = { title: "AA-Omniscience Accuracy", selectorLabels: ["2 of 2 models"], items: [{ id: "a" }, { id: "b" }] };
+  const netScore = { ...score, title: "AA-Omniscience v1.1: Net Score" };
+  assert.doesNotThrow(() => assertCompleteScoreChart([netScore, score], score.title));
+  assert.throws(
+    () => assertCompleteScoreChart([netScore, { ...score, selectorLabels: ["1 of 2 models"] }], score.title),
+    /incomplete score chart "AA-Omniscience Accuracy" \(1 of 2 models, 2 scores\)/,
+  );
+  assert.throws(() => assertCompleteScoreChart([{ ...score, items: score.items.slice(0, 1) }], score.title), /2 of 2 models, 1 scores/);
+});
+
+test("AA capture rejects missing, ambiguous, or invalid score chart evidence", () => {
+  const score = { title: "CritPt: Score", selectorLabels: ["1 of 1 models"], items: [{ id: "a" }] };
+  assert.throws(() => assertCompleteScoreChart([], score.title), /expected one score chart.*found 0/);
+  assert.throws(() => assertCompleteScoreChart([score, score], score.title), /expected one score chart.*found 2/);
+  for (const selectorLabels of [[], [...score.selectorLabels, ...score.selectorLabels]]) {
+    assert.throws(() => assertCompleteScoreChart([{ ...score, selectorLabels }], score.title), /needs one model selector/);
+  }
+  for (const label of ["", "All models", `${"9".repeat(400)} of ${"9".repeat(400)} models`]) {
+    assert.throws(() => assertCompleteScoreChart([{ ...score, selectorLabels: [label] }], score.title), /incomplete score chart/);
+  }
+  assert.throws(() => assertCompleteScoreChart([{ ...score, selectorLabels: ["0 of 0 models"], items: [] }], score.title), /0 of 0 models, 0 scores/);
+});
 
 test("AA import preserves FrontierCode and separate CritPt datasets, rejects bad captures, and supports reruns", async t => {
   const directory = await mkdtemp(join(tmpdir(), "ai-models-evaluations-test-"));
