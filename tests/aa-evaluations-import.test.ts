@@ -105,13 +105,17 @@ test("AA import preserves FrontierCode and separate CritPt datasets, rejects bad
   const hardScore = hard.charts.find((chart: { title: string }) => chart.title === "CritPt v2 (Hard Subset): Score");
   const item = hardScore.items[0];
   const duplicate = { ...item, id: "duplicate-model", name: model.model.toLowerCase(), creatorName: model.provider };
+  // Swap in a changed score chart and keep the capture's other charts (the cost chart among them).
+  const otherHardCharts = hard.charts.filter((chart: { title: string }) => chart !== hardScore);
+  const withScores = (items: unknown[]) => [{ ...hardScore, items }, ...otherHardCharts];
   const badHard = [
     { change: { ...hard, source_url: hard.source_url.split("?")[0] }, error: /unexpected capture URL/ },
-    { change: { ...hard, charts: [{ ...hardScore, items: [] }] }, error: /has no scores/ },
-    { change: { ...hard, charts: [{ ...hardScore, items: [{ ...item, value: null }] }] }, error: /invalid value/ },
-    { change: { ...hard, charts: [{ ...hardScore, items: [{ ...item, value: 1.01 }] }] }, error: /invalid value/ },
-    { change: { ...hard, charts: [{ ...hardScore, items: [{ ...item, id: "blank-name", name: " " }] }] }, error: /missing model name/ },
-    { change: { ...hard, charts: [{ ...hardScore, items: [...hardScore.items, duplicate] }] }, error: /duplicate model/ },
+    { change: { ...hard, charts: withScores([]) }, error: /has no scores/ },
+    { change: { ...hard, charts: withScores([{ ...item, value: null }]) }, error: /invalid value/ },
+    { change: { ...hard, charts: withScores([{ ...item, value: 1.01 }]) }, error: /invalid value/ },
+    { change: { ...hard, charts: withScores([{ ...item, id: "blank-name", name: " " }]) }, error: /missing model name/ },
+    { change: { ...hard, charts: withScores([...hardScore.items, duplicate]) }, error: /duplicate model/ },
+    { change: { ...hard, charts: [hardScore] }, error: /cost chart .* is missing/ },
   ];
   for (const { change, error } of badHard) {
     await writeFile(hardPath, JSON.stringify(change));

@@ -204,6 +204,7 @@ for (const config of evaluationConfigs) {
     throw new Error(`${config.id}: unexpected capture URL ${capture.source_url}`);
   }
   const costChart = config.costChart ? capture.charts.find(item => item.title === config.costChart) : undefined;
+  if (config.costChart && !costChart) throw new Error(`${config.id}: cost chart "${config.costChart}" is missing from ${config.capture}`);
   const costById = new Map<string, number>();
   for (const row of costChart?.items ?? []) {
     const cost = costOf(row, config.costDivisor);
