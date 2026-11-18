@@ -1012,7 +1012,7 @@ th.numeric {
 @media (min-width: 1280px) {
   /* Narrower frozen widths keep about two evaluation columns visible beside the five frozen ones. */
   .master {
-    --master-model-width: 13rem;
+    --master-model-width: 14rem;
     --master-provider-width: 6.5rem;
     --master-cost-width: 9.5rem;
     --master-time-width: 6.5rem;
@@ -1909,6 +1909,13 @@ a.ui-button:hover {
 .evaluation-table th {
   vertical-align: top;
   white-space: normal;
+}
+
+.evaluation-static-heading {
+  padding: var(--space-2) var(--space-3);
+  color: var(--text-secondary);
+  font-size: var(--font-size-ui);
+  line-height: var(--line-height-body);
 }
 
 .evaluation-table .model {

@@ -13,7 +13,7 @@ const costFormatter=new Intl.NumberFormat("en-US",{style:"currency",currency:"US
 const numericColumns=["source_rank","score_value","cost_usd","time_per_task","first_answer"];
 const speedColumns=["time_per_task","first_answer"];
 const columnOrder=["model","score_value","cost_usd","time_per_task","first_answer","source_rank","provider","scoring_status","confidence_interval_display","release_date_label"];
-const columnWidths:Record<string,number>={model:240,score_value:120,cost_usd:176,time_per_task:208,first_answer:160,source_rank:72,provider:112,scoring_status:160,confidence_interval_display:160,release_date_label:112};
+const columnWidths:Record<string,number>={model:240,score_value:120,cost_usd:176,time_per_task:208,first_answer:140,source_rank:72,provider:112,scoring_status:160,confidence_interval_display:160,release_date_label:112};
 const columnId=(column:ColumnDef<Entry>)=>column.id??("accessorKey" in column?String(column.accessorKey):"");
 
 function SpeedValue({speed,seconds,format}:{speed:ModelSpeed|undefined;seconds:number|null;format:(seconds:number|null)=>string}){
@@ -46,7 +46,7 @@ function LeaderboardModelSearch({value,onCommit}:{value:string;onCommit:(value:s
     const timer=window.setTimeout(()=>onCommit(next),300);
     return()=>window.clearTimeout(timer);
   },[draft,value,onCommit]);
-  return <div className="toolbar-model-search"><label className="sr-only" htmlFor="model-search">Search model names</label><Input id="model-search" aria-describedby="model-search-help" placeholder="Search model names…" value={draft} onChange={event=>setDraft(event.target.value.slice(0,200))}/><HelperText id="model-search-help">Separate keywords with commas, e.g. sol, haiku.</HelperText></div>;
+  return <div className="toolbar-model-search"><label className="text-caption text-secondary font-semibold md:sr-only" htmlFor="model-search">Search models</label><Input id="model-search" aria-describedby="model-search-help" placeholder="Search model names…" value={draft} onChange={event=>setDraft(event.target.value.slice(0,200))}/><HelperText id="model-search-help">Separate keywords with commas, e.g. sol, haiku.</HelperText></div>;
 }
 
 export default function Leaderboard({entries,evaluation,taskCosts,speeds}:{entries:Entry[];evaluation:Evaluation;taskCosts:Record<string,IntelligenceIndexTaskCost>;speeds:Record<string,ModelSpeed>}){
@@ -97,7 +97,7 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds}:{entri
       <Button size="compact" variant="quiet" onClick={()=>router.replace(pathname,{scroll:false})}>Clear filters</Button>
     </div>
     <p aria-live="polite">{sorted.length.toLocaleString()} results{state.provider.length?` · ${providerSelectionLabel(state.provider)}`:""}</p>
-    <HelperText className="leaderboard-legend">— means no captured AA value.{evaluation.has_scoring_status?" Scoring status appears only when AA provides it.":""}</HelperText>
+    <HelperText className="leaderboard-legend">Missing AA values show as “—”.{evaluation.has_scoring_status?" Scoring status appears only when AA provides it.":""}</HelperText>
     <div className="evaluation-mobile-sort">
       <label htmlFor="evaluation-sort">Sort by</label>
       <Select id="evaluation-sort" value={allowedSort} onChange={event=>update({sort:event.target.value,direction:"asc"})}>
@@ -110,12 +110,16 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds}:{entri
         <Table className="evaluation-table" style={{tableLayout:"fixed",width:columns.reduce((sum,column)=>sum+columnWidths[columnId(column)],0)}}>
           <caption className="sr-only">{evaluation.display_name} source rankings</caption>
           <colgroup>{columns.map(column=><col key={columnId(column)} style={{width:columnWidths[columnId(column)]}}/>)}</colgroup>
-          <thead>{table.getHeaderGroups().map(group=><tr key={group.id}>{group.headers.map(header=><th key={header.id} scope="col" className={[numericColumns.includes(header.id)?"numeric":"",speedColumns.includes(header.id)?"speed-column":"",header.id==="model"?"model":""].filter(Boolean).join(" ")} aria-sort={allowedSort===header.id?(state.direction==="asc"?"ascending":"descending"):"none"}>
-            <Button variant="quiet" size="compact" disabled={header.id==="scoring_status"} onClick={()=>update({sort:header.id,direction:allowedSort===header.id&&state.direction==="asc"?"desc":"asc"})}>
-              <span>{flexRender(header.column.columnDef.header,header.getContext())}{"\u00a0"}{allowedSort===header.id?(state.direction==="asc"?"↑":"↓"):header.id==="scoring_status"?"":"↕"}</span>
-              {speedColumns.includes(header.id)&&<small><span>{header.id==="time_per_task"?"Minutes":"Seconds"} · AA</span><span>{modelSpeedCaptureLabel}</span></small>}
-            </Button>
-          </th>)}</tr>)}</thead>
+          <thead>{table.getHeaderGroups().map(group=><tr key={group.id}>{group.headers.map(header=>{
+            const heading=flexRender(header.column.columnDef.header,header.getContext());
+            if(header.id==="scoring_status")return <th key={header.id} scope="col" className="evaluation-static-heading">{heading}</th>;
+            return <th key={header.id} scope="col" className={[numericColumns.includes(header.id)?"numeric":"",speedColumns.includes(header.id)?"speed-column":"",header.id==="model"?"model":""].filter(Boolean).join(" ")} aria-sort={allowedSort===header.id?(state.direction==="asc"?"ascending":"descending"):"none"}>
+              <Button variant="quiet" size="compact" onClick={()=>update({sort:header.id,direction:allowedSort===header.id&&state.direction==="asc"?"desc":"asc"})}>
+                <span>{heading}{"\u00a0"}{allowedSort===header.id?(state.direction==="asc"?"↑":"↓"):"↕"}</span>
+                {speedColumns.includes(header.id)&&<small><span>{header.id==="time_per_task"?"Minutes":"Seconds"} · AA</span><span>{modelSpeedCaptureLabel}</span></small>}
+              </Button>
+            </th>;
+          })}</tr>)}</thead>
           <tbody>{table.getRowModel().rows.map(row=><tr key={row.original.id}>{row.getVisibleCells().map(cell=><td key={cell.id} data-column={cell.column.id} className={cell.column.id==="model"?"model":cell.column.id==="confidence_interval_display"?"evaluation-interval":numericColumns.includes(cell.column.id)?"numeric":""}>{flexRender(cell.column.columnDef.cell,cell.getContext())}</td>)}</tr>)}
             {rows.length===0&&<tr><td colSpan={columns.length} className="empty">No models match these filters. Clear filters to see all entries.</td></tr>}
           </tbody>

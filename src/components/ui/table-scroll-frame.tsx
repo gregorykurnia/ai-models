@@ -2,7 +2,7 @@
 
 import { useEffect, useState, type ReactNode } from "react";
 
-export function TableScrollFrame({ regionId, children }: { regionId: string; children: ReactNode }) {
+export function TableScrollFrame({ regionId, earlierColumnsLabel = "Earlier columns", children }: { regionId: string; earlierColumnsLabel?: string; children: ReactNode }) {
   const [earlierColumns, setEarlierColumns] = useState(false);
   const [moreColumns, setMoreColumns] = useState(false);
   useEffect(() => {
@@ -23,7 +23,7 @@ export function TableScrollFrame({ regionId, children }: { regionId: string; chi
   }, [regionId]);
   return <div className="table-scroll-frame">
     <div className="table-overflow-cue-slot" aria-hidden="true">
-      {earlierColumns && <span className="table-overflow-cue table-overflow-cue--earlier">← Earlier columns</span>}
+      {earlierColumns && <span className="table-overflow-cue table-overflow-cue--earlier">← {earlierColumnsLabel}</span>}
       {moreColumns && <span className="table-overflow-cue table-overflow-cue--more">More columns →</span>}
     </div>
     {children}

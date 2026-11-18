@@ -220,7 +220,7 @@ export function Skeleton({ className, ...props }: HTMLAttributes<HTMLDivElement>
   return <div {...props} aria-hidden="true" className={classes("ui-skeleton", className)} />;
 }
 
-export function TableScroll({ label, className, children, showOverflowCue = false, ...props }: HTMLAttributes<HTMLDivElement> & { label: string; showOverflowCue?: boolean }) {
+export function TableScroll({ label, className, children, showOverflowCue = false, earlierColumnsLabel, ...props }: HTMLAttributes<HTMLDivElement> & { label: string; showOverflowCue?: boolean; earlierColumnsLabel?: string }) {
   const regionId = useId();
   const region = (
     <div {...props} id={regionId} className={classes("table-scroll", className)} role="region" aria-label={label} tabIndex={props.tabIndex ?? 0}>
@@ -228,7 +228,7 @@ export function TableScroll({ label, className, children, showOverflowCue = fals
       <StickyTableHeaders regionId={regionId} />
     </div>
   );
-  return showOverflowCue ? <TableScrollFrame regionId={regionId}>{region}</TableScrollFrame> : region;
+  return showOverflowCue ? <TableScrollFrame regionId={regionId} earlierColumnsLabel={earlierColumnsLabel}>{region}</TableScrollFrame> : region;
 }
 
 export function Table({ className, ...props }: TableHTMLAttributes<HTMLTableElement>) {

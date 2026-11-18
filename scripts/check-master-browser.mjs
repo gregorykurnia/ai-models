@@ -78,8 +78,9 @@ try {
   }
 
   // One evaluation page must expose both populated speed columns, with units.
-  await page.goto(`${baseUrl}/leaderboards/terminal-bench-4-0`);
-  const evaluationTable=page.locator(".evaluation-table");
+  const evaluationResponse=await page.goto(`${baseUrl}/leaderboards/terminal-bench-4-0`);
+  assert.equal(evaluationResponse?.status(),200,"Terminal-Bench evaluation loads");
+  const evaluationTable=page.locator(".table-scroll > .evaluation-table");
   await evaluationTable.locator("tbody tr").first().waitFor();
   for(const [key,label,unit] of [["time_per_task","Time per task","Minutes"],["first_answer","First Answer","Seconds"]]){
     const header=evaluationTable.getByRole("columnheader").filter({has:page.getByRole("button",{name:new RegExp(`^${label}\\s`)})});

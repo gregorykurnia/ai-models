@@ -42,6 +42,7 @@ function modelSet(name){
   return modelSets[name];
 }
 const readJson=async file=>JSON.parse(await readFile(new URL(`../data/${file}`,import.meta.url),"utf8"));
+const masterEarlierColumns="← Columns behind pinned fields";
 
 export async function readNewModelsDataset(){
   const [base,components,overlays,rubric]=await Promise.all([
@@ -146,7 +147,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
     await capture(name,page,{animations:"disabled"});
   }
 
-  async function checkScrollCue(section){
+  async function checkScrollCue(section,earlierText="← Earlier columns"){
     const region=section.locator(".table-scroll");
     const cue=section.locator(".table-overflow-cue--more");
     const earlier=section.locator(".table-overflow-cue--earlier");
@@ -164,7 +165,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
     await region.evaluate(element=>{element.scrollLeft=element.scrollWidth;});
     await cue.waitFor({state:"hidden"});
     await earlier.waitFor({state:"visible"});
-    assert.equal(await earlier.innerText(),"← Earlier columns");
+    assert.equal(await earlier.innerText(),earlierText);
     assert.equal((await region.boundingBox()).y,regionBox.y,"table stays put at the right edge");
     await region.evaluate(element=>{element.scrollLeft=0;});
     await cue.waitFor({state:"visible"});
@@ -174,6 +175,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
 
   async function checkCritPtDashes(cells,count,label){
     const dashes=cells.locator('span[aria-hidden="true"]:visible');
+    await dashes.first().waitFor();
     assert.deepEqual(await dashes.allInnerTexts(),Array(count).fill("—"),`${label}: visible CritPt ranks are dashes`);
     const snapshot=await cells.first().ariaSnapshot();
     assert.match(snapshot,/Not ranked/,`${label}: accessibility tree gives the rank status`);
@@ -181,6 +183,12 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
     if(page.viewportSize().width<768){
       assert(await page.evaluate(()=>scrollY===0&&document.documentElement.scrollHeight<=innerHeight+1),`${label}: only the main pane scrolls on the phone`);
     }
+  }
+
+  async function checkPhoneSearchLabel(section,id){
+    const label=section.locator(`label[for="${id}"]`);
+    assert.equal(await label.innerText(),"Search models");
+    assert((await label.boundingBox()).height>=12,"phone search has a visible label above the field");
   }
 
   // Keep the 390x844 first screen, then use a taller 390px capture to show every
@@ -214,7 +222,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
     const section=page.locator("#master-leaderboard");
     const rows=section.locator(width===390?".master-card":"tbody tr");
     await rows.first().waitFor();
-    assert.equal(await section.locator(".leaderboard-legend").innerText(),`— and “Not ranked” mean no captured AA value. Aggregate uses 9 of ${dataset.evaluations.length} evaluations.`);
+    assert.equal(await section.locator(".leaderboard-legend").innerText(),`Missing AA values show as “—” or “Not ranked”. Ranks can tie. Aggregate uses 9 of ${dataset.evaluations.length} evaluations.`);
     assert.equal(await section.locator("#master-search").inputValue(),query);
     assert.equal(await rows.count(),count,`${query}: ${width}px count`);
     assert.match(await section.locator('p[aria-live="polite"]').first().innerText(),new RegExp(`^${count} model${count===1?"":"s"}(?: ·|$)`),`${query}: result-count wording`);
@@ -230,12 +238,15 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
       assert.equal((await section.locator(".master-sort-summary").innerText()).trim(),"· Sorted by Intelligence Index rank ↑");
       const layout=await section.locator("tbody .master-model").evaluateAll(cells=>cells.map(cell=>{
         const link=cell.querySelector("a"),star=cell.querySelector("button");
-        const box=cell.getBoundingClientRect(),text=link.getBoundingClientRect(),favorite=star.getBoundingClientRect();
+        const range=document.createRange();
+        range.selectNodeContents(link);
+        const box=cell.getBoundingClientRect(),text=range.getBoundingClientRect(),favorite=star.getBoundingClientRect();
         return {sticky:getComputedStyle(cell).position==="sticky",contained:text.left>=box.left&&text.right<=box.right&&text.top>=box.top&&text.bottom<=box.bottom,
-          separate:text.left>=favorite.right,wrapped:text.height>parseFloat(getComputedStyle(link).lineHeight)*1.5,left:box.left};
+          separate:text.left>=favorite.right,wrapped:range.getClientRects().length>1,left:box.left};
       }));
       assert(layout.every(item=>item.sticky&&item.contained&&item.separate),`${query}: frozen names and stars do not overlap`);
-      if(slug==="hydrogen")assert(layout.every(item=>item.wrapped),"all long Hydrogen names wrap");
+      if(slug==="hydrogen")assert(layout.some(item=>item.wrapped),"long Hydrogen names exercise wrapping");
+      if(gpt)assert(layout.every(item=>!item.wrapped),`${query}: full names fit on one desktop line`);
       const rankDates=await section.locator("thead small").allTextContents();
       assert.equal(rankDates.filter(text=>text.startsWith("Rank ·")).length,dataset.evaluations.length,"all rank headers have capture dates");
       assert(rankDates.filter(text=>text.startsWith("Rank ·")).every(text=>/^Rank · \d{1,2} [A-Z][a-z]{2} \d{4}$/.test(text)),"rank dates use the same readable format as cost and timing dates");
@@ -249,7 +260,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
           row.getBoundingClientRect().bottom-caption.bottom>=8;
       }));
       assert(aligned,"aggregate values align with the numbers and their captions clear the row divider");
-      await checkScrollCue(section);
+      await checkScrollCue(section,masterEarlierColumns);
       await audit(`${query}: desktop layout`,"#master-leaderboard");
       await section.evaluate(element=>{element.closest(".app-main").scrollTop+=element.getBoundingClientRect().top-24;});
       await screenshot(`master-${slug}-${width}.png`);
@@ -266,6 +277,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
       }
     }else{
       assert.equal(await section.locator(".master-table-view").isVisible(),false);
+      await checkPhoneSearchLabel(section,"master-search");
       assert(await section.locator("#master-mobile-sort").evaluate(select=>{
         const style=getComputedStyle(select),label=getComputedStyle(select.parentElement);
         return !select.disabled&&style.color!==label.color&&Number(style.fontWeight)<Number(label.fontWeight);
@@ -314,11 +326,12 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
       },expectedNames);
       const names=(await masterNames.allTextContents()).sort();
       if(query==="GPT-6.2 Astra, GPT-6.2 Sol"){
+        await search.blur();
         await section.evaluate(element=>{element.closest(".app-main").scrollTop+=element.getBoundingClientRect().top-24;});
         const target=await section.getByRole("columnheader",{name:/^CritPt [↕↑↓]/}).boundingBox();
         const frozen=await section.locator("th.master-first").boundingBox();
         await section.locator(".table-scroll").evaluate((element,left)=>{element.scrollLeft=left;},target.x-frozen.x-frozen.width);
-        await section.getByText("← Earlier columns",{exact:true}).waitFor({state:"visible"});
+        await section.getByText(masterEarlierColumns,{exact:true}).waitFor({state:"visible"});
         const lastRow=await section.locator("tbody tr").last().boundingBox();
         assert(lastRow.y+lastRow.height<=page.viewportSize().height,"all ten CritPt rows are within the desktop viewport");
         await screenshot("master-critpt-1440.png");
@@ -331,6 +344,15 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
     const sortedRanks=page.locator("#master-leaderboard .master-card__sorted");
     assert.deepEqual(await sortedRanks.locator("dt").allInnerTexts(),Array(allNames.length).fill("CritPt"));
     await checkCritPtDashes(sortedRanks.locator("dd"),allNames.length,"Phone CritPt sort tiles");
+    const summary=section.locator('p[aria-live="polite"]').first();
+    assert.match(await summary.innerText(),/No CritPt ranks in these results\./);
+    const mixed=encodeURIComponent("GPT-6.2 Astra (Max), Muse Wonder Full (Max)");
+    for(const direction of ["asc","desc"]){
+      await page.goto(`${baseUrl}/?mq=${mixed}&ms=critpt&md=${direction}#master-leaderboard`);
+      assert.match(await summary.innerText(),/Unranked models appear last\./);
+      assert.equal(await sortedRanks.first().getByRole("link").innerText(),"#3");
+      await checkCritPtDashes(sortedRanks.last().locator("dd"),1,`Mixed CritPt ranks sorted ${direction}`);
+    }
   }else{
     await page.goto(`${baseUrl}/?mq=Qwen%204#master-leaderboard`);
     assert.equal(await page.locator("#master-search").inputValue(),"Qwen 4");
@@ -361,7 +383,31 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
       assert(modelNames.every(name=>!/GPT-6\.2 Sol/i.test(name)),`MMMU-Pro: no Sol rows at ${width}px`);
     }
     assert.equal(await page.locator(".evaluation-page-header .eyebrow").count(),0,"no repeated metric eyebrow above the evaluation title");
-    assert.equal(await section.locator(".leaderboard-legend").innerText(),`— means no captured AA value.${evaluation.has_scoring_status?" Scoring status appears only when AA provides it.":""}`);
+    assert.equal(await section.locator(".leaderboard-legend").innerText(),`Missing AA values show as “—”.${evaluation.has_scoring_status?" Scoring status appears only when AA provides it.":""}`);
+    if(width===390)await checkPhoneSearchLabel(section,"model-search");
+    if(width===1440&&id==="intelligence-index"){
+      const provider=section.getByRole("columnheader",{name:/^Provider/});
+      const inset=await provider.locator("button > span").evaluate(label=>{
+        const range=document.createRange();
+        range.selectNodeContents(label);
+        const region=label.closest(".table-scroll");
+        return region.getBoundingClientRect().left+region.clientLeft+region.clientWidth-range.getBoundingClientRect().right;
+      });
+      assert(inset>=12,"Provider and its arrow have room at the right edge");
+      const status=section.getByRole("columnheader",{name:"Scoring status",exact:true});
+      assert.equal(await status.getByRole("button").count(),0,"Scoring status is a plain heading");
+      assert.equal(await status.getAttribute("aria-sort"),null);
+      assert(await section.locator(".table-scroll").evaluate(region=>{
+        const initialOffset=region.scrollLeft;
+        region.scrollLeft=region.scrollWidth;
+        const firstRow=region.querySelector("tbody tr");
+        const cost=document.createRange();
+        cost.selectNodeContents(firstRow.querySelector('[data-column="cost_usd"]'));
+        const hidden=cost.getBoundingClientRect().right<=firstRow.querySelector(".model").getBoundingClientRect().right;
+        region.scrollLeft=initialOffset;
+        return hidden;
+      }),"the pinned model hides the whole cost value at the right edge");
+    }
     if(width===390&&entries.length){
       assert.equal(await rows.first().locator("dt").filter({hasText:"Cost /"}).innerText(),"Cost / Intelligence Index task");
       const direction=section.getByRole("button",{name:"Reverse sort order",exact:true});
