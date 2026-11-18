@@ -20,7 +20,7 @@ test("evaluation time uses Terminal Bench and shared AA-Briefcase timings, with 
   assert.equal(evaluationTimePerTaskLabel("terminal-bench-4-0"), "Time per task");
   assert.equal(evaluationTimePerTask("critpt-v2-hard", speed), 360);
   assert.equal(evaluationTimePerTaskLabel("critpt-v2-hard"), "Time per task");
-  for (const id of ["finance-accounting", "intelligence-index", "critpt", "critpt-v2-full", "unknown"]) {
+  for (const id of ["finance-accounting", "intelligence-index", "critpt", "critpt-v2-full", "swe-atlas-qna-aa", "unknown"]) {
     assert.equal(evaluationTimePerTask(id, speed), 600);
     assert.equal(evaluationTimePerTaskLabel(id), "Time per Intelligence Index task");
   }

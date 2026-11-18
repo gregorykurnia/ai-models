@@ -9,8 +9,11 @@ const audit = await readFile(new URL("../docs/GEMINI_4_HYDROGEN_QWEN4_COVERAGE.m
 test("browser fixture includes all audit rows and all three merged Briefcase component evaluations", () => {
   const { expected, evaluations } = newModelsExpectations(dataset, audit);
   assert.equal(expected.length, 7);
-  assert.equal(evaluations.length, 18);
-  assert.equal(evaluations.reduce((sum, { entries }) => sum + entries.filter(entry => newModelNames.includes(entry.model)).length, 0), 98);
+  assert.equal(evaluations.length, 19);
+  assert.equal(evaluations.reduce((sum, { entries }) => sum + entries.filter(entry => newModelNames.includes(entry.model)).length, 0), 99);
+  assert.deepEqual(evaluations.find(({ evaluation }) => evaluation.id === "swe-atlas-qna-aa")?.entries.map(entry => entry.model).sort(), [
+    "Gemini 4 Argon (High)", "Gemini 4 Hydrogen (Xhigh)",
+  ]);
   for (const id of ["aa-briefcase-rubric-score", "aa-briefcase-analytical-quality-elo", "aa-briefcase-presentation-elo"]) {
     assert.equal(evaluations.find(({ evaluation }) => evaluation.id === id)?.entries.length, 7);
   }
@@ -68,8 +71,9 @@ const gptAudit = await readFile(new URL("../docs/GPT_6_2_ASTRA_SOL_COVERAGE.md",
 test("GPT-6.2 browser fixture keeps empty CritPt and the Astra-only MMMU-Pro for browser checks", () => {
   const { expected, evaluations } = newModelsExpectations(dataset, gptAudit, "gpt-6.2");
   assert.equal(expected.length, 10);
-  assert.equal(evaluations.length, 18);
-  assert.equal(evaluations.reduce((sum, { entries }) => sum + entries.length, 0), 165);
+  assert.equal(evaluations.length, 19);
+  assert.equal(evaluations.reduce((sum, { entries }) => sum + entries.length, 0), 175);
+  assert.equal(evaluations.find(({ evaluation }) => evaluation.id === "swe-atlas-qna-aa")?.entries.length, 10);
   assert.deepEqual(evaluations.find(({ evaluation }) => evaluation.id === "critpt")?.entries, []);
   const mmmu = evaluations.find(({ evaluation }) => evaluation.id === "mmmu-pro")?.entries;
   assert.equal(mmmu?.length, 5);

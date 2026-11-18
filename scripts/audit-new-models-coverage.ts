@@ -165,7 +165,7 @@ ${fuzzy.map(row => `| ${row.model} | ${row.provider} |`).join("\n")}
 
 ## Evaluation coverage
 
-Cells show the stored \`score_value\` to 10 significant digits and its \`source_rank\`. Percent benchmarks use fractions, Elo uses Elo points, and the Briefcase Rubric Score uses percentage points. The Source column identifies the capture for each evaluation. Each "not on AA" cell has no stored row or matching label in the listed capture.
+Cells show the stored \`score_value\` to 10 significant digits and its \`source_rank\`. Percentage scores are stored as fractions or percentage points. CritPt v2, the Briefcase Rubric Score, and SWE-Atlas-QnA use percentage points. Elo uses Elo points. The Source column identifies the capture for each evaluation. Each "not on AA" cell has no stored row or matching label in the listed capture.
 
 | Evaluation | Id | Metric | Source | ${models.map(model => model.short).join(" | ")} |
 | --- | --- | --- | --- | ${models.map(() => "---").join(" | ")} |

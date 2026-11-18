@@ -34,6 +34,7 @@ const cols = [
   ["Finance", "finance-accounting"],
   ["Omniscience", "aa-omniscience-index"],
   ["FrontierCode", "frontiercode-2-0"],
+  ["SWE-Atlas QnA", "swe-atlas-qna-aa"],
   ["Rubric", "aa-briefcase-rubric-score"],
   ["Briefcase", "briefcase-v1-1"],
   ["Economics", "economics-index"],

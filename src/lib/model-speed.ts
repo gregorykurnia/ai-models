@@ -75,6 +75,7 @@ export const evaluationSpeedSlugs: Readonly<Record<string, string | null>> = {
   "automationbench-aa": "automationbench-aa",
   "terminal-bench-4-0": "terminalbench-4-0",
   "frontiercode-2-0": "frontiercode-2-0",
+  "swe-atlas-qna-aa": null,
   "gdp-pdf": "gdp-pdf",
   // The captured CritPt timing series covers the v2 Hard Subset.
   "critpt": null,

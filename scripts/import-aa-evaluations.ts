@@ -31,6 +31,8 @@ type EvaluationConfig = {
   scoreMultiplier?: number;
   // The chart reports the benchmark's total cost; the leaderboard stores the cost per task.
   costDivisor?: number;
+  // Exact AA setup names mapped to master model names for agent-run evaluations.
+  expectedRows?: ReadonlyMap<string, string>;
   // Metadata for an evaluation the dataset doesn't hold yet. Existing evaluations keep their stored record.
   definition?: NewEvaluation;
 };
@@ -79,6 +81,59 @@ const evaluationConfigs: EvaluationConfig[] = [
   { id: "economics-index", capture: "economics", chart: "Artificial Analysis Economics Index", costChart: "Artificial Analysis Economics Index vs. Cost per Task" },
   { id: "strategy-ops-index", capture: "strategy-and-ops", chart: "Artificial Analysis Strategy & Ops Index", costChart: "Artificial Analysis Strategy & Ops Index vs. Cost per Task" },
   { id: "intelligence-index", capture: "artificial-analysis-intelligence-index", chart: "Artificial Analysis Intelligence Index: Score" },
+  {
+    id: "swe-atlas-qna-aa",
+    capture: "swe-atlas-qna-aa",
+    chart: "SWE-Atlas-QnA-AA: Score",
+    scoreMultiplier: 100,
+    definition: {
+      ...percentageEvaluation("swe-atlas-qna-aa", "SWE-Atlas-QnA", "https://artificialanalysis.ai/agents/coding-agents"),
+      metric_label: "Pass rate (%)",
+      notes: "Scored inside the coding agent AA ran each model in (Claude Code, Codex, …). Ranks compare the model configurations included on this leaderboard.",
+    },
+    // The setup-to-model inventory is in docs/SWE_ATLAS_QNA_CAPTURE.md. Process this after the model evaluations.
+    expectedRows: new Map([
+      ["Claude Code - Claude Fable 5.2 (Xhigh, Default Fallback)", "Claude Fable 5.2 (Adaptive Reasoning, Xhigh Effort, Default Fallback)"],
+      ["Claude Code - Claude Fable 5.2 (High, Default Fallback)", "Claude Fable 5.2 (Adaptive Reasoning, High Effort, Default Fallback)"],
+      ["Claude Code - Claude Opus 5.5 (Max, Default Fallback)", "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)"],
+      ["Claude Code - Claude Sonnet 5.5 (Max, Default Fallback)", "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)"],
+      ["Claude Code - Claude Fable 5.2 (Max, Default Fallback)", "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)"],
+      ["Antigravity CLI - Gemini 4 Carbon (High)", "Gemini 4 Carbon (High)"],
+      ["Muse Code - Muse Wonder Full (Max)", "Muse Wonder Full (Max)"],
+      ["Codex - GPT-6.2 Astra (Max)", "GPT-6.2 Astra (Max)"],
+      ["Codex - GPT-6.2 Astra (Xhigh)", "GPT-6.2 Astra (Xhigh)"],
+      ["Codex - GPT-6 Astra (Max)", "GPT-6 Astra (Max)"],
+      ["Claude Code - Claude Fable 5.2 (Medium, Default Fallback)", "Claude Fable 5.2 (Adaptive Reasoning, Medium Effort, Default Fallback)"],
+      ["Claude Code - Claude Fable 5.1 (Max, Default Fallback)", "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)"],
+      ["Antigravity CLI - Gemini 4 Hydrogen (Xhigh)", "Gemini 4 Hydrogen (Xhigh)"],
+      ["Codex - GPT-6.2 Astra (High)", "GPT-6.2 Astra (High)"],
+      ["Codex - GPT-6.1 Sol (Max)", "GPT-6.1 Sol (Max)"],
+      ["Codex - GPT-6.2 Sol (Xhigh)", "GPT-6.2 Sol (Xhigh)"],
+      ["Codex - GPT-6.2 Astra (Medium)", "GPT-6.2 Astra (Medium)"],
+      ["Codex - GPT-6.1 Terra (Max)", "GPT-6.1 Terra (Max)"],
+      ["Kimi Code CLI - Kimi K3.1 Pro", "Kimi K3.1 Pro"],
+      ["Codex - GPT-6.2 Sol (Max)", "GPT-6.2 Sol (Max)"],
+      ["Claude Code - Claude Fable 5.2 (Low, Default Fallback)", "Claude Fable 5.2 (Adaptive Reasoning, Low Effort, Default Fallback)"],
+      ["Codex - GPT-6.2 Sol (High)", "GPT-6.2 Sol (High)"],
+      ["Antigravity CLI - Gemini 4 Argon (High)", "Gemini 4 Argon (High)"],
+      ["Codex - GPT-6.2 Sol (Medium)", "GPT-6.2 Sol (Medium)"],
+      ["Muse Code - Muse Wonder (Max)", "Muse Wonder (Max)"],
+      ["Grok Build - Grok 4.7 (Xhigh)", "Grok 4.7 (Xhigh)"],
+      ["Mistral Vibe - Mistral Large 4 (High)", "Mistral Large 4 (High)"],
+      ["Opencode - GLM-5.3 (Max)", "GLM-5.3 (Max)"],
+      ["Muse Code - Muse Ember (Max)", "Muse Ember (Max)"],
+      ["Codex - GPT-6.2 Sol (Low)", "GPT-6.2 Sol (Low)"],
+      ["DeepSeek Harness - DeepSeek V4.1 Flash 1017 (Max)", "DeepSeek V4.1 Flash 1017 (Max)"],
+      ["Muse Code - Muse Spark 1.3 (Max)", "Muse Spark 1.3 (Max)"],
+      ["Claude Code - Step 5 Preview", "Step 5 Preview"],
+      ["Codex - GPT-6.2 Astra (Low)", "GPT-6.2 Astra (Low)"],
+      ["Claude Code - Qwen3.8 Max", "Qwen3.8 Max"],
+      ["Mistral Vibe - Mistral Large 4 (Medium)", "Mistral Large 4 (Medium)"],
+      ["Claude Code - Claude Haiku 5.5 (Max)", "Claude Haiku 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)"],
+      ["Codex - GPT-6 Luna (Max)", "GPT-6 Luna (Max)"],
+      ["Mirror - Beam 1.0", "Beam 1.0"],
+    ]),
+  },
 ];
 
 // Evaluations Artificial Analysis no longer publishes. The rebuild drops their rows; production hides them once
@@ -143,6 +198,57 @@ function costOf(item: CaptureItem, divisor = 1): number | null {
   return raw === null ? null : raw / divisor;
 }
 
+function mappedScoreItems(
+  evaluationId: string,
+  items: CaptureItem[],
+  expectedRows: ReadonlyMap<string, string>,
+  masterEntries: Entry[],
+) {
+  const setupNames = new Set(items.map(item => item.name));
+  const missing = [...expectedRows.keys()].filter(name => !setupNames.has(name));
+  if (missing.length) throw new Error(`${evaluationId}: missing expected AA setups: ${missing.join(", ")}`);
+
+  const masterByIdentity = new Map(masterEntries.map(entry => [masterIdentityKey(entry.provider, entry.model), entry]));
+  const seenIds = new Set<string>();
+  const seenSetups = new Set<string>();
+  const setupByModel = new Map<string, string>();
+  return items.flatMap(item => {
+    const { name, id, modelName, creatorName, effort } = item;
+    if (typeof name !== "string" || !name.trim() || typeof id !== "string" || !id.trim()) {
+      throw new Error(`${evaluationId}: missing AA setup name or ID`);
+    }
+    const setupKey = name.trim().toLowerCase().replace(/\s+/g, " ");
+    const idKey = id.trim().toLowerCase();
+    if (seenSetups.has(setupKey) || seenIds.has(idKey)) throw new Error(`${evaluationId}: duplicate AA setup "${name}"`);
+    seenSetups.add(setupKey);
+    seenIds.add(idKey);
+
+    const modelKey = typeof modelName === "string" && modelName.trim()
+      ? masterIdentityKey("", canonicalModelName(modelName.trim()))
+      : null;
+    if (modelKey) {
+      // Some setups report effort separately, such as Kimi K3.1 Pro at its default Max.
+      const effortLabel = typeof effort === "string" ? effort.trim().toLowerCase() : "";
+      const modelAndEffort = effortLabel
+        && !modelKey.endsWith(` (${effortLabel})`) && !modelKey.endsWith(` (${effortLabel} with fallback)`)
+        ? `${modelKey} (${effortLabel})` : modelKey;
+      const otherSetup = setupByModel.get(modelAndEffort);
+      if (otherSetup) throw new Error(`${evaluationId}: duplicate model and effort in "${otherSetup}" and "${name}"`);
+      setupByModel.set(modelAndEffort, name);
+    }
+
+    const model = expectedRows.get(name);
+    if (!model) {
+      console.warn(`${evaluationId}: skipping unmapped AA setup "${name}"`);
+      return [];
+    }
+    if (modelKey !== masterIdentityKey("", model)) throw new Error(`${evaluationId}: unexpected model name for "${name}"`);
+    const master = typeof creatorName === "string" ? masterByIdentity.get(masterIdentityKey(creatorName, model)) : undefined;
+    if (!master) throw new Error(`${evaluationId}: no master row for "${model}" from AA setup "${name}"`);
+    return [{ item, master }];
+  });
+}
+
 const dataset = JSON.parse(await readFile("data/leaderboards.json", "utf8")) as Dataset;
 const captureDate = new Date().toISOString().slice(0, 10);
 const captures = new Map<string, Capture>();
@@ -153,8 +259,10 @@ for (const config of evaluationConfigs) {
 }
 
 const replacedEvaluationIds = new Set([...evaluationConfigs.map(config => config.id), ...retiredEvaluationIds]);
+const mappedEvaluationIds = new Set(evaluationConfigs.filter(config => config.expectedRows).map(config => config.id));
 const providers = new Map(dataset.providers.map(provider => [String(provider.id), provider]));
 const models = new Map(dataset.models.map(model => [String(model.id), model]));
+const keptEntries = dataset.entries.filter(entry => !replacedEvaluationIds.has(entry.evaluation_id));
 const previousEntries = dataset.entries.filter(entry => replacedEvaluationIds.has(entry.evaluation_id));
 const previousStatus = new Map(previousEntries.map(entry => [`${entry.evaluation_id}\0${masterIdentityKey(entry.provider, entry.model)}`, entry]));
 const previousRelease = new Map<string, string | null>();
@@ -166,17 +274,20 @@ for (const entry of previousEntries) {
 const newEntries: Entry[] = [];
 const newEvaluations: Evaluation[] = [];
 const newSnapshots: Record<string, unknown>[] = [];
-const newSourceAssets: Record<string, unknown>[] = [];
+const sourceAssets = new Map((dataset.sourceAssets ?? []).map(asset => [asset.id, asset]));
 const intelligenceIndexCosts: Record<string, unknown>[] = [];
 const evaluationById = new Map(dataset.evaluations.map(evaluation => [evaluation.id, evaluation]));
 
 // AA model ids are shared across pages, so names, creators, and release dates are looked up across every capture.
+// Agent setup IDs are not AA model IDs.
+const modelCaptureKeys = new Set(evaluationConfigs.filter(config => !config.expectedRows).map(config => config.capture));
+const modelCaptures = [...modelCaptureKeys].map(key => captures.get(key)!);
 const nameById = new Map<string, string>();
 const providerById = new Map<string, string>();
 const releaseById = new Map<string, string>();
 const estimatedById = new Map<string, boolean>();
 const creatorByLogo = new Map<string, string>();
-for (const capture of captures.values()) {
+for (const capture of modelCaptures) {
   for (const chart of capture.charts) {
     for (const row of chart.items) {
       if (typeof row.name === "string" && !nameById.has(row.id)) nameById.set(row.id, row.name);
@@ -187,7 +298,7 @@ for (const capture of captures.values()) {
     }
   }
 }
-for (const capture of captures.values()) {
+for (const capture of modelCaptures) {
   for (const chart of capture.charts) {
     for (const row of chart.items) {
       if (typeof row.creatorLogo === "string" && providerById.has(row.id)) creatorByLogo.set(row.creatorLogo, providerById.get(row.id)!);
@@ -210,13 +321,16 @@ for (const config of evaluationConfigs) {
     const cost = costOf(row, config.costDivisor);
     if (cost !== null) costById.set(row.id, cost);
   }
-  const rows = chart.items.map(item => {
+  const scoreItems = config.expectedRows
+    ? mappedScoreItems(config.id, chart.items, config.expectedRows, [...keptEntries, ...newEntries])
+    : chart.items.map(item => ({ item, master: null }));
+  const rows = scoreItems.map(({ item, master }) => {
     const mid = config.eloSeries ? item.mid : null;
     const rawValue = mid ? mid.value : item.value;
     const value = rawValue * (config.scoreMultiplier ?? 1);
-    const rawName = nameById.get(item.id) ?? item.tooltipLabel ?? item.label;
+    const rawName = master?.model ?? nameById.get(item.id) ?? item.tooltipLabel ?? item.label;
     const slug = typeof item.url === "string" ? item.url.split("/").pop() : undefined;
-    const provider = providerById.get(item.id)
+    const provider = master?.provider ?? providerById.get(item.id)
       ?? (item.logo ? creatorByLogo.get(item.logo) : undefined)
       ?? (slug ? creatorOverrides[slug] : undefined);
     if (typeof rawName !== "string" || !rawName.trim()) throw new Error(`${config.id}: missing model name for ${item.id}`);
@@ -233,10 +347,12 @@ for (const config of evaluationConfigs) {
       id: item.id as string,
       provider,
       name: canonicalModelName(rawName),
+      providerId: master?.provider_id,
+      modelId: master?.model_id,
       value,
       cost,
       ci,
-      release: releaseById.has(item.id) ? monthLabel(releaseById.get(item.id)!) : null,
+      release: master ? master.release_date_label : releaseById.has(item.id) ? monthLabel(releaseById.get(item.id)!) : null,
       estimated,
     };
   });
@@ -268,8 +384,8 @@ for (const config of evaluationConfigs) {
     const rank = row.value === previousValue ? previousRank : index + 1;
     previousValue = row.value;
     previousRank = rank;
-    const providerId = id(row.provider);
-    const modelId = id(`${row.provider}\0${row.name}`);
+    const providerId = row.providerId ?? id(row.provider);
+    const modelId = row.modelId ?? id(`${row.provider}\0${row.name}`);
     if (!providers.has(providerId)) providers.set(providerId, { id: providerId, slug: row.provider.toLowerCase().replace(/[^a-z0-9]+/g, "-"), display_name: row.provider, aliases: [] });
     if (!models.has(modelId)) models.set(modelId, { id: modelId, provider_id: providerId, canonical_name: row.name, display_name: row.name, release_date_label: row.release, aliases: [], created_at: captureDate });
     const cost = row.cost;
@@ -313,7 +429,8 @@ for (const config of evaluationConfigs) {
     precise_cost_count: withCost,
     has_confidence_interval: withCi > 0,
     has_release_date: withRelease > 0,
-    notes: `${evaluation.notes.replace(/\s*Values refreshed from (?:the )?Artificial Analysis[^]*$/, "")} Values refreshed from the Artificial Analysis evaluation page captured ${capture.captured_at} (${rows.length} models).${config.id === "intelligence-index" ? " Intelligence Index v5.0.1 re-scoring replaces v5.0 scores, ranks, and task costs." : ""}`.trim(),
+    notes: config.expectedRows ? config.definition?.notes ?? evaluation.notes
+      : `${evaluation.notes.replace(/\s*Values refreshed from (?:the )?Artificial Analysis[^]*$/, "")} Values refreshed from the Artificial Analysis evaluation page captured ${capture.captured_at} (${rows.length} models).${config.id === "intelligence-index" ? " Intelligence Index v5.0.1 re-scoring replaces v5.0 scores, ranks, and task costs." : ""}`.trim(),
   };
   newEvaluations.push(evaluationRecord);
   newSnapshots.push({
@@ -326,8 +443,8 @@ for (const config of evaluationConfigs) {
     cost_label_count: withCost,
     precise_cost_count: withCost,
   });
-  if (!newSourceAssets.some(asset => asset.id === sourceAssetId)) {
-    newSourceAssets.push({
+  if (!sourceAssets.has(sourceAssetId)) {
+    sourceAssets.set(sourceAssetId, {
       id: sourceAssetId,
       filename: `aa-captures/${config.capture}.json`,
       content_hash: sourceAssetId,
@@ -371,7 +488,6 @@ const costSnapshot = {
 };
 
 // Old rows and snapshots for the rebuilt evaluations are replaced; everything else is kept.
-const keptEntries = dataset.entries.filter(entry => !replacedEvaluationIds.has(entry.evaluation_id));
 const keptSnapshots = dataset.snapshots.filter(snapshot => !replacedEvaluationIds.has(String(snapshot.evaluation_id)));
 const replacedById = new Map(newEvaluations.map(evaluation => [evaluation.id, evaluation]));
 const evaluations = [
@@ -380,7 +496,7 @@ const evaluations = [
 ];
 const rebuilt: Dataset = {
   ...dataset,
-  sourceAssets: [...(dataset.sourceAssets ?? []), ...newSourceAssets],
+  sourceAssets: [...sourceAssets.values()],
   evaluations,
   entries: [...keptEntries, ...newEntries],
   snapshots: [...keptSnapshots, ...newSnapshots],
@@ -406,14 +522,31 @@ const componentSource = JSON.parse(await readFile("data/aa-briefcase-components.
 const rubricSource = JSON.parse(await readFile("data/aa-briefcase-rubric-refresh.json", "utf8")) as BriefcaseRubricRefreshSource;
 const complete = mergeBriefcaseRubricRefresh(mergeBriefcaseComponents(rebuilt, componentSource), rubricSource);
 
+// A Briefcase component refresh can remove a row that was present while resolving the mapping.
+const masterIdentities = new Set(complete.entries.filter(entry => !mappedEvaluationIds.has(entry.evaluation_id))
+  .map(entry => masterIdentityKey(entry.provider, entry.model)));
+for (const entry of complete.entries.filter(entry => mappedEvaluationIds.has(entry.evaluation_id))) {
+  if (!masterIdentities.has(masterIdentityKey(entry.provider, entry.model))) {
+    throw new Error(`${entry.evaluation_id}: no master row for "${entry.model}" after rebuilding the evaluations`);
+  }
+}
+
 const outputs = [
   { path: "data/intelligence-index-costs.json", text: `${JSON.stringify(costSnapshot, null, 2)}\n` },
   { path: "data/leaderboards.json", text: JSON.stringify(complete) },
-].map(output => ({ ...output, staging: `${output.path}.${process.pid}.tmp` }));
-try {
-  for (const { staging, text } of outputs) await writeFile(staging, text);
-  for (const { staging, path } of outputs) await rename(staging, path);
-} finally {
-  await Promise.all(outputs.map(({ staging }) => rm(staging, { force: true })));
+];
+const changedOutputs = [];
+for (const output of outputs) {
+  const existing = await readFile(output.path, "utf8").catch((error: NodeJS.ErrnoException) => {
+    if (error.code === "ENOENT") return null;
+    throw error;
+  });
+  if (existing !== output.text) changedOutputs.push({ ...output, staging: `${output.path}.${process.pid}.tmp` });
 }
-console.log(`Rebuilt ${replacedEvaluationIds.size} evaluations with ${newEntries.length} rows; ${intelligenceIndexCosts.length} intelligence index task costs.`);
+try {
+  for (const { staging, text } of changedOutputs) await writeFile(staging, text);
+  for (const { staging, path } of changedOutputs) await rename(staging, path);
+} finally {
+  await Promise.all(changedOutputs.map(({ staging }) => rm(staging, { force: true })));
+}
+console.log(`Rebuilt ${newEvaluations.length} capture evaluations with ${newEntries.length} rows; ${complete.evaluations.length} evaluations in the catalog; ${intelligenceIndexCosts.length} intelligence index task costs.`);
