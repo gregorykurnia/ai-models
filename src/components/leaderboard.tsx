@@ -12,6 +12,10 @@ const dateValue=(label:string|null)=>{if(!label)return null;const date=Date.pars
 const costFormatter=new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",minimumFractionDigits:2,maximumFractionDigits:2});
 const numericColumns=["source_rank","score_value","cost_usd","time_per_task","first_answer"];
 const speedColumns=["time_per_task","first_answer"];
+const columnDetails:Record<string,[unit:string,date:string]>={
+  time_per_task:["Minutes",modelSpeedCaptureLabel],
+  first_answer:["Seconds",modelSpeedCaptureLabel],
+};
 const columnOrder=["model","score_value","cost_usd","time_per_task","first_answer","source_rank","provider","scoring_status","confidence_interval_display","release_date_label"];
 const columnWidths:Record<string,number>={model:240,score_value:120,cost_usd:176,time_per_task:208,first_answer:140,source_rank:72,provider:112,scoring_status:160,confidence_interval_display:160,release_date_label:112};
 const columnId=(column:ColumnDef<Entry>)=>column.id??("accessorKey" in column?String(column.accessorKey):"");
@@ -49,7 +53,7 @@ function LeaderboardModelSearch({value,onCommit}:{value:string;onCommit:(value:s
   return <div className="toolbar-model-search"><label className="text-caption text-secondary font-semibold md:sr-only" htmlFor="model-search">Search models</label><Input id="model-search" aria-describedby="model-search-help" placeholder="Search model names…" value={draft} onChange={event=>setDraft(event.target.value.slice(0,200))}/><HelperText id="model-search-help">Separate keywords with commas, e.g. sol, haiku.</HelperText></div>;
 }
 
-export default function Leaderboard({entries,evaluation,taskCosts,speeds}:{entries:Entry[];evaluation:Evaluation;taskCosts:Record<string,IntelligenceIndexTaskCost>;speeds:Record<string,ModelSpeed>}){
+export default function Leaderboard({entries,evaluation,taskCosts,speeds,costCapturedLabel}:{entries:Entry[];evaluation:Evaluation;taskCosts:Record<string,IntelligenceIndexTaskCost>;speeds:Record<string,ModelSpeed>;costCapturedLabel:string}){
   const router=useRouter(),pathname=usePathname(),params=useSearchParams();
   const state=parseQueryParams(params);
   const update=(values:Record<string,string|number|string[]>,history:"push"|"replace"="replace")=>{const next=new URLSearchParams(params.toString());next.set("page","1");for(const [key,value]of Object.entries(values)){next.delete(key);if(Array.isArray(value))value.forEach(item=>{if(item)next.append(key,item);});else if(value!=="")next.set(key,String(value));}const href=`${pathname}?${next.toString()}`;if(history==="push")router.push(href,{scroll:false});else router.replace(href,{scroll:false});};
@@ -96,7 +100,7 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds}:{entri
       <ProviderMultiSelect id="provider" label="Provider" providers={providers} selected={state.provider} onChange={selected=>update({provider:selected},"push")}/>
       <Button size="compact" variant="quiet" onClick={()=>router.replace(pathname,{scroll:false})}>Clear filters</Button>
     </div>
-    <p aria-live="polite">{sorted.length.toLocaleString()} results{state.provider.length?` · ${providerSelectionLabel(state.provider)}`:""}</p>
+    <p aria-live="polite">{sorted.length.toLocaleString()} {sorted.length===1?"result":"results"}{state.provider.length?` · ${providerSelectionLabel(state.provider)}`:""}</p>
     <HelperText className="leaderboard-legend">Missing AA values show as “—”.{evaluation.has_scoring_status?" Scoring status appears only when AA provides it.":""}</HelperText>
     <div className="evaluation-mobile-sort">
       <label htmlFor="evaluation-sort">Sort by</label>
@@ -112,11 +116,12 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds}:{entri
           <colgroup>{columns.map(column=><col key={columnId(column)} style={{width:columnWidths[columnId(column)]}}/>)}</colgroup>
           <thead>{table.getHeaderGroups().map(group=><tr key={group.id}>{group.headers.map(header=>{
             const heading=flexRender(header.column.columnDef.header,header.getContext());
+            const detail=header.id==="cost_usd"?["USD",costCapturedLabel]:columnDetails[header.id];
             if(header.id==="scoring_status")return <th key={header.id} scope="col" className="evaluation-static-heading">{heading}</th>;
-            return <th key={header.id} scope="col" className={[numericColumns.includes(header.id)?"numeric":"",speedColumns.includes(header.id)?"speed-column":"",header.id==="model"?"model":""].filter(Boolean).join(" ")} aria-sort={allowedSort===header.id?(state.direction==="asc"?"ascending":"descending"):"none"}>
+            return <th key={header.id} scope="col" data-column={header.id} className={[numericColumns.includes(header.id)?"numeric":"",speedColumns.includes(header.id)?"speed-column":"",header.id==="model"?"model":""].filter(Boolean).join(" ")} aria-sort={allowedSort===header.id?(state.direction==="asc"?"ascending":"descending"):"none"}>
               <Button variant="quiet" size="compact" onClick={()=>update({sort:header.id,direction:allowedSort===header.id&&state.direction==="asc"?"desc":"asc"})}>
                 <span>{heading}{"\u00a0"}{allowedSort===header.id?(state.direction==="asc"?"↑":"↓"):"↕"}</span>
-                {speedColumns.includes(header.id)&&<small><span>{header.id==="time_per_task"?"Minutes":"Seconds"} · AA</span><span>{modelSpeedCaptureLabel}</span></small>}
+                {detail&&<small><span>{detail[0]} · AA</span><span>{detail[1]}</span></small>}
               </Button>
             </th>;
           })}</tr>)}</thead>

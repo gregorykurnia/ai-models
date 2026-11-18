@@ -26,6 +26,7 @@ async function capture(page, name, target = page) {
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth &&
     Array.from(document.images).every(image => !image.complete || image.naturalWidth > 0)), name + ": page overflow or broken image");
   await mkdir(output, { recursive: true });
+  await page.mouse.move(0, 0);
   await target.screenshot({ path: join(output, name + ".png"), animations: "disabled" });
 }
 
@@ -56,6 +57,42 @@ async function assertTextFits(locator, label) {
   }), label + ": text must fit");
 }
 
+async function checkEvaluationHeaders(card) {
+  const cost = card.locator('th[data-column="cost_usd"] small');
+  assert.match(await cost.innerText(), /^USD · AA\n\d{1,2} \w{3} \d{4}/);
+  await assertTextFits(cost, "Cost header caption");
+}
+
+async function captureSharedEvaluations(page, base) {
+  const query = encodeURIComponent("GPT-6.2 Astra (Max)");
+  for (const slug of ["intelligence-index", "terminal-bench-4-0", "aa-briefcase-analytical-quality-elo"]) {
+    for (const width of widths) {
+      await setWidth(page, width);
+      const url = `${base}/leaderboards/${slug}`;
+      if (slug === "intelligence-index" && width === 390) {
+        const group = encodeURIComponent("GPT-6.2 Astra, GPT-6.2 Sol");
+        assert.equal((await page.goto(`${url}?q=${group}`))?.status(), 200);
+        await page.locator('label[for="model-search"]').waitFor();
+        await capture(page, "intelligence-index-390-first-screen");
+      }
+      assert.equal((await page.goto(`${url}?q=${query}`))?.status(), 200);
+      const card = page.locator(".evaluation-leaderboard");
+      const rows = card.locator(width === 390 ? ".evaluation-card" : ".evaluation-table tbody tr");
+      await rows.first().waitFor();
+      assert.match(await rows.first().innerText(), /GPT-6\.2 Astra \(Max\)/);
+      assert.equal(await card.locator("p[aria-live]").innerText(), "1 result");
+      if (width === 390) await assertTextFits(card.locator('label[for="model-search"]'), "Search models label");
+      else await checkEvaluationHeaders(card);
+      const details = page.locator(".evaluation-notes");
+      await details.locator("summary").click();
+      await assertTextFits(details.locator(".evaluation-notes__body > strong"), "Source title");
+      await showAll(page, details);
+      await page.locator(".app-main").evaluate(main => { main.scrollTop = 0; });
+      await capture(page, `shared-${slug}-${width}`);
+    }
+  }
+}
+
 export async function checkSweAtlasEvaluation(page, base) {
   const expected = await mappedRows();
   const longest = expected.reduce((a, b) => a.model.length >= b.model.length ? a : b);
@@ -65,8 +102,22 @@ export async function checkSweAtlasEvaluation(page, base) {
     assert.equal((await page.goto(base))?.status(), 200);
     const link = page.getByRole("heading", { name: title, exact: true }).getByRole("link");
     assert.equal(await link.getAttribute("href"), `/leaderboards/${sweAtlasSlug}`);
+    const catalog = page.locator(".catalog");
+    const linkOffsets = await catalog.locator("article .open").evaluateAll(links => links.map(link => {
+      const card = link.closest("article");
+      return Math.round(card.getBoundingClientRect().bottom - link.getBoundingClientRect().bottom);
+    }));
+    assert(linkOffsets.length > 1 && new Set(linkOffsets).size === 1, "Catalog links align with the bottom of their cards");
+    const markers = catalog.locator(".metric-tag");
+    assert.deepEqual((await markers.allInnerTexts()).sort(), ["AA chart · blue circle", "AA chart · green bar", "AA chart · orange diamond"]);
     await link.scrollIntoViewIfNeeded();
     await capture(page, `leaderboards-index-${width}`);
+    if (width === 390) {
+      const markerCard = markers.locator("xpath=..");
+      await showAll(page, markerCard.last(), markerCard.first());
+      await capture(page, "leaderboards-index-briefcase-390");
+      await setWidth(page, width);
+    }
     await Promise.all([page.waitForURL(url.split("?")[0]), link.click()]);
     await page.getByRole("heading", { name: title, exact: true }).waitFor();
     assert.equal((await page.goto(url))?.status(), 200);
@@ -77,17 +128,26 @@ export async function checkSweAtlasEvaluation(page, base) {
     const actual = await rows.evaluateAll((elements, mobile) => elements.map(row => {
       if (mobile) {
         const rank = row.querySelector("strong").textContent.match(/^#(\d+) /);
-        return [row.dataset.model, Number(rank?.[1]), Number(row.querySelector(".evaluation-card__score").textContent.split(": ")[1])];
+        return [row.dataset.model, Number(rank?.[1]), row.querySelector(".evaluation-card__score").textContent.split(": ")[1]];
       }
       const cell = name => row.querySelector(`[data-column="${name}"]`).textContent.trim();
-      return [cell("model"), Number(cell("source_rank").replace("#", "")), Number(cell("score_value"))];
+      return [cell("model"), Number(cell("source_rank").replace("#", "")), cell("score_value")];
     }), mobile);
     const compare = (a, b) => a[0].localeCompare(b[0]);
-    assert.deepEqual(actual.sort(compare), expected.map(row => [row.model, row.rank, row.score]).sort(compare));
+    assert.deepEqual(actual.sort(compare), expected.map(row => [row.model, row.rank, row.score.toFixed(4)]).sort(compare));
     await card.getByText(/Pass rate \(%\)/).filter({ visible: true }).first().waitFor();
+    if (!mobile) {
+      await checkEvaluationHeaders(card);
+      assert(await card.locator('th[data-column="score_value"] button > span').evaluate(heading => {
+        const range = document.createRange();
+        range.selectNodeContents(heading);
+        return new Set(Array.from(range.getClientRects(), rect => rect.top)).size === 1;
+      }), "Pass rate and unit fit on one line");
+    }
     const details = page.locator(".evaluation-notes");
     await details.locator("summary").click();
     await assertTextFits(details.getByText(notes, { exact: true }), "Both evaluation notes");
+    assert.equal(await details.getByText(/source notes below/).count(), 0);
     if (mobile) {
       const row = rows.filter({ hasText: longest.model });
       await assertTextFits(row.locator("strong"), "Longest model name and rank");
@@ -103,6 +163,7 @@ export async function checkSweAtlasEvaluation(page, base) {
     await page.locator(".app-main").evaluate(main => { main.scrollTop = 0; });
     await capture(page, `evaluation-${width}`);
   }
+  await captureSharedEvaluations(page, base);
   console.log(`${sweAtlasSlug}: ${expected.length} mapped rows, their ranks and scores, index link and both notes at 1440/390px`);
 }
 
@@ -131,6 +192,16 @@ export async function checkSweAtlasMaster(page, base, expect, exportRanks) {
     if (width === 390) {
       const toggle = section.getByRole("button", { name: "Table view", exact: true });
       await expect(toggle).toHaveAttribute("aria-pressed", "false");
+      await search.fill("GPT-6.2 Astra");
+      await expect(section.locator(".master-card")).toHaveCount(5);
+      await expect(section.locator(".leaderboard-legend")).toContainText("Aggregate uses 9 of the 19 listed evaluations.");
+      await expect(section.locator("#master-search-help")).toHaveText("Separate keywords with commas, e.g. sol, haiku.");
+      await section.evaluate(element => {
+        const main = element.closest(".app-main");
+        main.scrollTop += element.getBoundingClientRect().top - main.getBoundingClientRect().top - 16;
+      });
+      assert((await section.locator(".master-card__title").first().boundingBox()).y < 844, "First master card is in the phone frame");
+      await capture(page, "master-gpt-6-2-astra-390-first-screen");
       await toggle.click();
       await expect(toggle).toHaveAttribute("aria-pressed", "true");
       await page.reload();

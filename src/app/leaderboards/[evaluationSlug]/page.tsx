@@ -55,14 +55,16 @@ export default async function Page({ params }: { params: Promise<{ evaluationSlu
       : "Source: supplied workbook"}</p>
     <p>Artificial Analysis (AA) timings · {modelSpeedCaptureLabel}</p>
     </PageHeader>
-    <Leaderboard entries={entries} evaluation={evaluation} taskCosts={taskCosts} speeds={speeds} />
+    <Leaderboard entries={entries} evaluation={evaluation} taskCosts={taskCosts} speeds={speeds} costCapturedLabel={intelligenceIndexCostCaptureLabel} />
     {evaluation.metric_group && <ComponentIndexNav active={evaluation} evaluations={evaluations} />}
     <details className="evaluation-notes panel">
       <summary>Sources and timing notes</summary>
-      <p>{evaluation.source_title}</p>
-      <p>Cost per Intelligence Index task uses Artificial Analysis profile values captured {intelligenceIndexCostCaptureLabel}, weighted across the Index evaluations. Workbook cost values mentioned in the source notes below are evaluation-specific.</p>
-      <p>{evaluationTimePerTaskLabel(evaluation.id)} (minutes) and First Answer (seconds to the first answer token on the creator’s API) use Artificial Analysis values captured {modelSpeedCaptureLabel}; dashes mean missing values and sort last.</p>
-      {evaluation.notes && <p>{evaluation.notes}</p>}
+      <div className="evaluation-notes__body">
+        <strong>{evaluation.source_title}</strong>
+        <p>Cost per Intelligence Index task uses Artificial Analysis profile values captured {intelligenceIndexCostCaptureLabel}, weighted across the Index evaluations.</p>
+        <p>{evaluationTimePerTaskLabel(evaluation.id)} (minutes) and First Answer (seconds to the first answer token on the creator’s API) use Artificial Analysis values captured {modelSpeedCaptureLabel}. Dashes mean missing values and sort last.</p>
+        {evaluation.notes && <p>{evaluation.notes}</p>}
+      </div>
     </details>
   </>;
 }

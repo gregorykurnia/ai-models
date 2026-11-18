@@ -1928,7 +1928,7 @@ a.ui-button:hover {
   white-space: normal;
 }
 
-.ui-table th.speed-column small {
+.ui-table th:is(.speed-column, [data-column="cost_usd"]) small {
   display: block;
   margin-top: var(--space-1);
   color: var(--text-secondary);
@@ -1936,9 +1936,17 @@ a.ui-button:hover {
   font-weight: var(--type-weight-regular);
 }
 
-.ui-table th.speed-column small > span {
+.ui-table th:is(.speed-column, [data-column="cost_usd"]) small > span {
   display: block;
   white-space: nowrap;
+}
+
+.evaluation-table th[data-column="cost_usd"] small > span:last-child {
+  white-space: normal;
+}
+
+.evaluation-table th[data-column="score_value"] > button {
+  padding-inline: var(--space-2);
 }
 
 .evaluation-page-header {
@@ -1997,6 +2005,16 @@ a.ui-button:hover {
 .evaluation-notes summary {
   cursor: pointer;
   font-weight: var(--type-weight-semibold);
+}
+
+.evaluation-notes__body {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.evaluation-notes__body p {
+  margin: 0;
 }
 
 @media (max-width: 767px) {

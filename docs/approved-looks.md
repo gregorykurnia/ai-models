@@ -6,3 +6,4 @@
 - Evaluation cost and timing values are blue links to Artificial Analysis model profiles. Master timing values are plain text.
 - Tied AA scores keep their shared source rank, so rank links can show the same number for different models.
 - An evaluation phone capture can end partway through the first result card. Its lower metric tiles continue below the viewport.
+- Intelligence Index scores intentionally use four decimal places with tabular figures, as recorded in the November screenshot review.

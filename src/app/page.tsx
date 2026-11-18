@@ -9,6 +9,8 @@ import styles from "./home.module.css";
 
 export const dynamic="force-dynamic";
 
+const chartMarkerLabels={bar:"AA chart · green bar",circle:"AA chart · blue circle",diamond:"AA chart · orange diamond"};
+
 export default async function Home(){
   const {evaluations,rows,intelligenceIndexCostCaptureLabel}=await getMasterDataset();
   return <>
@@ -36,7 +38,7 @@ export default async function Home(){
             {evaluations.map(e=><Card as="article" className="evaluation-card" key={e.id}>
               <div className="eyebrow">{e.category.replaceAll("_"," ")}</div>
               <h3><Link href={`/leaderboards/${e.slug}`}>{e.display_name}</Link></h3>
-              {e.metric_group && <div className="metric-tag"><span className={`metric-indicator metric-indicator--${e.metric_indicator}`} style={{backgroundColor:e.metric_color}} aria-hidden="true"/><span>{e.source_tab}</span></div>}
+              {e.metric_group && e.metric_indicator && <div className="metric-tag"><span className={`metric-indicator metric-indicator--${e.metric_indicator}`} style={{backgroundColor:e.metric_color}} aria-hidden="true"/><span>{chartMarkerLabels[e.metric_indicator]}</span></div>}
               <p className="evaluation-meta">{e.metric_label} · {e.row_count.toLocaleString()} ranked models</p>
               <Link className="open" href={`/leaderboards/${e.slug}`}>View leaderboard →</Link>
             </Card>)}

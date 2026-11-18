@@ -222,7 +222,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
     const section=page.locator("#master-leaderboard");
     const rows=section.locator(width===390?".master-card":"tbody tr");
     await rows.first().waitFor();
-    assert.equal(await section.locator(".leaderboard-legend").innerText(),`Missing AA values show as “—” or “Not ranked”. Ranks can tie. Aggregate uses 9 of ${dataset.evaluations.length} evaluations.`);
+    assert.equal(await section.locator(".leaderboard-legend").innerText(),`Missing AA values show as “—” or “Not ranked”. Ranks can tie. Aggregate uses 9 of the ${dataset.evaluations.length} listed evaluations.`);
     assert.equal(await section.locator("#master-search").inputValue(),query);
     assert.equal(await rows.count(),count,`${query}: ${width}px count`);
     assert.match(await section.locator('p[aria-live="polite"]').first().innerText(),new RegExp(`^${count} model${count===1?"":"s"}(?: ·|$)`),`${query}: result-count wording`);

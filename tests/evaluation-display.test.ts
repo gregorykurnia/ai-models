@@ -26,3 +26,9 @@ test("Intelligence Index scores align at four decimals without changing stored v
     assert.equal(entry.score_display, captured);
   }
 });
+
+test("SWE-Atlas QnA pass rates keep four decimals, including trailing zeros", () => {
+  for (const [value, expected] of [[61.8279569, "61.8280"], [58.8709677, "58.8710"], [33.8709677, "33.8710"], [0, "0.0000"], [100, "100.0000"]] as const) {
+    assert.equal(evaluationScoreDisplay({ id: "swe-atlas-qna-aa" }, { score_value: value, score_display: String(value) }), expected);
+  }
+});
