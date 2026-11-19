@@ -248,10 +248,12 @@ test("the workflow view links to its detail and preserves raw percentiles and mi
   const markup = renderToStaticMarkup(createElement(WorkflowView, { workflow, dataset, masterRows: [] }));
 
   assert.match(markup, /href="#step-3a">Draft<\/a>/);
+  assert.match(markup, /<span class="workflow-pick-meta"><span>Fixture<\/span><span>Fit 82<\/span><\/span>/);
   const ids = Array.from(markup.matchAll(/\sid="([^"]+)"/g), match => match[1]);
   assert.equal(new Set(ids).size, ids.length);
   const detail = markup.slice(markup.indexOf('id="step-3a"'));
   assert.match(detail, /Warmth index<small>aim moderate<\/small>/);
+  assert.match(detail, />Briefcase <small>v1\.1<\/small>/);
   assert.match(detail, />80<\/td><td class="numeric">58<\/td><td class="numeric"><span class="muted">—<\/span><\/td><td class="numeric">82<\/td>/);
   assert.equal(detail.match(/>Not ranked<\/td>/g)?.length, 1);
   assert.match(detail, /Also check \(not in Model Atlas\)/);

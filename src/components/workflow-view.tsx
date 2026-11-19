@@ -19,7 +19,13 @@ function MissingValue() {
 }
 
 function ModelPick({ row }: { row: RankedWorkflowModel }) {
-  return <>{row.model.name} <span className="workflow-model-fit">· Fit {formatPercentile(row.fit)}</span></>;
+  return <>
+    <span className="workflow-pick-name">{row.model.name}</span>
+    <span className="workflow-pick-meta">
+      <span>{row.model.provider}</span>
+      <span>Fit {formatPercentile(row.fit)}</span>
+    </span>
+  </>;
 }
 
 function WorkflowOverview({ steps, dataset }: { steps: LabeledStep[]; dataset: PersonalityDataset }) {
@@ -69,13 +75,13 @@ function WorkflowStepDetail({ step, dataset, masterRows }: {
   const rows = rankStep(step, dataset);
   const evaluationSlugs = [...new Set(step.evaluations)];
   const headingId = `workflow-step-heading-${step.id}`;
-  const compact = step.targets.length + evaluationSlugs.length <= 2;
+  const fewMetrics = step.targets.length + evaluationSlugs.length <= 2;
 
-  return <Card className={`master workflow-table-card${compact ? " workflow-table-card--compact" : ""}`} id={`step-${step.id}`} aria-labelledby={headingId}>
+  return <Card className="master workflow-table-card" id={`step-${step.id}`} aria-labelledby={headingId}>
     <h2 id={headingId}>Step {step.id} · {step.title}</h2>
     <p>{step.goal}</p>
     <TableScroll label={`Step ${step.id} rankings, scroll horizontally for more columns`} showOverflowCue>
-      <Table className="workflow-rankings-table">
+      <Table className={`workflow-rankings-table${fewMetrics ? " workflow-rankings-table--few-metrics" : ""}`}>
         <thead><tr>
           <th scope="col" className="numeric">Rank</th>
           <th scope="col" className="workflow-pinned workflow-model">Model</th>
@@ -85,11 +91,13 @@ function WorkflowStepDetail({ step, dataset, masterRows }: {
               {target.label}<small>aim {target.aim}</small>
             </th>
           ))}
-          <th scope="col" className="numeric">Fit</th>
+          <th scope="col" className="numeric workflow-fit">Fit</th>
           {evaluationSlugs.map(slug => {
             const evaluation = evaluationsBySlug.get(slug);
+            const label = evaluation ? masterEvaluationLabel(evaluation) : slug;
+            const versioned = label.match(/^(.+) (v\d+(?:\.\d+)*)$/);
             return <th scope="col" className="numeric workflow-evaluation-heading" key={slug} title={evaluation?.display_name}>
-              {evaluation ? masterEvaluationLabel(evaluation) : slug}
+              {versioned ? <>{versioned[1]} <small>{versioned[2]}</small></> : label}
             </th>;
           })}
         </tr></thead>

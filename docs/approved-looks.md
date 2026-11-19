@@ -11,3 +11,6 @@
 - On a phone, a Personality table can show a sliver of the next score column at its right edge; the "More columns →" cue above it says the table scrolls.
 - The Personality trait table's Elo 95% interval header has no sort arrow. The interval is informational and uses the same muted header text as the sortable columns.
 - 1440px and 390px captures are one screen tall, so the bottom edge can cut through a table row, a header date or a card; the page continues below.
+- The archived Personality build's `desktop-all.png` and `phone-all.png` show the app before Workflows. The Workflows gallery contains current desktop and phone navigation captures.
+- The Workflows overview capture ends after the 15-row table. The detail cards and the page end are shown in separate captures.
+- Snapshot attribution sits in the desktop sidebar and in the page footer when the sidebar is hidden.
