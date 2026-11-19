@@ -1,0 +1,179 @@
+{
+  "slug": "sales-proposal",
+  "title": "Sales proposal",
+  "summary": "Draft, check and polish a sales proposal from an RFP, meeting notes and client emails.",
+  "updated": "2026-11-19",
+  "steps": [
+    {
+      "id": "0",
+      "title": "Pick the model (once for all proposals)",
+      "goal": "Choose models fit for proposal work",
+      "targets": [
+        { "trait": "truthful", "aim": "high" },
+        { "trait": "naturalSounding", "aim": "high" },
+        { "index": "organization", "aim": "high" },
+        { "trait": "slop", "aim": "low" },
+        { "trait": "sycophantic", "aim": "low" }
+      ],
+      "evaluations": ["briefcase-v1-1", "gdp-pdf"],
+      "other_checks": "Review AA-Briefcase's Word and PDF breakdown and the AA-Omniscience hallucination rate (Business domain). Use GDPval-AA v2 as a tiebreaker.",
+      "note": "Use GDP.pdf for long RFPs."
+    },
+    {
+      "id": "1",
+      "title": "Gather inputs and extract requirements",
+      "goal": "Turn RFP, meeting notes and client emails into a requirement checklist, the client's pains in their own words, and open questions",
+      "targets": [
+        { "trait": "truthful", "aim": "high" },
+        { "trait": "flagsNuances", "aim": "high" },
+        { "trait": "disclaimsWithAssumptions", "aim": "high" },
+        { "trait": "admitsUncertainty", "aim": "high" }
+      ],
+      "evaluations": ["gdp-pdf", "briefcase-v1-1"]
+    },
+    {
+      "id": "2",
+      "title": "Outline and pick the angle",
+      "goal": "Map each requirement to a section and choose one value-prop angle",
+      "targets": [
+        { "trait": "creative", "aim": "high" },
+        { "trait": "structured", "aim": "high" },
+        { "trait": "openEnded", "aim": "low" }
+      ]
+    },
+    {
+      "id": "3a",
+      "title": "Situation and pain points",
+      "goal": "Mirror the client's pain in their own words and numbers",
+      "targets": [
+        { "trait": "sincere", "aim": "high" },
+        { "trait": "emotionallyIntelligent", "aim": "high" },
+        { "trait": "evidenceBased", "aim": "high" },
+        { "trait": "metaphorical", "aim": "moderate" },
+        { "trait": "humorous", "aim": "low" }
+      ],
+      "evaluations": ["briefcase-v1-1"]
+    },
+    {
+      "id": "3b",
+      "title": "Solution and scope",
+      "goal": "A clear, firm, closed scope",
+      "targets": [
+        { "trait": "structured", "aim": "high" },
+        { "trait": "pragmatic", "aim": "high" },
+        { "trait": "confident", "aim": "high" },
+        { "trait": "direct", "aim": "high" },
+        { "trait": "openEnded", "aim": "low" }
+      ],
+      "evaluations": ["briefcase-v1-1"]
+    },
+    {
+      "id": "3c",
+      "title": "Proof",
+      "goal": "Claims you'll be held to",
+      "targets": [
+        { "trait": "evidenceBased", "aim": "high" },
+        { "trait": "truthful", "aim": "high" }
+      ],
+      "evaluations": ["briefcase-v1-1"]
+    },
+    {
+      "id": "3d",
+      "title": "Pricing and assumptions",
+      "goal": "Every price with the conditions it depends on",
+      "targets": [
+        { "trait": "disclaimsWithAssumptions", "aim": "high" },
+        { "trait": "flagsNuances", "aim": "moderate" }
+      ],
+      "evaluations": ["briefcase-v1-1"]
+    },
+    {
+      "id": "3e",
+      "title": "Next steps",
+      "goal": "Concrete actions with dates and owners",
+      "targets": [
+        { "trait": "providesActionableGuidance", "aim": "high" },
+        { "trait": "direct", "aim": "high" }
+      ],
+      "evaluations": ["briefcase-v1-1"]
+    },
+    {
+      "id": "3f",
+      "title": "Executive summary (written last, placed first)",
+      "goal": "What a skimming buyer reads",
+      "targets": [
+        { "trait": "answerFirst", "aim": "high" },
+        { "trait": "summarizesBottomLine", "aim": "high" },
+        { "trait": "confident", "aim": "high" },
+        { "trait": "scannable", "aim": "high" },
+        { "trait": "slop", "aim": "low" }
+      ],
+      "evaluations": ["briefcase-v1-1"]
+    },
+    {
+      "id": "4",
+      "title": "Substance passes",
+      "goal": "Proofread, review practicality, then fact-check every claim and flag what can't be verified",
+      "targets": [
+        { "trait": "evidenceBased", "aim": "high" },
+        { "trait": "pragmatic", "aim": "high" },
+        { "trait": "truthful", "aim": "high" },
+        { "trait": "admitsUncertainty", "aim": "high" },
+        { "trait": "slop", "aim": "low" }
+      ],
+      "other_checks": "AA-Omniscience hallucination rate"
+    },
+    {
+      "id": "5",
+      "title": "Compliance check",
+      "goal": "Tick off every item on the step 1 checklist",
+      "targets": [
+        { "trait": "flagsNuances", "aim": "high" },
+        { "trait": "structured", "aim": "high" }
+      ],
+      "evaluations": ["briefcase-v1-1", "gdp-pdf"],
+      "note": "For fresh eyes, use a different model from step 1."
+    },
+    {
+      "id": "6",
+      "title": "Critique (fresh chat, skeptical buyer)",
+      "goal": "Rank the top problems, then fix them",
+      "targets": [
+        { "trait": "constructivelyPushesBack", "aim": "high" },
+        { "trait": "direct", "aim": "high" },
+        { "trait": "flagsNuances", "aim": "high" },
+        { "trait": "sycophantic", "aim": "low" },
+        { "index": "warmth", "aim": "low" }
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Linguistic final edit",
+      "goal": "Polish without rewriting and list what changed",
+      "targets": [
+        { "trait": "naturalSounding", "aim": "high" },
+        { "trait": "eloquent", "aim": "high" },
+        { "trait": "scannable", "aim": "high" },
+        { "trait": "answerFirst", "aim": "high" },
+        { "trait": "lexicallyVaried", "aim": "moderate" },
+        { "trait": "metaphorical", "aim": "moderate" },
+        { "trait": "admitsUncertainty", "aim": "moderate" },
+        { "trait": "creative", "aim": "low" },
+        { "trait": "openEnded", "aim": "low" }
+      ],
+      "evaluations": ["aa-briefcase-presentation-elo"]
+    },
+    {
+      "id": "8",
+      "title": "Slop sweep",
+      "goal": "Remove filler",
+      "targets": [{ "trait": "slop", "aim": "low" }]
+    },
+    {
+      "id": "8a",
+      "title": "Human read",
+      "goal": "Final check on numbers, names and tone",
+      "targets": [{ "trait": "slop", "aim": "low" }]
+    }
+  ]
+}

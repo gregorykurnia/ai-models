@@ -109,11 +109,14 @@ export function rankStep(step: WorkflowStep, dataset: PersonalityDataset, limit 
     return { model, percentiles, fit };
   });
 
+  // The average can accumulate floating-point roundoff from each target score (0 to 100).
+  const fitRoundoff = Number.EPSILON * 100 * step.targets.length;
   return rows.sort((a, b) => {
     if (a.fit !== b.fit) {
       if (a.fit === null) return 1;
       if (b.fit === null) return -1;
-      return b.fit - a.fit;
+      const difference = b.fit - a.fit;
+      if (Math.abs(difference) > fitRoundoff) return difference;
     }
     return a.model.name.localeCompare(b.model.name);
   }).slice(0, Math.max(0, limit));

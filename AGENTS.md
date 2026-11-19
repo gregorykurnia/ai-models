@@ -1,5 +1,7 @@
 # Repository agent instructions
 
+To add or change a workflow (the Workflows section), follow docs/WORKFLOWS.md.
+
 ## Commit and push after every change
 
 After making each change in this repository:

@@ -72,6 +72,19 @@ test("unrounded Fit takes precedence and equal Fit sorts by model name", () => {
   assert.equal(rankStep(sincereStep, dataset, 2).length, 2);
 });
 
+test("Fit ties sort by model name when adding the same scores in a different order", () => {
+  const tiedStep: WorkflowStep = { ...step, targets: [
+    { trait: "sincere", aim: "high" },
+    { trait: "truthful", aim: "high" },
+    { trait: "creative", aim: "high" },
+  ] };
+  const dataset = { ...personality, models: [
+    model("Zulu", { sincere: 98.1, truthful: 84.77, creative: 98.1 }),
+    model("Alpha", { sincere: 98.1, truthful: 98.1, creative: 84.77 }),
+  ] };
+  assert.deepEqual(rankStep(tiedStep, dataset).map(row => row.model.name), ["Alpha", "Zulu"]);
+});
+
 test("detail keeps five Sol variants and the overview picks three families", () => {
   const models = solEfforts.map(({ name, percentile, provider }) => model(name, { sincere: percentile }, {}, provider));
   const dataset = { ...personality, models };
@@ -199,4 +212,27 @@ for (const [label, source, path, value] of invalidCases) {
 test("registry covers every workflow JSON file", () => {
   const files = readdirSync(new URL("../workflows/", import.meta.url)).filter(file => file.endsWith(".json"));
   assert.deepEqual(workflows.map(workflow => `${workflow.slug}.json`).sort(), files.sort());
+});
+
+test("sales proposal registers all 15 steps and keeps the checked picks", () => {
+  const proposal = workflows.find(workflow => workflow.slug === "sales-proposal");
+  assert.ok(proposal);
+  assert.deepEqual(proposal.steps.map(step => step.id), [
+    "0", "1", "2", "3a", "3b", "3c", "3d", "3e", "3f", "4", "5", "6", "7", "8", "8a",
+  ]);
+
+  // Expected names from docs/workflows/sales-proposal-check.md.
+  const checkedPicks: Record<string, string> = {
+    "1": "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    "3a": "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    "6": "DeepSeek V4.1 Flash 1017 (Max)",
+    "7": "DeepSeek V4.1 Flash (Max)",
+  };
+  for (const step of proposal.steps) {
+    const { pick, runnersUp } = stepPicks(step, personality);
+    assert.ok(pick && pick.fit !== null, `Missing pick for ${step.id}`);
+    assert.equal(runnersUp.length, 2, step.id);
+    assert.equal(new Set([pick, ...runnersUp].map(row => familyKey(row.model.identity_key))).size, 3, step.id);
+    if (checkedPicks[step.id]) assert.equal(pick.model.name, checkedPicks[step.id], step.id);
+  }
 });
