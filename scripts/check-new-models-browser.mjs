@@ -16,6 +16,7 @@ const allModelNames=[...newModelNames,"Gemini 4 Argon (High)"];
 const gptModelNames=["Astra","Sol"].flatMap(family=>
   ["Low","Medium","High","Xhigh","Max"].map(effort=>`GPT-6.2 ${family} (${effort})`),
 );
+const neonModelNames=["Xhigh","High","Medium","Low"].map(effort=>`Gemini 4 Neon (${effort})`);
 const modelSets={
   hydrogen:{
     audit:"GEMINI_4_HYDROGEN_QWEN4_COVERAGE.md",
@@ -34,6 +35,15 @@ const modelSets={
     provider:()=>"OpenAI",
     groups:[["GPT-6.2 Astra","gpt-6-2-astra",5],["GPT-6.2 Sol","gpt-6-2-sol",5]],
     screenshots:["intelligence-index","terminal-bench-4-0"],
+  },
+  neon:{
+    audit:"GEMINI_4_NEON_COVERAGE.md",
+    names:neonModelNames,
+    allNames:neonModelNames,
+    pattern:/neon/i,
+    provider:()=>"Google",
+    groups:[["Neon","neon",4]],
+    screenshots:["intelligence-index","aa-omniscience-business"],
   },
 };
 
@@ -92,6 +102,7 @@ export function newModelsExpectations(dataset,coverage,setName="hydrogen"){
 export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydrogen"){
   const {audit:auditFile,groups,screenshots}=modelSet(setName);
   const gpt=setName==="gpt-6.2";
+  const hydrogen=setName==="hydrogen";
   await mkdir(output,{recursive:true});
   await rm(join(output,"browser-check.json"),{force:true});
   const dataset=await readNewModelsDataset();
@@ -353,7 +364,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
       assert.equal(await sortedRanks.first().getByRole("link").innerText(),"#3");
       await checkCritPtDashes(sortedRanks.last().locator("dd"),1,`Mixed CritPt ranks sorted ${direction}`);
     }
-  }else{
+  }else if(hydrogen){
     await page.goto(`${baseUrl}/?mq=Qwen%204#master-leaderboard`);
     assert.equal(await page.locator("#master-search").inputValue(),"Qwen 4");
     report.qwen_spaced_search={query:"Qwen 4",names:await masterNames.allTextContents()};
@@ -420,7 +431,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
         assert.equal(await direction.innerText(),"Desc ↓");
         const descending=[...entries].sort((a,b)=>b.source_rank-a.source_rank||a.source_row-b.source_row);
         assert.deepEqual(await rows.evaluateAll(cards=>cards.map(card=>card.getAttribute("data-model"))),descending.map(entry=>entry.model),`${id}: reverse control sorts ranks descending`);
-        if(!gpt&&id==="intelligence-index"){
+        if(hydrogen&&id==="intelligence-index"){
           await capture("intelligence-index-390-sort-desc-crop.png",direction);
         }
         await direction.click();
@@ -528,6 +539,8 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
   page.off("console",onConsole);
   page.off("pageerror",onPageError);
   await writeFile(join(output,"browser-check.json"),JSON.stringify(report,null,2)+"\n");
-  const searches=gpt?{master_searches:Object.fromEntries(Object.entries(report.master_searches).map(([query,names])=>[query,names.length]))}:{qwen_spaced_search:report.qwen_spaced_search.finds_qwen4_max};
+  const searches={};
+  if(gpt)searches.master_searches=Object.fromEntries(Object.entries(report.master_searches).map(([query,names])=>[query,names.length]));
+  if(hydrogen)searches.qwen_spaced_search=report.qwen_spaced_search.finds_qwen4_max;
   console.log(JSON.stringify({new_models:true,set:setName,master_search_counts:groups.map(([, ,count])=>count),...searches,evaluations_checked:evaluations.length,evaluation_row_checks:Object.values(report.evaluations).reduce((sum,rows)=>sum+rows.length,0),evaluation_ranks:true,fresh_eyes_regressions:true,shared_evaluation_screens:[...screenshotEvaluations],screenshots:report.screenshots.length}));
 }

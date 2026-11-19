@@ -189,6 +189,7 @@ try {
   for(const [set,output] of [
     ["hydrogen",process.env.NEW_MODELS_SCREENSHOT_DIR],
     ["gpt-6.2",process.env.GPT_6_2_SCREENSHOT_DIR],
+    ["neon",process.env.NEON_SCREENSHOT_DIR],
   ]){
     if(output){
       const {checkNewModelsBrowser}=await import("./check-new-models-browser.mjs");

@@ -12,6 +12,7 @@ delete env.NODE_TEST_CONTEXT;
 
 export const gptReport = "docs/GPT_6_2_ASTRA_SOL_COVERAGE.md";
 export const hydrogenReport = "docs/GEMINI_4_HYDROGEN_QWEN4_COVERAGE.md";
+export const neonReport = "docs/GEMINI_4_NEON_COVERAGE.md";
 
 export function audit(cwd: string, ...args: string[]) {
   return run(process.execPath, [

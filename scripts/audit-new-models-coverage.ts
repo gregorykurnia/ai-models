@@ -30,6 +30,12 @@ const gptModels: Model[] = ["Astra", "Sol"].flatMap(family =>
     slug: `gpt-6-2-${family.toLowerCase()}` + (effort === "Max" ? "" : `-${effort.toLowerCase()}`),
   })),
 );
+const neonModels: Model[] = ["Xhigh", "High", "Medium", "Low"].map(effort => ({
+  name: `Gemini 4 Neon (${effort})`,
+  short: `Neon ${effort}`,
+  provider: "Google",
+  slug: "gemini-4-neon" + (effort === "Xhigh" ? "" : `-${effort.toLowerCase()}`),
+}));
 const sets = {
   hydrogen: {
     models: hydrogenModels,
@@ -45,12 +51,20 @@ const sets = {
     title: "GPT-6.2 Astra and Sol coverage audit",
     report: "docs/GPT_6_2_ASTRA_SOL_COVERAGE.md",
   },
+  neon: {
+    models: neonModels,
+    extra: [],
+    pattern: /neon/i,
+    title: "Gemini 4 Neon coverage audit",
+    report: "docs/GEMINI_4_NEON_COVERAGE.md",
+  },
 };
 
 const args = process.argv.slice(2);
 const setName = args.length === 0 ? "hydrogen" : args[1];
-if ((args.length > 0 && (args.length !== 2 || args[0] !== "--set")) || (setName !== "hydrogen" && setName !== "gpt-6.2")) {
-  console.error("Usage: node --import tsx scripts/audit-new-models-coverage.ts [--set hydrogen|gpt-6.2]");
+if ((args.length > 0 && (args.length !== 2 || args[0] !== "--set")) ||
+    (setName !== "hydrogen" && setName !== "gpt-6.2" && setName !== "neon")) {
+  console.error("Usage: node --import tsx scripts/audit-new-models-coverage.ts [--set hydrogen|gpt-6.2|neon]");
   process.exit(1);
 }
 const { models, extra, pattern, title, report } = sets[setName];

@@ -3,7 +3,7 @@ import { mkdir, readdir, readFile, rm, rmdir, writeFile } from "node:fs/promises
 import { join } from "node:path";
 import test from "node:test";
 import type { Dataset } from "../src/lib/contract";
-import { audit, auditWorkspace, gptReport, hydrogenReport } from "./fixtures/new-models-audit";
+import { audit, auditWorkspace, gptReport, hydrogenReport, neonReport } from "./fixtures/new-models-audit";
 
 const base: Dataset = JSON.parse(await readFile(new URL("../data/leaderboards.json", import.meta.url), "utf8"));
 
@@ -94,4 +94,18 @@ test("a failed report replacement cleans up and can be retried", async t => {
   await rmdir(report);
   await audit(cwd, "--set", "hydrogen");
   assert.match(await readFile(report, "utf8"), /^# Gemini 4 Hydrogen/);
+});
+
+test("Neon audit cleans up a failed replacement and overlapping retries reproduce only its committed report", async t => {
+  const cwd = await auditWorkspace(t);
+  const report = join(cwd, neonReport);
+  const filename = neonReport.split("/").at(-1);
+  await mkdir(report);
+  await assert.rejects(audit(cwd, "--set", "neon"), { code: 1, stderr: /EISDIR.*rename/ });
+  assert.deepEqual(await readdir(join(cwd, "docs")), [filename]);
+  await rmdir(report);
+  const runs = await Promise.all([audit(cwd, "--set", "neon"), audit(cwd, "--set", "neon")]);
+  for (const { stdout } of runs) assert.match(stdout, /4 master rows matching \/neon\/i, 69 filled, 11 absent/);
+  assert.deepEqual(await readdir(join(cwd, "docs")), [filename]);
+  assert.equal(await readFile(report, "utf8"), await readFile(new URL(`../${neonReport}`, import.meta.url), "utf8"));
 });

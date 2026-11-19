@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import test, { after } from "node:test";
 import { newModelNames, newModelsExpectations, readNewModelsDataset } from "../scripts/check-new-models-browser.mjs";
-import { audit as runAudit, auditWorkspace, gptReport, hydrogenReport } from "./fixtures/new-models-audit";
+import { audit as runAudit, auditWorkspace, gptReport, hydrogenReport, neonReport } from "./fixtures/new-models-audit";
 
 const cwd = await auditWorkspace({ after });
 const [dataset] = await Promise.all([readNewModelsDataset(), runAudit(cwd, "--set", "hydrogen"), runAudit(cwd, "--set", "gpt-6.2")]);
@@ -94,5 +94,32 @@ test("GPT-6.2 browser fixture fails on changed ranks, duplicate rows, and unexpe
   ] as const) {
     const entries = [...dataset.entries, { ...original, id: original.id + "-duplicate", model }];
     assert.throws(() => newModelsExpectations({ ...dataset, entries }, gptAudit, "gpt-6.2"), error);
+  }
+});
+
+const neonAudit = await readFile(new URL(`../${neonReport}`, import.meta.url), "utf8");
+
+test("Neon browser fixture includes four efforts, Business and the full evaluation list", () => {
+  const { expected, evaluations } = newModelsExpectations(dataset, neonAudit, "neon");
+  const names = ["Xhigh", "High", "Medium", "Low"].map(effort => `Gemini 4 Neon (${effort})`);
+  assert.deepEqual(expected.map(entry => entry.model), names);
+  assert.equal(evaluations.length, 20);
+  assert.equal(evaluations.reduce((sum, { entries }) => sum + entries.length, 0), 69);
+  assert.deepEqual(evaluations.filter(({ entries }) => !entries.length).map(({ evaluation }) => evaluation.id).sort(), ["critpt", "mmmu-pro"]);
+  assert.deepEqual(evaluations.find(({ evaluation }) => evaluation.id === "swe-atlas-qna-aa")?.entries.map(entry => entry.model), names.slice(0, 1));
+  assert.deepEqual(evaluations.find(({ evaluation }) => evaluation.id === "aa-omniscience-business")?.entries.map(entry => entry.model), names);
+});
+
+test("Neon browser fixture rejects missing, blank and duplicate Business rows and unexpected efforts", () => {
+  const original = dataset.entries.find(entry => entry.evaluation_id === "aa-omniscience-business" && entry.model === "Gemini 4 Neon (Xhigh)")!;
+  const remaining = dataset.entries.filter(entry => entry !== original);
+  assert.throws(() => newModelsExpectations({ ...dataset, entries: remaining }, neonAudit, "neon"), /aa-omniscience-business: Gemini 4 Neon.* absence agrees with audit/);
+  for (const [model, entries, error] of [
+    ["", remaining, /aa-omniscience-business: Gemini 4 Neon.* absence agrees with audit/],
+    [original.model, dataset.entries, /aa-omniscience-business: duplicate Gemini 4 Neon/],
+    [original.model.toLowerCase(), dataset.entries, /neon: exact canonical family variants/],
+    [`Gemini 4 Neon (${"Unknown".repeat(100)})`, dataset.entries, /neon: exact canonical family variants/],
+  ] as const) {
+    assert.throws(() => newModelsExpectations({ ...dataset, entries: [...entries, { ...original, model }] }, neonAudit, "neon"), error);
   }
 });
