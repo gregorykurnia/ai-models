@@ -1,8 +1,11 @@
 import assert from "node:assert/strict";
 import { readdirSync } from "node:fs";
 import { test } from "node:test";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import example from "./fixtures/workflows/scoring-example.json";
 import solEfforts from "./fixtures/workflows/sol-efforts.json";
+import WorkflowView from "../src/components/workflow-view";
 import { getMasterDataset } from "../src/lib/data";
 import { masterIdentityKey } from "../src/lib/master";
 import { getPersonalityDataset, type PersonalityModel } from "../src/lib/personality";
@@ -235,4 +238,27 @@ test("sales proposal registers all 15 steps and keeps the checked picks", () => 
     assert.equal(new Set([pick, ...runnersUp].map(row => familyKey(row.model.identity_key))).size, 3, step.id);
     if (checkedPicks[step.id]) assert.equal(pick.model.name, checkedPicks[step.id], step.id);
   }
+});
+
+test("the workflow view links to its detail and preserves raw percentiles and missing ranks", () => {
+  const workflow = validateWorkflow(file, example);
+  workflow.steps[0].evaluations?.push("briefcase-v1-1");
+  workflow.steps.push({ ...workflow.steps[0], id: "3a-heading", evaluations: [] });
+  const dataset = { ...personality, models: [model("A long fixture model name", { sincere: 80 }, { warmth: 58 })] };
+  const markup = renderToStaticMarkup(createElement(WorkflowView, { workflow, dataset, masterRows: [] }));
+
+  assert.match(markup, /href="#step-3a">Draft<\/a>/);
+  const ids = Array.from(markup.matchAll(/\sid="([^"]+)"/g), match => match[1]);
+  assert.equal(new Set(ids).size, ids.length);
+  const detail = markup.slice(markup.indexOf('id="step-3a"'));
+  assert.match(detail, /Warmth index<small>aim moderate<\/small>/);
+  assert.match(detail, />80<\/td><td class="numeric">58<\/td><td class="numeric"><span class="muted">—<\/span><\/td><td class="numeric">82<\/td>/);
+  assert.equal(detail.match(/>Not ranked<\/td>/g)?.length, 1);
+  assert.match(detail, /Also check \(not in Model Atlas\)/);
+});
+
+test("the workflow view has an empty state for a workflow without steps", () => {
+  const workflow = { ...validateWorkflow(file, example), steps: [] };
+  const markup = renderToStaticMarkup(createElement(WorkflowView, { workflow, dataset: personality, masterRows: [] }));
+  assert.match(markup, /No workflow steps yet/);
 });

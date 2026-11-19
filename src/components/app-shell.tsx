@@ -9,6 +9,7 @@ import {Drawer} from "@/components/ui/drawer";
 const links = [
   { href: "/", label: "Evaluations", icon: "evaluations" },
   { href: "/personality", label: "Personality", icon: "personality" },
+  { href: "/workflows", label: "Workflows", icon: "workflows" },
   { href: "/suitability", label: "Task suitability", icon: "suitability" },
   { href: "/suitability/saved", label: "Saved tasks", icon: "saved" },
   { href: "/about/data", label: "About the data", icon: "about" },
@@ -26,6 +27,7 @@ function NavIcon({ name }: { name: (typeof links)[number]["icon"] }) {
   if (name === "evaluations") return <svg aria-hidden="true" viewBox="0 0 20 20" {...common}><path d="M3 8.5 10 3l7 5.5"/><path d="M5.5 8v8.5h9V8M8 16.5v-5h4v5"/></svg>;
   if (name === "suitability") return <svg aria-hidden="true" viewBox="0 0 20 20" {...common}><path d="M4 4.5h12M4 10h12M4 15.5h7"/><circle cx="2.5" cy="4.5" r=".5"/><circle cx="2.5" cy="10" r=".5"/><circle cx="2.5" cy="15.5" r=".5"/></svg>;
   if (name === "personality") return <svg aria-hidden="true" viewBox="0 0 20 20" {...common}><circle cx="10" cy="10" r="6.5"/><path d="M7.4 11.6c.7.9 1.6 1.4 2.6 1.4s1.9-.5 2.6-1.4"/><path d="M7.75 8.25h.01M12.25 8.25h.01"/></svg>;
+  if (name === "workflows") return <svg aria-hidden="true" viewBox="0 0 20 20" {...common}><rect x="3" y="2.75" width="5" height="5" rx="1"/><rect x="12" y="12.25" width="5" height="5" rx="1"/><path d="M5.5 7.75v5a2 2 0 0 0 2 2H12"/></svg>;
   if (name === "saved") return <svg aria-hidden="true" viewBox="0 0 20 20" {...common}><path d="M5 3.5h10v13l-5-3.2-5 3.2z"/></svg>;
   return <svg aria-hidden="true" viewBox="0 0 20 20" {...common}><path d="M3.5 4.5c2.3-.9 4.5-.6 6.5.7v11c-2-1.3-4.2-1.6-6.5-.7zM16.5 4.5c-2.3-.9-4.5-.6-6.5.7v11c2-1.3 4.2-1.6 6.5-.7z"/></svg>;
 }

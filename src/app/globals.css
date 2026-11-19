@@ -2327,3 +2327,144 @@ a.ui-button:hover {
     flex: 0 0 auto;
   }
 }
+
+.workflow-catalog {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+}
+
+.workflow-catalog,
+.workflow-table-card {
+  overflow-wrap: anywhere;
+}
+
+.master .workflow-overview-table {
+  width: 100%;
+  min-width: 60rem;
+  table-layout: fixed;
+}
+
+.workflow-overview-table .workflow-pinned { width: 13%; }
+.workflow-overview-table th:nth-child(2) { width: 17%; }
+.workflow-overview-table th:nth-child(3) { width: 16%; }
+.workflow-overview-table th:nth-child(4) { width: 12%; }
+.workflow-overview-table th:nth-child(5) { width: 12%; }
+.workflow-overview-table th:nth-child(6) { width: 14%; }
+
+:is(.workflow-overview-table, .workflow-rankings-table) th {
+  height: 48px;
+  padding: var(--space-2) var(--space-3);
+  color: var(--text-secondary);
+  font-size: var(--font-size-ui);
+  line-height: var(--line-height-ui);
+}
+
+.master :is(.workflow-overview-table, .workflow-rankings-table) td {
+  white-space: normal;
+}
+
+.workflow-overview-table td {
+  vertical-align: top;
+}
+
+.workflow-overview-table :is(th, td):nth-child(n+3):nth-child(-n+5) {
+  padding-inline: var(--space-2);
+}
+
+.workflow-step-number,
+.workflow-model-fit {
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  font-weight: var(--type-weight-regular);
+  white-space: nowrap;
+}
+
+.workflow-step-number {
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+.workflow-pinned a,
+.workflow-pick {
+  font-weight: var(--type-weight-semibold);
+}
+
+.workflow-targets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.workflow-targets > .ui-badge {
+  max-width: 100%;
+}
+
+.workflow-runners-up {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.master .workflow-rankings-table {
+  width: 100%;
+}
+
+.workflow-table-card--compact .table-scroll-frame {
+  max-width: 48rem;
+}
+
+.workflow-rankings-table .workflow-model {
+  width: 18%;
+  min-width: 8rem;
+}
+
+.workflow-rankings-table th:first-child {
+  width: 1%;
+}
+
+.workflow-table-card--compact .workflow-model {
+  width: 32%;
+}
+
+.workflow-rankings-table :is(th, td).numeric {
+  padding-inline-start: var(--space-2);
+}
+
+.workflow-rankings-table td:nth-child(3) {
+  overflow-wrap: normal;
+}
+
+.workflow-rankings-table .workflow-evaluation-heading {
+  max-width: 9rem;
+  overflow-wrap: normal;
+  white-space: normal;
+  text-wrap: balance;
+}
+
+.master .workflow-rankings-table td.workflow-evaluation-rank {
+  white-space: nowrap;
+}
+
+:is(.workflow-overview-table, .workflow-rankings-table) .workflow-pinned {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+td.workflow-pinned {
+  background: var(--bg-surface);
+}
+
+@media (max-width: 767px) {
+  .workflow-table-card .table-overflow-cue-slot:not(:empty) {
+    display: flex;
+  }
+
+  :is(.workflow-overview-table, .workflow-rankings-table) .workflow-pinned {
+    width: 8rem;
+    min-width: 8rem;
+    max-width: 8rem;
+    border-right: var(--border-width-default) var(--border-style) var(--border-default);
+  }
+}
