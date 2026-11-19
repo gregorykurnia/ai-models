@@ -5,7 +5,7 @@ one is your sales proposal flow). Each step names the traits it should be high, 
 works out the best models for every step from the AA-PersonalityBench data, instead of you picking them by hand.
 Earlier plans: [IMPLEMENTATION_PLAN-done.md](IMPLEMENTATION_PLAN-done.md) (AA-PersonalityBench, live since 2026-11-19).
 
-Working branch: `workflows`. Every task commits and pushes there. `main` deploys to production and moves only on O1.
+Working branch: `workflows`. Every task commits and pushes there. `main` deploys to production and moves only on O1 or O2.
 
 ## What the owner asked (2026-11-19)
 
@@ -82,8 +82,101 @@ Docs), with your hand picks so the app's picks can be checked against them.
 - **Shipping:** workflow files ship with the deploy. `npm run publish:data` has nothing to send, and `CLAUDE.md`'s
   publish rule (which covers `data/`) doesn't apply to `workflows/`.
 - **Not built (follow-ups for the owner to pick):** an in-app editor, "use a different model from step N" (fresh eyes
-  for steps 5 and 6), two-model pairs, evaluations counted in Fit, a favorites-only filter, a weight per target, a home
-  card, a note when a data refresh changes a pick.
+  for steps 5 and 6), two-model pairs, a weight per target, a home card, a note when a data refresh changes a pick.
+  Phase 2 builds the model list and the benchmark bar, in place of the follow-ups "favorites-only filter" and
+  "evaluations counted in Fit".
+
+## Phase 2 brief: your models, a benchmark bar and the meeting follow-up workflow
+
+Phase 2 limits the picks to the models you actually use and drops any model that ranks low on the step's benchmarks.
+It also adds a second workflow: client meeting → analysis, report and follow-ups.
+
+**What the owner asked (2026-11-19).** "The only ones that were including are: any of the ChatGPT models, any Claude
+models, Muse Spark 1.3, Grok 4.5, GLM 5.3 Max, GLM 5.3 Flash, Qwen4 Max, Gemini 3.8 Flash, Gemini 3.1 Pro, DeepSeek
+V4.1 Flash 1017", "I want a way to note this also in the new feature". On weightings, they chose a minimum benchmark
+bar over weights: "rerun it with the top 25% bar". Also: put the meeting follow-up flow on the site.
+
+**Simplest design that meets it:**
+
+1. **One shared model list**, `workflows/models.json`, used by every workflow:
+   `{ "updated": "YYYY-MM-DD", "providers": ["OpenAI", "Anthropic"], "models": [{ "label": "Grok 4.5", "family": "spacexai grok 4.5" }, …] }`.
+   - A model is on the list when its `provider` is in `providers`, or its family is in `models`.
+   - The family is `familyKey(identity_key)` with the NUL between provider and model replaced by a space:
+     `spacexai\u0000grok 4.5 (high)` becomes `spacexai grok 4.5`.
+   - The owner's families: `meta muse spark 1.3`, `spacexai grok 4.5`, `z ai glm-5.3`, `z ai glm-5.3-flash`,
+     `alibaba qwen4 max`, `google gemini 3.8 flash`, `google gemini 3.1 pro preview`, `deepseek deepseek v4.1 flash 1017`.
+   - At load, zod checks only the file's shape (like the workflow files), throwing and naming the file and the bad key.
+     The tests check that every provider and family matches a row in `data/aa-personalitybench.json` or
+     `data/leaderboards.json`. At runtime a family that matches nothing simply picks nothing. A data refresh must never
+     take the pages down.
+   - A family with no AA-PersonalityBench row is allowed but is never picked. The list page names it as having
+     no personality scores yet, worked out from the data rather than written in. On 2026-11-19 that is Qwen4 Max.
+   - The labels show as the owner wrote them. GLM-5.3 and Gemini 3.1 Pro each have one row in the data (Max and
+     Preview), so a family covers exactly what the owner named.
+2. **The benchmark bar.** A model can be picked for a step only if it ranks in the top 25% of every evaluation the
+   step lists: rank ≤ the bar rank, max(1, floor(cohort size × 0.25)). These are the same rank and cohort size the page
+   shows ("#9 of 157", from `evaluationRanks`), held in one constant, `BENCHMARK_BAR = 0.25`. On 157 the bar rank is 39,
+   on 158 it's 39, and on 3 it's 1.
+   - "Not ranked" misses the bar.
+   - A step with no evaluations has no bar.
+   - An evaluation that no master row holds at all (missing from live data) is left out of the bar. Its column still
+     shows "Not ranked", and the step says the bar skipped it. Otherwise a gap in the live data would blank every pick.
+   - **Data:** ranks come from `getMasterDataset()`. Tests, the dev server and the browser checks read the bundled
+     `data/` files (`DATA_SOURCE` unset), and production reads Firestore, which holds the same snapshots after
+     `npm run publish:data`. Every check and hand calculation in Phase 2 uses the bundled files.
+3. **What ranks and what's shown.**
+   - Fit is unchanged: an equal average of the step's targets, with no weights.
+   - The pick, the runners-up and the step's top-5 table use only models on the list that clear the bar, ordered by
+     Fit, with the same family rule as now.
+   - Under each step's table, at most two short lines:
+     - **"Higher Fit, below the bar":** list models with a higher Fit than the pick that miss the bar, one per family,
+       at most 3. Each names every benchmark it missed, with its rank and the bar, for example
+       "Sonnet 5.5 Max (Fit 94): AA-Omniscience #47 of 157, bar #39". When there is no pick, the line lists the 3 listed
+       families with the best Fit instead.
+     - **"Higher Fit, not on your list":** models off the list that clear the bar with a higher Fit than the pick, one per
+       family, at most 3. This line is left out when there is no pick.
+   - A step with no evaluations says "No benchmarks for this step, so no bar" where the bar help would be.
+   - When no model clears the bar, the step's pick shows "—" with the line "No model on your list clears the bar".
+   - The page header adds: "Picks use your model list (on the Workflows page) and must rank in the top 25% of each of
+     the step's benchmarks."
+   - `/workflows` gets a "Your models" card: "Any OpenAI model", "Any Anthropic model", then each label, with the
+     no-personality-scores note.
+4. **The meeting follow-up workflow**, `workflows/client-meeting-followup.json`, with six steps. Keys are the data
+   file's trait and index keys; benchmarks are evaluation slugs.
+
+   | Id | Title | Goal | Aim high | Aim moderate | Aim low | Evaluations |
+   |---|---|---|---|---|---|---|
+   | 1 | Extract | Decisions, commitments (who, what), open questions, the client's pains in their own words, numbers | truthful, disclaimsWithAssumptions, informationDense, flagsNuances | — | — | briefcase-v1-1, aa-omniscience-index |
+   | 2 | Analyse | What the client really cares about, risks, buying signals, where we stand | evidenceBased, pragmatic, constructivelyPushesBack, flagsNuances | — | sycophantic | strategy-ops-index, aa-briefcase-analytical-quality-elo |
+   | 3 | Follow-ups with dates | Each action with an owner, a recommended date and the reason for that date | providesActionableGuidance, pragmatic, direct, disclaimsWithAssumptions | — | openEnded | strategy-ops-index, briefcase-v1-1 |
+   | 4 | Write the report | Summary first, easy to skim | organization (index) | — | slop | aa-briefcase-presentation-elo, aa-briefcase-rubric-score |
+   | 5 | Client recap email | Short, human, confirms the agreed next steps | naturalSounding, sincere, direct | warmth (index) | slop, sycophantic | — |
+   | 6 | Check against the transcript | Every claim, action and date traces back to something said; list what doesn't | transparency (index), constructivelyPushesBack | — | sycophantic | aa-omniscience-index |
+
+   Notes (the owner's words, kept in `note`):
+   - Step 3: "No benchmark tests date suggestions. Give the model the meeting date and today's date, and check every
+     date by hand."
+   - Step 6: "Use a fresh chat and a different model from step 4."
+
+   **The picks worked out in chat on 2026-11-19**, for comparison. These used the latest `data/leaderboards.json`
+   snapshot's row counts as cohorts, so the page's cohort sizes may differ:
+   - Step 1: Opus 5.5 Max, Fable 5.1 Max, GPT-6 Astra Max.
+   - Step 2: Fable 5.1 Max, Opus 5.5 Max, Sonnet 5.5 Max.
+   - Step 3: Fable 5.1 Max, Opus 5.5 Max, GPT-6.2 Sol Max.
+   - Step 4: GPT-6.1 Sol Max, Sonnet 5.5 Max, Opus 5.5 Max.
+   - Step 5: GPT-6.2 Astra Medium, GPT-6.2 Sol High, GPT-6 Sol Max.
+   - Step 6: Fable 5.1 Max, Opus 5.5 Max, Fable 5.2 Max.
+
+**Phase 2 decisions (defaults, so no task stops to ask):**
+- The model list and the bar apply to every workflow, the sales proposal included. Its picks will change, and its
+  check doc and pinned picks are redone (2.2, 2.4).
+- No toggle to show all models, and no bar setting per workflow or per step. Both are follow-ups. The two note
+  lines show what the list and the bar left out.
+- No warning when step 6's pick is the same model as step 4's. The owner's note on step 6 covers it, and the Phase 1
+  follow-up "use a different model from step N" stays on the list.
+- "Any ChatGPT model" means every OpenAI row (GPT-3.5 Turbo and GPT-4o included, as the owner said "any"). "Any Claude
+  model" means every Anthropic row.
+- Phase 1's O1 can ship before Phase 2 or together with O2. Both are the same push from `workflows`.
 
 ## Before the run
 
@@ -99,3 +192,14 @@ Docs), with your hand picks so the app's picks can be checked against them.
 | 1.4 | **Browser check** [look]. Production build, `next start` through the node `next` bin, stopped by its PID (memory `next-start-pid`). Add `scripts/check-workflows-browser.mjs`, modelled on `scripts/check-personality-browser.mjs`, and run it with `scripts/check-master-browser.mjs` and `scripts/check-personality-browser.mjs` (their expectations unedited). Shots go to `docs/screenshots/workflows/` (1440px and 390px of the overview only; 1.3 has the rest). **Done when**: all three scripts pass; the overview shows 15 step rows; the picks for steps 1, 3a, 6 and 7 match the names in `docs/workflows/sales-proposal-check.md` (hard-coded in the script, not taken from `stepPicks`); step 3a's detail shows a Briefcase rank (not "Not ranked") on at least one row; step 3a's title link scrolls to its detail with the heading visible; the sidebar item is current on both workflow pages; `/workflows/nope` returns 404; shots at 1440px and 390px of the list, the overview and step 3a. | Sol High | Build, server, browser and shots: Terminal Bench 17 | 2026-11-19 · three browser checks passed, six shots reviewed |
 | R1 | **Phase 1 review**: the diff from `main`, `docs/workflows/sales-proposal-check.md` against `docs/workflows/proposal-source.md`, and the 1.3 and 1.4 shots. Quick fixes only; the rest become fix rows under this one. **Done when**: three steps' picks and runners-up are worked out by hand from `data/aa-personalitybench.json` and match the page, between them covering an aim moderate, an aim low and an index target (for example 3a, 6 and 7); a test workflow added by following only `docs/WORKFLOWS.md` validates and shows, and is then removed; every FINDING is fixed or has a fix row; if a fix touched the scorer or a page, 1.4's checks run again and pass. | Opus 5.5 High | Other family from the build (all Sol) | 2026-11-19 · 3a, 6, 7 hand-checked; test workflow shown, removed; 3 findings fixed (source has 14 steps, not 15); 1.4 checks passed |
 | O1 | *owner*: release with `git push origin workflows:main` (no `publish:data`: workflows ship with the deploy). On the live site, open Workflows → Sales proposal and compare a few picks with your doc. | — | — | |
+
+## Phase 2: your models, the benchmark bar and the meeting workflow
+
+| # | Task | Pick | Why | Done |
+|---|---|---|---|---|
+| 2.1 | **Model list and benchmark bar in the scorer** [no look]. Read "Phase 2 brief" items 1–3 and its decisions, and the code in `src/lib/workflows.ts`. Add `workflows/models.json` with the owner's list. Add its zod schema (shape only), plus `onList(model, list)`, `BENCHMARK_BAR` and `barRank(cohortSize)`. Change `rankStep` and `stepPicks` so both take the list and the master rows and keep only listed models that clear the bar. Add `stepNotes(step, dataset, list, masterRows)`, returning the "below the bar" entries (each with every missed evaluation's rank and bar rank), the "not on your list" entries and the evaluations the bar skipped. Load the list once in `src/lib/workflow-registry.ts`. Update the callers in `src/components/workflow-view.tsx` only as far as `tsc` needs; the new text is 2.3. Phase 1's pinned picks will change: update those test pins to the new output and mark them "re-checked in 2.2". Extend `tests/workflows.test.ts` with fixtures in `tests/fixtures/workflows/`. **Done when** tests show:<br>• `barRank` gives 39 for 157, 39 for 158 and 1 for 3; rank 39 of 157 clears and 40 misses; "Not ranked" misses; a step with no evaluations has no bar.<br>• An evaluation no master row holds is skipped and returned in the skipped list.<br>• An OpenAI model is on the list through `providers`. `z ai glm-5.3 (max)` is on it through its family. `deepseek deepseek v4.1 flash (max)` (not 1017) is not.<br>• Every provider and family in `workflows/models.json` matches a row in `data/aa-personalitybench.json` or `data/leaderboards.json`. A bad shape (missing `label`, a family that isn't a string) throws, naming the file and the key.<br>• On a fixture: the below-the-bar line keeps only higher-Fit models, one per family, at most 3, and names both benchmarks when a model misses two. The not-on-your-list line does the same for off-list models that clear the bar. With no pick, the below-the-bar line lists the 3 best listed families and the other line is empty.<br>• A step where nobody clears the bar returns no pick and no runners-up.<br>• `tsc` and all the tests pass. | Sol Max | Scoring code: FrontierCode 9, Terminal Bench 9 | |
+| 2.2 | **The meeting workflow, redone checks and the how-to** [no look]. Read "Phase 2 brief" item 4 and its decisions. Write `workflows/client-meeting-followup.json` from the table in item 4 (slug `client-meeting-followup`, title "Client meeting follow-up", notes as given) and add it to the registry. To check the scorer, first write a short script inside the check doc (a code block run with `node`) that reads only `data/aa-personalitybench.json`, `workflows/models.json` and the master rows from `getMasterDataset()`, and does not import `src/lib/workflows.ts`. It works out each step's pick and runners-up with the list and the bar. Write `docs/workflows/client-meeting-followup-check.md`: one row per step with the script's picks and the app's, each with its Fit and its ranks against the bar, beside the chat picks in item 4. The script and the app must agree on every step. Every difference from the chat picks gets a reason naming the rank, cohort or Fit behind it, specific to that row. Redo the picks rows of `docs/workflows/sales-proposal-check.md` the same way (script and app agree), keeping its targets table. Confirm or correct the pins 2.1 marked "re-checked in 2.2", and pin the meeting workflow's picks for all six steps. Add a "Your models and the benchmark bar" section to `docs/WORKFLOWS.md`: how to add or remove a model from `workflows/models.json` (finding the family from the data files, with the NUL rule), with one worked example, what the bar does, and where `BENCHMARK_BAR` lives. Fix any bug found in `src/lib/workflows.ts` with a test. **Done when**:<br>• Both workflow files validate, and a test checks that the meeting file's 6 steps have the targets, evaluations and notes of item 4.<br>• In both check docs, the script's picks equal the app's on every step.<br>• Every difference from the chat picks has a row-specific reason, and none is put down to a bug that is still unfixed.<br>• No test pin is still marked "re-checked in 2.2".<br>• `tsc` and the tests pass. | Sol Max | Facts checked against a source: Omniscience 29 | |
+| 2.3 | **Show the list and the bar on the pages** [look]. Read "Phase 2 brief" item 3; `src/components/workflow-view.tsx`, `src/app/workflows/page.tsx`, `src/app/workflows/[slug]/page.tsx`, the workflow rules in `src/app/globals.css`, and the UI rule in `AGENTS.md`. Add the header line, the "Your models" card on `/workflows` (the no-personality-scores note worked out from the data), and under each step's table the two note lines, the skipped-evaluation line and step 5's "no bar" line. Update the help text above a step's table to say only listed models that clear the bar are ranked. Show "—" plus "No model on your list clears the bar" when there is no pick. Use the existing primitives and styles, with no new colours. Add `renderToStaticMarkup` tests, as Phase 1 did, for these states on fixtures: no pick, one runner-up only, a table with fewer than 5 rows, a skipped evaluation, and a card where every family has personality rows (no note). Run the dev server, stop it by its PID, and take shots to `docs/screenshots/workflows/phase2/`. **Done when** the shots show:<br>• At 1440px and 390px: `/workflows` with two workflow cards and the Your models card, all eight labels wrapping inside the card and Qwen4 Max named as having no personality scores yet.<br>• At 1440px: the meeting follow-up overview with 6 steps and no sideways scroll.<br>• At 1440px: the meeting workflow's step 1 detail with a "Higher Fit, below the bar" line naming a model, its rank and the bar rank.<br>• At 1440px: step 5's detail with "No benchmarks for this step, so no bar".<br>• At 1440px: the sales proposal's step 6 detail with its notes.<br>• At 390px: the meeting overview with Step pinned, scrolling sideways inside its frame with no page scroll.<br>• At 390px: the detail of the step with the most note entries across both workflows (named in the commit), every entry wrapping inside the card and no word cut off.<br>• The page header line reads in full at 390px.<br>• The new render tests, `tsc` and all the tests pass. | Sol xHigh | Changes to built pages from a written spec: Presentation 9 | |
+| 2.4 | **Browser check** [look]. Production build, then `next start` through the node `next` bin, stopped by its PID (memory `next-start-pid`), on the bundled data. Update `scripts/check-workflows-browser.mjs`: hard-code the sales proposal's new picks from its check doc, and add the meeting workflow (6 rows; picks for steps 1, 4 and 6 hard-coded from its check doc, not taken from `stepPicks`). Then run it with `scripts/check-master-browser.mjs` and `scripts/check-personality-browser.mjs`, their expectations unedited. **Done when**:<br>• All three scripts pass.<br>• Both workflow pages show their hard-coded picks.<br>• The Your models card lists all eight labels.<br>• Step 1 of the meeting workflow shows a below-the-bar line.<br>• No new shots; 2.3 has them. | Sol High | Build, server, browser and shots: Terminal Bench 17 | |
+| R2 | **Phase 2 review**: the diff from 2c3f3e4, both check docs (including their scripts), and the 2.3 shots. Quick fixes only; the rest become fix rows under this one. **Done when**:<br>• Two steps are worked out by hand from the bundled data files, and the page matches: meeting step 1 (the bar drops a model) and meeting step 4 (an index target), with the bar computed from the page's rank and cohort.<br>• A model is added to `workflows/models.json` by following only `docs/WORKFLOWS.md`, changes a pick as expected, and is then removed.<br>• Every FINDING is fixed or has a fix row.<br>• If a fix touched the scorer or a page, 2.4's checks run again and pass. | Opus 5.5 High | Other family from the build (all GPT) | |
+| O2 | *owner*: release with `git push origin workflows:main` (no `publish:data`). On the live site, open Workflows → Client meeting follow-up and check the picks against your list. | — | — | |
