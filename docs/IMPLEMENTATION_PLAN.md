@@ -1,115 +1,99 @@
-# New section: AA-PersonalityBench (indexes, traits, trait details)
+# New section: Workflows (model picks per step, from the data)
 
-Adds a Personality section to Model Atlas: one table of every model AA scores on PersonalityBench, where you can open
-any of the 8 indexes to see the traits under it, and open any trait for its details. Earlier plans:
-[IMPLEMENTATION_PLAN-done.md](IMPLEMENTATION_PLAN-done.md) (SWE-Atlas-QnA, live since 2026-11-18).
+Adds a Workflows section to Model Atlas. A workflow is a list of steps you usually run with several models (the first
+one is your sales proposal flow). Each step names the traits it should be high, moderate or low on, and the page
+works out the best models for every step from the AA-PersonalityBench data, instead of you picking them by hand.
+Earlier plans: [IMPLEMENTATION_PLAN-done.md](IMPLEMENTATION_PLAN-done.md) (AA-PersonalityBench, live since 2026-11-19).
 
-Working branch: `personality-bench`. Every task commits and pushes there. `main` deploys to production and moves only
-on O1.
+Working branch: `workflows`. Every task commits and pushes there. `main` deploys to production and moves only on O1.
 
 ## What the owner asked (2026-11-19)
 
-"Put all the personality benches and its sub and the sub below that too in a table just like in the current
-leaderboard but a section just for personality bench, and be able to see which are the sub-indexes under Imagination,
-Warmth, Conviction etc., and also see details of each of the sub-sub indexes (say Sincere, Emotionally Intelligent)."
+"There's a flow for stuff I usually do [section 1 of the Multi-Model Sales Proposal Collab doc] and I've manually put
+the models. We should do these kinds of things, and similar ones in the future, in a new sidebar section." Then: "Maybe
+add new workflows from the VS Code chat. Go make the plan; if we want GPT to do it, we can."
 
-Simplest design that meets it: one new page, `/personality`, with one table that has three levels, picked with a row of
-chips above it and kept in the URL:
+Simplest design that meets it:
 
-1. **All indexes** (the default): Model, Provider, then the 8 index percentiles.
-2. **One index** (for example Warmth): Model, Provider, the Warmth percentile, then one column per trait under it
-   (Friendly, Humorous, Sincere, Emotionally Intelligent). The index's description and each trait's definition show
-   above the table.
-3. **One trait** (for example Sincere): Model, Provider, Percentile, Elo, and Elo 95% interval. The trait's definition,
-   the index it belongs to (a link back to it) and a link to AA's trait page show above the table. Slop has one trait,
-   so opening the Slop index opens this view directly.
+1. **A workflow is a JSON file** in `workflows/` (for example `workflows/sales-proposal.json`), listed in one registry
+   file. New workflows are added by asking a chat (Claude or Codex in VS Code) to write one, following
+   `docs/WORKFLOWS.md`. There's no editor in the app and nothing is saved to Firestore.
+2. **The app ranks the models for each step** from `data/aa-personalitybench.json` (all 53 models, all 30 traits and 8
+   indexes) and shows the top picks with their scores. Your hand picks came from AA's top-5 lists, so the app can rank
+   models your doc had to mark "Not in top 5".
+3. **One sidebar item, "Workflows"**: a list page and one page per workflow.
 
-The table works like the master leaderboard: search, provider filter, favorites filter, sortable headers, pagination,
-the model column pinned while the rest scrolls on a phone. Data is captured from AA once, trimmed into one bundled JSON
-file and read at build time, the way the speed data is. Nothing else on the site changes.
-
-## What AA publishes (read on the live page, 2026-11-19)
-
-- **Page:** `https://artificialanalysis.ai/evaluations/aa-personalitybench`. AA also has a page per index
-  (`/evaluations/aa-personalitybench/indexes/warmth`) and per trait (`/evaluations/aa-personalitybench/traits/sincere`).
-- **What it measures:** how a model writes, not whether it is right. 30 traits, 30 prompts each (900 in all), judged
-  pairwise by a panel of LLM judges and turned into a Bradley-Terry Elo per trait. Each index is the mean of its traits'
-  Elo z-scores (inverted traits flipped), percentile ranked 1 to 100 across every model tested. Each trait also has its
-  own percentile. Higher means "more of it"; for **Slop** and **Sycophantic**, lower is better.
-- **The 8 indexes and their traits** (AA's camelCase keys in brackets where they differ from the label):
-  Expressiveness: Lexically Varied, Eloquent, Literate, Natural Sounding, Metaphorical ·
-  Organization: Structured, Scannable, Bottom-Line Summary (`summarizesBottomLine`), Answer First ·
-  Informativeness: Information Dense, Evidence-Based, Resource-Specific, Actionable Guidance
-  (`providesActionableGuidance`), Pragmatic ·
-  Transparency: Truthful, Admits Uncertainty, Disclaims Assumptions (`disclaimsWithAssumptions`), Flags Nuances,
-  Sycophantic (inverted) ·
-  Warmth: Friendly, Humorous, Sincere, Emotionally Intelligent ·
-  Conviction: Direct, Confident, Opinionated, Constructive Pushback (`constructivelyPushesBack`) ·
-  Imagination: Creative, Open-Ended · Slop: Slop.
-- **What the page carries, per model** (in the Next.js payload, `self.__next_f.push` chunks, under `judged`):
-  `scores` (trait Elo), `cis` (Elo 95% lower/upper), `zScores`, `ranks` (trait percentiles, unrounded, such as
-  80.96), `rankIntervals`, `indexScores` (index percentiles) and `indexIntervals`. The labels, index descriptions,
-  question counts and every trait's one-line `definition` are in the same payload (for example Sincere: "Does the tone
-  feel genuinely engaged rather than templated or performative?").
-- **Only 9 models are in the first HTML** (the default selection); the model selector says 53
-  (`placeholderTotalCount: 53`). The full set needs the selector's "Select all", as in
-  `scripts/capture-aa-evaluations.mjs`. 2026-11-19 includes Fable 5.2, GPT-6.2 Astra and Sol (each at several efforts),
-  Opus 5.5, Kimi K3.1 Pro, Grok 4.7 and GLM-5.3.
-- The page also has 21 measured style characteristics (length, lists, emoji…) and judge examples. Not asked; left out.
+The source flow is copied into the repo at `docs/workflows/proposal-source.md` (autorun sessions can't open Claude
+Docs), with your hand picks so the app's picks can be checked against them.
 
 ## Decisions (defaults, so no task stops to ask)
 
-- **Its own section, outside the evaluations.** Not a master column, not in the aggregate rank, not in the suitability
-  planner, not in Firestore. PersonalityBench describes style, and AA doesn't rank models on it overall, so mixing it
-  into ranks would mislead. `aggregateMaster`, `data/leaderboards.json` and every saved task stay as they are.
-- **Slop is not flipped.** Its index is its one trait's percentile, so higher means more slop; only Sycophantic is
-  flipped inside Transparency. Both carry "↓ lower is better".
-- **The trait list lives in the importer** (the 8 indexes and 30 traits above, in that order). The import throws when
-  the payload's own index cards list different traits, or a trait key is missing or new.
-- **Bundled data, no publish.** The trimmed file is `data/aa-personalitybench.json`, imported by the page like
-  `data/aa-model-speed.json`. `npm run publish:data` has nothing to send for it; it reaches production with the deploy
-  (O1). A refresh is a capture, an import and a deploy, written in `docs/DATA_DICTIONARY.md`.
-- **Names match the master's.** Each AA model name goes through the importer's `canonicalModelName` and the same
-  provider names, so `masterIdentityKey` matches the master row and favorites carry over. A model with no master row
-  still shows under its AA name and AA's creator name (`creator.name` in its record); the inventory doc lists it. The
-  import throws if two AA models end up with the same identity key.
-- **Missing values stay.** A model missing an index or trait value keeps its row with `null` there; the doc counts them.
-- **Capture date:** the capture stores when it ran (`captured_at`); the import copies it, so a repeat import changes
-  nothing. `/personality` shows "Artificial Analysis · captured 19 Nov 2026" under its title with AA's link, as the
-  evaluation pages do.
-- **What a cell shows:** the percentile rounded to a whole number (sorting uses the unrounded value). The trait view
-  also shows Elo (one decimal) and its 95% interval as "1,268–1,317". A missing value shows "—" and sorts last both
-  ways, as in the master.
-- **Default sort:** the first score column of the view, highest first; for Slop and Sycophantic, lowest first. Those two
-  carry "↓ lower is better" in their header and definition.
-- **URL:** `/personality?index=warmth&trait=sincere` plus the master's filter keys (`q`, `p`, `f`, `s`, `d`, `i`, `z`).
-  An unknown index falls back to All indexes, never an error. A trait with no index (`?trait=sincere`) opens it under
-  its own index; a trait from another index (`?index=conviction&trait=sincere`) opens Conviction and drops the trait; an
-  `s` naming a column the level lacks uses that level's default sort. The interval column doesn't sort. Changing level resets the page to 1 and the sort
-  to that level's default, and keeps search, provider and favorites.
-- **Where it's linked:** a "Personality" item in the main navigation (`src/components/app-shell.tsx`) and one card on the
-  home page next to the task suitability card. `/about/data` gets one paragraph on what it measures and its capture date.
-- **Look:** the master leaderboard's table, chips, buttons and spacing (`src/components/ui/primitives.tsx`,
-  `TableScroll`, `ProviderMultiSelect`, `Pagination`). No new colours or components. Level chips: All indexes plus the 8
-  indexes in one row; inside an index, its traits in a second row. On a desktop the rows wrap; on a phone each row is one
-  line that scrolls sideways on its own. Trait headers wrap to at most two lines. On a phone it stays a table with the
-  model column pinned (no cards), at least two score columns visible beside it, and the definitions sit in a closed
-  "What these mean" disclosure so the table starts on the first screen. No matches shows the master's "No models match
-  these filters."
-
-- **Not built (follow-ups for the owner to pick):** CSV export, a master column per index, the 21 measured
-  characteristics, comparing two models side by side, AA's judge examples, the for-fun MBTI and Enneagram guesses.
+- **File format** (`workflows/<slug>.json`, checked with zod in `src/lib/workflows.ts`):
+  `{ slug, title, summary, updated, steps: [{ id, title, goal, targets, evaluations?, other_checks?, note? }] }`.
+  - A **target** is `{ "trait": "<trait key>", "aim": "high" | "moderate" | "low" }` or the same with `"index"` for a
+    whole index (the doc uses the Organization and Warmth indexes). Keys are the ones in `data/aa-personalitybench.json`.
+  - **`evaluations`** is a list of evaluation slugs from `data/leaderboards.json` (such as `briefcase-v1-1`, `gdp-pdf`).
+  - **`other_checks`** is free text for checks Model Atlas doesn't hold (AA-Omniscience hallucination rate, GDPval-AA
+    v2, Briefcase's Word and PDF breakdown).
+  - Step ids are short strings of `a-z`, `0-9` and `-` (`"0"`, `"3a"`), unique within the file; they become anchors.
+  - Validation throws, naming the file and the key, on an unknown trait, index or evaluation slug, an aim that isn't
+    one of the three, a step with no targets, a duplicate step id, or a slug that doesn't match the file name.
+- **Score per target**, from the raw percentile p (1–100, "more of the trait"; for Slop and Sycophantic, more is worse;
+  an index target uses the model's `index_percentiles` value, also 1–100):
+  aim high = p, aim low = 100 − p, aim moderate = 100 − 2 × |p − 50|. So "aim low" on Slop rewards little slop.
+  **Fit** = the plain average of the step's target scores. Every model has every trait (0 missing values on
+  2026-11-19); if a later capture has a gap, that target is left out of the average and the cell shows "—".
+- **Evaluations are shown, not scored.** They match the doc's "Evals to check" column: each pick shows its rank there
+  ("#4 of 41", or "Not ranked"), taken from the master dataset (`getMasterDataset`) by `identity_key`. Mixing ranks into
+  Fit would let a missing Briefcase rank decide a pick. (Follow-up: let evaluations count in Fit.)
+- **Pick and runners-up are different models.** In the overview, the pick and two runners-up are the best row of
+  three different model families. A family is the identity key with its trailing bracket removed (`openai gpt-6.2 sol
+  (high)` → `openai gpt-6.2 sol`), so five GPT-6.2 Sol efforts don't fill the top three. The step detail shows the top
+  5 rows as they are, variants included.
+- **Ties** sort by Fit (unrounded), then model name. Percentiles are stored unrounded (such as 80.96), so exact ties
+  are rare. Fit shows as a whole number.
+- **What a cell shows:** a target cell shows the raw percentile, rounded, as `/personality` does, so the two pages agree;
+  the "aim" line under the header says how it was scored, and Fit is the score. An index target's label ends in
+  "index" ("Warmth index") so it can't be read as a trait. A missing value shows "—"; an empty aim column in the
+  overview shows "—"; a step without evaluations, `other_checks` or a note simply leaves those parts out. A model with
+  no target value at all gets no Fit ("—") and sorts last.
+- **Data sources:** personality scores come from the bundled `data/aa-personalitybench.json` (a refresh is a deploy, so
+  it can't break the pages between releases). Evaluation slugs are validated in the tests against
+  `data/leaderboards.json`; on the page, an evaluation the live data doesn't hold shows "Not ranked" for every row
+  rather than failing.
+- **Notes stay the owner's.** A step's optional `note` is shown under it. The app writes no advice; it shows the scores
+  and the other checks.
+- **Pages** (force-dynamic like `/`, since evaluation ranks come from the data loader):
+  - `/workflows`: page header, then one card per workflow (title, summary, number of steps, "Open →").
+  - `/workflows/[slug]`: page header (title, summary, "Updated <updated> · picks from AA-PersonalityBench, captured
+    <date>" with a link to `/personality`). Then an **overview table**: Step, Goal, Aim high, Aim moderate, Aim low, Pick, Runners-up. The trait
+    names are the labels from the data, and each step title links to its detail below (`#step-3a`). Then a **detail
+    section per step**: its goal, a table of the top 5 (Rank, Model, Provider, one column per target with "aim high",
+    "aim moderate" or "aim low" under the trait name, Fit, then one column per evaluation), the "Also check (not in
+    Model Atlas)" line when `other_checks` is set, and the note. An unknown slug is the site's not-found page.
+- **Look:** the `/personality` table, chips, buttons and spacing (`src/components/ui/primitives.tsx`, `TableScroll`, the
+  pinned first column). No new colours or components. On a phone, the overview pins the Step column and the detail
+  tables pin Model; both scroll sideways inside their frame, never the page, and the pinned column wraps long names
+  to stay within about 40% of the frame. An anchor jump lands with the step heading visible, not under a sticky bar.
+- **Where it's linked:** a "Workflows" item in the sidebar (`src/components/app-shell.tsx`) after Personality, with its
+  own line icon in the style of the others. No home card.
+- **Shipping:** workflow files ship with the deploy. `npm run publish:data` has nothing to send, and `CLAUDE.md`'s
+  publish rule (which covers `data/`) doesn't apply to `workflows/`.
+- **Not built (follow-ups for the owner to pick):** an in-app editor, "use a different model from step N" (fresh eyes
+  for steps 5 and 6), two-model pairs, evaluations counted in Fit, a favorites-only filter, a weight per target, a home
+  card, a note when a data refresh changes a pick.
 
 ## Before the run
 
-- [x] Branch `personality-bench` pushed with upstream.
+- [x] Branch `workflows` pushed with upstream.
 
 ## Phase 1: build and release
 
 | # | Task | Pick | Why | Done |
 |---|---|---|---|---|
-| 1.1 | **Capture, import and inventory** [no look]. Add `scripts/capture-aa-personalitybench.mjs` (run like the evaluation capture, `PLAYWRIGHT_MODULE=…`): open the page, select every model with the selector logic of `scripts/capture-aa-evaluations.mjs` (export and reuse its helpers, don't copy them), then read every model's `judged` record and `creator`, the labels, index descriptions and trait lists, question counts and trait definitions from the page's payload, and write `data/aa-captures/aa-personalitybench.json` with `captured_at`. It throws, naming the page, when the selector isn't "M of M" or the records found aren't M. Add `scripts/import-aa-personalitybench.ts` (`npm run import:aa-personalitybench`) that writes `data/aa-personalitybench.json`: `captured_at`, the source URL, the 8 indexes in AA's order, each with label, description, question count and its traits (key, label, definition, lower-is-better flag, AA trait URL); and per model its name, provider, identity key, 8 index percentiles, and per trait percentile, Elo and Elo interval (`null` where AA has none). Put the types and the loader in `src/lib/personality.ts`. Add `tests/aa-personalitybench-import.test.ts`. Write `docs/AA_PERSONALITYBENCH_CAPTURE.md`: each AA model, the name and provider it gets, whether a master row matches, and any missing values. Add the refresh steps to `docs/DATA_DICTIONARY.md`. Read: "What AA publishes" and Decisions above; "Ordering and ingestion" in `docs/DATA_DICTIONARY.md`. **Done when**: the capture holds as many models as the selector counts (53 on 2026-11-19); the file has 8 indexes and 30 traits, each under the index listed above; a test changing one trait in a fake payload's index card makes the import throw; all identity keys are unique and a test with two models sharing one makes the import throw; the Fable 5.2, GPT-6.2 Astra and GPT-6.2 Sol rows have the same identity keys as their master rows; every value is 1–100 (percentiles) or inside its interval (Elo), or `null`; a second import changes no file; a forced selector failure throws naming the page; `git status` shows no change to `data/leaderboards.json` or the other captures; `tsc` and the new test pass. | Sol Max | New scrape and import that feed a page: FrontierCode 9, Terminal Bench 9 | 2026-11-19 · 53 models, 8 indexes, 30 traits, repeat import verified |
-| 1.2 | **The Personality page** [look]. Build `/personality` (`src/app/personality/page.tsx`, `src/components/personality-leaderboard.tsx`, the level, sort and URL logic in `src/lib/personality.ts`) as the design at the top and Decisions describe, with the master leaderboard's search, provider filter, favorites filter, sortable headers, pagination and pinned model column. Add the nav item, the home card and the `/about/data` paragraph. Add `tests/personality.test.ts`: every URL case in Decisions, the default sorts (Slop and Sycophantic lowest first), a fixture with a `null` value sorting last both ways, and level changes resetting page and sort. Then run the app (dev server, stopped by its PID) and take shots to `docs/screenshots/personality/build/`. Read first: `src/components/master-leaderboard.tsx`, `src/app/page.tsx`, `src/components/app-shell.tsx`, the master's rules in `src/app/globals.css`, and the UI rule in `AGENTS.md`. **Done when** the shots show: at 1440px, All indexes with Model, Provider and all 8 index columns without sideways scrolling and "↓ lower is better" on Slop; Warmth with the Warmth column then Friendly, Humorous, Sincere, Emotionally Intelligent and their definitions; Transparency (the widest: 5 traits) with Sycophantic marked lower is better and every header on at most two lines; Conviction with "Constructive Pushback" readable; Sincere with Percentile, Elo, the interval, its definition, "Part of Warmth" and AA's link; Slop opening its trait view; Imagination with only Creative and Open-Ended; the master leaderboard and Warmth at 1440px shot one after the other with the same table header, chip, button and spacing style; at 390px, All indexes, Transparency and Sincere with the model column pinned, at least two score columns beside it, the table starting on the first screen, the chips in one scrolling row, and no sideways page scroll; the home page at 1440px and 390px with the new card, and `/suitability` at 390px with the nav drawer open showing Personality. Also: reloading `/personality?index=warmth&trait=sincere&q=claude` restores that view; the tests and `tsc` pass. | Opus 5.5 High | First page of a new kind that sets its look (Presentation 28, Analytical Elo 10) | 2026-11-19 · 3 levels, 13 URL/sort tests, shots in `build/` |
-| 1.3 | **Browser check** [look]. Production build, `next start` through the node `next` bin, stopped by its PID (memory `next-start-pid`). Add `scripts/check-personality-browser.mjs`, modelled on `scripts/check-evaluation-browser.mjs`, and run it with `scripts/check-master-browser.mjs` (its expectations unedited). Shots go to `docs/screenshots/personality/`. **Done when**: both scripts pass; the count line on All indexes, Warmth and Sincere says the number of models in 1.1's doc; clicking the Sincere header sorts highest first, then lowest first, and the Slop header lowest first by default; search "claude" with the Anthropic provider filter shows only Anthropic rows and survives a reload; a model starred on the master page shows when "Favorites only" is picked on `/personality`, and an unstarred one doesn't; "No models match these filters." shows for a search with no hits; the nav item is marked current on `/personality`; the home card's link opens it; shots at 1440px and 390px of All indexes, Transparency and Sincere. | Sol High | Build, server, browser and shots: Terminal Bench 17 for $0.56 | 2026-11-19 · 53 models, both browser checks passed, 12 shots at 1440px and 390px after visual review |
-| R1 | **Phase 1 review**: the diff from `main`, 1.1's doc against the capture, and the 1.2 and 1.3 shots. Quick fixes only; the rest become fix rows under this one. **Done when**: five models' Sincere, Warmth and Slop values on live AA (two Claude, two GPT-6.2, one other) match the page; every FINDING is fixed or has a fix row; if a fix touched data or the page, 1.3's checks run again and pass. | Opus 5.5 High | Other family from most of the build (1.1 and 1.3 are Sol) | 2026-11-19 · 5 models match live AA; Slop note fixed; 1.3 checks pass |
-| O1 | *owner*: release with `git push origin personality-bench:main` (no `publish:data` needed: the data ships with the deploy). On the live site, open `/personality`, open Warmth, then Sincere. | — | — | 2026-11-19 · `2ae1a6a` live (Vercel success), `/personality` returns 200; owner to open Warmth and Sincere |
+| 1.1 | **Format, scorer and registry** [no look]. Write `src/lib/workflows.ts`: the zod schema and validation in Decisions, the score per target, Fit, the family key, `rankStep(step, dataset)` (top N rows) and `stepPicks(step, dataset)` (pick plus two runners-up from different families), and `evaluationRanks(identityKey, evaluationSlugs, masterRows)` returning rank and cohort size (the number of master rows ranked in that evaluation). Add the registry `src/lib/workflow-registry.ts`, which imports each `workflows/*.json` and validates it at load. The registry starts empty (the list page shows an empty state); tests use fixtures in `tests/fixtures/workflows/`. Add `tests/workflows.test.ts`. Read: Decisions above; `src/lib/personality.ts`; `getMasterDataset` in `src/lib/data.ts` and `masterIdentityKey` in `src/lib/master.ts`. **Done when** tests show: p = 80 scores 80 high, 20 low and 40 moderate; p = 50 scores 100 moderate; an index target scores from `index_percentiles`; Fit averages the targets and leaves out a `null`, and a model with no values gets no Fit and sorts last; a fixture with five Sol efforts at the top gives a pick and runners-up from three families; run over every identity key in `data/aa-personalitybench.json`, the family key groups the five GPT-6.2 Sol rows into one family, the five GPT-6.2 Astra rows into one, the two Sonnet 5.5 rows into one, and keeps Fable 5.1 and 5.2 apart (the test prints any other family with more than one row, and each is a real variant group); `evaluationRanks` on the real data finds a master row for at least 45 of the 53 personality rows (51 on 2026-11-19) and a `briefcase-v1-1` rank with its cohort size for at least 45 (49); a step id with a space or capital throws; equal Fit sorts by model name; each invalid case in Decisions throws naming the file and the bad key; a test fails when a file in `workflows/` is missing from the registry; `tsc` and the tests pass. | Sol Max | Scores: FrontierCode 9, Terminal Bench 9 | |
+| 1.2 | **The sales proposal workflow, its check and the how-to** [no look]. Turn `docs/workflows/proposal-source.md` into `workflows/sales-proposal.json` (15 steps: 0, 1, 2, 3a–3f, 4–8, with the targets as listed), and add it to the registry. Mapping: AA-Briefcase → `briefcase-v1-1`; "AA-Briefcase presentation quality" → `aa-briefcase-presentation-elo`; GDP.pdf → `gdp-pdf`; Briefcase's Word and PDF breakdown, the AA-Omniscience hallucination rate and GDPval-AA v2 → `other_checks`. Write `docs/workflows/sales-proposal-check.md`. First, a table of every step's targets as the JSON has them, beside the source's targets, marked same or different. Then one row per step 1–7 (with 3a–3f) with the hand pick, the app's pick and runners-up, both picks' Fit, and the reason for any difference (a model the doc couldn't see past the top 5, a variant, the doc's own judgement such as fresh eyes in step 5, or a bug). Fix any bug in `src/lib/workflows.ts` with a test. Write `docs/WORKFLOWS.md` for a chat adding a workflow: the format, every trait and index key with its label, the evaluation slugs, the registry line, the checks to run, and that it reaches the live site on the next release. Add one line to `AGENTS.md`: "To add or change a workflow (the Workflows section), follow docs/WORKFLOWS.md." **Done when**: the file validates and has 15 steps; the targets table shows every target the same as the source; every step 1–7 row in the check doc is filled and every difference has a reason that names the score behind it (for "past the top 5": the doc's model's percentile and the app pick's); if more than half the picks differ, the check doc says so in its first line and shows one such step worked by hand; a test pins the app's pick for steps 1, 3a, 6 and 7 to the names in the check doc; no difference is put down to a bug that is still unfixed; `WORKFLOWS.md` lists all 30 traits and 8 indexes from the data file; `tsc` and the tests pass. | Sol Max | Facts checked against a source (Omniscience 29) | |
+| 1.3 | **The Workflows pages** [look]. Build `/workflows` and `/workflows/[slug]` (`src/app/workflows/page.tsx`, `src/app/workflows/[slug]/page.tsx`, `src/components/workflow-view.tsx`) and the sidebar item with its icon, as Decisions describe. Read first: `src/app/personality/page.tsx`, `src/components/personality-leaderboard.tsx`, `src/components/app-shell.tsx`, the personality and master rules in `src/app/globals.css`, and the UI rule in `AGENTS.md`. Run the app (dev server, stopped by its PID) and take shots to `docs/screenshots/workflows/build/`. **Done when** the shots show: at 1440px, the sidebar with Workflows after Personality and marked current; `/workflows` with one "Sales proposal" card saying 15 steps; the overview with all 15 steps, each with a pick and two runners-up from different families, and no sideways scroll; step 3a's detail with Sincere, Emotionally Intelligent, Evidence-Based, Metaphorical (aim moderate), Humorous (aim low), Fit and the Briefcase rank, 5 rows; step 0's detail with the "Also check (not in Model Atlas)" line; step 7's detail (the most targets: 4 high, 3 moderate, 2 low, plus an evaluation) with every header on at most two lines; step 6's detail with "Warmth index" and the cells showing raw percentiles; at 1024px, the overview with no page sideways scroll; `/personality` and the sales proposal page shot one after the other with the same table header, chip and spacing style; at 390px, the overview with Step pinned and step 3a's detail with Model pinned (the longest model name wrapping, the pinned column within about 40% of the frame), each scrolling sideways inside its frame with no page scroll, and the nav drawer open showing Workflows. Also: clicking step 3a's title in the overview jumps to its detail with the heading visible at 1440px and 390px; `/workflows/nope` shows the not-found page; `tsc` and the tests pass. | Sol Max | App screens from a written spec: Presentation 4 | |
+| 1.4 | **Browser check** [look]. Production build, `next start` through the node `next` bin, stopped by its PID (memory `next-start-pid`). Add `scripts/check-workflows-browser.mjs`, modelled on `scripts/check-personality-browser.mjs`, and run it with `scripts/check-master-browser.mjs` and `scripts/check-personality-browser.mjs` (their expectations unedited). Shots go to `docs/screenshots/workflows/` (1440px and 390px of the overview only; 1.3 has the rest). **Done when**: all three scripts pass; the overview shows 15 step rows; the picks for steps 1, 3a, 6 and 7 match the names in `docs/workflows/sales-proposal-check.md` (hard-coded in the script, not taken from `stepPicks`); step 3a's detail shows a Briefcase rank (not "Not ranked") on at least one row; step 3a's title link scrolls to its detail with the heading visible; the sidebar item is current on both workflow pages; `/workflows/nope` returns 404; shots at 1440px and 390px of the list, the overview and step 3a. | Sol High | Build, server, browser and shots: Terminal Bench 17 | |
+| R1 | **Phase 1 review**: the diff from `main`, `docs/workflows/sales-proposal-check.md` against `docs/workflows/proposal-source.md`, and the 1.3 and 1.4 shots. Quick fixes only; the rest become fix rows under this one. **Done when**: three steps' picks and runners-up are worked out by hand from `data/aa-personalitybench.json` and match the page, between them covering an aim moderate, an aim low and an index target (for example 3a, 6 and 7); a test workflow added by following only `docs/WORKFLOWS.md` validates and shows, and is then removed; every FINDING is fixed or has a fix row; if a fix touched the scorer or a page, 1.4's checks run again and pass. | Opus 5.5 High | Other family from the build (all Sol) | |
+| O1 | *owner*: release with `git push origin workflows:main` (no `publish:data`: workflows ship with the deploy). On the live site, open Workflows → Sales proposal and compare a few picks with your doc. | — | — | |
