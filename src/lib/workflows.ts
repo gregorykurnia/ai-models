@@ -208,7 +208,7 @@ export function stepNotes(
     ? candidates.filter(({ row }) => compareFit(row.fit, pick.fit, step.targets.length) < 0)
     : candidates.filter(({ listed }) => listed);
   const belowBar = firstThreeFamilies(noteCandidates
-    .filter(({ missedEvaluations }) => missedEvaluations.length > 0)
+    .filter(({ listed, missedEvaluations }) => listed && missedEvaluations.length > 0)
     .map(({ row, missedEvaluations }) => ({ ...row, missedEvaluations })));
   const notOnList = pick ? firstThreeFamilies(noteCandidates
     .filter(({ listed, missedEvaluations }) => !listed && missedEvaluations.length === 0)

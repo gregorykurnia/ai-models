@@ -182,7 +182,7 @@ test("missing and duplicate evaluation slugs preserve active cutoffs and report 
   assert.deepEqual(rankStep(stepWithSkips, benchmarkDataset, workflowModelList, benchmarkRows).map(row => row.model.name), ["Pick"]);
 });
 
-test("step notes show up to three higher-Fit families for each reason and every missed rank", () => {
+test("step notes show up to three higher-Fit listed families below the bar, off-list ones that clear it, and every missed rank", () => {
   const [briefcase, omniscience] = benchmarkStep.evaluations;
   const { belowBar, notOnList, skippedEvaluations } = stepNotes(benchmarkStep, benchmarkDataset, workflowModelList, benchmarkRows);
   assert.deepEqual(belowBar.map(row => [row.model.name, row.missedEvaluations]), [
@@ -191,8 +191,10 @@ test("step notes show up to three higher-Fit families for each reason and every 
       { slug: omniscience, rank: 7, cohortSize: 16, barRank: 4 },
     ]],
     ["Beacon", [{ slug: briefcase, rank: null, cohortSize: 15, barRank: 3 }]],
-    ["Juniper", [{ slug: briefcase, rank: 8, cohortSize: 15, barRank: 3 }]],
+    ["Cedar", [{ slug: omniscience, rank: 5, cohortSize: 16, barRank: 4 }]],
   ]);
+  // Juniper (Fit 96.5) misses the bar but is off the list, so it belongs in neither line.
+  assert.ok(![...belowBar, ...notOnList].some(row => row.model.name === "Juniper"));
   assert.deepEqual(notOnList.map(row => row.model.name), ["Alternate (Max)", "Backup", "Contender"]);
   assert.deepEqual(skippedEvaluations, []);
 
@@ -573,7 +575,7 @@ test("a skipped evaluation keeps its unranked column and names the benchmark onc
   assert.match(detail, /<\/table>.*Skipped by the bar<\/strong> · GDP\.pdf<\/p>/);
   assert.doesNotMatch(detail, /No benchmarks for this step/);
   const noBar = renderBenchmarkStep({ ...benchmarkStep, evaluations: [] }).detail;
-  assert.match(noBar, /<\/table>.*No benchmarks for this step, so no bar/);
+  assert.match(noBar, /No benchmarks for this step, so no bar\. Only models on your list are ranked\..*<table/);
   assert.doesNotMatch(noBar, /Skipped by the bar/);
 });
 

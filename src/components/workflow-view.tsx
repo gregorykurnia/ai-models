@@ -125,7 +125,7 @@ function WorkflowStepDetail({ step, dataset, masterRows }: {
       Fit measures a model’s match to the step’s personality targets.{" "}
       {evaluationSlugs.length > 0
         ? "Evaluation columns show its rank. Only models on your list that clear the bar are ranked."
-        : "Only models on your list are ranked."}
+        : "No benchmarks for this step, so no bar. Only models on your list are ranked."}
     </HelperText>
     {rows.length === 0 ? <HelperText><NoWorkflowPick /></HelperText> : <TableScroll label={`Step ${step.id} rankings, scroll horizontally for more columns`} showOverflowCue>
       <Table
@@ -188,7 +188,6 @@ function WorkflowStepDetail({ step, dataset, masterRows }: {
     {skippedEvaluations.length > 0 && <HelperText>
       <strong>Skipped by the bar</strong>{" · "}{skippedEvaluations.map(evaluationLabel).join(", ")}
     </HelperText>}
-    {evaluationSlugs.length === 0 && <HelperText>No benchmarks for this step, so no bar</HelperText>}
     {step.other_checks && <HelperText><strong>Also check (not in Model Atlas)</strong> · {step.other_checks}</HelperText>}
     {step.note && <p>{step.note}</p>}
   </Card>;
