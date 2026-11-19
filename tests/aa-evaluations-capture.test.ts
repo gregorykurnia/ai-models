@@ -27,10 +27,10 @@ function read(items: unknown[], chartSeries = seriesKey) {
   }, seriesKey);
 }
 
-test("capture without --only keeps all evaluation targets and adds SWE-Atlas-QnA", () => {
+test("capture without --only includes all 16 evaluation targets", () => {
   assert.deepEqual(selectCaptureTargets([], undefined).map(target => target.key), [
     "aa-briefcase", "automationbench-aa", "terminalbench-4-0", "frontiercode-2-0", "swe-atlas-qna-aa",
-    "gdp-pdf", "critpt", "critpt-v2-full", "critpt-v2-hard", "omniscience", "mmmu-pro",
+    "gdp-pdf", "critpt", "critpt-v2-full", "critpt-v2-hard", "omniscience", "omniscience-business", "mmmu-pro",
     "finance-and-accounting", "economics", "strategy-and-ops", "artificial-analysis-intelligence-index",
   ]);
 });

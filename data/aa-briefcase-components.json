@@ -1,9 +1,9 @@
 {
   "source_url": "https://artificialanalysis.ai/evaluations/aa-briefcase?results=rubric-score",
   "source_title": "AA-Briefcase v1.1: Agentic Knowledge Work Benchmark",
-  "captured_at": "2026-11-18",
+  "captured_at": "2026-11-19",
   "source_tabs": {
-    "rubric": "AA-Briefcase Rubric Score (%)",
+    "rubric": "AA-Briefcase Rubric Score",
     "quality_elos": "Analytical Quality & Presentation Elo"
   },
   "models": [
@@ -578,6 +578,25 @@
       }
     },
     {
+      "id": "7c667f2d-0149-4eb1-864c-7e66c166ad88",
+      "provider": "Google",
+      "name": "Gemini 4 Neon (Xhigh)",
+      "release_date": "2026-11-18",
+      "rubric_score": 0.6202020202020202,
+      "analytical_quality_elo": 1744.4,
+      "analytical_quality_ci": {
+        "elo": 1744.4,
+        "lower95ci": 1725.59,
+        "upper95ci": 1763.54
+      },
+      "presentation_elo": 1773.14,
+      "presentation_ci": {
+        "elo": 1773.14,
+        "lower95ci": 1749.43,
+        "upper95ci": 1796.35
+      }
+    },
+    {
       "id": "f151fd0b-2139-40cf-a3ec-995e8cedc592",
       "provider": "DeepSeek",
       "name": "DeepSeek V4.1 Flash 1017 (Max)",
@@ -597,22 +616,41 @@
       }
     },
     {
+      "id": "9b696f5b-b5d2-4b1f-9ed5-7c1446ec8421",
+      "provider": "Google",
+      "name": "Gemini 4 Neon (High)",
+      "release_date": "2026-11-18",
+      "rubric_score": 0.5818181818181818,
+      "analytical_quality_elo": 1636.16,
+      "analytical_quality_ci": {
+        "elo": 1636.16,
+        "lower95ci": 1615.78,
+        "upper95ci": 1656
+      },
+      "presentation_elo": 1759.5,
+      "presentation_ci": {
+        "elo": 1759.5,
+        "lower95ci": 1737.53,
+        "upper95ci": 1782.12
+      }
+    },
+    {
       "id": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
       "provider": "OpenAI",
       "name": "GPT-6.1 Sol (Max)",
       "release_date": "2026-09-29",
       "rubric_score": 0.5565656565656566,
-      "analytical_quality_elo": 1758.26,
+      "analytical_quality_elo": 1759.36,
       "analytical_quality_ci": {
-        "elo": 1758.26,
-        "lower95ci": 1743.23,
-        "upper95ci": 1773.34
+        "elo": 1759.36,
+        "lower95ci": 1745.01,
+        "upper95ci": 1774.38
       },
-      "presentation_elo": 1461.3,
+      "presentation_elo": 1465.94,
       "presentation_ci": {
-        "elo": 1461.3,
-        "lower95ci": 1445.46,
-        "upper95ci": 1477.77
+        "elo": 1465.94,
+        "lower95ci": 1450.32,
+        "upper95ci": 1483.86
       }
     },
     {
@@ -678,17 +716,17 @@
       "name": "GPT-6.2 Astra (Max)",
       "release_date": "2026-11-17",
       "rubric_score": 0.591919191919192,
-      "analytical_quality_elo": 1741.05,
+      "analytical_quality_elo": 1739.67,
       "analytical_quality_ci": {
-        "elo": 1741.05,
-        "lower95ci": 1718.94,
-        "upper95ci": 1764.05
+        "elo": 1739.67,
+        "lower95ci": 1717.82,
+        "upper95ci": 1762.86
       },
-      "presentation_elo": 1661.76,
+      "presentation_elo": 1663.57,
       "presentation_ci": {
-        "elo": 1661.76,
-        "lower95ci": 1641.99,
-        "upper95ci": 1684.11
+        "elo": 1663.57,
+        "lower95ci": 1642.99,
+        "upper95ci": 1684.78
       }
     },
     {
@@ -754,17 +792,17 @@
       "name": "GPT-6.2 Sol (Max)",
       "release_date": "2026-11-17",
       "rubric_score": 0.5272727272727272,
-      "analytical_quality_elo": 1709.47,
+      "analytical_quality_elo": 1708.69,
       "analytical_quality_ci": {
-        "elo": 1709.47,
-        "lower95ci": 1691.47,
-        "upper95ci": 1730.85
+        "elo": 1708.69,
+        "lower95ci": 1690.32,
+        "upper95ci": 1729.49
       },
-      "presentation_elo": 1702.71,
+      "presentation_elo": 1704.34,
       "presentation_ci": {
-        "elo": 1702.71,
-        "lower95ci": 1680.58,
-        "upper95ci": 1726.76
+        "elo": 1704.34,
+        "lower95ci": 1684.38,
+        "upper95ci": 1724.58
       }
     },
     {
@@ -882,41 +920,60 @@
       }
     },
     {
-      "id": "592572d5-f789-4106-abbc-fadf2206d10b",
-      "provider": "OpenAI",
-      "name": "GPT-6.2 Astra (Xhigh)",
-      "release_date": "2026-11-17",
-      "rubric_score": 0.5636363636363636,
-      "analytical_quality_elo": 1678.56,
-      "analytical_quality_ci": {
-        "elo": 1678.56,
-        "lower95ci": 1660.78,
-        "upper95ci": 1696.35
-      },
-      "presentation_elo": 1614.04,
-      "presentation_ci": {
-        "elo": 1614.04,
-        "lower95ci": 1600.08,
-        "upper95ci": 1627.99
-      }
-    },
-    {
       "id": "27c326a6-ec9b-415f-a29e-b1f4927484dc",
       "provider": "OpenAI",
       "name": "GPT-6.2 Sol (Xhigh)",
       "release_date": "2026-11-17",
       "rubric_score": 0.5181818181818182,
-      "analytical_quality_elo": 1678.56,
+      "analytical_quality_elo": 1681.06,
       "analytical_quality_ci": {
-        "elo": 1678.56,
-        "lower95ci": 1660.25,
-        "upper95ci": 1696.87
+        "elo": 1681.06,
+        "lower95ci": 1661.39,
+        "upper95ci": 1703.12
       },
-      "presentation_elo": 1656.65,
+      "presentation_elo": 1661.01,
       "presentation_ci": {
-        "elo": 1656.65,
-        "lower95ci": 1637.63,
-        "upper95ci": 1675.67
+        "elo": 1661.01,
+        "lower95ci": 1642.67,
+        "upper95ci": 1682.45
+      }
+    },
+    {
+      "id": "2ba1a8f6-e052-4a33-b178-4db1e86157e4",
+      "provider": "Google",
+      "name": "Gemini 4 Neon (Medium)",
+      "release_date": "2026-11-18",
+      "rubric_score": 0.5323232323232323,
+      "analytical_quality_elo": 1456.16,
+      "analytical_quality_ci": {
+        "elo": 1456.16,
+        "lower95ci": 1437.67,
+        "upper95ci": 1475.98
+      },
+      "presentation_elo": 1677.85,
+      "presentation_ci": {
+        "elo": 1677.85,
+        "lower95ci": 1656.89,
+        "upper95ci": 1697.19
+      }
+    },
+    {
+      "id": "592572d5-f789-4106-abbc-fadf2206d10b",
+      "provider": "OpenAI",
+      "name": "GPT-6.2 Astra (Xhigh)",
+      "release_date": "2026-11-17",
+      "rubric_score": 0.5636363636363636,
+      "analytical_quality_elo": 1677.44,
+      "analytical_quality_ci": {
+        "elo": 1677.44,
+        "lower95ci": 1657.86,
+        "upper95ci": 1697.29
+      },
+      "presentation_elo": 1617.98,
+      "presentation_ci": {
+        "elo": 1617.98,
+        "lower95ci": 1602.35,
+        "upper95ci": 1635.14
       }
     },
     {
@@ -963,17 +1020,17 @@
       "name": "GPT-6.2 Astra (High)",
       "release_date": "2026-11-17",
       "rubric_score": 0.5545454545454546,
-      "analytical_quality_elo": 1671.1,
+      "analytical_quality_elo": 1670.08,
       "analytical_quality_ci": {
-        "elo": 1671.1,
-        "lower95ci": 1653.11,
-        "upper95ci": 1689.09
+        "elo": 1670.08,
+        "lower95ci": 1651.28,
+        "upper95ci": 1689.93
       },
-      "presentation_elo": 1577.58,
+      "presentation_elo": 1579.2,
       "presentation_ci": {
-        "elo": 1577.58,
-        "lower95ci": 1563.94,
-        "upper95ci": 1591.22
+        "elo": 1579.2,
+        "lower95ci": 1565.28,
+        "upper95ci": 1596.54
       }
     },
     {
@@ -1034,25 +1091,6 @@
       }
     },
     {
-      "id": "cd85e412-c43f-4535-bf8e-5ba113d97ca3",
-      "provider": "OpenAI",
-      "name": "GPT-6.2 Sol (High)",
-      "release_date": "2026-11-17",
-      "rubric_score": 0.498989898989899,
-      "analytical_quality_elo": 1648.49,
-      "analytical_quality_ci": {
-        "elo": 1648.49,
-        "lower95ci": 1629.23,
-        "upper95ci": 1667.74
-      },
-      "presentation_elo": 1594.44,
-      "presentation_ci": {
-        "elo": 1594.44,
-        "lower95ci": 1575,
-        "upper95ci": 1613.88
-      }
-    },
-    {
       "id": "3b84fee3-b70a-41bc-819e-5fbdef9a0042",
       "provider": "OpenAI",
       "name": "GPT-6.1 Sol (High)",
@@ -1069,6 +1107,25 @@
         "elo": 1391.16,
         "lower95ci": 1374.32,
         "upper95ci": 1409.45
+      }
+    },
+    {
+      "id": "cd85e412-c43f-4535-bf8e-5ba113d97ca3",
+      "provider": "OpenAI",
+      "name": "GPT-6.2 Sol (High)",
+      "release_date": "2026-11-17",
+      "rubric_score": 0.498989898989899,
+      "analytical_quality_elo": 1647.35,
+      "analytical_quality_ci": {
+        "elo": 1647.35,
+        "lower95ci": 1627.36,
+        "upper95ci": 1669
+      },
+      "presentation_elo": 1597.91,
+      "presentation_ci": {
+        "elo": 1597.91,
+        "lower95ci": 1580.28,
+        "upper95ci": 1617.97
       }
     },
     {
@@ -1243,25 +1300,6 @@
       }
     },
     {
-      "id": "82b37079-56d9-4451-8a1a-22b0a921f4f8",
-      "provider": "OpenAI",
-      "name": "GPT-6.2 Sol (Medium)",
-      "release_date": "2026-11-17",
-      "rubric_score": 0.4818181818181818,
-      "analytical_quality_elo": 1627.18,
-      "analytical_quality_ci": {
-        "elo": 1627.18,
-        "lower95ci": 1609.15,
-        "upper95ci": 1645.2
-      },
-      "presentation_elo": 1534.17,
-      "presentation_ci": {
-        "elo": 1534.17,
-        "lower95ci": 1516.3,
-        "upper95ci": 1552.04
-      }
-    },
-    {
       "id": "ff51be8f-e362-4a7e-9043-687ba15de207",
       "provider": "Anthropic",
       "name": "Claude Opus 5 (Medium)",
@@ -1278,6 +1316,25 @@
         "elo": 1319.34,
         "lower95ci": 1306.76,
         "upper95ci": 1332.04
+      }
+    },
+    {
+      "id": "82b37079-56d9-4451-8a1a-22b0a921f4f8",
+      "provider": "OpenAI",
+      "name": "GPT-6.2 Sol (Medium)",
+      "release_date": "2026-11-17",
+      "rubric_score": 0.4818181818181818,
+      "analytical_quality_elo": 1619.84,
+      "analytical_quality_ci": {
+        "elo": 1619.84,
+        "lower95ci": 1600.82,
+        "upper95ci": 1639.27
+      },
+      "presentation_elo": 1532.55,
+      "presentation_ci": {
+        "elo": 1532.55,
+        "lower95ci": 1513.24,
+        "upper95ci": 1552.08
       }
     },
     {
@@ -1316,6 +1373,25 @@
         "elo": 1410.95,
         "lower95ci": 1399.39,
         "upper95ci": 1423.4
+      }
+    },
+    {
+      "id": "5ca91b0e-0e47-4793-ace9-2ca763106e62",
+      "provider": "Joy Future Academy",
+      "name": "JoyAI-VL-Preview",
+      "release_date": "2026-11-17",
+      "rubric_score": 0.4727272727272727,
+      "analytical_quality_elo": 1610.46,
+      "analytical_quality_ci": {
+        "elo": 1610.46,
+        "lower95ci": 1592.65,
+        "upper95ci": 1628.26
+      },
+      "presentation_elo": 1446.47,
+      "presentation_ci": {
+        "elo": 1446.47,
+        "lower95ci": 1431.14,
+        "upper95ci": 1461.81
       }
     },
     {
@@ -1381,17 +1457,17 @@
       "name": "Gemini 4 Hydrogen (High)",
       "release_date": "2026-11-12",
       "rubric_score": 0.5242424242424243,
-      "analytical_quality_elo": 1475.36,
+      "analytical_quality_elo": 1474.46,
       "analytical_quality_ci": {
-        "elo": 1475.36,
-        "lower95ci": 1454.52,
-        "upper95ci": 1496.48
+        "elo": 1474.46,
+        "lower95ci": 1453.68,
+        "upper95ci": 1495.64
       },
-      "presentation_elo": 1592.87,
+      "presentation_elo": 1592.95,
       "presentation_ci": {
-        "elo": 1592.87,
-        "lower95ci": 1573.04,
-        "upper95ci": 1612.2
+        "elo": 1592.95,
+        "lower95ci": 1575.36,
+        "upper95ci": 1612.13
       }
     },
     {
@@ -1756,6 +1832,25 @@
       }
     },
     {
+      "id": "09fea5f5-7217-452d-b693-fcca01e07bdf",
+      "provider": "Google",
+      "name": "Gemini 4 Neon (Low)",
+      "release_date": "2026-11-18",
+      "rubric_score": 0.3898989898989899,
+      "analytical_quality_elo": 1160.91,
+      "analytical_quality_ci": {
+        "elo": 1160.91,
+        "lower95ci": 1143.12,
+        "upper95ci": 1180.97
+      },
+      "presentation_elo": 1506.37,
+      "presentation_ci": {
+        "elo": 1506.37,
+        "lower95ci": 1489.02,
+        "upper95ci": 1525.61
+      }
+    },
+    {
       "id": "34fc646a-0174-470e-9e62-d8df452210b3",
       "provider": "Mistral",
       "name": "Mistral Large 4 Preview",
@@ -1799,17 +1894,17 @@
       "name": "GPT-6.1 Terra (Max)",
       "release_date": "2026-10-26",
       "rubric_score": 0.42424242424242425,
-      "analytical_quality_elo": 1488.66,
+      "analytical_quality_elo": 1484.97,
       "analytical_quality_ci": {
-        "elo": 1488.66,
-        "lower95ci": 1469.69,
-        "upper95ci": 1507.86
+        "elo": 1484.97,
+        "lower95ci": 1466.41,
+        "upper95ci": 1502.88
       },
-      "presentation_elo": 1464.8,
+      "presentation_elo": 1463.25,
       "presentation_ci": {
-        "elo": 1464.8,
-        "lower95ci": 1445.59,
-        "upper95ci": 1482.26
+        "elo": 1463.25,
+        "lower95ci": 1447.17,
+        "upper95ci": 1480.43
       }
     },
     {
@@ -1832,25 +1927,6 @@
       }
     },
     {
-      "id": "8cec011f-c959-4726-8668-2ee2409a6bca",
-      "provider": "OpenAI",
-      "name": "GPT-6.2 Astra (Medium)",
-      "release_date": "2026-11-17",
-      "rubric_score": 0.4767676767676768,
-      "analytical_quality_elo": 1481.97,
-      "analytical_quality_ci": {
-        "elo": 1481.97,
-        "lower95ci": 1463.49,
-        "upper95ci": 1500.44
-      },
-      "presentation_elo": 1404.19,
-      "presentation_ci": {
-        "elo": 1404.19,
-        "lower95ci": 1391.3,
-        "upper95ci": 1417.08
-      }
-    },
-    {
       "id": "426d24c8-49ae-482a-b4a8-20f1c53f21c1",
       "provider": "OpenAI",
       "name": "GPT-5.6 Luna (Max)",
@@ -1867,6 +1943,25 @@
         "elo": 1479.56,
         "lower95ci": 1466.48,
         "upper95ci": 1491.67
+      }
+    },
+    {
+      "id": "8cec011f-c959-4726-8668-2ee2409a6bca",
+      "provider": "OpenAI",
+      "name": "GPT-6.2 Astra (Medium)",
+      "release_date": "2026-11-17",
+      "rubric_score": 0.4767676767676768,
+      "analytical_quality_elo": 1477.72,
+      "analytical_quality_ci": {
+        "elo": 1477.72,
+        "lower95ci": 1458.39,
+        "upper95ci": 1499.01
+      },
+      "presentation_elo": 1404.11,
+      "presentation_ci": {
+        "elo": 1404.11,
+        "lower95ci": 1389.76,
+        "upper95ci": 1420.42
       }
     },
     {
@@ -1894,17 +1989,17 @@
       "name": "Gemini 4 Hydrogen (Medium)",
       "release_date": "2026-11-12",
       "rubric_score": 0.4262626262626263,
-      "analytical_quality_elo": 1178.47,
+      "analytical_quality_elo": 1178.57,
       "analytical_quality_ci": {
-        "elo": 1178.47,
-        "lower95ci": 1158.04,
-        "upper95ci": 1198.46
+        "elo": 1178.57,
+        "lower95ci": 1157.49,
+        "upper95ci": 1198.83
       },
-      "presentation_elo": 1454.87,
+      "presentation_elo": 1455.49,
       "presentation_ci": {
-        "elo": 1454.87,
-        "lower95ci": 1435.55,
-        "upper95ci": 1472.72
+        "elo": 1455.49,
+        "lower95ci": 1437.44,
+        "upper95ci": 1474.75
       }
     },
     {
@@ -2027,17 +2122,17 @@
       "name": "GPT-6 Luna (Max)",
       "release_date": "2026-09-22",
       "rubric_score": 0.4121212121212121,
-      "analytical_quality_elo": 1374.67,
+      "analytical_quality_elo": 1371.81,
       "analytical_quality_ci": {
-        "elo": 1374.67,
-        "lower95ci": 1357.98,
-        "upper95ci": 1393.9
+        "elo": 1371.81,
+        "lower95ci": 1355.61,
+        "upper95ci": 1389.36
       },
-      "presentation_elo": 1397.93,
+      "presentation_elo": 1399.77,
       "presentation_ci": {
-        "elo": 1397.93,
-        "lower95ci": 1383.01,
-        "upper95ci": 1412.81
+        "elo": 1399.77,
+        "lower95ci": 1386.13,
+        "upper95ci": 1413.76
       }
     },
     {
@@ -2293,17 +2388,17 @@
       "name": "GPT-6.2 Sol (Low)",
       "release_date": "2026-11-17",
       "rubric_score": 0.3686868686868687,
-      "analytical_quality_elo": 1318.26,
+      "analytical_quality_elo": 1315.89,
       "analytical_quality_ci": {
-        "elo": 1318.26,
-        "lower95ci": 1298.73,
-        "upper95ci": 1337.8
+        "elo": 1315.89,
+        "lower95ci": 1294.89,
+        "upper95ci": 1337.07
       },
-      "presentation_elo": 1206.46,
+      "presentation_elo": 1207.62,
       "presentation_ci": {
-        "elo": 1206.46,
-        "lower95ci": 1188.79,
-        "upper95ci": 1224.13
+        "elo": 1207.62,
+        "lower95ci": 1189.11,
+        "upper95ci": 1227.47
       }
     },
     {
@@ -2497,6 +2592,25 @@
       }
     },
     {
+      "id": "9034b7fc-11d6-433e-9b71-ec8520c487dd",
+      "provider": "Institute of Foundation Models",
+      "name": "K2 Horizon 32B",
+      "release_date": "2026-09-03",
+      "rubric_score": 0.35507246376811596,
+      "analytical_quality_elo": 1242.07,
+      "analytical_quality_ci": {
+        "elo": 1242.07,
+        "lower95ci": 1223.86,
+        "upper95ci": 1260.28
+      },
+      "presentation_elo": 1145.57,
+      "presentation_ci": {
+        "elo": 1145.57,
+        "lower95ci": 1128.3,
+        "upper95ci": 1162.84
+      }
+    },
+    {
       "id": "e76e0fe5-93ca-4272-9359-2eb1740467d1",
       "provider": "OpenAI",
       "name": "GPT-6.1 Sol (Low)",
@@ -2687,25 +2801,6 @@
       }
     },
     {
-      "id": "53b9e276-e360-4a39-9076-1a19d72c25fe",
-      "provider": "Institute of Foundation Models",
-      "name": "K2 Horizon MoVA 36B A4B",
-      "release_date": "2026-09-03",
-      "rubric_score": 0.35454545454545455,
-      "analytical_quality_elo": 1197.02,
-      "analytical_quality_ci": {
-        "elo": 1197.02,
-        "lower95ci": 1180.68,
-        "upper95ci": 1212.69
-      },
-      "presentation_elo": 1141.9,
-      "presentation_ci": {
-        "elo": 1141.9,
-        "lower95ci": 1124.94,
-        "upper95ci": 1156.56
-      }
-    },
-    {
       "id": "744fa3c1-42a7-4995-b138-fb6be11f463c",
       "provider": "Google",
       "name": "Gemini 3.8 Flash (Medium)",
@@ -2722,6 +2817,25 @@
         "elo": 1196.34,
         "lower95ci": 1180.77,
         "upper95ci": 1211.9
+      }
+    },
+    {
+      "id": "53b9e276-e360-4a39-9076-1a19d72c25fe",
+      "provider": "Institute of Foundation Models",
+      "name": "K2 Horizon MoVA 36B A4B",
+      "release_date": "2026-09-03",
+      "rubric_score": 0.35454545454545455,
+      "analytical_quality_elo": 1196.12,
+      "analytical_quality_ci": {
+        "elo": 1196.12,
+        "lower95ci": 1180.47,
+        "upper95ci": 1212.86
+      },
+      "presentation_elo": 1142.8,
+      "presentation_ci": {
+        "elo": 1142.8,
+        "lower95ci": 1128.5,
+        "upper95ci": 1157
       }
     },
     {
@@ -2939,17 +3053,17 @@
       "name": "Gemini 4 Hydrogen (Low)",
       "release_date": "2026-11-12",
       "rubric_score": 0.2222222222222222,
-      "analytical_quality_elo": 736.84,
+      "analytical_quality_elo": 737.19,
       "analytical_quality_ci": {
-        "elo": 736.84,
-        "lower95ci": 717.14,
-        "upper95ci": 756.06
+        "elo": 737.19,
+        "lower95ci": 716.01,
+        "upper95ci": 758.14
       },
-      "presentation_elo": 1160.98,
+      "presentation_elo": 1162.69,
       "presentation_ci": {
-        "elo": 1160.98,
-        "lower95ci": 1143.05,
-        "upper95ci": 1179.25
+        "elo": 1162.69,
+        "lower95ci": 1144.1,
+        "upper95ci": 1182.05
       }
     },
     {
@@ -3281,17 +3395,17 @@
       "name": "K2 Horizon 7B",
       "release_date": "2026-09-03",
       "rubric_score": 0.2624618514750763,
-      "analytical_quality_elo": 1038.58,
+      "analytical_quality_elo": 1037.97,
       "analytical_quality_ci": {
-        "elo": 1038.58,
-        "lower95ci": 1022.06,
-        "upper95ci": 1055.62
+        "elo": 1037.97,
+        "lower95ci": 1021.97,
+        "upper95ci": 1054.29
       },
-      "presentation_elo": 986.65,
+      "presentation_elo": 987.58,
       "presentation_ci": {
-        "elo": 986.65,
-        "lower95ci": 970.68,
-        "upper95ci": 1003.95
+        "elo": 987.58,
+        "lower95ci": 971.94,
+        "upper95ci": 1004.93
       }
     },
     {
@@ -3300,17 +3414,17 @@
       "name": "GPT-6.2 Astra (Low)",
       "release_date": "2026-11-17",
       "rubric_score": 0.31313131313131315,
-      "analytical_quality_elo": 1033,
+      "analytical_quality_elo": 1032.77,
       "analytical_quality_ci": {
-        "elo": 1033,
-        "lower95ci": 1014.68,
-        "upper95ci": 1051.32
+        "elo": 1032.77,
+        "lower95ci": 1012.49,
+        "upper95ci": 1053.12
       },
-      "presentation_elo": 1006.15,
+      "presentation_elo": 1007.69,
       "presentation_ci": {
-        "elo": 1006.15,
-        "lower95ci": 992.4,
-        "upper95ci": 1019.91
+        "elo": 1007.69,
+        "lower95ci": 991.73,
+        "upper95ci": 1023.85
       }
     },
     {
@@ -3504,6 +3618,25 @@
       }
     },
     {
+      "id": "f586801a-2cff-4e77-8322-577cd57bbdd1",
+      "provider": "Thinking Machines",
+      "name": "Inkling Small (High)",
+      "release_date": "2026-07-30",
+      "rubric_score": 0.15454545454545454,
+      "analytical_quality_elo": 545.05,
+      "analytical_quality_ci": {
+        "elo": 545.05,
+        "lower95ci": 525.8,
+        "upper95ci": 564.3
+      },
+      "presentation_elo": 956.57,
+      "presentation_ci": {
+        "elo": 956.57,
+        "lower95ci": 938.82,
+        "upper95ci": 974.31
+      }
+    },
+    {
       "id": "142b93bf-09c4-42dc-9c3a-50b1a222cbd4",
       "provider": "Anthropic",
       "name": "Claude Sonnet 5 (Low)",
@@ -3634,6 +3767,25 @@
         "elo": 917.59,
         "lower95ci": 901.2,
         "upper95ci": 933.89
+      }
+    },
+    {
+      "id": "ba83cb41-370c-4331-9e7e-3074d6cc66c4",
+      "provider": "Thinking Machines",
+      "name": "Inkling (High)",
+      "release_date": "2026-07-15",
+      "rubric_score": 0.1787538304392237,
+      "analytical_quality_elo": 674.34,
+      "analytical_quality_ci": {
+        "elo": 674.34,
+        "lower95ci": 656.04,
+        "upper95ci": 692.64
+      },
+      "presentation_elo": 916.46,
+      "presentation_ci": {
+        "elo": 916.46,
+        "lower95ci": 898.92,
+        "upper95ci": 934.01
       }
     },
     {
@@ -4036,6 +4188,25 @@
       }
     },
     {
+      "id": "31da3a71-0773-47d9-8560-9f19f069926b",
+      "provider": "Institute of Foundation Models",
+      "name": "K2 Horizon 3.7B",
+      "release_date": "2026-09-03",
+      "rubric_score": 0.2010204081632653,
+      "analytical_quality_elo": 734.1,
+      "analytical_quality_ci": {
+        "elo": 734.1,
+        "lower95ci": 714.56,
+        "upper95ci": 752.49
+      },
+      "presentation_elo": 770.13,
+      "presentation_ci": {
+        "elo": 770.13,
+        "lower95ci": 750.84,
+        "upper95ci": 788.41
+      }
+    },
+    {
       "id": "093b9df2-ebee-4309-943f-5a7e88360adf",
       "provider": "Google",
       "name": "Gemini 3.5 Flash-Lite",
@@ -4052,25 +4223,6 @@
         "elo": 767.82,
         "lower95ci": 751.14,
         "upper95ci": 783.2
-      }
-    },
-    {
-      "id": "31da3a71-0773-47d9-8560-9f19f069926b",
-      "provider": "Institute of Foundation Models",
-      "name": "K2 Horizon 3.7B",
-      "release_date": "2026-09-03",
-      "rubric_score": 0.2010204081632653,
-      "analytical_quality_elo": 733.66,
-      "analytical_quality_ci": {
-        "elo": 733.66,
-        "lower95ci": 714.16,
-        "upper95ci": 751.14
-      },
-      "presentation_elo": 766.43,
-      "presentation_ci": {
-        "elo": 766.43,
-        "lower95ci": 748.9,
-        "upper95ci": 784.24
       }
     },
     {
@@ -4611,17 +4763,17 @@
       "name": "Granite 4.2 30B",
       "release_date": "2026-08-25",
       "rubric_score": 0.09785202863961814,
-      "analytical_quality_elo": 270.83,
+      "analytical_quality_elo": 273.31,
       "analytical_quality_ci": {
-        "elo": 270.83,
-        "lower95ci": 247.89,
-        "upper95ci": 292.83
+        "elo": 273.31,
+        "lower95ci": 249.82,
+        "upper95ci": 295.52
       },
-      "presentation_elo": 229.25,
+      "presentation_elo": 231.7,
       "presentation_ci": {
-        "elo": 229.25,
-        "lower95ci": 206.02,
-        "upper95ci": 250.82
+        "elo": 231.7,
+        "lower95ci": 208.76,
+        "upper95ci": 251.34
       }
     },
     {
@@ -4948,44 +5100,6 @@
       }
     },
     {
-      "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
-      "provider": "OpenAI",
-      "name": "gpt-oss-120b (High)",
-      "release_date": "2025-08-05",
-      "rubric_score": 0.023232323232323233,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      },
-      "presentation_elo": 0,
-      "presentation_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      }
-    },
-    {
-      "id": "36f73aaf-d38a-4b56-a2b3-d04d17186910",
-      "provider": "OpenAI",
-      "name": "gpt-oss-20b (High)",
-      "release_date": "2025-08-05",
-      "rubric_score": 0.024242424242424242,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      },
-      "presentation_elo": 0,
-      "presentation_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      }
-    },
-    {
       "id": "d80eb0f1-f62e-4d31-99d2-7a925eb126b0",
       "provider": "Google",
       "name": "Gemma 4 E4B (Reasoning)",
@@ -5005,124 +5119,10 @@
       }
     },
     {
-      "id": "922c69c7-9037-43c6-8bcf-a1c555e7f3eb",
-      "provider": "Meta",
-      "name": "Llama 4 Maverick",
-      "release_date": "2025-04-05",
-      "rubric_score": 0.00909090909090909,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      },
-      "presentation_elo": 0,
-      "presentation_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      }
-    },
-    {
-      "id": "adf9a85e-abc3-4f28-937b-db6655cc5238",
-      "provider": "Meta",
-      "name": "Llama 4 Scout",
-      "release_date": "2025-04-05",
-      "rubric_score": 0.007164790174002047,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      },
-      "presentation_elo": 0,
-      "presentation_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      }
-    },
-    {
-      "id": "4559e9f0-8aad-4681-89fb-68cb915e0f16",
-      "provider": "Alibaba",
-      "name": "Qwen3 14B (Reasoning)",
-      "release_date": "2025-04-28",
-      "rubric_score": 0.02889576883384933,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      },
-      "presentation_elo": 0,
-      "presentation_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      }
-    },
-    {
-      "id": "5e0164b3-d902-4bcb-a1b2-83b4f4cd6143",
-      "provider": "Alibaba",
-      "name": "Qwen3 30B A3B 2507 (Reasoning)",
-      "release_date": "2025-07-30",
-      "rubric_score": 0.04081632653061224,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      },
-      "presentation_elo": 0,
-      "presentation_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      }
-    },
-    {
-      "id": "9dba61f5-78ee-4190-8d1d-8e7063ffd386",
-      "provider": "Alibaba",
-      "name": "Qwen3 8B (Reasoning)",
-      "release_date": "2025-04-28",
-      "rubric_score": 0.03232323232323232,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      },
-      "presentation_elo": 0,
-      "presentation_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      }
-    },
-    {
-      "id": "b00ecd62-a53f-4aed-b833-3e9d6b0170ba",
-      "provider": "Alibaba",
-      "name": "Qwen3 32B (Reasoning)",
-      "release_date": "2025-04-28",
-      "rubric_score": 0.03939393939393939,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      },
-      "presentation_elo": 0,
-      "presentation_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      }
-    },
-    {
-      "id": "43fc5506-c5ed-4dee-9b85-962bf7ae3986",
-      "provider": "DeepSeek",
-      "name": "DeepSeek V3 (Dec '24)",
-      "release_date": "2024-12-26",
+      "id": "0c64b008-20c3-408d-bd68-15136df8cd2c",
+      "provider": "IBM",
+      "name": "Granite 4.2 3B",
+      "release_date": "2026-08-25",
       "rubric_score": 0.047474747474747475,
       "analytical_quality_elo": 0,
       "analytical_quality_ci": {
@@ -5134,91 +5134,15 @@
       "presentation_ci": {
         "elo": 0,
         "lower95ci": 0,
-        "upper95ci": 16.72
-      }
-    },
-    {
-      "id": "75e1c197-f239-4361-a9d6-66dccfead236",
-      "provider": "DeepSeek",
-      "name": "DeepSeek V3 0324",
-      "release_date": "2025-03-25",
-      "rubric_score": 0.032989690721649485,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      },
-      "presentation_elo": 0,
-      "presentation_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 18.99
-      }
-    },
-    {
-      "id": "43da3718-3d6e-40dd-901a-05664179ff7f",
-      "provider": "Mistral",
-      "name": "Mistral Small 3.2",
-      "release_date": "2025-06-20",
-      "rubric_score": 0.034623217922606926,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      },
-      "presentation_elo": 0,
-      "presentation_ci": {
-        "elo": 0,
-        "lower95ci": 0,
         "upper95ci": 0
       }
     },
     {
-      "id": "66f4ce73-9a9b-4b49-9c6e-bedb9bfdc720",
-      "provider": "Mistral",
-      "name": "Ministral 3 3B",
-      "release_date": "2025-12-02",
-      "rubric_score": 0.03664921465968586,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      },
-      "presentation_elo": 0,
-      "presentation_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      }
-    },
-    {
-      "id": "9741f3c2-cbb1-4a3f-99ee-7bd7384d9038",
-      "provider": "Mistral",
-      "name": "Ministral 3 8B",
-      "release_date": "2025-12-02",
-      "rubric_score": 0.04564315352697095,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      },
-      "presentation_elo": 0,
-      "presentation_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      }
-    },
-    {
-      "id": "5a49ef80-3af5-404b-8ac0-e1b230ae95de",
-      "provider": "Institute of Foundation Models",
-      "name": "K2 Think V2",
-      "release_date": "2025-12-15",
-      "rubric_score": 0.0411946446961895,
+      "id": "f0083258-8646-45b8-8082-7aaf6c2ea82a",
+      "provider": "OpenAI",
+      "name": "gpt-oss-120b (High)",
+      "release_date": "2025-08-05",
+      "rubric_score": 0.023232323232323233,
       "analytical_quality_elo": 0,
       "analytical_quality_ci": {
         "elo": 0,
@@ -5252,49 +5176,11 @@
       }
     },
     {
-      "id": "b89c4faf-219e-4171-a1aa-e3bd2fd0a924",
-      "provider": "Upstage",
-      "name": "Solar Pro 3",
-      "release_date": "2026-04-06",
-      "rubric_score": 0.049029622063329927,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      },
-      "presentation_elo": 0,
-      "presentation_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      }
-    },
-    {
       "id": "9ee13921-62a4-425a-a22b-df3302198d93",
       "provider": "NVIDIA",
       "name": "NVIDIA Nemotron 3 Nano 4B",
       "release_date": "2026-03-16",
       "rubric_score": 0.03535353535353535,
-      "analytical_quality_elo": 0,
-      "analytical_quality_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      },
-      "presentation_elo": 0,
-      "presentation_ci": {
-        "elo": 0,
-        "lower95ci": 0,
-        "upper95ci": 0
-      }
-    },
-    {
-      "id": "63872e9c-3377-4a6b-b477-7bba244c38e9",
-      "provider": "NVIDIA",
-      "name": "Nemotron 3 Super 120B A12B (Reasoning)",
-      "release_date": "2026-03-11",
-      "rubric_score": 0.006060606060606061,
       "analytical_quality_elo": 0,
       "analytical_quality_ci": {
         "elo": 0,
@@ -5328,11 +5214,277 @@
       }
     },
     {
-      "id": "0c64b008-20c3-408d-bd68-15136df8cd2c",
-      "provider": "IBM",
-      "name": "Granite 4.2 3B",
-      "release_date": "2026-08-25",
+      "id": "36f73aaf-d38a-4b56-a2b3-d04d17186910",
+      "provider": "OpenAI",
+      "name": "gpt-oss-20b (High)",
+      "release_date": "2025-08-05",
+      "rubric_score": 0.024242424242424242,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "43da3718-3d6e-40dd-901a-05664179ff7f",
+      "provider": "Mistral",
+      "name": "Mistral Small 3.2",
+      "release_date": "2025-06-20",
+      "rubric_score": 0.034623217922606926,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "43fc5506-c5ed-4dee-9b85-962bf7ae3986",
+      "provider": "DeepSeek",
+      "name": "DeepSeek V3 (Dec '24)",
+      "release_date": "2024-12-26",
       "rubric_score": 0.047474747474747475,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 16.72
+      }
+    },
+    {
+      "id": "4559e9f0-8aad-4681-89fb-68cb915e0f16",
+      "provider": "Alibaba",
+      "name": "Qwen3 14B (Reasoning)",
+      "release_date": "2025-04-28",
+      "rubric_score": 0.02889576883384933,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "5a49ef80-3af5-404b-8ac0-e1b230ae95de",
+      "provider": "Institute of Foundation Models",
+      "name": "K2 Think V2",
+      "release_date": "2025-12-15",
+      "rubric_score": 0.0411946446961895,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "5e0164b3-d902-4bcb-a1b2-83b4f4cd6143",
+      "provider": "Alibaba",
+      "name": "Qwen3 30B A3B 2507 (Reasoning)",
+      "release_date": "2025-07-30",
+      "rubric_score": 0.04081632653061224,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "63872e9c-3377-4a6b-b477-7bba244c38e9",
+      "provider": "NVIDIA",
+      "name": "Nemotron 3 Super 120B A12B (Reasoning)",
+      "release_date": "2026-03-11",
+      "rubric_score": 0.006060606060606061,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "66f4ce73-9a9b-4b49-9c6e-bedb9bfdc720",
+      "provider": "Mistral",
+      "name": "Ministral 3 3B",
+      "release_date": "2025-12-02",
+      "rubric_score": 0.03664921465968586,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "75e1c197-f239-4361-a9d6-66dccfead236",
+      "provider": "DeepSeek",
+      "name": "DeepSeek V3 0324",
+      "release_date": "2025-03-25",
+      "rubric_score": 0.032989690721649485,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 18.99
+      }
+    },
+    {
+      "id": "922c69c7-9037-43c6-8bcf-a1c555e7f3eb",
+      "provider": "Meta",
+      "name": "Llama 4 Maverick",
+      "release_date": "2025-04-05",
+      "rubric_score": 0.00909090909090909,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "9741f3c2-cbb1-4a3f-99ee-7bd7384d9038",
+      "provider": "Mistral",
+      "name": "Ministral 3 8B",
+      "release_date": "2025-12-02",
+      "rubric_score": 0.04564315352697095,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "9dba61f5-78ee-4190-8d1d-8e7063ffd386",
+      "provider": "Alibaba",
+      "name": "Qwen3 8B (Reasoning)",
+      "release_date": "2025-04-28",
+      "rubric_score": 0.03232323232323232,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "adf9a85e-abc3-4f28-937b-db6655cc5238",
+      "provider": "Meta",
+      "name": "Llama 4 Scout",
+      "release_date": "2025-04-05",
+      "rubric_score": 0.007164790174002047,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "b00ecd62-a53f-4aed-b833-3e9d6b0170ba",
+      "provider": "Alibaba",
+      "name": "Qwen3 32B (Reasoning)",
+      "release_date": "2025-04-28",
+      "rubric_score": 0.03939393939393939,
+      "analytical_quality_elo": 0,
+      "analytical_quality_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      },
+      "presentation_elo": 0,
+      "presentation_ci": {
+        "elo": 0,
+        "lower95ci": 0,
+        "upper95ci": 0
+      }
+    },
+    {
+      "id": "b89c4faf-219e-4171-a1aa-e3bd2fd0a924",
+      "provider": "Upstage",
+      "name": "Solar Pro 3",
+      "release_date": "2026-04-06",
+      "rubric_score": 0.049029622063329927,
       "analytical_quality_elo": 0,
       "analytical_quality_ci": {
         "elo": 0,

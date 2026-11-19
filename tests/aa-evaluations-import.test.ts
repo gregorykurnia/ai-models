@@ -7,7 +7,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import { test, type TestContext } from "node:test";
-import { assertCompleteScoreChart, selectCaptureTargets } from "../scripts/capture-aa-evaluations.mjs";
+import { assertCompleteScoreChart, completeModelSelectionCount, selectCaptureTargets } from "../scripts/capture-aa-evaluations.mjs";
 import type { Dataset } from "../src/lib/contract";
 import { aggregateMaster, averageMasterRank, masterIdentityKey, masterLeaderboardCsv, masterTableRows, orderMasterEvaluations, sortMaster } from "../src/lib/master";
 import { calculateSuitability } from "../src/lib/suitability";
@@ -285,7 +285,7 @@ test("AA import preserves FrontierCode and separate CritPt datasets, rejects bad
 });
 
 type AtlasItem = { id: string; name: string; modelName: string; creatorName: string; effort?: string | null; value: number | null };
-type AtlasCapture = { charts: { title: string; items: AtlasItem[] }[] };
+type AtlasCapture = { charts: { title: string; selectorLabels: string[]; items: AtlasItem[] }[] };
 
 test("SWE-Atlas-QnA imports only the documented master models and preserves the rest of the master", async t => {
   const { data, run } = await importWorkspace(t);
@@ -306,13 +306,16 @@ test("SWE-Atlas-QnA imports only the documented master models and preserves the 
   const capture = JSON.parse(captureText) as AtlasCapture;
   const chart = capture.charts.find(chart => chart.title === "SWE-Atlas-QnA-AA: Score");
   assert.ok(chart);
+  assertCompleteScoreChart(capture.charts, chart.title);
+  const rowCount = completeModelSelectionCount(chart.selectorLabels[0]);
+  assert.ok(rowCount);
   const inventory = await readFile(new URL("../docs/SWE_ATLAS_QNA_CAPTURE.md", import.meta.url), "utf8");
   const mappings = new Map(inventory.split("\n").flatMap(line => {
     const [, setup, score, model] = line.split("|").map(cell => cell.trim());
     return line.startsWith("| ") && score?.endsWith("%") && model ? [[setup, model] as const] : [];
   }));
   const scoresByName = new Map(chart.items.map(item => [mappings.get(item.name), item.value! * 100]));
-  assert.equal(scoresByName.size, 39);
+  assert.equal(scoresByName.size, rowCount);
   assert(!scoresByName.has(undefined));
 
   await run();
@@ -324,7 +327,7 @@ test("SWE-Atlas-QnA imports only the documented master models and preserves the 
   assert.equal(atlas.source_url, "https://artificialanalysis.ai/agents/coding-agents");
   assert.equal(atlas.score_kind, "percentage");
   assert.equal(atlas.score_unit, "%");
-  assert.equal(atlas.row_count, 39);
+  assert.equal(atlas.row_count, rowCount);
   assert.match(atlas.notes, /Scored inside the coding agent AA ran each model in.*Ranks compare the model configurations included on this leaderboard/);
   assert.equal(dataset.snapshots.find(snapshot => snapshot.id === atlas.published_snapshot_id)?.row_count, atlas.row_count);
   assert.deepEqual(dataset.evaluations.filter(evaluation => evaluation.id !== id), baseline.evaluations);
@@ -354,7 +357,9 @@ test("SWE-Atlas-QnA imports only the documented master models and preserves the 
   // Put the new evaluation first to exercise master identity and sorting independently of catalog order.
   const master = aggregateMaster([atlas, ...baseline.evaluations], dataset.entries).rows;
   assert.equal(master.length, before.length);
-  assert.equal(master.filter(row => row.cells[id]).length, 39);
+  assert.equal(master.filter(row => row.cells[id]).length, rowCount);
+  const neon = master.find(row => row.provider === "Google" && row.model === "Gemini 4 Neon (Xhigh)");
+  assert.equal(neon?.cells[id]?.entry.score_value, 0.67741935483871 * 100);
   assert.deepEqual(sortMaster(master, "aggregate-score", "asc").map(row => row.identity_key),
     sortMaster(before, "aggregate-score", "asc").map(row => row.identity_key));
   for (const [index, row] of master.entries()) {
@@ -375,8 +380,8 @@ test("SWE-Atlas-QnA imports only the documented master models and preserves the 
     { evaluation_id: id, weight: 100, captured_at: atlas.captured_at, snapshot_id: atlas.published_snapshot_id },
   ] });
   assert.equal(scores[0].model, entries[0].model);
-  assert.equal(scores.filter(score => score.complete_coverage).length, 39);
-  assert(scores.slice(39).every(score => score.score === null && score.coverage_percent === 0));
+  assert.equal(scores.filter(score => score.complete_coverage).length, rowCount);
+  assert(scores.slice(rowCount).every(score => score.score === null && score.coverage_percent === 0));
 
   const outputs = [datasetPath, join(data, "intelligence-index-costs.json")];
   const readOutputs = () => Promise.all(outputs.map(path => readFile(path, "utf8")));
@@ -430,7 +435,7 @@ test("SWE-Atlas-QnA imports only the documented master models and preserves the 
   const refreshedEntries = refreshed.entries.filter(entry => entry.evaluation_id === id);
   assert.deepEqual(refreshedEntries.map(({ model, source_rank, score_value }) => [model, source_rank, score_value]),
     entries.map(({ model, source_rank, score_value }) => [model, source_rank, score_value]));
-  assert.equal(refreshed.evaluations.find(evaluation => evaluation.id === id)?.row_count, 39);
+  assert.equal(refreshed.evaluations.find(evaluation => evaluation.id === id)?.row_count, rowCount);
   assert.equal(refreshed.sourceAssets?.filter(asset => asset.filename === `aa-captures/${id}.json`).length, 2);
   assert((await readdir(data)).every(file => !file.endsWith(".tmp")));
 });

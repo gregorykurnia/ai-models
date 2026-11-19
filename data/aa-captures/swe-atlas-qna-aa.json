@@ -1,16 +1,25 @@
 {
  "key": "swe-atlas-qna-aa",
  "source_url": "https://artificialanalysis.ai/agents/coding-agents",
- "captured_at": "2026-11-18",
+ "captured_at": "2026-11-19",
  "selectors": 1,
  "charts": [
   {
    "title": "SWE-Atlas-QnA-AA: Score",
    "seriesKey": "swe-atlas-qna",
    "selectorLabels": [
-    "39 of 39 models"
+    "40 of 40 models"
    ],
    "items": [
+    {
+     "id": "f547ba043e9627fd184c2e7e5fb35998",
+     "name": "Antigravity CLI - Gemini 4 Neon (Xhigh)",
+     "value": 0.67741935483871,
+     "agentCreator": "Google",
+     "creatorName": "Google",
+     "modelName": "Gemini 4 Neon (Xhigh)",
+     "effort": "xhigh"
+    },
     {
      "id": "9820ee072540fb8c51becfc2b1f274c8",
      "name": "Claude Code - Claude Fable 5.2 (Xhigh, Default Fallback)",

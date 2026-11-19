@@ -116,6 +116,7 @@ const evaluationConfigs: EvaluationConfig[] = [
     },
     // The setup-to-model inventory is in docs/SWE_ATLAS_QNA_CAPTURE.md. Process this after the model evaluations.
     expectedRows: new Map([
+      ["Antigravity CLI - Gemini 4 Neon (Xhigh)", "Gemini 4 Neon (Xhigh)"],
       ["Claude Code - Claude Fable 5.2 (Xhigh, Default Fallback)", "Claude Fable 5.2 (Adaptive Reasoning, Xhigh Effort, Default Fallback)"],
       ["Claude Code - Claude Fable 5.2 (High, Default Fallback)", "Claude Fable 5.2 (Adaptive Reasoning, High Effort, Default Fallback)"],
       ["Claude Code - Claude Opus 5.5 (Max, Default Fallback)", "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)"],
