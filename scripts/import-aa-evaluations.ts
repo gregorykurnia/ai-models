@@ -85,6 +85,26 @@ const evaluationConfigs: EvaluationConfig[] = [
   { id: "strategy-ops-index", capture: "strategy-and-ops", chart: "Artificial Analysis Strategy & Ops Index", costChart: "Artificial Analysis Strategy & Ops Index vs. Cost per Task" },
   { id: "intelligence-index", capture: "artificial-analysis-intelligence-index", chart: "Artificial Analysis Intelligence Index: Score" },
   {
+    id: "aa-omniscience-business",
+    capture: "omniscience-business",
+    chart: "AA-Omniscience Net Score by Domain: Business",
+    definition: {
+      id: "aa-omniscience-business",
+      slug: "aa-omniscience-business",
+      display_name: "AA-Omniscience Net Score: Business",
+      source_title: "AA-Omniscience Net Score by Domain: Business",
+      source_url: "https://artificialanalysis.ai/evaluations/omniscience?detailed-domain-results=omniscience-net-score-by-domain",
+      category: "capability_index",
+      metric_key: "aa-omniscience-index",
+      metric_label: "AA-Omniscience Index",
+      score_kind: "signed_index",
+      score_unit: "points",
+      score_min: -100,
+      score_max: 100,
+      notes: "Net Score on the Business questions of AA-Omniscience v1.1 only.",
+    },
+  },
+  {
     id: "swe-atlas-qna-aa",
     capture: "swe-atlas-qna-aa",
     chart: "SWE-Atlas-QnA-AA: Score",
@@ -144,10 +164,10 @@ const evaluationConfigs: EvaluationConfig[] = [
 // The owner retired GDPval-AA, SciCode, HLE-Diamond and AA-LCR on 2026-11-16 so they no longer factor in.
 const retiredEvaluationIds = new Set(["humanity-s-last-exam", "gdpval-aa-v2-1", "scicode", "hle-diamond", "aa-lcr-v1-1"]);
 
-// Models whose creator isn't listed in any chart on their evaluation page. The creator is taken from
-// the model's own AA page (captured 11 Oct 2026).
+// Creators verified on AA's model pages when the captures have no creator record.
 const creatorOverrides: Record<string, string> = {
   "nex-n2-pro": "Nex AGI",
+  "joyvl2_v27": "Joy Future Academy",
 };
 
 // The page gives an estimated flag. The leaderboard also distinguishes estimates still awaiting independent
@@ -290,7 +310,9 @@ for (const capture of modelCaptures) {
 for (const capture of modelCaptures) {
   for (const chart of capture.charts) {
     for (const row of chart.items) {
-      if (typeof row.creatorLogo === "string" && providerById.has(row.id)) creatorByLogo.set(row.creatorLogo, providerById.get(row.id)!);
+      const logo = row.creatorLogo ?? row.logo;
+      const creator = providerById.get(row.id);
+      if (typeof logo === "string" && creator) creatorByLogo.set(logo, creator);
     }
   }
 }
@@ -418,8 +440,8 @@ for (const config of evaluationConfigs) {
     precise_cost_count: withCost,
     has_confidence_interval: withCi > 0,
     has_release_date: withRelease > 0,
-    notes: config.expectedRows ? config.definition?.notes ?? evaluation.notes
-      : `${evaluation.notes.replace(/\s*Values refreshed from (?:the )?Artificial Analysis[^]*$/, "")} Values refreshed from the Artificial Analysis evaluation page captured ${capture.captured_at} (${rows.length} models).${config.id === "intelligence-index" ? " Intelligence Index v5.0.1 re-scoring replaces v5.0 scores, ranks, and task costs." : ""}`.trim(),
+    notes: config.definition?.notes
+      || `${evaluation.notes.replace(/\s*Values refreshed from (?:the )?Artificial Analysis[^]*$/, "")} Values refreshed from the Artificial Analysis evaluation page captured ${capture.captured_at} (${rows.length} models).${config.id === "intelligence-index" ? " Intelligence Index v5.0.1 re-scoring replaces v5.0 scores, ranks, and task costs." : ""}`.trim(),
   };
   newEvaluations.push(evaluationRecord);
   newSnapshots.push({

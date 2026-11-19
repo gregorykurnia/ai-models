@@ -71,6 +71,7 @@ export const evaluationSpeedSlugs: Readonly<Record<string, string | null>> = {
   "aa-briefcase-analytical-quality-elo": "aa-briefcase",
   "aa-briefcase-presentation-elo": "aa-briefcase",
   "aa-omniscience-index": "omniscience",
+  "aa-omniscience-business": null,
   "aa-omniscience-accuracy": "omniscience",
   "automationbench-aa": "automationbench-aa",
   "terminal-bench-4-0": "terminalbench-4-0",

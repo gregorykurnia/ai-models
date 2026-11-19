@@ -39,7 +39,7 @@ Ranks are assigned by descending score. Exact score ties share a rank and keep s
 
 `scripts/capture-aa-evaluations.mjs` saves the chart and table data behind Artificial Analysis evaluation results to `data/aa-captures/`. `scripts/import-aa-evaluations.ts` rebuilds the evaluations from those captures. Missing creators, unknown chart titles, and duplicate models within an evaluation reject the import. The Sep 29 workbook remains in the published history only.
 
-The 18 Nov 2026 capture supplies 19 leaderboards, including legacy CritPt, both CritPt v2 subsets, and SWE-Atlas-QnA. The CritPt boards have separate source links, scores, ranks, and costs. The Hard Subset uses its captured evaluation timing. The Full Set and legacy CritPt display Intelligence Index task time.
+The 18 Nov 2026 refresh and the 19 Nov Business Net Score capture supply 20 leaderboards, including legacy CritPt, both CritPt v2 subsets, and SWE-Atlas-QnA. The CritPt boards have separate source links, scores, ranks, and costs. The Hard Subset uses its captured evaluation timing. The Full Set and legacy CritPt display Intelligence Index task time.
 
 SWE-Atlas-QnA comes from the [Artificial Analysis Coding Agent Index](https://artificialanalysis.ai/agents/coding-agents). The [capture inventory](SWE_ATLAS_QNA_CAPTURE.md) maps all 39 setups to master models by model and effort. The importer converts pass-rate fractions to percentages and assigns competition ranks among the mapped rows. SWE-Atlas QnA follows FrontierCode 2.0 in the master table. The nine dimensions used by Aggregate Score exclude this column. The evaluation has no separate cost or timing data.
 

@@ -7,13 +7,17 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import { test, type TestContext } from "node:test";
-import { assertCompleteScoreChart } from "../scripts/capture-aa-evaluations.mjs";
+import { assertCompleteScoreChart, selectCaptureTargets } from "../scripts/capture-aa-evaluations.mjs";
 import type { Dataset } from "../src/lib/contract";
-import { aggregateMaster, averageMasterRank, masterLeaderboardCsv, masterTableRows, orderMasterEvaluations, sortMaster } from "../src/lib/master";
+import { aggregateMaster, averageMasterRank, masterIdentityKey, masterLeaderboardCsv, masterTableRows, orderMasterEvaluations, sortMaster } from "../src/lib/master";
 import { calculateSuitability } from "../src/lib/suitability";
 import { buildPlannerData } from "../src/lib/suitability-data";
 
 const execFileAsync = promisify(execFile);
+const businessKey = "omniscience-business";
+const businessId = "aa-omniscience-business";
+const businessTitle = "AA-Omniscience Net Score by Domain: Business";
+const businessUrl = "https://artificialanalysis.ai/evaluations/omniscience?detailed-domain-results=omniscience-net-score-by-domain";
 
 async function importWorkspace(t: TestContext) {
   const directory = await mkdtemp(join(tmpdir(), "ai-models-evaluations-test-"));
@@ -55,6 +59,117 @@ test("AA capture rejects missing, ambiguous, or invalid score chart evidence", (
     assert.throws(() => assertCompleteScoreChart([{ ...score, selectorLabels: [label] }], score.title), /incomplete score chart/);
   }
   assert.throws(() => assertCompleteScoreChart([{ ...score, selectorLabels: ["0 of 0 models"], items: [] }], score.title), /0 of 0 models, 0 scores/);
+});
+
+test("Business is a default capture target and requires its own complete model selection", () => {
+  const target = selectCaptureTargets([], undefined).find(page => page.key === businessKey);
+  assert.ok(target);
+  assert.equal(target.url, businessUrl);
+  assert.deepEqual(target.scoreCharts, [businessTitle]);
+  assert.deepEqual(selectCaptureTargets(["--only", businessKey], undefined), [target]);
+
+  const score = { title: businessTitle, selectorLabels: ["169 of 169 models"], items: Array.from({ length: 169 }, (_, id) => ({ id })) };
+  const law = { ...score, title: "AA-Omniscience Net Score by Domain: Law" };
+  assert.doesNotThrow(() => assertCompleteScoreChart([law, score], target.scoreCharts[0]));
+  assert.throws(() => assertCompleteScoreChart([law], target.scoreCharts[0]), /expected one score chart "AA-Omniscience Net Score by Domain: Business", found 0/);
+  const partial = { ...score, selectorLabels: ["28 of 169 models"], items: score.items.slice(0, 28) };
+  assert.throws(() => assertCompleteScoreChart([law, partial], target.scoreCharts[0]), /incomplete score chart "AA-Omniscience Net Score by Domain: Business" \(28 of 169 models, 28 scores\)/);
+});
+
+test("Business imports each signed score and preserves existing master ranks and order", async t => {
+  const { data, run } = await importWorkspace(t);
+  const datasetPath = join(data, "leaderboards.json");
+  const costsPath = join(data, "intelligence-index-costs.json");
+  const capturePath = join(data, "aa-captures", `${businessKey}.json`);
+  const readDataset = async () => JSON.parse(await readFile(datasetPath, "utf8")) as Dataset;
+  const bundled = await readDataset();
+  const baseline = {
+    ...bundled,
+    evaluations: bundled.evaluations.filter(evaluation => evaluation.id !== businessId),
+    entries: bundled.entries.filter(entry => entry.evaluation_id !== businessId),
+    snapshots: bundled.snapshots.filter(snapshot => snapshot.evaluation_id !== businessId),
+  };
+  await writeFile(datasetPath, JSON.stringify(baseline));
+
+  type ScoreItem = { id: string; value: number; tooltipLabel: string; logo: string };
+  const captureText = await readFile(capturePath, "utf8");
+  const capture = JSON.parse(captureText) as { charts: { title: string; selectorLabels: string[]; items: ScoreItem[] }[] };
+  assertCompleteScoreChart(capture.charts, businessTitle);
+  const chart = capture.charts.find(chart => chart.title === businessTitle)!;
+  await run();
+  const dataset = await readDataset();
+  const business = dataset.evaluations.find(evaluation => evaluation.id === businessId);
+  const overall = baseline.evaluations.find(evaluation => evaluation.id === "aa-omniscience-index");
+  assert.ok(business && overall);
+  assert.equal(business.slug, businessId);
+  assert.equal(business.display_name, "AA-Omniscience Net Score: Business");
+  assert.equal(business.source_url, businessUrl);
+  assert.equal(business.notes, "Net Score on the Business questions of AA-Omniscience v1.1 only.");
+  for (const key of ["metric_key", "metric_label", "score_kind", "score_unit", "score_min", "score_max"] as const) {
+    assert.equal(business[key], overall[key], key);
+  }
+  assert.equal(business.row_count, chart.items.length);
+  assert.equal(business.cost_label_count, 0);
+  assert.equal(dataset.snapshots.find(snapshot => snapshot.id === business.published_snapshot_id)?.row_count, business.row_count);
+  assert.equal(dataset.report.evaluation_count, baseline.evaluations.length + 1);
+  assert.deepEqual(dataset.evaluations.filter(evaluation => evaluation.id !== businessId), baseline.evaluations);
+  assert.deepEqual(dataset.entries.filter(entry => entry.evaluation_id !== businessId), baseline.entries);
+
+  const entries = dataset.entries.filter(entry => entry.evaluation_id === businessId);
+  const entriesById = new Map(entries.map(entry => [entry.id, entry]));
+  assert.equal(entries.length, chart.items.length);
+  for (const item of chart.items) {
+    const id = createHash("sha256").update(`${business.published_snapshot_id}:${item.id}:${businessId}`).digest("hex").slice(0, 24);
+    const entry = entriesById.get(id);
+    assert.ok(entry, item.tooltipLabel);
+    assert.equal(entry.score_value, item.value);
+    assert.equal(entry.source_rank, 1 + entries.filter(other => other.score_value > item.value).length);
+    assert.equal(entry.cost_usd, null);
+  }
+  assert(entries.some(entry => entry.score_value < 0));
+  assert(entries.some(entry => entry.model === "Gemini 4 Neon (Xhigh)" && entry.provider === "Google"));
+  assert(entries.some(entry => entry.model === "JoyAI-VL-Preview" && entry.provider === "Joy Future Academy"));
+
+  const before = aggregateMaster(baseline.evaluations, baseline.entries).rows;
+  const master = aggregateMaster([business, ...baseline.evaluations], dataset.entries).rows;
+  const beforeIds = new Set(before.map(row => row.identity_key));
+  const masterWithBusiness = master.filter(row => row.cells[businessId]);
+  assert.deepEqual(new Set(masterWithBusiness.map(row => row.identity_key)), new Set(entries.map(row => masterIdentityKey(row.provider, row.model))));
+  assert(master.filter(row => !beforeIds.has(row.identity_key)).every(row => averageMasterRank(row) === null));
+  const rank = (row: (typeof master)[number]) => [row.identity_key, row.model_id, row.source_rank, averageMasterRank(row)];
+  const existing = master.filter(row => beforeIds.has(row.identity_key));
+  assert.deepEqual(existing.map(rank), before.map(rank));
+  for (const sort of ["aggregate-score", "intelligence-index"]) {
+    for (const direction of ["asc", "desc"]) {
+      assert.deepEqual(sortMaster(existing, sort, direction).map(rank), sortMaster(before, sort, direction).map(rank));
+    }
+  }
+  const order = orderMasterEvaluations(dataset.evaluations).map(evaluation => evaluation.id);
+  assert.equal(order[order.indexOf("aa-omniscience-index") + 1], businessId);
+  assert.match(masterLeaderboardCsv(masterTableRows(master), dataset.evaluations).split("\n")[0], /,Omniscience Index,Omniscience Business,/);
+
+  const planner = buildPlannerData(dataset.evaluations, dataset.entries);
+  const scores = calculateSuitability({ ...planner, weights: [
+    { evaluation_id: businessId, weight: 100, captured_at: business.captured_at, snapshot_id: business.published_snapshot_id },
+  ] });
+  assert.equal(scores.filter(score => score.complete_coverage).length, chart.items.length);
+
+  const readOutputs = () => Promise.all([datasetPath, costsPath].map(file => readFile(file, "utf8")));
+  const saved = await readOutputs();
+  const sample = chart.items.find(item => item.tooltipLabel === "Gemini 4 Neon (Xhigh)")!;
+  const invalid = [
+    { chart: { ...chart, title: "AA-Omniscience Net Score by Domain: Law" }, error: /aa-omniscience-business: chart .* Business.* is missing/ },
+    { chart: { ...chart, items: [...chart.items, { id: "blank", value: 0, logo: sample.logo, tooltipLabel: " " }] }, error: /aa-omniscience-business: missing model name/ },
+    { chart: { ...chart, items: [...chart.items, { ...sample, id: "duplicate", tooltipLabel: sample.tooltipLabel.toLowerCase() }] }, error: /aa-omniscience-business: duplicate model/ },
+  ];
+  for (const { chart, error } of invalid) {
+    await writeFile(capturePath, JSON.stringify({ ...capture, charts: [chart] }));
+    await assert.rejects(run, error);
+    assert.deepEqual(await readOutputs(), saved);
+  }
+  await writeFile(capturePath, captureText);
+  await run();
+  assert.deepEqual(await readOutputs(), saved);
 });
 
 test("AA import preserves FrontierCode and separate CritPt datasets, rejects bad captures, and supports reruns", async t => {
@@ -216,7 +331,7 @@ test("SWE-Atlas-QnA imports only the documented master models and preserves the 
   assert.deepEqual(dataset.entries.filter(entry => entry.evaluation_id !== id), baseline.entries);
   assert.deepEqual(dataset.models, baseline.models);
   assert.deepEqual(dataset.providers, baseline.providers);
-  assert.equal(dataset.report.evaluation_count, 19);
+  assert.equal(dataset.report.evaluation_count, 20);
 
   const entries = dataset.entries.filter(entry => entry.evaluation_id === id);
   assert.deepEqual(entries.map(entry => entry.model).sort(), [...mappings.values()].sort());

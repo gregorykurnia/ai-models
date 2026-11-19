@@ -194,7 +194,7 @@ export async function checkSweAtlasMaster(page, base, expect, exportRanks) {
       await expect(toggle).toHaveAttribute("aria-pressed", "false");
       await search.fill("GPT-6.2 Astra");
       await expect(section.locator(".master-card")).toHaveCount(5);
-      await expect(section.locator(".leaderboard-legend")).toContainText("Aggregate uses 9 of the 19 listed evaluations.");
+      await expect(section.locator(".leaderboard-legend")).toContainText("Aggregate uses 9 of the 20 listed evaluations.");
       await expect(section.locator("#master-search-help")).toHaveText("Separate keywords with commas, e.g. sol, haiku.");
       await section.evaluate(element => {
         const main = element.closest(".app-main");
@@ -305,7 +305,7 @@ export async function checkSweAtlasSuitabilityAndAbout(page, base, expect) {
   for (const width of widths) {
     await setWidth(page, width);
     assert.equal((await page.goto(`${base}/about/data`))?.status(), 200);
-    const count = page.getByText(/supplies 19 evaluation leaderboards/);
+    const count = page.getByText(/supplies 20 evaluation leaderboards/);
     await expect(count).toBeVisible();
     await assertTextFits(count, "Evaluation count");
     await capture(page, `about-data-${width}`);
@@ -369,5 +369,5 @@ export async function checkSweAtlasSuitabilityAndAbout(page, base, expect) {
     }
   }
   assert.deepEqual(writes, [], "Suitability check uses browser storage only");
-  console.log("Suitability: one 100% weight, two ranked models and three with missing coverage, including after reload. Data notes: 19 leaderboards.");
+  console.log("Suitability: one 100% weight, two ranked models and three with missing coverage, including after reload. Data notes: 20 leaderboards.");
 }

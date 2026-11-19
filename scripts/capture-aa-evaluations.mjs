@@ -23,6 +23,12 @@ const pages = [
     key: "omniscience", url: "https://artificialanalysis.ai/evaluations/omniscience",
     scoreCharts: ["AA-Omniscience v1.1: Net Score", "AA-Omniscience Accuracy"],
   },
+  {
+    key: "omniscience-business",
+    url: "https://artificialanalysis.ai/evaluations/omniscience?detailed-domain-results=omniscience-net-score-by-domain",
+    scorePanel: "AA-Omniscience Net Score by Domain",
+    scoreCharts: ["AA-Omniscience Net Score by Domain: Business"],
+  },
   { key: "mmmu-pro", url: "https://artificialanalysis.ai/evaluations/mmmu-pro", scoreCharts: ["MMMU-Pro: Score"] },
   {
     key: "finance-and-accounting", url: "https://artificialanalysis.ai/models/capabilities/finance-and-accounting",
@@ -159,11 +165,11 @@ async function captureBenchmarkChart(panel, target) {
   return { charts: [{ title: target.scoreCharts[0], seriesKey, selectorLabels, items }], tables: [] };
 }
 
-async function captureEvaluationCharts(page) {
-  return page.evaluate(selectorSource => {
+async function captureEvaluationCharts(scope) {
+  return scope.evaluate((root, selectorSource) => {
     const selectorPattern = new RegExp(selectorSource);
     const charts = [];
-    for (const wrapper of document.querySelectorAll(".recharts-wrapper")) {
+    for (const wrapper of root.querySelectorAll(".recharts-wrapper")) {
       let title = "";
       let card = wrapper;
       for (let i = 0; i < 12 && card; i++) {
@@ -199,7 +205,7 @@ async function captureEvaluationCharts(page) {
       });
     }
     const tables = [];
-    for (const table of document.querySelectorAll("table")) {
+    for (const table of root.querySelectorAll("table")) {
       const headers = [...table.querySelectorAll("th")].map(th => th.innerText.trim());
       const rows = [...table.querySelectorAll("tbody tr")].map(tr => [...tr.querySelectorAll("td")].map(td => td.innerText.trim()));
       if (headers.length && rows.length) tables.push({ headers, rows });
@@ -213,20 +219,26 @@ async function capturePage(page, target, capturedAt) {
   if (!response?.ok()) throw new Error(`HTTP ${response?.status()}`);
   const url = new URL(target.url);
   await page.waitForTimeout(1000);
-  if (url.pathname === "/evaluations/critpt-v2") {
-    if (new URL(page.url()).searchParams.get("critpt-subset") !== url.searchParams.get("critpt-subset")) {
-      throw new Error(`unexpected CritPt subset URL ${page.url()}`);
-    }
-    // The Hard URL can render the Full controls before the client mounts the requested chart.
-    await page.getByRole("heading", { name: target.scoreCharts[0], exact: true }).scrollIntoViewIfNeeded({ timeout: 15000 });
+  const isCritPtSubset = url.pathname === "/evaluations/critpt-v2";
+  if (isCritPtSubset && new URL(page.url()).searchParams.get("critpt-subset") !== url.searchParams.get("critpt-subset")) {
+    throw new Error(`unexpected CritPt subset URL ${page.url()}`);
   }
-  const scope = target.breakdownSeries ? await openPerformanceBreakdown(page) : page;
+  let scope = page.locator("body");
+  if (target.breakdownSeries) scope = await openPerformanceBreakdown(page);
+  if (target.scorePanel) scope = page.getByRole("tabpanel", { name: target.scorePanel, exact: true });
+  if (isCritPtSubset || target.scorePanel) {
+    // The default controls can render before the client mounts the requested chart.
+    await scope.getByRole("heading", { name: target.scoreCharts[0], exact: true }).scrollIntoViewIfNeeded({ timeout: 15000 });
+  }
   const selectors = await expandSelectors(page, scope);
   await page.waitForTimeout(800);
-  const captured = target.breakdownSeries ? await captureBenchmarkChart(scope, target) : await captureEvaluationCharts(page);
+  const captured = target.breakdownSeries ? await captureBenchmarkChart(scope, target) : await captureEvaluationCharts(scope);
   for (const title of target.scoreCharts) assertCompleteScoreChart(captured.charts, title);
   // Keep the score, Elo, index, cost, and release charts; the import reads only these.
-  if (!target.breakdownSeries) {
+  if (target.scorePanel) {
+    captured.charts = captured.charts.filter(chart => target.scoreCharts.includes(chart.title))
+      .map(chart => ({ ...chart, items: chart.items.map(slim) }));
+  } else if (!target.breakdownSeries) {
     captured.charts = captured.charts
       .filter(chart => USED_CHART.test(chart.title) && !UNUSED_CHART.test(chart.title))
       .map(({ title, items }) => ({ title, items: items.map(slim) }));

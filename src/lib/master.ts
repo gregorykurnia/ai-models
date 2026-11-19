@@ -9,10 +9,13 @@ export function masterTableRows(rows:MasterRow[]):MasterTableRow[]{return rows.m
 export function evaluationLink(e:Evaluation,model:string){return `/leaderboards/${e.slug}?q=${encodeURIComponent(model)}`;}
 
 const sweAtlasEvaluationId="swe-atlas-qna-aa";
+const omniscienceBusinessEvaluationId="aa-omniscience-business";
+const supplementalEvaluationIds=[sweAtlasEvaluationId,omniscienceBusinessEvaluationId];
 
 const masterEvaluationOrder=[
   "aa-briefcase-analytical-quality-elo",
   "aa-omniscience-index",
+  omniscienceBusinessEvaluationId,
   "strategy-ops-index",
   "aa-briefcase-presentation-elo",
   "terminal-bench-4-0",
@@ -35,6 +38,7 @@ const masterEvaluationOrder=[
 const masterEvaluationLabels:Record<string,string>={
   "aa-briefcase-analytical-quality-elo":"Analytical Quality Elo",
   "aa-omniscience-index":"Omniscience Index",
+  [omniscienceBusinessEvaluationId]:"Omniscience Business",
   "strategy-ops-index":"Strategy and Ops Index",
   "aa-briefcase-presentation-elo":"Presentation Elo",
   "terminal-bench-4-0":"Terminal-Bench 4.0",
@@ -115,18 +119,19 @@ export function masterIdentityKey(provider:string,model:string){
 export function aggregateMaster(evaluations:Evaluation[],entries:Entry[],intelligenceIndexCosts:ReadonlyMap<string,IntelligenceIndexTaskCost|null>=new Map(),modelSpeeds:ReadonlyMap<string,ModelSpeed|null>=new Map()){
   const rows=new Map<string,MasterRow>();
   const issues:{sheet:string;message:string;severity:string}[]=[];
-  // Attach agent-run results after the other cells so they preserve the master row identity and tie-break rank.
+  // Attach supplemental results last to preserve existing identities and tie-break ranks.
   const orderedEvaluations=[
-    ...evaluations.filter(e=>e.id!==sweAtlasEvaluationId),
-    ...evaluations.filter(e=>e.id===sweAtlasEvaluationId),
+    ...evaluations.filter(e=>!supplementalEvaluationIds.includes(e.id)),
+    ...supplementalEvaluationIds.flatMap(id=>evaluations.filter(e=>e.id===id)),
   ];
   for(const e of orderedEvaluations){
+    const updatesSourceRank=!supplementalEvaluationIds.includes(e.id);
     for(const entry of entries.filter(x=>x.evaluation_id===e.id).sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row||a.id.localeCompare(b.id))){
       const identity=masterIdentityKey(entry.provider,entry.model);
       let row=rows.get(identity);
       if(!row){row={model_id:entry.model_id,identity_key:identity,provider:entry.provider,model:entry.model,cells:{},source_rank:entry.source_rank,source_entries:[],intelligence_index_cost:intelligenceIndexCosts.get(identity)??intelligenceIndexCosts.get(masterIdentityKey("",entry.model))??null,speed:modelSpeeds.get(identity)??modelSpeeds.get(masterIdentityKey("",entry.model))??null};rows.set(identity,row);}
       row.source_entries.push(entry);
-      if(e.id!==sweAtlasEvaluationId)row.source_rank=Math.min(row.source_rank,entry.source_rank);
+      if(updatesSourceRank)row.source_rank=Math.min(row.source_rank,entry.source_rank);
       if(row.cells[e.id]){issues.push({sheet:e.display_name,message:`Duplicate ${entry.model_id}: retained row ${row.cells[e.id].entry.source_row}; discarded row ${entry.source_row}`,severity:"warning"});continue;}
       row.cells[e.id]={entry,href:evaluationLink(e,entry.model)};
     }

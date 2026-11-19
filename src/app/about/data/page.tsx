@@ -5,7 +5,7 @@ export default function DataPage() {
     <PageHeader>
     <div className="eyebrow">Source and methodology</div>
     <h1>About the data</h1>
-    <p>The 18 Nov 2026 Artificial Analysis capture supplies 19 evaluation leaderboards, including the three AA-Briefcase component indexes.</p>
+    <p>The Artificial Analysis dataset supplies 20 evaluation leaderboards, including the three AA-Briefcase component indexes. It combines the 18 Nov 2026 refresh with the 19 Nov Business Net Score capture.</p>
     </PageHeader>
     <p><a href="/suitability#methodology">Read the Task Suitability scoring methodology</a>.</p>
 
