@@ -31,7 +31,7 @@ Create `workflows/<slug>.json`. Use a short, URL-friendly filename. Set `slug` t
 ```
 
 - Write a title, summary and ordered `steps`. Give each step a unique `id` using lowercase letters, digits and hyphens. IDs become page anchors such as `#step-1`.
-- Give each step a title, a goal and at least one target. Each target has exactly one `trait` or `index` key from the tables below, plus the `aim` `high`, `moderate` or `low`.
+- Give each step a title, a goal and at least one target. Each target has exactly one `trait` or `index` key from the tables below, plus the `aim` `high`, `moderate` or `low`. List each trait or index once per step.
 - Add `evaluations` as an optional list of slugs to show each model’s ranks. Use `other_checks` for checks outside the evaluation catalog, such as the AA-Omniscience hallucination rate. Use `note` for optional instructions from the source. Both fields accept a text string.
 - Fit averages the target scores. A raw percentile `p` scores `p` for `high`, `100 − p` for `low`, and `100 − 2 × |p − 50|` for `moderate`. Aim low for less Slop or Sycophantic behavior. Evaluation ranks appear alongside Fit.
 

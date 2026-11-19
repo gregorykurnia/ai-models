@@ -165,14 +165,8 @@
     },
     {
       "id": "8",
-      "title": "Slop sweep",
-      "goal": "Remove filler",
-      "targets": [{ "trait": "slop", "aim": "low" }]
-    },
-    {
-      "id": "8a",
-      "title": "Human read",
-      "goal": "Final check on numbers, names and tone",
+      "title": "Slop sweep and human read",
+      "goal": "Remove filler; final check on numbers, names and tone",
       "targets": [{ "trait": "slop", "aim": "low" }]
     }
   ]

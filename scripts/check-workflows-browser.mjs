@@ -66,14 +66,14 @@ try {
     await page.goto(`${base}/workflows`);
     await expect(main.getByRole("heading", { name: "Workflows", exact: true })).toBeVisible();
     const proposal = main.getByRole("article").filter({ has: page.getByRole("heading", { name: "Sales proposal", exact: true }) });
-    await expect(proposal.getByText("15 steps", { exact: true })).toBeVisible();
+    await expect(proposal.getByText("14 steps", { exact: true })).toBeVisible();
     await screenshot("list");
     await expectCurrentWorkflow();
 
     await proposal.getByRole("link", { name: "Open Sales proposal" }).click();
     await expect(page).toHaveURL(/\/workflows\/sales-proposal$/);
     await expect(main.getByRole("heading", { name: "Sales proposal", exact: true })).toBeVisible();
-    await expect(overviewRows).toHaveCount(15);
+    await expect(overviewRows).toHaveCount(14);
     const otherColumns = ["Goal", "Aim high", "Aim moderate", "Aim low"];
     await expect(overview.getByRole("columnheader")).toHaveText(mobile
       ? ["Step", "Pick", ...otherColumns, "Runners-up"]
@@ -130,7 +130,7 @@ try {
   assert.equal(encoded?.status(), 200, "Encoded spelling of a registered workflow slug must resolve");
   await expect(main.getByRole("heading", { name: "Sales proposal", exact: true })).toBeVisible();
   assert.deepEqual(errors, []);
-  console.log("Workflows browser check passed: 15 steps, four documented picks, Briefcase rank, anchor, navigation, 404 and six screenshots");
+  console.log("Workflows browser check passed: 14 steps, four documented picks, Briefcase rank, anchor, navigation, 404 and six screenshots");
 } finally {
   await browser.close();
 }

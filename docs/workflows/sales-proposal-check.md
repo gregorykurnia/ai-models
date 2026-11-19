@@ -16,9 +16,8 @@
 | 6 | **High** `constructivelyPushesBack`, `direct`, `flagsNuances`<br>**Low** `sycophantic`, `warmth` (index) | **High** Constructive Pushback, Direct, Flags Nuances<br>**Low** Sycophantic, Warmth (index) | Same |
 | 7 | **High** `naturalSounding`, `eloquent`, `scannable`, `answerFirst`<br>**Moderate** `lexicallyVaried`, `metaphorical`, `admitsUncertainty`<br>**Low** `creative`, `openEnded` | **High** Natural Sounding, Eloquent, Scannable, Answer First<br>**Moderate** Lexically Varied, Metaphorical, Admits Uncertainty<br>**Low** Creative, Open-Ended | Same |
 | 8 | **Low** `slop` | **Low** Slop | Same |
-| 8a | **Low** `slop` | **Low** Slop (source step 8) | Same |
 
-The source lists 14 step IDs. To reach 15 entries, step 8 covers the slop sweep and 8a covers the human read. Both carry step 8’s low Slop target. [Proposal source](proposal-source.md)
+The source lists 14 steps, and the JSON keeps all 14 (the plan's "15" was a miscount). [Proposal source](proposal-source.md)
 
 AA-Briefcase, its presentation quality, and GDP.pdf map to `briefcase-v1-1`, `aa-briefcase-presentation-elo`, and `gdp-pdf`. The Word and PDF breakdown, AA-Omniscience hallucination rate, and GDPval-AA v2 stay in `other_checks`.
 

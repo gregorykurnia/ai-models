@@ -48,11 +48,23 @@ export const workflowSchema = z.strictObject({
   slug: nonBlankText,
   title: nonBlankText,
   summary: nonBlankText,
-  updated: nonBlankText,
+  updated: z.iso.date({ error: ({ input }) => `Invalid date ${JSON.stringify(input)}. Use YYYY-MM-DD` }),
   steps: z.array(stepSchema),
 }).superRefine(({ steps }, ctx) => {
   const ids = new Set<string>();
   for (const [position, step] of steps.entries()) {
+    const targetKeys = new Set<string>();
+    for (const [targetPosition, target] of step.targets.entries()) {
+      const key = target.index !== undefined ? `index ${target.index}` : `trait ${target.trait}`;
+      if (targetKeys.has(key)) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["steps", position, "targets", targetPosition],
+          message: `Duplicate target ${JSON.stringify(key)}`,
+        });
+      }
+      targetKeys.add(key);
+    }
     if (ids.has(step.id)) {
       ctx.addIssue({
         code: "custom",

@@ -198,6 +198,8 @@ const invalidCases: [string, unknown, string, string?][] = [
   ["id with a capital", withStep({ id: "3A" }), "steps[0].id", "3A"],
   ["blank id", withStep({ id: "" }), "steps[0].id"],
   ["blank goal", withStep({ goal: "  " }), "steps[0].goal"],
+  ["an updated value that isn't a date", { ...example, updated: "19 Nov" }, "updated", "19 Nov"],
+  ["duplicate target", withStep({ targets: [{ trait: "sincere", aim: "high" }, { trait: "sincere", aim: "low" }] }), "steps[0].targets[1]", "trait sincere"],
   ["slug and filename mismatch", { ...example, slug: "another-slug" }, "slug", "another-slug"],
 ];
 
@@ -217,11 +219,11 @@ test("registry covers every workflow JSON file", () => {
   assert.deepEqual(workflows.map(workflow => `${workflow.slug}.json`).sort(), files.sort());
 });
 
-test("sales proposal registers all 15 steps and keeps the checked picks", () => {
+test("sales proposal registers all 14 source steps and keeps the checked picks", () => {
   const proposal = workflows.find(workflow => workflow.slug === "sales-proposal");
   assert.ok(proposal);
   assert.deepEqual(proposal.steps.map(step => step.id), [
-    "0", "1", "2", "3a", "3b", "3c", "3d", "3e", "3f", "4", "5", "6", "7", "8", "8a",
+    "0", "1", "2", "3a", "3b", "3c", "3d", "3e", "3f", "4", "5", "6", "7", "8",
   ]);
 
   // Expected names from docs/workflows/sales-proposal-check.md.
@@ -237,6 +239,21 @@ test("sales proposal registers all 15 steps and keeps the checked picks", () => 
     assert.equal(runnersUp.length, 2, step.id);
     assert.equal(new Set([pick, ...runnersUp].map(row => familyKey(row.model.identity_key))).size, 3, step.id);
     if (checkedPicks[step.id]) assert.equal(pick.model.name, checkedPicks[step.id], step.id);
+  }
+
+  // Worked by hand from data/aa-personalitybench.json in the Phase 1 review (aim moderate, aim low, index target).
+  const handRunnersUp: Record<string, string[]> = {
+    "3a": [
+      "Claude Haiku 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    ],
+    "6": ["DeepSeek V4.1 Flash (Max)", "Grok 4.6 (Xhigh)"],
+    "7": ["Grok 4.7 (Xhigh)", "Step 5 Preview"],
+  };
+  for (const [id, names] of Object.entries(handRunnersUp)) {
+    const handStep: WorkflowStep | undefined = proposal.steps.find(item => item.id === id);
+    assert.ok(handStep, id);
+    assert.deepEqual(stepPicks(handStep, personality).runnersUp.map(row => row.model.name), names, id);
   }
 });
 
