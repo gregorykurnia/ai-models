@@ -191,7 +191,7 @@ test("step notes show up to three higher-Fit families for each reason and every 
       { slug: omniscience, rank: 7, cohortSize: 16, barRank: 4 },
     ]],
     ["Beacon", [{ slug: briefcase, rank: null, cohortSize: 15, barRank: 3 }]],
-    ["Off-list miss", [{ slug: briefcase, rank: 8, cohortSize: 15, barRank: 3 }]],
+    ["Juniper", [{ slug: briefcase, rank: 8, cohortSize: 15, barRank: 3 }]],
   ]);
   assert.deepEqual(notOnList.map(row => row.model.name), ["Alternate (Max)", "Backup", "Contender"]);
   assert.deepEqual(skippedEvaluations, []);
@@ -543,8 +543,8 @@ test("a step with no pick shows a dash and explains why in the overview and deta
   assert.match(detail, noPick);
   assert.doesNotMatch(overview, /class="workflow-runners-up"/);
   assert.doesNotMatch(detail, /<table/);
-  assert.match(detail, /No model on your list clears the bar.*Higher Fit, below the bar.*Atlas \(Max\) \(Fit 99\): Briefcase v1\.1 #6 of 15, bar #3 \/ Omniscience Index #7 of 16, bar #4/);
-  assert.match(detail, /Beacon \(Fit 97\): Briefcase v1\.1 Not ranked, bar #3/);
+  assert.match(detail, /No model on your list clears the bar.*Higher Fit, below the bar.*Atlas \(Max\), Fit\u00a099: Briefcase v1\.1 #6 of 15, bar #3 \/ Omniscience Index #7 of 16, bar #4/);
+  assert.match(detail, /Beacon, Fit\u00a097: Briefcase v1\.1 Not ranked, bar #3/);
   assert.doesNotMatch(detail, /Higher Fit, not on your list/);
 });
 
@@ -556,12 +556,15 @@ test("the overview renders one runner-up and the detail ranks just the two eligi
     cells: Object.fromEntries(benchmarkStep.evaluations.map(slug => [slug, rankCell(slug, 2)])),
   }];
   const { overview, detail } = renderBenchmarkStep(benchmarkStep, dataset, masterRows);
+  assert.match(overview, /The pick and runners-up are from different model families\. Step rankings can include several variants of a family\./);
+  assert.match(overview, /Scroll past Pick for the goal, aims, and runners-up\./);
+  assert.match(overview, /<table aria-describedby="workflow-overview-help"/);
   const runners = overview.match(/<ul class="workflow-runners-up">(.*?)<\/ul>/)?.[1] ?? "";
   assert.match(runners, /<li><span class="workflow-pick-name">Runner-up<\/span>/);
   assert.equal(runners.match(/<li>/g)?.length, 1);
   assert.deepEqual(Array.from(detail.matchAll(/<td class="workflow-pinned workflow-model">([^<]+)<\/td>/g), match => match[1]), ["Pick", "Runner-up"]);
   assert.match(detail, /Only models on your list that clear the bar are ranked/);
-  assert.match(detail, /<\/table>.*Higher Fit, not on your list<\/strong> · Alternate \(Max\) \(Fit 93\)/);
+  assert.match(detail, /<\/table>.*Higher Fit, not on your list<\/strong> · Alternate \(Max\), Fit\u00a093/);
 });
 
 test("a skipped evaluation keeps its unranked column and names the benchmark once below the table", () => {

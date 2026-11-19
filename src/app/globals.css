@@ -2326,7 +2326,7 @@ a.ui-button:hover {
 }
 
 .workflow-catalog {
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
 }
 
 .workflow-catalog,
@@ -2361,6 +2361,7 @@ a.ui-button:hover {
 .workflow-overview-table .workflow-aim-low { width: 11%; }
 .workflow-overview-table .workflow-desktop-pick { width: 14%; }
 .workflow-overview-table .workflow-mobile-pick { display: none; }
+.workflow-overview-phone-help { display: none; }
 
 :is(.workflow-overview-table, .workflow-rankings-table) th {
   height: 48px;
@@ -2494,6 +2495,10 @@ td.workflow-pinned {
 @media (max-width: 767px) {
   .master .workflow-overview-table {
     min-width: 76rem;
+  }
+
+  .workflow-overview-phone-help {
+    display: block;
   }
 
   .workflow-overview-table .workflow-goal {

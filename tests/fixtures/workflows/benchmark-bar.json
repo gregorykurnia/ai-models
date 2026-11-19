@@ -4,7 +4,7 @@
     { "name": "Atlas (Max)", "provider": "OpenAI", "fit": 99, "ranks": [6, 7] },
     { "name": "Atlas (High)", "provider": "OpenAI", "fit": 98, "ranks": [5, 8] },
     { "name": "Beacon", "provider": "OpenAI", "fit": 97, "ranks": [null, 3] },
-    { "name": "Off-list miss", "provider": "Fixture", "fit": 96.5, "ranks": [8, 4] },
+    { "name": "Juniper", "provider": "Fixture", "fit": 96.5, "ranks": [8, 4] },
     { "name": "Cedar", "provider": "OpenAI", "fit": 96, "ranks": [2, 5] },
     { "name": "Delta", "provider": "OpenAI", "fit": 95, "ranks": [7, 9] },
     { "name": "Alternate (Max)", "provider": "Fixture", "fit": 93, "ranks": [2, 1] },

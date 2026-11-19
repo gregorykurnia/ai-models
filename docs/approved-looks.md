@@ -13,4 +13,6 @@
 - 1440px and 390px captures are one screen tall, so the bottom edge can cut through a table row, a header date or a card; the page continues below.
 - The archived Personality build's `desktop-all.png` and `phone-all.png` show the app before Workflows. The Workflows gallery contains current desktop and phone navigation captures.
 - The Workflows overview capture ends after the 15-row table. The detail cards and the page end are shown in separate captures.
+- Workflows overview rows keep the height of their tallest cell as columns scroll, so long runner-up names can leave space under shorter cells at 390px and 1024px.
+- The Workflows overview shows Pick next to the pinned Step column on phones. The scroll cues mark columns on either side, including partly visible columns at the frame edge.
 - Snapshot attribution sits in the desktop sidebar and in the page footer when the sidebar is hidden.

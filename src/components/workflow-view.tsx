@@ -52,6 +52,10 @@ function ModelPick({ row }: { row: RankedWorkflowModel }) {
   </>;
 }
 
+function noteModelLabel({ model, fit }: RankedWorkflowModel) {
+  return `${model.name}, Fit\u00a0${formatPercentile(fit)}`;
+}
+
 function WorkflowOverview({ steps, dataset, masterRows }: {
   steps: LabeledStep[];
   dataset: PersonalityDataset;
@@ -59,8 +63,12 @@ function WorkflowOverview({ steps, dataset, masterRows }: {
 }) {
   return <Card className="master workflow-table-card" aria-labelledby="workflow-overview">
     <h2 id="workflow-overview">Overview</h2>
+    <HelperText id="workflow-overview-help">
+      The pick and runners-up are from different model families. Step rankings can include several variants of a family.{" "}
+      <span className="workflow-overview-phone-help">Scroll past Pick for the goal, aims, and runners-up.</span>
+    </HelperText>
     <TableScroll label="Workflow overview, scroll horizontally for more columns" showOverflowCue>
-      <Table className="workflow-overview-table">
+      <Table className="workflow-overview-table" aria-describedby="workflow-overview-help">
         <thead><tr>
           <th scope="col" className="workflow-pinned">Step</th>
           <th scope="col" className="workflow-mobile-pick">Pick</th>
@@ -165,17 +173,17 @@ function WorkflowStepDetail({ step, dataset, masterRows }: {
     </TableScroll>}
     {belowBar.length > 0 && <HelperText>
       <strong>Higher Fit, below the bar</strong>{" · "}
-      {belowBar.map(({ model, fit, missedEvaluations }) => {
-        const misses = missedEvaluations.map(({ slug, rank, cohortSize, barRank }) => {
+      {belowBar.map(row => {
+        const misses = row.missedEvaluations.map(({ slug, rank, cohortSize, barRank }) => {
           const position = rank === null ? "Not ranked" : `#${rank} of ${cohortSize}`;
           return `${evaluationLabel(slug)} ${position}, bar #${barRank}`;
         });
-        return `${model.name} (Fit ${formatPercentile(fit)}): ${misses.join(" / ")}`;
+        return `${noteModelLabel(row)}: ${misses.join(" / ")}`;
       }).join("\u00a0· ")}
     </HelperText>}
     {notOnList.length > 0 && <HelperText>
       <strong>Higher Fit, not on your list</strong>{" · "}
-      {notOnList.map(({ model, fit }) => `${model.name} (Fit ${formatPercentile(fit)})`).join("\u00a0· ")}
+      {notOnList.map(noteModelLabel).join("\u00a0· ")}
     </HelperText>}
     {skippedEvaluations.length > 0 && <HelperText>
       <strong>Skipped by the bar</strong>{" · "}{skippedEvaluations.map(evaluationLabel).join(", ")}
