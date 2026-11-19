@@ -68,7 +68,10 @@ function LevelNotes({dataset,level,levelHref}:{dataset:PersonalityDataset;level:
   </>;
   return <>
     <p>{level.trait.definition}{level.trait.lower_is_better?" ↓ lower is better.":""}</p>
-    <p>Part of <Link href={levelHref(level.index.key)}>{level.index.label}</Link>{level.index.traits.length===1?" (its only trait)":""} · Percentile from 1 to 100; Elo is AA’s Bradley-Terry score with its 95% interval · <a href={level.trait.source_url} target="_blank" rel="noreferrer">{level.trait.label} on Artificial Analysis ↗</a></p>
+    <p>{level.index.traits.length===1
+      // AA ranks a one-trait index separately from its trait, so the two percentiles can differ (Slop: 7 vs 9 for GPT-6.2 Astra Max).
+      ?<>Its own index: the {level.index.label} column under <Link href={levelHref()}>All indexes</Link> is AA’s index percentile, ranked separately, so it can differ from this one</>
+      :<>Part of <Link href={levelHref(level.index.key)}>{level.index.label}</Link></>} · Percentile from 1 to 100; Elo is AA’s Bradley-Terry score with its 95% interval · <a href={level.trait.source_url} target="_blank" rel="noreferrer">{level.trait.label} on Artificial Analysis ↗</a></p>
   </>;
 }
 

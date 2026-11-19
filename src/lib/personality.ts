@@ -76,7 +76,7 @@ export function resolvePersonalityLevel(dataset: PersonalityDataset, indexKey: s
 const LOWER_IS_BETTER = "↓ lower is better";
 
 function indexLowerIsBetter(index: PersonalityIndex) {
-  // Slop's index is its one trait's percentile, so it reads the same way.
+  // Slop's index follows its one trait (AA ranks the two separately), so it reads the same way.
   return index.traits.length === 1 && index.traits[0].lower_is_better;
 }
 
