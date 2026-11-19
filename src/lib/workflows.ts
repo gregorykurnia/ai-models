@@ -31,6 +31,13 @@ const targetSchema = z.strictObject({
 });
 
 const nonBlankText = z.string().refine(value => value.trim().length > 0, "Expected non-blank text");
+const updatedDate = z.iso.date({ error: ({ input }) => `Invalid date ${JSON.stringify(input)}. Use YYYY-MM-DD` });
+
+export const modelListSchema = z.strictObject({
+  updated: updatedDate,
+  providers: z.array(nonBlankText),
+  models: z.array(z.strictObject({ label: nonBlankText, family: nonBlankText })),
+});
 
 const stepSchema = z.strictObject({
   id: z.string().regex(/^[a-z0-9-]+$/, {
@@ -48,7 +55,7 @@ export const workflowSchema = z.strictObject({
   slug: nonBlankText,
   title: nonBlankText,
   summary: nonBlankText,
-  updated: z.iso.date({ error: ({ input }) => `Invalid date ${JSON.stringify(input)}. Use YYYY-MM-DD` }),
+  updated: updatedDate,
   steps: z.array(stepSchema),
 }).superRefine(({ steps }, ctx) => {
   const ids = new Set<string>();
@@ -79,7 +86,14 @@ export const workflowSchema = z.strictObject({
 export type Workflow = z.infer<typeof workflowSchema>;
 export type WorkflowStep = Workflow["steps"][number];
 export type WorkflowTarget = WorkflowStep["targets"][number];
+export type WorkflowModelList = z.infer<typeof modelListSchema>;
 type Aim = z.infer<typeof aimSchema>;
+
+export function validateModelList(file: string, source: unknown): WorkflowModelList {
+  const result = modelListSchema.safeParse(source);
+  if (!result.success) throw new Error(`Invalid model list ${file}\n${z.prettifyError(result.error)}`);
+  return result.data;
+}
 
 export function validateWorkflow(file: string, source: unknown): Workflow {
   const result = workflowSchema.safeParse(source);
@@ -104,13 +118,33 @@ export function familyKey(identityKey: string): string {
   return identityKey.replace(/ \([^()]*\)$/, "");
 }
 
+export function onList(model: Pick<PersonalityModel, "provider" | "identity_key">, list: WorkflowModelList): boolean {
+  const family = familyKey(model.identity_key).replace("\u0000", " ");
+  return list.providers.includes(model.provider) || list.models.some(entry => entry.family === family);
+}
+
+export const BENCHMARK_BAR = 0.25;
+
+export function barRank(cohortSize: number): number {
+  return Math.max(1, Math.floor(cohortSize * BENCHMARK_BAR));
+}
+
 export type RankedWorkflowModel = {
   model: PersonalityModel;
   percentiles: (number | null)[];
   fit: number | null;
 };
 
-export function rankStep(step: WorkflowStep, dataset: PersonalityDataset, limit = 5): RankedWorkflowModel[] {
+function compareFit(a: number | null, b: number | null, targetCount: number): number {
+  if (a === b) return 0;
+  if (a === null) return 1;
+  if (b === null) return -1;
+  // The average can accumulate floating-point roundoff from each target score (0 to 100).
+  const difference = b - a;
+  return Math.abs(difference) > Number.EPSILON * 100 * targetCount ? difference : 0;
+}
+
+function scoreStep(step: WorkflowStep, dataset: PersonalityDataset): RankedWorkflowModel[] {
   const rows = dataset.models.map(model => {
     const percentiles = step.targets.map(target => target.index !== undefined
       ? model.index_percentiles[target.index] ?? null
@@ -121,30 +155,61 @@ export function rankStep(step: WorkflowStep, dataset: PersonalityDataset, limit 
     return { model, percentiles, fit };
   });
 
-  // The average can accumulate floating-point roundoff from each target score (0 to 100).
-  const fitRoundoff = Number.EPSILON * 100 * step.targets.length;
-  return rows.sort((a, b) => {
-    if (a.fit !== b.fit) {
-      if (a.fit === null) return 1;
-      if (b.fit === null) return -1;
-      const difference = b.fit - a.fit;
-      if (Math.abs(difference) > fitRoundoff) return difference;
-    }
-    return a.model.name.localeCompare(b.model.name);
-  }).slice(0, Math.max(0, limit));
+  return rows.sort((a, b) => compareFit(a.fit, b.fit, step.targets.length) || a.model.name.localeCompare(b.model.name));
 }
 
-export function stepPicks(step: WorkflowStep, dataset: PersonalityDataset) {
+function firstThreeFamilies<T extends RankedWorkflowModel>(rows: T[]): T[] {
   const families = new Set<string>();
-  const picks: RankedWorkflowModel[] = [];
-  for (const row of rankStep(step, dataset, dataset.models.length)) {
+  const picks: T[] = [];
+  for (const row of rows) {
     const family = familyKey(row.model.identity_key);
     if (families.has(family)) continue;
     families.add(family);
     picks.push(row);
     if (picks.length === 3) break;
   }
+  return picks;
+}
+
+export function rankStep(
+  step: WorkflowStep,
+  dataset: PersonalityDataset,
+  list: WorkflowModelList,
+  masterRows: readonly MasterRankRow[],
+  limit = 5,
+): RankedWorkflowModel[] {
+  const { candidates } = assessStep(step, dataset, list, masterRows);
+  return candidates.filter(canPick).slice(0, Math.max(0, limit)).map(({ row }) => row);
+}
+
+export function stepPicks(
+  step: WorkflowStep,
+  dataset: PersonalityDataset,
+  list: WorkflowModelList,
+  masterRows: readonly MasterRankRow[],
+) {
+  const picks = firstThreeFamilies(rankStep(step, dataset, list, masterRows, dataset.models.length));
   return { pick: picks[0] ?? null, runnersUp: picks.slice(1) };
+}
+
+export function stepNotes(
+  step: WorkflowStep,
+  dataset: PersonalityDataset,
+  list: WorkflowModelList,
+  masterRows: readonly MasterRankRow[],
+) {
+  const { candidates, skippedEvaluations } = assessStep(step, dataset, list, masterRows);
+  const pick = candidates.find(canPick)?.row;
+  const noteCandidates = pick
+    ? candidates.filter(({ row }) => compareFit(row.fit, pick.fit, step.targets.length) < 0)
+    : candidates.filter(({ listed }) => listed);
+  const belowBar = firstThreeFamilies(noteCandidates
+    .filter(({ missedEvaluations }) => missedEvaluations.length > 0)
+    .map(({ row, missedEvaluations }) => ({ ...row, missedEvaluations })));
+  const notOnList = pick ? firstThreeFamilies(noteCandidates
+    .filter(({ listed, missedEvaluations }) => !listed && missedEvaluations.length === 0)
+    .map(({ row }) => row)) : [];
+  return { belowBar, notOnList, skippedEvaluations };
 }
 
 export type EvaluationRank = { rank: number; cohortSize: number };
@@ -152,6 +217,10 @@ type MasterRankRow = {
   identity_key: MasterTableRow["identity_key"];
   cells: Partial<MasterTableRow["cells"]>;
 };
+
+function evaluationCohortSize(id: string, masterRows: readonly MasterRankRow[]): number {
+  return masterRows.filter(row => row.cells[id]?.entry?.source_rank !== undefined).length;
+}
 
 export function evaluationRanks(
   identityKey: string,
@@ -164,7 +233,37 @@ export function evaluationRanks(
     const rank = row?.cells[id]?.entry?.source_rank;
     if (rank === undefined) return [slug, null];
 
-    const cohortSize = masterRows.filter(candidate => candidate.cells[id]?.entry?.source_rank !== undefined).length;
-    return [slug, { rank, cohortSize }];
+    return [slug, { rank, cohortSize: evaluationCohortSize(id, masterRows) }];
   }));
+}
+
+type MissedEvaluation = { slug: string; rank: number | null; cohortSize: number; barRank: number };
+type StepCandidate = { row: RankedWorkflowModel; listed: boolean; missedEvaluations: MissedEvaluation[] };
+
+function canPick({ listed, missedEvaluations }: StepCandidate): boolean {
+  return listed && missedEvaluations.length === 0;
+}
+
+function assessStep(
+  step: WorkflowStep,
+  dataset: PersonalityDataset,
+  list: WorkflowModelList,
+  masterRows: readonly MasterRankRow[],
+) {
+  const evaluations = [...new Set(step.evaluations)].map(slug => {
+    const id = evaluationIds.get(slug) ?? slug;
+    const cohortSize = evaluationCohortSize(id, masterRows);
+    return { slug, id, cohortSize, barRank: barRank(cohortSize) };
+  });
+  const activeEvaluations = evaluations.filter(({ cohortSize }) => cohortSize > 0);
+  const skippedEvaluations = evaluations.filter(({ cohortSize }) => cohortSize === 0).map(({ slug }) => slug);
+  const candidates = scoreStep(step, dataset).map((row): StepCandidate => {
+    const masterRow = masterRows.find(candidate => candidate.identity_key === row.model.identity_key);
+    const missedEvaluations = activeEvaluations.flatMap(({ slug, id, cohortSize, barRank }) => {
+      const rank = masterRow?.cells[id]?.entry?.source_rank ?? null;
+      return rank !== null && rank <= barRank ? [] : [{ slug, rank, cohortSize, barRank }];
+    });
+    return { row, listed: onList(row.model, list), missedEvaluations };
+  });
+  return { candidates, skippedEvaluations };
 }

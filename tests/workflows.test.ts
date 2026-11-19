@@ -3,27 +3,37 @@ import { readdirSync } from "node:fs";
 import { test } from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+import leaderboardSource from "../data/leaderboards.json";
+import modelListSource from "../workflows/models.json";
+import benchmarkBar from "./fixtures/workflows/benchmark-bar.json";
+import modelListExample from "./fixtures/workflows/model-list-example.json";
 import example from "./fixtures/workflows/scoring-example.json";
 import solEfforts from "./fixtures/workflows/sol-efforts.json";
 import WorkflowView from "../src/components/workflow-view";
 import { getMasterDataset } from "../src/lib/data";
 import { masterIdentityKey } from "../src/lib/master";
 import { getPersonalityDataset, type PersonalityModel } from "../src/lib/personality";
-import { workflows } from "../src/lib/workflow-registry";
+import { workflowModelList, workflows } from "../src/lib/workflow-registry";
 import {
+  barRank,
   evaluationRanks,
   familyKey,
+  onList,
   rankStep,
   scoreTarget,
+  stepNotes,
   stepPicks,
+  validateModelList,
   validateWorkflow,
   type WorkflowStep,
 } from "../src/lib/workflows";
 
 const file = "tests/fixtures/workflows/scoring-example.json";
+const listFile = "tests/fixtures/workflows/model-list-example.json";
 const [step] = validateWorkflow(file, example).steps;
 const sincereStep: WorkflowStep = { ...step, targets: [{ trait: "sincere", aim: "high" }] };
 const personality = getPersonalityDataset();
+const fixtureList = validateModelList(listFile, modelListExample);
 
 function model(
   name: string,
@@ -41,6 +51,31 @@ function model(
   };
 }
 
+function rankCell(slug: string, rank: number) {
+  return { entry: { source_rank: rank }, href: `/leaderboards/${slug}` };
+}
+
+const benchmarkStep = { ...sincereStep, evaluations: benchmarkBar.evaluations };
+const benchmarkDataset = { ...personality, models: benchmarkBar.models.map(({ name, fit, provider }) =>
+  model(name, { sincere: fit }, {}, provider)) };
+const benchmarkRows = benchmarkBar.models.map(({ name, provider, ranks }) => ({
+  identity_key: masterIdentityKey(provider, name),
+  cells: Object.fromEntries(benchmarkBar.evaluations.flatMap((slug, index) => {
+    const rank = ranks[index];
+    return rank === null ? [] : [[slug, rankCell(slug, rank)]];
+  })),
+}));
+
+async function bundledMasterRows() {
+  const previousSource = process.env.DATA_SOURCE;
+  delete process.env.DATA_SOURCE;
+  try {
+    return (await getMasterDataset()).rows;
+  } finally {
+    if (previousSource !== undefined) process.env.DATA_SOURCE = previousSource;
+  }
+}
+
 test("target scores reward the chosen aim", () => {
   assert.equal(scoreTarget(80, "high"), 80);
   assert.equal(scoreTarget(80, "low"), 20);
@@ -55,14 +90,14 @@ test("Fit averages trait and index scores, skips nulls and sorts missing Fit las
     model("Zero", { slop: 100 }),
     model("Partial", { sincere: 80, slop: 20 }, { warmth: null }),
   ] };
-  const ranked = rankStep(step, dataset);
+  const ranked = rankStep(step, dataset, fixtureList, []);
   assert.deepEqual(ranked.map(row => [row.model.name, row.percentiles, row.fit]), [
     ["Partial", [80, null, 20], 80],
     ["Complete", [80, 80, 70], (80 + 40 + 30) / 3],
     ["Zero", [null, null, 100], 0],
     ["A missing", [null, null, null], null],
   ]);
-  assert.deepEqual(rankStep({ ...step, evaluations: undefined }, dataset), ranked);
+  assert.deepEqual(rankStep({ ...step, evaluations: undefined }, dataset, fixtureList, []), ranked);
 });
 
 test("unrounded Fit takes precedence and equal Fit sorts by model name", () => {
@@ -71,8 +106,8 @@ test("unrounded Fit takes precedence and equal Fit sorts by model name", () => {
     model("Aaron", { sincere: 80.91 }),
     model("Alpha", { sincere: 80.92 }),
   ] };
-  assert.deepEqual(rankStep(sincereStep, dataset, 3).map(row => row.model.name), ["Alpha", "Zulu", "Aaron"]);
-  assert.equal(rankStep(sincereStep, dataset, 2).length, 2);
+  assert.deepEqual(rankStep(sincereStep, dataset, fixtureList, [], 3).map(row => row.model.name), ["Alpha", "Zulu", "Aaron"]);
+  assert.equal(rankStep(sincereStep, dataset, fixtureList, [], 2).length, 2);
 });
 
 test("Fit ties sort by model name when adding the same scores in a different order", () => {
@@ -85,20 +120,138 @@ test("Fit ties sort by model name when adding the same scores in a different ord
     model("Zulu", { sincere: 98.1, truthful: 84.77, creative: 98.1 }),
     model("Alpha", { sincere: 98.1, truthful: 98.1, creative: 84.77 }),
   ] };
-  assert.deepEqual(rankStep(tiedStep, dataset).map(row => row.model.name), ["Alpha", "Zulu"]);
+  assert.deepEqual(rankStep(tiedStep, dataset, fixtureList, []).map(row => row.model.name), ["Alpha", "Zulu"]);
 });
 
 test("detail keeps five Sol variants and the overview picks three families", () => {
   const models = solEfforts.map(({ name, percentile, provider }) => model(name, { sincere: percentile }, {}, provider));
   const dataset = { ...personality, models };
-  const ranked = rankStep(sincereStep, dataset);
+  const ranked = rankStep(sincereStep, dataset, workflowModelList, []);
   assert.deepEqual(ranked.map(row => row.model.name), ["Max", "XHigh", "High", "Medium", "Low"]
     .map(effort => `GPT-6.2 Sol (${effort})`));
 
-  const { pick, runnersUp } = stepPicks(sincereStep, dataset);
+  const { pick, runnersUp } = stepPicks(sincereStep, dataset, workflowModelList, []);
   assert.equal(pick?.model.name, "GPT-6.2 Sol (Max)");
   assert.deepEqual(runnersUp.map(row => row.model.name), ["GPT-6.2 Astra (High)", "Claude Sonnet 5.5 (Max with fallback)"]);
-  assert.deepEqual(stepPicks(sincereStep, { ...dataset, models: [] }), { pick: null, runnersUp: [] });
+  assert.deepEqual(stepPicks(sincereStep, { ...dataset, models: [] }, workflowModelList, []), { pick: null, runnersUp: [] });
+});
+
+test("the benchmark bar rounds down with a minimum rank of one", () => {
+  assert.deepEqual([157, 158, 3].map(barRank), [39, 39, 1]);
+});
+
+test("rank 39 of 157 clears the bar, rank 40 and unranked models miss", () => {
+  const atBar = model("At the bar", { sincere: 80 });
+  const belowBar = model("Below the bar", { sincere: 90 });
+  const unranked = model("Unranked", { sincere: 100 });
+  const dataset = { ...personality, models: [unranked, belowBar, atBar] };
+  const slug = "briefcase-v1-1";
+  const masterRows = Array.from({ length: 157 }, (_, index) => {
+    const rank = index + 1;
+    const identity_key = rank === 39 ? atBar.identity_key : rank === 40 ? belowBar.identity_key : `other\u0000${rank}`;
+    return { identity_key, cells: { [slug]: rankCell(slug, rank) } };
+  });
+
+  assert.deepEqual(rankStep(sincereStep, dataset, fixtureList, masterRows, 1).map(row => row.model.name), [atBar.name]);
+  const notes = stepNotes(sincereStep, dataset, fixtureList, masterRows);
+  assert.deepEqual(notes.belowBar.map(row => [row.model.name, row.missedEvaluations]), [
+    [unranked.name, [{ slug, rank: null, cohortSize: 157, barRank: 39 }]],
+    [belowBar.name, [{ slug, rank: 40, cohortSize: 157, barRank: 39 }]],
+  ]);
+  assert.deepEqual(evaluationRanks(atBar.identity_key, [slug], masterRows)[slug], { rank: 39, cohortSize: 157 });
+
+  const allMiss = { ...dataset, models: [unranked, belowBar] };
+  assert.deepEqual(stepPicks(sincereStep, allMiss, fixtureList, masterRows), { pick: null, runnersUp: [] });
+
+  const noBar = { ...sincereStep, evaluations: [] };
+  assert.equal(stepPicks(noBar, dataset, fixtureList, masterRows).pick?.model.name, unranked.name);
+  assert.deepEqual(stepNotes(noBar, dataset, fixtureList, masterRows), { belowBar: [], notOnList: [], skippedEvaluations: [] });
+});
+
+test("missing and duplicate evaluation slugs preserve active cutoffs and report each skip once", () => {
+  const [first, second] = benchmarkStep.evaluations;
+  const evaluations = [first, "gdp-pdf", second, first, "gdp-pdf"];
+  const stepWithSkips = { ...benchmarkStep, evaluations };
+  const skipped = stepNotes(stepWithSkips, benchmarkDataset, workflowModelList, benchmarkRows);
+  const original = stepNotes(benchmarkStep, benchmarkDataset, workflowModelList, benchmarkRows);
+  assert.deepEqual(skipped, { ...original, skippedEvaluations: ["gdp-pdf"] });
+  assert.deepEqual(rankStep(stepWithSkips, benchmarkDataset, workflowModelList, benchmarkRows).map(row => row.model.name), ["Pick"]);
+});
+
+test("step notes show up to three higher-Fit families for each reason and every missed rank", () => {
+  const [briefcase, omniscience] = benchmarkStep.evaluations;
+  const { belowBar, notOnList, skippedEvaluations } = stepNotes(benchmarkStep, benchmarkDataset, workflowModelList, benchmarkRows);
+  assert.deepEqual(belowBar.map(row => [row.model.name, row.missedEvaluations]), [
+    ["Atlas (Max)", [
+      { slug: briefcase, rank: 6, cohortSize: 15, barRank: 3 },
+      { slug: omniscience, rank: 7, cohortSize: 16, barRank: 4 },
+    ]],
+    ["Beacon", [{ slug: briefcase, rank: null, cohortSize: 15, barRank: 3 }]],
+    ["Off-list miss", [{ slug: briefcase, rank: 8, cohortSize: 15, barRank: 3 }]],
+  ]);
+  assert.deepEqual(notOnList.map(row => row.model.name), ["Alternate (Max)", "Backup", "Contender"]);
+  assert.deepEqual(skippedEvaluations, []);
+
+  const models = benchmarkDataset.models.filter(row => (row.traits.sincere.percentile ?? 0) <= 80);
+  const dataset = { ...benchmarkDataset, models };
+  assert.deepEqual(stepNotes(benchmarkStep, dataset, workflowModelList, benchmarkRows), {
+    belowBar: [], notOnList: [], skippedEvaluations: [],
+  });
+});
+
+test("without an eligible pick, notes show the three best listed families and the picks are empty", () => {
+  const dataset = { ...benchmarkDataset, models: benchmarkDataset.models.filter(row => row.name !== "Pick") };
+  assert.deepEqual(rankStep(benchmarkStep, dataset, workflowModelList, benchmarkRows), []);
+  assert.deepEqual(stepPicks(benchmarkStep, dataset, workflowModelList, benchmarkRows), { pick: null, runnersUp: [] });
+  const { belowBar, notOnList } = stepNotes(benchmarkStep, dataset, workflowModelList, benchmarkRows);
+  assert.deepEqual(belowBar.map(row => row.model.name), ["Atlas (Max)", "Beacon", "Cedar"]);
+  assert.deepEqual(notOnList, []);
+});
+
+test("the model list matches providers and canonical model families", () => {
+  assert.ok(onList(model("GPT-6.2 Sol (Max)", {}, {}, "OpenAI"), workflowModelList));
+  assert.ok(onList(model("gLm-5.3 (MAX)", {}, {}, "Z AI"), workflowModelList));
+  assert.ok(onList(model("DeepSeek V4.1 Flash 1017 (Max)", {}, {}, "DeepSeek"), workflowModelList));
+  assert.equal(onList(model("DeepSeek V4.1 Flash (Max)", {}, {}, "DeepSeek"), workflowModelList), false);
+});
+
+test("every configured provider and family matches a bundled data row", () => {
+  assert.deepEqual(workflowModelList, modelListSource);
+  const models = [...personality.models, ...leaderboardSource.entries.map(({ provider, model }) => ({
+    provider, identity_key: masterIdentityKey(provider, model),
+  }))];
+  const providers = new Set(models.map(row => row.provider));
+  const families = new Set(models.map(row => familyKey(row.identity_key).replace("\u0000", " ")));
+  for (const provider of workflowModelList.providers) assert.ok(providers.has(provider), provider);
+  for (const { family } of workflowModelList.models) assert.ok(families.has(family), family);
+});
+
+test("model list validation names the file and key for missing, mistyped and blank fields", () => {
+  const invalidModels = [
+    [{ family: "other available model" }, "models[0].label"],
+    [{ label: "Available Model", family: 123 }, "models[0].family"],
+    [{ label: "   ", family: "other available model" }, "models[0].label"],
+  ] as const;
+  for (const [entry, key] of invalidModels) {
+    assert.throws(() => validateModelList(listFile, { ...modelListExample, models: [entry] }), (error: Error) => {
+      assert.ok(error.message.includes(listFile), error.message);
+      assert.ok(error.message.includes(key), error.message);
+      return true;
+    });
+  }
+});
+
+test("stale entries and long labels validate, and repeated list entries cannot duplicate a pick", () => {
+  const unknownFamily = { label: "Long label ".repeat(512), family: "removed model" };
+  const source = { ...modelListExample, providers: ["Removed Provider"], models: [unknownFamily] };
+  const list = validateModelList(listFile, source);
+  assert.deepEqual(list, source);
+  const dataset = { ...personality, models: [model("Available Model", { sincere: 90 }, {}, "Other")] };
+  assert.deepEqual(rankStep(sincereStep, dataset, list, []), []);
+
+  const entry = fixtureList.models[0];
+  const repeats = validateModelList(listFile, { ...source, models: [entry, entry, { ...entry, label: entry.label.toUpperCase() }] });
+  assert.equal(rankStep(sincereStep, dataset, repeats, []).length, 1);
 });
 
 test("bundled personality identities group only model variants into families", t => {
@@ -131,14 +284,7 @@ test("bundled personality identities group only model variants into families", t
 });
 
 test("personality identities join to bundled master rows and preserve Briefcase rank and cohort size", async t => {
-  const previousSource = process.env.DATA_SOURCE;
-  process.env.DATA_SOURCE = "bundled";
-  t.after(() => {
-    if (previousSource === undefined) delete process.env.DATA_SOURCE;
-    else process.env.DATA_SOURCE = previousSource;
-  });
-
-  const { rows } = await getMasterDataset();
+  const rows = await bundledMasterRows();
   const briefcase = "briefcase-v1-1";
   const masterByIdentity = new Map(rows.map(row => [row.identity_key, row]));
   const cohortSize = rows.filter(row => row.cells[briefcase]).length;
@@ -159,7 +305,7 @@ test("personality identities join to bundled master rows and preserve Briefcase 
 
 test("evaluation ranks tolerate a missing live evaluation, keep ties and count ranked rows", () => {
   const briefcase = "briefcase-v1-1";
-  const cell = { entry: { source_rank: 1 }, href: `/leaderboards/${briefcase}` };
+  const cell = rankCell(briefcase, 1);
   const rows = [
     { identity_key: "fixture\u0000model (high)", cells: { [briefcase]: cell } },
     { identity_key: "fixture\u0000model (low)", cells: { [briefcase]: cell } },
@@ -215,45 +361,47 @@ for (const [label, source, path, value] of invalidCases) {
 }
 
 test("registry covers every workflow JSON file", () => {
-  const files = readdirSync(new URL("../workflows/", import.meta.url)).filter(file => file.endsWith(".json"));
+  const files = readdirSync(new URL("../workflows/", import.meta.url))
+    .filter(file => file.endsWith(".json") && file !== "models.json");
   assert.deepEqual(workflows.map(workflow => `${workflow.slug}.json`).sort(), files.sort());
 });
 
-test("sales proposal registers all 14 source steps and keeps the checked picks", () => {
+test("sales proposal registers all 14 source steps and pins the filtered picks", async () => {
   const proposal = workflows.find(workflow => workflow.slug === "sales-proposal");
   assert.ok(proposal);
   assert.deepEqual(proposal.steps.map(step => step.id), [
     "0", "1", "2", "3a", "3b", "3c", "3d", "3e", "3f", "4", "5", "6", "7", "8",
   ]);
 
-  // Expected names from docs/workflows/sales-proposal-check.md.
+  const masterRows = await bundledMasterRows();
+  // Picks with the model list and benchmark bar, to be re-checked in 2.2.
   const checkedPicks: Record<string, string> = {
     "1": "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
     "3a": "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
     "6": "DeepSeek V4.1 Flash 1017 (Max)",
-    "7": "DeepSeek V4.1 Flash (Max)",
+    "7": "GPT-6.2 Sol (Medium)",
   };
   for (const step of proposal.steps) {
-    const { pick, runnersUp } = stepPicks(step, personality);
+    const { pick, runnersUp } = stepPicks(step, personality, workflowModelList, masterRows);
     assert.ok(pick && pick.fit !== null, `Missing pick for ${step.id}`);
     assert.equal(runnersUp.length, 2, step.id);
     assert.equal(new Set([pick, ...runnersUp].map(row => familyKey(row.model.identity_key))).size, 3, step.id);
     if (checkedPicks[step.id]) assert.equal(pick.model.name, checkedPicks[step.id], step.id);
   }
 
-  // Worked by hand from data/aa-personalitybench.json in the Phase 1 review (aim moderate, aim low, index target).
+  // Phase 1's worked examples with the new runners-up, to be re-checked in 2.2.
   const handRunnersUp: Record<string, string[]> = {
     "3a": [
       "Claude Haiku 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
       "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
     ],
-    "6": ["DeepSeek V4.1 Flash (Max)", "Grok 4.6 (Xhigh)"],
-    "7": ["Grok 4.7 (Xhigh)", "Step 5 Preview"],
+    "6": ["Grok 4.5 (High)", "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)"],
+    "7": ["Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)", "GPT-6.2 Astra (Xhigh)"],
   };
   for (const [id, names] of Object.entries(handRunnersUp)) {
     const handStep: WorkflowStep | undefined = proposal.steps.find(item => item.id === id);
     assert.ok(handStep, id);
-    assert.deepEqual(stepPicks(handStep, personality).runnersUp.map(row => row.model.name), names, id);
+    assert.deepEqual(stepPicks(handStep, personality, workflowModelList, masterRows).runnersUp.map(row => row.model.name), names, id);
   }
 });
 
@@ -261,11 +409,11 @@ test("the workflow view links to its detail and preserves raw percentiles and mi
   const workflow = validateWorkflow(file, example);
   workflow.steps[0].evaluations?.push("briefcase-v1-1");
   workflow.steps.push({ ...workflow.steps[0], id: "3a-heading", evaluations: [] });
-  const dataset = { ...personality, models: [model("A long fixture model name", { sincere: 80 }, { warmth: 58 })] };
+  const dataset = { ...personality, models: [model("A long fixture model name", { sincere: 80 }, { warmth: 58 }, "OpenAI")] };
   const markup = renderToStaticMarkup(createElement(WorkflowView, { workflow, dataset, masterRows: [] }));
 
   assert.match(markup, /href="#step-3a">Draft<\/a>/);
-  assert.match(markup, /<span class="workflow-pick-meta"><span>Fixture<\/span><span>Fit 82<\/span><\/span>/);
+  assert.match(markup, /<span class="workflow-pick-meta"><span>OpenAI<\/span><span>Fit 82<\/span><\/span>/);
   const ids = Array.from(markup.matchAll(/\sid="([^"]+)"/g), match => match[1]);
   assert.equal(new Set(ids).size, ids.length);
   const detail = markup.slice(markup.indexOf('id="step-3a"'));
@@ -274,6 +422,21 @@ test("the workflow view links to its detail and preserves raw percentiles and mi
   assert.match(detail, />80<\/td><td class="numeric">58<\/td><td class="numeric"><span class="muted">—<\/span><\/td><td class="numeric">82<\/td>/);
   assert.equal(detail.match(/>Not ranked<\/td>/g)?.length, 1);
   assert.match(detail, /Also check \(not in Model Atlas\)/);
+});
+
+test("the workflow overview and detail use the benchmark ranks supplied to the view", async () => {
+  const workflow = validateWorkflow(file, example);
+  const masterRows = await bundledMasterRows();
+  const passing = masterRows.find(row => row.cells["briefcase-v1-1"]?.entry.source_rank === 1);
+  assert.ok(passing);
+  const dataset = { ...personality, models: [
+    model(passing.model, { sincere: 80 }, {}, passing.provider),
+    model("Higher Fit unranked", { sincere: 100 }, {}, "OpenAI"),
+  ] };
+  const markup = renderToStaticMarkup(createElement(WorkflowView, { workflow, dataset, masterRows }));
+  assert.ok(markup.includes(`<span class="workflow-pick-name">${passing.model}</span>`));
+  assert.ok(markup.includes(`<td class="workflow-pinned workflow-model">${passing.model}</td>`));
+  assert.doesNotMatch(markup, /class="workflow-(pick-name|pinned workflow-model)">Higher Fit unranked/);
 });
 
 test("the workflow view has an empty state for a workflow without steps", () => {

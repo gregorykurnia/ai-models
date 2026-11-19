@@ -1,0 +1,21 @@
+{
+  "evaluations": ["briefcase-v1-1", "aa-omniscience-index"],
+  "models": [
+    { "name": "Atlas (Max)", "provider": "OpenAI", "fit": 99, "ranks": [6, 7] },
+    { "name": "Atlas (High)", "provider": "OpenAI", "fit": 98, "ranks": [5, 8] },
+    { "name": "Beacon", "provider": "OpenAI", "fit": 97, "ranks": [null, 3] },
+    { "name": "Off-list miss", "provider": "Fixture", "fit": 96.5, "ranks": [8, 4] },
+    { "name": "Cedar", "provider": "OpenAI", "fit": 96, "ranks": [2, 5] },
+    { "name": "Delta", "provider": "OpenAI", "fit": 95, "ranks": [7, 9] },
+    { "name": "Alternate (Max)", "provider": "Fixture", "fit": 93, "ranks": [2, 1] },
+    { "name": "Alternate (High)", "provider": "Fixture", "fit": 92, "ranks": [3, 2] },
+    { "name": "Backup", "provider": "Fixture", "fit": 91, "ranks": [1, 3] },
+    { "name": "Contender", "provider": "Fixture", "fit": 90, "ranks": [1, 3] },
+    { "name": "Extra", "provider": "Fixture", "fit": 89, "ranks": [2, 2] },
+    { "name": "Pick", "provider": "OpenAI", "fit": 80, "ranks": [3, 4] },
+    { "name": "Below bar tie", "provider": "OpenAI", "fit": 80, "ranks": [12, 13] },
+    { "name": "Off-list tie", "provider": "Fixture", "fit": 80, "ranks": [3, 3] },
+    { "name": "Lower Fit below bar", "provider": "OpenAI", "fit": 79, "ranks": [13, 14] },
+    { "name": "Lower Fit off-list", "provider": "Fixture", "fit": 78, "ranks": [3, 2] }
+  ]
+}

@@ -122,7 +122,7 @@ import clientRecap from "../../workflows/client-recap.json";
 "workflows/client-recap.json": clientRecap,
 ```
 
-Compare each target and aim against the source. To inspect the pick and runners-up, call `stepPicks` with the step and `getPersonalityDataset()`. Run the workflow tests to check schema validation, registry coverage and scoring, then type-check the project.
+Compare each target and aim against the source. To inspect the pick and runners-up, call `stepPicks(step, getPersonalityDataset(), workflowModelList, (await getMasterDataset()).rows)` with `workflowModelList` from the registry. Run the workflow tests to check schema validation, registry coverage and scoring, then type-check the project.
 
 ```sh
 node --import tsx --test tests/workflows.test.ts

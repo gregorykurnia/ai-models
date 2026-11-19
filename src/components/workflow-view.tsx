@@ -1,6 +1,7 @@
 import { Badge, Card, EmptyState, HelperText, Table, TableScroll } from "@/components/ui/primitives";
 import { masterEvaluationLabel, type MasterRow } from "@/lib/master";
 import { formatPercentile, type PersonalityDataset } from "@/lib/personality";
+import { workflowModelList } from "@/lib/workflow-registry";
 import {
   evaluationRanks, rankStep, stepPicks,
   type RankedWorkflowModel, type Workflow, type WorkflowStep, type WorkflowTarget,
@@ -28,7 +29,11 @@ function ModelPick({ row }: { row: RankedWorkflowModel }) {
   </>;
 }
 
-function WorkflowOverview({ steps, dataset }: { steps: LabeledStep[]; dataset: PersonalityDataset }) {
+function WorkflowOverview({ steps, dataset, masterRows }: {
+  steps: LabeledStep[];
+  dataset: PersonalityDataset;
+  masterRows: MasterRow[];
+}) {
   return <Card className="master workflow-table-card" aria-labelledby="workflow-overview">
     <h2 id="workflow-overview">Overview</h2>
     <TableScroll label="Workflow overview, scroll horizontally for more columns" showOverflowCue>
@@ -44,7 +49,7 @@ function WorkflowOverview({ steps, dataset }: { steps: LabeledStep[]; dataset: P
           <th scope="col">Runners-up</th>
         </tr></thead>
         <tbody>{steps.map(step => {
-          const { pick, runnersUp } = stepPicks(step, dataset);
+          const { pick, runnersUp } = stepPicks(step, dataset, workflowModelList, masterRows);
           const pickContent = pick ? <div className="workflow-pick"><ModelPick row={pick} /></div> : <MissingValue />;
           return <tr key={step.id}>
             <td className="workflow-pinned">
@@ -75,7 +80,7 @@ function WorkflowStepDetail({ step, dataset, masterRows }: {
   dataset: PersonalityDataset;
   masterRows: MasterRow[];
 }) {
-  const rows = rankStep(step, dataset);
+  const rows = rankStep(step, dataset, workflowModelList, masterRows);
   const evaluationSlugs = [...new Set(step.evaluations)];
   const headingId = `workflow-step-heading-${step.id}`;
   const rankHelpId = `workflow-step-rank-help-${step.id}`;
@@ -156,7 +161,7 @@ export default function WorkflowView({ workflow, dataset, masterRows }: {
   }));
 
   return <>
-    <WorkflowOverview steps={steps} dataset={dataset} />
+    <WorkflowOverview steps={steps} dataset={dataset} masterRows={masterRows} />
     {steps.map(step => <WorkflowStepDetail key={step.id} step={step} dataset={dataset} masterRows={masterRows} />)}
   </>;
 }
