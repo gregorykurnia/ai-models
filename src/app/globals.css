@@ -2341,11 +2341,12 @@ a.ui-button:hover {
 }
 
 .workflow-overview-table .workflow-pinned { width: 13%; }
-.workflow-overview-table th:nth-child(2) { width: 16%; }
-.workflow-overview-table th:nth-child(3) { width: 16%; }
-.workflow-overview-table th:nth-child(4) { width: 14%; }
-.workflow-overview-table th:nth-child(5) { width: 11%; }
-.workflow-overview-table th:nth-child(6) { width: 14%; }
+.workflow-overview-table .workflow-goal { width: 15%; }
+.workflow-overview-table .workflow-aim-high { width: 17%; }
+.workflow-overview-table .workflow-aim-moderate { width: 14%; }
+.workflow-overview-table .workflow-aim-low { width: 11%; }
+.workflow-overview-table .workflow-desktop-pick { width: 14%; }
+.workflow-overview-table .workflow-mobile-pick { display: none; }
 
 :is(.workflow-overview-table, .workflow-rankings-table) th {
   height: 48px;
@@ -2363,7 +2364,7 @@ a.ui-button:hover {
   vertical-align: top;
 }
 
-.workflow-overview-table :is(th, td):nth-child(n+3):nth-child(-n+5) {
+.workflow-overview-table .workflow-aim {
   padding-inline: var(--space-2);
 }
 
@@ -2396,7 +2397,8 @@ a.ui-button:hover {
 
 .workflow-targets {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-1);
 }
 
@@ -2476,6 +2478,27 @@ td.workflow-pinned {
 }
 
 @media (max-width: 767px) {
+  .master .workflow-overview-table {
+    min-width: 76rem;
+  }
+
+  .workflow-overview-table .workflow-goal {
+    width: 10rem;
+  }
+
+  .workflow-overview-table th.workflow-aim {
+    width: 11rem;
+  }
+
+  .workflow-overview-table .workflow-mobile-pick {
+    display: table-cell;
+    width: clamp(7rem, calc(100vw - 12.25rem), 12rem);
+  }
+
+  .workflow-overview-table .workflow-desktop-pick {
+    display: none;
+  }
+
   .workflow-table-card .table-overflow-cue-slot:not(:empty) {
     display: flex;
   }

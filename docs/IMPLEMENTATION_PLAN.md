@@ -70,11 +70,13 @@ Docs), with your hand picks so the app's picks can be checked against them.
     names are the labels from the data, and each step title links to its detail below (`#step-3a`). Then a **detail
     section per step**: its goal, a table of the top 5 (Rank, Model, Provider, one column per target with "aim high",
     "aim moderate" or "aim low" under the trait name, Fit, then one column per evaluation), the "Also check (not in
-    Model Atlas)" line when `other_checks` is set, and the note. An unknown slug is the site's not-found page.
+    Model Atlas)" line when `other_checks` is set, and the note. A short explanation above tables with evaluations
+    distinguishes Fit from benchmark ranks. An unknown slug is the site's not-found page.
 - **Look:** the `/personality` table, chips, buttons and spacing (`src/components/ui/primitives.tsx`, `TableScroll`, the
-  pinned first column). No new colours or components. On a phone, the overview pins the Step column and the detail
-  tables pin Model; both scroll sideways inside their frame, never the page, and the pinned column wraps long names
-  to stay within about 40% of the frame. An anchor jump lands with the step heading visible, not under a sticky bar.
+  pinned first column). No new colours or components. Overview chips stack within their columns. On a phone,
+  Pick follows Step in the overview so both are visible on entry. The overview pins Step and the detail
+  tables pin Model. Horizontal scrolling stays inside the table frames, and pinned columns wrap long names
+  to stay within about 40% of the frame. An anchor jump lands with the step heading clear of the sticky bar.
 - **Where it's linked:** a "Workflows" item in the sidebar (`src/components/app-shell.tsx`) after Personality, with its
   own line icon in the style of the others. No home card.
 - **Shipping:** workflow files ship with the deploy. `npm run publish:data` has nothing to send, and `CLAUDE.md`'s

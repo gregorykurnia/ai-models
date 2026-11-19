@@ -30,6 +30,7 @@ try {
     .getByRole("link", { name: "Workflows", exact: true });
   const overview = main.locator(".workflow-overview-table");
   const overviewRows = overview.locator("tbody tr");
+  const overviewRow = id => overviewRows.filter({ has: page.locator(`a[href="#step-${id}"]`) });
   const step = main.locator("#step-3a");
   const stepHeading = step.getByRole("heading", { name: /^Step 3a · / });
 
@@ -73,9 +74,29 @@ try {
     await expect(page).toHaveURL(/\/workflows\/sales-proposal$/);
     await expect(main.getByRole("heading", { name: "Sales proposal", exact: true })).toBeVisible();
     await expect(overviewRows).toHaveCount(15);
+    const otherColumns = ["Goal", "Aim high", "Aim moderate", "Aim low"];
+    await expect(overview.getByRole("columnheader")).toHaveText(mobile
+      ? ["Step", "Pick", ...otherColumns, "Runners-up"]
+      : ["Step", ...otherColumns, "Pick", "Runners-up"]);
     for (const [id, name] of expectedPicks) {
-      const row = overviewRows.filter({ has: page.locator(`a[href="#step-${id}"]`) });
-      await expect(row.locator(".workflow-pick .workflow-pick-name"), `Step ${id} pick at ${width}px`).toHaveText(name);
+      const pick = overviewRow(id).locator(".workflow-pick:visible .workflow-pick-name");
+      await expect(pick, `Step ${id} pick at ${width}px`).toHaveText(name);
+    }
+    const creative = overviewRow("2").getByText("Creative", { exact: true });
+    const structured = overviewRow("2").getByText("Structured", { exact: true });
+    assert((await structured.boundingBox()).y > (await creative.boundingBox()).y, "Step 2 chips must stack");
+    if (mobile) {
+      await expect(overview.getByRole("columnheader", { name: "Pick", exact: true })).toBeInViewport({ ratio: 1 });
+      for (const id of ["0", "1"]) {
+        await expect(overviewRow(id).locator(".workflow-pick:visible")).toBeInViewport({ ratio: 1 });
+      }
+      const disclaims = overviewRow("1").getByText("Disclaims Assumptions", { exact: true });
+      await expect(disclaims).toBeAttached();
+      assert.equal(await disclaims.evaluate(chip => {
+        const text = document.createRange();
+        text.selectNodeContents(chip);
+        return text.getClientRects().length;
+      }), 1, "Disclaims Assumptions must fit on one line on the phone");
     }
     await screenshot("overview");
     await expectCurrentWorkflow();
@@ -88,6 +109,7 @@ try {
 
     const briefcase = step.getByRole("columnheader", { name: /Briefcase/ });
     await expect(briefcase).toBeAttached();
+    await expect(step.getByRole("table")).toHaveAccessibleDescription(/Fit measures.*Evaluation columns show its rank/);
     const briefcaseColumn = await briefcase.evaluate(header => header.cellIndex + 1);
     const ranks = step.locator(`tbody td:nth-child(${briefcaseColumn})`);
     await expect(ranks.filter({ hasText: /^#\d+ of \d+$/ }).first()).toBeAttached();

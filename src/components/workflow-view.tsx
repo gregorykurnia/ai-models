@@ -35,28 +35,31 @@ function WorkflowOverview({ steps, dataset }: { steps: LabeledStep[]; dataset: P
       <Table className="workflow-overview-table">
         <thead><tr>
           <th scope="col" className="workflow-pinned">Step</th>
-          <th scope="col">Goal</th>
-          <th scope="col">Aim high</th>
-          <th scope="col">Aim moderate</th>
-          <th scope="col">Aim low</th>
-          <th scope="col">Pick</th>
+          <th scope="col" className="workflow-mobile-pick">Pick</th>
+          <th scope="col" className="workflow-goal">Goal</th>
+          <th scope="col" className="workflow-aim workflow-aim-high">Aim high</th>
+          <th scope="col" className="workflow-aim workflow-aim-moderate">Aim moderate</th>
+          <th scope="col" className="workflow-aim workflow-aim-low">Aim low</th>
+          <th scope="col" className="workflow-desktop-pick">Pick</th>
           <th scope="col">Runners-up</th>
         </tr></thead>
         <tbody>{steps.map(step => {
           const { pick, runnersUp } = stepPicks(step, dataset);
+          const pickContent = pick ? <div className="workflow-pick"><ModelPick row={pick} /></div> : <MissingValue />;
           return <tr key={step.id}>
             <td className="workflow-pinned">
               <span className="workflow-step-number">Step {step.id}</span>
               <a href={`#step-${step.id}`}>{step.title}</a>
             </td>
+            <td className="workflow-mobile-pick">{pickContent}</td>
             <td>{step.goal}</td>
             {aims.map(aim => {
               const labels = [...new Set(step.targets.filter(target => target.aim === aim).map(target => target.label))];
-              return <td key={aim}>{labels.length
+              return <td key={aim} className="workflow-aim">{labels.length
                 ? <div className="workflow-targets">{labels.map(label => <Badge key={label}>{label}</Badge>)}</div>
                 : <MissingValue />}</td>;
             })}
-            <td>{pick ? <div className="workflow-pick"><ModelPick row={pick} /></div> : <MissingValue />}</td>
+            <td className="workflow-desktop-pick">{pickContent}</td>
             <td>{runnersUp.length ? <ul className="workflow-runners-up">
               {runnersUp.map(row => <li key={row.model.identity_key}><ModelPick row={row} /></li>)}
             </ul> : <MissingValue />}</td>
@@ -75,13 +78,20 @@ function WorkflowStepDetail({ step, dataset, masterRows }: {
   const rows = rankStep(step, dataset);
   const evaluationSlugs = [...new Set(step.evaluations)];
   const headingId = `workflow-step-heading-${step.id}`;
+  const rankHelpId = `workflow-step-rank-help-${step.id}`;
   const fewMetrics = step.targets.length + evaluationSlugs.length <= 2;
 
   return <Card className="master workflow-table-card" id={`step-${step.id}`} aria-labelledby={headingId}>
     <h2 id={headingId}>Step {step.id} · {step.title}</h2>
     <p>{step.goal}</p>
+    {evaluationSlugs.length > 0 && <HelperText id={rankHelpId}>
+      Fit measures how closely a model matches the step’s personality targets. Evaluation columns show its rank in each benchmark.
+    </HelperText>}
     <TableScroll label={`Step ${step.id} rankings, scroll horizontally for more columns`} showOverflowCue>
-      <Table className={`workflow-rankings-table${fewMetrics ? " workflow-rankings-table--few-metrics" : ""}`}>
+      <Table
+        aria-describedby={evaluationSlugs.length > 0 ? rankHelpId : undefined}
+        className={`workflow-rankings-table${fewMetrics ? " workflow-rankings-table--few-metrics" : ""}`}
+      >
         <thead><tr>
           <th scope="col" className="numeric">Rank</th>
           <th scope="col" className="workflow-pinned workflow-model">Model</th>
