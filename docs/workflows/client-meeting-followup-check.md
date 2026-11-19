@@ -2,10 +2,10 @@
 
 ## Independent calculation
 
-Run this block from the repository root. The target groups in each row are high, moderate, then low. `index:` marks an index target. The meeting rows come from item 4 and the proposal rows come from its source table. The seven evaluation slugs are also their cell IDs in the master rows. [Phase 2 brief](../IMPLEMENTATION_PLAN.md#phase-2-brief-your-models-a-benchmark-bar-and-the-meeting-follow-up-workflow) · [Proposal source](proposal-source.md)
+Run this block from the repository root for the six meeting steps. The sales proposal check runs the same calculation with its own workflow slug. The target groups in each row are high, moderate, then low. `index:` marks an index target. The meeting rows come from item 4 and the proposal rows come from its source table. The seven evaluation slugs are also their cell IDs in the master rows. [Phase 2 brief](../IMPLEMENTATION_PLAN-done.md#phase-2-brief-your-models-a-benchmark-bar-and-the-meeting-follow-up-workflow) · [Proposal source](proposal-source.md)
 
 ```sh
-node --import tsx --input-type=module <<'NODE'
+node --import tsx --input-type=module - "${WORKFLOW_CHECK:-client-meeting-followup}" <<'NODE'
 import { readFileSync } from "node:fs";
 import { getMasterDataset } from "./src/lib/data.ts";
 
@@ -48,7 +48,10 @@ const workflows = {
   ],
 };
 
+const workflowToCheck = process.argv[2];
+if (!Object.hasOwn(workflows, workflowToCheck)) throw new Error(`Unknown workflow: ${workflowToCheck}`);
 for (const [workflow, steps] of Object.entries(workflows)) {
+  if (workflow !== workflowToCheck) continue;
   for (const [step, high, moderate, low, evaluations = []] of steps) {
     const benchmarks = evaluations.map(slug => {
       const cohort = rows.filter(row => row.cells[slug]?.entry.source_rank != null).length;
@@ -87,13 +90,15 @@ NODE
 
 ## Chat, script and app picks
 
+Data checked with the 19 Nov 2026 leaderboard refresh and the 16:51 UTC PersonalityBench capture. The pick and both runners-up kept their order on all six steps. The refresh column compares bars and ranks in pick order with the earlier 19 Nov data.
+
 The app column comes from `stepPicks`, `evaluationRanks` and `barRank` with the bundled master dataset. The script and app agree on the model variants, unrounded Fit and ranks for all six steps. Their columns show the pick in bold, then its runners-up in order. Fit is shown to two decimals, followed by ranks in the benchmark order for the step. The Claude Max names here refer to the adaptive-reasoning variants with default fallback. [Workflow scorer](../../src/lib/workflows.ts)
 
-| Step | Benchmarks (bar rank / cohort) | Chat picks | Independent script | App | Comparison |
-|---|---|---|---|---|---|
-| 1 | Briefcase #70/281<br>Omniscience #39/157 | Opus 5.5 Max<br>Fable 5.1 Max<br>GPT-6 Astra Max | **Opus 5.5 Max** 93.81 (#2/281, #9/157)<br>Fable 5.1 Max 93.34 (#12/281, #12/157)<br>GPT-6 Astra Max 75.25 (#36/281, #21/157) | **Opus 5.5 Max** 93.81 (#2/281, #9/157)<br>Fable 5.1 Max 93.34 (#12/281, #12/157)<br>GPT-6 Astra Max 75.25 (#36/281, #21/157) | Match |
-| 2 | Strategy & Ops #39/156<br>Analytical Quality #70/281 | Fable 5.1 Max<br>Opus 5.5 Max<br>Sonnet 5.5 Max | **Fable 5.1 Max** 98.28 (#15/156, #11/281)<br>Opus 5.5 Max 85.71 (#8/156, #1/281)<br>Sonnet 5.5 Max 75.05 (#13/156, #3/281) | **Fable 5.1 Max** 98.28 (#15/156, #11/281)<br>Opus 5.5 Max 85.71 (#8/156, #1/281)<br>Sonnet 5.5 Max 75.05 (#13/156, #3/281) | Match |
-| 3 | Strategy & Ops #39/156<br>Briefcase #70/281 | Fable 5.1 Max<br>Opus 5.5 Max<br>GPT-6.2 Sol Max | **Fable 5.1 Max** 64.01 (#15/156, #12/281)<br>Opus 5.5 Max 62.48 (#8/156, #2/281)<br>GPT-6.2 Sol High 61.72 (#16/156, #43/281) | **Fable 5.1 Max** 64.01 (#15/156, #12/281)<br>Opus 5.5 Max 62.48 (#8/156, #2/281)<br>GPT-6.2 Sol High 61.72 (#16/156, #43/281) | Sol High and Max have the same unrounded Fit of 61.72307692307693. Max clears both bars at Strategy & Ops #11/156 and Briefcase #23/281. The model-name tiebreak puts High first. |
-| 4 | Presentation #70/281<br>Rubric Score #70/281 | GPT-6.1 Sol Max<br>Sonnet 5.5 Max<br>Opus 5.5 Max | **GPT-6.1 Sol Max** 78.04 (#56/281, #34/281)<br>Sonnet 5.5 Max 75.70 (#1/281, #2/281)<br>Opus 5.5 Max 71.89 (#2/281, #12/281) | **GPT-6.1 Sol Max** 78.04 (#56/281, #34/281)<br>Sonnet 5.5 Max 75.70 (#1/281, #2/281)<br>Opus 5.5 Max 71.89 (#2/281, #12/281) | Match |
-| 5 | No bar | GPT-6.2 Astra Medium<br>GPT-6.2 Sol High<br>GPT-6 Sol Max | **GPT-6.2 Astra Medium** 87.88<br>GPT-6.2 Sol High 80.55<br>GPT-6 Sol Max 74.43 | **GPT-6.2 Astra Medium** 87.88<br>GPT-6.2 Sol High 80.55<br>GPT-6 Sol Max 74.43 | Match |
-| 6 | Omniscience #39/157 | Fable 5.1 Max<br>Opus 5.5 Max<br>Fable 5.2 Max | **Fable 5.1 Max** 97.76 (#12/157)<br>Opus 5.5 Max 78.09 (#9/157)<br>Fable 5.2 Max 76.82 (#1/157) | **Fable 5.1 Max** 97.76 (#12/157)<br>Opus 5.5 Max 78.09 (#9/157)<br>Fable 5.2 Max 76.82 (#1/157) | Match |
+| Step | Benchmarks (bar rank / cohort) | Chat picks | Independent script | App | Comparison | Moved in the 19 Nov 2026 refresh |
+|---|---|---|---|---|---|---|
+| 1 | Briefcase #72/289<br>Omniscience #42/169 | Opus 5.5 Max<br>Fable 5.1 Max<br>GPT-6 Astra Max | **Opus 5.5 Max** 93.81 (#2/289, #13/169)<br>Fable 5.1 Max 93.34 (#13/289, #16/169)<br>GPT-6 Astra Max 75.25 (#38/289, #25/169) | **Opus 5.5 Max** 93.81 (#2/289, #13/169)<br>Fable 5.1 Max 93.34 (#13/289, #16/169)<br>GPT-6 Astra Max 75.25 (#38/289, #25/169) | Match | Briefcase bar #70/281 → #72/289, ranks (2, 12, 36) → (2, 13, 38).<br>Omniscience bar #39/157 → #42/169, ranks (9, 12, 21) → (13, 16, 25). |
+| 2 | Strategy & Ops #42/168<br>Analytical Quality #72/289 | Fable 5.1 Max<br>Opus 5.5 Max<br>Sonnet 5.5 Max | **Fable 5.1 Max** 98.28 (#18/168, #11/289)<br>Opus 5.5 Max 85.71 (#10/168, #1/289)<br>Sonnet 5.5 Max 75.05 (#16/168, #3/289) | **Fable 5.1 Max** 98.28 (#18/168, #11/289)<br>Opus 5.5 Max 85.71 (#10/168, #1/289)<br>Sonnet 5.5 Max 75.05 (#16/168, #3/289) | Match | Strategy & Ops bar #39/156 → #42/168, ranks (15, 8, 13) → (18, 10, 16).<br>Analytical Quality bar #70/281 → #72/289. |
+| 3 | Strategy & Ops #42/168<br>Briefcase #72/289 | Fable 5.1 Max<br>Opus 5.5 Max<br>GPT-6.2 Sol Max | **Fable 5.1 Max** 64.01 (#18/168, #13/289)<br>Opus 5.5 Max 62.48 (#10/168, #2/289)<br>GPT-6.2 Sol High 61.72 (#19/168, #45/289) | **Fable 5.1 Max** 64.01 (#18/168, #13/289)<br>Opus 5.5 Max 62.48 (#10/168, #2/289)<br>GPT-6.2 Sol High 61.72 (#19/168, #45/289) | Sol High and Max have the same unrounded Fit of 61.72307692307693. Max clears both bars at Strategy & Ops #14/168 and Briefcase #25/289. The model-name tiebreak puts High first. | Strategy & Ops bar #39/156 → #42/168, ranks (15, 8, 16) → (18, 10, 19).<br>Briefcase bar #70/281 → #72/289, ranks (12, 2, 43) → (13, 2, 45). |
+| 4 | Presentation #72/289<br>Rubric Score #72/289 | GPT-6.1 Sol Max<br>Sonnet 5.5 Max<br>Opus 5.5 Max | **GPT-6.1 Sol Max** 78.04 (#58/289, #36/289)<br>Sonnet 5.5 Max 75.70 (#3/289, #2/289)<br>Opus 5.5 Max 71.89 (#4/289, #13/289) | **GPT-6.1 Sol Max** 78.04 (#58/289, #36/289)<br>Sonnet 5.5 Max 75.70 (#3/289, #2/289)<br>Opus 5.5 Max 71.89 (#4/289, #13/289) | Match | Presentation bar #70/281 → #72/289, ranks (56, 1, 2) → (58, 3, 4).<br>Rubric Score bar #70/281 → #72/289, ranks (34, 2, 12) → (36, 2, 13). |
+| 5 | No bar | GPT-6.2 Astra Medium<br>GPT-6.2 Sol High<br>GPT-6 Sol Max | **GPT-6.2 Astra Medium** 87.88<br>GPT-6.2 Sol High 80.55<br>GPT-6 Sol Max 74.43 | **GPT-6.2 Astra Medium** 87.88<br>GPT-6.2 Sol High 80.55<br>GPT-6 Sol Max 74.43 | Match | — |
+| 6 | Omniscience #42/169 | Fable 5.1 Max<br>Opus 5.5 Max<br>Fable 5.2 Max | **Fable 5.1 Max** 97.76 (#16/169)<br>Opus 5.5 Max 78.09 (#13/169)<br>Fable 5.2 Max 76.82 (#1/169) | **Fable 5.1 Max** 97.76 (#16/169)<br>Opus 5.5 Max 78.09 (#13/169)<br>Fable 5.2 Max 76.82 (#1/169) | Match | Omniscience bar #39/157 → #42/169, ranks (12, 9, 1) → (16, 13, 1). |

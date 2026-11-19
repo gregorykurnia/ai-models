@@ -6,7 +6,7 @@ const { chromium } = await import(playwrightModule);
 const { expect } = createRequire(import.meta.resolve(playwrightModule))("playwright/test");
 const base = process.env.BASE_URL || "http://127.0.0.1:3180";
 
-// App picks recorded independently of the scorer in docs/workflows/sales-proposal-check.md.
+// Picks verified against the 19 Nov 2026 refresh in docs/workflows/sales-proposal-check.md.
 const proposalPicks = [
   ["1", "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)"],
   ["3a", "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)"],
@@ -14,7 +14,7 @@ const proposalPicks = [
   ["7", "GPT-6.2 Sol (Medium)"],
 ];
 
-// App picks from docs/workflows/client-meeting-followup-check.md.
+// Picks verified against the 19 Nov 2026 refresh in docs/workflows/client-meeting-followup-check.md.
 const meetingPicks = [
   ["1", "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)"],
   ["4", "GPT-6.1 Sol (Max)"],

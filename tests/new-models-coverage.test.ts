@@ -1,39 +1,16 @@
 import assert from "node:assert/strict";
-import { execFile } from "node:child_process";
-import { mkdir, mkdtemp, readdir, readFile, rm, rmdir, symlink, writeFile } from "node:fs/promises";
-import { tmpdir } from "node:os";
+import { mkdir, readdir, readFile, rm, rmdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import test, { type TestContext } from "node:test";
-import { fileURLToPath } from "node:url";
-import { promisify } from "node:util";
+import test from "node:test";
 import type { Dataset } from "../src/lib/contract";
+import { audit, auditWorkspace, gptReport, hydrogenReport } from "./fixtures/new-models-audit";
 
-const root = fileURLToPath(new URL("../", import.meta.url));
-const base: Dataset = JSON.parse(await readFile(join(root, "data/leaderboards.json"), "utf8"));
-const gptReport = "docs/GPT_6_2_ASTRA_SOL_COVERAGE.md";
-const hydrogenReport = "docs/GEMINI_4_HYDROGEN_QWEN4_COVERAGE.md";
-const run = promisify(execFile);
-const env = { ...process.env };
-delete env.NODE_TEST_CONTEXT;
-const audit = (cwd: string, ...args: string[]) => run(process.execPath, [
-  "--import", import.meta.resolve("tsx"), join(root, "scripts/audit-new-models-coverage.ts"), ...args,
-], { cwd, env });
-
-async function workspace(t: TestContext): Promise<string> {
-  const cwd = await mkdtemp(join(tmpdir(), "ai-model-coverage-"));
-  t.after(() => rm(cwd, { recursive: true, force: true }));
-  await Promise.all([mkdir(join(cwd, "docs")), mkdir(join(cwd, "data"))]);
-  await Promise.all([
-    "aa-captures", "aa-briefcase-components.json", "aa-briefcase-rubric-refresh.json",
-    "aa-model-profile-overlays.json", "leaderboards.json",
-  ].map(file => symlink(join(root, "data", file), join(cwd, "data", file))));
-  return cwd;
-}
+const base: Dataset = JSON.parse(await readFile(new URL("../data/leaderboards.json", import.meta.url), "utf8"));
 
 test("both sets write their own report and GPT-6.2 covers every bundled evaluation", async t => {
-  const cwd = await workspace(t);
+  const cwd = await auditWorkspace(t);
   const [gpt, hydrogen] = await Promise.all([audit(cwd, "--set", "gpt-6.2"), audit(cwd, "--set", "hydrogen")]);
-  assert.match(gpt.stdout, /10 master rows.*175 filled, 15 absent/);
+  assert.match(gpt.stdout, /10 master rows.*185 filled, 15 absent/);
   assert.match(hydrogen.stdout, /7 master rows/);
   const [report, legacyReport] = await Promise.all([
     readFile(join(cwd, gptReport), "utf8"), readFile(join(cwd, hydrogenReport), "utf8"),
@@ -74,7 +51,7 @@ test("both sets write their own report and GPT-6.2 covers every bundled evaluati
 });
 
 test("the audit refuses bad set arguments and unexpected master entries", async t => {
-  const cwd = await workspace(t);
+  const cwd = await auditWorkspace(t);
   await assert.rejects(audit(cwd, "--set", "gpt-6.1"), { code: 1, stderr: /Usage:/ });
   await assert.rejects(audit(cwd, "--set"), { code: 1, stderr: /Usage:/ });
   const file = join(cwd, "data/leaderboards.json");
@@ -96,7 +73,7 @@ test("the audit refuses bad set arguments and unexpected master entries", async 
 });
 
 test("overlapping reruns preserve the dated live observations", async t => {
-  const cwd = await workspace(t);
+  const cwd = await auditWorkspace(t);
   await audit(cwd, "--set", "gpt-6.2");
   const file = join(cwd, gptReport);
   const draft = await readFile(file, "utf8");
@@ -109,7 +86,7 @@ test("overlapping reruns preserve the dated live observations", async t => {
 });
 
 test("a failed report replacement cleans up and can be retried", async t => {
-  const cwd = await workspace(t);
+  const cwd = await auditWorkspace(t);
   const report = join(cwd, hydrogenReport);
   await mkdir(report);
   await assert.rejects(audit(cwd, "--set", "hydrogen"), { code: 1, stderr: /EISDIR.*rename/ });

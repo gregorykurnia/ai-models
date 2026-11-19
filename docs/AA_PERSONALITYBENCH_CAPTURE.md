@@ -1,6 +1,6 @@
 # AA-PersonalityBench capture inventory
 
-Captured 2026-11-19T07:36:14.917Z from [AA-PersonalityBench](https://artificialanalysis.ai/evaluations/aa-personalitybench). The selector reported **53 of 53 models**.
+Captured 2026-11-19T16:51:18.339Z from [AA-PersonalityBench](https://artificialanalysis.ai/evaluations/aa-personalitybench). The selector reported **53 of 53 models**.
 
 51 of 53 models match the bundled master by identity key. Missing values are listed by index or trait and measure.
 

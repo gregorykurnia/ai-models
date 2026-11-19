@@ -417,6 +417,7 @@ test("the meeting workflow pins each independently checked pick and both runners
     const { pick, runnersUp } = stepPicks(step, personality, workflowModelList, masterRows);
     return [step.id, [pick, ...runnersUp].map(row => row?.model.identity_key)];
   });
+  // Independently checked against the 19 Nov 2026 bundled refresh.
   assert.deepEqual(picks, [
     ["1", [
       "anthropic\u0000claude opus 5.5 (max with fallback)",
@@ -459,33 +460,85 @@ test("sales proposal registers all 14 source steps and pins the filtered picks",
   ]);
 
   const masterRows = await bundledMasterRows();
-  // Independently checked against the model list and benchmark bar.
-  const checkedPicks: Record<string, string> = {
-    "1": "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
-    "3a": "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
-    "6": "DeepSeek V4.1 Flash 1017 (Max)",
-    "7": "GPT-6.2 Sol (Medium)",
+  // Independently checked against the 19 Nov 2026 bundled refresh.
+  const checkedPicks: Record<string, string[]> = {
+    "0": [
+      "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    ],
+    "1": [
+      "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "GPT-6 Astra (Max)",
+    ],
+    "2": [
+      "Gemini 3.8 Flash (High)",
+      "Gemini 3.1 Pro Preview",
+      "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    ],
+    "3a": [
+      "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Haiku 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    ],
+    "3b": [
+      "GPT-6.2 Sol (High)",
+      "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "DeepSeek V4.1 Flash 1017 (Max)",
+    ],
+    "3c": [
+      "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    ],
+    "3d": [
+      "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "GPT-6.1 Sol (Max)",
+      "GPT-6 Astra (Max)",
+    ],
+    "3e": [
+      "DeepSeek V4.1 Flash 1017 (Max)",
+      "Claude Haiku 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "GPT-6.2 Sol (High)",
+    ],
+    "3f": [
+      "DeepSeek V4.1 Flash 1017 (Max)",
+      "GPT-6.2 Sol (Medium)",
+      "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    ],
+    "4": [
+      "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    ],
+    "5": [
+      "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    ],
+    "6": [
+      "DeepSeek V4.1 Flash 1017 (Max)",
+      "Grok 4.5 (High)",
+      "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    ],
+    "7": [
+      "GPT-6.2 Sol (Medium)",
+      "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "GPT-6.2 Astra (Xhigh)",
+    ],
+    "8": [
+      "GPT-6.2 Astra (Medium)",
+      "GPT-6.2 Sol (Xhigh)",
+      "GPT-6 Sol (Max)",
+    ],
   };
   for (const step of proposal.steps) {
     const { pick, runnersUp } = stepPicks(step, personality, workflowModelList, masterRows);
     assert.ok(pick && pick.fit !== null, `Missing pick for ${step.id}`);
-    assert.equal(runnersUp.length, 2, step.id);
-    assert.equal(new Set([pick, ...runnersUp].map(row => familyKey(row.model.identity_key))).size, 3, step.id);
-    if (checkedPicks[step.id]) assert.equal(pick.model.name, checkedPicks[step.id], step.id);
-  }
-
-  const checkedRunnersUp: Record<string, string[]> = {
-    "3a": [
-      "Claude Haiku 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
-      "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
-    ],
-    "6": ["Grok 4.5 (High)", "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)"],
-    "7": ["Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)", "GPT-6.2 Astra (Xhigh)"],
-  };
-  for (const [id, names] of Object.entries(checkedRunnersUp)) {
-    const checkedStep: WorkflowStep | undefined = proposal.steps.find(item => item.id === id);
-    assert.ok(checkedStep, id);
-    assert.deepEqual(stepPicks(checkedStep, personality, workflowModelList, masterRows).runnersUp.map(row => row.model.name), names, id);
+    const ranked = [pick, ...runnersUp];
+    assert.deepEqual(ranked.map(row => row.model.name), checkedPicks[step.id], step.id);
+    assert.equal(new Set(ranked.map(row => familyKey(row.model.identity_key))).size, ranked.length, step.id);
   }
 });
 

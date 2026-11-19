@@ -1,10 +1,13 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import test from "node:test";
+import { join } from "node:path";
+import test, { after } from "node:test";
 import { newModelNames, newModelsExpectations, readNewModelsDataset } from "../scripts/check-new-models-browser.mjs";
+import { audit as runAudit, auditWorkspace, gptReport, hydrogenReport } from "./fixtures/new-models-audit";
 
-const dataset = await readNewModelsDataset();
-const audit = await readFile(new URL("../docs/GEMINI_4_HYDROGEN_QWEN4_COVERAGE.md", import.meta.url), "utf8");
+const cwd = await auditWorkspace({ after });
+const [dataset] = await Promise.all([readNewModelsDataset(), runAudit(cwd, "--set", "hydrogen"), runAudit(cwd, "--set", "gpt-6.2")]);
+const [audit, gptAudit] = await Promise.all([hydrogenReport, gptReport].map(report => readFile(join(cwd, report), "utf8")));
 
 test("browser fixture includes all audit rows and all three merged Briefcase component evaluations", () => {
   const { expected, evaluations } = newModelsExpectations(dataset, audit);
@@ -24,11 +27,13 @@ test("browser fixture includes all audit rows and all three merged Briefcase com
 });
 
 test("browser fixture follows source rank when capture rows are in a different order", () => {
-  const { evaluations } = newModelsExpectations(dataset, audit);
-  for (const [id, rank] of [["aa-briefcase-analytical-quality-elo", 7], ["aa-briefcase-presentation-elo", 10]] as const) {
+  const descending = { ...dataset, entries: [...dataset.entries].sort((a, b) => b.source_rank - a.source_rank) };
+  const { evaluations } = newModelsExpectations(descending, audit);
+  for (const id of ["aa-briefcase-analytical-quality-elo", "aa-briefcase-presentation-elo"]) {
     const briefcase = evaluations.find(({ evaluation }) => evaluation.id === id)!;
-    assert.equal(briefcase.entries[0].model, "Qwen4 Max");
-    assert.equal(briefcase.entries[0].source_rank, rank);
+    const ranks = briefcase.entries.map(entry => entry.source_rank);
+    assert.ok(ranks.length > 1, id);
+    assert.deepEqual(ranks, ranks.toSorted((a, b) => a - b), id);
   }
 });
 
@@ -65,8 +70,6 @@ test("browser fixture fails on an omitted evaluation or a stale audited rank", (
   assert.notEqual(wrongRank, audit);
   assert.throws(() => newModelsExpectations(dataset, wrongRank), /intelligence-index: Gemini 4 Hydrogen \(Xhigh\) score and rank agree with audit/);
 });
-
-const gptAudit = await readFile(new URL("../docs/GPT_6_2_ASTRA_SOL_COVERAGE.md", import.meta.url), "utf8");
 
 test("GPT-6.2 browser fixture keeps empty CritPt and the Astra-only MMMU-Pro for browser checks", () => {
   const { expected, evaluations } = newModelsExpectations(dataset, gptAudit, "gpt-6.2");

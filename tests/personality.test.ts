@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import DataPage from "../src/app/about/data/page";
 import {
   defaultPersonalitySort,
   firstSortDirection,
@@ -7,6 +10,7 @@ import {
   formatEloInterval,
   formatPercentile,
   getPersonalityDataset,
+  personalityCaptureLabel,
   personalityColumns,
   personalityLevelHref,
   personalityPage,
@@ -20,6 +24,12 @@ import {
 } from "../src/lib/personality";
 
 const dataset = getPersonalityDataset();
+
+test("About the data shows the bundled PersonalityBench capture date and model count", () => {
+  const markup = renderToStaticMarkup(createElement(DataPage));
+  const date = personalityCaptureLabel(dataset.captured_at);
+  assert.ok(markup.includes(`<time dateTime="${dataset.captured_at}">${date}</time> capture covers ${dataset.models.length} models.`));
+});
 
 function describe(level: PersonalityLevel) {
   if (level.kind === "all") return "all";
