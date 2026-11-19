@@ -2176,12 +2176,24 @@ a.ui-button:hover {
   color: var(--text-secondary);
 }
 
+.personality-definition-direction {
+  white-space: nowrap;
+}
+
 /* From 1280px the score columns share the width left beside the pinned columns, so no level scrolls sideways.
    Below that the table scrolls under the pinned model column, like the master. */
 @media (min-width: 1280px) {
   .personality table {
     width: 100%;
     table-layout: fixed;
+  }
+
+  .personality--trait :is(.table-scroll-frame, .ui-pagination) {
+    max-width: 48rem;
+  }
+
+  .personality--trait th.numeric small {
+    text-wrap: balance;
   }
 }
 
@@ -2213,6 +2225,7 @@ a.ui-button:hover {
 .personality-static-header {
   display: block;
   padding: var(--space-2) var(--space-2) var(--space-2) var(--space-1);
+  color: var(--text-secondary);
   font-size: var(--font-size-ui);
   line-height: var(--line-height-ui);
   text-align: right;

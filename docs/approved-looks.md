@@ -9,4 +9,5 @@
 - Intelligence Index scores intentionally use four decimal places with tabular figures, as recorded in the November screenshot review.
 - Personality chip rows on a phone are one line each that scrolls sideways; chips cut at the card's edges are how that scroll shows (the plan's design).
 - On a phone, a Personality table can show a sliver of the next score column at its right edge; the "More columns →" cue above it says the table scrolls.
+- The Personality trait table's Elo 95% interval header has no sort arrow. The interval is informational and uses the same muted header text as the sortable columns.
 - 1440px and 390px captures are one screen tall, so the bottom edge can cut through a table row, a header date or a card; the page continues below.

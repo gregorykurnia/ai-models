@@ -143,14 +143,18 @@ try {
   await starred.click();
   await expectCount(0);
 
+  const views = [
+    ["All indexes", "all", ""],
+    ["Transparency", "transparency", "?index=transparency"],
+    ["Sincere", "sincere", "?index=warmth&trait=sincere"],
+    ["Slop", "slop", "?index=slop"],
+    ["Sycophantic", "sycophantic", "?index=transparency&trait=sycophantic"],
+    ["Emotionally Intelligent", "emotionally-intelligent", "?index=warmth&trait=emotionallyIntelligent"],
+  ];
   await mkdir(output, { recursive: true });
   for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
-    for (const [name, filename, query] of [
-      ["All indexes", "all", ""],
-      ["Transparency", "transparency", "?index=transparency"],
-      ["Sincere", "sincere", "?index=warmth&trait=sincere"],
-    ]) {
+    for (const [name, filename, query] of views) {
       await page.goto(`${base}/personality${query}`);
       if (name === "Sincere") await page.reload();
       await expect(heading(name)).toBeVisible();
@@ -161,6 +165,24 @@ try {
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${name} at ${width}px: page overflows`);
       if (width === 1440) {
         assert(await scroll.evaluate(element => element.scrollWidth <= element.clientWidth + 1), `${name}: desktop table overflows`);
+        const interval = header("interval");
+        if (query.includes("trait=") || name === "Slop") {
+          await expect(interval).toBeVisible();
+          await expect(interval.getByRole("button")).toHaveCount(0);
+          const scoreColor = await header("percentile").getByRole("button").evaluate(button => getComputedStyle(button).color);
+          await expect(interval.locator(".personality-static-header")).toHaveCSS("color", scoreColor);
+          const tableWidth = (await scroll.boundingBox()).width;
+          assert(tableWidth <= 768, `${name}: wide gaps between desktop trait scores`);
+          assert.equal((await card.getByRole("navigation", { name: "Table pagination" }).boundingBox()).width, tableWidth,
+            `${name}: pagination must align with the trait table`);
+        }
+        if (name === "Transparency") {
+          const definitions = card.locator(".master-intro .personality-definitions");
+          const term = definitions.locator("dt").filter({ hasText: /^Sycophantic$/ });
+          await expect(term.locator("../dd")).toContainText("↓ lower is better.");
+          const top = async locator => (await locator.boundingBox()).y;
+          assert.equal(await top(term.locator("../dd")), await top(definitions.locator("dd").first()), "Sycophantic's definition must line up with the other definitions");
+        }
       } else {
         const firstRow = rows.first();
         const region = await scroll.boundingBox();
@@ -178,7 +200,7 @@ try {
     }
   }
   assert.deepEqual(errors, []);
-  console.log(`Personality browser check passed: ${modelCount} models, sorts, filters, reload, favorites, navigation and six screenshots`);
+  console.log(`Personality browser check passed: ${modelCount} models, sorts, filters, reload, favorites, navigation and ${2 * views.length} screenshots`);
 } finally {
   await browser.close();
 }

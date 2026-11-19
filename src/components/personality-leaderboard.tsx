@@ -59,7 +59,12 @@ function LevelNotes({dataset,level,levelHref}:{dataset:PersonalityDataset;level:
   </>;
   if(level.kind==="index") return <>
     <p>{level.index.description}. The index is the mean of its {level.index.traits.length} traits, as a percentile from 1 to 100 · {level.index.question_count} questions.</p>
-    <dl className="personality-definitions" style={{"--personality-definition-columns":Math.min(5,level.index.traits.length)} as CSSProperties}>{level.index.traits.map(trait=><div key={trait.key}><dt>{trait.label}{trait.lower_is_better?" · ↓ lower is better":""}</dt><dd>{trait.definition}</dd></div>)}</dl>
+    <dl className="personality-definitions" style={{"--personality-definition-columns":Math.min(5,level.index.traits.length)} as CSSProperties}>
+      {level.index.traits.map(trait=><div key={trait.key}>
+        <dt>{trait.label}</dt>
+        <dd>{trait.definition}{trait.lower_is_better&&<> <span className="personality-definition-direction">↓ lower is better.</span></>}</dd>
+      </div>)}
+    </dl>
   </>;
   return <>
     <p>{level.trait.definition}{level.trait.lower_is_better?" ↓ lower is better.":""}</p>
