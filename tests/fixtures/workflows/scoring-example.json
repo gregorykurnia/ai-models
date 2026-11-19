@@ -1,0 +1,21 @@
+{
+  "slug": "scoring-example",
+  "title": "Scoring example",
+  "summary": "A workflow for testing model scores.",
+  "updated": "2026-11-19",
+  "steps": [
+    {
+      "id": "3a",
+      "title": "Draft",
+      "goal": "Write a clear first draft.",
+      "targets": [
+        { "trait": "sincere", "aim": "high" },
+        { "index": "warmth", "aim": "moderate" },
+        { "trait": "slop", "aim": "low" }
+      ],
+      "evaluations": ["briefcase-v1-1"],
+      "other_checks": "Review the draft's clarity.",
+      "note": "Keep the sentences short."
+    }
+  ]
+}

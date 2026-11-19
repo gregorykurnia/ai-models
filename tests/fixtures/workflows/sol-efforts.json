@@ -1,0 +1,9 @@
+[
+  { "name": "GPT-6.2 Sol (Low)", "provider": "OpenAI", "percentile": 96 },
+  { "name": "GPT-6.2 Astra (High)", "provider": "OpenAI", "percentile": 95 },
+  { "name": "GPT-6.2 Sol (Max)", "provider": "OpenAI", "percentile": 100 },
+  { "name": "GPT-6.2 Sol (Medium)", "provider": "OpenAI", "percentile": 97 },
+  { "name": "Claude Sonnet 5.5 (Max with fallback)", "provider": "Anthropic", "percentile": 94 },
+  { "name": "GPT-6.2 Sol (XHigh)", "provider": "OpenAI", "percentile": 99 },
+  { "name": "GPT-6.2 Sol (High)", "provider": "OpenAI", "percentile": 98 }
+]
