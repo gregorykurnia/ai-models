@@ -26,3 +26,14 @@
   margin-top: var(--space-8);
   font-size: var(--font-size-caption);
 }
+
+.featureCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: var(--space-4);
+  margin-block: var(--space-6);
+}
+
+.featureCards > :global(.ui-card) {
+  margin: 0;
+}

@@ -34,6 +34,9 @@ export default function DataPage() {
     <p>SWE-Atlas-QnA measures the pass rate on technical questions about existing codebases. The 18 Nov 2026 capture maps 39 coding-agent setups to master model and effort names. SWE-Atlas QnA appears after FrontierCode 2.0 in the master table. Aggregate Score still uses its nine existing dimensions.</p>
     <p>Intelligence Index v5.0.1 contains all 143 listed models in the 18 Nov 2026 capture, with re-scored results replacing v5.0. Scoring status follows Artificial Analysis’s estimated flag. Estimates still awaiting independent scoring keep that wording. The Cost per Intelligence Index task comes from the same page, with 134 available cost records.</p>
 
+    <h2>Personality: AA-PersonalityBench</h2>
+    <p>The <a href="/personality">Personality</a> page shows how models write, not whether they are right. Artificial Analysis judges 900 prompts pairwise with a panel of LLM judges and turns them into an Elo per trait for 30 traits, grouped into 8 indexes (Expressiveness, Organization, Informativeness, Transparency, Warmth, Conviction, Imagination and Slop). Each index and trait is a percentile from 1 to 100 across every model tested; higher means more of it, and for Slop and Sycophantic lower is better. The 19 Nov 2026 capture covers 53 models. These values sit outside the evaluation ranks: they don’t change the Aggregate Score, the master leaderboard or task suitability.</p>
+
     <h2>Snapshot history and updates</h2>
     <p>The 18 Nov 2026 capture adds SWE-Atlas-QnA and separate leaderboards for the CritPt v2 Full Set and Hard Subset alongside legacy CritPt. Earlier snapshots, including the 29 Sep 2026 workbook, the 30 Sep and 7 Oct AA-Briefcase captures, the 11, 20, 25 and 29 Oct evaluation captures, and the 7 and 10 Nov captures, remain in the published history. Later imports create immutable snapshots. Failed imports preserve the last published data.</p>
   </article>;

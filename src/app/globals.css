@@ -2131,3 +2131,170 @@ a.ui-button:hover {
 .toolbar.master-toolbar > .master-favorite-count {
   font-weight: var(--type-weight-regular);
 }
+
+/* Personality (/personality): the master leaderboard's table and controls, with level chips above. */
+.personality-levels {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.personality-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.personality-chips > .ui-button {
+  white-space: nowrap;
+}
+
+.personality-notes > p,
+.personality-notes details > p {
+  margin: 0 0 var(--space-2);
+}
+
+.personality-definitions {
+  display: grid;
+  grid-template-columns: repeat(var(--personality-definition-columns, 4), minmax(0, 1fr));
+  gap: var(--space-2) var(--space-5);
+  margin: 0;
+  font-size: var(--font-size-ui);
+}
+
+.personality-definitions dt {
+  font-weight: var(--type-weight-semibold);
+}
+
+.personality-definitions dd {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+/* From 1280px the score columns share the width left beside the pinned columns, so no level scrolls sideways.
+   Below that the table scrolls under the pinned model column, like the master. */
+@media (min-width: 1280px) {
+  .personality table {
+    width: 100%;
+    table-layout: fixed;
+  }
+}
+
+@media (max-width: 1279px) {
+  .personality th.numeric,
+  .personality td.numeric {
+    width: 5.5rem;
+    min-width: 5.5rem;
+    max-width: 5.5rem;
+  }
+
+  .personality :is(th, td)[data-column="interval"] {
+    width: 7.5rem;
+    min-width: 7.5rem;
+    max-width: 7.5rem;
+  }
+
+  .personality-definitions {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  }
+}
+
+.personality th.numeric > .ui-button {
+  padding-inline: var(--space-1) var(--space-2);
+  hyphens: manual;
+}
+
+/* The interval header doesn't sort; it lines up with the sortable headers' text. */
+.personality-static-header {
+  display: block;
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-1);
+  font-size: var(--font-size-ui);
+  line-height: var(--line-height-ui);
+  text-align: right;
+  white-space: normal;
+}
+
+.personality td.numeric {
+  padding-inline: var(--space-2) var(--space-3);
+}
+
+.personality td.master-model > .personality-model {
+  display: inline-block;
+  max-width: calc(100% - 44px);
+  vertical-align: middle;
+}
+
+.personality .personality-model__provider {
+  display: none;
+}
+
+.personality .master-mobile-controls {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: 767px) {
+  .personality {
+    --master-model-width: 9rem;
+  }
+
+  /* Long names wrap around the star instead of staying in a narrow strip beside it. */
+  .personality td.master-model > .favorite-star {
+    float: left;
+    margin: 0 var(--space-1) 0 calc(-1 * var(--space-1));
+  }
+
+  .personality td.master-model > .personality-model {
+    display: block;
+    max-width: none;
+  }
+
+  .personality .master-provider {
+    display: none;
+  }
+
+  .personality .personality-model__provider {
+    display: block;
+  }
+
+  .personality-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-inline: calc(-1 * var(--card-padding-compact));
+    padding: 0 var(--card-padding-compact) var(--space-1);
+    scrollbar-width: none;
+  }
+
+  .personality-definitions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .personality-page-header__about,
+  .personality .personality-legend,
+  .personality .toolbar-model-search > .ui-helper-text {
+    display: none;
+  }
+
+  /* Search and Filters share one row, so the table starts on the first screen. */
+  .personality .master-toolbar {
+    flex-wrap: nowrap;
+    align-items: flex-end;
+  }
+
+  .personality .master-toolbar > .toolbar-model-search {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .personality .master-toolbar > .toolbar-model-search > label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .personality .master-mobile-controls {
+    flex: 0 0 auto;
+  }
+}

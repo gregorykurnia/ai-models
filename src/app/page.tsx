@@ -19,7 +19,10 @@ export default async function Home(){
     <h1>Compare model ranks across evaluations.</h1>
     <p>See each model’s rank across the benchmarks, then open an individual leaderboard for more detail.</p>
     </PageHeader>
-    <Card density="compact"><div className="eyebrow">Task suitability planner</div><h2>Find the best model for a task</h2><p>Choose evaluations, set your priorities, and compare model suitability with transparent coverage.</p><Link href="/suitability">Create a task comparison →</Link></Card>
+    <div className={styles.featureCards}>
+      <Card density="compact"><div className="eyebrow">Task suitability planner</div><h2>Find the best model for a task</h2><p>Choose evaluations, set your priorities, and compare model suitability with transparent coverage.</p><Link href="/suitability">Create a task comparison →</Link></Card>
+      <Card density="compact"><div className="eyebrow">AA-PersonalityBench</div><h2>See how each model writes</h2><p>Compare warmth, conviction, slop and five more style indexes, then open the traits under each one.</p><Link href="/personality">Open the personality table →</Link></Card>
+    </div>
 
     <Suspense fallback={<div className="ui-loading-state"><Spinner label="Loading master leaderboard" /><span>Loading master leaderboard…</span></div>}>
       <MasterLeaderboard rows={masterTableRows(rows)} evaluations={evaluations} costCapturedLabel={intelligenceIndexCostCaptureLabel} speedCapturedLabel={modelSpeedCaptureLabel}/>
