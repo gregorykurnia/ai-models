@@ -13,7 +13,7 @@ import {ProviderMultiSelect,providerSelectionLabel} from "@/components/ui/provid
 import {Drawer} from "@/components/ui/drawer";
 import {Alert,Button,Card,HelperText,IconButton,Input,LinkButton,Pagination,Select,Table,TableScroll} from "@/components/ui/primitives";
 
-// Break points for the long index names, so narrow score headers wrap to two lines instead of overflowing.
+// Break points for long words, so narrow score headers wrap at a hyphen instead of spilling into the next column.
 const HEADER_BREAKS:Record<string,string>={
   Expressiveness:"Expres\u00adsiveness",
   Organization:"Organi\u00adzation",
@@ -22,9 +22,22 @@ const HEADER_BREAKS:Record<string,string>={
   Imagination:"Imagi\u00adnation",
   Conviction:"Convic\u00adtion",
   Percentile:"Percen\u00adtile",
+  Metaphorical:"Meta\u00adphorical",
+  Structured:"Struc\u00adtured",
+  Scannable:"Scan\u00adnable",
+  Information:"Infor\u00admation",
+  Uncertainty:"Uncer\u00adtainty",
+  Assumptions:"Assump\u00adtions",
+  Sycophantic:"Syco\u00adphantic",
+  Intelligent:"Intel\u00adligent",
+  Emotionally:"Emotion\u00adally",
+  Confident:"Confi\u00addent",
+  Opinionated:"Opinion\u00adated",
+  Constructive:"Construc\u00adtive",
+  Pushback:"Push\u00adback",
 };
 const LEGEND="Percentiles are rounded to whole numbers; sorting uses AA’s exact values. Missing values show as “—” and sort last.";
-const headerLabel=(label:string)=>HEADER_BREAKS[label]??label;
+const headerLabel=(label:string)=>label.split(" ").map(word=>HEADER_BREAKS[word]??word).join(" ");
 
 function PersonalitySearch({value,onCommit}:{value:string;onCommit:(value:string)=>void}){
   const [draft,setDraft]=useState(value);

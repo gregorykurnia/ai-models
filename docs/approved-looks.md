@@ -7,3 +7,6 @@
 - Tied AA scores keep their shared source rank, so rank links can show the same number for different models.
 - An evaluation phone capture can end partway through the first result card. Its lower metric tiles continue below the viewport.
 - Intelligence Index scores intentionally use four decimal places with tabular figures, as recorded in the November screenshot review.
+- Personality chip rows on a phone are one line each that scrolls sideways; chips cut at the card's edges are how that scroll shows (the plan's design).
+- On a phone, a Personality table can show a sliver of the next score column at its right edge; the "More columns →" cue above it says the table scrolls.
+- 1440px and 390px captures are one screen tall, so the bottom edge can cut through a table row, a header date or a card; the page continues below.

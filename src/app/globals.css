@@ -2237,15 +2237,20 @@ a.ui-button:hover {
     --master-model-width: 9rem;
   }
 
-  /* Long names wrap around the star instead of staying in a narrow strip beside it. */
+  /* A narrower star gives long names more room; every line of a name keeps the same left edge. */
   .personality td.master-model > .favorite-star {
-    float: left;
-    margin: 0 var(--space-1) 0 calc(-1 * var(--space-1));
+    min-width: 32px;
+    width: 32px;
+    margin-inline-start: calc(-1 * var(--space-1));
   }
 
   .personality td.master-model > .personality-model {
-    display: block;
-    max-width: none;
+    max-width: calc(100% - 32px);
+  }
+
+  /* The table scrolls under the pinned model column; say so, as the master's phone table does. */
+  .personality .table-overflow-cue-slot:not(:empty) {
+    display: flex;
   }
 
   .personality .master-provider {

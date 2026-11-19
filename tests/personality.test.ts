@@ -69,6 +69,8 @@ test("levels carry the right columns", () => {
   assert.deepEqual(all.filter(column => column.lowerIsBetter).map(column => [column.key, column.detail]), [["slop", "↓ lower is better"]]);
   const transparency = personalityColumns(dataset, resolvePersonalityLevel(dataset, "transparency", null));
   assert.deepEqual(transparency.filter(column => column.lowerIsBetter).map(column => [column.key, column.detail]), [["sycophantic", "↓ lower is better"]]);
+  const slopTrait = personalityColumns(dataset, resolvePersonalityLevel(dataset, "slop", null));
+  assert.deepEqual(slopTrait.map(column => [column.key, column.lowerIsBetter, column.detail]), [["percentile", true, "1 to 100 · lower is better"], ["elo", true, "Bradley-Terry · lower is better"]]);
 });
 
 test("default sorts: the first score column highest first; Slop and Sycophantic lowest first", () => {

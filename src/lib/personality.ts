@@ -110,14 +110,15 @@ export function personalityColumns(dataset: PersonalityDataset, level: Personali
     {
       key: "percentile",
       label: "Percentile",
-      detail: trait.lower_is_better ? LOWER_IS_BETTER : "1 to 100",
+      // The trait's own view says "lower is better" without a second arrow beside the sort arrow.
+      detail: trait.lower_is_better ? "1 to 100 · lower is better" : "1 to 100",
       lowerIsBetter: trait.lower_is_better,
       value: model => model.traits[trait.key]?.percentile ?? null,
     },
     {
       key: "elo",
       label: "Elo",
-      detail: trait.lower_is_better ? LOWER_IS_BETTER : "Bradley-Terry",
+      detail: trait.lower_is_better ? "Bradley-Terry · lower is better" : "Bradley-Terry",
       lowerIsBetter: trait.lower_is_better,
       value: model => model.traits[trait.key]?.elo ?? null,
     },
