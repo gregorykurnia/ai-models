@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { checkSweAtlasMaster, checkSweAtlasSuitabilityAndAbout } from "./check-swe-atlas-qna-browser.mjs";
+import { checkBusinessMaster, checkBusinessSuitabilityAndAbout } from "./check-omniscience-business-browser.mjs";
 
 function csvRows(csv){
   const rows=[];let row=[],cell="",quoted=false;
@@ -155,7 +156,7 @@ try {
   await section.locator("#master-mobile-sort").selectOption("aggregate-score");
   await page.waitForURL(/ms=aggregate-score/);
   await expect(async()=>{
-    const aggregates=await cards.evaluateAll(cs=>cs.map(c=>parseFloat(c.querySelector(".master-card__metrics dd span")?.childNodes[0]?.textContent)).filter(Number.isFinite));
+    const aggregates=await cards.evaluateAll(cs=>cs.map(c=>parseFloat(c.querySelector('.master-card__metrics dd span[aria-label*="average rank based on"]')?.childNodes[0]?.textContent)).filter(Number.isFinite));
     assert(aggregates.length>1&&aggregates.every((value,index)=>index===0||aggregates[index-1]<=value));
   }).toPass({timeout:5000});
   const star=cards.first().getByRole("button",{name:/^(Add|Remove) .* to favorites$/});
@@ -202,6 +203,15 @@ try {
     assert(column>0,"SWE-Atlas QnA CSV column exists");
     return rows.map(row=>row[column]===""?null:Number(row[column]));
   });
+  if(process.env.NEON_SCREENSHOT_DIR){
+    await checkBusinessMaster(page,baseUrl,expect,async section=>{
+      const [headers,...rows]=csvRows(await exportCsv(page,section));
+      const column=headers.indexOf("Omniscience Business");
+      assert(column>0,"Omniscience Business CSV column exists");
+      return rows.map(row=>row[column]===""?null:Number(row[column]));
+    });
+    await checkBusinessSuitabilityAndAbout(page,baseUrl,expect);
+  }
   await checkSweAtlasSuitabilityAndAbout(page,baseUrl,expect);
   assert.deepEqual(errors,[]);
   console.log(JSON.stringify({speed_columns:speedResults,evaluation_speed_columns:true,source_link:href,search_csv_rows:resultCount,filter_csv_rows:filteredCount,keyboard_navigation:true,mobile_cards:true,mobile_speed_sorting:true,mobile_drawer:true,mobile_overflow:false,errors}));

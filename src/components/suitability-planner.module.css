@@ -1363,8 +1363,21 @@
     width: 100%;
   }
 
+  .results {
+    width: 100%;
+  }
+
   .identityColumn {
     width: 11.5rem;
+  }
+
+  .coverageColumn,
+  .evaluationColumn {
+    width: 8.5rem;
+  }
+
+  .results .headerGroups .evaluationGroup {
+    white-space: normal;
   }
 
   .results .identityHeader,

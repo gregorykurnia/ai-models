@@ -240,7 +240,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
     const names=await rows.locator(width===390?".master-card__title a":".master-model > a").allTextContents();
     assert.deepEqual([...names].sort(),expected.filter(entry=>entry.model.includes(query)).map(entry=>entry.model).sort());
     for(let index=0;index<count;index++){
-      const score=await rows.nth(index).locator(width===390?".master-card__metrics dd span":".master-aggregate > span").first().getAttribute("aria-label");
+      const score=await rows.nth(index).locator(width===390?'.master-card__metrics dd span[aria-label*="average rank based on"]':".master-aggregate > span").first().getAttribute("aria-label");
       assert.match(score,/^\d+\.\d average rank based on \d of 9 dimensions$/);
       if(width===1440)scores.set(names[index],score);
       else assert.equal(score,scores.get(names[index]),`${names[index]}: phone aggregate agrees with desktop`);
@@ -530,7 +530,10 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
   for(const width of [1440,390]){
     await page.setViewportSize({width,height:width===390?844:1000});
     await page.goto(`${baseUrl}/about/data`);
-    assert((await page.locator(".ui-page-header").innerText()).includes(`captured from Artificial Analysis on ${date}.`),`about data: displays ${date}`);
+    const refreshText=setName==="neon"
+      ?`${date} Artificial Analysis refresh supplies ${dataset.evaluations.length} evaluation leaderboards`
+      :`captured from Artificial Analysis on ${date}.`;
+    assert((await page.locator(".ui-page-header").innerText()).includes(refreshText),`about data: displays ${date}`);
     await audit(`about data: ${width}px layout`,"article");
     await screenshot(`about-data-${width}.png`);
   }

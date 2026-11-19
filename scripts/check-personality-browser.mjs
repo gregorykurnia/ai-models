@@ -1,14 +1,15 @@
 import assert from "node:assert/strict";
-import { mkdir, readFile } from "node:fs/promises";
+import { copyFile, mkdir, readFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 
 // Use the same installed Playwright module and local server as the master check.
 const playwrightModule = process.env.PLAYWRIGHT_MODULE || "playwright";
 const { chromium } = await import(playwrightModule);
 const { expect } = createRequire(import.meta.resolve(playwrightModule))("playwright/test");
 const base = process.env.BASE_URL || "http://127.0.0.1:3180";
-const output = new URL("../docs/screenshots/personality/", import.meta.url);
+const output = process.env.PERSONALITY_SCREENSHOT_DIR || fileURLToPath(new URL("../docs/screenshots/personality/", import.meta.url));
 const inventory = await readFile(new URL("../docs/AA_PERSONALITYBENCH_CAPTURE.md", import.meta.url), "utf8");
 const inventoryCount = inventory.match(/The selector reported \*\*(\d+) of (\d+) models\*\*/);
 assert(inventoryCount, "Capture inventory must report the selected and total model counts");
@@ -161,7 +162,12 @@ try {
       await expectCount(modelCount);
       await page.evaluate(() => document.fonts.ready);
       await page.mouse.move(0, 0);
-      await page.screenshot({ path: fileURLToPath(new URL(`${filename}-${width}.png`, output)), animations: "disabled" });
+      const shot = join(output, `${filename}-${width}.png`);
+      await page.screenshot({ path: shot, animations: "disabled" });
+      if (filename === "all" && process.env.BUSINESS_SCREENSHOT_DIR) {
+        await mkdir(process.env.BUSINESS_SCREENSHOT_DIR, { recursive: true });
+        await copyFile(shot, join(process.env.BUSINESS_SCREENSHOT_DIR, `personality-${width}.png`));
+      }
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${name} at ${width}px: page overflows`);
       if (width === 1440) {
         assert(await scroll.evaluate(element => element.scrollWidth <= element.clientWidth + 1), `${name}: desktop table overflows`);

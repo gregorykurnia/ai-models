@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
+import { mkdir } from "node:fs/promises";
+import { join } from "node:path";
 
 const playwrightModule = process.env.PLAYWRIGHT_MODULE || "playwright";
 const { chromium } = await import(playwrightModule);
@@ -17,7 +19,10 @@ const proposalPicks = [
 // Picks verified against the 19 Nov 2026 refresh in docs/workflows/client-meeting-followup-check.md.
 const meetingPicks = [
   ["1", "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)"],
+  ["2", "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)"],
+  ["3", "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)"],
   ["4", "GPT-6.1 Sol (Max)"],
+  ["5", "GPT-6.2 Astra (Medium)"],
   ["6", "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)"],
 ];
 
@@ -146,6 +151,15 @@ try {
     await expect(main.getByRole("heading", { name: "Client meeting follow-up", exact: true })).toBeVisible();
     await expect(overviewRows).toHaveCount(6);
     await expectPicks("Client meeting follow-up", meetingPicks);
+    if (process.env.BUSINESS_SCREENSHOT_DIR) {
+      await mkdir(process.env.BUSINESS_SCREENSHOT_DIR, { recursive: true });
+      await page.evaluate(() => document.fonts.ready);
+      await page.mouse.move(0, 0);
+      const last = await overviewRows.last().boundingBox();
+      await page.setViewportSize({ width, height: Math.max(height, Math.ceil(last.y + last.height + 24)) });
+      await page.screenshot({ path: join(process.env.BUSINESS_SCREENSHOT_DIR, `meeting-overview-${width}.png`), animations: "disabled" });
+      await page.setViewportSize({ width, height });
+    }
     const belowBar = main.locator("#step-1").getByText(/^Higher Fit, below the bar · /);
     await expect(belowBar).toBeVisible();
     await expect(belowBar).toContainText(/#\d+ of \d+, bar #\d+/);
@@ -161,7 +175,7 @@ try {
   assert.equal(encoded?.status(), 200, "Encoded spelling of a registered workflow slug must resolve");
   await expect(main.getByRole("heading", { name: "Sales proposal", exact: true })).toBeVisible();
   assert.deepEqual(errors, []);
-  console.log("Workflows browser check passed at 1440px and 390px: 14 proposal rows, six meeting rows, seven documented picks, Your models, below-bar note, Briefcase rank, anchor, navigation and 404");
+  console.log("Workflows browser check passed at 1440px and 390px: 14 proposal rows, six meeting rows, ten documented picks, Your models, below-bar note, Briefcase rank, anchor, navigation and 404");
 } finally {
   await browser.close();
 }

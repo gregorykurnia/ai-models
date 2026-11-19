@@ -1053,6 +1053,12 @@ th.numeric {
   text-underline-offset: 0.15em;
 }
 
+.master-business-score {
+  display: block;
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+}
+
 .master .table-scroll {
   max-width: 100%;
 }
@@ -1155,7 +1161,8 @@ th.numeric {
   background: var(--bg-muted);
 }
 
-.master-card__metrics > .master-card__sorted {
+.master-card__metrics > .master-card__sorted,
+.master-card__metrics > .master-card__business {
   grid-column: 1 / -1;
 }
 
@@ -2028,7 +2035,7 @@ a.ui-button:hover {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: var(--space-1) var(--space-2);
-    margin-bottom: var(--space-4);
+    margin-bottom: 0;
   }
 
   .evaluation-mobile-sort label {

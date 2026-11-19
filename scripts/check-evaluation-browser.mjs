@@ -2,19 +2,21 @@ import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { evaluationTimePerTask, getModelSpeed } from "../src/lib/model-speed.ts";
 import { checkSweAtlasEvaluation, sweAtlasSlug } from "./check-swe-atlas-qna-browser.mjs";
+import { businessSlug, checkBusinessEvaluation } from "./check-omniscience-business-browser.mjs";
 
 // Run with node --import tsx; supply an installed Playwright module as in the master check.
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || "playwright");
 const base = process.env.BASE_URL || "http://127.0.0.1:3180";
-const output = "docs/screenshots/speed-columns";
+const output = process.env.SPEED_SCREENSHOT_DIR || "docs/screenshots/speed-columns";
 const evaluations = [
+  [businessSlug],
   ["terminal-bench-4-0", "Time per task"],
   ["aa-briefcase-analytical-quality-elo", "Time per task"],
   ["finance-accounting", "Time per Intelligence Index task"],
   [sweAtlasSlug],
 ].filter(([slug]) => !process.env.EVALUATION_SLUG || process.env.EVALUATION_SLUG === slug);
 assert(evaluations.length, `Unknown EVALUATION_SLUG: ${process.env.EVALUATION_SLUG}`);
-if (evaluations.some(([slug]) => slug !== sweAtlasSlug)) await mkdir(output, { recursive: true });
+if (evaluations.some(([, label]) => label)) await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ headless: true, executablePath: process.env.CHROME_PATH || undefined });
 const errors = [];
 try {
@@ -29,6 +31,10 @@ try {
   };
 
   for (const [slug, label] of evaluations) {
+    if (slug === businessSlug) {
+      await checkBusinessEvaluation(page, base);
+      continue;
+    }
     if (slug === sweAtlasSlug) {
       await checkSweAtlasEvaluation(page, base);
       continue;
