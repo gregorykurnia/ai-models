@@ -562,6 +562,11 @@ p {
   align-items: flex-start;
 }
 
+.master-toolbar {
+  /* Keep the screen-reader filter labels inside the scrolling main pane. */
+  position: relative;
+}
+
 .toolbar-model-search {
   display: grid;
   min-width: min(100%, 16rem);
@@ -2233,8 +2238,13 @@ a.ui-button:hover {
 }
 
 @media (max-width: 767px) {
+  .personality-page-header {
+    margin-bottom: var(--space-4);
+  }
+
   .personality {
     --master-model-width: 9rem;
+    gap: var(--space-2);
   }
 
   /* A narrower star gives long names more room; every line of a name keeps the same left edge. */
@@ -2283,6 +2293,7 @@ a.ui-button:hover {
   .personality .master-toolbar {
     flex-wrap: nowrap;
     align-items: flex-end;
+    margin-bottom: var(--space-1);
   }
 
   .personality .master-toolbar > .toolbar-model-search {
