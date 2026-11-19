@@ -1,15 +1,20 @@
 import { Badge, Card, EmptyState, HelperText, Table, TableScroll } from "@/components/ui/primitives";
-import { masterEvaluationLabel, type MasterRow } from "@/lib/master";
+import { masterEvaluationLabel } from "@/lib/master";
 import { formatPercentile, type PersonalityDataset } from "@/lib/personality";
 import { workflowModelList } from "@/lib/workflow-registry";
 import {
-  evaluationRanks, rankStep, stepPicks,
-  type RankedWorkflowModel, type Workflow, type WorkflowStep, type WorkflowTarget,
+  evaluationRanks, rankStep, stepNotes, stepPicks, workflowModelFamily,
+  type MasterRankRow, type RankedWorkflowModel, type Workflow, type WorkflowModelList, type WorkflowStep, type WorkflowTarget,
 } from "@/lib/workflows";
 import leaderboardSource from "../../data/leaderboards.json";
 
 const aims = ["high", "moderate", "low"] as const;
 const evaluationsBySlug = new Map(leaderboardSource.evaluations.map(evaluation => [evaluation.slug, evaluation]));
+
+function evaluationLabel(slug: string) {
+  const evaluation = evaluationsBySlug.get(slug);
+  return evaluation ? masterEvaluationLabel(evaluation) : slug;
+}
 
 type LabeledStep = Omit<WorkflowStep, "targets"> & {
   targets: (WorkflowTarget & { label: string })[];
@@ -17,6 +22,24 @@ type LabeledStep = Omit<WorkflowStep, "targets"> & {
 
 function MissingValue() {
   return <span className="muted">—</span>;
+}
+
+function NoWorkflowPick() {
+  return <><MissingValue /> <span>No model on your list clears the bar</span></>;
+}
+
+export function WorkflowModelsCard({ list, dataset }: { list: WorkflowModelList; dataset: PersonalityDataset }) {
+  const scoredFamilies = new Set(dataset.models.map(model => workflowModelFamily(model.identity_key)));
+  const labels = new Set([...list.providers.map(provider => `Any ${provider} model`), ...list.models.map(model => model.label)]);
+  const unscoredLabels = new Set(list.models.filter(model => !scoredFamilies.has(model.family)).map(model => model.label));
+
+  return <Card className="workflow-models-card" id="workflow-models" aria-labelledby="workflow-models-heading">
+    <h2 id="workflow-models-heading">Your models</h2>
+    <ul className="workflow-model-list" role="list">
+      {[...labels].map(label => <li key={label}><Badge>{label}</Badge></li>)}
+    </ul>
+    {unscoredLabels.size > 0 && <HelperText>No personality scores yet for {[...unscoredLabels].join(", ")}.</HelperText>}
+  </Card>;
 }
 
 function ModelPick({ row }: { row: RankedWorkflowModel }) {
@@ -32,7 +55,7 @@ function ModelPick({ row }: { row: RankedWorkflowModel }) {
 function WorkflowOverview({ steps, dataset, masterRows }: {
   steps: LabeledStep[];
   dataset: PersonalityDataset;
-  masterRows: MasterRow[];
+  masterRows: readonly MasterRankRow[];
 }) {
   return <Card className="master workflow-table-card" aria-labelledby="workflow-overview">
     <h2 id="workflow-overview">Overview</h2>
@@ -50,7 +73,7 @@ function WorkflowOverview({ steps, dataset, masterRows }: {
         </tr></thead>
         <tbody>{steps.map(step => {
           const { pick, runnersUp } = stepPicks(step, dataset, workflowModelList, masterRows);
-          const pickContent = pick ? <div className="workflow-pick"><ModelPick row={pick} /></div> : <MissingValue />;
+          const pickContent = pick ? <div className="workflow-pick"><ModelPick row={pick} /></div> : <NoWorkflowPick />;
           return <tr key={step.id}>
             <td className="workflow-pinned">
               <span className="workflow-step-number">Step {step.id}</span>
@@ -78,9 +101,10 @@ function WorkflowOverview({ steps, dataset, masterRows }: {
 function WorkflowStepDetail({ step, dataset, masterRows }: {
   step: LabeledStep;
   dataset: PersonalityDataset;
-  masterRows: MasterRow[];
+  masterRows: readonly MasterRankRow[];
 }) {
   const rows = rankStep(step, dataset, workflowModelList, masterRows);
+  const { belowBar, notOnList, skippedEvaluations } = stepNotes(step, dataset, workflowModelList, masterRows);
   const evaluationSlugs = [...new Set(step.evaluations)];
   const headingId = `workflow-step-heading-${step.id}`;
   const rankHelpId = `workflow-step-rank-help-${step.id}`;
@@ -89,12 +113,15 @@ function WorkflowStepDetail({ step, dataset, masterRows }: {
   return <Card className="master workflow-table-card" id={`step-${step.id}`} aria-labelledby={headingId}>
     <h2 id={headingId}>Step {step.id} · {step.title}</h2>
     <p>{step.goal}</p>
-    {evaluationSlugs.length > 0 && <HelperText id={rankHelpId}>
-      Fit measures how closely a model matches the step’s personality targets. Evaluation columns show its rank in each benchmark.
-    </HelperText>}
-    <TableScroll label={`Step ${step.id} rankings, scroll horizontally for more columns`} showOverflowCue>
+    <HelperText id={rankHelpId}>
+      Fit measures a model’s match to the step’s personality targets.{" "}
+      {evaluationSlugs.length > 0
+        ? "Evaluation columns show its rank. Only models on your list that clear the bar are ranked."
+        : "Only models on your list are ranked."}
+    </HelperText>
+    {rows.length === 0 ? <HelperText><NoWorkflowPick /></HelperText> : <TableScroll label={`Step ${step.id} rankings, scroll horizontally for more columns`} showOverflowCue>
       <Table
-        aria-describedby={evaluationSlugs.length > 0 ? rankHelpId : undefined}
+        aria-describedby={rankHelpId}
         className={`workflow-rankings-table${fewMetrics ? " workflow-rankings-table--few-metrics" : ""}`}
       >
         <thead><tr>
@@ -109,7 +136,7 @@ function WorkflowStepDetail({ step, dataset, masterRows }: {
           <th scope="col" className="numeric workflow-fit">Fit</th>
           {evaluationSlugs.map(slug => {
             const evaluation = evaluationsBySlug.get(slug);
-            const label = evaluation ? masterEvaluationLabel(evaluation) : slug;
+            const label = evaluationLabel(slug);
             const versioned = label.match(/^(.+) (v\d+(?:\.\d+)*)$/);
             return <th scope="col" className="numeric workflow-evaluation-heading" key={slug} title={evaluation?.display_name}>
               {versioned ? <>{versioned[1]} <small>{versioned[2]}</small></> : label}
@@ -133,9 +160,27 @@ function WorkflowStepDetail({ step, dataset, masterRows }: {
               </td>;
             })}
           </tr>;
-        })}{rows.length === 0 && <tr><td className="empty" colSpan={4 + step.targets.length + evaluationSlugs.length}>No models available.</td></tr>}</tbody>
+        })}</tbody>
       </Table>
-    </TableScroll>
+    </TableScroll>}
+    {belowBar.length > 0 && <HelperText>
+      <strong>Higher Fit, below the bar</strong>{" · "}
+      {belowBar.map(({ model, fit, missedEvaluations }) => {
+        const misses = missedEvaluations.map(({ slug, rank, cohortSize, barRank }) => {
+          const position = rank === null ? "Not ranked" : `#${rank} of ${cohortSize}`;
+          return `${evaluationLabel(slug)} ${position}, bar #${barRank}`;
+        });
+        return `${model.name} (Fit ${formatPercentile(fit)}): ${misses.join(" / ")}`;
+      }).join("\u00a0· ")}
+    </HelperText>}
+    {notOnList.length > 0 && <HelperText>
+      <strong>Higher Fit, not on your list</strong>{" · "}
+      {notOnList.map(({ model, fit }) => `${model.name} (Fit ${formatPercentile(fit)})`).join("\u00a0· ")}
+    </HelperText>}
+    {skippedEvaluations.length > 0 && <HelperText>
+      <strong>Skipped by the bar</strong>{" · "}{skippedEvaluations.map(evaluationLabel).join(", ")}
+    </HelperText>}
+    {evaluationSlugs.length === 0 && <HelperText>No benchmarks for this step, so no bar</HelperText>}
     {step.other_checks && <HelperText><strong>Also check (not in Model Atlas)</strong> · {step.other_checks}</HelperText>}
     {step.note && <p>{step.note}</p>}
   </Card>;
@@ -144,7 +189,7 @@ function WorkflowStepDetail({ step, dataset, masterRows }: {
 export default function WorkflowView({ workflow, dataset, masterRows }: {
   workflow: Workflow;
   dataset: PersonalityDataset;
-  masterRows: MasterRow[];
+  masterRows: readonly MasterRankRow[];
 }) {
   if (workflow.steps.length === 0) return <Card><EmptyState title="No workflow steps yet" /></Card>;
 

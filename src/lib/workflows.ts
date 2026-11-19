@@ -118,8 +118,12 @@ export function familyKey(identityKey: string): string {
   return identityKey.replace(/ \([^()]*\)$/, "");
 }
 
+export function workflowModelFamily(identityKey: string): string {
+  return familyKey(identityKey).replace("\u0000", " ");
+}
+
 export function onList(model: Pick<PersonalityModel, "provider" | "identity_key">, list: WorkflowModelList): boolean {
-  const family = familyKey(model.identity_key).replace("\u0000", " ");
+  const family = workflowModelFamily(model.identity_key);
   return list.providers.includes(model.provider) || list.models.some(entry => entry.family === family);
 }
 
@@ -213,7 +217,7 @@ export function stepNotes(
 }
 
 export type EvaluationRank = { rank: number; cohortSize: number };
-type MasterRankRow = {
+export type MasterRankRow = {
   identity_key: MasterTableRow["identity_key"];
   cells: Partial<MasterTableRow["cells"]>;
 };

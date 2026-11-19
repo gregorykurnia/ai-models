@@ -13,7 +13,7 @@ import benchmarkBar from "./fixtures/workflows/benchmark-bar.json";
 import modelListExample from "./fixtures/workflows/model-list-example.json";
 import example from "./fixtures/workflows/scoring-example.json";
 import solEfforts from "./fixtures/workflows/sol-efforts.json";
-import WorkflowView from "../src/components/workflow-view";
+import WorkflowView, { WorkflowModelsCard } from "../src/components/workflow-view";
 import { getMasterDataset } from "../src/lib/data";
 import { masterIdentityKey } from "../src/lib/master";
 import { getPersonalityDataset, type PersonalityModel } from "../src/lib/personality";
@@ -376,6 +376,7 @@ test("the meeting workflow is linked from the catalog and accepted by the detail
   const markup = renderToStaticMarkup(createElement(WorkflowsPage));
   assert.ok(markup.includes(`href="${path}"`));
   assert.match(markup, /aria-label="Open Client meeting follow-up"/);
+  assert.match(markup, /No personality scores yet for Qwen4 Max\./);
   assert.ok(generateStaticParams().some(params => params.slug === slug));
   assert.equal(proxy(new NextRequest(`http://localhost${path}`)).headers.get("x-middleware-next"), "1");
 });
@@ -524,4 +525,69 @@ test("the workflow view has an empty state for a workflow without steps", () => 
   const workflow = { ...validateWorkflow(file, example), steps: [] };
   const markup = renderToStaticMarkup(createElement(WorkflowView, { workflow, dataset: personality, masterRows: [] }));
   assert.match(markup, /No workflow steps yet/);
+});
+
+function renderBenchmarkStep(step: WorkflowStep, dataset = benchmarkDataset, masterRows = benchmarkRows) {
+  const workflow = { ...validateWorkflow(file, example), steps: [step] };
+  const markup = renderToStaticMarkup(createElement(WorkflowView, { workflow, dataset, masterRows }));
+  const stepStart = markup.indexOf(`id="step-${step.id}"`);
+  assert.ok(stepStart > 0);
+  return { overview: markup.slice(0, stepStart), detail: markup.slice(stepStart) };
+}
+
+test("a step with no pick shows a dash and explains why in the overview and detail", () => {
+  const dataset = { ...benchmarkDataset, models: benchmarkDataset.models.filter(model => model.name !== "Pick") };
+  const { overview, detail } = renderBenchmarkStep(benchmarkStep, dataset);
+  const noPick = /<span class="muted">—<\/span> <span>No model on your list clears the bar<\/span>/;
+  assert.match(overview, noPick);
+  assert.match(detail, noPick);
+  assert.doesNotMatch(overview, /class="workflow-runners-up"/);
+  assert.doesNotMatch(detail, /<table/);
+  assert.match(detail, /No model on your list clears the bar.*Higher Fit, below the bar.*Atlas \(Max\) \(Fit 99\): Briefcase v1\.1 #6 of 15, bar #3 \/ Omniscience Index #7 of 16, bar #4/);
+  assert.match(detail, /Beacon \(Fit 97\): Briefcase v1\.1 Not ranked, bar #3/);
+  assert.doesNotMatch(detail, /Higher Fit, not on your list/);
+});
+
+test("the overview renders one runner-up and the detail ranks just the two eligible models", () => {
+  const runner = model("Runner-up", { sincere: 78 }, {}, "OpenAI");
+  const dataset = { ...benchmarkDataset, models: [...benchmarkDataset.models, runner] };
+  const masterRows = [...benchmarkRows, {
+    identity_key: runner.identity_key,
+    cells: Object.fromEntries(benchmarkStep.evaluations.map(slug => [slug, rankCell(slug, 2)])),
+  }];
+  const { overview, detail } = renderBenchmarkStep(benchmarkStep, dataset, masterRows);
+  const runners = overview.match(/<ul class="workflow-runners-up">(.*?)<\/ul>/)?.[1] ?? "";
+  assert.match(runners, /<li><span class="workflow-pick-name">Runner-up<\/span>/);
+  assert.equal(runners.match(/<li>/g)?.length, 1);
+  assert.deepEqual(Array.from(detail.matchAll(/<td class="workflow-pinned workflow-model">([^<]+)<\/td>/g), match => match[1]), ["Pick", "Runner-up"]);
+  assert.match(detail, /Only models on your list that clear the bar are ranked/);
+  assert.match(detail, /<\/table>.*Higher Fit, not on your list<\/strong> · Alternate \(Max\) \(Fit 93\)/);
+});
+
+test("a skipped evaluation keeps its unranked column and names the benchmark once below the table", () => {
+  const { detail } = renderBenchmarkStep({ ...benchmarkStep, evaluations: [...benchmarkStep.evaluations, "gdp-pdf", "gdp-pdf"] });
+  assert.equal(detail.match(/>Not ranked<\/td>/g)?.length, 1);
+  assert.match(detail, /<\/table>.*Skipped by the bar<\/strong> · GDP\.pdf<\/p>/);
+  assert.doesNotMatch(detail, /No benchmarks for this step/);
+  const noBar = renderBenchmarkStep({ ...benchmarkStep, evaluations: [] }).detail;
+  assert.match(noBar, /<\/table>.*No benchmarks for this step, so no bar/);
+  assert.doesNotMatch(noBar, /Skipped by the bar/);
+});
+
+test("the model list card omits the scores note when every family has a personality row", () => {
+  const dataset = { ...personality, models: [model("Available Model (Max)", {}, {}, "Other")] };
+  const markup = renderToStaticMarkup(createElement(WorkflowModelsCard, { list: fixtureList, dataset }));
+  assert.match(markup, /Your models/);
+  assert.match(markup, /Any Fixture model/);
+  assert.match(markup, /Available Model/);
+  assert.doesNotMatch(markup, /No personality scores yet/);
+});
+
+test("the model list card shows a stale long label and reports exact duplicate entries once", () => {
+  const label = "LongUnscoredModelLabel".repeat(20);
+  const entry = { label, family: "other removed model" };
+  const list = validateModelList(listFile, { ...modelListExample, models: [entry, entry] });
+  const markup = renderToStaticMarkup(createElement(WorkflowModelsCard, { list, dataset: benchmarkDataset }));
+  assert.equal(markup.split(`>${label}</span>`).length, 2);
+  assert.ok(markup.includes(`No personality scores yet for ${label}.</p>`));
 });

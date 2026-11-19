@@ -6,6 +6,7 @@ import WorkflowView from "@/components/workflow-view";
 import { getMasterDataset } from "@/lib/data";
 import { getPersonalityDataset, personalityCaptureLabel } from "@/lib/personality";
 import { workflows } from "@/lib/workflow-registry";
+import { BENCHMARK_BAR } from "@/lib/workflows";
 
 export const dynamic = "force-dynamic";
 export const dynamicParams = false;
@@ -30,6 +31,9 @@ export default async function WorkflowPage({ params }: { params: Promise<{ slug:
       <p>
         Updated <time dateTime={workflow.updated}>{personalityCaptureLabel(workflow.updated)}</time>
         {" · picks from "}<Link href="/personality">AA-PersonalityBench</Link>, captured {personalityCaptureLabel(dataset.captured_at)}
+      </p>
+      <p>
+        Picks use your model list (<Link href="/workflows#workflow-models">on the Workflows page</Link>) and must rank in the top {BENCHMARK_BAR * 100}% of each of the step&apos;s benchmarks.
       </p>
     </PageHeader>
     <WorkflowView workflow={workflow} dataset={dataset} masterRows={masterRows} />

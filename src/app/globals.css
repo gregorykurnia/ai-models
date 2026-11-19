@@ -2330,8 +2330,22 @@ a.ui-button:hover {
 }
 
 .workflow-catalog,
+.workflow-models-card,
 .workflow-table-card {
   overflow-wrap: anywhere;
+}
+
+.workflow-model-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.workflow-model-list > li {
+  min-width: 0;
 }
 
 .master .workflow-overview-table {
