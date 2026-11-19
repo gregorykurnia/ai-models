@@ -1,0 +1,82 @@
+{
+  "slug": "client-meeting-followup",
+  "title": "Client meeting follow-up",
+  "summary": "Turn a client meeting transcript into an analysis, a report, follow-ups with dates, and a recap email.",
+  "updated": "2026-11-19",
+  "steps": [
+    {
+      "id": "1",
+      "title": "Extract",
+      "goal": "Decisions, commitments (who, what), open questions, the client's pains in their own words, numbers",
+      "targets": [
+        { "trait": "truthful", "aim": "high" },
+        { "trait": "disclaimsWithAssumptions", "aim": "high" },
+        { "trait": "informationDense", "aim": "high" },
+        { "trait": "flagsNuances", "aim": "high" }
+      ],
+      "evaluations": ["briefcase-v1-1", "aa-omniscience-index"]
+    },
+    {
+      "id": "2",
+      "title": "Analyse",
+      "goal": "What the client really cares about, risks, buying signals, where we stand",
+      "targets": [
+        { "trait": "evidenceBased", "aim": "high" },
+        { "trait": "pragmatic", "aim": "high" },
+        { "trait": "constructivelyPushesBack", "aim": "high" },
+        { "trait": "flagsNuances", "aim": "high" },
+        { "trait": "sycophantic", "aim": "low" }
+      ],
+      "evaluations": ["strategy-ops-index", "aa-briefcase-analytical-quality-elo"]
+    },
+    {
+      "id": "3",
+      "title": "Follow-ups with dates",
+      "goal": "Each action with an owner, a recommended date and the reason for that date",
+      "targets": [
+        { "trait": "providesActionableGuidance", "aim": "high" },
+        { "trait": "pragmatic", "aim": "high" },
+        { "trait": "direct", "aim": "high" },
+        { "trait": "disclaimsWithAssumptions", "aim": "high" },
+        { "trait": "openEnded", "aim": "low" }
+      ],
+      "evaluations": ["strategy-ops-index", "briefcase-v1-1"],
+      "note": "No benchmark tests date suggestions. Give the model the meeting date and today's date, and check every date by hand."
+    },
+    {
+      "id": "4",
+      "title": "Write the report",
+      "goal": "Summary first, easy to skim",
+      "targets": [
+        { "index": "organization", "aim": "high" },
+        { "trait": "slop", "aim": "low" }
+      ],
+      "evaluations": ["aa-briefcase-presentation-elo", "aa-briefcase-rubric-score"]
+    },
+    {
+      "id": "5",
+      "title": "Client recap email",
+      "goal": "Short, human, confirms the agreed next steps",
+      "targets": [
+        { "trait": "naturalSounding", "aim": "high" },
+        { "trait": "sincere", "aim": "high" },
+        { "trait": "direct", "aim": "high" },
+        { "index": "warmth", "aim": "moderate" },
+        { "trait": "slop", "aim": "low" },
+        { "trait": "sycophantic", "aim": "low" }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Check against the transcript",
+      "goal": "Every claim, action and date traces back to something said; list what doesn't",
+      "targets": [
+        { "index": "transparency", "aim": "high" },
+        { "trait": "constructivelyPushesBack", "aim": "high" },
+        { "trait": "sycophantic", "aim": "low" }
+      ],
+      "evaluations": ["aa-omniscience-index"],
+      "note": "Use a fresh chat and a different model from step 4."
+    }
+  ]
+}

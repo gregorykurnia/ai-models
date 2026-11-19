@@ -1,9 +1,13 @@
 import assert from "node:assert/strict";
 import { readdirSync } from "node:fs";
 import { test } from "node:test";
+import { NextRequest } from "next/server";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import leaderboardSource from "../data/leaderboards.json";
+import { generateStaticParams } from "../src/app/workflows/[slug]/page";
+import WorkflowsPage from "../src/app/workflows/page";
+import { proxy } from "../src/proxy";
 import modelListSource from "../workflows/models.json";
 import benchmarkBar from "./fixtures/workflows/benchmark-bar.json";
 import modelListExample from "./fixtures/workflows/model-list-example.json";
@@ -366,6 +370,84 @@ test("registry covers every workflow JSON file", () => {
   assert.deepEqual(workflows.map(workflow => `${workflow.slug}.json`).sort(), files.sort());
 });
 
+test("the meeting workflow is linked from the catalog and accepted by the detail route", () => {
+  const slug = "client-meeting-followup";
+  const path = `/workflows/${slug}`;
+  const markup = renderToStaticMarkup(createElement(WorkflowsPage));
+  assert.ok(markup.includes(`href="${path}"`));
+  assert.match(markup, /aria-label="Open Client meeting follow-up"/);
+  assert.ok(generateStaticParams().some(params => params.slug === slug));
+  assert.equal(proxy(new NextRequest(`http://localhost${path}`)).headers.get("x-middleware-next"), "1");
+});
+
+test("the meeting workflow preserves the six steps' targets, evaluations and notes from the brief", () => {
+  const meeting = workflows.find(workflow => workflow.slug === "client-meeting-followup");
+  assert.ok(meeting);
+  const steps = meeting.steps.map(({ id, targets, evaluations, note }) => [
+    id,
+    targets.map(({ aim, trait, index }) => `${aim} ${index === undefined ? trait : `index:${index}`}`),
+    evaluations ?? [],
+    note ?? null,
+  ]);
+  assert.deepEqual(steps, [
+    ["1", ["high truthful", "high disclaimsWithAssumptions", "high informationDense", "high flagsNuances"],
+      ["briefcase-v1-1", "aa-omniscience-index"], null],
+    ["2", ["high evidenceBased", "high pragmatic", "high constructivelyPushesBack", "high flagsNuances", "low sycophantic"],
+      ["strategy-ops-index", "aa-briefcase-analytical-quality-elo"], null],
+    ["3", ["high providesActionableGuidance", "high pragmatic", "high direct", "high disclaimsWithAssumptions", "low openEnded"],
+      ["strategy-ops-index", "briefcase-v1-1"],
+      "No benchmark tests date suggestions. Give the model the meeting date and today's date, and check every date by hand."],
+    ["4", ["high index:organization", "low slop"],
+      ["aa-briefcase-presentation-elo", "aa-briefcase-rubric-score"], null],
+    ["5", ["high naturalSounding", "high sincere", "high direct", "moderate index:warmth", "low slop", "low sycophantic"],
+      [], null],
+    ["6", ["high index:transparency", "high constructivelyPushesBack", "low sycophantic"],
+      ["aa-omniscience-index"], "Use a fresh chat and a different model from step 4."],
+  ]);
+});
+
+test("the meeting workflow pins each independently checked pick and both runners-up", async () => {
+  const meeting = workflows.find(workflow => workflow.slug === "client-meeting-followup");
+  assert.ok(meeting);
+  const masterRows = await bundledMasterRows();
+  const picks = meeting.steps.map(step => {
+    const { pick, runnersUp } = stepPicks(step, personality, workflowModelList, masterRows);
+    return [step.id, [pick, ...runnersUp].map(row => row?.model.identity_key)];
+  });
+  assert.deepEqual(picks, [
+    ["1", [
+      "anthropic\u0000claude opus 5.5 (max with fallback)",
+      "anthropic\u0000claude fable 5.1 (max with fallback)",
+      "openai\u0000gpt-6 astra (max)",
+    ]],
+    ["2", [
+      "anthropic\u0000claude fable 5.1 (max with fallback)",
+      "anthropic\u0000claude opus 5.5 (max with fallback)",
+      "anthropic\u0000claude sonnet 5.5 (max with fallback)",
+    ]],
+    ["3", [
+      "anthropic\u0000claude fable 5.1 (max with fallback)",
+      "anthropic\u0000claude opus 5.5 (max with fallback)",
+      "openai\u0000gpt-6.2 sol (high)",
+    ]],
+    ["4", [
+      "openai\u0000gpt-6.1 sol (max)",
+      "anthropic\u0000claude sonnet 5.5 (max with fallback)",
+      "anthropic\u0000claude opus 5.5 (max with fallback)",
+    ]],
+    ["5", [
+      "openai\u0000gpt-6.2 astra (medium)",
+      "openai\u0000gpt-6.2 sol (high)",
+      "openai\u0000gpt-6 sol (max)",
+    ]],
+    ["6", [
+      "anthropic\u0000claude fable 5.1 (max with fallback)",
+      "anthropic\u0000claude opus 5.5 (max with fallback)",
+      "anthropic\u0000claude fable 5.2 (max with fallback)",
+    ]],
+  ]);
+});
+
 test("sales proposal registers all 14 source steps and pins the filtered picks", async () => {
   const proposal = workflows.find(workflow => workflow.slug === "sales-proposal");
   assert.ok(proposal);
@@ -374,7 +456,7 @@ test("sales proposal registers all 14 source steps and pins the filtered picks",
   ]);
 
   const masterRows = await bundledMasterRows();
-  // Picks with the model list and benchmark bar, to be re-checked in 2.2.
+  // Independently checked against the model list and benchmark bar.
   const checkedPicks: Record<string, string> = {
     "1": "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
     "3a": "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
@@ -389,8 +471,7 @@ test("sales proposal registers all 14 source steps and pins the filtered picks",
     if (checkedPicks[step.id]) assert.equal(pick.model.name, checkedPicks[step.id], step.id);
   }
 
-  // Phase 1's worked examples with the new runners-up, to be re-checked in 2.2.
-  const handRunnersUp: Record<string, string[]> = {
+  const checkedRunnersUp: Record<string, string[]> = {
     "3a": [
       "Claude Haiku 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
       "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
@@ -398,10 +479,10 @@ test("sales proposal registers all 14 source steps and pins the filtered picks",
     "6": ["Grok 4.5 (High)", "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)"],
     "7": ["Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)", "GPT-6.2 Astra (Xhigh)"],
   };
-  for (const [id, names] of Object.entries(handRunnersUp)) {
-    const handStep: WorkflowStep | undefined = proposal.steps.find(item => item.id === id);
-    assert.ok(handStep, id);
-    assert.deepEqual(stepPicks(handStep, personality, workflowModelList, masterRows).runnersUp.map(row => row.model.name), names, id);
+  for (const [id, names] of Object.entries(checkedRunnersUp)) {
+    const checkedStep: WorkflowStep | undefined = proposal.steps.find(item => item.id === id);
+    assert.ok(checkedStep, id);
+    assert.deepEqual(stepPicks(checkedStep, personality, workflowModelList, masterRows).runnersUp.map(row => row.model.name), names, id);
   }
 });
 
