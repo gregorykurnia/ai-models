@@ -15,6 +15,7 @@ const dataset = await readJson("leaderboards.json");
 const entries = dataset.entries.filter(entry => entry.evaluation_id === businessSlug).sort((a, b) => a.source_row - b.source_row);
 const positive = entries.find(entry => entry.model === "Gemini 4 Neon (Xhigh)");
 const negative = entries.at(-1);
+const businessScore = entry => entry.score_value.toFixed(4);
 
 async function screenshot(page, name, target = page) {
   await mkdir(output, { recursive: true });
@@ -48,6 +49,7 @@ export async function checkBusinessEvaluation(page, base) {
     await setWidth(page, width);
     assert.equal((await page.goto(base))?.status(), 200);
     const indexLink = page.getByRole("heading", { name: title, exact: true }).getByRole("link");
+    assert.equal(await indexLink.locator("../..").locator(".evaluation-meta").innerText(), `Net Score · ${chart.items.length} ranked models`);
     await indexLink.scrollIntoViewIfNeeded();
     await screenshot(page, `leaderboards-index-business-${width}`);
     await indexLink.click();
@@ -77,11 +79,31 @@ export async function checkBusinessEvaluation(page, base) {
     const board = page.locator(".evaluation-leaderboard");
     const rows = board.locator(mobile ? ".evaluation-card" : ".evaluation-table tbody tr");
     const displayed = await rows.evaluateAll((elements, mobile) => elements.map(row => {
-      if (mobile) return [row.dataset.model, row.querySelector("strong").textContent, row.querySelector(".evaluation-card__score").textContent.split(": ").at(-1)];
+      if (mobile) return [row.dataset.model, row.querySelector("strong").textContent, row.querySelector(".evaluation-card__score").textContent];
       const cell = name => row.querySelector(`[data-column="${name}"]`).textContent.trim();
       return [cell("model"), `#${cell("source_rank")} ${cell("model")}`, cell("score_value")];
     }), mobile);
-    assert.deepEqual(displayed, entries.map(entry => [entry.model, `#${entry.source_rank} ${entry.model}`, entry.score_display]));
+    assert.deepEqual(displayed, entries.map(entry => [entry.model, `#${entry.source_rank} ${entry.model}`, `${mobile ? "Net Score: " : ""}${businessScore(entry)}`]));
+    if (mobile) {
+      assert(await rows.locator(".evaluation-card__score").evaluateAll(labels => labels.every(label => {
+        const range = document.createRange();
+        range.selectNodeContents(label);
+        return new Set(Array.from(range.getClientRects(), rect => rect.top)).size === 1 &&
+          range.getBoundingClientRect().right <= label.closest(".evaluation-card").getBoundingClientRect().right;
+      })), "Business score labels and values fit together on phones");
+    } else {
+      assert.match(await board.locator('th[data-column="score_value"] button').first().innerText(), /^Net Score\s+[↕↑↓]$/);
+      const chinaMobile = rows.locator('td[data-column="provider"]').filter({ hasText: /^China Mobile$/ });
+      assert(await chinaMobile.evaluate(cell => {
+        const range = document.createRange();
+        range.selectNodeContents(cell);
+        return cell.closest(".table-scroll").getBoundingClientRect().right - range.getBoundingClientRect().right >= 12;
+      }), "China Mobile clears the right edge of the visible table");
+      for (const model of ["Command A+", "K2 Horizon 375B A23B", "North Mini Code"]) {
+        const row = rows.filter({ has: page.getByText(model, { exact: true }) });
+        assert.equal(await row.locator('td[data-column="cost_usd"] a').innerText(), "$0.00", `${model}: captured zero cost remains visible`);
+      }
+    }
     assert.match(await board.locator("p[aria-live]").innerText(), new RegExp(`^${chart.items.length} results`));
     await screenshot(page, `evaluation-${width}`);
 
@@ -151,7 +173,7 @@ export async function checkBusinessMaster(page, base, expect, exportRanks) {
     const names = rows.locator(mobile ? ".master-card__title a" : ".master-model > a");
     const shownNames = await names.allTextContents();
     assert.deepEqual([...shownNames].sort(), neon.map(entry => entry.model).sort());
-    const expectedScores = shownNames.map(name => neon.find(entry => entry.model === name).score_display);
+    const expectedScores = shownNames.map(name => businessScore(neon.find(entry => entry.model === name)));
     if (mobile) {
       await expect(businessTiles.locator("dd")).toHaveText(expectedScores);
       await section.scrollIntoViewIfNeeded();
@@ -200,13 +222,13 @@ export async function checkBusinessMaster(page, base, expect, exportRanks) {
       const expected = direction === "asc" ? [positive, negative] : [negative, positive];
       await expect(names).toHaveText([...expected.map(entry => entry.model), unscored]);
       if (mobile) {
-        await expect(businessTiles.locator("dd").getByRole("link")).toHaveText(expected.map(entry => entry.score_display));
+        await expect(businessTiles.locator("dd").getByRole("link")).toHaveText(expected.map(businessScore));
         await expect(businessTiles.locator('dd [aria-hidden="true"]')).toHaveText("—");
         if (direction === "asc") await screenshot(page, "master-390-missing-card", cards.last());
       } else {
         const index = await header.evaluate(cell => cell.cellIndex);
         const values = rows.locator(`td:nth-child(${index + 1})`);
-        await expect(values.locator(".master-business-score")).toHaveText(expected.map(entry => entry.score_display));
+        await expect(values.locator(".master-business-score")).toHaveText(expected.map(businessScore));
         await expect(values.locator('[aria-hidden="true"]')).toHaveText("—");
         await showBusinessColumns();
         await screenshot(page, `master-business-sort-${direction}-1440`);
@@ -240,6 +262,11 @@ export async function checkBusinessSuitabilityAndAbout(page, base, expect) {
     await page.getByLabel("Task title").fill("Compare business knowledge");
     await page.getByLabel("Task description").fill("Rank these models using the Business Net Score evaluation.");
     await page.getByLabel("Search evaluations").fill(title);
+    const choice = page.getByText(new RegExp(`^Net Score · ${chart.items.length} ranked rows · `));
+    for (const width of widths) {
+      await setWidth(page, width);
+      await screenshot(page, `suitability-business-choice-${width}`, choice.locator("../.."));
+    }
     await page.getByRole("checkbox", { name: new RegExp(title) }).check();
     const weight = page.locator(`#weight-${businessSlug}`);
     await expect(weight).toHaveValue("100");

@@ -2,6 +2,7 @@ import Link from "next/link";
 import {Suspense} from "react";
 import MasterLeaderboard from "@/components/master-leaderboard";
 import {getMasterDataset} from "@/lib/data";
+import {evaluationMetricLabel} from "@/lib/evaluation-display";
 import {masterTableRows} from "@/lib/master";
 import {modelSpeedCaptureLabel} from "@/lib/model-speed";
 import {Card, EmptyState, PageHeader, Section, SectionHeader, Spinner} from "@/components/ui/primitives";
@@ -42,7 +43,7 @@ export default async function Home(){
               <div className="eyebrow">{e.category.replaceAll("_"," ")}</div>
               <h3><Link href={`/leaderboards/${e.slug}`}>{e.display_name}</Link></h3>
               {e.metric_group && e.metric_indicator && <div className="metric-tag"><span className={`metric-indicator metric-indicator--${e.metric_indicator}`} style={{backgroundColor:e.metric_color}} aria-hidden="true"/><span>{chartMarkerLabels[e.metric_indicator]}</span></div>}
-              <p className="evaluation-meta">{e.metric_label} · {e.row_count.toLocaleString()} ranked models</p>
+              <p className="evaluation-meta">{evaluationMetricLabel(e)} · {e.row_count.toLocaleString()} ranked models</p>
               <Link className="open" href={`/leaderboards/${e.slug}`}>View leaderboard →</Link>
             </Card>)}
           </div>

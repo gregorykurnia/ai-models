@@ -4,7 +4,7 @@ import {join} from "node:path";
 import {mergeBriefcaseComponents} from "../src/lib/aa-briefcase.ts";
 import {mergeBriefcaseRubricRefresh} from "../src/lib/aa-briefcase-rubric-refresh.ts";
 import {mergeAaModelProfileOverlays} from "../src/lib/aa-model-profile-overlays.ts";
-import {evaluationScoreDisplay} from "../src/lib/evaluation-display.ts";
+import {evaluationMetricLabel,evaluationScoreDisplay} from "../src/lib/evaluation-display.ts";
 import {getIntelligenceIndexTaskCost} from "../src/lib/intelligence-index-costs.ts";
 import {evaluationTimePerTask,getModelSpeed,formatTimePerTask,formatFirstAnswer} from "../src/lib/model-speed.ts";
 
@@ -474,7 +474,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
       assert.equal(row.model,entry.model,`${id}: ${width}px row ${index+1}`);
       if(width===390){
         assert.equal(row.title,`#${entry.source_rank} ${entry.model}`);
-        assert.equal(row.score,`${evaluation.metric_label}: ${score}`,`${entry.model}: phone score`);
+        assert.equal(row.score,`${evaluationMetricLabel(evaluation)}: ${score}`,`${entry.model}: phone score`);
         const status=entry.scoring_status?`AA scoring status: ${entry.scoring_status}`:undefined;
         assert.equal(row.scoring_status,status,`${id}: phone uses the captured scoring status`);
       }else{

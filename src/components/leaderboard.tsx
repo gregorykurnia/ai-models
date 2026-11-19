@@ -4,7 +4,7 @@ import {usePathname,useRouter,useSearchParams} from "next/navigation";
 import {flexRender,getCoreRowModel,useReactTable,type ColumnDef} from "@tanstack/react-table";
 import {parseQueryParams,type Entry,type Evaluation,type IntelligenceIndexTaskCost} from "@/lib/contract";
 import {matchesModelSearch,parseModelSearchTerms} from "@/lib/model-search";
-import {evaluationScoreDisplay} from "@/lib/evaluation-display";
+import {evaluationMetricLabel,evaluationScoreDisplay,omniscienceBusinessEvaluationId} from "@/lib/evaluation-display";
 import {evaluationTimePerTask,evaluationTimePerTaskLabel,formatFirstAnswer,formatTimePerTask,modelSpeedCaptureLabel,type ModelSpeed} from "@/lib/model-speed";
 import {ProviderMultiSelect,providerSelectionLabel} from "@/components/ui/provider-multi-select";
 import {Button, Card, HelperText, Input, Pagination, Select, Table, TableScroll} from "@/components/ui/primitives";
@@ -28,7 +28,7 @@ function EvaluationCard({entry,evaluation,speed,cost}:{entry:Entry;evaluation:Ev
   return <li className="master-card evaluation-card" data-model={entry.model} data-provider={entry.provider}>
     <div className="evaluation-card__head">
       <strong>#{entry.source_rank} {entry.model}</strong>
-      <small>{entry.provider} · <span className="evaluation-card__score">{evaluation.metric_label}: {evaluationScoreDisplay(evaluation,entry)}</span></small>
+      <small>{entry.provider} · <span className="evaluation-card__score">{evaluationMetricLabel(evaluation)}: {evaluationScoreDisplay(evaluation,entry)}</span></small>
     </div>
     <dl className="master-card__metrics">
       <div><dt>{evaluationTimePerTaskLabel(evaluation.id)} (min)</dt><dd><SpeedValue speed={speed} seconds={evaluationTimePerTask(evaluation.id,speed)} format={formatTimePerTask}/></dd></div>
@@ -83,7 +83,7 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds,costCap
   const rows=useMemo(()=>sorted.slice((page-1)*state.size,page*state.size),[sorted,page,state.size]);
   const columns=useMemo<ColumnDef<Entry>[]>(()=>{const result:ColumnDef<Entry>[]=[
     {accessorKey:"source_rank",header:"Rank"},{accessorKey:"provider",header:"Provider"},{accessorKey:"model",header:"Model"},
-    {accessorKey:"score_value",header:evaluation.metric_label,cell:({row})=>evaluationScoreDisplay(evaluation,row.original)},
+    {accessorKey:"score_value",header:evaluationMetricLabel(evaluation),cell:({row})=>evaluationScoreDisplay(evaluation,row.original)},
     ...(evaluation.has_scoring_status?[{id:"scoring_status",header:"Scoring status",cell:({row}:{row:{original:Entry}})=>row.original.scoring_status||"—"}]:[]),
     ...(evaluation.has_confidence_interval?[{accessorKey:"confidence_interval_display",header:"Elo CI",cell:({row}:{row:{original:Entry}})=>row.original.confidence_interval_display||"—"}]:[]),
     ...(evaluation.has_release_date?[{accessorKey:"release_date_label",header:"Release date",cell:({row}:{row:{original:Entry}})=>row.original.release_date_label||"—"}]:[]),
@@ -93,7 +93,11 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds,costCap
   ];return result.sort((a,b)=>columnOrder.indexOf(columnId(a))-columnOrder.indexOf(columnId(b)));},[evaluation,taskCosts,speeds]);
   const table=useReactTable({data:rows,columns,getCoreRowModel:getCoreRowModel(),manualPagination:true,autoResetPageIndex:false});
   const providers=[...new Set(entries.map(e=>e.provider))].sort();
-  return <Card className="evaluation-leaderboard">
+  const widthForColumn=(column:ColumnDef<Entry>)=>{
+    const id=columnId(column);
+    return id==="score_value"&&evaluation.id===omniscienceBusinessEvaluationId?104:columnWidths[id];
+  };
+  return <Card className="evaluation-leaderboard" data-evaluation={evaluation.id}>
     <div className="toolbar filter-toolbar">
       <LeaderboardModelSearch value={searchTerm} onCommit={commitSearch}/>
       <label className="sr-only" htmlFor="provider">Provider</label>
@@ -111,9 +115,9 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds,costCap
     </div>
     <div className="evaluation-table-view">
       <TableScroll showOverflowCue label={`${evaluation.display_name} source rankings, scroll horizontally for all columns`}>
-        <Table className="evaluation-table" style={{tableLayout:"fixed",width:columns.reduce((sum,column)=>sum+columnWidths[columnId(column)],0)}}>
+        <Table className="evaluation-table" style={{tableLayout:"fixed",width:columns.reduce((sum,column)=>sum+widthForColumn(column),0)}}>
           <caption className="sr-only">{evaluation.display_name} source rankings</caption>
-          <colgroup>{columns.map(column=><col key={columnId(column)} style={{width:columnWidths[columnId(column)]}}/>)}</colgroup>
+          <colgroup>{columns.map(column=><col key={columnId(column)} style={{width:widthForColumn(column)}}/>)}</colgroup>
           <thead>{table.getHeaderGroups().map(group=><tr key={group.id}>{group.headers.map(header=>{
             const heading=flexRender(header.column.columnDef.header,header.getContext());
             const detail=header.id==="cost_usd"?["USD",costCapturedLabel]:columnDetails[header.id];

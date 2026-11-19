@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { entrySchema, type Entry, type Evaluation, type IntelligenceIndexTaskCost } from "./contract";
+import { evaluationScoreDisplay, omniscienceBusinessEvaluationId } from "./evaluation-display";
 import type { ModelSpeed } from "./model-speed";
 
 export const masterRowSchema=z.object({model_id:z.string(),identity_key:z.string(),provider:z.string(),model:z.string(),cells:z.record(z.string(),z.object({entry:entrySchema,href:z.string()})),source_rank:z.number(),source_entries:z.array(entrySchema),intelligence_index_cost:z.object({slug:z.string(),provider:z.string(),model:z.string(),cost_usd:z.number().nonnegative(),url:z.string().url(),profile_captured_at:z.string().optional()}).nullable(),speed:z.object({slug:z.string(),provider:z.string(),model:z.string(),url:z.string().url(),time_per_task_s:z.number().nonnegative().nullable(),first_answer_s:z.number().nonnegative().nullable(),evaluation_times_s:z.record(z.string(),z.number().nonnegative()),captured_at:z.string()}).nullable()});
@@ -13,7 +14,7 @@ export function masterTableRows(rows:MasterRow[]):MasterTableRow[]{
       entry:{
         source_rank:entry.source_rank,
         scoring_status:entry.scoring_status,
-        ...(id===omniscienceBusinessEvaluationId?{score_display:entry.score_display}:{}),
+        ...(id===omniscienceBusinessEvaluationId?{score_display:evaluationScoreDisplay({id},entry)}:{}),
       },
     }])),
   }));
@@ -21,7 +22,6 @@ export function masterTableRows(rows:MasterRow[]):MasterTableRow[]{
 export function evaluationLink(e:Evaluation,model:string){return `/leaderboards/${e.slug}?q=${encodeURIComponent(model)}`;}
 
 const sweAtlasEvaluationId="swe-atlas-qna-aa";
-export const omniscienceBusinessEvaluationId="aa-omniscience-business";
 const supplementalEvaluationIds=[sweAtlasEvaluationId,omniscienceBusinessEvaluationId];
 
 const masterEvaluationOrder=[

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { masterIdentityKey } from "@/lib/master";
+import { evaluationMetricLabel } from "@/lib/evaluation-display";
 import { readModelFavorites, subscribeToModelFavorites, writeModelFavorites } from "@/lib/model-favorites";
 import { calculateSuitability, suitabilityTaskSchema, type EvaluationWeight, type SuitabilityTask } from "@/lib/suitability";
 import { browserTaskNeedsSharedCopy, pinComparison, readSavedTaskSummaries, readSavedTasks, savedComparisonSchema, suitabilityCategorySchema, type PlannerData, type SavedComparison, type SavedTaskSummary, type SuitabilityCategory } from "@/lib/suitability-storage";
@@ -1430,7 +1431,7 @@ export default function Planner({ data }: { data: PlannerData }) {
       <div className={styles.picker}>{groups.map(category => <fieldset key={category}><legend>{category.replaceAll("_", " ")}</legend>
         {visibleEvaluations.filter(evaluation => evaluation.category === category).map(evaluation => <label className={styles.option} key={evaluation.id}>
           <Checkbox checked={weights.some(weight => weight.evaluation_id === evaluation.id)} onChange={() => toggleEvaluation(evaluation.id)} />
-          <span><strong>{evaluation.display_name}</strong><small>{evaluation.metric_label} · {evaluation.row_count} ranked rows · {evaluation.captured_at}</small></span></label>)}
+          <span><strong>{evaluation.display_name}</strong><small>{evaluationMetricLabel(evaluation)} · {evaluation.row_count} ranked rows · {evaluation.captured_at}</small></span></label>)}
       </fieldset>)}{visibleEvaluations.length === 0 && <p>No evaluations match.</p>}</div>
       <div className="toolbar"><Button onClick={() => setWeights(equal(weights))} disabled={!weights.length}>Equal weights</Button><strong aria-live="polite">Total: {Number.isFinite(total) ? total.toFixed(2) : "Invalid"}%</strong></div>
       {weights.map(weight => <div className={styles.weight} key={weight.evaluation_id}><label htmlFor={`weight-${weight.evaluation_id}`}>{working.evaluations.find(evaluation => evaluation.id === weight.evaluation_id)?.display_name}</label>
