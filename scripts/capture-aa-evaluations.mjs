@@ -53,11 +53,11 @@ function slim(item) {
   for (const key of ["mid", "lower", "upper"]) if (item[key]?.value !== undefined) out[key] = { value: item[key].value };
   return out;
 }
-function modelSelectors(scope) {
+export function modelSelectors(scope) {
   return scope.locator("button[aria-controls]").filter({ hasText: MODEL_SELECTOR_LABEL });
 }
 
-async function expandSelectors(page, scope) {
+export async function expandSelectors(page, scope) {
   // AA can remove controls after selecting models. Keep each menu's identity as the page updates.
   const menuIds = await modelSelectors(scope)
     .evaluateAll(buttons => buttons.map(button => button.getAttribute("aria-controls")));
@@ -89,6 +89,13 @@ async function expandSelectors(page, scope) {
   return menuIds.length;
 }
 
+/** @param {string} label */
+export function completeModelSelectionCount(label) {
+  const counts = MODEL_SELECTOR_LABEL.exec(label);
+  const count = counts && counts[1] === counts[2] ? Number(counts[2]) : null;
+  return count !== null && count > 0 && Number.isSafeInteger(count) ? count : null;
+}
+
 /** @param {{ title: string, selectorLabels: string[], items: unknown[] }[]} charts @param {string} title */
 export function assertCompleteScoreChart(charts, title) {
   const matches = charts.filter(chart => chart.title === title);
@@ -98,8 +105,7 @@ export function assertCompleteScoreChart(charts, title) {
     throw new Error(`score chart "${title}" needs one model selector, found ${selectorLabels.length}`);
   }
   const label = selectorLabels[0];
-  const counts = MODEL_SELECTOR_LABEL.exec(label);
-  if (!counts || counts[1] !== counts[2] || !items.length || items.length !== Number(counts[2])) {
+  if (items.length !== completeModelSelectionCount(label)) {
     throw new Error(`incomplete score chart "${title}" (${label}, ${items.length} scores)`);
   }
 }

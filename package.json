@@ -29,6 +29,8 @@
     "import:briefcase-components": "tsx scripts/import-aa-briefcase-components.ts",
     "import:aa-index-costs": "tsx scripts/import-aa-intelligence-index-costs.ts",
     "capture:aa-speed": "node --import tsx scripts/capture-aa-speed.mjs",
+    "capture:aa-personalitybench": "node scripts/capture-aa-personalitybench.mjs",
+    "import:aa-personalitybench": "node --import tsx scripts/import-aa-personalitybench.ts",
     "import:aa-evaluations": "tsx scripts/import-aa-evaluations.ts",
     "publish:data": "node --env-file=.env.local --import tsx scripts/publish-current.ts",
     "refresh:saved-tasks": "node --env-file=.env.local --import tsx scripts/refresh-saved-tasks.ts",

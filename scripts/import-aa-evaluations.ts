@@ -7,6 +7,9 @@ import { entrySchema, type Dataset, type Entry, type Evaluation } from "../src/l
 import { masterIdentityKey } from "../src/lib/master";
 import { mergeBriefcaseComponents, type BriefcaseComponentsSource } from "../src/lib/aa-briefcase";
 import { mergeBriefcaseRubricRefresh, type BriefcaseRubricRefreshSource } from "../src/lib/aa-briefcase-rubric-refresh";
+import { canonicalModelName } from "./aa-model-names";
+
+export { canonicalModelName };
 
 type CaptureItem = Record<string, any>;
 type Capture = {
@@ -172,20 +175,6 @@ function signed(value: number, places: number) {
     ? String(Math.abs(rounded))
     : String(Math.abs(rounded)).replace(/(\.\d*?)0+$/, "$1").replace(/\.$/, "");
   return `${rounded < 0 ? "-" : "+"}${amount}`;
-}
-
-// Claude fallback labels: the AA model name is "Claude X (Max, Default Fallback)"; the rest of the
-// leaderboard stores the same variant as "Adaptive Reasoning, Max Effort, Default Fallback" so the
-// master identity matches across evaluations.
-export function canonicalModelName(name: string) {
-  const fallback = name.match(/^(.*) \((Max|Xhigh|High|Medium|Low), Default Fallback\)$/);
-  if (fallback) return `${fallback[1]} (Adaptive Reasoning, ${fallback[2]} Effort, Default Fallback)`;
-  // Claude Haiku 5.5 is listed without its suffix on some pages; its configurations are the same default-fallback ones.
-  const haiku = name.match(/^(Claude Haiku 5\.5) \((Max|Xhigh|High|Medium|Low)\)$/);
-  if (haiku) return `${haiku[1]} (Adaptive Reasoning, ${haiku[2]} Effort, Default Fallback)`;
-  const opusFallback = name.match(/^(Claude Fable 5) \((Max|Xhigh|High|Medium|Low), Opus 4\.8 Fallback\)$/);
-  if (opusFallback) return `${opusFallback[1]} (Adaptive Reasoning, ${opusFallback[2]} Effort, Opus 4.8 Fallback)`;
-  return name;
 }
 
 function costOf(item: CaptureItem, divisor = 1): number | null {
