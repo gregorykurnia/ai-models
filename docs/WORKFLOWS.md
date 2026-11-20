@@ -110,6 +110,7 @@ Use the `slug` field from the bundled evaluation catalog. [Leaderboard catalog](
 | `aa-briefcase-rubric-score` | AA-Briefcase Rubric Score (%) |
 | `aa-briefcase-analytical-quality-elo` | AA-Briefcase Analytical Quality Elo |
 | `aa-briefcase-presentation-elo` | AA-Briefcase Presentation Elo |
+| `aa-omniscience-business` | AA-Omniscience Net Score: Business |
 
 ## Your models and the benchmark bar
 

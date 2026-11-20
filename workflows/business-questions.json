@@ -1,0 +1,47 @@
+{
+  "slug": "business-questions",
+  "title": "Business questions",
+  "summary": "Ask analysis questions about deals, buyers and your product in chat, without writing a document.",
+  "updated": "2026-11-20",
+  "steps": [
+    {
+      "id": "1",
+      "title": "Ask from general knowledge",
+      "goal": "Answer market questions such as why deals stall, what makes buyers say yes or no, and what they expect from a product like ours",
+      "targets": [
+        { "trait": "truthful", "aim": "high" },
+        { "trait": "admitsUncertainty", "aim": "high" },
+        { "trait": "flagsNuances", "aim": "high" },
+        { "trait": "sycophantic", "aim": "low" }
+      ],
+      "evaluations": ["strategy-ops-index", "aa-omniscience-business", "economics-index"],
+      "note": "AA-Omniscience Business matters most here: the answer comes from the model's memory, so it must not make up facts."
+    },
+    {
+      "id": "2",
+      "title": "Analyse our own deals",
+      "goal": "Find why our deals were won or lost and what clients asked for, from deal notes, emails, client feedback or CRM exports",
+      "targets": [
+        { "trait": "evidenceBased", "aim": "high" },
+        { "trait": "truthful", "aim": "high" },
+        { "trait": "constructivelyPushesBack", "aim": "high" },
+        { "trait": "sycophantic", "aim": "low" }
+      ],
+      "evaluations": ["strategy-ops-index", "aa-briefcase-analytical-quality-elo"],
+      "note": "Paste the material into the chat. The model reasons from your evidence, so its own business knowledge matters less."
+    },
+    {
+      "id": "3",
+      "title": "Challenge the conclusion",
+      "goal": "Attack the answer: which claims lack evidence, what was missed, and which other explanation fits the facts",
+      "targets": [
+        { "index": "transparency", "aim": "high" },
+        { "trait": "constructivelyPushesBack", "aim": "high" },
+        { "trait": "flagsNuances", "aim": "high" },
+        { "trait": "sycophantic", "aim": "low" }
+      ],
+      "evaluations": ["strategy-ops-index", "aa-omniscience-business"],
+      "note": "Use a fresh chat and a different model from steps 1 and 2."
+    }
+  ]
+}

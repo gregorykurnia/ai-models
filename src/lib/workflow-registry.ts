@@ -1,3 +1,4 @@
+import businessQuestions from "../../workflows/business-questions.json";
 import clientMeetingFollowup from "../../workflows/client-meeting-followup.json";
 import models from "../../workflows/models.json";
 import salesProposal from "../../workflows/sales-proposal.json";
@@ -11,6 +12,7 @@ const sources: Record<string, unknown> = {
   "workflows/sales-proposal.json": salesProposal,
   "workflows/client-meeting-followup.json": clientMeetingFollowup,
   "workflows/teams-scheduling.json": teamsScheduling,
+  "workflows/business-questions.json": businessQuestions,
 };
 
 export const workflows: readonly Workflow[] = Object.entries(sources)
