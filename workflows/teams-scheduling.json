@@ -1,0 +1,36 @@
+{
+  "slug": "teams-scheduling",
+  "title": "Scheduling with Teams DEUS",
+  "summary": "In an AI chat connected to the Teams DEUS connector, suggest follow-ups and dates, then create the tasks and calendar events.",
+  "updated": "2026-11-20",
+  "steps": [
+    {
+      "id": "1",
+      "title": "Suggest follow-ups and dates",
+      "goal": "Each follow-up with an owner, a proposed date and the reason for it, plus a pushback when a date or timeline looks unrealistic",
+      "targets": [
+        { "trait": "providesActionableGuidance", "aim": "high" },
+        { "trait": "pragmatic", "aim": "high" },
+        { "trait": "disclaimsWithAssumptions", "aim": "high" },
+        { "trait": "constructivelyPushesBack", "aim": "high" },
+        { "trait": "sycophantic", "aim": "low" }
+      ],
+      "evaluations": ["strategy-ops-index", "briefcase-v1-1"],
+      "note": "No benchmark tests date maths or time zones. Give the model today's date, and check each date (Asia/Jakarta days, working-day gaps) in the preview."
+    },
+    {
+      "id": "2",
+      "title": "Create the tasks",
+      "goal": "Run the connector's steps in order (category, company, main task, each step, free times, preview, save) without inventing dates, times or free slots",
+      "targets": [
+        { "trait": "truthful", "aim": "high" },
+        { "trait": "disclaimsWithAssumptions", "aim": "high" },
+        { "trait": "direct", "aim": "high" },
+        { "trait": "sycophantic", "aim": "low" }
+      ],
+      "evaluations": ["automationbench-aa"],
+      "other_checks": "Whether the model follows the connector's one-question-per-step rule only shows in real use.",
+      "note": "AutomationBench-AA is the closest match: agentic workflows in business apps. Read every preview warning before confirming the save."
+    }
+  ]
+}
