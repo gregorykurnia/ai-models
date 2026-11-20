@@ -164,5 +164,170 @@
       "Ask for a one-line bottom line at the end. It won't add one on its own.",
       "For how-to questions, ask for numbered steps and named tools or links."
     ]
+  },
+  {
+    "id": "fable-5-1",
+    "model": "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    "display": "Claude Fable 5.1",
+    "variant": "Max effort, adaptive reasoning",
+    "maker": "Anthropic",
+    "compare": [
+      "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)"
+    ],
+    "tagline": "A vivid, deeply informed and outspoken writer who argues with you honestly, and makes you wait for the answer.",
+    "archetype": {
+      "name": "The Firebrand Scholar",
+      "line": "Brings the evidence, the wit and a strong opinion, and takes its time getting to the point."
+    },
+    "summary": [
+      "Fable 5.1 has the strongest personality in the field. It tops the Conviction and Expressiveness indexes and is 1st of 53 on eight traits: Opinionated, Constructive Pushback, Creative, Sincere, Information Dense, Evidence-Based, Eloquent and Lexically Varied. Its writing is rich and varied and still sounds natural (3rd).",
+      "That force comes with honesty. It is one of the three least flattering models, 2nd on Flags Nuances and 4th on Truthful. Its warmth reads as real too: 1st on Sincere, 2nd on Emotionally Intelligent and 3rd on Humorous.",
+      "The weak spot is getting to the point. It ranks 38th of 53 on Answer First and sits mid-pack on Direct and Scannable, so the answer often comes after the reasoning, in prose rather than a skimmable list. Its filler level is mid-pack as well."
+    ],
+    "typesNote": "An Individualist with an Investigator wing: original, expressive and sincere, with a deep store of facts behind it. The Challenger is a close second, which fits its pushback. Feeling edges Thinking (90 vs 81), unusual for a model this evidence-heavy, and P narrowly beats J (62 vs 57): it explores a question before it wraps it up.",
+    "bestFor": [
+      {
+        "title": "Tough critique of your work",
+        "body": "Plans, drafts or arguments you want stress-tested. It takes a side, pushes back hard and almost never flatters.",
+        "refs": [
+          "t:opinionated",
+          "t:constructivelyPushesBack",
+          "t:sycophantic"
+        ]
+      },
+      {
+        "title": "Deep explanations",
+        "body": "Topics where you want facts, evidence and the caveats that matter. It leads the field on density and evidence and flags nuance well.",
+        "refs": [
+          "t:informationDense",
+          "t:evidenceBased",
+          "t:flagsNuances"
+        ]
+      },
+      {
+        "title": "Creative writing and brainstorming",
+        "body": "Stories, names, concepts and speeches. It is the most creative and most varied writer tested, and genuinely funny.",
+        "refs": [
+          "t:creative",
+          "t:lexicallyVaried",
+          "t:humorous"
+        ]
+      },
+      {
+        "title": "Personal conversations",
+        "body": "Hard feelings, advice about people, heartfelt messages. It is the most sincere model tested and reads emotion well.",
+        "refs": [
+          "t:sincere",
+          "t:emotionallyIntelligent",
+          "t:naturalSounding"
+        ]
+      }
+    ],
+    "worstFor": [
+      {
+        "title": "Quick answers",
+        "body": "When you want the answer in the first line, it tends to build up to it first.",
+        "refs": [
+          "t:answerFirst",
+          "t:direct"
+        ]
+      },
+      {
+        "title": "Skimmable briefings",
+        "body": "Status updates and slides that readers scan. Its output is mid-pack on scannability and organization.",
+        "refs": [
+          "t:scannable",
+          "i:organization"
+        ]
+      },
+      {
+        "title": "Neutral overviews",
+        "body": "When you want both sides laid out without a verdict, its strong, confident views tend to come through.",
+        "refs": [
+          "t:opinionated",
+          "t:confident"
+        ]
+      },
+      {
+        "title": "Lean copy",
+        "body": "Ads, captions and tight copy. Its filler level is mid-pack, so expect to trim.",
+        "refs": [
+          "i:slop"
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "title": "Knows a lot and shows it",
+        "body": "The most information-dense and evidence-based model tested, and careful to flag the nuances that change an answer.",
+        "refs": [
+          "t:informationDense",
+          "t:evidenceBased",
+          "t:flagsNuances"
+        ]
+      },
+      {
+        "title": "Rich, original writing",
+        "body": "The widest vocabulary, the most eloquent and the most creative of all 53 models, while still sounding natural.",
+        "refs": [
+          "t:lexicallyVaried",
+          "t:eloquent",
+          "t:creative"
+        ]
+      },
+      {
+        "title": "Argues honestly",
+        "body": "Holds strong views, pushes back when you're wrong and is among the three least flattering models.",
+        "refs": [
+          "t:opinionated",
+          "t:constructivelyPushesBack",
+          "t:sycophantic"
+        ]
+      },
+      {
+        "title": "Warm and funny with it",
+        "body": "The most sincere model tested, 2nd on emotional intelligence and 3rd on humor.",
+        "refs": [
+          "t:sincere",
+          "t:emotionallyIntelligent",
+          "t:humorous"
+        ]
+      }
+    ],
+    "gaps": [
+      {
+        "title": "Buries the answer",
+        "body": "38th of 53 on Answer First and mid-pack on Direct: the point often arrives after the reasoning.",
+        "refs": [
+          "t:answerFirst",
+          "t:direct"
+        ]
+      },
+      {
+        "title": "Hard to skim",
+        "body": "Mid-pack on scannability and organization overall; it writes in paragraphs more than lists.",
+        "refs": [
+          "t:scannable",
+          "i:organization"
+        ]
+      },
+      {
+        "title": "Some filler",
+        "body": "Filler and stock phrasing land mid-pack, well behind Fable 5.2.",
+        "refs": [
+          "i:slop"
+        ]
+      }
+    ],
+    "versus": [
+      "Against Fable 5.2, its successor, it is the louder model. 5.1 leads on Conviction (100 vs 75), Informativeness (96 vs 47), Imagination (87 vs 68), Confident (87 vs 39) and Constructive Pushback (100 vs 68), and flatters less (Sycophantic 5 vs 18). 5.2 answers first far more often (70 vs 30), is more direct (70 vs 49) and uses much less filler (Slop index 7 vs 24).",
+      "Against Opus 5.5, its closest match among all 53 models, depth is about even (Informativeness 96 vs 91) and Opus is a little more imaginative (94 vs 87). Opus is better organized (79 vs 60) and more structured (94 vs 81). Fable 5.1 is more opinionated (100 vs 70), more confident (87 vs 45), more sincere (100 vs 68) and flatters far less (5 vs 39)."
+    ],
+    "tips": [
+      "Ask it to put the answer in the first line, then explain.",
+      "For anything people will skim, ask for headings and short bullets.",
+      "If you want a neutral overview, say so. Otherwise expect its own verdict."
+    ]
   }
 ]
