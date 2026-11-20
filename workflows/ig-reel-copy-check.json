@@ -1,0 +1,36 @@
+{
+  "slug": "ig-reel-copy-check",
+  "title": "IG reel copy check",
+  "summary": "Check the grammar of a planned Instagram reel script or caption, then check that it suits a school's audience and voice.",
+  "updated": "2026-11-20",
+  "steps": [
+    {
+      "id": "1",
+      "title": "Check the grammar",
+      "goal": "Find grammar, spelling, punctuation and word-choice errors in the script and caption, and suggest a fix for each without rewriting the voice",
+      "targets": [
+        { "trait": "literate", "aim": "high" },
+        { "trait": "truthful", "aim": "high" },
+        { "trait": "constructivelyPushesBack", "aim": "high" },
+        { "trait": "sycophantic", "aim": "low" }
+      ],
+      "note": "Ask for a list of errors with a fix for each, not a rewritten script. A flattering model calls a weak draft great, so low Sycophantic matters almost as much as Literate."
+    },
+    {
+      "id": "2",
+      "title": "Check the fit for the reel",
+      "goal": "Judge whether the script sounds natural spoken aloud, strikes the right tone for parents and students, avoids generic school-marketing filler, and flags anything sensitive",
+      "targets": [
+        { "trait": "naturalSounding", "aim": "high" },
+        { "trait": "emotionallyIntelligent", "aim": "high" },
+        { "trait": "sincere", "aim": "high" },
+        { "trait": "friendly", "aim": "high" },
+        { "trait": "flagsNuances", "aim": "high" },
+        { "trait": "slop", "aim": "low" },
+        { "trait": "sycophantic", "aim": "low" }
+      ],
+      "other_checks": "AA-PersonalityBench is in English. For Indonesian or mixed-language reels, try three or four real scripts on the top picks first.",
+      "note": "Paste the school's own checklist into the prompt: brand voice, faith-based wording, claims about results, and consent for any child's face or name. That checklist matters more than the model pick."
+    }
+  ]
+}
