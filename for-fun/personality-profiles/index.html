@@ -228,9 +228,6 @@ function bar(v, prev) {
 
 // MBTI and Enneagram rules: the same fixed rules as for-fun/aa-personalitybench-2026-10-24.md
 // ("Just for fun: MBTI and Enneagram guesses"). Change them there and here together.
-const MBTI_NAMES = { INTJ: "Architect", INTP: "Logician", ENTJ: "Commander", ENTP: "Debater", INFJ: "Advocate", INFP: "Mediator",
-  ENFJ: "Protagonist", ENFP: "Campaigner", ISTJ: "Logistician", ISFJ: "Defender", ESTJ: "Executive", ESFJ: "Consul",
-  ISTP: "Virtuoso", ISFP: "Adventurer", ESTP: "Entrepreneur", ESFP: "Entertainer" };
 const ENN = { 1: { name: "Reformer" }, 2: { name: "Helper" }, 3: { name: "Achiever" }, 4: { name: "Individualist" }, 5: { name: "Investigator" },
   6: { name: "Loyalist" }, 7: { name: "Enthusiast" }, 8: { name: "Challenger" }, 9: { name: "Peacemaker" } };
 function personalityTypes(m) {
@@ -293,7 +290,7 @@ function render() {
   const e = ty.enneagram;
   const typesSec = `<section class="panel fade"><div class="section-head"><h2>Personality types</h2><span class="note">Just for fun: a playful reading of the scores, not measured by AA</span></div>
     <div class="types">
-      <div class="type-box"><div class="k">Typical MBTI</div><div class="big">${ty.mbti}<span>${esc(MBTI_NAMES[ty.mbti] || "")}</span></div>
+      <div class="type-box"><div class="k">Typical MBTI</div><div class="big">${ty.mbti}</div>
         ${ty.axes.map(a => `<div class="axis"><div class="letter">${a.letter}</div><div><div class="what">${esc(a.name)}${a.tie ? '<span class="tie">tie</span>' : ""}</div><div class="why">${esc(a.why)}</div></div></div>`).join("")}
       </div>
       <div class="type-box"><div class="k">Enneagram</div><div class="big">${e.type}w${e.wing}<span>${esc(ENN[e.type].name)} with a ${esc(ENN[e.wing].name)} wing</span></div>
