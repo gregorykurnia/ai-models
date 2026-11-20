@@ -11,48 +11,78 @@
       "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)"
     ],
     "tagline": "A clean, warm and honest writer with real opinions, who leaves the bottom line to you.",
+    "archetype": {
+      "name": "The Candid Confidant",
+      "line": "Tells you what it really thinks, kindly, and trusts you to take it from there."
+    },
     "summary": [
       "Across all 30 traits, Fable 5.2 comes out as a careful conversationalist. Its writing is technically clean (3rd of 53 on Literate) and almost free of filler: on Slop it is one of the six cleanest models tested. Its warmth reads as sincere: it sits around the 80th percentile on all four warmth traits.",
       "It is honest about what it assumes and rarely flatters. It holds clear opinions (87th percentile) but sounds less sure of itself than most models (39th on Confident), so its views tend to arrive with their reasoning and caveats attached.",
       "The gap is the practical last mile. It almost never closes with a summary line (50th of 53 on Bottom-Line Summary), and it sits below the middle on step-by-step guidance and on naming specific tools or sources. Expect a thoughtful reply, not a briefing."
     ],
+    "typesNote": "A principled Reformer with a Helper wing: it cares about getting things right and saying them cleanly, and it says them warmly. Thinking and Feeling tie exactly, which fits a model that is as sincere as it is truthful. The P is clear: it explores a question more than it wraps it up.",
     "strengths": [
       {
         "title": "Clean, precise prose",
         "body": "Grammar and word choice near the top of the field, eloquent without padding, and very little stock filler.",
-        "refs": ["t:literate", "t:eloquent", "i:slop"]
+        "refs": [
+          "t:literate",
+          "t:eloquent",
+          "i:slop"
+        ]
       },
       {
         "title": "Warmth that reads as sincere",
         "body": "Friendly, funny and emotionally attuned, all at about the same level. Nothing feels put on.",
-        "refs": ["t:sincere", "t:emotionallyIntelligent", "t:humorous"]
+        "refs": [
+          "t:sincere",
+          "t:emotionallyIntelligent",
+          "t:humorous"
+        ]
       },
       {
         "title": "Honest about its limits",
         "body": "States the assumptions behind an answer, admits when it isn't sure, and flatters less than four in five models.",
-        "refs": ["t:disclaimsWithAssumptions", "t:truthful", "t:sycophantic"]
+        "refs": [
+          "t:disclaimsWithAssumptions",
+          "t:truthful",
+          "t:sycophantic"
+        ]
       },
       {
         "title": "Has a point of view",
         "body": "Takes a position, leads with the answer and will push back when you're wrong.",
-        "refs": ["t:opinionated", "t:answerFirst", "t:constructivelyPushesBack"]
+        "refs": [
+          "t:opinionated",
+          "t:answerFirst",
+          "t:constructivelyPushesBack"
+        ]
       }
     ],
     "gaps": [
       {
         "title": "No bottom line",
         "body": "It rarely ends with a TL;DR or takeaway. Only three models do this less.",
-        "refs": ["t:summarizesBottomLine"]
+        "refs": [
+          "t:summarizesBottomLine"
+        ]
       },
       {
         "title": "Light on next steps",
         "body": "Below the middle on concrete steps and on naming specific tools, links or sources. Informativeness overall lands mid-pack.",
-        "refs": ["t:providesActionableGuidance", "t:resourceSpecific", "i:informativeness"]
+        "refs": [
+          "t:providesActionableGuidance",
+          "t:resourceSpecific",
+          "i:informativeness"
+        ]
       },
       {
         "title": "Opinions without swagger",
         "body": "Strong views, quiet delivery. Some readers will want it to sound more certain.",
-        "refs": ["t:confident", "t:opinionated"]
+        "refs": [
+          "t:confident",
+          "t:opinionated"
+        ]
       }
     ],
     "versus": [

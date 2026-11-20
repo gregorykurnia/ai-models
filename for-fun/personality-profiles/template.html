@@ -154,6 +154,32 @@ td .lower { font-size: 13px; color: var(--faint); margin-left: 6px; }
 .tips li::before { content: ""; width: 28px; height: 28px; border-radius: 9px; background: var(--accent-tint);
   background-image: radial-gradient(circle at 50% 50%, var(--accent) 0 4px, transparent 4.5px); }
 
+.archetype { margin-top: 14px; display: grid; gap: 4px; }
+.archetype .aname { font-size: 22px; font-weight: 700; color: var(--accent-ink); }
+.archetype .aline { font-size: 16px; color: var(--muted); max-width: 36em; }
+.hero .tagline { margin-top: 16px; }
+
+.types { display: grid; gap: 18px; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .types { grid-template-columns: 1fr 1fr; } }
+.type-box { padding: 20px; border-radius: 14px; background: var(--track); display: grid; gap: 12px; align-content: start; }
+.type-box .k { font-size: 14px; color: var(--muted); font-weight: 500; }
+.type-box .big { font-size: 40px; font-weight: 700; line-height: 1.1; letter-spacing: .02em; }
+.type-box .big span { font-size: 16px; font-weight: 500; color: var(--muted); letter-spacing: 0; margin-left: 8px; }
+.axis { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; padding-top: 10px; border-top: 1px solid var(--rule); }
+.axis .letter { width: 34px; height: 34px; border-radius: 10px; background: var(--accent-tint); color: var(--accent-ink);
+  display: grid; place-items: center; font-weight: 700; font-size: 17px; }
+.axis .what { font-size: 15px; font-weight: 600; }
+.axis .why { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.axis .tie { font-size: 13px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--gap-bg); color: var(--gap-ink); margin-left: 6px; }
+.enn { display: grid; gap: 7px; }
+.enn-row { display: grid; grid-template-columns: 128px minmax(0, 1fr) 30px; gap: 10px; align-items: center; font-size: 14px; font-variant-numeric: tabular-nums; }
+.enn-row .bar { background: var(--panel); }
+.enn-row .bar .fill { background: var(--faint); opacity: .55; }
+.enn-row.win .bar .fill { background: var(--accent); opacity: 1; }
+.enn-row.win { font-weight: 700; }
+.enn-row .n { text-align: right; }
+.types-note { margin-top: 18px; max-width: 42em; }
+
 .method { font-size: 14px; color: var(--muted); display: grid; gap: 8px; max-width: 46em; }
 .method a { color: var(--accent-ink); }
 
@@ -200,6 +226,46 @@ function bar(v, prev) {
   return `<div class="bar" aria-hidden="true"><div class="fill" style="width:${Math.max(0, Math.min(100, v))}%"></div>${prev != null ? `<div class="prev" style="left:${prev}%"></div>` : ""}</div>`;
 }
 
+// MBTI and Enneagram rules: the same fixed rules as for-fun/aa-personalitybench-2026-10-24.md
+// ("Just for fun: MBTI and Enneagram guesses"). Change them there and here together.
+const MBTI_NAMES = { INTJ: "Architect", INTP: "Logician", ENTJ: "Commander", ENTP: "Debater", INFJ: "Advocate", INFP: "Mediator",
+  ENFJ: "Protagonist", ENFP: "Campaigner", ISTJ: "Logistician", ISFJ: "Defender", ESTJ: "Executive", ESFJ: "Consul",
+  ISTP: "Virtuoso", ISFP: "Adventurer", ESTP: "Entrepreneur", ESFP: "Entertainer" };
+const ENN = { 1: { name: "Reformer" }, 2: { name: "Helper" }, 3: { name: "Achiever" }, 4: { name: "Individualist" }, 5: { name: "Investigator" },
+  6: { name: "Loyalist" }, 7: { name: "Enthusiast" }, 8: { name: "Challenger" }, 9: { name: "Peacemaker" } };
+function personalityTypes(m) {
+  const I = m.i, T = m.t, lo = v => 100 - v, avg = xs => xs.reduce((a, b) => a + b, 0) / xs.length;
+  const near = (a, b) => Math.abs(a - b) < 0.05, EPS = 1e-9; // EPS: ignore float noise, so exact ties follow the rule
+  const ei = avg([I.warmth, I.expressiveness, T.humorous]);
+  const n = avg([I.imagination, T.metaphorical]), s = avg([T.pragmatic, T.providesActionableGuidance, T.resourceSpecific]);
+  const f = avg([T.friendly, T.emotionallyIntelligent, T.sincere]), t = avg([T.direct, T.evidenceBased, T.truthful]);
+  const j = avg([T.structured, T.answerFirst, T.summarizesBottomLine]), p = T.openEnded;
+  const axes = [
+    ei >= 50 ? { letter: "E", name: "Extraverted", why: `Warmth, Expressiveness and Humorous average ${r0(ei)} (E from 50)` }
+             : { letter: "I", name: "Introverted", why: `Warmth, Expressiveness and Humorous average ${r0(ei)} (E from 50)` },
+    { letter: n >= s - EPS ? "N" : "S", name: n >= s - EPS ? "Intuitive" : "Sensing", tie: near(n, s),
+      why: `Imagination and metaphor ${r0(n)} vs practical detail ${r0(s)}` },
+    { letter: f > t + EPS ? "F" : "T", name: f > t + EPS ? "Feeling" : "Thinking", tie: near(f, t),
+      why: `Directness, evidence and truthfulness ${r0(t)} vs warmth traits ${r0(f)}${near(f, t) ? " (a tie goes to T)" : ""}` },
+    { letter: j >= p - EPS ? "J" : "P", name: j >= p - EPS ? "Judging" : "Perceiving", tie: near(j, p),
+      why: `Structure, answer-first and bottom line ${r0(j)} vs open-ended ${r0(p)}` },
+  ];
+  const sc = {
+    1: avg([T.truthful, T.structured, T.direct, lo(I.slop)]),
+    2: avg([T.friendly, T.emotionallyIntelligent, T.sincere, T.sycophantic]),
+    3: avg([T.answerFirst, T.confident, T.providesActionableGuidance, T.scannable]),
+    4: avg([T.eloquent, T.metaphorical, T.sincere, T.creative]),
+    5: avg([T.informationDense, T.evidenceBased, T.resourceSpecific, lo(T.friendly)]),
+    6: avg([T.admitsUncertainty, T.disclaimsWithAssumptions, T.flagsNuances, lo(T.confident)]),
+    7: avg([T.humorous, T.creative, T.openEnded, T.friendly]),
+    8: avg([T.direct, T.opinionated, T.constructivelyPushesBack, T.confident]),
+    9: avg([lo(T.direct), lo(T.opinionated), lo(T.constructivelyPushesBack), T.sycophantic]),
+  };
+  const ranked = Object.entries(sc).sort((a, b) => b[1] - a[1]);
+  const type = +ranked[0][0], a = ((type + 7) % 9) + 1, b = (type % 9) + 1;
+  return { mbti: axes.map(x => x.letter).join(""), axes, enneagram: { type, wing: sc[a] > sc[b] ? a : b, ranked } };
+}
+
 function render() {
   const id = (location.hash || "").slice(1);
   const p = PROFILES.find(x => x.id === id) || PROFILES[0];
@@ -215,12 +281,27 @@ function render() {
   const hero = `<section class="glass hero fade">
     <div class="eyebrow">${esc(p.maker)} · ${esc(p.variant)}</div>
     <h1>${esc(p.display)}</h1>
+    ${p.archetype ? `<div class="archetype"><div class="aname">${esc(p.archetype.name)}</div><div class="aline">${esc(p.archetype.line)}</div></div>` : ""}
     <p class="tagline">${esc(p.tagline)}</p>
     <div class="chips"><span class="chip">AA-PersonalityBench</span><span class="chip">${N} models compared</span><span class="chip">Captured ${fmtDate(DATA.captured)}</span></div>
   </section>`;
 
   const summary = `<section class="panel fade"><div class="section-head"><h2>The whole picture</h2></div>
     <div class="prose">${p.summary.map(s => `<p>${esc(s)}</p>`).join("")}</div></section>`;
+
+  const ty = personalityTypes(me);
+  const e = ty.enneagram;
+  const typesSec = `<section class="panel fade"><div class="section-head"><h2>Personality types</h2><span class="note">Just for fun: a playful reading of the scores, not measured by AA</span></div>
+    <div class="types">
+      <div class="type-box"><div class="k">Typical MBTI</div><div class="big">${ty.mbti}<span>${esc(MBTI_NAMES[ty.mbti] || "")}</span></div>
+        ${ty.axes.map(a => `<div class="axis"><div class="letter">${a.letter}</div><div><div class="what">${esc(a.name)}${a.tie ? '<span class="tie">tie</span>' : ""}</div><div class="why">${esc(a.why)}</div></div></div>`).join("")}
+      </div>
+      <div class="type-box"><div class="k">Enneagram</div><div class="big">${e.type}w${e.wing}<span>${esc(ENN[e.type].name)} with a ${esc(ENN[e.wing].name)} wing</span></div>
+        <div class="enn">${e.ranked.map(([k, v]) => `<div class="enn-row ${+k === e.type ? "win" : ""}"><span>${k} ${esc(ENN[k].name)}</span>${bar(v)}<span class="n">${r0(v)}</span></div>`).join("")}</div>
+        <div class="why" style="font-size:13px;color:var(--faint)">Each type averages four traits; the highest wins, and the higher-scoring neighbour is the wing.</div>
+      </div>
+    </div>
+    ${p.typesNote ? `<p class="types-note">${esc(p.typesNote)}</p>` : ""}</section>`;
 
   const cardList = (items, cls, tagText) => items.map(c => `<div class="card">
       <div class="card-top"><h3>${esc(c.title)}</h3><span class="tag ${cls}">${tagText}</span></div>
@@ -263,10 +344,10 @@ function render() {
   const method = `<section class="panel fade"><div class="section-head"><h2>How to read this</h2></div><div class="method">
     <p>AA-PersonalityBench measures how a model writes, not whether it is right. A panel of judge models compares answers in pairs on 30 traits; each trait becomes an Elo score, and each index averages its traits. Every number here is a percentile across the ${N} models tested: higher means more of that trait. For Sycophantic and Slop, lower is better.</p>
     <p>The field includes older and smaller models such as GPT-3.5 Turbo, so a high percentile means high against everything tested, not only against frontier models. Each profile covers one settings variant of a model, named under its title.</p>
-    <p>Source: <a href="${esc(DATA.source)}" target="_blank" rel="noopener">Artificial Analysis, AA-PersonalityBench</a>, captured ${fmtDate(DATA.captured)}. Profile text written by Claude from these scores.</p>
+    <p>Source: <a href="${esc(DATA.source)}" target="_blank" rel="noopener">Artificial Analysis, AA-PersonalityBench</a>, captured ${fmtDate(DATA.captured)}. Profile text and the archetype are written by Claude from these scores. The MBTI and Enneagram come from fixed rules over the percentiles, so the same scores always give the same types; an exact tie follows the rule's default (N, T or J).</p>
   </div></section>`;
 
-  document.getElementById("app").innerHTML = switcher + hero + summary + sg + idx + traits + cmp + tips + method;
+  document.getElementById("app").innerHTML = switcher + hero + summary + typesSec + sg + idx + traits + cmp + tips + method;
   wireTips(p, prev, prevName);
   window.scrollTo(0, 0);
 }

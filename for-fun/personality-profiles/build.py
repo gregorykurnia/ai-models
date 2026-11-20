@@ -37,8 +37,8 @@ data = {
     ],
     "models": {
         m["name"]: {
-            "i": {k: round(v, 1) for k, v in m["index_percentiles"].items() if v is not None},
-            "t": {k: round(v["percentile"], 1) for k, v in m["traits"].items()},
+            "i": {k: v for k, v in m["index_percentiles"].items() if v is not None},
+            "t": {k: v["percentile"] for k, v in m["traits"].items()},
         }
         for m in bench["models"]
     },
