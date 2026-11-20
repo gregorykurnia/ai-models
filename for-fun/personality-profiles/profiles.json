@@ -329,5 +329,170 @@
       "For anything people will skim, ask for headings and short bullets.",
       "If you want a neutral overview, say so. Otherwise expect its own verdict."
     ]
+  },
+  {
+    "id": "opus-5-5",
+    "model": "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    "display": "Claude Opus 5.5",
+    "variant": "Max effort, adaptive reasoning",
+    "maker": "Anthropic",
+    "compare": [
+      "Claude Sonnet 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)"
+    ],
+    "tagline": "A brilliant, careful explainer full of ideas, who rarely sounds completely sure.",
+    "archetype": {
+      "name": "The Rigorous Dreamer",
+      "line": "Comes up with fresh ideas and checks every one against the evidence, then hedges before it commits."
+    },
+    "summary": [
+      "Opus 5.5 is the strongest all-rounder on substance. It is the most truthful model tested (1st of 53) and 2nd on Literate, Information Dense, Evidence-Based and Creative. It ranks in the top five on four indexes: Imagination (3rd), Informativeness (4th), Expressiveness and Transparency (5th each).",
+      "It pairs that with good structure (4th on Structured) and real warmth: 6th on Humorous, and above the 75th percentile on Friendly and Emotionally Intelligent.",
+      "Where it holds back is conviction. It is 30th of 53 on Confident and mid-pack on Direct, Answer First and Bottom-Line Summary, and it flatters more than either Fable. Expect a thorough, careful answer, with the verdict softened and placed late."
+    ],
+    "typesNote": "An Enthusiast with a Loyalist wing: curious, playful and inventive, with a careful streak that flags risks and admits doubt. The Reformer is a close second, which fits its accuracy and structure. Thinking beats Feeling (84 vs 77) and Perceiving beats Judging (79 vs 66): it keeps a question open rather than closing it down.",
+    "bestFor": [
+      {
+        "title": "Research and technical explanations",
+        "body": "Questions where accuracy and depth both matter. It is the most truthful model tested and near the top on density and evidence.",
+        "refs": [
+          "t:truthful",
+          "t:informationDense",
+          "t:evidenceBased"
+        ]
+      },
+      {
+        "title": "Brainstorming that holds up",
+        "body": "New product ideas, names, strategies. It is 2nd on Creative and 5th on Pragmatic, so the ideas tend to survive contact with reality.",
+        "refs": [
+          "t:creative",
+          "t:pragmatic",
+          "i:imagination"
+        ]
+      },
+      {
+        "title": "Long reports and explainers",
+        "body": "Documents that need a clear build-up. It is well structured and its writing is technically among the best.",
+        "refs": [
+          "t:structured",
+          "t:literate",
+          "i:organization"
+        ]
+      },
+      {
+        "title": "Weighing a tricky decision",
+        "body": "Choices with real trade-offs. It flags nuances, admits what it doesn't know and pushes back on a shaky premise.",
+        "refs": [
+          "t:flagsNuances",
+          "t:admitsUncertainty",
+          "t:constructivelyPushesBack"
+        ]
+      }
+    ],
+    "worstFor": [
+      {
+        "title": "Quick answers",
+        "body": "When you want the answer in the first line. It is mid-pack on Answer First and Direct.",
+        "refs": [
+          "t:answerFirst",
+          "t:direct"
+        ]
+      },
+      {
+        "title": "Confident pitch copy",
+        "body": "Sales pages and pitches that need to sound sure. It is 30th of 53 on Confident.",
+        "refs": [
+          "t:confident"
+        ]
+      },
+      {
+        "title": "Blunt verdicts",
+        "body": "When you want a hard yes or no on your work. It flatters more than either Fable and holds milder opinions than both.",
+        "refs": [
+          "t:sycophantic",
+          "t:opinionated"
+        ]
+      },
+      {
+        "title": "Casual chat",
+        "body": "Light, chatty conversation. It sounds less like a person talking than most of its Claude peers.",
+        "refs": [
+          "t:naturalSounding",
+          "t:sincere"
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "title": "Gets the facts right",
+        "body": "1st of 53 on Truthful, near the top on evidence, and careful to flag the caveats that change an answer.",
+        "refs": [
+          "t:truthful",
+          "t:evidenceBased",
+          "t:flagsNuances"
+        ]
+      },
+      {
+        "title": "Dense and well built",
+        "body": "Packs in specifics, lays them out in a logical order and writes them cleanly.",
+        "refs": [
+          "t:informationDense",
+          "t:structured",
+          "t:literate"
+        ]
+      },
+      {
+        "title": "Imaginative but practical",
+        "body": "Original ideas that respect real-world limits: 2nd on Creative, 5th on Pragmatic.",
+        "refs": [
+          "t:creative",
+          "t:pragmatic",
+          "i:imagination"
+        ]
+      },
+      {
+        "title": "Warm and witty",
+        "body": "Funny, friendly and attuned to the mood of a conversation.",
+        "refs": [
+          "t:humorous",
+          "t:friendly",
+          "t:emotionallyIntelligent"
+        ]
+      }
+    ],
+    "gaps": [
+      {
+        "title": "Hedges its conclusions",
+        "body": "30th of 53 on Confident and mid-pack on Direct: views come with caveats attached.",
+        "refs": [
+          "t:confident",
+          "t:direct"
+        ]
+      },
+      {
+        "title": "Slow to the point",
+        "body": "Mid-pack on leading with the answer and on ending with a bottom line.",
+        "refs": [
+          "t:answerFirst",
+          "t:summarizesBottomLine"
+        ]
+      },
+      {
+        "title": "Agrees a little easily",
+        "body": "Mid-pack on flattery: more agreeable than both Fables and Sonnet 5.5.",
+        "refs": [
+          "t:sycophantic"
+        ]
+      }
+    ],
+    "versus": [
+      "Against Sonnet 5.5, its closest match among all 53 models, Opus is the more creative (98 vs 71), eloquent (83 vs 60), emotionally intelligent (83 vs 52) and pragmatic (92 vs 49) model, and more opinionated (70 vs 47). Sonnet leads on Transparency (100 vs 90), admits uncertainty more (100 vs 89), is easier to skim (83 vs 66) and more open-ended (92 vs 79). Filler is about the same (Slop index 20 vs 18).",
+      "Against Fable 5.2 it trades voice for depth and structure. Opus is far more informative (90 vs 47), better organized (79 vs 54) and more imaginative (94 vs 68). Fable 5.2 is more opinionated (87 vs 70), more direct (70 vs 52), answers first more often (70 vs 52), flatters less (18 vs 39) and uses less filler (Slop index 7 vs 20)."
+    ],
+    "tips": [
+      "Ask for its recommendation in one line first, then the reasoning.",
+      "If you want it to commit, ask it to pick one option and say how sure it is.",
+      "For critique, tell it not to soften the verdict."
+    ]
   }
 ]
