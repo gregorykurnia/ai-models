@@ -21,6 +21,77 @@
       "The gap is the practical last mile. It almost never closes with a summary line (50th of 53 on Bottom-Line Summary), and it sits below the middle on step-by-step guidance and on naming specific tools or sources. Expect a thoughtful reply, not a briefing."
     ],
     "typesNote": "A principled Reformer with a Helper wing: it cares about getting things right and saying them cleanly, and it says them warmly. Thinking and Feeling tie exactly, which fits a model that is as sincere as it is truthful. The P is clear: it explores a question more than it wraps it up.",
+    "bestFor": [
+      {
+        "title": "Honest feedback on your work",
+        "body": "Drafts, plans or ideas you want a straight read on. It says what it thinks, pushes back, and doesn't flatter.",
+        "refs": [
+          "t:sycophantic",
+          "t:opinionated",
+          "t:constructivelyPushesBack"
+        ]
+      },
+      {
+        "title": "Delicate messages",
+        "body": "Apologies, hard emails, condolences or saying no. It is sincere and emotionally attuned, and the writing stays clean.",
+        "refs": [
+          "t:sincere",
+          "t:emotionallyIntelligent",
+          "t:literate"
+        ]
+      },
+      {
+        "title": "Thinking a decision through",
+        "body": "Talking through a choice out loud. It states its assumptions, takes a side and stays open to where the question goes.",
+        "refs": [
+          "t:disclaimsWithAssumptions",
+          "t:opinionated",
+          "t:openEnded"
+        ]
+      },
+      {
+        "title": "Polished prose",
+        "body": "Letters, speeches, essays and bios where filler would hurt. Its grammar and word choice are near the top and it uses little stock phrasing.",
+        "refs": [
+          "t:literate",
+          "t:eloquent",
+          "i:slop"
+        ]
+      }
+    ],
+    "worstFor": [
+      {
+        "title": "Briefings and status updates",
+        "body": "Busy readers want the takeaway up top and at the end. It almost never writes a bottom line unless asked.",
+        "refs": [
+          "t:summarizesBottomLine",
+          "i:organization"
+        ]
+      },
+      {
+        "title": "Step-by-step how-tos",
+        "body": "Setup guides and checklists need concrete steps and named tools or links, which are both below the middle for it.",
+        "refs": [
+          "t:providesActionableGuidance",
+          "t:resourceSpecific"
+        ]
+      },
+      {
+        "title": "Dense research digests",
+        "body": "When you want the most facts per paragraph, its informativeness lands mid-pack.",
+        "refs": [
+          "i:informativeness",
+          "t:informationDense"
+        ]
+      },
+      {
+        "title": "Confident pitch copy",
+        "body": "Sales pages and pitches that need to sound sure. Its views come out measured rather than bold.",
+        "refs": [
+          "t:confident"
+        ]
+      }
+    ],
     "strengths": [
       {
         "title": "Clean, precise prose",
@@ -91,9 +162,7 @@
     ],
     "tips": [
       "Ask for a one-line bottom line at the end. It won't add one on its own.",
-      "For how-to questions, ask for numbered steps and named tools or links.",
-      "Reach for it where tone matters: feedback on writing, hard messages, thinking out loud.",
-      "For dense research briefs, Opus 5.5 scores higher on Informativeness and Organization."
+      "For how-to questions, ask for numbered steps and named tools or links."
     ]
   }
 ]

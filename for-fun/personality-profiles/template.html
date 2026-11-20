@@ -180,6 +180,15 @@ td .lower { font-size: 13px; color: var(--faint); margin-left: 6px; }
 .enn-row .n { text-align: right; }
 .types-note { margin-top: 18px; max-width: 42em; }
 
+.sims { gap: 8px 32px; }
+.sim-h { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.sim-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 14px 0; border-top: 1px solid var(--rule); }
+.sim-name { font-size: 15px; font-weight: 600; min-width: 0; }
+.sim-name small { display: block; font-size: 13px; font-weight: 500; color: var(--faint); }
+.sim-score { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+.sim-score span { font-size: 13px; font-weight: 500; color: var(--muted); margin-left: 4px; }
+.sim-why { grid-column: 1 / -1; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
 .method { font-size: 14px; color: var(--muted); display: grid; gap: 8px; max-width: 46em; }
 .method a { color: var(--accent-ink); }
 
@@ -263,6 +272,19 @@ function personalityTypes(m) {
   return { mbti: axes.map(x => x.letter).join(""), axes, enneagram: { type, wing: sc[a] > sc[b] ? a : b, ranked } };
 }
 
+// Similarity: 100 minus the mean absolute gap across all trait percentiles; other variants of the same model are skipped.
+function similarModels(name, n = 3) {
+  const me = DATA.models[name], base = short(name), keys = Object.keys(traitMeta);
+  const rows = Object.entries(DATA.models).filter(([nm]) => short(nm) !== base).map(([nm, m]) => {
+    const diffs = keys.map(k => ({ k, d: m.t[k] - me.t[k] }));
+    const match = 100 - diffs.reduce((a, x) => a + Math.abs(x.d), 0) / keys.length;
+    const gaps = diffs.sort((a, b) => Math.abs(b.d) - Math.abs(a.d)).slice(0, 2)
+      .map(x => ({ label: traitMeta[x.k].label, mine: me.t[x.k], theirs: m.t[x.k] }));
+    return { name: nm, match, gaps };
+  }).sort((a, b) => b.match - a.match);
+  return { closest: rows.slice(0, n), opposite: rows.slice(-n).reverse() };
+}
+
 function render() {
   const id = (location.hash || "").slice(1);
   const p = PROFILES.find(x => x.id === id) || PROFILES[0];
@@ -310,6 +332,20 @@ function render() {
     <section class="panel fade"><div class="section-head"><h2>Where it falls short</h2></div><div class="cards">${cardList(p.gaps, "gap", "Watch")}</div></section>
   </div>`;
 
+  const uses = p.bestFor ? `<div class="two">
+    <section class="panel fade"><div class="section-head"><h2>Most helpful for</h2></div><div class="cards">${cardList(p.bestFor, "good", "Good fit")}</div></section>
+    <section class="panel fade"><div class="section-head"><h2>Least helpful for</h2></div><div class="cards">${cardList(p.worstFor || [], "gap", "Poor fit")}</div></section>
+  </div>` : "";
+
+  const sim = similarModels(p.model);
+  const variant = nm => (nm.match(/\(([^)]*)\)\s*$/) || [])[1] || "";
+  const simRow = s => `<div class="sim-row"><div class="sim-name">${esc(short(s.name))}${variant(s.name) ? `<small>${esc(variant(s.name))}</small>` : ""}</div><div class="sim-score">${r0(s.match)}<span>match</span></div>
+    <div class="sim-why">Biggest gaps: ${s.gaps.map(g => `${esc(g.label)} ${r0(g.mine)} vs ${r0(g.theirs)}`).join(" · ")}</div></div>`;
+  const simSec = `<section class="panel fade"><div class="section-head"><h2>Who writes most like it</h2><span class="note">Across all 30 traits</span></div>
+    <div class="two sims"><div><h3 class="sim-h">Closest</h3>${sim.closest.map(simRow).join("")}</div>
+    <div><h3 class="sim-h">Most opposite</h3>${sim.opposite.map(simRow).join("")}</div></div>
+    <p class="method" style="margin-top:16px">Match is 100 minus the average gap between the two models' trait percentiles. Other settings of the same model are left out.</p></section>`;
+
   const idx = `<section class="panel fade"><div class="section-head"><h2>Eight indexes</h2>${legend}</div>
     <div class="idx-grid">${DATA.indexes.map(ix => { const v = me.i[ix.key]; return `<div class="idx">
       <div class="name">${esc(ix.label)}${ix.lower ? "<small>lower is better</small>" : ""}</div>
@@ -344,7 +380,7 @@ function render() {
     <p>Source: <a href="${esc(DATA.source)}" target="_blank" rel="noopener">Artificial Analysis, AA-PersonalityBench</a>, captured ${fmtDate(DATA.captured)}. Profile text and the archetype are written by Claude from these scores. The MBTI and Enneagram come from fixed rules over the percentiles, so the same scores always give the same types; an exact tie follows the rule's default (N, T or J).</p>
   </div></section>`;
 
-  document.getElementById("app").innerHTML = switcher + hero + summary + typesSec + sg + idx + traits + cmp + tips + method;
+  document.getElementById("app").innerHTML = switcher + hero + summary + typesSec + uses + sg + simSec + idx + traits + cmp + tips + method;
   wireTips(p, prev, prevName);
   window.scrollTo(0, 0);
 }
