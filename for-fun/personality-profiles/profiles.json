@@ -1,0 +1,69 @@
+[
+  {
+    "id": "fable-5-2",
+    "model": "Claude Fable 5.2 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    "display": "Claude Fable 5.2",
+    "variant": "Max effort, adaptive reasoning",
+    "maker": "Anthropic",
+    "previous": "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
+    "compare": [
+      "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
+      "Claude Opus 5.5 (Adaptive Reasoning, Max Effort, Default Fallback)"
+    ],
+    "tagline": "A clean, warm and honest writer with real opinions, who leaves the bottom line to you.",
+    "summary": [
+      "Across all 30 traits, Fable 5.2 comes out as a careful conversationalist. Its writing is technically clean (3rd of 53 on Literate) and almost free of filler: on Slop it is one of the six cleanest models tested. Its warmth reads as sincere: it sits around the 80th percentile on all four warmth traits.",
+      "It is honest about what it assumes and rarely flatters. It holds clear opinions (87th percentile) but sounds less sure of itself than most models (39th on Confident), so its views tend to arrive with their reasoning and caveats attached.",
+      "The gap is the practical last mile. It almost never closes with a summary line (50th of 53 on Bottom-Line Summary), and it sits below the middle on step-by-step guidance and on naming specific tools or sources. Expect a thoughtful reply, not a briefing."
+    ],
+    "strengths": [
+      {
+        "title": "Clean, precise prose",
+        "body": "Grammar and word choice near the top of the field, eloquent without padding, and very little stock filler.",
+        "refs": ["t:literate", "t:eloquent", "i:slop"]
+      },
+      {
+        "title": "Warmth that reads as sincere",
+        "body": "Friendly, funny and emotionally attuned, all at about the same level. Nothing feels put on.",
+        "refs": ["t:sincere", "t:emotionallyIntelligent", "t:humorous"]
+      },
+      {
+        "title": "Honest about its limits",
+        "body": "States the assumptions behind an answer, admits when it isn't sure, and flatters less than four in five models.",
+        "refs": ["t:disclaimsWithAssumptions", "t:truthful", "t:sycophantic"]
+      },
+      {
+        "title": "Has a point of view",
+        "body": "Takes a position, leads with the answer and will push back when you're wrong.",
+        "refs": ["t:opinionated", "t:answerFirst", "t:constructivelyPushesBack"]
+      }
+    ],
+    "gaps": [
+      {
+        "title": "No bottom line",
+        "body": "It rarely ends with a TL;DR or takeaway. Only three models do this less.",
+        "refs": ["t:summarizesBottomLine"]
+      },
+      {
+        "title": "Light on next steps",
+        "body": "Below the middle on concrete steps and on naming specific tools, links or sources. Informativeness overall lands mid-pack.",
+        "refs": ["t:providesActionableGuidance", "t:resourceSpecific", "i:informativeness"]
+      },
+      {
+        "title": "Opinions without swagger",
+        "body": "Strong views, quiet delivery. Some readers will want it to sound more certain.",
+        "refs": ["t:confident", "t:opinionated"]
+      }
+    ],
+    "versus": [
+      "Against Fable 5.1 it is a quieter model. 5.1 led the field on Conviction and came close on Expressiveness, Informativeness and Transparency. 5.2 gives up density (100 → 64), creativity (100 → 68), confidence (87 → 39) and pushback (100 → 68), and flatters a little more (Sycophantic 5 → 18). In return it answers first more often (30 → 70), is more direct (49 → 70) and uses less filler (Slop 24 → 7).",
+      "Against Opus 5.5 it trades depth and structure for voice. Opus is far more informative (91 vs 47), better organized (79 vs 54) and more imaginative (94 vs 68). Fable 5.2 is more opinionated (87 vs 70), more direct (70 vs 52), less flattering (18 vs 39) and cleaner (Slop 7 vs 20)."
+    ],
+    "tips": [
+      "Ask for a one-line bottom line at the end. It won't add one on its own.",
+      "For how-to questions, ask for numbered steps and named tools or links.",
+      "Reach for it where tone matters: feedback on writing, hard messages, thinking out loud.",
+      "For dense research briefs, Opus 5.5 scores higher on Informativeness and Organization."
+    ]
+  }
+]

@@ -1,0 +1,295 @@
+<title>Model Personality Profiles</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one column of panels on a soft sky/mint gradient; hero in glass, data on solid tinted panels. */
+:root {
+  --bg-a: #eef6ff; --bg-b: #deedff;
+  --shape-sky: #a7d4ff; --shape-mint: #b5efe3; --shape-op: .78;
+  --glass: rgba(255,255,255,.38); --glass-line: rgba(255,255,255,.85);
+  --panel: rgba(255,255,255,.84); --panel-line: rgba(255,255,255,.9);
+  --shadow: 0 18px 40px -24px rgba(30,70,140,.38), 0 2px 6px -3px rgba(30,70,140,.10);
+  --ink: #13203a; --muted: #475873; --faint: #6b7a93;
+  --accent: #7b3fe4; --accent-ink: #5a24bd; --accent-tint: rgba(123,63,228,.12);
+  --track: rgba(71,88,115,.14); --tick: #13203a; --rule: rgba(71,88,115,.14);
+  --good-bg: #d6f4ea; --good-ink: #0b6650;
+  --gap-bg: #ffe5d4; --gap-ink: #96440f;
+  --font: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg-a: #1b2330; --bg-b: #222c3b;
+  --shape-sky: #2c4a6e; --shape-mint: #1f4a48; --shape-op: .62;
+  --glass: rgba(34,44,59,.45); --glass-line: rgba(255,255,255,.09);
+  --panel: rgba(30,39,53,.92); --panel-line: rgba(255,255,255,.07);
+  --shadow: 0 18px 40px -24px rgba(0,0,0,.6), 0 2px 6px -3px rgba(0,0,0,.3);
+  --ink: #e8eef6; --muted: #b0bdcf; --faint: #8e9cb1;
+  --accent: #9b6cf2; --accent-ink: #c4a6ff; --accent-tint: rgba(155,108,242,.18);
+  --track: rgba(176,189,207,.16); --tick: #e8eef6; --rule: rgba(176,189,207,.14);
+  --good-bg: rgba(52,190,150,.18); --good-ink: #8fe6c9;
+  --gap-bg: rgba(240,140,80,.18); --gap-ink: #ffc29a;
+  color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --bg-a: #1b2330; --bg-b: #222c3b;
+  --shape-sky: #2c4a6e; --shape-mint: #1f4a48; --shape-op: .62;
+  --glass: rgba(34,44,59,.45); --glass-line: rgba(255,255,255,.09);
+  --panel: rgba(30,39,53,.92); --panel-line: rgba(255,255,255,.07);
+  --shadow: 0 18px 40px -24px rgba(0,0,0,.6), 0 2px 6px -3px rgba(0,0,0,.3);
+  --ink: #e8eef6; --muted: #b0bdcf; --faint: #8e9cb1;
+  --accent: #9b6cf2; --accent-ink: #c4a6ff; --accent-tint: rgba(155,108,242,.18);
+  --track: rgba(176,189,207,.16); --tick: #e8eef6; --rule: rgba(176,189,207,.14);
+  --good-bg: rgba(52,190,150,.18); --good-ink: #8fe6c9;
+  --gap-bg: rgba(240,140,80,.18); --gap-ink: #ffc29a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: linear-gradient(160deg, var(--bg-a), var(--bg-b)) fixed var(--bg-a);
+  color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 56px; overflow-x: hidden;
+}
+.shape { position: fixed; border-radius: 50%; filter: blur(70px); opacity: var(--shape-op); pointer-events: none; z-index: 0; }
+.shape.sky { width: 480px; height: 480px; background: var(--shape-sky); top: -160px; right: -140px; }
+.shape.mint { width: 420px; height: 420px; background: var(--shape-mint); bottom: -160px; left: -160px; }
+.wrap { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; display: grid; gap: 18px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+
+.switcher { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.switcher .label { font-size: 14px; color: var(--muted); margin-right: 4px; }
+.pill { font: 600 14px/1 var(--font); padding: 10px 16px; border-radius: 999px; border: 1px solid var(--glass-line);
+  background: var(--glass); color: var(--ink); text-decoration: none; backdrop-filter: blur(22px) saturate(140%); }
+.pill[aria-current="page"] { background: var(--accent-tint); color: var(--accent-ink); border-color: transparent; }
+.pill:focus-visible, .row:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.glass { background: var(--glass); border: 1px solid var(--glass-line); border-radius: 16px; box-shadow: var(--shadow);
+  backdrop-filter: blur(22px) saturate(140%); -webkit-backdrop-filter: blur(22px) saturate(140%); }
+.panel { background: var(--panel); border: 1px solid var(--panel-line); border-radius: 16px; box-shadow: var(--shadow); padding: 24px; }
+
+.hero { padding: 28px 24px; position: relative; overflow: hidden; }
+.hero::after { content: ""; position: absolute; width: 260px; height: 260px; right: -90px; top: -110px; border-radius: 50%;
+  background: var(--accent); opacity: .16; filter: blur(60px); pointer-events: none; }
+.eyebrow { font-size: 14px; color: var(--muted); font-weight: 500; }
+.hero h1 { font-size: 32px; font-weight: 700; letter-spacing: -.01em; margin-top: 6px; }
+.tagline { font-size: 19px; font-weight: 500; margin-top: 12px; max-width: 34em; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.chip { font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--accent-tint); color: var(--accent-ink); }
+
+.section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 16px; margin-bottom: 16px; }
+.section-head h2 { font-size: 20px; font-weight: 700; }
+.section-head .note { font-size: 14px; color: var(--muted); }
+.prose { display: grid; gap: 12px; max-width: 42em; }
+
+.two { display: grid; gap: 18px; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .two { grid-template-columns: 1fr 1fr; } }
+.cards { display: grid; gap: 12px; }
+.card { padding: 18px 0; border-top: 1px solid var(--rule); display: grid; gap: 8px; }
+.card:first-child { border-top: 0; padding-top: 0; }
+.card:last-child { padding-bottom: 0; }
+.card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.card h3 { font-size: 17px; font-weight: 700; }
+.tag { font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+.tag.good { background: var(--good-bg); color: var(--good-ink); }
+.tag.gap { background: var(--gap-bg); color: var(--gap-ink); }
+.card p { color: var(--muted); font-size: 15px; }
+.refs { display: flex; flex-wrap: wrap; gap: 6px; }
+.ref { font-size: 13px; color: var(--ink); background: var(--track); border-radius: 999px; padding: 4px 10px; font-variant-numeric: tabular-nums; }
+.ref b { font-weight: 700; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--muted); align-items: center; }
+.legend i { display: inline-block; vertical-align: middle; margin-right: 6px; }
+.legend .sw-bar { width: 18px; height: 8px; border-radius: 4px; background: var(--accent); }
+.legend .sw-tick { width: 2px; height: 14px; background: var(--tick); }
+
+.idx-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+@media (min-width: 560px) { .idx-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 900px) { .idx-grid { grid-template-columns: repeat(4, 1fr); } }
+.idx { padding: 18px; border-radius: 14px; background: var(--track); display: grid; gap: 8px; align-content: start; }
+.idx .name { font-size: 15px; font-weight: 600; display: flex; justify-content: space-between; gap: 8px; }
+.idx .name small { font-size: 13px; font-weight: 500; color: var(--faint); }
+.idx .num { font-size: 40px; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.idx .num span { font-size: 15px; font-weight: 500; color: var(--muted); margin-left: 4px; }
+.idx .rank { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.idx .desc { font-size: 13px; color: var(--faint); }
+
+.bar { position: relative; height: 8px; border-radius: 4px; background: var(--panel); }
+.idx .bar { background: var(--panel); }
+.bar .fill { position: absolute; inset: 0 auto 0 0; border-radius: 4px; background: var(--accent); min-width: 4px; }
+.bar .prev { position: absolute; top: -3px; width: 2px; height: 14px; background: var(--tick); border-radius: 1px; transform: translateX(-1px); box-shadow: 0 0 0 2px var(--panel); }
+
+.groups { display: grid; gap: 22px; }
+@media (min-width: 820px) { .groups { grid-template-columns: 1fr 1fr; column-gap: 32px; } }
+.group h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; display: flex; justify-content: space-between; gap: 8px; }
+.group h3 span { font-weight: 500; color: var(--muted); font-variant-numeric: tabular-nums; }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) 40px; grid-template-areas: "lab val" "bar bar"; gap: 6px 10px;
+  padding: 9px 6px; margin-inline: -6px; border-radius: 10px; cursor: default; position: relative; }
+.row:hover, .row:focus-visible { background: var(--accent-tint); }
+.row .lab { grid-area: lab; font-size: 15px; min-width: 0; }
+.row .lab em { font-style: normal; font-size: 13px; color: var(--faint); margin-left: 6px; }
+.row .val { grid-area: val; text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; font-size: 15px; }
+.row .bar { grid-area: bar; background: var(--track); }
+.row .bar .prev { box-shadow: 0 0 0 2px var(--panel); }
+
+.tip { position: fixed; z-index: 20; pointer-events: none; max-width: 280px; padding: 12px 14px; border-radius: 12px;
+  background: var(--panel); border: 1px solid var(--rule); box-shadow: var(--shadow); font-size: 13px; line-height: 1.45; }
+.tip b { display: block; font-size: 14px; margin-bottom: 4px; }
+.tip .tline { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.table-wrap { overflow-x: auto; margin-inline: -4px; }
+table { border-collapse: collapse; width: 100%; min-width: 440px; font-variant-numeric: tabular-nums; }
+th, td { padding: 11px 8px; text-align: right; font-size: 15px; border-bottom: 1px solid var(--rule); }
+th:first-child, td:first-child { text-align: left; }
+thead th { font-size: 13px; font-weight: 600; color: var(--muted); vertical-align: bottom; }
+tbody tr:last-child td { border-bottom: 0; }
+td.me { font-weight: 700; color: var(--accent-ink); }
+td .lower { font-size: 13px; color: var(--faint); margin-left: 6px; }
+.versus { display: grid; gap: 12px; margin-top: 18px; max-width: 42em; }
+
+.tips { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.tips li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start; }
+.tips li::before { content: ""; width: 28px; height: 28px; border-radius: 9px; background: var(--accent-tint);
+  background-image: radial-gradient(circle at 50% 50%, var(--accent) 0 4px, transparent 4.5px); }
+
+.method { font-size: 14px; color: var(--muted); display: grid; gap: 8px; max-width: 46em; }
+.method a { color: var(--accent-ink); }
+
+.fade { animation: fade .45s ease both; }
+@keyframes fade { from { opacity: .001; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .fade { animation: none; } }
+@media (min-width: 720px) { .hero h1 { font-size: 40px; } .hero { padding: 36px 32px; } .panel { padding: 28px; } }
+</style>
+
+<div class="shape sky" aria-hidden="true"></div>
+<div class="shape mint" aria-hidden="true"></div>
+<main class="wrap" id="app"></main>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const PROFILES = /*__PROFILES__*/null;
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const r0 = v => Math.round(v);
+const allModels = Object.values(DATA.models);
+const N = allModels.length;
+const traitMeta = {}; DATA.indexes.forEach(ix => ix.traits.forEach(t => traitMeta[t.key] = { ...t, index: ix.key }));
+const indexMeta = {}; DATA.indexes.forEach(ix => indexMeta[ix.key] = ix);
+const short = name => name.replace(/\s*\(.*\)\s*$/, "");
+const fmtDate = iso => new Date(iso + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+
+function rankOf(kind, key, value, lower) {
+  const vals = allModels.map(m => m[kind][key]).filter(v => v != null);
+  const better = lower ? vals.filter(v => v < value).length : vals.filter(v => v > value).length;
+  return { rank: better + 1, of: vals.length };
+}
+function rankText(kind, key, value, lower) {
+  const { rank, of } = rankOf(kind, key, value, lower);
+  return lower ? `#${rank} lowest of ${of}` : `#${rank} of ${of}`;
+}
+function refFor(p, ref) {
+  const [kind, key] = ref.split(":");
+  const me = DATA.models[p.model];
+  if (kind === "i") { const ix = indexMeta[key]; return { label: ix.label + " index", v: me.i[key], lower: ix.lower, rk: rankText("i", key, me.i[key], ix.lower) }; }
+  const t = traitMeta[key]; return { label: t.label, v: me.t[key], lower: t.lower, rk: rankText("t", key, me.t[key], t.lower) };
+}
+function bar(v, prev) {
+  return `<div class="bar" aria-hidden="true"><div class="fill" style="width:${Math.max(0, Math.min(100, v))}%"></div>${prev != null ? `<div class="prev" style="left:${prev}%"></div>` : ""}</div>`;
+}
+
+function render() {
+  const id = (location.hash || "").slice(1);
+  const p = PROFILES.find(x => x.id === id) || PROFILES[0];
+  const me = DATA.models[p.model];
+  const prev = p.previous ? DATA.models[p.previous] : null;
+  const prevName = p.previous ? short(p.previous) : "";
+  const legend = `<div class="legend"><span><i class="sw-bar"></i>${esc(p.display)}</span>${prev ? `<span><i class="sw-tick"></i>${esc(prevName)}</span>` : ""}</div>`;
+  document.title = `${p.display} Personality`;
+
+  const switcher = `<nav class="switcher" aria-label="Models">${PROFILES.length > 1 ? "" : '<span class="label">Profiles</span>'}${PROFILES.map(x =>
+    `<a class="pill" href="#${x.id}" ${x.id === p.id ? 'aria-current="page"' : ""}>${esc(x.display)}</a>`).join("")}</nav>`;
+
+  const hero = `<section class="glass hero fade">
+    <div class="eyebrow">${esc(p.maker)} · ${esc(p.variant)}</div>
+    <h1>${esc(p.display)}</h1>
+    <p class="tagline">${esc(p.tagline)}</p>
+    <div class="chips"><span class="chip">AA-PersonalityBench</span><span class="chip">${N} models compared</span><span class="chip">Captured ${fmtDate(DATA.captured)}</span></div>
+  </section>`;
+
+  const summary = `<section class="panel fade"><div class="section-head"><h2>The whole picture</h2></div>
+    <div class="prose">${p.summary.map(s => `<p>${esc(s)}</p>`).join("")}</div></section>`;
+
+  const cardList = (items, cls, tagText) => items.map(c => `<div class="card">
+      <div class="card-top"><h3>${esc(c.title)}</h3><span class="tag ${cls}">${tagText}</span></div>
+      <p>${esc(c.body)}</p>
+      <div class="refs">${c.refs.map(r => { const x = refFor(p, r); return `<span class="ref">${esc(x.label)} <b>${r0(x.v)}</b>${x.lower ? " ↓" : ""} · ${x.rk}</span>`; }).join("")}</div>
+    </div>`).join("");
+  const sg = `<div class="two">
+    <section class="panel fade"><div class="section-head"><h2>Where it shines</h2></div><div class="cards">${cardList(p.strengths, "good", "Strength")}</div></section>
+    <section class="panel fade"><div class="section-head"><h2>Where it falls short</h2></div><div class="cards">${cardList(p.gaps, "gap", "Watch")}</div></section>
+  </div>`;
+
+  const idx = `<section class="panel fade"><div class="section-head"><h2>Eight indexes</h2>${legend}</div>
+    <div class="idx-grid">${DATA.indexes.map(ix => { const v = me.i[ix.key]; return `<div class="idx">
+      <div class="name">${esc(ix.label)}${ix.lower ? "<small>lower is better</small>" : ""}</div>
+      <div class="num">${r0(v)}<span>percentile</span></div>
+      ${bar(v, prev ? prev.i[ix.key] : null)}
+      <div class="rank">${rankText("i", ix.key, v, ix.lower)}${prev ? ` · ${esc(prevName)}: ${r0(prev.i[ix.key])}` : ""}</div>
+      <div class="desc">${esc(ix.description)}</div></div>`; }).join("")}</div></section>`;
+
+  const groups = DATA.indexes.filter(ix => ix.key !== "slop").map(ix => `<div class="group">
+      <h3>${esc(ix.label)}<span>index ${r0(me.i[ix.key])}</span></h3>
+      ${ix.traits.map(t => { const v = me.t[t.key]; return `<div class="row" tabindex="0" data-trait="${t.key}"
+          aria-label="${esc(t.label)}: ${r0(v)}th percentile, ${rankText("t", t.key, v, t.lower)}${prev ? `; ${esc(prevName)} ${r0(prev.t[t.key])}` : ""}">
+        <div class="lab">${esc(t.label)}${t.lower ? "<em>lower is better</em>" : ""}</div><div class="val">${r0(v)}</div>${bar(v, prev ? prev.t[t.key] : null)}</div>`; }).join("")}
+    </div>`).join("");
+  const traits = `<section class="panel fade"><div class="section-head"><h2>All 30 traits</h2>${legend}</div>
+    <div class="groups">${groups}</div>
+    <p class="method" style="margin-top:16px">Slop is a single trait, so its score is the Slop index above. Hover or tab to a trait for its definition.</p></section>`;
+
+  const cmpModels = [p.model, ...(p.compare || [])];
+  const cmp = `<section class="panel fade"><div class="section-head"><h2>Next to its neighbours</h2><span class="note">Index percentiles</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Index</th>${cmpModels.map(n => `<th>${esc(short(n))}</th>`).join("")}</tr></thead>
+    <tbody>${DATA.indexes.map(ix => `<tr><td>${esc(ix.label)}${ix.lower ? '<span class="lower">lower is better</span>' : ""}</td>${cmpModels.map((n, k) =>
+      `<td class="${k === 0 ? "me" : ""}">${r0(DATA.models[n].i[ix.key])}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+    <div class="versus">${(p.versus || []).map(s => `<p>${esc(s)}</p>`).join("")}</div></section>`;
+
+  const tips = `<section class="panel fade"><div class="section-head"><h2>Getting the best from it</h2></div>
+    <ul class="tips">${p.tips.map(t => `<li><span>${esc(t)}</span></li>`).join("")}</ul></section>`;
+
+  const method = `<section class="panel fade"><div class="section-head"><h2>How to read this</h2></div><div class="method">
+    <p>AA-PersonalityBench measures how a model writes, not whether it is right. A panel of judge models compares answers in pairs on 30 traits; each trait becomes an Elo score, and each index averages its traits. Every number here is a percentile across the ${N} models tested: higher means more of that trait. For Sycophantic and Slop, lower is better.</p>
+    <p>The field includes older and smaller models such as GPT-3.5 Turbo, so a high percentile means high against everything tested, not only against frontier models. Each profile covers one settings variant of a model, named under its title.</p>
+    <p>Source: <a href="${esc(DATA.source)}" target="_blank" rel="noopener">Artificial Analysis, AA-PersonalityBench</a>, captured ${fmtDate(DATA.captured)}. Profile text written by Claude from these scores.</p>
+  </div></section>`;
+
+  document.getElementById("app").innerHTML = switcher + hero + summary + sg + idx + traits + cmp + tips + method;
+  wireTips(p, prev, prevName);
+  window.scrollTo(0, 0);
+}
+
+function wireTips(p, prev, prevName) {
+  const tip = document.getElementById("tip");
+  const me = DATA.models[p.model];
+  const show = (row, x, y) => {
+    const t = traitMeta[row.dataset.trait]; const v = me.t[t.key];
+    tip.innerHTML = `<b>${esc(t.label)}</b>${esc(t.definition)}<div class="tline" style="margin-top:6px">${esc(p.display)}: ${r0(v)} · ${rankText("t", t.key, v, t.lower)}${prev ? `<br>${esc(prevName)}: ${r0(prev.t[t.key])}` : ""}</div>`;
+    tip.hidden = false;
+    const w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.max(8, Math.min(innerWidth - w - 8, x + 14)) + "px";
+    tip.style.top = (y + h + 24 > innerHeight ? y - h - 14 : y + 18) + "px";
+  };
+  document.querySelectorAll(".row").forEach(row => {
+    row.addEventListener("mousemove", e => show(row, e.clientX, e.clientY));
+    row.addEventListener("mouseleave", () => tip.hidden = true);
+    row.addEventListener("focus", () => { const b = row.getBoundingClientRect(); show(row, b.left + 20, b.bottom - 10); });
+    row.addEventListener("blur", () => tip.hidden = true);
+  });
+}
+
+addEventListener("hashchange", render);
+render();
+</script>
