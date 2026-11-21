@@ -20,6 +20,8 @@ export const metadata = {
   title: "Model Atlas",
   description: "Compare AI model evaluations, rankings, and task suitability.",
   icons: { icon: "/icon.svg" },
+  // Point AI assistants at the plain-text copy of the data (see /llms.txt).
+  alternates: { types: { "text/markdown": "/llms-full.txt" } },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
