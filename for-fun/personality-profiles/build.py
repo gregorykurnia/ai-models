@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Build index.html: personality profiles from AA-PersonalityBench.
+"""Build index.html and profiles.md: personality profiles from AA-PersonalityBench.
 
 Reads data/aa-personalitybench.json (scores for every model) and profiles.json
 (the written profile for each model on the page), fills template.html, writes index.html.
-To add a model: append an entry to profiles.json, run this, republish index.html.
+Runs the Markdown exporter to generate profiles.md, which must be committed with index.html.
+To add a model: append an entry to profiles.json, run this, commit both outputs, republish index.html.
 """
 import json
+import subprocess
 from pathlib import Path
 
 here = Path(__file__).resolve().parent
@@ -48,4 +50,5 @@ html = (here / "template.html").read_text()
 html = html.replace("/*__DATA__*/null", json.dumps(data, separators=(",", ":"), ensure_ascii=False))
 html = html.replace("/*__PROFILES__*/null", json.dumps(profiles, ensure_ascii=False))
 (here / "index.html").write_text(html)
-print(f"wrote index.html: {len(profiles)} profile(s), {len(data['models'])} models in field")
+print(f"wrote index.html: {len(profiles)} profile(s), {len(data['models'])} models in field", flush=True)
+subprocess.run(["node", str(here / "export-md.mjs")], check=True)

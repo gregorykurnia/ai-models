@@ -41,5 +41,5 @@ repo, which is public on GitHub.
 - Spot check: Fable 5.2's MBTI, Enneagram and closest models in `profiles.md` match the live page.
 - Commit `export-md.mjs`, `build.py`, `profiles.md` and this file, then push to the current branch. Report this raw URL,
   for pasting into ChatGPT:
-  `https://raw.githubusercontent.com/gregorykurnia/ai-models/<branch>/for-fun/personality-profiles/profiles.md`
+  `https://raw.githubusercontent.com/gregorykurnia/ai-models/neon-omniscience-business/for-fun/personality-profiles/profiles.md`
   Then run `curl -s` on it and grep for `The Candid Confidant`.
