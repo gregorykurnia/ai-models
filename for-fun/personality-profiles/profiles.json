@@ -826,5 +826,171 @@
       "Ask it to end with a one-line bottom line.",
       "For critique, ask it to list what's wrong before what's right."
     ]
+  },
+  {
+    "id": "gpt-6-2-astra",
+    "model": "GPT-6.2 Astra (Max)",
+    "display": "GPT-6.2 Astra",
+    "variant": "Max effort",
+    "maker": "OpenAI",
+    "previous": "GPT-6 Astra (Max)",
+    "compare": [
+      "GPT-6 Astra (Max)",
+      "GPT-6.2 Sol (Max)"
+    ],
+    "tagline": "Sounds like a real person and gives you the answer straight away, but goes light on detail and rarely pushes back.",
+    "archetype": {
+      "name": "The Plain Talker",
+      "line": "Talks more like a person than any model tested and answers in the first line, but goes along with you and skips the fine print."
+    },
+    "summary": [
+      "GPT-6.2 Astra sounds more like a person talking than any other model tested (1st of 53 on Natural Sounding). It gets straight to it: 7th on Answer First and 10th on Direct. It is lean, too (7th lowest on the Slop index), and accurate (8th on Truthful).",
+      "Its tone is sincere (10th) and emotionally attuned (14th on Emotionally Intelligent), though not especially friendly (34th). It is practical (12th on Pragmatic) and more creative than most (14th).",
+      "The cost is depth and structure. It is 50th of 53 on Organization, 51st on Scannable and 49th on Bottom-Line Summary, and near the bottom on actionable steps (47th) and named tools or sources (45th). It rarely flags caveats (45th) or admits doubt (41st), pushes back little (46th) and flatters more than most (36th on Sycophantic). Expect a quick, natural reply, not a reference."
+    ],
+    "typesNote": "A Reformer with a Helper wing: it wants to be right and says so plainly, with a sincere, accommodating side. The Helper is a clear second (66 vs 74), which fits how readily it goes along with you. Thinking beats Feeling (75 vs 65). The other letters are mild: Intuition only edges Sensing (42 vs 36) because it is low on both imagination and practical detail, and Perceiving edges Judging (54 vs 44) because it rarely structures or sums up, not because it is very open-ended.",
+    "bestFor": [
+      {
+        "title": "Quick everyday answers",
+        "body": "Questions where you want the answer in the first line. It is 7th on Answer First, 10th on Direct and 8th on Truthful.",
+        "refs": [
+          "t:answerFirst",
+          "t:direct",
+          "t:truthful"
+        ]
+      },
+      {
+        "title": "Voice and chat assistants",
+        "body": "Spoken or chat replies where stiff, padded text grates. It is 1st on Natural Sounding and light on filler.",
+        "refs": [
+          "t:naturalSounding",
+          "i:slop"
+        ]
+      },
+      {
+        "title": "Replies where tone matters",
+        "body": "A delicate message or a reply to someone upset. It is sincere (10th) and emotionally attuned (14th).",
+        "refs": [
+          "t:sincere",
+          "t:emotionallyIntelligent"
+        ]
+      },
+      {
+        "title": "Short, punchy copy",
+        "body": "Product blurbs, captions and social posts. It is creative (14th) and wastes no words.",
+        "refs": [
+          "t:creative",
+          "t:slop"
+        ]
+      }
+    ],
+    "worstFor": [
+      {
+        "title": "Reports and reference docs",
+        "body": "Anything people will skim. It is 50th of 53 on Organization, 51st on Scannable and 49th on Bottom-Line Summary.",
+        "refs": [
+          "i:organization",
+          "t:scannable",
+          "t:summarizesBottomLine"
+        ]
+      },
+      {
+        "title": "Step-by-step how-tos",
+        "body": "Instructions you will follow. It is 47th on Actionable Guidance and 45th on naming specific tools or sources.",
+        "refs": [
+          "t:providesActionableGuidance",
+          "t:resourceSpecific"
+        ]
+      },
+      {
+        "title": "Stress-testing your plan",
+        "body": "When you want it to find the holes. It is 46th on Constructive Pushback and 36th on Sycophantic, so it tends to go along with you.",
+        "refs": [
+          "t:constructivelyPushesBack",
+          "t:sycophantic"
+        ]
+      },
+      {
+        "title": "Questions with no clean answer",
+        "body": "Topics full of trade-offs. It is 45th on Flags Nuances and 41st on Admits Uncertainty, so answers sound settled even when they aren't.",
+        "refs": [
+          "t:flagsNuances",
+          "t:admitsUncertainty"
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "title": "Sounds human",
+        "body": "1st of 53 on Natural Sounding, and sincere and emotionally attuned with it.",
+        "refs": [
+          "t:naturalSounding",
+          "t:sincere",
+          "t:emotionallyIntelligent"
+        ]
+      },
+      {
+        "title": "Straight to the point",
+        "body": "Leads with the answer and skips the preamble: 7th on Answer First, 10th on Direct.",
+        "refs": [
+          "t:answerFirst",
+          "t:direct"
+        ]
+      },
+      {
+        "title": "Lean and accurate",
+        "body": "7th lowest on the Slop index and 8th on Truthful.",
+        "refs": [
+          "i:slop",
+          "t:truthful"
+        ]
+      },
+      {
+        "title": "Practical and inventive",
+        "body": "12th on Pragmatic and 14th on Creative: workable ideas with some spark.",
+        "refs": [
+          "t:pragmatic",
+          "t:creative"
+        ]
+      }
+    ],
+    "gaps": [
+      {
+        "title": "No structure",
+        "body": "50th of 53 on Organization: few headings, bullets or summaries.",
+        "refs": [
+          "i:organization",
+          "t:scannable",
+          "t:summarizesBottomLine"
+        ]
+      },
+      {
+        "title": "Thin on detail",
+        "body": "39th on Information Dense, 47th on Actionable Guidance and 45th on Resource-Specific.",
+        "refs": [
+          "t:informationDense",
+          "t:providesActionableGuidance",
+          "t:resourceSpecific"
+        ]
+      },
+      {
+        "title": "Goes along with you",
+        "body": "36th on Sycophantic, 46th on Constructive Pushback and 45th on Flags Nuances.",
+        "refs": [
+          "t:sycophantic",
+          "t:constructivelyPushesBack",
+          "t:flagsNuances"
+        ]
+      }
+    ],
+    "versus": [
+      "Against GPT-6 Astra it is almost a different model: the two match only 72 out of 100 across the traits. 6.2 sounds far more natural (58 → 100), answers first more (49 → 89), is more direct (60 → 83), more confident (16 → 54), more creative (47 → 75) and uses less filler (Slop index 16 → 7). It gave up structure (98 → 33), bottom-line summaries (60 → 9) and much of its transparency (index 94 → 41): it admits uncertainty far less (96 → 24) and flatters far more (Sycophantic 37 → 68).",
+      "Against GPT-6.2 Sol at the same effort (the five GPT-6.2 Sol settings are its five closest matches), Astra is the warmer, more expressive sibling: more emotionally intelligent (75 vs 33), more eloquent (54 vs 22), friendlier (37 vs 14), more natural (100 vs 79) and more creative (75 vs 64). Sol is better structured (51 vs 33), admits uncertainty more (51 vs 24), flags its assumptions more (77 vs 52), pushes back more (31 vs 14) and flatters less (56 vs 68)."
+    ],
+    "tips": [
+      "For anything people will skim, ask for headings, bullets and a bottom line.",
+      "Ask it to list the caveats and say how sure it is.",
+      "To test an idea, ask it to argue against you first."
+    ]
   }
 ]
