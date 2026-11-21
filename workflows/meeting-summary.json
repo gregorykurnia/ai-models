@@ -1,0 +1,72 @@
+{
+  "slug": "meeting-summary",
+  "title": "Meeting summary & takeaways",
+  "summary": "Turn a meeting transcript into a skimmable summary with key takeaways and agreed action items, checked against what was said.",
+  "updated": "2026-11-21",
+  "steps": [
+    {
+      "id": "1",
+      "title": "Extract",
+      "goal": "Decisions, who committed to what, open questions, numbers and dates, kept close to the speakers' own words",
+      "targets": [
+        { "trait": "truthful", "aim": "high" },
+        { "trait": "informationDense", "aim": "high" },
+        { "trait": "flagsNuances", "aim": "high" },
+        { "trait": "disclaimsWithAssumptions", "aim": "high" }
+      ],
+      "evaluations": ["briefcase-v1-1", "aa-omniscience-index"],
+      "other_checks": "Check the AA-Omniscience hallucination rate: a summarizer that fills gaps with plausible detail is worse than one that leaves them blank."
+    },
+    {
+      "id": "2",
+      "title": "Key takeaways",
+      "goal": "What the meeting actually settled, what is still unresolved and what matters most, with no flattering spin",
+      "targets": [
+        { "trait": "evidenceBased", "aim": "high" },
+        { "trait": "summarizesBottomLine", "aim": "high" },
+        { "trait": "flagsNuances", "aim": "high" },
+        { "trait": "constructivelyPushesBack", "aim": "high" },
+        { "trait": "sycophantic", "aim": "low" }
+      ],
+      "evaluations": ["strategy-ops-index", "aa-briefcase-analytical-quality-elo"]
+    },
+    {
+      "id": "3",
+      "title": "Action items",
+      "goal": "Only the actions the meeting agreed, each with its owner and any date that was said",
+      "targets": [
+        { "trait": "truthful", "aim": "high" },
+        { "trait": "pragmatic", "aim": "high" },
+        { "trait": "direct", "aim": "high" },
+        { "trait": "disclaimsWithAssumptions", "aim": "high" },
+        { "trait": "openEnded", "aim": "low" }
+      ],
+      "evaluations": ["strategy-ops-index"],
+      "note": "Tell the model to list only agreed actions and not to invent tasks from things said unclearly or wrongly. Give it the meeting date so relative dates resolve, and check every date by hand."
+    },
+    {
+      "id": "4",
+      "title": "Write the summary",
+      "goal": "Bottom line first, short sections, easy to skim",
+      "targets": [
+        { "index": "organization", "aim": "high" },
+        { "trait": "answerFirst", "aim": "high" },
+        { "trait": "scannable", "aim": "high" },
+        { "trait": "slop", "aim": "low" }
+      ],
+      "evaluations": ["aa-briefcase-presentation-elo"]
+    },
+    {
+      "id": "5",
+      "title": "Check against the transcript",
+      "goal": "Every takeaway, action and date traces back to something said; list what doesn't",
+      "targets": [
+        { "index": "transparency", "aim": "high" },
+        { "trait": "constructivelyPushesBack", "aim": "high" },
+        { "trait": "sycophantic", "aim": "low" }
+      ],
+      "evaluations": ["aa-omniscience-index"],
+      "note": "Use a fresh chat and a different model from step 4."
+    }
+  ]
+}
