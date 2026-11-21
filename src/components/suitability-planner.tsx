@@ -508,6 +508,10 @@ function SavedTaskEntry({
   </Card>;
 }
 
+export function PlannerLoading() {
+  return <div className="ui-loading-state"><Spinner label="Loading saved tasks" /><span>Loading saved tasks…</span></div>;
+}
+
 export default function Planner({ data }: { data: PlannerData }) {
   const router = useRouter();
   const path = usePathname();
@@ -1267,7 +1271,7 @@ export default function Planner({ data }: { data: PlannerData }) {
   }, [isLibrary, ready, libraryTasks]);
   const sharedListUnavailable = error.startsWith("Shared tasks could not be loaded.");
 
-  if (!ready) return <div className="ui-loading-state"><Spinner label="Loading saved tasks" /><span>Loading saved tasks…</span></div>;
+  if (!ready) return <PlannerLoading />;
 
   if (isLibrary) return <div className={styles.planner}>
     <PageHeader>

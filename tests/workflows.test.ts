@@ -1,13 +1,11 @@
 import assert from "node:assert/strict";
 import { readdirSync } from "node:fs";
 import { test } from "node:test";
-import { NextRequest } from "next/server";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import leaderboardSource from "../data/leaderboards.json";
-import { generateStaticParams } from "../src/app/workflows/[slug]/page";
+import { dynamicParams, generateStaticParams } from "../src/app/workflows/[slug]/page";
 import WorkflowsPage from "../src/app/workflows/page";
-import { proxy } from "../src/proxy";
 import modelListSource from "../workflows/models.json";
 import benchmarkBar from "./fixtures/workflows/benchmark-bar.json";
 import modelListExample from "./fixtures/workflows/model-list-example.json";
@@ -372,7 +370,7 @@ test("registry covers every workflow JSON file", () => {
   assert.deepEqual(workflows.map(workflow => `${workflow.slug}.json`).sort(), files.sort());
 });
 
-test("the meeting workflow is linked from the catalog and accepted by the detail route", () => {
+test("the meeting workflow is linked from the catalog and prerendered by the detail route", () => {
   const slug = "client-meeting-followup";
   const path = `/workflows/${slug}`;
   const markup = renderToStaticMarkup(createElement(WorkflowsPage));
@@ -380,7 +378,7 @@ test("the meeting workflow is linked from the catalog and accepted by the detail
   assert.match(markup, /aria-label="Open Client meeting follow-up"/);
   assert.match(markup, /No personality scores yet for Qwen4 Max\./);
   assert.ok(generateStaticParams().some(params => params.slug === slug));
-  assert.equal(proxy(new NextRequest(`http://localhost${path}`)).headers.get("x-middleware-next"), "1");
+  assert.equal(dynamicParams, false);
 });
 
 test("the meeting workflow preserves the six steps' targets, evaluations and notes from the brief", () => {

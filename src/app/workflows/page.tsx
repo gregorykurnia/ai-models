@@ -3,8 +3,6 @@ import { WorkflowModelsCard } from "@/components/workflow-view";
 import { getPersonalityDataset } from "@/lib/personality";
 import { workflowModelList, workflows } from "@/lib/workflow-registry";
 
-export const dynamic = "force-dynamic";
-
 export default function WorkflowsPage() {
   return <>
     <PageHeader><h1>Workflows</h1></PageHeader>

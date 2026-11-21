@@ -3,7 +3,7 @@ import { getEvaluations } from "@/lib/data";
 import { siteUrl } from "@/lib/llms-text";
 import { workflows } from "@/lib/workflow-registry";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = siteUrl();

@@ -15,10 +15,14 @@ import { getModelSpeedMap } from "./model-speed";
 const componentSource=aaBriefcaseComponents as unknown as BriefcaseComponentsSource;
 const rubricRefreshSource=aaBriefcaseRubricRefresh as unknown as BriefcaseRubricRefreshSource;
 const profileOverlaySource=aaModelProfileOverlays as unknown as AaModelProfileOverlay;
-const local=cache(async()=>mergeBriefcaseRubricRefresh(mergeAaModelProfileOverlays(mergeBriefcaseComponents(leaderboardSource as unknown as Dataset,componentSource),profileOverlaySource),rubricRefreshSource));
-const publishedEvaluations=unstable_cache(async()=>
-  (await adminDb().collection("evaluations").get()).docs.map(d=>d.data() as Evaluation).filter(e=>!!e.published_snapshot_id),
-  ["published-evaluations"],{revalidate:300});
+let bundledDataset: Dataset | undefined;
+function local() {
+  // Route handlers also reuse the immutable bundled data outside a React render.
+  return bundledDataset ??= mergeBriefcaseRubricRefresh(
+    mergeAaModelProfileOverlays(mergeBriefcaseComponents(leaderboardSource as unknown as Dataset, componentSource), profileOverlaySource),
+    rubricRefreshSource,
+  );
+}
 const remoteEntries=unstable_cache(async(snapshotId:string)=>{
   const ref=adminDb().collection("snapshots").doc(snapshotId);
   if((await ref.get()).data()?.status!=="published")throw new Error("Snapshot is unavailable");
@@ -27,41 +31,41 @@ const remoteEntries=unstable_cache(async(snapshotId:string)=>{
 export const getEvaluations=cache(async():Promise<Evaluation[]>=>{
   if(process.env.DATA_SOURCE==="firestore"){
     let published:Evaluation[];
-    try{published=await publishedEvaluations();}
+    // Read current snapshot pointers on regeneration. Only immutable entries have a separate cache.
+    try{published=(await adminDb().collection("evaluations").get()).docs.map(d=>d.data() as Evaluation).filter(e=>!!e.published_snapshot_id);}
     catch(error){
       const code=(error as {code?:number}).code;
       if(![4,8,14].includes(code??-1))throw error;
       console.warn("Firestore catalog temporarily unavailable; serving bundled published snapshots",{code});
-      return (await local()).evaluations;
+      return local().evaluations;
     }
     const byId=new Map(published.map(evaluation=>[evaluation.id,evaluation]));
     try{
-      for(const evaluation of (await local()).evaluations.filter(item=>item.metric_group==="aa-briefcase-components")){
+      for(const evaluation of local().evaluations.filter(item=>item.metric_group==="aa-briefcase-components")){
         const publishedEvaluation=byId.get(evaluation.id);
         if(!publishedEvaluation||publishedEvaluation.published_snapshot_id===evaluation.published_snapshot_id)byId.set(evaluation.id,evaluation);
       }
     }catch(error){if((error as NodeJS.ErrnoException).code!=="ENOENT")throw error;}
     return [...byId.values()].sort((a,b)=>a.display_name.localeCompare(b.display_name));
   }
-  try{return (await local()).evaluations;}catch(error){if((error as NodeJS.ErrnoException).code==="ENOENT")return [];throw error;}
+  try{return local().evaluations;}catch(error){if((error as NodeJS.ErrnoException).code==="ENOENT")return [];throw error;}
 });
 export async function getEntries(evaluation:Evaluation):Promise<Entry[]>{
   if(process.env.DATA_SOURCE==="firestore"){
-    const bundled=await local();
+    const bundled=local();
     if(bundled.evaluations.some(item=>item.id===evaluation.id&&item.published_snapshot_id===evaluation.published_snapshot_id))
       return bundled.entries.filter(entry=>entry.evaluation_id===evaluation.id&&entry.snapshot_id===evaluation.published_snapshot_id).sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row);
     const remote=await remoteEntries(evaluation.published_snapshot_id);
-    const localDataset=await local();
     const base:Dataset={
-      ...localDataset,
-      evaluations:localDataset.evaluations.map(item=>item.id===evaluation.id?evaluation:item),
-      entries:[...localDataset.entries.filter(entry=>entry.evaluation_id!==evaluation.id),...remote],
+      ...bundled,
+      evaluations:bundled.evaluations.map(item=>item.id===evaluation.id?evaluation:item),
+      entries:[...bundled.entries.filter(entry=>entry.evaluation_id!==evaluation.id),...remote],
     };
     return mergeAaModelProfileOverlays(base,profileOverlaySource).entries
       .filter(entry=>entry.evaluation_id===evaluation.id)
       .sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row);
   }
-  return (await local()).entries.filter(e=>e.evaluation_id===evaluation.id).sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row);
+  return local().entries.filter(e=>e.evaluation_id===evaluation.id).sort((a,b)=>a.source_rank-b.source_rank||a.source_row-b.source_row);
 }
 export const getPublishedDataset=cache(async()=>{
   try{
@@ -71,7 +75,7 @@ export const getPublishedDataset=cache(async()=>{
   }catch(error){
     if(![4,8,14].includes((error as {code?:number}).code??-1))throw error;
     console.warn("Firestore snapshot temporarily unavailable; serving complete bundled dataset");
-    const bundled=await local();
+    const bundled=local();
     return {evaluations:bundled.evaluations,entries:bundled.entries};
   }
 });
@@ -82,7 +86,7 @@ export const getEvaluationDataset=cache(async(slug:string)=>{
   try{return {evaluations,evaluation,entries:await getEntries(evaluation)};}
   catch(error){
     if(![4,8,14].includes((error as {code?:number}).code??-1))throw error;
-    const bundled=await local();
+    const bundled=local();
     const fallback=bundled.evaluations.find(item=>item.slug===slug);
     if(!fallback)throw error;
     return {evaluations:bundled.evaluations,evaluation:fallback,entries:bundled.entries.filter(entry=>entry.evaluation_id===fallback.id&&entry.snapshot_id===fallback.published_snapshot_id)};
@@ -90,5 +94,5 @@ export const getEvaluationDataset=cache(async(slug:string)=>{
 });
 export const getMasterDataset=cache(async()=>{
   const {evaluations,entries}=await getPublishedDataset();
-  return {evaluations,...aggregateMaster(evaluations,entries,getIntelligenceIndexTaskCostMap(),getModelSpeedMap()),intelligenceIndexCostCaptureLabel};
+  return {evaluations,entries,...aggregateMaster(evaluations,entries,getIntelligenceIndexTaskCostMap(),getModelSpeedMap()),intelligenceIndexCostCaptureLabel};
 });

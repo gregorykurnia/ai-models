@@ -8,7 +8,7 @@ import {modelSpeedCaptureLabel} from "@/lib/model-speed";
 import {Card, EmptyState, PageHeader, Section, SectionHeader, Spinner} from "@/components/ui/primitives";
 import styles from "./home.module.css";
 
-export const dynamic="force-dynamic";
+export const revalidate = 300;
 
 const chartMarkerLabels={bar:"AA chart · green bar",circle:"AA chart · blue circle",diamond:"AA chart · orange diamond"};
 

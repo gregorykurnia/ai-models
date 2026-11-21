@@ -1,5 +1,5 @@
 import type { Entry, Evaluation } from "./contract";
-import { getEvaluationDataset, getEvaluations, getMasterDataset, getPublishedDataset } from "./data";
+import { getEvaluationDataset, getEvaluations, getMasterDataset } from "./data";
 import { evaluationMetricLabel, evaluationScoreDisplay } from "./evaluation-display";
 import { averageMasterRank, masterEvaluationLabel, masterTableRows, orderMasterEvaluations, sortMaster } from "./master";
 import { formatPercentile, getPersonalityDataset } from "./personality";
@@ -80,9 +80,9 @@ function evaluationSection(base: string, evaluation: Evaluation, entries: Entry[
 
 export async function llmsFull() {
   const base = siteUrl();
-  const [{ evaluations, entries }, master] = await Promise.all([getPublishedDataset(), getMasterDataset()]);
+  const { evaluations, entries, rows } = await getMasterDataset();
   const ordered = orderMasterEvaluations(evaluations);
-  const masterRows = sortMaster(masterTableRows(master.rows), "aggregate-score", "asc");
+  const masterRows = sortMaster(masterTableRows(rows), "aggregate-score", "asc");
   const personality = getPersonalityDataset();
 
   const masterTable = table(

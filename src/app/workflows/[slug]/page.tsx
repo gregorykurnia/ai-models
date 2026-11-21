@@ -8,8 +8,8 @@ import { getPersonalityDataset, personalityCaptureLabel } from "@/lib/personalit
 import { workflows } from "@/lib/workflow-registry";
 import { BENCHMARK_BAR } from "@/lib/workflows";
 
-export const dynamic = "force-dynamic";
 export const dynamicParams = false;
+export const revalidate = 300;
 
 export function generateStaticParams() {
   return workflows.map(({ slug }) => ({ slug }));

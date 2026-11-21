@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getEvaluationDataset } from "@/lib/data";
+import Loading from "@/app/loading";
+import { getEvaluationDataset, getEvaluations } from "@/lib/data";
 import type { Evaluation } from "@/lib/contract";
 import Leaderboard from "@/components/leaderboard";
 import { PageHeader } from "@/components/ui/primitives";
@@ -33,7 +35,11 @@ function ComponentIndexNav({ active, evaluations }: { active: Evaluation; evalua
   </section>;
 }
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
+
+export async function generateStaticParams() {
+  return (await getEvaluations()).map(({ slug }) => ({ evaluationSlug: slug }));
+}
 
 export default async function Page({ params }: { params: Promise<{ evaluationSlug: string }> }) {
   const { evaluationSlug } = await params;
@@ -55,7 +61,9 @@ export default async function Page({ params }: { params: Promise<{ evaluationSlu
       : "Source: supplied workbook"}</p>
     <p>Artificial Analysis (AA) timings · {modelSpeedCaptureLabel}</p>
     </PageHeader>
-    <Leaderboard entries={entries} evaluation={evaluation} taskCosts={taskCosts} speeds={speeds} costCapturedLabel={intelligenceIndexCostCaptureLabel} />
+    <Suspense fallback={<Loading />}>
+      <Leaderboard entries={entries} evaluation={evaluation} taskCosts={taskCosts} speeds={speeds} costCapturedLabel={intelligenceIndexCostCaptureLabel} />
+    </Suspense>
     {evaluation.metric_group && <ComponentIndexNav active={evaluation} evaluations={evaluations} />}
     <details className="evaluation-notes panel">
       <summary>Sources and timing notes</summary>
