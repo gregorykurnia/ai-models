@@ -992,5 +992,172 @@
       "Ask it to list the caveats and say how sure it is.",
       "To test an idea, ask it to argue against you first."
     ]
+  },
+  {
+    "id": "gpt-6-2-sol",
+    "model": "GPT-6.2 Sol (Max)",
+    "display": "GPT-6.2 Sol",
+    "variant": "Max effort",
+    "maker": "OpenAI",
+    "previous": "GPT-6.1 Sol (Max)",
+    "compare": [
+      "GPT-6.1 Sol (Max)",
+      "GPT-6.2 Astra (Max)"
+    ],
+    "tagline": "A terse, accurate answerer: the facts first, its assumptions stated, and very little warmth or flourish.",
+    "archetype": {
+      "name": "The Quiet Engineer",
+      "line": "Gives you a correct answer in the first line and says what it assumed, with no warmth, flourish or opinion added."
+    },
+    "summary": [
+      "GPT-6.2 Sol is built for plain, correct answers. It is 7th of 53 on Truthful, 8th on Answer First and 9th on Direct, and one of the leanest writers tested (7th lowest on Slop). It is practical (13th on Pragmatic) and says what it is assuming (13th on Disclaims Assumptions).",
+      "Its tone is cool. It sounds natural (12th) and sincere, but it is 46th of 53 on Friendly, 36th on Emotionally Intelligent and 42nd on Eloquent and Metaphorical.",
+      "It also stays neutral and brief. It is 42nd on Opinionated and 37th on Constructive Pushback, and light on detail: 42nd on Actionable Guidance and on naming specific tools, 47th on Scannable and 41st on Bottom-Line Summary. Expect a short, correct answer with its assumptions spelled out, not a guide or a verdict."
+    ],
+    "typesNote": "A Reformer with a Peacemaker wing: exact and principled, but low-key, with few strong opinions and little appetite for a fight. Its Reformer score (78) is well clear of the rest, which sit in the 40s and 50s. Thinking beats Feeling by the widest margin of any profile here (80 vs 39). The other letters are close calls: Introverted at 47 (E starts at 50), Intuitive by one point (41 vs 40) and Judging by two (54 vs 52).",
+    "bestFor": [
+      {
+        "title": "Quick factual lookups",
+        "body": "Questions with a right answer you want in the first line. It is 7th on Truthful, 8th on Answer First and 9th on Direct.",
+        "refs": [
+          "t:truthful",
+          "t:answerFirst",
+          "t:direct"
+        ]
+      },
+      {
+        "title": "Technical Q&A",
+        "body": "Coding and setup questions where it helps to know what it assumed. It is 13th on Disclaims Assumptions and 13th on Pragmatic.",
+        "refs": [
+          "t:disclaimsWithAssumptions",
+          "t:pragmatic"
+        ]
+      },
+      {
+        "title": "Lean drafts",
+        "body": "Emails and notes with nothing to cut. It is 7th lowest on Slop and sounds natural (12th).",
+        "refs": [
+          "t:slop",
+          "t:naturalSounding"
+        ]
+      },
+      {
+        "title": "Facts without a sales pitch",
+        "body": "When you want the information, not its opinion. It is 42nd on Opinionated and leans on evidence.",
+        "refs": [
+          "t:opinionated",
+          "t:evidenceBased"
+        ]
+      }
+    ],
+    "worstFor": [
+      {
+        "title": "Personal or emotional conversations",
+        "body": "When tone matters as much as content. It is 46th on Friendly and 36th on Emotionally Intelligent.",
+        "refs": [
+          "t:friendly",
+          "t:emotionallyIntelligent",
+          "i:warmth"
+        ]
+      },
+      {
+        "title": "Step-by-step guides",
+        "body": "Instructions you will follow and skim. It is 42nd on Actionable Guidance and Resource-Specific, and 47th on Scannable.",
+        "refs": [
+          "t:providesActionableGuidance",
+          "t:resourceSpecific",
+          "t:scannable"
+        ]
+      },
+      {
+        "title": "Getting a recommendation",
+        "body": "When you want it to pick or push back. It is 42nd on Opinionated, 37th on Constructive Pushback and 31st on Confident.",
+        "refs": [
+          "t:opinionated",
+          "t:constructivelyPushesBack",
+          "t:confident"
+        ]
+      },
+      {
+        "title": "Expressive writing",
+        "body": "Speeches, stories and marketing copy. It is 42nd on Eloquent and Metaphorical and 38th on Lexically Varied.",
+        "refs": [
+          "t:eloquent",
+          "t:metaphorical",
+          "t:lexicallyVaried"
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "title": "Accurate",
+        "body": "7th of 53 on Truthful, and above the middle on Evidence-Based.",
+        "refs": [
+          "t:truthful",
+          "t:evidenceBased"
+        ]
+      },
+      {
+        "title": "Answer first",
+        "body": "Leads with the answer and skips the preamble: 8th on Answer First, 9th on Direct.",
+        "refs": [
+          "t:answerFirst",
+          "t:direct"
+        ]
+      },
+      {
+        "title": "No padding",
+        "body": "7th lowest on Slop: almost nothing could be cut.",
+        "refs": [
+          "t:slop",
+          "i:slop"
+        ]
+      },
+      {
+        "title": "Upfront about assumptions",
+        "body": "13th on Disclaims Assumptions and 13th on Pragmatic: it says what it took for granted and keeps to what works.",
+        "refs": [
+          "t:disclaimsWithAssumptions",
+          "t:pragmatic"
+        ]
+      }
+    ],
+    "gaps": [
+      {
+        "title": "Cool to the touch",
+        "body": "46th of 53 on Friendly and 36th on the Warmth index.",
+        "refs": [
+          "t:friendly",
+          "t:emotionallyIntelligent",
+          "i:warmth"
+        ]
+      },
+      {
+        "title": "Thin and unstructured",
+        "body": "42nd on Actionable Guidance, 37th on Information Dense and 47th on Scannable.",
+        "refs": [
+          "t:providesActionableGuidance",
+          "t:informationDense",
+          "t:scannable"
+        ]
+      },
+      {
+        "title": "Won't take a side",
+        "body": "42nd on Opinionated and 37th on Constructive Pushback.",
+        "refs": [
+          "t:opinionated",
+          "t:constructivelyPushesBack"
+        ]
+      }
+    ],
+    "versus": [
+      "Against GPT-6.1 Sol it is leaner and blunter, and much less organized; the two match only 78 out of 100, less than 6.2 matches GPT-6 Sol (85). 6.2 answers first more (64 → 87), is more direct (71 → 85), more practical (45 → 77), more creative (35 → 64) and uses far less filler (Slop index 28 → 11). It gave up structure (Organization index 86 → 27), bottom-line summaries (71 → 24), polish (Literate 89 → 47), much of its warmth (Friendly 64 → 14, Emotionally Intelligent 71 → 33) and transparency (index 94 → 57; Admits Uncertainty 98 → 51).",
+      "Against GPT-6.2 Astra, its closest match among all 53 models, Sol is the cooler, more careful sibling: better structured (51 vs 33), more open about uncertainty (51 vs 24) and its assumptions (77 vs 52), more evidence-based (68 vs 54), pushes back more (31 vs 14) and flatters less (56 vs 68). Astra is warmer and more expressive: more emotionally intelligent (75 vs 33), more eloquent (54 vs 22), friendlier (37 vs 14), more opinionated (54 vs 22) and more natural (100 vs 79)."
+    ],
+    "tips": [
+      "If you want its view, ask it to pick one option and say why.",
+      "For how-to questions, ask for numbered steps and named tools or links.",
+      "For a personal topic, tell it the tone you want; it defaults to cool and brief."
+    ]
   }
 ]
