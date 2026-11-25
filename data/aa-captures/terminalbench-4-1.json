@@ -3599,7 +3599,7 @@
      "name": "Muse Glimmer (High)",
      "shortName": "Muse Glimmer (high)",
      "creatorName": "Meta",
-     "costPerTask": 0.31274872077772037
+     "costPerTask": 0.364453122189865
     },
     {
      "id": "2e9ff877-fd2c-4ce7-b631-7ca1bdb6d13e",
@@ -3631,7 +3631,7 @@
      "name": "Nemotron 3.5 Lightning",
      "shortName": "Nemotron 3.5 Lightning",
      "creatorName": "NVIDIA",
-     "costPerTask": 0.34473664060606063
+     "costPerTask": 0.3178138802663117
     },
     {
      "id": "dd059b25-d82a-4ead-82a4-4adceaaec48b",
@@ -4900,11 +4900,11 @@
      "logo": "/img/logos/openai.svg"
     },
     {
-     "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
-     "label": "Muse Glimmer (high)",
-     "tooltipLabel": "Muse Glimmer (High)",
-     "url": "/models/muse-glimmer",
-     "logo": "/img/logos/meta.svg"
+     "id": "29976311-665a-4b2f-ac72-557c33e0758e",
+     "label": "Nemotron 3.5 Lightning",
+     "tooltipLabel": "Nemotron 3.5 Lightning",
+     "url": "/models/nemotron-3-5-lightning",
+     "logo": "/img/logos/nvidia.svg"
     },
     {
      "id": "598190f8-dc9c-4fea-a7ea-4b81c402ab18",
@@ -4935,13 +4935,6 @@
      "logo": "/img/logos/liquidai.svg"
     },
     {
-     "id": "29976311-665a-4b2f-ac72-557c33e0758e",
-     "label": "Nemotron 3.5 Lightning",
-     "tooltipLabel": "Nemotron 3.5 Lightning",
-     "url": "/models/nemotron-3-5-lightning",
-     "logo": "/img/logos/nvidia.svg"
-    },
-    {
      "id": "a77965fb-2117-4e2c-bd8b-80b5579a7e7e",
      "label": "GPT-6.2 Sol (low)",
      "tooltipLabel": "GPT-6.2 Sol (Low)",
@@ -4961,6 +4954,13 @@
      "tooltipLabel": "DeepSeek R1 (Jan '25)",
      "url": "/models/deepseek-r1-0120",
      "logo": "/img/logos/deepseek.svg"
+    },
+    {
+     "id": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
+     "label": "Muse Glimmer (high)",
+     "tooltipLabel": "Muse Glimmer (High)",
+     "url": "/models/muse-glimmer",
+     "logo": "/img/logos/meta.svg"
     },
     {
      "id": "0d3c777f-6817-42d7-9bb9-223314bc5a57",

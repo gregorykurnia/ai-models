@@ -1,8 +1,9 @@
-// Timing-only projection of AA's public evaluation context; leaves score captures unchanged.
+// Timing-only capture of AA's evaluation pages; leaves score captures unchanged. Pages with a Time per Task chart
+// store the chart's own items (what it plots); AutomationBench and Omniscience have no chart and keep the page payload.
 // PLAYWRIGHT_MODULE=/path/to/playwright/index.mjs npm run capture:aa-speed
 import { createHash } from "node:crypto";
 import { rename, rm, writeFile } from "node:fs/promises";
-import { evaluationTimingSources, validateTimingCapture, withSpeedCaptureLock } from "./aa-speed-sources.ts";
+import { chooseTimingItems, evaluationTimingSources, validateTimingCapture, withSpeedCaptureLock } from "./aa-speed-sources.ts";
 
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || "playwright");
 await withSpeedCaptureLock(async () => {
@@ -37,12 +38,38 @@ await withSpeedCaptureLock(async () => {
               title: document.querySelector("h1").innerText.trim(),
               selected_model_count: models.length,
               time_chart_present: [...document.querySelectorAll("h1,h2,h3,h4")].some(heading => /^(?:.*: )?Time per Task$/.test(heading.innerText.trim())),
-              items: models.filter(model => model.evalTimePerTask !== undefined && model.evalTimePerTask !== null)
+              payload_items: models.filter(model => model.evalTimePerTask !== undefined && model.evalTimePerTask !== null)
                 .map(model => ({ id: model.id, name: model.name, url: model.modelUrl || `/models/${model.slug}`, seconds: model.evalTimePerTask })),
             };
           }
           throw new Error("Complete EvaluationDataProvider.selectedModels timing payload is missing");
         });
+        let chartItems = null;
+        if (captured.time_chart_present) {
+          // The chart renders lazily: bring its card into view, then read the items the bar chart is built from.
+          const heading = page.locator("h1,h2,h3,h4").filter({ hasText: /^(?:.*: )?Time per Task$/ }).first();
+          await heading.scrollIntoViewIfNeeded();
+          const readChart = () => page.evaluate(() => {
+            // Each chart's title is the first heading in the nearest ancestor that has one; a lazy chart has no wrapper yet.
+            const titleOf = wrapper => { for (let node = wrapper.parentElement; node; node = node.parentElement) { const heading = node.querySelector("h1,h2,h3,h4"); if (heading) return heading.innerText.trim(); } };
+            const wrapper = [...document.querySelectorAll(".recharts-wrapper")].find(wrapper => /^(?:.*: )?Time per Task$/.test(titleOf(wrapper) || ""));
+            if (!wrapper) return null;
+            const key = Object.keys(wrapper).find(key => key.startsWith("__reactFiber"));
+            let fiber = key ? wrapper[key] : null;
+            for (let depth = 0; fiber && depth < 60; depth++, fiber = fiber.return) {
+              const items = fiber.memoizedProps?.items;
+              if (!Array.isArray(items) || !items.length || !items.every(item => typeof item?.timePerTaskSeconds === "number")) continue;
+              return items.map(item => ({ id: item.id, name: item.name, url: item.modelUrl || `/models/${item.slug}`, seconds: item.timePerTaskSeconds }));
+            }
+            return null;
+          });
+          for (let attempt = 0; attempt < 30 && !chartItems; attempt++) {
+            chartItems = await readChart();
+            if (!chartItems) await page.waitForTimeout(500);
+          }
+        }
+        const { metric_path, items } = chooseTimingItems(source.slug, captured.time_chart_present, captured.payload_items, chartItems);
+        const { payload_items, ...pageFields } = captured;
         if (!unitEvidence) {
           // The shared loader defines the unit but may be bundled with a later evaluation page.
           const scripts = await page.locator("script[src]").evaluateAll(elements => elements.map(element => element.src));
@@ -60,9 +87,9 @@ await withSpeedCaptureLock(async () => {
           }
         }
         evaluations.push({ evaluation_slug: source.slug, source_url: source.url, captured_at: new Date().toISOString(),
-          ...captured, unit: "seconds", metric_path: "EvaluationDataProvider.selectedModels[].evalTimePerTask",
+          ...pageFields, items, unit: "seconds", metric_path,
           selector: (await selector.innerText()).trim() });
-        console.log(`${source.slug}: ${captured.items.length} timings; ${await selector.innerText()}; time chart ${captured.time_chart_present ? "present" : "absent (payload retained)"}`);
+        console.log(`${source.slug}: ${items.length} timings; ${await selector.innerText()}; ${captured.time_chart_present ? "read from the Time per Task chart" : "no time chart (payload retained)"}`);
       } catch (error) {
         const message = error.message.split("\n")[0];
         failures.push(`${source.slug}: ${message}`);
