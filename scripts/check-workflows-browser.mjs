@@ -169,8 +169,11 @@ try {
   const missing = await page.request.get(`${base}/workflows/nope`);
   assert.equal(missing.status(), 404, "Unknown workflow slug must return HTTP 404");
   assert.match(await missing.text(), /Evaluation not found/, "Unknown workflow slug must show the site's not-found page");
-  const malformed = await page.request.get(`${base}/workflows/%ZZ`);
-  assert.ok([400, 404].includes(malformed.status()), `Malformed workflow URL returned HTTP ${malformed.status()}`);
+  for (const slug of ["%ZZ", "%FF"]) {
+    const malformed = await page.request.get(`${base}/workflows/${slug}`, { maxRedirects: 0 });
+    assert.equal(malformed.status(), 404, `Malformed workflow slug ${slug} must return HTTP 404`);
+    assert.match(await malformed.text(), /Evaluation not found/, `Malformed workflow slug ${slug} must show the site's not-found page`);
+  }
   const encoded = await page.goto(`${base}/workflows/%73ales-proposal`);
   assert.equal(encoded?.status(), 200, "Encoded spelling of a registered workflow slug must resolve");
   await expect(main.getByRole("heading", { name: "Sales proposal", exact: true })).toBeVisible();
