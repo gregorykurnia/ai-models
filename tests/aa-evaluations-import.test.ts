@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import { test, type TestContext } from "node:test";
 import { assertCompleteScoreChart, completeModelSelectionCount, selectCaptureTargets } from "../scripts/capture-aa-evaluations.mjs";
+import { canonicalModelName } from "../scripts/aa-model-names";
 import type { Dataset } from "../src/lib/contract";
 import { aggregateDimensionIds, aggregateMaster, averageMasterRank, masterIdentityKey, masterLeaderboardCsv, masterTableRows, orderMasterEvaluations, sortMaster } from "../src/lib/master";
 import { terminalBenchRedirect } from "../src/lib/leaderboard-redirects";
@@ -37,6 +38,19 @@ async function importWorkspace(t: TestContext) {
     fileURLToPath(new URL("../scripts/import-aa-evaluations.ts", import.meta.url))], { cwd: directory, env });
   return { data, run };
 }
+
+test("AA's renamed GLM-5.3-Flash (Max) keeps the master's GLM-5.3-Flash row on every page", async () => {
+  assert.equal(canonicalModelName("GLM-5.3-Flash (Max)"), "GLM-5.3-Flash");
+  assert.equal(canonicalModelName("GLM-5.3 (Max)"), "GLM-5.3 (Max)");
+  const dataset = JSON.parse(await readFile("data/leaderboards.json", "utf8")) as Dataset;
+  const glm = dataset.entries.filter(entry => /^GLM-5\.3-Flash/.test(entry.model));
+  assert.ok(glm.length > 10);
+  assert.deepEqual([...new Set(glm.map(entry => entry.model))], ["GLM-5.3-Flash"]);
+  assert.ok(glm.some(entry => entry.evaluation_id === "swe-atlas-qna-aa"));
+  const costs = JSON.parse(await readFile("data/intelligence-index-costs.json", "utf8")) as { records: { name: string }[] };
+  assert.ok(costs.records.some(record => record.name === "GLM-5.3-Flash"));
+  assert.ok(!costs.records.some(record => record.name === "GLM-5.3-Flash (Max)"));
+});
 
 test("AA capture requires the score chart's own complete selector and matching row count", () => {
   const score = { title: "AA-Omniscience Accuracy", selectorLabels: ["2 of 2 models"], items: [{ id: "a" }, { id: "b" }] };
@@ -381,16 +395,23 @@ test("SWE-Atlas-QnA imports only the documented master models and preserves the 
   const chart = capture.charts.find(chart => chart.title === "SWE-Atlas-QnA-AA: Score");
   assert.ok(chart);
   assertCompleteScoreChart(capture.charts, chart.title);
-  const rowCount = completeModelSelectionCount(chart.selectorLabels[0]);
-  assert.ok(rowCount);
+  const selectorCount = completeModelSelectionCount(chart.selectorLabels[0]);
+  assert.equal(chart.items.length, selectorCount);
   const inventory = await readFile(new URL("../docs/SWE_ATLAS_QNA_CAPTURE.md", import.meta.url), "utf8");
   const mappings = new Map(inventory.split("\n").flatMap(line => {
     const [, setup, score, model] = line.split("|").map(cell => cell.trim());
     return line.startsWith("| ") && score?.endsWith("%") && model ? [[setup, model] as const] : [];
   }));
-  const scoresByName = new Map(chart.items.map(item => [mappings.get(item.name), item.value! * 100]));
+  const mapped = chart.items.filter(item => mappings.has(item.name!));
+  const scoresByName = new Map(mapped.map(item => [mappings.get(item.name!), item.value! * 100]));
+  const rowCount = mappings.size;
+  assert.equal(mapped.length, rowCount);
   assert.equal(scoresByName.size, rowCount);
-  assert(!scoresByName.has(undefined));
+  // AA runs some models in more than one agent; every skipped setup is another run of a mapped model.
+  const mappedModels = new Set(mapped.map(item => canonicalModelName(item.modelName!)));
+  for (const item of chart.items.filter(item => !mappings.has(item.name!))) {
+    assert.ok(mappedModels.has(canonicalModelName(item.modelName ?? item.name!.replace(/^.* - /, ""))), item.name);
+  }
 
   await run();
   const dataset = await readDataset();
@@ -479,10 +500,10 @@ test("SWE-Atlas-QnA imports only the documented master models and preserves the 
   const invalid = [
     { next: [...withTarget({ name: `Other agent - ${target.modelName}` }), unmapped], error: /missing expected AA setups: Codex - GPT-6\.2 Sol \(Xhigh\)/ },
     { next: [...items, { ...target, id: unmapped.id, name: target.name.toLowerCase() }], error: /duplicate AA setup/ },
-    { next: [...items, { ...target, id: unmapped.id, name: `Other agent - ${target.modelName}`, modelName: target.modelName.toLowerCase() }], error: /duplicate model and effort/ },
-    { next: [...items, otherKimi], error: /duplicate model and effort/ },
     { next: [...items, { ...unmapped, id: target.id.toUpperCase() }], error: /duplicate AA setup/ },
     { next: [...items, { ...unmapped, name: " " }], error: /missing AA setup name or ID/ },
+    // Two mapped setups may never claim one model and effort; the second one stops the import.
+    { next: [...items.filter(item => item !== target), { ...target, modelName: "GPT-6.2 Sol (Max)", effort: "max" }], error: /duplicate model and effort/ },
     { next: withTarget({ modelName: " " }), error: /unexpected model name/ },
     { next: withTarget({ creatorName: "Extra" }), error: /no master row for "GPT-6\.2 Sol \(Xhigh\)"/ },
     { next: withTarget({ value: null }), error: /invalid value for GPT-6\.2 Sol/ },
@@ -497,6 +518,18 @@ test("SWE-Atlas-QnA imports only the documented master models and preserves the 
   await run();
   assert.deepEqual(await readOutputs(), saved);
 
+  // AA runs some models in several agents; a mapped model's other-agent setups are skipped, even with a higher score.
+  const otherAgents = [
+    { ...target, id: unmapped.id, name: `Other agent - ${target.modelName}`, modelName: target.modelName.toLowerCase(), value: 1 },
+    { ...otherKimi, value: 1 },
+  ];
+  const atlasRows = async () => (await readDataset()).entries.filter(entry => entry.evaluation_id === id)
+    .map(entry => [entry.model, entry.score_value, entry.source_rank].join("|")).sort();
+  const rowsBefore = await atlasRows();
+  await setCapture([...items, ...otherAgents]);
+  const skipped = await run();
+  for (const setup of otherAgents) assert.ok(skipped.stderr.includes(`skipping unmapped AA setup "${setup.name}"`));
+  assert.deepEqual(await atlasRows(), rowsBefore);
   // Import a changed capture with an unmapped score higher than rank 1, including concurrent writes.
   const kimiHigh = { ...otherKimi, name: "Other agent - Kimi K3.1 Pro (High)", modelName: "Kimi K3.1 Pro", effort: "high" };
   await setCapture([...items, unmapped, kimiHigh]);
@@ -510,6 +543,7 @@ test("SWE-Atlas-QnA imports only the documented master models and preserves the 
   assert.deepEqual(refreshedEntries.map(({ model, source_rank, score_value }) => [model, source_rank, score_value]),
     entries.map(({ model, source_rank, score_value }) => [model, source_rank, score_value]));
   assert.equal(refreshed.evaluations.find(evaluation => evaluation.id === id)?.row_count, rowCount);
-  assert.equal(refreshed.sourceAssets?.filter(asset => asset.filename === `aa-captures/${id}.json`).length, 2);
+  // The bundled capture, the other-agent capture above and this one.
+  assert.equal(refreshed.sourceAssets?.filter(asset => asset.filename === `aa-captures/${id}.json`).length, 3);
   assert((await readdir(data)).every(file => !file.endsWith(".tmp")));
 });

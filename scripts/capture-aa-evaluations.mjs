@@ -120,11 +120,19 @@ export function assertCompleteScoreChart(charts, title) {
   }
 }
 
+// AA also shows a per-model "Score by Benchmark" tab (by harness); the all-setups chart's panel ends with this value.
+const BREAKDOWN_PANEL_SUFFIX = "-content-benchmark-score-by-eval";
+
 async function openPerformanceBreakdown(page) {
-  const tab = page.getByRole("tab", { name: "Score by Benchmark", exact: true });
-  await tab.click({ timeout: 10000 });
-  const panelId = await tab.getAttribute("aria-controls");
-  if (!panelId) throw new Error("Performance breakdown tab has no chart panel");
+  const tabs = page.getByRole("tab", { name: "Score by Benchmark", exact: true });
+  await tabs.first().waitFor({ timeout: 10000 });
+  const panelIds = await tabs.evaluateAll(els => els.map(el => el.getAttribute("aria-controls")));
+  const matches = panelIds.filter(id => id?.endsWith(BREAKDOWN_PANEL_SUFFIX));
+  if (matches.length !== 1) {
+    throw new Error(`expected one Performance breakdown tab for all setups, found ${matches.length} of ${panelIds.length}`);
+  }
+  const panelId = matches[0];
+  await page.locator(`[role="tab"][aria-controls=${JSON.stringify(panelId)}]`).click({ timeout: 10000 });
   const panel = page.locator(`[id=${JSON.stringify(panelId)}]`);
   await panel.locator(".recharts-wrapper").waitFor({ timeout: 10000 });
   return panel;

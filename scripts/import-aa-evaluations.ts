@@ -151,7 +151,8 @@ const evaluationConfigs: EvaluationConfig[] = [
       ["Muse Code - Muse Wonder (Max)", "Muse Wonder (Max)"],
       ["Grok Build - Grok 4.7 (Xhigh)", "Grok 4.7 (Xhigh)"],
       ["Mistral Vibe - Mistral Large 4 (High)", "Mistral Large 4 (High)"],
-      ["Opencode - GLM-5.3 (Max)", "GLM-5.3 (Max)"],
+      ["OpenCode - GLM-5.3 (Max)", "GLM-5.3 (Max)"],
+      ["OpenCode - GLM-5.3-Flash (Max)", "GLM-5.3-Flash"],
       ["Muse Code - Muse Ember (Max)", "Muse Ember (Max)"],
       ["Codex - GPT-6.2 Sol (Low)", "GPT-6.2 Sol (Low)"],
       ["DeepSeek Harness - DeepSeek V4.1 Flash 1017 (Max)", "DeepSeek V4.1 Flash 1017 (Max)"],
@@ -242,6 +243,12 @@ function mappedScoreItems(
     seenSetups.add(setupKey);
     seenIds.add(idKey);
 
+    const model = expectedRows.get(name);
+    if (!model) {
+      // AA also runs some models in several agents (GPT-6 Luna, GLM-5.3-Flash); only the mapped setup is kept.
+      console.warn(`${evaluationId}: skipping unmapped AA setup "${name}"`);
+      return [];
+    }
     const modelKey = typeof modelName === "string" && modelName.trim()
       ? masterIdentityKey("", canonicalModelName(modelName.trim()))
       : null;
@@ -254,12 +261,6 @@ function mappedScoreItems(
       const otherSetup = setupByModel.get(modelAndEffort);
       if (otherSetup) throw new Error(`${evaluationId}: duplicate model and effort in "${otherSetup}" and "${name}"`);
       setupByModel.set(modelAndEffort, name);
-    }
-
-    const model = expectedRows.get(name);
-    if (!model) {
-      console.warn(`${evaluationId}: skipping unmapped AA setup "${name}"`);
-      return [];
     }
     if (modelKey !== masterIdentityKey("", model)) throw new Error(`${evaluationId}: unexpected model name for "${name}"`);
     const master = typeof creatorName === "string" ? masterByIdentity.get(masterIdentityKey(creatorName, model)) : undefined;
@@ -457,7 +458,7 @@ for (const config of evaluationConfigs) {
     has_confidence_interval: withCi > 0,
     has_release_date: withRelease > 0,
     notes: config.definition?.notes
-      || `${evaluation.notes.replace(/\s*Values refreshed from (?:the )?Artificial Analysis[^]*$/, "")} Values refreshed from the Artificial Analysis evaluation page captured ${capture.captured_at} (${rows.length} models).${config.id === "intelligence-index" ? " Intelligence Index v5.0.1 re-scoring replaces v5.0 scores, ranks, and task costs." : ""}`.trim(),
+      || `${evaluation.notes.replace(/\s*Values refreshed from (?:the )?Artificial Analysis[^]*$/, "")} Values refreshed from the Artificial Analysis evaluation page captured ${capture.captured_at} (${rows.length} models).${config.id === "intelligence-index" ? " Intelligence Index v5.0.2 re-scoring replaces v5.0.1 scores, ranks, and task costs." : ""}`.trim(),
   };
   newEvaluations.push(evaluationRecord);
   newSnapshots.push({

@@ -6,6 +6,8 @@ The capture reads the chart's `items[].components[]` entry with `key === "swe-at
 
 In the 18 Nov capture, hovering each matching bar on the **SWE-Atlas-QnA-AA** tab confirmed AA's whole-number score. Claude Code showed **66** for Opus 5.5 Max (Default Fallback), **64** for Sonnet 5.5 Max (Default Fallback), and **34** for Haiku 5.5 Max. The same check showed **36** for Codex with GPT-6.2 Astra Low, **46** for Codex with GPT-6.2 Sol Max, **60** for Antigravity CLI with Gemini 4 Hydrogen Xhigh, and **69** for Muse Code with Muse Wonder Full Max. [Artificial Analysis Coding Agent Index](https://artificialanalysis.ai/agents/coding-agents)
 
+**25 Nov 2026:** **Select all** shows **65 of 65 models**. The 40 earlier setups keep their scores under the same AA setup IDs; AA now spells Opencode as OpenCode. AA added GPT-6 Luna (Max) in 12 more agents and GLM-5.3-Flash (Max) in 13 agents. Each model keeps one setup: GPT-6 Luna stays on Codex, and GLM-5.3-Flash maps through OpenCode like GLM-5.3. The importer skips the other 24 setups. AA also renamed GLM-5.3-Flash to GLM-5.3-Flash (Max) under the same model ID; the master keeps the GLM-5.3-Flash row.
+
 **All 40 setups map to distinct master rows by model and effort.** The 19 Nov capture adds Neon Xhigh and retains the 39 earlier scores. Step 5 Preview, Qwen3.8 Max, and Beam 1.0 use the same names on AA and the master. AA reports Max effort for Kimi Code CLI's Kimi K3.1 Pro, whose master row uses the model name without an effort suffix. Max is the model's API default. [AA run settings](https://artificialanalysis.ai/agents/coding-agents/comparisons/deepseek-harness-vs-kimi-code-cli), [Moonshot model card](https://huggingface.co/moonshotai/Kimi-K3.1-Pro/blob/main/README.md)
 
 | AA setup (agent and model) | SWE-Atlas-QnA pass rate | Master row |
@@ -38,7 +40,8 @@ In the 18 Nov capture, hovering each matching bar on the **SWE-Atlas-QnA-AA** ta
 | Muse Code - Muse Wonder (Max) | 61.5591% | Muse Wonder (Max) |
 | Grok Build - Grok 4.7 (Xhigh) | 62.9032% | Grok 4.7 (Xhigh) |
 | Mistral Vibe - Mistral Large 4 (High) | 58.8710% | Mistral Large 4 (High) |
-| Opencode - GLM-5.3 (Max) | 58.6022% | GLM-5.3 (Max) |
+| OpenCode - GLM-5.3 (Max) | 58.6022% | GLM-5.3 (Max) |
+| OpenCode - GLM-5.3-Flash (Max) | 55.3763% | GLM-5.3-Flash |
 | Muse Code - Muse Ember (Max) | 54.8387% | Muse Ember (Max) |
 | Codex - GPT-6.2 Sol (Low) | 42.4731% | GPT-6.2 Sol (Low) |
 | DeepSeek Harness - DeepSeek V4.1 Flash 1017 (Max) | 61.5591% | DeepSeek V4.1 Flash 1017 (Max) |

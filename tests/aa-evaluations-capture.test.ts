@@ -131,8 +131,10 @@ test("capture CLI names selection failures and timeouts while preserving the las
   const playwright = join(cwd, "playwright.mjs");
   await writeFile(playwright, `
     import assert from "node:assert/strict";
+    const panel = "radix-a-content-benchmark-score-by-eval";
     const locators = {
-      '[id="panel"]': { locator(selector) {
+      ['[role="tab"][aria-controls="' + panel + '"]']: { async click() {} },
+      ['[id="' + panel + '"]']: { locator(selector) {
         if (selector === ".recharts-wrapper") return { async waitFor() {} };
         assert.equal(selector, "button[aria-controls]");
         return { filter: () => ({ evaluateAll: async () => ["models"] }) };
@@ -154,7 +156,10 @@ test("capture CLI names selection failures and timeouts while preserving the las
         getByRole(role, {name}) {
           assert.equal(role, "tab");
           assert.equal(name, "Score by Benchmark");
-          return { async click() {}, async getAttribute() { return "panel"; } };
+          // AA shows a second, per-model "Score by Benchmark" tab; only the all-setups panel may be read.
+          const panels = process.env.AA_CAPTURE_TEST_FAULT === "no-breakdown"
+            ? ["radix-b-content-benchmarks"] : ["radix-b-content-benchmarks", panel];
+          return { first: () => ({ async waitFor() {} }), evaluateAll: async () => panels };
         },
         locator(selector) { return locators[selector]; },
       }; },
@@ -177,6 +182,7 @@ test("capture CLI names selection failures and timeouts while preserving the las
   for (const [fault, error] of [
     ["select-all", /swe-atlas-qna-aa: failed to select all models in selector 1 \(1 of 2 models\)/],
     ["timeout", /swe-atlas-qna-aa: navigation timed out/],
+    ["no-breakdown", /swe-atlas-qna-aa: expected one Performance breakdown tab for all setups, found 0 of 1/],
   ] as const) {
     await assert.rejects(run(only, fault), error);
     assert.equal(await readFile(saved, "utf8"), "previous capture");

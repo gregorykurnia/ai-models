@@ -1,13 +1,13 @@
 {
  "key": "omniscience-business",
  "source_url": "https://artificialanalysis.ai/evaluations/omniscience?detailed-domain-results=omniscience-net-score-by-domain",
- "captured_at": "2026-11-19",
+ "captured_at": "2026-11-25",
  "selectors": 1,
  "charts": [
   {
    "title": "AA-Omniscience Net Score by Domain: Business",
    "selectorLabels": [
-    "169 of 169 models"
+    "172 of 172 models"
    ],
    "items": [
     {
@@ -857,6 +857,15 @@
      "logo": "/img/logos/cohere.svg"
     },
     {
+     "id": "da3ba2f4-f4f1-43b6-95dc-8e9fa2a48402",
+     "label": "Inkling 2 Mini",
+     "tooltipLabel": "Inkling 2 Mini",
+     "value": 1.3333333333333333,
+     "displayValue": "1",
+     "url": "/models/inkling-2-mini",
+     "logo": "/img/logos/thinking-machines.svg"
+    },
+    {
      "id": "0de09623-2b1a-4c8d-86ef-7f5245d4e24b",
      "label": "Inkling (xhigh)",
      "tooltipLabel": "Inkling (Xhigh)",
@@ -1047,12 +1056,21 @@
     },
     {
      "id": "19496b81-9f41-4214-a77a-1df803b3c5ae",
-     "label": "GLM-5.3-Flash",
-     "tooltipLabel": "GLM-5.3-Flash",
+     "label": "GLM-5.3-Flash (max)",
+     "tooltipLabel": "GLM-5.3-Flash (Max)",
      "value": -6.666666666666667,
      "displayValue": "−7",
      "url": "/models/glm-5-3-flash",
      "logo": "/img/logos/zai.svg"
+    },
+    {
+     "id": "f232d373-e666-488c-b0f2-39ef90321f64",
+     "label": "Ling-3.2-air",
+     "tooltipLabel": "Ling-3.2-air",
+     "value": -6.666666666666667,
+     "displayValue": "−7",
+     "url": "/models/ling-3-2-air",
+     "logo": "/img/logos/inclusionai.jpg"
     },
     {
      "id": "b01dee41-c62b-48ed-8d16-984adc405e5c",
@@ -1285,7 +1303,7 @@
      "tooltipLabel": "JoyAI-VL-Preview",
      "value": -20,
      "displayValue": "−20",
-     "url": "/models/joyvl2_v27",
+     "url": "/models/joyai-vl",
      "logo": "/img/logos/joy-ai.svg"
     },
     {
@@ -1511,6 +1529,15 @@
      "value": -54.666666666666664,
      "displayValue": "−55",
      "url": "/models/gemma-4-31b",
+     "logo": "/img/logos/google.svg"
+    },
+    {
+     "id": "6e1b44ff-c227-496b-aef4-19b70cd18c76",
+     "label": "Gemma 4 26B A4B",
+     "tooltipLabel": "Gemma 4 26B A4B (Reasoning)",
+     "value": -58,
+     "displayValue": "−58",
+     "url": "/models/gemma-4-26b-a4b",
      "logo": "/img/logos/google.svg"
     },
     {
