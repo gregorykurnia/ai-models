@@ -80,7 +80,7 @@ try {
   }
 
   // One evaluation page must expose both populated speed columns, with units.
-  const evaluationResponse=await page.goto(`${baseUrl}/leaderboards/terminal-bench-4-0`);
+  const evaluationResponse=await page.goto(`${baseUrl}/leaderboards/terminal-bench-4-1`);
   assert.equal(evaluationResponse?.status(),200,"Terminal-Bench evaluation loads");
   const evaluationTable=page.locator(".table-scroll > .evaluation-table");
   await evaluationTable.locator("tbody tr").first().waitFor();

@@ -27,7 +27,7 @@ if (namesArg > 0) {
 }
 
 const cols = [
-  ["Terminal Bench", "terminal-bench-4-0"],
+  ["Terminal Bench", "terminal-bench-4-1"],
   ["Presentation", "aa-briefcase-presentation-elo"],
   ["Analytical Elo", "aa-briefcase-analytical-quality-elo"],
   ["Strategy & Ops", "strategy-ops-index"],

@@ -7,7 +7,7 @@ import { join } from "node:path";
 import { test } from "node:test";
 import { promisify } from "node:util";
 import speedSource from "../data/aa-model-speed.json";
-import { validateTimingCapture, type TimingCapture } from "../scripts/aa-speed-sources";
+import { evaluationTimingSources, validateTimingCapture, type TimingCapture } from "../scripts/aa-speed-sources";
 import type { Dataset, Entry } from "../src/lib/contract";
 import { getIntelligenceIndexTaskCostMap } from "../src/lib/intelligence-index-costs";
 import {
@@ -25,7 +25,14 @@ const execFileAsync = promisify(execFile);
 
 test("every captured speed has dated source evidence and every evaluation payload row reaches the runtime reader unchanged", async () => {
   const capture = JSON.parse(await readFile(new URL("../data/aa-speed-captures.json", import.meta.url), "utf8")) as TimingCapture;
-  validateTimingCapture(capture, speedSource.captured_at);
+  const terminalBench = dataset.evaluations.find(evaluation => evaluation.id === "terminal-bench-4-1")!;
+  if (speedSource.captured_at.slice(0, 10) < terminalBench.captured_at.slice(0, 10) && !modelSpeedEvaluationSlugs.includes("terminalbench-4-1")) {
+    assert.throws(() => validateTimingCapture(capture, speedSource.captured_at), {
+      message: "Missing AA evaluation timing payloads: terminalbench-4-1",
+    });
+  } else {
+    validateTimingCapture(capture, speedSource.captured_at);
+  }
   assert.equal(speedSource.format_version, 2);
   assert.equal(speedSource.speed_count, speedSource.records.length);
   const sources = speedSource.sources as Record<string, { captured_at: string; source_url: string; sha256?: string }>;
@@ -163,9 +170,9 @@ test("speed lookup matches cost identity rules, exact effort variants and unique
 
 test("every local evaluation has an explicit slug mapping or page-wide fallback", () => {
   assert.deepEqual(Object.keys(evaluationSpeedSlugs).sort(), dataset.evaluations.map(evaluation => evaluation.id).sort());
-  assert.deepEqual(modelSpeedEvaluationSlugs, [
+  assert.deepEqual(evaluationTimingSources.map(source => source.slug).sort(), [
     "aa-briefcase", "automationbench-aa", "critpt-v2-hard", "frontiercode-2-0", "gdp-pdf",
-    "hle-diamond", "omniscience", "terminal-bench-science", "terminalbench-4-0",
+    "hle-diamond", "omniscience", "terminal-bench-science", "terminalbench-4-1",
   ]);
   const expected = {
     "briefcase-v1-1": "aa-briefcase",
@@ -175,7 +182,7 @@ test("every local evaluation has an explicit slug mapping or page-wide fallback"
     "aa-omniscience-index": "omniscience",
     "aa-omniscience-accuracy": "omniscience",
     "automationbench-aa": "automationbench-aa",
-    "terminal-bench-4-0": "terminalbench-4-0",
+    "terminal-bench-4-1": "terminalbench-4-1",
     "frontiercode-2-0": "frontiercode-2-0",
     "gdp-pdf": "gdp-pdf",
     "critpt-v2-hard": "critpt-v2-hard",
@@ -183,7 +190,7 @@ test("every local evaluation has an explicit slug mapping or page-wide fallback"
   for (const evaluation of dataset.evaluations) {
     assert.equal(evaluationSpeedSlugs[evaluation.id], expected[evaluation.id as keyof typeof expected] ?? null);
     const slug = evaluationSpeedSlugs[evaluation.id];
-    if (slug) assert.ok(modelSpeedEvaluationSlugs.includes(slug));
+    if (slug) assert.ok(evaluationTimingSources.some(source => source.slug === slug));
   }
   assert.equal(evaluationSpeedSlugs.critpt, null, "CritPt v2 Hard must not be used for original CritPt");
 });

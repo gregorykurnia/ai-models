@@ -59,23 +59,6 @@
         "excerpt": "evalTimePerTask:function(e,t){let n=function(e,t,n){if(null==n||n<=0)return;let{taskCount:o,getRawCanonicalTokenCount:l}=(0,a.Bp)(t);if(null==o||o<=0)return;let r=e?null==l?void 0:l(e):void 0;if(r)return(r.answer+r.reasoning)/o/n}(e.canonicalEvalTokenCounts,t,e.outputSpeed),{getToolMsPerTask:o}=(0,a.Bp)(t);if(null==n||null==o)return n;let l=o(e);if(null!=l)return n+l/1e3}(c,s),intelligenceIndexCostPerTask:void 0,intelligenceIndexOutputTokensPerTask:void 0,intelligenceIndexTimePerTask:void 0}}({model:e,slug:t,priceFallback:u})}]})}},83463:(e,t,n"
       }
     },
-    "evaluation:terminalbench-4-0": {
-      "source_url": "https://artificialanalysis.ai/evaluations/terminalbench-4-0",
-      "captured_at": "2026-11-19T16:33:27.310Z",
-      "capture_file": "data/aa-speed-captures.json",
-      "sha256": "ec98f8cc08a974bae6be7df53e5f6e642a8f9c8984674a8f259eab0375a13d4d",
-      "page_title": "Terminal-Bench 4.0 Benchmark",
-      "unit": "seconds",
-      "metric_path": "EvaluationDataProvider.selectedModels[].evalTimePerTask",
-      "selector": "280 of 280 models",
-      "time_chart_present": true,
-      "unit_evidence": {
-        "source_url": "https://artificialanalysis.ai/_next/static/chunks/28894-d30cc6163a71fc66.js",
-        "captured_at": "2026-11-19T16:33:14.252Z",
-        "sha256": "4863710e76062f43a67b50226b3c63279bc78b3d0844b1d21302fc34f57a997e",
-        "excerpt": "evalTimePerTask:function(e,t){let n=function(e,t,n){if(null==n||n<=0)return;let{taskCount:o,getRawCanonicalTokenCount:l}=(0,a.Bp)(t);if(null==o||o<=0)return;let r=e?null==l?void 0:l(e):void 0;if(r)return(r.answer+r.reasoning)/o/n}(e.canonicalEvalTokenCounts,t,e.outputSpeed),{getToolMsPerTask:o}=(0,a.Bp)(t);if(null==n||null==o)return n;let l=o(e);if(null!=l)return n+l/1e3}(c,s),intelligenceIndexCostPerTask:void 0,intelligenceIndexOutputTokensPerTask:void 0,intelligenceIndexTimePerTask:void 0}}({model:e,slug:t,priceFallback:u})}]})}},83463:(e,t,n"
-      }
-    },
     "evaluation:frontiercode-2-0": {
       "source_url": "https://artificialanalysis.ai/evaluations/frontiercode-2-0",
       "captured_at": "2026-11-19T16:33:32.271Z",
@@ -223,7 +206,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 304.30096544971775,
         "automationbench-aa": 28.87219842264452,
-        "terminalbench-4-0": 246.27106687212986,
         "gdp-pdf": 64.93394052707457
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -233,7 +215,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -249,7 +230,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 356.9876182003634,
         "automationbench-aa": 280.6932316860791,
-        "terminalbench-4-0": 856.5961080061118,
         "gdp-pdf": 111.78863716371832
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -259,7 +239,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -355,7 +334,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 689.7660279024849,
         "automationbench-aa": 643.2436446343692,
-        "terminalbench-4-0": 1604.4195498791953,
         "gdp-pdf": 159.59944034049758
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -365,7 +343,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -413,7 +390,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 540.5467092202972,
         "automationbench-aa": 38.45982204869207,
-        "terminalbench-4-0": 917.7905874167791,
         "gdp-pdf": 43.952277855558116,
         "hle-diamond": 72.34224375487952
       },
@@ -424,7 +400,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -537,7 +512,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 204.84817919338786,
         "automationbench-aa": 86.64486400098123,
-        "terminalbench-4-0": 421.3321483600232,
         "gdp-pdf": 17.725041178382458,
         "hle-diamond": 184.57456954208646
       },
@@ -548,7 +522,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -645,7 +618,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 423.5636752764032,
         "automationbench-aa": 205.9497061689204,
-        "terminalbench-4-0": 895.3460642614313,
         "gdp-pdf": 149.1935338348794,
         "hle-diamond": 392.21718000768675
       },
@@ -656,7 +628,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -721,7 +692,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 505.6268065560536,
         "automationbench-aa": 117.20623319766425,
-        "terminalbench-4-0": 1189.6925963421447,
         "gdp-pdf": 145.10136921688664,
         "hle-diamond": 343.1495517866619
       },
@@ -732,7 +702,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -797,7 +766,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 742.6376925528657,
         "automationbench-aa": 559.6791565652634,
-        "terminalbench-4-0": 2110.6012893318257,
         "gdp-pdf": 186.05940211331352
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -807,7 +775,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -839,7 +806,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 598.6740665099733,
         "automationbench-aa": 141.32694715372702,
-        "terminalbench-4-0": 1058.613991700464,
         "gdp-pdf": 65.40407459179173,
         "hle-diamond": 169.33961048911914
       },
@@ -850,7 +816,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -883,7 +848,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 285.0851886303562,
         "automationbench-aa": 169.46394932227963,
-        "terminalbench-4-0": 575.926912453452,
         "gdp-pdf": 37.37214903069671
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -893,7 +857,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -909,7 +872,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 723.7087922917842,
         "automationbench-aa": 450.4107926392805,
-        "terminalbench-4-0": 1717.0648798897312,
         "gdp-pdf": 128.83660858857004,
         "hle-diamond": 571.018944557645
       },
@@ -920,7 +882,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -937,7 +898,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 4256.233561345121,
         "automationbench-aa": 514.0352263661133,
-        "terminalbench-4-0": 4814.201495069068,
         "omniscience": 39.79763609194766,
         "gdp-pdf": 493.2883774052938,
         "hle-diamond": 919.9216520934816
@@ -949,7 +909,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
@@ -967,7 +926,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2214.8805463028425,
         "automationbench-aa": 711.4305508523829,
-        "terminalbench-4-0": 3575.220678760656,
         "frontiercode-2-0": 1798.5724784793572,
         "omniscience": 8.964510813136945,
         "gdp-pdf": 65.96762208856399,
@@ -982,7 +940,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1003,7 +960,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 3116.168052914881,
         "automationbench-aa": 654.4947761097479,
-        "terminalbench-4-0": 3157.368335300972,
         "frontiercode-2-0": 2114.5405958241577,
         "omniscience": 54.300469357132044,
         "gdp-pdf": 84.05449725414823,
@@ -1018,7 +974,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1039,7 +994,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2878.433210743579,
         "automationbench-aa": 272.2918170155938,
-        "terminalbench-4-0": 2736.2009204957267,
         "frontiercode-2-0": 1337.166278575501,
         "omniscience": 0.6346303635786594,
         "gdp-pdf": 35.27759330309375,
@@ -1054,7 +1008,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1075,7 +1028,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 4287.509709182306,
         "automationbench-aa": 681.5897341244502,
-        "terminalbench-4-0": 3137.140411191678,
         "frontiercode-2-0": 2331.2509360321183,
         "omniscience": 73.21772249227155,
         "gdp-pdf": 237.36785681714036,
@@ -1090,7 +1042,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1111,7 +1062,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1955.5320866543875,
         "automationbench-aa": 454.23425681296914,
-        "terminalbench-4-0": 3847.785431966268,
         "gdp-pdf": 169.79648013251145
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -1121,7 +1071,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -1137,7 +1086,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 6612.2148415367465,
         "automationbench-aa": 368.1222881492703,
-        "terminalbench-4-0": 4912.382134130558,
         "frontiercode-2-0": 2049.56713337885,
         "omniscience": 22.61564216160733,
         "gdp-pdf": 189.42284235949631,
@@ -1152,7 +1100,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1173,7 +1120,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 5085.572130510864,
         "automationbench-aa": 276.76970306862654,
-        "terminalbench-4-0": 3039.2949021311415,
         "frontiercode-2-0": 1606.432606185927,
         "omniscience": 53.80816880335327,
         "gdp-pdf": 131.2175341209293,
@@ -1188,7 +1134,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1209,7 +1154,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 3622.989860853605,
         "automationbench-aa": 992.2453819735734,
-        "terminalbench-4-0": 2933.394908052367,
         "frontiercode-2-0": 1224.4235548065706,
         "omniscience": 29.92427145051908,
         "gdp-pdf": 183.05080030685767,
@@ -1224,7 +1168,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1421,7 +1364,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 332.5494023262943,
         "automationbench-aa": 41.86077337958215,
-        "terminalbench-4-0": 392.0057545433476,
         "frontiercode-2-0": 274.34260463214207,
         "omniscience": 19.443550910305316,
         "gdp-pdf": 62.18587012178603,
@@ -1436,7 +1378,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1473,7 +1414,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 559.5006498097719,
         "automationbench-aa": 252.74878754758873,
-        "terminalbench-4-0": 677.2318349316979,
         "gdp-pdf": 67.23695971485247
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -1483,7 +1423,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -1499,7 +1438,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1826.2615598560033,
         "automationbench-aa": 393.41124745180304,
-        "terminalbench-4-0": 2549.4942263163202,
         "gdp-pdf": 127.73997824293743
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -1509,7 +1447,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -1525,7 +1462,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 3310.978902137175,
         "automationbench-aa": 226.23777940103528,
-        "terminalbench-4-0": 1344.6578929625305,
         "frontiercode-2-0": 711.4452477889934,
         "omniscience": 5.146792120827649,
         "gdp-pdf": 65.78500119083667,
@@ -1540,7 +1476,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1561,7 +1496,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2190.659997870531,
         "automationbench-aa": 188.69071198129683,
-        "terminalbench-4-0": 796.1642223180822,
         "frontiercode-2-0": 360.93426113577493,
         "omniscience": 1.5208521348949886,
         "gdp-pdf": 42.54119369627296,
@@ -1576,7 +1510,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1597,7 +1530,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 4552.160090998352,
         "automationbench-aa": 344.2981054495053,
-        "terminalbench-4-0": 2120.8084808184294,
         "frontiercode-2-0": 1326.4027577790928,
         "omniscience": 72.0178353819437,
         "gdp-pdf": 225.72993141753702,
@@ -1612,7 +1544,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1633,7 +1564,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2610.0014531057623,
         "automationbench-aa": 206.8581933095888,
-        "terminalbench-4-0": 1001.0085613673007,
         "frontiercode-2-0": 475.91962400024,
         "omniscience": 3.4050028614254773,
         "gdp-pdf": 50.94451789766598,
@@ -1648,7 +1578,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1669,7 +1598,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 3273.2018481769683,
         "automationbench-aa": 296.52739258038525,
-        "terminalbench-4-0": 1875.8096869634976,
         "frontiercode-2-0": 1132.0188308890508,
         "omniscience": 21.151710654945077,
         "gdp-pdf": 137.17662572271726,
@@ -1684,7 +1612,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1705,7 +1632,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1985.4107021352902,
         "automationbench-aa": 203.75725562846176,
-        "terminalbench-4-0": 1463.6039282292486,
         "frontiercode-2-0": 972.8392815211795,
         "omniscience": 4.215054274894216,
         "gdp-pdf": 55.29567293801329,
@@ -1720,7 +1646,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1741,7 +1666,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 878.3352450496474,
         "automationbench-aa": 145.30566707857133,
-        "terminalbench-4-0": 482.8511508524404,
         "frontiercode-2-0": 232.96112015575528,
         "omniscience": 2.8256663048674713,
         "gdp-pdf": 28.793898310802753,
@@ -1756,7 +1680,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1777,7 +1700,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 6037.254049020601,
         "automationbench-aa": 627.838741463143,
-        "terminalbench-4-0": 3431.981284938293,
         "frontiercode-2-0": 3823.7514754418416,
         "omniscience": 49.55268699821382,
         "gdp-pdf": 253.57352200902523,
@@ -1792,7 +1714,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1813,7 +1734,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 956.7283513333851,
         "automationbench-aa": 149.72531412066118,
-        "terminalbench-4-0": 569.8087725351068,
         "frontiercode-2-0": 286.0303684809816,
         "omniscience": 3.150185543852618,
         "gdp-pdf": 34.11049615371109,
@@ -1828,7 +1748,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1849,7 +1768,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 3105.3695453792916,
         "automationbench-aa": 286.5636257459054,
-        "terminalbench-4-0": 2350.183133879886,
         "frontiercode-2-0": 1984.547813078712,
         "omniscience": 7.062687228267251,
         "gdp-pdf": 100.35117009923655,
@@ -1864,7 +1782,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1885,7 +1802,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 989.3559971583387,
         "automationbench-aa": 92.9055453766253,
-        "terminalbench-4-0": 731.9027700168541,
         "frontiercode-2-0": 367.6464826156816,
         "omniscience": 3.3877719390531627,
         "gdp-pdf": 44.00020943968772,
@@ -1900,7 +1816,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1921,7 +1836,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 255.352074616167,
         "automationbench-aa": 60.852290602308,
-        "terminalbench-4-0": 328.99084486161235,
         "frontiercode-2-0": 121.07913096017771,
         "omniscience": 2.2081583642880576,
         "gdp-pdf": 15.936194197075626,
@@ -1936,7 +1850,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1957,7 +1870,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2098.3978191883793,
         "automationbench-aa": 201.0039039480044,
-        "terminalbench-4-0": 1366.911056700705,
         "frontiercode-2-0": 1004.7444125729426,
         "omniscience": 47.26246059001066,
         "gdp-pdf": 276.7815578559853,
@@ -1972,7 +1884,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -1993,7 +1904,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 630.5108421356496,
         "automationbench-aa": 76.00058392901866,
-        "terminalbench-4-0": 480.02813920638437,
         "frontiercode-2-0": 212.41472362961525,
         "omniscience": 2.6722417521434565,
         "gdp-pdf": 26.99591589440161,
@@ -2008,7 +1918,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -2029,7 +1938,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1302.1086724009442,
         "automationbench-aa": 117.73104853049276,
-        "terminalbench-4-0": 975.0812144701731,
         "frontiercode-2-0": 621.5415494468875,
         "omniscience": 5.681606781743033,
         "gdp-pdf": 81.68601160693214,
@@ -2044,7 +1952,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -2169,7 +2076,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1658.0917289491683,
         "automationbench-aa": 688.1081937001453,
-        "terminalbench-4-0": 3142.298549751101,
         "gdp-pdf": 163.69330026862445
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -2179,7 +2085,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -2195,7 +2100,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1687.1438154953835,
         "automationbench-aa": 229.66460713884413,
-        "terminalbench-4-0": 1682.8638226152125,
         "gdp-pdf": 76.63416611459682
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -2205,7 +2109,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -2221,7 +2124,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 453.6220499908032,
         "automationbench-aa": 175.8994140486893,
-        "terminalbench-4-0": 702.8061595517597,
         "gdp-pdf": 38.63928552747704
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -2231,7 +2133,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -2247,7 +2148,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2467.2809076713193,
         "automationbench-aa": 301.7818180254527,
-        "terminalbench-4-0": 2560.960607063375,
         "frontiercode-2-0": 1286.3788019456151,
         "omniscience": 12.921638309534044,
         "gdp-pdf": 101.8307859645515,
@@ -2262,7 +2162,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -2283,7 +2182,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 977.9192156841284,
         "automationbench-aa": 201.79208819565036,
-        "terminalbench-4-0": 1163.3264883275278,
         "gdp-pdf": 57.00983530466089
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -2293,7 +2191,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -2309,7 +2206,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2132.3290582501922,
         "automationbench-aa": 258.88738633807526,
-        "terminalbench-4-0": 2230.193378529351,
         "gdp-pdf": 82.89962676819565
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -2319,7 +2215,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -2335,7 +2230,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1330.0160253981273,
         "automationbench-aa": 154.86347064000537,
-        "terminalbench-4-0": 938.1852608598712,
         "frontiercode-2-0": 400.26156183755705,
         "omniscience": 4.02567947056682,
         "gdp-pdf": 55.886540437074665,
@@ -2350,7 +2244,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -2371,7 +2264,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 353.98302408387417,
         "automationbench-aa": 115.1755172554039,
-        "terminalbench-4-0": 365.9985238862777,
         "frontiercode-2-0": 136.327622652149,
         "omniscience": 2.698176314751721,
         "gdp-pdf": 28.112719593891335,
@@ -2386,7 +2278,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -2407,7 +2298,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 3573.0093306213753,
         "automationbench-aa": 357.6087374523793,
-        "terminalbench-4-0": 2200.6187240985564,
         "frontiercode-2-0": 1739.9450529412964,
         "omniscience": 81.16502834412907,
         "gdp-pdf": 368.17376642085105,
@@ -2422,7 +2312,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -2443,7 +2332,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1051.4948563145372,
         "automationbench-aa": 143.33635216966232,
-        "terminalbench-4-0": 720.0331659460617,
         "frontiercode-2-0": 295.4363285494775,
         "omniscience": 3.587610632960821,
         "gdp-pdf": 42.462789876823514,
@@ -2458,7 +2346,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -2479,7 +2366,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2312.272691576913,
         "automationbench-aa": 203.99520750624367,
-        "terminalbench-4-0": 1587.2373533517352,
         "frontiercode-2-0": 952.997535019202,
         "omniscience": 6.582951185053866,
         "gdp-pdf": 120.89264821775112,
@@ -2494,7 +2380,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -2515,7 +2400,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1204.6256591333956,
         "automationbench-aa": 703.1835967436664,
-        "terminalbench-4-0": 4102.543451827457,
         "gdp-pdf": 319.19498551849176
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -2525,7 +2409,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -2573,7 +2456,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1145.9195179823678,
         "automationbench-aa": 257.6041816677476,
-        "terminalbench-4-0": 1604.3458791935996,
         "gdp-pdf": 64.98575128568204
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -2583,7 +2465,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -2599,7 +2480,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 475.47879397633886,
         "automationbench-aa": 137.4422614891714,
-        "terminalbench-4-0": 664.0970389231284,
         "gdp-pdf": 29.75875324194652
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -2609,7 +2489,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -2625,7 +2504,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2674.5543242296603,
         "automationbench-aa": 547.0691190405706,
-        "terminalbench-4-0": 3182.138213015044,
         "frontiercode-2-0": 1872.2985312160895,
         "gdp-pdf": 253.29487810144445
       },
@@ -2636,7 +2514,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
@@ -2653,7 +2530,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 744.0485055691627,
         "automationbench-aa": 199.18261642016566,
-        "terminalbench-4-0": 1204.6628941530212,
         "gdp-pdf": 45.01744579007341
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -2663,7 +2539,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -2695,7 +2570,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1721.1481278711972,
         "automationbench-aa": 344.24466952554656,
-        "terminalbench-4-0": 2049.3703380301636,
         "gdp-pdf": 89.7535174056349
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -2705,7 +2579,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -2721,7 +2594,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1379.2589836785405,
         "automationbench-aa": 108.93045332798691,
-        "terminalbench-4-0": 568.1845612609222,
         "frontiercode-2-0": 204.4864277264941,
         "omniscience": 3.9474850075301684,
         "gdp-pdf": 41.184331878966006,
@@ -2736,7 +2608,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -2757,7 +2628,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 471.30378818203826,
         "automationbench-aa": 83.5983896092227,
-        "terminalbench-4-0": 301.78000683235064,
         "frontiercode-2-0": 78.4785543286064,
         "omniscience": 1.919218258874147,
         "gdp-pdf": 14.442819888519535,
@@ -2772,7 +2642,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -2793,7 +2662,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 5388.365582985946,
         "automationbench-aa": 419.379130347323,
-        "terminalbench-4-0": 2633.0664937252814,
         "frontiercode-2-0": 2175.593463893204,
         "omniscience": 104.29375639977425,
         "gdp-pdf": 304.2469039305175,
@@ -2808,7 +2676,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -2829,7 +2696,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 740.0573222465453,
         "automationbench-aa": 90.56002948300771,
-        "terminalbench-4-0": 382.28491670534623,
         "frontiercode-2-0": 98.60210695109103,
         "omniscience": 2.0541745504039604,
         "gdp-pdf": 21.022646273809606,
@@ -2844,7 +2710,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -2865,7 +2730,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2197.96805668079,
         "automationbench-aa": 147.597035339954,
-        "terminalbench-4-0": 1363.5523276216993,
         "frontiercode-2-0": 606.2893320245257,
         "omniscience": 6.0219723201759265,
         "gdp-pdf": 76.02760169429018,
@@ -2880,7 +2744,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -2917,7 +2780,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 64.03413516413246,
         "automationbench-aa": 1.1080959534316837,
-        "terminalbench-4-0": 37.137966469916805,
         "gdp-pdf": 0.9337531196615444,
         "hle-diamond": 0.6952377067014999
       },
@@ -2928,7 +2790,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -2961,7 +2822,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 316.59743072438425,
         "automationbench-aa": 28.582771154909366,
-        "terminalbench-4-0": 278.4398742182224,
         "frontiercode-2-0": 294.5649043430529,
         "omniscience": 12.901202972630633,
         "gdp-pdf": 69.87260571107066,
@@ -2976,7 +2836,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -2997,7 +2856,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 289.3155684192436,
         "automationbench-aa": 26.604335637852397,
-        "terminalbench-4-0": 238.40759441816385,
         "frontiercode-2-0": 205.7368206483783,
         "omniscience": 31.24251254605754,
         "gdp-pdf": 47.53747512731752,
@@ -3012,7 +2870,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -3049,7 +2906,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 192.8347915660341,
         "automationbench-aa": 40.28307562033045,
-        "terminalbench-4-0": 222.9983228937122,
         "gdp-pdf": 18.66220178810853
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -3059,7 +2915,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -3091,7 +2946,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 90.17981355164058,
         "automationbench-aa": 18.24534263941967,
-        "terminalbench-4-0": 92.70764058211181,
         "gdp-pdf": 7.38170527715066
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -3101,7 +2955,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -3117,7 +2970,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 67.9350761355187,
         "automationbench-aa": 1.679779102516031,
-        "terminalbench-4-0": 52.71513351174798,
         "gdp-pdf": 5.008234130406836
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -3127,7 +2979,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -3223,7 +3074,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 334.2629326438532,
         "automationbench-aa": 187.41439398928105,
-        "terminalbench-4-0": 1029.8449695175523,
         "gdp-pdf": 128.24173657401366
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -3233,7 +3083,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -3249,7 +3098,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1191.215541914599,
         "automationbench-aa": 268.18203297592424,
-        "terminalbench-4-0": 1084.8049764831987,
         "gdp-pdf": 178.3546647854272
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -3259,7 +3107,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -3275,7 +3122,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1428.0873179569066,
         "automationbench-aa": 189.45942206770215,
-        "terminalbench-4-0": 1208.054749094111,
         "gdp-pdf": 101.20503853963656,
         "hle-diamond": 234.1610198825559
       },
@@ -3286,7 +3132,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -3303,7 +3148,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 608.1924731381289,
         "automationbench-aa": 455.3741548034603,
-        "terminalbench-4-0": 2192.8998029861696,
         "gdp-pdf": 207.75845980984695
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -3313,7 +3157,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -3345,7 +3188,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1255.297279902792,
         "automationbench-aa": 459.3661656092784,
-        "terminalbench-4-0": 1711.8786716147042,
         "frontiercode-2-0": 1029.945874505218,
         "omniscience": 34.17774806480687,
         "gdp-pdf": 202.98685749275904,
@@ -3360,7 +3202,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -3381,7 +3222,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2240.964343233447,
         "automationbench-aa": 433.34035590078986,
-        "terminalbench-4-0": 2006.9175267340331,
         "frontiercode-2-0": 1245.769760504995,
         "omniscience": 34.17961525885125,
         "gdp-pdf": 194.71168863310086,
@@ -3396,7 +3236,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -3417,7 +3256,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 461.4805728434924,
         "automationbench-aa": 291.399762306752,
-        "terminalbench-4-0": 2725.9156363984403,
         "frontiercode-2-0": 938.7888082293387,
         "omniscience": 2.6276454731176377,
         "gdp-pdf": 12.789238853281782,
@@ -3432,7 +3270,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -3453,7 +3290,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1056.181144257542,
         "automationbench-aa": 393.6155745713679,
-        "terminalbench-4-0": 1290.443562253972,
         "gdp-pdf": 68.04100148288978,
         "hle-diamond": 152.97757774545616,
         "terminal-bench-science": 1558.760493072083
@@ -3465,7 +3301,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond",
           "terminal-bench-science": "evaluation:terminal-bench-science"
@@ -3483,7 +3318,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 291.12974136182197,
         "automationbench-aa": 67.05225035530896,
-        "terminalbench-4-0": 992.0518112123319,
         "gdp-pdf": 5.703518905265952,
         "hle-diamond": 10.116245002725966,
         "terminal-bench-science": 365.68415346985347
@@ -3495,7 +3329,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond",
           "terminal-bench-science": "evaluation:terminal-bench-science"
@@ -3513,7 +3346,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1086.742670714147,
         "automationbench-aa": 347.4690347836288,
-        "terminalbench-4-0": 1074.1707059211733,
         "frontiercode-2-0": 596.2917615233464,
         "omniscience": 7.1716502651367104,
         "gdp-pdf": 52.90465912880202,
@@ -3528,7 +3360,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -3549,7 +3380,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1927.0455266793888,
         "automationbench-aa": 384.3873584595588,
-        "terminalbench-4-0": 1323.0775222482355,
         "frontiercode-2-0": 703.9509697017692,
         "omniscience": 8.922334925139493,
         "gdp-pdf": 99.26629375410754,
@@ -3564,7 +3394,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -3585,7 +3414,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1921.4333024828945,
         "automationbench-aa": 97.33263708462466,
-        "terminalbench-4-0": 694.562847453714,
         "frontiercode-2-0": 668.4172923109252,
         "omniscience": 0.41230821903832754,
         "gdp-pdf": 6.223749444747726,
@@ -3600,7 +3428,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -3685,7 +3512,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 154.64017377174264,
         "automationbench-aa": 59.81177835085246,
-        "terminalbench-4-0": 185.1272264951372,
         "gdp-pdf": 40.751408452658445
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -3695,7 +3521,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -3743,7 +3568,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 55.75583499107026,
         "automationbench-aa": 23.434118409091283,
-        "terminalbench-4-0": 68.13206340732428,
         "frontiercode-2-0": 71.03616030793054,
         "omniscience": 5.214193918285555,
         "gdp-pdf": 9.60295107118368,
@@ -3758,7 +3582,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -3779,7 +3602,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 220.37540512998328,
         "automationbench-aa": 127.42377955117426,
-        "terminalbench-4-0": 610.0928038634378,
         "gdp-pdf": 48.04508790982905,
         "hle-diamond": 146.82427832176077
       },
@@ -3790,7 +3612,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -3807,7 +3628,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1155.0229778911782,
         "automationbench-aa": 264.69803293281245,
-        "terminalbench-4-0": 883.7385631193013,
         "gdp-pdf": 44.14742605303912
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -3817,7 +3637,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -3869,7 +3688,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 125.62841978667853,
         "automationbench-aa": 67.15303760330612,
-        "terminalbench-4-0": 174.40388548301522,
         "frontiercode-2-0": 191.31818372108432,
         "omniscience": 3.638154640385356,
         "gdp-pdf": 17.039116774188642,
@@ -3884,7 +3702,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -3905,7 +3722,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 542.9478506599663,
         "automationbench-aa": 166.74966954079667,
-        "terminalbench-4-0": 898.6560039546514,
         "gdp-pdf": 38.170020367356514
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -3915,7 +3731,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -3931,7 +3746,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1472.8790446086512,
         "automationbench-aa": 396.7475333060976,
-        "terminalbench-4-0": 1574.5783160153198,
         "frontiercode-2-0": 1011.460059540377,
         "omniscience": 30.968130765404585,
         "gdp-pdf": 109.85869129667284,
@@ -3946,7 +3760,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -3966,7 +3779,6 @@
       "first_answer_s": 3.52673755557749,
       "evaluation_times_s": {
         "automationbench-aa": 95.50576764860132,
-        "terminalbench-4-0": 818.3111967904667,
         "frontiercode-2-0": 223.97160949899157,
         "omniscience": 1.6538097631729591,
         "gdp-pdf": 12.883435843466081,
@@ -3980,7 +3792,6 @@
         "first_answer_s": "model-payload",
         "evaluation_times_s": {
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4001,7 +3812,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1207.1727869729984,
         "automationbench-aa": 311.90442122629946,
-        "terminalbench-4-0": 1305.7851581107482,
         "frontiercode-2-0": 841.1537048015297,
         "omniscience": 8.173480274534706,
         "gdp-pdf": 49.088018981135434,
@@ -4016,7 +3826,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4037,7 +3846,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2399.4601100031005,
         "automationbench-aa": 495.01126509206074,
-        "terminalbench-4-0": 2510.8500453844304,
         "frontiercode-2-0": 2374.391876772829,
         "omniscience": 13.417559125831156,
         "gdp-pdf": 128.04809420603274,
@@ -4052,7 +3860,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4073,7 +3880,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2309.1229833482444,
         "automationbench-aa": 519.1092638286273,
-        "terminalbench-4-0": 2466.4158026000014,
         "frontiercode-2-0": 2339.05424204226,
         "omniscience": 1.344166174893899,
         "gdp-pdf": 28.49748917745953,
@@ -4088,7 +3894,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4109,7 +3914,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2745.275613139487,
         "automationbench-aa": 929.7314111281713,
-        "terminalbench-4-0": 2872.7975339448903,
         "frontiercode-2-0": 2284.1527803139775,
         "omniscience": 212.73686875863106,
         "gdp-pdf": 418.04221908856687,
@@ -4124,7 +3928,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4145,7 +3948,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2105.4794709142902,
         "automationbench-aa": 285.37087037191435,
-        "terminalbench-4-0": 2871.3252140002437,
         "frontiercode-2-0": 1116.0193821540386,
         "omniscience": 0.9430472592226147,
         "gdp-pdf": 35.5102784022536,
@@ -4160,7 +3962,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4181,7 +3982,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2312.4672793995965,
         "automationbench-aa": 757.1215820631785,
-        "terminalbench-4-0": 2443.5584331810487,
         "frontiercode-2-0": 1885.0870983843008,
         "omniscience": 20.934436853691803,
         "gdp-pdf": 111.51549126220553,
@@ -4196,7 +3996,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4217,7 +4016,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 650.1100864790074,
         "automationbench-aa": 162.9353548230388,
-        "terminalbench-4-0": 732.4561719606694,
         "frontiercode-2-0": 525.934449441089,
         "omniscience": 11.180345805773424,
         "gdp-pdf": 57.307001241633245,
@@ -4232,7 +4030,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4253,7 +4050,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 137.74005524229193,
         "automationbench-aa": 72.6515897664642,
-        "terminalbench-4-0": 162.19196447284568,
         "frontiercode-2-0": 107.74174981192228,
         "omniscience": 2.5813972305445505,
         "gdp-pdf": 19.079923578874855,
@@ -4268,7 +4064,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4289,7 +4084,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 309.5444577279935,
         "automationbench-aa": 112.90172067469585,
-        "terminalbench-4-0": 425.80528752063816,
         "frontiercode-2-0": 239.31315846969983,
         "omniscience": 7.192298959321404,
         "gdp-pdf": 36.967253516163154,
@@ -4304,7 +4098,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4325,7 +4118,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1199.5492284338761,
         "automationbench-aa": 310.2797326153063,
-        "terminalbench-4-0": 1103.5500225423925,
         "frontiercode-2-0": 920.2399970802913,
         "omniscience": 124.34166160863879,
         "gdp-pdf": 212.50141449752653,
@@ -4340,7 +4132,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4361,7 +4152,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1315.1067415714692,
         "automationbench-aa": 316.9997276472824,
-        "terminalbench-4-0": 1142.279274853786,
         "frontiercode-2-0": 845.3452880654155,
         "omniscience": 30.452044905411505,
         "gdp-pdf": 132.6573887188584,
@@ -4376,7 +4166,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4397,7 +4186,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 351.556725901807,
         "automationbench-aa": 145.5802294585074,
-        "terminalbench-4-0": 342.5475267159244,
         "frontiercode-2-0": 213.10597123192045,
         "omniscience": 5.175136801423108,
         "gdp-pdf": 41.03845962364782,
@@ -4412,7 +4200,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4433,7 +4220,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 731.4428831521118,
         "automationbench-aa": 209.60334487060933,
-        "terminalbench-4-0": 665.2898303957857,
         "frontiercode-2-0": 458.13874865203854,
         "omniscience": 12.183814136493533,
         "gdp-pdf": 73.6697854815798,
@@ -4448,7 +4234,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4469,7 +4254,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1768.188187314858,
         "automationbench-aa": 450.6560954092842,
-        "terminalbench-4-0": 1521.3635739875974,
         "frontiercode-2-0": 1246.9394335249342,
         "omniscience": 223.71632696758198,
         "gdp-pdf": 319.8187734180443,
@@ -4484,7 +4268,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4504,7 +4287,6 @@
       "first_answer_s": 3.30546001064399,
       "evaluation_times_s": {
         "automationbench-aa": 2.6219438048043973,
-        "terminalbench-4-0": 11.515693244093695,
         "gdp-pdf": 9.937612065280282
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -4513,7 +4295,6 @@
         "first_answer_s": "model-payload",
         "evaluation_times_s": {
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -4528,7 +4309,6 @@
       "first_answer_s": 3.2704839365028,
       "evaluation_times_s": {
         "automationbench-aa": 6.083682093901752,
-        "terminalbench-4-0": 7.595188198956429,
         "gdp-pdf": 16.36835149111466
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -4537,7 +4317,6 @@
         "first_answer_s": "model-payload",
         "evaluation_times_s": {
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -4625,7 +4404,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 508.79299523722716,
         "automationbench-aa": 515.7654143635517,
-        "terminalbench-4-0": 842.0677553626208,
         "frontiercode-2-0": 2348.9586026910965,
         "omniscience": 31.829246776472537,
         "gdp-pdf": 90.31393197215405,
@@ -4639,7 +4417,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4675,7 +4452,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 390.83686723897904,
         "automationbench-aa": 73.5030820970033,
-        "terminalbench-4-0": 221.21566115631998,
         "frontiercode-2-0": 784.3875797424694,
         "omniscience": 6.1214309188058955,
         "gdp-pdf": 36.77478503124377,
@@ -4690,7 +4466,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4711,7 +4486,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1245.8808823672512,
         "automationbench-aa": 354.7848056487375,
-        "terminalbench-4-0": 590.7796592058077,
         "frontiercode-2-0": 959.5172893372653,
         "omniscience": 51.18942075111944,
         "gdp-pdf": 88.26516349940037,
@@ -4726,7 +4500,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -4747,7 +4520,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 575.4611107513628,
         "automationbench-aa": 137.3086289159115,
-        "terminalbench-4-0": 415.2186076247161,
         "gdp-pdf": 18.278261932662986
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -4757,7 +4529,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -4773,7 +4544,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 43.72154354277099,
         "automationbench-aa": 14.428662393202703,
-        "terminalbench-4-0": 69.84483391252614,
         "gdp-pdf": 7.389136903714436,
         "hle-diamond": 7.587283699759446
       },
@@ -4784,7 +4554,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -4801,7 +4570,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 378.6003988080788,
         "automationbench-aa": 212.6987014412472,
-        "terminalbench-4-0": 901.794804324658,
         "gdp-pdf": 73.82505157602482,
         "hle-diamond": 287.30386888913154
       },
@@ -4812,7 +4580,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -4829,7 +4596,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 660.8755535944103,
         "automationbench-aa": 88.38687057914336,
-        "terminalbench-4-0": 1234.5933931199017,
         "omniscience": 7.462836331346176,
         "gdp-pdf": 131.41651033594607
       },
@@ -4840,7 +4606,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
@@ -4857,7 +4622,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2804.8094169372835,
         "automationbench-aa": 346.0071987206334,
-        "terminalbench-4-0": 4083.4725806205606,
         "gdp-pdf": 206.06539896431224
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -4867,7 +4631,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -4899,7 +4662,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 776.2199458136464,
         "automationbench-aa": 127.26465613013805,
-        "terminalbench-4-0": 725.6071732840256,
         "frontiercode-2-0": 331.86200579137744,
         "omniscience": 9.57255795453811,
         "gdp-pdf": 36.17146327907706,
@@ -4914,7 +4676,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -5031,7 +4792,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1355.571725778637,
         "automationbench-aa": 646.8552935293138,
-        "terminalbench-4-0": 3142.6304421439772,
         "gdp-pdf": 357.5587042977687
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -5041,7 +4801,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -5057,7 +4816,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 880.1365151902727,
         "automationbench-aa": 351.780288882049,
-        "terminalbench-4-0": 1750.2853249664888,
         "gdp-pdf": 181.32277446381607,
         "hle-diamond": 583.9809731820857
       },
@@ -5068,7 +4826,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -5085,7 +4842,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 488.7770794761017,
         "automationbench-aa": 296.2613205568868,
-        "terminalbench-4-0": 1998.215665092345,
         "frontiercode-2-0": 580.6183367081303,
         "omniscience": 7.239254383213168,
         "gdp-pdf": 52.44281197046384,
@@ -5100,7 +4856,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -5121,7 +4876,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2936.26705914601,
         "automationbench-aa": 439.4524410480573,
-        "terminalbench-4-0": 2711.310663664861,
         "gdp-pdf": 211.72063230422668,
         "hle-diamond": 520.4296247287207,
         "critpt-v2-hard": 972.3682563017313,
@@ -5134,7 +4888,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond",
           "critpt-v2-hard": "evaluation:critpt-v2-hard",
@@ -5153,7 +4906,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 5307.831389787259,
         "automationbench-aa": 1185.2857808047743,
-        "terminalbench-4-0": 3724.6869953010014,
         "frontiercode-2-0": 1367.4967287148393,
         "omniscience": 136.8003292521041,
         "gdp-pdf": 614.890872206624,
@@ -5168,7 +4920,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -5189,7 +4940,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 770.3240814385663,
         "automationbench-aa": 1049.2712726314753,
-        "terminalbench-4-0": 1313.0212380814753,
         "frontiercode-2-0": 1162.6123691702262,
         "omniscience": 9.24732859985852,
         "gdp-pdf": 32.10443172533543,
@@ -5204,7 +4954,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -5225,7 +4974,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 383.66195813611347,
         "automationbench-aa": 58.1966393805127,
-        "terminalbench-4-0": 188.57067468065907,
         "frontiercode-2-0": 146.78684090632137,
         "omniscience": 6.098674905417559,
         "gdp-pdf": 20.86760073585117,
@@ -5240,7 +4988,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -5261,7 +5008,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 692.4140857824456,
         "automationbench-aa": 274.8210518933084,
-        "terminalbench-4-0": 532.5803196553484,
         "gdp-pdf": 174.3207714220211,
         "hle-diamond": 522.6962276628875
       },
@@ -5272,7 +5018,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -5385,7 +5130,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 130.20811497631982,
         "automationbench-aa": 9.050580935097202,
-        "terminalbench-4-0": 43.498521617779886,
         "gdp-pdf": 0.7869320516932725
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -5395,7 +5139,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -5411,7 +5154,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 101.96227950359373,
         "automationbench-aa": 0,
-        "terminalbench-4-0": 16.26782810901485,
         "gdp-pdf": 0.7152021160625629
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -5421,7 +5163,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -5437,7 +5178,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 428.850034242323,
         "automationbench-aa": 41.561645718576415,
-        "terminalbench-4-0": 315.75670911791576,
         "frontiercode-2-0": 115.60948661955968,
         "omniscience": 6.183048223835248,
         "gdp-pdf": 20.314983041690166,
@@ -5452,7 +5192,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -5473,7 +5212,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 312.5575687906979,
         "automationbench-aa": 39.77411758166537,
-        "terminalbench-4-0": 302.45474438776154,
         "frontiercode-2-0": 102.3739467943876,
         "omniscience": 4.757292678078,
         "gdp-pdf": 14.99010169239748,
@@ -5488,7 +5226,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -5509,7 +5246,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 200.13300610544243,
         "automationbench-aa": 187.3238728883608,
-        "terminalbench-4-0": 503.4511146723774,
         "frontiercode-2-0": 492.864684854408,
         "omniscience": 22.3990302006595,
         "gdp-pdf": 56.003376096256936,
@@ -5524,7 +5260,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -5545,7 +5280,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 346.81588680412517,
         "automationbench-aa": 455.458048629579,
-        "terminalbench-4-0": 1314.0783220357703,
         "gdp-pdf": 33.17566031240852
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -5555,7 +5289,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -5571,7 +5304,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 563.8492207681652,
         "automationbench-aa": 143.58253473149577,
-        "terminalbench-4-0": 676.9998551248939,
         "gdp-pdf": 40.19620427723458
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -5581,7 +5313,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -5597,7 +5328,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1200.6998413288352,
         "automationbench-aa": 279.36931989045877,
-        "terminalbench-4-0": 2048.021592961404,
         "frontiercode-2-0": 751.140372529757,
         "omniscience": 51.652419149878675,
         "gdp-pdf": 112.3080005652842,
@@ -5612,7 +5342,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -5633,7 +5362,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 461.2440452545783,
         "automationbench-aa": 109.85870512402764,
-        "terminalbench-4-0": 934.2614331774952,
         "omniscience": 13.578825881531188,
         "gdp-pdf": 38.290999062433244,
         "hle-diamond": 115.33986542706438,
@@ -5646,7 +5374,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond",
@@ -5665,7 +5392,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 503.2717230569839,
         "automationbench-aa": 156.8549183680326,
-        "terminalbench-4-0": 659.1834070584806,
         "frontiercode-2-0": 320.9486424498392,
         "omniscience": 11.505236813599163,
         "gdp-pdf": 39.6167229635607,
@@ -5680,7 +5406,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -5701,7 +5426,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 848.4488348548801,
         "automationbench-aa": 123.0824790083991,
-        "terminalbench-4-0": 912.59168307556,
         "frontiercode-2-0": 342.579732386153,
         "omniscience": 11.527829813609111,
         "gdp-pdf": 38.85491007440932,
@@ -5716,7 +5440,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -5737,7 +5460,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1187.0896926433797,
         "automationbench-aa": 157.00706973237817,
-        "terminalbench-4-0": 1433.7981802295783,
         "frontiercode-2-0": 560.4593325051451,
         "omniscience": 20.155917241328297,
         "gdp-pdf": 95.13449389432982,
@@ -5752,7 +5474,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -5869,7 +5590,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 752.118983233615,
         "automationbench-aa": 222.21207771337578,
-        "terminalbench-4-0": 1058.317101540273,
         "gdp-pdf": 207.47318983923367
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -5879,7 +5599,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -5895,7 +5614,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1089.0103457367154,
         "automationbench-aa": 231.01827910671244,
-        "terminalbench-4-0": 1963.7172367996704,
         "frontiercode-2-0": 1146.9221396442088,
         "omniscience": 55.951323140222655,
         "gdp-pdf": 88.19465286406886,
@@ -5910,7 +5628,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -5931,7 +5648,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1710.6650957304473,
         "automationbench-aa": 445.7339801248979,
-        "terminalbench-4-0": 2092.7250271942094,
         "frontiercode-2-0": 1031.294889820143,
         "omniscience": 41.45677968871846,
         "gdp-pdf": 165.8408530002321,
@@ -5946,7 +5662,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -5983,7 +5698,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 252.07299802696065,
         "automationbench-aa": 46.43340928570147,
-        "terminalbench-4-0": 268.67962369380257,
         "gdp-pdf": 10.42430334564112,
         "hle-diamond": 19.396398800804725
       },
@@ -5994,7 +5708,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -6011,7 +5724,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 564.2116452143282,
         "automationbench-aa": 23.20437023202793,
-        "terminalbench-4-0": 157.36262213780876,
         "gdp-pdf": 2.815483782043606,
         "hle-diamond": 16.802873999439434
       },
@@ -6022,7 +5734,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -6039,7 +5750,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 191.0052317609152,
         "automationbench-aa": 79.52184574503315,
-        "terminalbench-4-0": 390.7366456460934,
         "gdp-pdf": 10.059608513968927,
         "hle-diamond": 25.194769618074346
       },
@@ -6050,7 +5760,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -6083,7 +5792,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 223.24506954004266,
         "automationbench-aa": 50.505933261034244,
-        "terminalbench-4-0": 332.82557892127323,
         "gdp-pdf": 11.027006047079817,
         "hle-diamond": 9.917242291841154
       },
@@ -6094,7 +5802,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -6111,7 +5818,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1788.4303241688485,
         "automationbench-aa": 398.1656088116605,
-        "terminalbench-4-0": 2821.0037711733476,
         "frontiercode-2-0": 755.7884450366817,
         "omniscience": 51.066551694235656,
         "gdp-pdf": 126.68551028917635,
@@ -6126,7 +5832,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -6147,7 +5852,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 764.4491831240096,
         "automationbench-aa": 229.21465658974327,
-        "terminalbench-4-0": 1820.3124615346474,
         "frontiercode-2-0": 723.5904246153874,
         "omniscience": 20.478638393929597,
         "gdp-pdf": 77.28754991104334,
@@ -6162,7 +5866,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -6183,7 +5886,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2040.3720560774755,
         "automationbench-aa": 411.01698245796894,
-        "terminalbench-4-0": 3795.6973675578197,
         "frontiercode-2-0": 1776.7169555656963,
         "omniscience": 47.66225969974194,
         "gdp-pdf": 156.27600748514746,
@@ -6198,7 +5900,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -6235,7 +5936,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 301.1179267817257,
         "automationbench-aa": 109.69279770857224,
-        "terminalbench-4-0": 470.14246838090446,
         "frontiercode-2-0": 226.71191429579957,
         "omniscience": 12.679885385408053,
         "gdp-pdf": 52.238183240275674,
@@ -6250,7 +5950,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -6287,7 +5986,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 375.89930830627645,
         "automationbench-aa": 37.825428581019864,
-        "terminalbench-4-0": 436.8859110479376,
         "gdp-pdf": 14.18440152805493
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -6297,7 +5995,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -6313,7 +6010,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1102.9651886414558,
         "automationbench-aa": 8.57869833382441,
-        "terminalbench-4-0": 92.00344402823623,
         "gdp-pdf": 5.514765195774859
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -6323,7 +6019,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -6355,7 +6050,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 145.450250683386,
         "automationbench-aa": 32.768125155663064,
-        "terminalbench-4-0": 183.79957899046832,
         "frontiercode-2-0": 149.69272158341954,
         "omniscience": 4.670914374945099,
         "gdp-pdf": 7.802458540298893,
@@ -6370,7 +6064,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -6439,7 +6132,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 3790.143120389122,
         "automationbench-aa": 75.17355091711231,
-        "terminalbench-4-0": 538.3241577310843,
         "gdp-pdf": 47.26850432203841,
         "hle-diamond": 56.80015996861701
       },
@@ -6450,7 +6142,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -6467,7 +6158,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 313.33574324509215,
         "automationbench-aa": 28.699467193939448,
-        "terminalbench-4-0": 264.0573453327208,
         "frontiercode-2-0": 407.11812391578144,
         "omniscience": 3.8522975382175257,
         "gdp-pdf": 15.886455781614064,
@@ -6482,7 +6172,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -6503,7 +6192,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 424.0696161095814,
         "automationbench-aa": 66.69497343580832,
-        "terminalbench-4-0": 295.83043960375807,
         "frontiercode-2-0": 353.06784183186244,
         "omniscience": 10.255180902268203,
         "gdp-pdf": 47.81617222724643,
@@ -6518,7 +6206,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -6539,7 +6226,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 560.1371443599415,
         "automationbench-aa": 103.12728456959768,
-        "terminalbench-4-0": 492.1402976662552,
         "frontiercode-2-0": 308.587008695163,
         "omniscience": 11.988139781525776,
         "gdp-pdf": 23.81212592031709,
@@ -6554,7 +6240,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -6591,7 +6276,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 216.6050000429705,
         "automationbench-aa": 519.0535221928258,
-        "terminalbench-4-0": 170.0329070422835,
         "gdp-pdf": 35.0687467517448,
         "hle-diamond": 121.82619962293393
       },
@@ -6602,7 +6286,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -6879,7 +6562,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 305.0986754559632,
         "automationbench-aa": 219.70388985186224,
-        "terminalbench-4-0": 376.8550530630987,
         "gdp-pdf": 113.80327896217062
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -6889,7 +6571,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7213,7 +6894,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 256.90976315901713,
         "automationbench-aa": 250.16716714124112,
-        "terminalbench-4-0": 701.3305462451784,
         "gdp-pdf": 195.11247929506456
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -7223,7 +6903,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7271,7 +6950,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1228.6837729234994,
         "automationbench-aa": 67.75827225165295,
-        "terminalbench-4-0": 749.1778645168271,
         "gdp-pdf": 194.9530463383369
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -7281,7 +6959,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7297,7 +6974,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 501.4757850923603,
         "automationbench-aa": 188.45400292930782,
-        "terminalbench-4-0": 522.0034140877465,
         "gdp-pdf": 93.01557855125344
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -7307,7 +6983,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7339,7 +7014,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 291.78416039547665,
         "automationbench-aa": 137.66198841854526,
-        "terminalbench-4-0": 301.6609711270853,
         "gdp-pdf": 52.34877890129634
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -7349,7 +7023,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7381,7 +7054,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 536.4130718569776,
         "automationbench-aa": 209.48979288257664,
-        "terminalbench-4-0": 705.5456498424134,
         "gdp-pdf": 113.48188001870597
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -7391,7 +7063,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7407,7 +7078,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 134.81888699176451,
         "automationbench-aa": 64.38814757188221,
-        "terminalbench-4-0": 194.57497185495987,
         "gdp-pdf": 9.593246909236253,
         "hle-diamond": 5.09128440117913
       },
@@ -7418,7 +7088,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -7435,7 +7104,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 491.79569183193075,
         "automationbench-aa": 149.00812983760045,
-        "terminalbench-4-0": 338.8301588682864,
         "gdp-pdf": 70.06217309472278
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -7445,7 +7113,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7461,7 +7128,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 85.06427980769458,
         "automationbench-aa": 50.268416188252765,
-        "terminalbench-4-0": 56.804186219146125,
         "gdp-pdf": 15.327745583281699
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -7471,7 +7137,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7487,7 +7152,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2887.5835197338815,
         "automationbench-aa": 240.55001252879828,
-        "terminalbench-4-0": 1388.7123408696868,
         "frontiercode-2-0": 493.0613885568684,
         "omniscience": 89.24089282120002,
         "gdp-pdf": 212.04883366883593,
@@ -7502,7 +7166,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -7523,7 +7186,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 197.04804869681544,
         "automationbench-aa": 82.01403952047383,
-        "terminalbench-4-0": 88.10089394092597,
         "gdp-pdf": 23.710320220711143
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -7533,7 +7195,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7549,7 +7210,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 95.55867113356538,
         "automationbench-aa": 40.83679219027342,
-        "terminalbench-4-0": 50.47666505924695,
         "gdp-pdf": 12.977361099432994
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -7559,7 +7219,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7575,7 +7234,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 717.6633744240673,
         "automationbench-aa": 178.01298823354006,
-        "terminalbench-4-0": 586.6782260332684,
         "gdp-pdf": 129.07105423992596
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -7585,7 +7243,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7601,7 +7258,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 425.911463581707,
         "automationbench-aa": 134.01309371077733,
-        "terminalbench-4-0": 360.68480444919453,
         "gdp-pdf": 53.13044519730661
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -7611,7 +7267,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7627,7 +7282,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 152.1842414099071,
         "automationbench-aa": 91.7342891180832,
-        "terminalbench-4-0": 108.0793008755862,
         "gdp-pdf": 16.740487679941502
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -7637,7 +7291,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7653,7 +7306,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 889.0210490465864,
         "automationbench-aa": 177.83863898994073,
-        "terminalbench-4-0": 820.1901842406133,
         "gdp-pdf": 150.94117642394588,
         "critpt-v2-hard": 327.5721361955966,
         "terminal-bench-science": 1151.6114082930646
@@ -7665,7 +7317,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "critpt-v2-hard": "evaluation:critpt-v2-hard",
           "terminal-bench-science": "evaluation:terminal-bench-science"
@@ -7683,7 +7334,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 307.83412314080005,
         "automationbench-aa": 110.55844144355869,
-        "terminalbench-4-0": 238.03681369424197,
         "gdp-pdf": 26.964029478743083
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -7693,7 +7343,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7733,7 +7382,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 565.931706239888,
         "automationbench-aa": 135.39173043367956,
-        "terminalbench-4-0": 478.1258847571972,
         "gdp-pdf": 84.12921863760712
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -7743,7 +7391,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -7759,7 +7406,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 431.7404131417179,
         "automationbench-aa": 127.63220046263605,
-        "terminalbench-4-0": 264.273747426353,
         "omniscience": 6.925871809708967,
         "gdp-pdf": 47.29377798045815,
         "hle-diamond": 58.18957353196615
@@ -7771,7 +7417,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
@@ -7789,7 +7434,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 229.27672668872606,
         "automationbench-aa": 89.10066453358048,
-        "terminalbench-4-0": 114.29972211897665,
         "omniscience": 4.111121501381148,
         "gdp-pdf": 24.748594283586776,
         "hle-diamond": 25.22386916118652
@@ -7801,7 +7445,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
@@ -7819,7 +7462,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2851.881741677626,
         "automationbench-aa": 254.6864754743094,
-        "terminalbench-4-0": 1583.6881204906151,
         "frontiercode-2-0": 629.6734384714307,
         "omniscience": 77.57347012629945,
         "gdp-pdf": 266.77466956294336,
@@ -7834,7 +7476,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -7855,7 +7496,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 249.21274509195058,
         "automationbench-aa": 97.33106647660343,
-        "terminalbench-4-0": 153.72268071158095,
         "omniscience": 4.230226997598764,
         "gdp-pdf": 26.34107589045566,
         "hle-diamond": 29.667835499688866
@@ -7867,7 +7507,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
@@ -7885,7 +7524,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 213.3714300794565,
         "automationbench-aa": 51.27566920299149,
-        "terminalbench-4-0": 84.6347913046369,
         "omniscience": 0.16331792054889152,
         "gdp-pdf": 15.368421380578072,
         "hle-diamond": 1.765381390992769
@@ -7897,7 +7535,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
@@ -7915,7 +7552,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 805.6638534184958,
         "automationbench-aa": 174.77713191411797,
-        "terminalbench-4-0": 592.8147028887311,
         "omniscience": 13.85148229923509,
         "gdp-pdf": 111.43397161150594,
         "hle-diamond": 134.98252147678977
@@ -7927,7 +7563,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
@@ -7945,7 +7580,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 811.0435260173956,
         "automationbench-aa": 208.96695580298788,
-        "terminalbench-4-0": 691.9847255819304,
         "frontiercode-2-0": 432.4460502830205,
         "omniscience": 12.160372335761782,
         "gdp-pdf": 73.25539750189138,
@@ -7960,7 +7594,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -7981,7 +7614,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 274.4315896342671,
         "automationbench-aa": 136.1191936073129,
-        "terminalbench-4-0": 332.81686058950953,
         "frontiercode-2-0": 152.06268601184487,
         "omniscience": 2.572266526101127,
         "gdp-pdf": 27.995821662883266,
@@ -7996,7 +7628,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8017,7 +7648,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1786.7420652489473,
         "automationbench-aa": 309.5094650108329,
-        "terminalbench-4-0": 1815.4232971217828,
         "frontiercode-2-0": 889.8695429234735,
         "omniscience": 46.84642261759186,
         "gdp-pdf": 221.87728515661993,
@@ -8032,7 +7662,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8053,7 +7682,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 672.6997535805515,
         "automationbench-aa": 169.30735376230308,
-        "terminalbench-4-0": 641.5999248326947,
         "frontiercode-2-0": 291.2677114081242,
         "omniscience": 4.203255193311048,
         "gdp-pdf": 37.22196067475545,
@@ -8068,7 +7696,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8089,7 +7716,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1133.9644791202825,
         "automationbench-aa": 235.90975665364317,
-        "terminalbench-4-0": 989.7854382235198,
         "frontiercode-2-0": 466.00474982173404,
         "omniscience": 23.124106838324003,
         "gdp-pdf": 127.61146464652083,
@@ -8104,7 +7730,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8125,7 +7750,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 621.1971295754922,
         "automationbench-aa": 179.5947859125164,
-        "terminalbench-4-0": 799.4222553310117,
         "frontiercode-2-0": 318.79266285056707,
         "omniscience": 12.085043174863381,
         "gdp-pdf": 57.948124740806904,
@@ -8140,7 +7764,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8161,7 +7784,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 76.05730044480813,
         "automationbench-aa": 37.4271978839521,
-        "terminalbench-4-0": 42.738038987939476,
         "frontiercode-2-0": 29.81663948933896,
         "omniscience": 3.844453191970727,
         "gdp-pdf": 10.815462926928847,
@@ -8176,7 +7798,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8197,7 +7818,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1416.4765895551639,
         "automationbench-aa": 327.91431645387945,
-        "terminalbench-4-0": 1358.2656790082635,
         "frontiercode-2-0": 672.895128574229,
         "omniscience": 44.927546761339904,
         "gdp-pdf": 239.2452282984754,
@@ -8212,7 +7832,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8233,7 +7852,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 353.1578872623561,
         "automationbench-aa": 130.5100666939126,
-        "terminalbench-4-0": 474.36361144526205,
         "frontiercode-2-0": 181.84204088369273,
         "omniscience": 7.351076781575439,
         "gdp-pdf": 27.317063008868367,
@@ -8248,7 +7866,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8269,7 +7886,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 214.03070034597746,
         "automationbench-aa": 56.47114364657631,
-        "terminalbench-4-0": 162.97500594931915,
         "frontiercode-2-0": 156.87546742228335,
         "omniscience": 0.2079650808450391,
         "gdp-pdf": 9.059214301998615,
@@ -8284,7 +7900,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8305,7 +7920,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 761.0350077311501,
         "automationbench-aa": 199.79874119548856,
-        "terminalbench-4-0": 1041.735624441882,
         "frontiercode-2-0": 382.72474413874176,
         "omniscience": 17.44628661879263,
         "gdp-pdf": 90.51690433102709,
@@ -8320,7 +7934,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8341,7 +7954,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 253.22780145530544,
         "automationbench-aa": 84.98674835325288,
-        "terminalbench-4-0": 375.63309730208914,
         "gdp-pdf": 24.06094255180406,
         "terminal-bench-science": 518.3859343115149
       },
@@ -8352,7 +7964,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "terminal-bench-science": "evaluation:terminal-bench-science"
         }
@@ -8369,7 +7980,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 70.19539139556878,
         "automationbench-aa": 67.55622890567842,
-        "terminalbench-4-0": 179.51506798842163,
         "gdp-pdf": 8.650876583095876,
         "terminal-bench-science": 169.87040322535537
       },
@@ -8380,7 +7990,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "terminal-bench-science": "evaluation:terminal-bench-science"
         }
@@ -8397,7 +8006,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 779.7793444364722,
         "automationbench-aa": 118.07492328329255,
-        "terminalbench-4-0": 849.3841113907914,
         "frontiercode-2-0": 434.93672440403566,
         "omniscience": 20.406590496240142,
         "gdp-pdf": 89.56994639627156,
@@ -8412,7 +8020,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8433,7 +8040,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 164.26764346671894,
         "automationbench-aa": 59.66932549290103,
-        "terminalbench-4-0": 250.23405044817204,
         "gdp-pdf": 6.085153424027536,
         "hle-diamond": 1.006012544554835,
         "terminal-bench-science": 251.51196058542095
@@ -8445,7 +8051,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond",
           "terminal-bench-science": "evaluation:terminal-bench-science"
@@ -8463,7 +8068,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 440.22696079731406,
         "automationbench-aa": 98.77960992859569,
-        "terminalbench-4-0": 482.87740854470786,
         "gdp-pdf": 44.8632890754436,
         "terminal-bench-science": 770.6031408580676
       },
@@ -8474,7 +8078,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "terminal-bench-science": "evaluation:terminal-bench-science"
         }
@@ -8491,7 +8094,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 934.5611312133633,
         "automationbench-aa": 180.6709441182965,
-        "terminalbench-4-0": 858.2667642061548,
         "frontiercode-2-0": 381.6245376373418,
         "omniscience": 9.218178296950601,
         "gdp-pdf": 52.52238672502819,
@@ -8506,7 +8108,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8527,7 +8128,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 191.1484901753901,
         "automationbench-aa": 106.16906449925305,
-        "terminalbench-4-0": 337.4537026849723,
         "frontiercode-2-0": 121.19486742564456,
         "omniscience": 2.42837594621571,
         "gdp-pdf": 22.270777431103213,
@@ -8542,7 +8142,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8563,7 +8162,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2584.159455781228,
         "automationbench-aa": 290.87115221403934,
-        "terminalbench-4-0": 2254.8462225040234,
         "frontiercode-2-0": 828.4266282311257,
         "omniscience": 37.64991425816291,
         "gdp-pdf": 202.54068399555382,
@@ -8578,7 +8176,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8599,7 +8196,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 505.14988811545686,
         "automationbench-aa": 140.99517163396786,
-        "terminalbench-4-0": 601.3402249254618,
         "frontiercode-2-0": 235.11502091802737,
         "omniscience": 3.590571359780926,
         "gdp-pdf": 27.832357576304425,
@@ -8614,7 +8210,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8635,7 +8230,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1095.705105091128,
         "automationbench-aa": 204.13944041079156,
-        "terminalbench-4-0": 1093.2014986890792,
         "frontiercode-2-0": 420.09585495734706,
         "omniscience": 17.1590108905347,
         "gdp-pdf": 87.14802895342078,
@@ -8650,7 +8244,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8671,7 +8264,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 397.4165089328363,
         "automationbench-aa": 135.15832945499017,
-        "terminalbench-4-0": 481.908792530264,
         "frontiercode-2-0": 326.8722255031625,
         "omniscience": 8.978190390979725,
         "gdp-pdf": 31.16713168499024,
@@ -8686,7 +8278,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8707,7 +8298,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 141.7899048431669,
         "automationbench-aa": 99.46124870445867,
-        "terminalbench-4-0": 131.44957868789024,
         "frontiercode-2-0": 105.07001785158587,
         "omniscience": 2.3317893254270032,
         "gdp-pdf": 10.745051044353586,
@@ -8722,7 +8312,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8743,7 +8332,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1052.416992310594,
         "automationbench-aa": 250.86122335026673,
-        "terminalbench-4-0": 1544.9070253359018,
         "frontiercode-2-0": 1037.888790178259,
         "omniscience": 129.13749015816862,
         "gdp-pdf": 224.92110955396893,
@@ -8758,7 +8346,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8779,7 +8366,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 293.51091016182846,
         "automationbench-aa": 118.87662381320938,
-        "terminalbench-4-0": 318.6366888547987,
         "frontiercode-2-0": 226.22170228281766,
         "omniscience": 4.964158427564703,
         "gdp-pdf": 17.754123005672636,
@@ -8794,7 +8380,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8815,7 +8400,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 298.65645770949516,
         "automationbench-aa": 103.81220342194948,
-        "terminalbench-4-0": 280.45399433625556,
         "frontiercode-2-0": 242.08901686567964,
         "omniscience": 0.23715214416640015,
         "gdp-pdf": 10.620149662748085,
@@ -8830,7 +8414,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8851,7 +8434,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 570.9870492209319,
         "automationbench-aa": 168.2890608187671,
-        "terminalbench-4-0": 764.9436451720084,
         "frontiercode-2-0": 475.51024145272413,
         "omniscience": 25.167438086734347,
         "gdp-pdf": 67.56310971136882,
@@ -8866,7 +8448,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8887,7 +8468,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 585.1856228782808,
         "automationbench-aa": 138.46864392328712,
-        "terminalbench-4-0": 481.7570195504482,
         "frontiercode-2-0": 418.33929735839837,
         "omniscience": 11.979517520196834,
         "gdp-pdf": 33.290972480788476,
@@ -8902,7 +8482,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8923,7 +8502,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 156.35252772835423,
         "automationbench-aa": 94.63962149573115,
-        "terminalbench-4-0": 156.18063678537098,
         "frontiercode-2-0": 124.73647844929604,
         "omniscience": 0.9989803391443972,
         "gdp-pdf": 17.908390640355705,
@@ -8938,7 +8516,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8959,7 +8536,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1165.6218572055163,
         "automationbench-aa": 212.45429647001745,
-        "terminalbench-4-0": 1126.0361331541321,
         "frontiercode-2-0": 984.2869683594929,
         "omniscience": 128.20542294821172,
         "gdp-pdf": 191.70822440926028,
@@ -8974,7 +8550,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -8995,7 +8570,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 314.27653918050527,
         "automationbench-aa": 119.12032497231208,
-        "terminalbench-4-0": 322.7227942679965,
         "frontiercode-2-0": 261.89147709973804,
         "omniscience": 3.0080799623688836,
         "gdp-pdf": 20.374388519439457,
@@ -9010,7 +8584,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -9031,7 +8604,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 712.9066340597868,
         "automationbench-aa": 158.17629504268896,
-        "terminalbench-4-0": 604.8842372341028,
         "frontiercode-2-0": 541.4822613386089,
         "omniscience": 23.332450873904826,
         "gdp-pdf": 58.171334139974626,
@@ -9046,7 +8618,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -9067,7 +8638,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 502.2638639129052,
         "automationbench-aa": 113.60799137546675,
-        "terminalbench-4-0": 433.5432833413008,
         "frontiercode-2-0": 272.8200842924786,
         "omniscience": 8.991574160582267,
         "gdp-pdf": 26.03797355429916,
@@ -9082,7 +8652,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -9103,7 +8672,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 180.50649247292029,
         "automationbench-aa": 78.08892047917438,
-        "terminalbench-4-0": 171.907378521522,
         "frontiercode-2-0": 111.79668774509966,
         "omniscience": 0.4556666840380599,
         "gdp-pdf": 13.304798259643988,
@@ -9118,7 +8686,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -9139,7 +8706,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 903.9799959356503,
         "automationbench-aa": 154.12630304060826,
-        "terminalbench-4-0": 724.8493656377267,
         "frontiercode-2-0": 536.994807506324,
         "omniscience": 69.65716231714342,
         "gdp-pdf": 97.62784934949094,
@@ -9154,7 +8720,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -9175,7 +8740,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 368.315863262828,
         "automationbench-aa": 99.36493969239118,
-        "terminalbench-4-0": 324.424749482741,
         "frontiercode-2-0": 194.50759131334613,
         "omniscience": 2.7405166864761994,
         "gdp-pdf": 17.169449901222546,
@@ -9190,7 +8754,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -9211,7 +8774,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 592.7911479162298,
         "automationbench-aa": 126.96744904609699,
-        "terminalbench-4-0": 487.518935641684,
         "frontiercode-2-0": 325.5467933988325,
         "omniscience": 26.140205907813787,
         "gdp-pdf": 48.440008710774066,
@@ -9226,7 +8788,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -9247,7 +8808,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 574.6675831112473,
         "automationbench-aa": 11.200412094133968,
-        "terminalbench-4-0": 105.60218164115079,
         "frontiercode-2-0": 1116.952687835276,
         "omniscience": 22.518199976136902,
         "gdp-pdf": 39.406917938973535,
@@ -9262,7 +8822,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -9299,7 +8858,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 223.07303846892884,
         "automationbench-aa": 41.75276146495314,
-        "terminalbench-4-0": 213.34458502011032,
         "gdp-pdf": 93.04548629379015,
         "hle-diamond": 122.37874977437129
       },
@@ -9310,7 +8868,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -9375,7 +8932,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 57.677168956145984,
         "automationbench-aa": 65.44212462311897,
-        "terminalbench-4-0": 362.7560678940817,
         "gdp-pdf": 44.728562629789835
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -9385,7 +8941,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -9417,7 +8972,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 316.18780683553547,
         "automationbench-aa": 87.00150317464657,
-        "terminalbench-4-0": 257.0307064419646,
         "frontiercode-2-0": 114.12185525279811,
         "omniscience": 4.774254825384653,
         "gdp-pdf": 41.15386487400782,
@@ -9432,7 +8986,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -9469,7 +9022,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2184.2601446960184,
         "automationbench-aa": 246.94445076493244,
-        "terminalbench-4-0": 2356.302106578534,
         "frontiercode-2-0": 2045.8105659826385,
         "omniscience": 11.184152451038779,
         "gdp-pdf": 71.72869211884576,
@@ -9484,7 +9036,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -9569,7 +9120,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 294.1491761795055,
         "automationbench-aa": 60.580166139827945,
-        "terminalbench-4-0": 544.994746378087,
         "gdp-pdf": 27.0257081681786
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -9579,7 +9129,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -9627,7 +9176,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 291.2669155668213,
         "automationbench-aa": 41.662725657664936,
-        "terminalbench-4-0": 568.5359112681402,
         "gdp-pdf": 10.702510885293096
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -9637,7 +9185,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -9653,7 +9200,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 853.2294381679397,
         "automationbench-aa": 191.41500763096303,
-        "terminalbench-4-0": 1138.8821828102487,
         "gdp-pdf": 53.67943271840288
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -9663,7 +9209,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -9679,7 +9224,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1545.069640956196,
         "automationbench-aa": 244.65258413436032,
-        "terminalbench-4-0": 1174.1555715338368,
         "gdp-pdf": 76.64846774235717,
         "terminal-bench-science": 1387.0959114374227
       },
@@ -9690,7 +9234,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "terminal-bench-science": "evaluation:terminal-bench-science"
         }
@@ -9707,7 +9250,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 411.83569012738343,
         "automationbench-aa": 111.0110325783647,
-        "terminalbench-4-0": 377.94768402142745,
         "gdp-pdf": 22.62771028852259
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -9717,7 +9259,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -9733,7 +9274,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 964.2417026781926,
         "automationbench-aa": 199.37672935408145,
-        "terminalbench-4-0": 994.3661203779344,
         "gdp-pdf": 69.24193253699505
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -9743,7 +9283,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -9759,7 +9298,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1166.0183167730413,
         "automationbench-aa": 236.3612764299136,
-        "terminalbench-4-0": 1183.4723267006646,
         "frontiercode-2-0": 726.3485082997006,
         "omniscience": 27.396634098340552,
         "gdp-pdf": 84.34387532599906,
@@ -9774,7 +9312,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -9795,7 +9332,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2100.576615764124,
         "automationbench-aa": 412.4966040207378,
-        "terminalbench-4-0": 1803.4792779696488,
         "frontiercode-2-0": 1428.6783105752845,
         "omniscience": 45.08560409015745,
         "gdp-pdf": 187.52709806800448,
@@ -9810,7 +9346,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -9831,7 +9366,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1096.0256078650361,
         "automationbench-aa": 169.55245252364782,
-        "terminalbench-4-0": 997.001652763475,
         "frontiercode-2-0": 638.3995552108343,
         "omniscience": 18.180162476835342,
         "gdp-pdf": 58.33905963514243,
@@ -9846,7 +9380,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -9867,7 +9400,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2445.371791350826,
         "automationbench-aa": 451.0553534588775,
-        "terminalbench-4-0": 2256.143218162951,
         "frontiercode-2-0": 1685.388755004588,
         "omniscience": 63.62330582364424,
         "gdp-pdf": 243.23860560837468,
@@ -9882,7 +9414,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -9967,7 +9498,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1154.9497045237595,
         "automationbench-aa": 189.54810403267692,
-        "terminalbench-4-0": 1664.2527374919678,
         "frontiercode-2-0": 517.342650147573,
         "omniscience": 34.563482842072496,
         "gdp-pdf": 84.65736174956308,
@@ -9982,7 +9512,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -10003,7 +9532,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 805.6846130545925,
         "automationbench-aa": 466.53695503828624,
-        "terminalbench-4-0": 2551.908545728688,
         "gdp-pdf": 100.91576722802505,
         "hle-diamond": 371.7629013940741
       },
@@ -10014,7 +9542,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
         }
@@ -10031,7 +9558,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1140.993471536254,
         "automationbench-aa": 388.77451470331965,
-        "terminalbench-4-0": 1296.6571870259002,
         "frontiercode-2-0": 837.3678723490062,
         "omniscience": 168.7789351529151,
         "gdp-pdf": 261.062510313371,
@@ -10046,7 +9572,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -10067,7 +9592,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 237.02039667374365,
         "automationbench-aa": 30.132507123298836,
-        "terminalbench-4-0": 308.6211349381697,
         "frontiercode-2-0": 221.47172735822284,
         "omniscience": 16.38447793612619,
         "gdp-pdf": 70.29647451499841,
@@ -10082,7 +9606,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -10103,7 +9626,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 559.2407465660874,
         "automationbench-aa": 78.72835586969435,
-        "terminalbench-4-0": 821.5282045301384,
         "frontiercode-2-0": 557.8104573475581,
         "omniscience": 41.49767313191431,
         "gdp-pdf": 112.88546216608195,
@@ -10118,7 +9640,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -10139,7 +9660,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 4098.226290624146,
         "automationbench-aa": 160.55479820874362,
-        "terminalbench-4-0": 2460.0061606581153,
         "frontiercode-2-0": 1117.509364014315,
         "omniscience": 10.660203043349247,
         "gdp-pdf": 203.56102072179687,
@@ -10154,7 +9674,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -10175,7 +9694,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 548.3632369159005,
         "automationbench-aa": 150.42144731941715,
-        "terminalbench-4-0": 951.4293270442172,
         "frontiercode-2-0": 650.4825197232935,
         "omniscience": 70.92630237593687,
         "gdp-pdf": 173.08139378466169,
@@ -10190,7 +9708,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -10211,7 +9728,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 158.33015726023402,
         "automationbench-aa": 55.03012806316515,
-        "terminalbench-4-0": 207.95287606071307,
         "frontiercode-2-0": 128.1327316399007,
         "omniscience": 16.631268853232733,
         "gdp-pdf": 65.07141790595445,
@@ -10226,7 +9742,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -10263,7 +9778,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 1463.1067992679486,
         "automationbench-aa": 657.179907110664,
-        "terminalbench-4-0": 1733.6901661984261,
         "omniscience": 119.20817976809332,
         "gdp-pdf": 140.8045708257354
       },
@@ -10274,7 +9788,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
@@ -10291,7 +9804,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 480.2058952686077,
         "automationbench-aa": 407.2411746864839,
-        "terminalbench-4-0": 1001.6294052188608,
         "omniscience": 16.75769523333344,
         "gdp-pdf": 77.61473476553333
       },
@@ -10302,7 +9814,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
@@ -10319,7 +9830,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 23788.276964613357,
         "automationbench-aa": 727.8026429409575,
-        "terminalbench-4-0": 1282.5657376666954,
         "frontiercode-2-0": 1057.0211985007156,
         "omniscience": 29.9142124030192,
         "gdp-pdf": 124.44818598374434,
@@ -10334,7 +9844,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -10355,7 +9864,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 4330.1465983561375,
         "automationbench-aa": 573.751685559918,
-        "terminalbench-4-0": 5778.592324507596,
         "frontiercode-2-0": 2913.81492880612,
         "omniscience": 291.09100002262625,
         "gdp-pdf": 134.73488943051572,
@@ -10370,7 +9878,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -10391,7 +9898,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 3402.1325346858603,
         "automationbench-aa": 378.06391993715215,
-        "terminalbench-4-0": 3299.0370530211817,
         "frontiercode-2-0": 2082.531342278896,
         "omniscience": 113.09052186667441,
         "gdp-pdf": 165.65502615310646,
@@ -10406,7 +9912,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -10651,7 +10156,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 716.1418415482034,
         "automationbench-aa": 373.0060604150817,
-        "terminalbench-4-0": 2380.179805305428,
         "gdp-pdf": 99.43429150208438
       },
       "captured_at": "2026-11-19T16:35:11.911Z",
@@ -10661,7 +10165,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "gdp-pdf": "evaluation:gdp-pdf"
         }
       }
@@ -10677,7 +10180,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2018.5926501832612,
         "automationbench-aa": 589.9506188993171,
-        "terminalbench-4-0": 3024.8348950572245,
         "omniscience": 30.143160306354535,
         "gdp-pdf": 177.49657184214817,
         "hle-diamond": 728.4648156601986
@@ -10689,7 +10191,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
           "hle-diamond": "evaluation:hle-diamond"
@@ -10723,7 +10224,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 742.594633779155,
         "automationbench-aa": 165.4509257776198,
-        "terminalbench-4-0": 2007.7954632956444,
         "frontiercode-2-0": 510.14601502411136,
         "omniscience": 2.6147455052161037,
         "gdp-pdf": 52.86502092215767,
@@ -10738,7 +10238,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -10759,7 +10258,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2287.4019675296427,
         "automationbench-aa": 341.5597551970173,
-        "terminalbench-4-0": 2395.8130671204285,
         "frontiercode-2-0": 1303.9731087610844,
         "omniscience": 56.93149718648532,
         "gdp-pdf": 349.91780283159414,
@@ -10774,7 +10272,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",
@@ -10795,7 +10292,6 @@
       "evaluation_times_s": {
         "aa-briefcase": 2883.3421052490894,
         "automationbench-aa": 359.2655928180027,
-        "terminalbench-4-0": 3217.084693444772,
         "frontiercode-2-0": 1383.9043000532001,
         "omniscience": 57.15459717871659,
         "gdp-pdf": 278.9870483218145,
@@ -10810,7 +10306,6 @@
         "evaluation_times_s": {
           "aa-briefcase": "evaluation:aa-briefcase",
           "automationbench-aa": "evaluation:automationbench-aa",
-          "terminalbench-4-0": "evaluation:terminalbench-4-0",
           "frontiercode-2-0": "evaluation:frontiercode-2-0",
           "omniscience": "evaluation:omniscience",
           "gdp-pdf": "evaluation:gdp-pdf",

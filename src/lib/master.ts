@@ -30,7 +30,7 @@ const masterEvaluationOrder=[
   omniscienceBusinessEvaluationId,
   "strategy-ops-index",
   "aa-briefcase-presentation-elo",
-  "terminal-bench-4-0",
+  "terminal-bench-4-1",
   "frontiercode-2-0",
   sweAtlasEvaluationId,
   "intelligence-index",
@@ -53,7 +53,7 @@ const masterEvaluationLabels:Record<string,string>={
   [omniscienceBusinessEvaluationId]:"Omniscience Business",
   "strategy-ops-index":"Strategy and Ops Index",
   "aa-briefcase-presentation-elo":"Presentation Elo",
-  "terminal-bench-4-0":"Terminal-Bench 4.0",
+  "terminal-bench-4-1":"Terminal-Bench 4.1",
   "frontiercode-2-0":"FrontierCode 2.0",
   [sweAtlasEvaluationId]:"SWE-Atlas QnA",
   "intelligence-index":"Intelligence Index",
@@ -73,7 +73,7 @@ export function masterEvaluationLabel(evaluation:Pick<Evaluation,"id"|"display_n
   return masterEvaluationLabels[evaluation.id]??evaluation.display_name;
 }
 
-const aggregateDimensionIds=[
+export const aggregateDimensionIds=[
   "aa-briefcase-analytical-quality-elo",
   "aa-briefcase-presentation-elo",
   "aa-briefcase-rubric-score",
@@ -82,7 +82,7 @@ const aggregateDimensionIds=[
   "finance-accounting",
   "intelligence-index",
   "strategy-ops-index",
-  "terminal-bench-4-0",
+  "terminal-bench-4-1",
 ] as const;
 
 export function averageMasterRank(row:Pick<MasterTableRow,"cells">){

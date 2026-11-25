@@ -93,7 +93,7 @@ Use the `slug` field from the bundled evaluation catalog. [Leaderboard catalog](
 |---|---|
 | `briefcase-v1-1` | Briefcase v1.1 |
 | `automationbench-aa` | AutomationBench-AA |
-| `terminal-bench-4-0` | Terminal-Bench 4.0 |
+| `terminal-bench-4-1` | Terminal-Bench 4.1 |
 | `gdp-pdf` | GDP.pdf |
 | `critpt` | CritPt |
 | `aa-omniscience-accuracy` | AA-Omniscience Accuracy |

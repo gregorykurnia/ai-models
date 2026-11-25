@@ -9,7 +9,11 @@ import { parseArgs } from "node:util";
 const pages = [
   { key: "aa-briefcase", url: "https://artificialanalysis.ai/evaluations/aa-briefcase", scoreCharts: ["AA-Briefcase Elo"] },
   { key: "automationbench-aa", url: "https://artificialanalysis.ai/evaluations/automationbench-aa", scoreCharts: ["AutomationBench-AA: Score"] },
-  { key: "terminalbench-4-0", url: "https://artificialanalysis.ai/evaluations/terminalbench-4-0", scoreCharts: ["Terminal-Bench 4.0: Score"] },
+  {
+    key: "terminalbench-4-1", url: "https://artificialanalysis.ai/evaluations/terminalbench-4-1",
+    scoreCharts: ["Terminal-Bench 4.1: Score"],
+    requiredCharts: ["Terminal-Bench 4.1: Score vs. Cost per Task", "Terminal-Bench 4.1: Cost per Task", "Terminal-Bench 4.1: Time per Task"],
+  },
   { key: "frontiercode-2-0", url: "https://artificialanalysis.ai/evaluations/frontiercode-2-0", scoreCharts: ["FrontierCode-AA 2.0: Score"] },
   {
     key: "swe-atlas-qna-aa", url: "https://artificialanalysis.ai/agents/coding",
@@ -102,11 +106,11 @@ export function completeModelSelectionCount(label) {
   return count !== null && count > 0 && Number.isSafeInteger(count) ? count : null;
 }
 
-/** @param {{ title: string, selectorLabels: string[], items: unknown[] }[]} charts @param {string} title */
+/** @param {{ title: string, selectorLabels?: string[], items: unknown[] }[]} charts @param {string} title */
 export function assertCompleteScoreChart(charts, title) {
   const matches = charts.filter(chart => chart.title === title);
   if (matches.length !== 1) throw new Error(`expected one score chart "${title}", found ${matches.length}`);
-  const { selectorLabels, items } = matches[0];
+  const { selectorLabels = [], items } = matches[0];
   if (selectorLabels.length !== 1) {
     throw new Error(`score chart "${title}" needs one model selector, found ${selectorLabels.length}`);
   }
@@ -234,6 +238,10 @@ async function capturePage(page, target, capturedAt) {
   await page.waitForTimeout(800);
   const captured = target.breakdownSeries ? await captureBenchmarkChart(scope, target) : await captureEvaluationCharts(scope);
   for (const title of target.scoreCharts) assertCompleteScoreChart(captured.charts, title);
+  for (const title of target.requiredCharts ?? []) {
+    const count = captured.charts.filter(chart => chart.title === title).length;
+    if (count !== 1) throw new Error(`expected one chart "${title}", found ${count}`);
+  }
   // Keep the score, Elo, index, cost, and release charts; the import reads only these.
   if (target.scorePanel) {
     captured.charts = captured.charts.filter(chart => target.scoreCharts.includes(chart.title))
@@ -241,7 +249,11 @@ async function capturePage(page, target, capturedAt) {
   } else if (!target.breakdownSeries) {
     captured.charts = captured.charts
       .filter(chart => USED_CHART.test(chart.title) && !UNUSED_CHART.test(chart.title))
-      .map(({ title, items }) => ({ title, items: items.map(slim) }));
+      .map(({ title, items, selectorLabels }) => ({
+        title,
+        ...(target.requiredCharts && target.scoreCharts.includes(title) ? { selectorLabels } : {}),
+        items: items.map(slim),
+      }));
   }
   const sourceUrl = target.breakdownSeries ? response.url() : target.url;
   return { key: target.key, source_url: sourceUrl, captured_at: capturedAt, selectors, ...captured };

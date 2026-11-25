@@ -29,10 +29,60 @@ function read(items: unknown[], chartSeries = seriesKey) {
 
 test("capture without --only includes all 16 evaluation targets", () => {
   assert.deepEqual(selectCaptureTargets([], undefined).map(target => target.key), [
-    "aa-briefcase", "automationbench-aa", "terminalbench-4-0", "frontiercode-2-0", "swe-atlas-qna-aa",
+    "aa-briefcase", "automationbench-aa", "terminalbench-4-1", "frontiercode-2-0", "swe-atlas-qna-aa",
     "gdp-pdf", "critpt", "critpt-v2-full", "critpt-v2-hard", "omniscience", "omniscience-business", "mmmu-pro",
     "finance-and-accounting", "economics", "strategy-and-ops", "artificial-analysis-intelligence-index",
   ]);
+});
+
+test("Terminal-Bench requires all four charts before replacing a capture and a retry can write it", async t => {
+  const cwd = await mkdtemp(join(tmpdir(), "terminal-bench-capture-"));
+  t.after(() => rm(cwd, { recursive: true, force: true }));
+  const out = join(cwd, "data", "aa-captures");
+  await mkdir(out, { recursive: true });
+  const saved = join(out, "terminalbench-4-1.json");
+  await writeFile(saved, "previous capture");
+  const titles = ["Score", "Score vs. Cost per Task", "Cost per Task", "Time per Task"]
+    .map(name => `Terminal-Bench 4.1: ${name}`);
+  const playwright = join(cwd, "playwright.mjs");
+  await writeFile(playwright, `
+    import assert from "node:assert/strict";
+    const titles = ${JSON.stringify(titles)};
+    const charts = titles.filter(title => title !== process.env.OMIT_CHART).map(title => ({
+      title, selectorLabels: ["2 of 2 models"], items: [{ id: "a", value: 0.68 }, { id: "b", value: 0 }],
+    }));
+    export const chromium = { async launch() { return {
+      async newPage() { return {
+        async goto(url) {
+          assert.equal(url, "https://artificialanalysis.ai/evaluations/terminalbench-4-1");
+          return { ok: () => true };
+        },
+        async waitForTimeout() {},
+        locator(selector) {
+          assert.equal(selector, "body");
+          return {
+            locator: () => ({ filter: () => ({ evaluateAll: async () => [] }) }),
+            evaluate: async () => ({ charts, tables: [] }),
+          };
+        },
+        async close() {},
+      }; },
+      async close() {},
+    }; } };
+  `);
+  const script = fileURLToPath(new URL("../scripts/capture-aa-evaluations.mjs", import.meta.url));
+  const run = (omitted = "") => promisify(execFile)(process.execPath, [script, "--only", "terminalbench-4-1"], {
+    cwd, env: { ...process.env, PLAYWRIGHT_MODULE: playwright, OMIT_CHART: omitted },
+  });
+  for (const title of titles) {
+    await assert.rejects(run(title), (error: Error) => error.message.includes(`"${title}", found 0`));
+    assert.equal(await readFile(saved, "utf8"), "previous capture");
+    assert.deepEqual(await readdir(out), ["terminalbench-4-1.json"]);
+  }
+  await run();
+  const capture = JSON.parse(await readFile(saved, "utf8"));
+  assert.deepEqual(capture.charts[0].selectorLabels, ["2 of 2 models"]);
+  assert.deepEqual(capture.charts[0].items.map((row: { value: number }) => row.value), [0.68, 0]);
 });
 
 test("captures the SWE-Atlas-QnA fraction from the breakdown, including zero and long setup labels", () => {

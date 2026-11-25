@@ -9,7 +9,8 @@ import { promisify } from "node:util";
 import { test, type TestContext } from "node:test";
 import { assertCompleteScoreChart, completeModelSelectionCount, selectCaptureTargets } from "../scripts/capture-aa-evaluations.mjs";
 import type { Dataset } from "../src/lib/contract";
-import { aggregateMaster, averageMasterRank, masterIdentityKey, masterLeaderboardCsv, masterTableRows, orderMasterEvaluations, sortMaster } from "../src/lib/master";
+import { aggregateDimensionIds, aggregateMaster, averageMasterRank, masterIdentityKey, masterLeaderboardCsv, masterTableRows, orderMasterEvaluations, sortMaster } from "../src/lib/master";
+import { terminalBenchRedirect } from "../src/lib/leaderboard-redirects";
 import { calculateSuitability } from "../src/lib/suitability";
 import { buildPlannerData } from "../src/lib/suitability-data";
 
@@ -46,6 +47,79 @@ test("AA capture requires the score chart's own complete selector and matching r
     /incomplete score chart "AA-Omniscience Accuracy" \(1 of 2 models, 2 scores\)/,
   );
   assert.throws(() => assertCompleteScoreChart([{ ...score, items: score.items.slice(0, 1) }], score.title), /2 of 2 models, 1 scores/);
+});
+
+test("Terminal-Bench imports complete scores, retires the previous snapshot, and contributes to average rank", async t => {
+  const { data, run } = await importWorkspace(t);
+  const datasetPath = join(data, "leaderboards.json");
+  const capturePath = join(data, "aa-captures", "terminalbench-4-1.json");
+  const original = JSON.parse(await readFile(datasetPath, "utf8")) as Dataset;
+  const { from, to } = terminalBenchRedirect;
+  const retiredCaptureKey = from.replace("terminal-bench-", "terminalbench-");
+  const legacy = original.evaluations.find(evaluation => evaluation.id === from || evaluation.id === to)!;
+  const text = JSON.stringify(original)
+    .replaceAll(legacy.id, from)
+    .replaceAll("terminalbench-4-1", retiredCaptureKey)
+    .replaceAll(legacy.display_name, "Previous Terminal Bench");
+  await writeFile(datasetPath, text);
+
+  const longName = `Model ${"with a long name ".repeat(25).trim()}`;
+  const models = [
+    { id: "fixture-best", name: "Top model", creatorName: "Evaluation fixture", value: 0.682 },
+    { id: "fixture-bottom", name: longName, creatorName: "Evaluation fixture", value: 0 },
+  ];
+  const title = "Terminal-Bench 4.1: Score";
+  const costs = [{ ...models[0], costPerTask: 0.64 }];
+  const capture = {
+    key: "terminalbench-4-1", source_url: "https://artificialanalysis.ai/evaluations/terminalbench-4-1",
+    captured_at: "2026-11-24", tables: [],
+    charts: [
+      { title, selectorLabels: ["2 of 2 models"], items: models },
+      { title: `${title} vs. Cost per Task`, items: costs },
+    ],
+  };
+  const writeCapture = (charts: { title: string; selectorLabels?: string[]; items: unknown[] }[] = capture.charts) =>
+    writeFile(capturePath, JSON.stringify({ ...capture, charts }));
+  const score = capture.charts[0];
+  const failures = [
+    { charts: [{ ...score, selectorLabels: ["1 of 2 models"] }, capture.charts[1]], error: /incomplete score chart/ },
+    { charts: [score], error: /cost chart .* is missing/ },
+    { charts: [{ ...score, items: [models[0], { ...models[1], name: " " }] }, capture.charts[1]], error: /missing model name/ },
+    { charts: [{ ...score, items: [models[0], { ...models[1], name: " top model " }] }, capture.charts[1]], error: /duplicate model/i },
+  ];
+  for (const { charts, error } of failures) {
+    await writeCapture(charts);
+    await assert.rejects(run(), error);
+    assert.equal(await readFile(datasetPath, "utf8"), text);
+  }
+
+  await writeCapture();
+  await run();
+  const saved = await readFile(datasetPath, "utf8");
+  const imported = JSON.parse(saved) as Dataset;
+  const benchmark = imported.evaluations.find(evaluation => evaluation.id === to)!;
+  assert.equal(imported.evaluations.length, original.evaluations.length);
+  assert.equal(benchmark.row_count, 2);
+  assert.doesNotMatch(benchmark.notes, /profiles|fallback/i);
+  assert.deepEqual(imported.entries.filter(entry => entry.evaluation_id === to).map(entry => [
+    entry.model, entry.source_rank, entry.score_value, entry.cost_usd,
+  ]), [["Top model", 1, 0.682, 0.64], [longName, 2, 0, null]]);
+  assert(!imported.evaluations.some(evaluation => evaluation.id === from));
+  assert(!imported.entries.some(entry => entry.evaluation_id === from));
+  assert(!imported.snapshots.some(snapshot => snapshot.evaluation_id === from));
+  const retiredFilename = `aa-captures/${retiredCaptureKey}.json`;
+  assert(!imported.sourceAssets?.some(asset => asset.filename === retiredFilename));
+
+  const catalog = new Set(imported.evaluations.map(evaluation => evaluation.id));
+  assert.equal(aggregateDimensionIds.length, 9);
+  assert.ok(aggregateDimensionIds.includes(to));
+  assert.ok(aggregateDimensionIds.every(id => catalog.has(id)));
+  const master = aggregateMaster(imported.evaluations, imported.entries);
+  const row = master.rows.find(row => row.model === longName)!;
+  assert.equal(row.cells[to].href, `/leaderboards/${to}?q=${encodeURIComponent(longName)}`);
+  assert.deepEqual(averageMasterRank(row), { score: 2, count: 1 });
+  await run();
+  assert.equal(await readFile(datasetPath, "utf8"), saved);
 });
 
 test("AA capture rejects missing, ambiguous, or invalid score chart evidence", () => {

@@ -62,9 +62,7 @@ export const modelSpeedCaptureLabel = new Date(snapshot.captured_at).toLocaleDat
 });
 export const modelSpeedEvaluationSlugs = [...new Set(records.flatMap(record => Object.keys(record.evaluation_times_s)))].sort();
 
-// AA slugs in this capture: aa-briefcase, automationbench-aa, critpt-v2-hard,
-// frontiercode-2-0, gdp-pdf, hle-diamond, omniscience, terminal-bench-science,
-// terminalbench-4-0. Null means the page uses Intelligence Index task time.
+// Map local evaluation IDs to AA timing sources. Null uses Intelligence Index task time.
 export const evaluationSpeedSlugs: Readonly<Record<string, string | null>> = {
   "briefcase-v1-1": "aa-briefcase",
   "aa-briefcase-rubric-score": "aa-briefcase",
@@ -74,7 +72,7 @@ export const evaluationSpeedSlugs: Readonly<Record<string, string | null>> = {
   "aa-omniscience-business": null,
   "aa-omniscience-accuracy": "omniscience",
   "automationbench-aa": "automationbench-aa",
-  "terminal-bench-4-0": "terminalbench-4-0",
+  "terminal-bench-4-1": "terminalbench-4-1",
   "frontiercode-2-0": "frontiercode-2-0",
   "swe-atlas-qna-aa": null,
   "gdp-pdf": "gdp-pdf",

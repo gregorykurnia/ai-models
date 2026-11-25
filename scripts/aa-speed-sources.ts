@@ -3,7 +3,7 @@ import { open, rm } from "node:fs/promises";
 export const evaluationTimingSources = [
   { slug: "aa-briefcase", url: "https://artificialanalysis.ai/evaluations/aa-briefcase" },
   { slug: "automationbench-aa", url: "https://artificialanalysis.ai/evaluations/automationbench-aa" },
-  { slug: "terminalbench-4-0", url: "https://artificialanalysis.ai/evaluations/terminalbench-4-0" },
+  { slug: "terminalbench-4-1", url: "https://artificialanalysis.ai/evaluations/terminalbench-4-1" },
   { slug: "frontiercode-2-0", url: "https://artificialanalysis.ai/evaluations/frontiercode-2-0" },
   { slug: "omniscience", url: "https://artificialanalysis.ai/evaluations/omniscience" },
   { slug: "gdp-pdf", url: "https://artificialanalysis.ai/evaluations/gdp-pdf" },

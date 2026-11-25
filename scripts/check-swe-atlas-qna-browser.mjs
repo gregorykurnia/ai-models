@@ -65,7 +65,7 @@ async function checkEvaluationHeaders(card) {
 
 async function captureSharedEvaluations(page, base) {
   const query = encodeURIComponent("GPT-6.2 Astra (Max)");
-  for (const slug of ["intelligence-index", "terminal-bench-4-0", "aa-briefcase-analytical-quality-elo"]) {
+  for (const slug of ["intelligence-index", "terminal-bench-4-1", "aa-briefcase-analytical-quality-elo"]) {
     for (const width of widths) {
       await setWidth(page, width);
       const url = `${base}/leaderboards/${slug}`;

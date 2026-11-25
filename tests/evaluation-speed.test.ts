@@ -8,16 +8,16 @@ import {
 const speed: ModelSpeed = {
   slug: "fixture", model: "Fixture", provider: "Fixture", url: "https://example.com",
   captured_at: "2026-11-09", time_per_task_s: 600, first_answer_s: 3,
-  evaluation_times_s: { "terminalbench-4-0": 120, "aa-briefcase": 240, "critpt-v2-hard": 360 },
+  evaluation_times_s: { "terminalbench-4-1": 120, "aa-briefcase": 240, "critpt-v2-hard": 360 },
 };
 
 test("evaluation time uses Terminal Bench and shared AA-Briefcase timings, with page-wide Index fallback", () => {
-  assert.equal(evaluationTimePerTask("terminal-bench-4-0", speed), 120);
+  assert.equal(evaluationTimePerTask("terminal-bench-4-1", speed), 120);
   for (const id of ["aa-briefcase-analytical-quality-elo", "aa-briefcase-presentation-elo", "aa-briefcase-rubric-score"]) {
     assert.equal(evaluationTimePerTask(id, speed), 240);
     assert.equal(evaluationTimePerTaskLabel(id), "Time per task");
   }
-  assert.equal(evaluationTimePerTaskLabel("terminal-bench-4-0"), "Time per task");
+  assert.equal(evaluationTimePerTaskLabel("terminal-bench-4-1"), "Time per task");
   assert.equal(evaluationTimePerTask("critpt-v2-hard", speed), 360);
   assert.equal(evaluationTimePerTaskLabel("critpt-v2-hard"), "Time per task");
   for (const id of ["finance-accounting", "intelligence-index", "critpt", "critpt-v2-full", "swe-atlas-qna-aa", "unknown"]) {
@@ -27,11 +27,11 @@ test("evaluation time uses Terminal Bench and shared AA-Briefcase timings, with 
 });
 
 test("missing evaluation times never fall back per row; zero and missing records survive", () => {
-  assert.equal(evaluationTimePerTask("terminal-bench-4-0", { ...speed, evaluation_times_s: {} }), null);
-  assert.equal(evaluationTimePerTask("terminal-bench-4-0", { ...speed, evaluation_times_s: { "terminalbench-4-0": 0 } }), 0);
+  assert.equal(evaluationTimePerTask("terminal-bench-4-1", { ...speed, evaluation_times_s: {} }), null);
+  assert.equal(evaluationTimePerTask("terminal-bench-4-1", { ...speed, evaluation_times_s: { "terminalbench-4-1": 0 } }), 0);
   assert.equal(evaluationTimePerTask("finance-accounting", { ...speed, time_per_task_s: 0 }), 0);
   for (const missing of [null, undefined, { ...speed, time_per_task_s: null, evaluation_times_s: {} }]) {
-    assert.equal(evaluationTimePerTask("terminal-bench-4-0", missing), null);
+    assert.equal(evaluationTimePerTask("terminal-bench-4-1", missing), null);
     assert.equal(evaluationTimePerTask("finance-accounting", missing), null);
   }
 });

@@ -10,7 +10,7 @@ const base = process.env.BASE_URL || "http://127.0.0.1:3180";
 const output = process.env.SPEED_SCREENSHOT_DIR || "docs/screenshots/speed-columns";
 const evaluations = [
   [businessSlug],
-  ["terminal-bench-4-0", "Time per task"],
+  ["terminal-bench-4-1", "Time per task"],
   ["aa-briefcase-analytical-quality-elo", "Time per task"],
   ["finance-accounting", "Time per Intelligence Index task"],
   [sweAtlasSlug],
@@ -103,9 +103,9 @@ try {
             if(raw===null)missing=true;else {assert(!missing&&previous<=raw);previous=raw;}
           }
         }
-        if(slug==="terminal-bench-4-0") {
+        if(slug==="terminal-bench-4-1") {
           await navigate(slug);
-          assert((await cards.first().textContent()).includes("67.17%"));
+          assert((await cards.first().textContent()).includes("68.18%"));
         }
       } else {
         const headers=table.locator("th.speed-column");
@@ -136,7 +136,7 @@ try {
         const overflow=await headers.evaluateAll(elements=>elements.flatMap(header=>Array.from(header.querySelectorAll("span,small,button")).filter(element=>element.scrollWidth>element.clientWidth+1).map(element=>element.textContent)));
         assert.deepEqual(overflow,[]);
         assert(!(await headers.nth(0).textContent()).includes("AA ·"));
-        if(slug==="terminal-bench-4-0")assert.equal(await table.locator("tbody tr").first().locator('[data-column="score_value"]').textContent(),"67.17%");
+        if(slug==="terminal-bench-4-1")assert.equal(await table.locator("tbody tr").first().locator('[data-column="score_value"]').textContent(),"68.18%");
         await page.screenshot({path:`${output}/${slug}-${width}-timings.png`});
         const x=boxes[0].x,y=boxes[0].y;
         await page.screenshot({path:`${output}/${slug}-${width}-timings-crop.png`,clip:{x,y,width:boxes[1].x+boxes[1].width-x,height:Math.min(270,1000-y)}});

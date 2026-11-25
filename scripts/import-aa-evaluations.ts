@@ -5,9 +5,11 @@ import { createHash } from "node:crypto";
 import { readFile, rename, rm, writeFile } from "node:fs/promises";
 import { entrySchema, type Dataset, type Entry, type Evaluation } from "../src/lib/contract";
 import { masterIdentityKey } from "../src/lib/master";
+import { terminalBenchRedirect } from "../src/lib/leaderboard-redirects";
 import { mergeBriefcaseComponents, type BriefcaseComponentsSource } from "../src/lib/aa-briefcase";
 import { mergeBriefcaseRubricRefresh, type BriefcaseRubricRefreshSource } from "../src/lib/aa-briefcase-rubric-refresh";
 import { canonicalModelName } from "./aa-model-names";
+import { assertCompleteScoreChart } from "./capture-aa-evaluations.mjs";
 
 export { canonicalModelName };
 
@@ -16,7 +18,8 @@ type Capture = {
   key: string;
   source_url: string;
   captured_at: string;
-  charts: { title: string; items: CaptureItem[] }[];
+  source_note?: string;
+  charts: { title: string; items: CaptureItem[]; selectorLabels?: string[] }[];
   tables: { headers: string[]; rows: string[][] }[];
 };
 
@@ -68,7 +71,11 @@ const evaluationConfigs: EvaluationConfig[] = [
   // AA-Briefcase lists 91 tasks; its cost series (totalCost) is the total for the run, so divide to get cost per task.
   { id: "briefcase-v1-1", capture: "aa-briefcase", chart: "AA-Briefcase Elo", costChart: "AA-Briefcase Elo vs. Cost per Task", eloSeries: true, costDivisor: 91 },
   { id: "automationbench-aa", capture: "automationbench-aa", chart: "AutomationBench-AA: Score", costChart: "AutomationBench-AA: Score vs. Cost per Task" },
-  { id: "terminal-bench-4-0", capture: "terminalbench-4-0", chart: "Terminal-Bench 4.0: Score", costChart: "Terminal-Bench 4.0: Score vs. Cost per Task" },
+  {
+    id: terminalBenchRedirect.to, capture: "terminalbench-4-1",
+    chart: "Terminal-Bench 4.1: Score", costChart: "Terminal-Bench 4.1: Score vs. Cost per Task",
+    definition: percentageEvaluation(terminalBenchRedirect.to, "Terminal-Bench 4.1", "https://artificialanalysis.ai/evaluations/terminalbench-4-1"),
+  },
   { id: "frontiercode-2-0", capture: "frontiercode-2-0", chart: "FrontierCode-AA 2.0: Score", costChart: "FrontierCode-AA 2.0: Score vs. Cost per Task", definition: percentageEvaluation("frontiercode-2-0", "FrontierCode 2.0", "https://artificialanalysis.ai/evaluations/frontiercode-2-0") },
   { id: "gdp-pdf", capture: "gdp-pdf", chart: "GDP.pdf: All-pass Rate", costChart: "GDP.pdf: All-pass Rate vs. Cost per Task" },
   { id: "critpt", capture: "critpt", chart: "CritPt: Score", costChart: "CritPt: Score vs. Cost per Task" },
@@ -160,10 +167,12 @@ const evaluationConfigs: EvaluationConfig[] = [
   },
 ];
 
-// Evaluations Artificial Analysis no longer publishes. The rebuild drops their rows; production hides them once
-// their Firestore evaluation doc loses its published_snapshot_id. HLE-Diamond replaced Humanity's Last Exam.
+// Removed evaluations leave the bundled catalog. Their Firestore evaluation docs control production visibility.
+// HLE-Diamond replaced Humanity's Last Exam.
 // The owner retired GDPval-AA, SciCode, HLE-Diamond and AA-LCR on 2026-11-16 so they no longer factor in.
-const retiredEvaluationIds = new Set(["humanity-s-last-exam", "gdpval-aa-v2-1", "scicode", "hle-diamond", "aa-lcr-v1-1"]);
+const retiredEvaluationIds = new Set([
+  "humanity-s-last-exam", "gdpval-aa-v2-1", "scicode", "hle-diamond", "aa-lcr-v1-1", terminalBenchRedirect.from,
+]);
 
 // Creators verified on AA's model pages when the captures have no creator record.
 const creatorOverrides: Record<string, string> = {
@@ -284,7 +293,10 @@ for (const entry of previousEntries) {
 const newEntries: Entry[] = [];
 const newEvaluations: Evaluation[] = [];
 const newSnapshots: Record<string, unknown>[] = [];
-const sourceAssets = new Map((dataset.sourceAssets ?? []).map(asset => [asset.id, asset]));
+const retiredCapture = terminalBenchRedirect.from.replace("terminal-bench-", "terminalbench-");
+const sourceAssets = new Map((dataset.sourceAssets ?? [])
+  .filter(asset => asset.filename !== `aa-captures/${retiredCapture}.json`)
+  .map(asset => [asset.id, asset]));
 const intelligenceIndexCosts: Record<string, unknown>[] = [];
 const evaluationById = new Map(dataset.evaluations.map(evaluation => [evaluation.id, evaluation]));
 
@@ -323,6 +335,9 @@ for (const config of evaluationConfigs) {
   const chart = capture.charts.find(item => item.title === config.chart);
   if (!chart) throw new Error(`${config.id}: chart "${config.chart}" is missing from ${config.capture}`);
   if (!chart.items.length) throw new Error(`${config.id}: chart "${config.chart}" has no scores`);
+  const isTerminalBench = config.id === terminalBenchRedirect.to;
+  if (isTerminalBench) assertCompleteScoreChart(capture.charts, config.chart);
+  const maxScore = isTerminalBench ? 1 : 100;
   if (config.definition?.source_url && capture.source_url !== config.definition.source_url) {
     throw new Error(`${config.id}: unexpected capture URL ${capture.source_url}`);
   }
@@ -347,7 +362,7 @@ for (const config of evaluationConfigs) {
       ?? (slug ? creatorOverrides[slug] : undefined);
     if (typeof rawName !== "string" || !rawName.trim()) throw new Error(`${config.id}: missing model name for ${item.id}`);
     if (!provider) throw new Error(`${config.id}: no creator for ${rawName} (${item.id})`);
-    if (!Number.isFinite(rawValue) || (config.definition?.score_kind === "percentage" && (value < 0 || value > 100))) {
+    if (!Number.isFinite(rawValue) || (config.definition?.score_kind === "percentage" && (value < 0 || value > maxScore))) {
       throw new Error(`${config.id}: invalid value for ${rawName}`);
     }
     const ci = mid && item.lower && item.upper
@@ -464,7 +479,7 @@ for (const config of evaluationConfigs) {
       imported_at: captureDate,
       source_kind: "artificial_analysis_evaluation_page",
       source_urls: [capture.source_url],
-      notes: `Chart and table data captured from ${capture.source_url} on ${capture.captured_at}.`,
+      notes: capture.source_note ?? `Chart and table data captured from ${capture.source_url} on ${capture.captured_at}.`,
     });
   }
   console.log(`${config.id}: ${rows.length} rows, ${withCost} with cost, ${withCi} with CI, ${withRelease} with release date`);
@@ -517,15 +532,21 @@ const rebuilt: Dataset = {
 };
 const reportRows = new Map(evaluations.map(evaluation => [evaluation.display_name, evaluation.row_count]));
 const retiredNames = new Set(dataset.evaluations.filter(evaluation => retiredEvaluationIds.has(evaluation.id)).map(evaluation => evaluation.display_name));
+const terminalBench = replacedById.get(terminalBenchRedirect.to)!;
+const report = Array.isArray(dataset.report.evaluations)
+  ? new Map<string, Record<string, unknown>>(dataset.report.evaluations
+    .filter((row: Record<string, unknown>) => !retiredNames.has(String(row.name)))
+    .map((row: Record<string, unknown>) => [String(row.name), reportRows.has(String(row.name)) ? { ...row, rows: reportRows.get(String(row.name)) } : row]))
+  : null;
+report?.set(terminalBench.display_name, {
+  name: terminalBench.display_name, rows: terminalBench.row_count,
+  cost_labels: terminalBench.cost_label_count, precise_costs: terminalBench.precise_cost_count,
+});
 rebuilt.report = {
   ...dataset.report,
   row_count: rebuilt.entries.length,
   provider_count: providers.size,
-  evaluations: Array.isArray(dataset.report.evaluations)
-    ? dataset.report.evaluations
-      .filter((row: Record<string, unknown>) => !retiredNames.has(String(row.name)))
-      .map((row: Record<string, unknown>) => reportRows.has(String(row.name)) ? { ...row, rows: reportRows.get(String(row.name)) } : row)
-    : dataset.report.evaluations,
+  evaluations: report ? [...report.values()] : dataset.report.evaluations,
 };
 
 // The AA-Briefcase rubric and Elo evaluations come from their own captures; reapply them so every

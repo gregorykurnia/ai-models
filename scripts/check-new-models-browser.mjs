@@ -25,7 +25,7 @@ const modelSets={
     pattern:/hydrogen|argon|qwen\s?4/i,
     provider:name=>name.startsWith("Qwen")?"Alibaba":"Google",
     groups:[["Hydrogen","hydrogen",4],["Argon","argon",2],["Qwen4","qwen4",1]],
-    screenshots:["intelligence-index","terminal-bench-4-0","aa-briefcase-analytical-quality-elo","critpt"],
+    screenshots:["intelligence-index","terminal-bench-4-1","aa-briefcase-analytical-quality-elo","critpt"],
   },
   "gpt-6.2":{
     audit:"GPT_6_2_ASTRA_SOL_COVERAGE.md",
@@ -34,7 +34,7 @@ const modelSets={
     pattern:/gpt-6\.2/i,
     provider:()=>"OpenAI",
     groups:[["GPT-6.2 Astra","gpt-6-2-astra",5],["GPT-6.2 Sol","gpt-6-2-sol",5]],
-    screenshots:["intelligence-index","terminal-bench-4-0"],
+    screenshots:["intelligence-index","terminal-bench-4-1"],
   },
   neon:{
     audit:"GEMINI_4_NEON_COVERAGE.md",
@@ -278,7 +278,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
       if(slug==="hydrogen"){
         const frame=await section.locator(".table-scroll-frame").boundingBox();
         await capture("scroll-cue-crop.png",page,{clip:{x:frame.x+frame.width-280,y:frame.y-8,width:288,height:180}});
-        const target=await section.getByRole("columnheader",{name:/^Terminal-Bench 4\.0/}).boundingBox();
+        const target=await section.getByRole("columnheader",{name:/^Terminal-Bench 4\.1/}).boundingBox();
         const frozen=await section.locator("th.master-first").boundingBox();
         await section.locator(".table-scroll").evaluate((element,left)=>{element.scrollLeft=left;},target.x-frozen.x-frozen.width);
         const positions=await section.locator("tbody .master-model").evaluateAll(cells=>cells.map(cell=>cell.getBoundingClientRect().left));
@@ -439,7 +439,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
         assert.equal(await direction.innerText(),"Asc ↑");
       }
       // The first card's timing tiles stay on the first phone screen under the legend.
-      if(id==="intelligence-index"||id==="terminal-bench-4-0"){
+      if(id==="intelligence-index"||id==="terminal-bench-4-1"){
         const tile=await rows.first().locator(".master-card__metrics > div").nth(1).boundingBox();
         assert(tile.y+tile.height<=844,`${id}: first card's timings fit the first phone screen`);
       }
@@ -509,7 +509,7 @@ export async function checkNewModelsBrowser(page,baseUrl,output,setName="hydroge
         await phoneScreenshots(`${id}-${width}`,section);
       }else {
         await checkScrollCue(section);
-        if(gpt&&id==="terminal-bench-4-0"){
+        if(gpt&&id==="terminal-bench-4-1"){
           const viewport=page.viewportSize();
           await page.setViewportSize({...viewport,width:1880});
           const frame=section.locator(".table-scroll-frame");
