@@ -2,9 +2,14 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import type { Entry, Evaluation } from "../src/lib/contract";
 import { planSavedTaskRefresh, type StoredTask } from "../src/lib/saved-task-refresh";
+import { calculateSuitability, type EvaluationWeight } from "../src/lib/suitability";
+import { readSavedTasks } from "../src/lib/suitability-storage";
 
 const now = "2026-10-12T00:00:00.000Z";
-const evaluations = [{ id: "ev-a", slug: "ev-a", display_name: "Eval A", published_snapshot_id: "ev-a-new", captured_at: "2026-10-11" }] as unknown as Evaluation[];
+const evaluations = [{
+  id: "ev-a", slug: "ev-a", display_name: "Eval A", published_snapshot_id: "ev-a-new", captured_at: "2026-10-11",
+  category: "Coding", metric_label: "Score", row_count: 2,
+}] as unknown as Evaluation[];
 const currentEntries = [
   { id: "n1", evaluation_id: "ev-a", snapshot_id: "ev-a-new", model_id: "m-gemini-high", provider: "Google", model: "Gemini 3.6 Flash (High)", source_rank: 1, source_row: 1, scoring_status: null, cost_usd: null, cost_display: null, cost_status: "missing" },
   { id: "n2", evaluation_id: "ev-a", snapshot_id: "ev-a-new", model_id: "m-other", provider: "Acme", model: "Other Model", source_rank: 2, source_row: 2, scoring_status: null, cost_usd: null, cost_display: null, cost_status: "missing" },
@@ -78,4 +83,105 @@ test("running the refresh again after it has moved a task changes nothing", () =
   };
   const [second] = planSavedTaskRefresh({ evaluations, entries: currentEntries, tasks: [moved], now });
   assert.equal(second.status, "current");
+});
+
+const bench40: Evaluation = {
+  ...evaluations[0], id: "terminal-bench-4-0", slug: "terminal-bench-4-0", display_name: "Terminal-Bench 4.0",
+  published_snapshot_id: "bench-40-snapshot", captured_at: "2026-10-09",
+};
+const bench41: Evaluation = {
+  ...bench40, id: "terminal-bench-4-1", slug: "terminal-bench-4-1", display_name: "Terminal-Bench 4.1",
+  published_snapshot_id: "bench-41-snapshot", captured_at: "2026-10-11",
+};
+
+function weightFor(evaluation: Evaluation, weight: number): EvaluationWeight {
+  return { evaluation_id: evaluation.id, weight, snapshot_id: evaluation.published_snapshot_id, captured_at: evaluation.captured_at };
+}
+
+function savedWithWeights(...weights: EvaluationWeight[]): StoredTask {
+  const pinned = [bench40, bench41, ...evaluations].filter(evaluation => weights.some(weight => weight.evaluation_id === evaluation.id));
+  return {
+    ...stored,
+    top: {
+      ...top,
+      task: { ...top.task, evaluation_weights: weights },
+      evaluations: pinned,
+      availableSnapshotIds: pinned.map(evaluation => evaluation.published_snapshot_id),
+    },
+    entries: pinned.flatMap(evaluation => pinnedEntries.map((entry, index) => ({
+      ...entry,
+      id: `${evaluation.id}-${entry.id}`,
+      evaluation_id: evaluation.id,
+      snapshot_id: evaluation.published_snapshot_id,
+      source_rank: evaluation.id === bench40.id ? entry.source_rank : currentEntries[index].source_rank,
+    }))),
+  };
+}
+
+function planWithPublished(task: StoredTask, published: Evaluation[] = [bench41, ...evaluations]) {
+  const entries = published.flatMap(evaluation => currentEntries.map(entry => ({
+    ...entry, id: `${evaluation.id}-${entry.id}`, evaluation_id: evaluation.id, snapshot_id: evaluation.published_snapshot_id,
+  })));
+  return planSavedTaskRefresh({ evaluations: published, entries, tasks: [task], now })[0];
+}
+
+for (const [state, published] of [
+  ["published", [bench40, bench41, ...evaluations]],
+  ["retired", [bench41, ...evaluations]],
+] as const) {
+  test(`a saved 4.0 weight moves to 4.1 while 4.0 is ${state}`, () => {
+    const otherWeight = weightFor(evaluations[0], 62.5);
+    const saved = savedWithWeights(weightFor(bench40, 37.5), otherWeight);
+    const plan = planWithPublished(saved, [...published]);
+    assert.ok(plan.status === "refresh", plan.reason);
+    assert.deepEqual(plan.task.evaluation_weights, [weightFor(bench41, 37.5), otherWeight]);
+    assert.deepEqual(plan.changes, { gained: 0, lost: 0, changed: 2, same: 2 });
+  });
+}
+
+test("4.0 and 4.1 weights merge into one 4.1 pin that survives reload and retry", () => {
+  const saved = savedWithWeights(weightFor(bench40, 37.5), weightFor(bench41, 62.5));
+  const plan = planWithPublished(saved);
+  assert.ok(plan.status === "refresh", plan.reason);
+  assert.deepEqual(plan.task.evaluation_weights, [weightFor(bench41, 100)]);
+  assert.deepEqual(plan.changes, { gained: 0, lost: 0, changed: 0, same: 2 });
+  assert.equal(plan.activeVersion, saved.top.active_version);
+
+  const [restored] = readSavedTasks(JSON.stringify([plan]));
+  assert.deepEqual(restored.task.evaluation_weights, [weightFor(bench41, 100)]);
+  assert.deepEqual(restored.availableSnapshotIds, [bench41.published_snapshot_id]);
+  const results = calculateSuitability({ ...restored, weights: restored.task.evaluation_weights });
+  assert.equal(results.find(result => result.model_id === restored.task.implementor_model_id)?.score, 100);
+  const retry = planWithPublished({ id: saved.id, top: { ...restored, active_version: "v2" }, entries: restored.entries });
+  assert.equal(retry.status, "current");
+});
+
+test("an unrelated unpublished evaluation still blocks a refresh with its original reason", () => {
+  for (const evaluation_id of ["ev-retired", "Terminal-Bench-4-0", "", "ev-".padEnd(160, "x")]) {
+    const saved = savedWithWeights(weightFor(bench40, 40), { ...weightFor(bench41, 60), evaluation_id });
+    const plan = planWithPublished(saved);
+    assert.equal(plan.status, "blocked");
+    assert.equal(plan.reason, `evaluation ${evaluation_id} is no longer published`);
+  }
+});
+
+test("a repeated original evaluation remains invalid when repinning", () => {
+  const weight = { ...top.task.evaluation_weights[0], weight: 50 };
+  const [plan] = planSavedTaskRefresh({
+    evaluations, entries: currentEntries, now,
+    tasks: [{ ...stored, top: { ...top, task: { ...top.task, evaluation_weights: [weight, { ...weight }] } } }],
+  });
+  assert.equal(plan.status, "blocked");
+  assert.match(plan.reason, /Evaluations must be unique/);
+});
+
+test("a 4.0 weight blocks if 4.1 has no published snapshot yet", () => {
+  const plan = planWithPublished(savedWithWeights(weightFor(bench40, 100)), [bench40]);
+  assert.equal(plan.status, "blocked");
+  assert.equal(plan.reason, "evaluation terminal-bench-4-1 is no longer published");
+});
+
+test("a task already on the latest 4.1 snapshot is current", () => {
+  const plan = planWithPublished(savedWithWeights(weightFor(bench41, 100)), [bench40, bench41]);
+  assert.equal(plan.status, "current");
 });

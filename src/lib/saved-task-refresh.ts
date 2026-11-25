@@ -1,4 +1,4 @@
-import { calculateSuitability, suitabilityTaskSchema, type SuitabilityEntry } from "./suitability";
+import { calculateSuitability, suitabilityTaskSchema, type EvaluationWeight, type SuitabilityEntry } from "./suitability";
 import { buildPlannerData } from "./suitability-data";
 import { pinComparison } from "./suitability-storage";
 import { masterIdentityKey } from "./master";
@@ -8,6 +8,11 @@ import type { Entry, Evaluation } from "./contract";
 export const identityAliases = new Map<string, string>([
   // Gemini 3.6 Flash has one current variant, (High).
   [masterIdentityKey("Google", "Gemini 3.6 Flash"), masterIdentityKey("Google", "Gemini 3.6 Flash (High)")],
+]);
+
+/** Evaluations whose saved weights follow their published replacement. */
+const evaluationAliases = new Map<string, string>([
+  ["terminal-bench-4-0", "terminal-bench-4-1"],
 ]);
 
 export type StoredTask = {
@@ -41,10 +46,14 @@ function planOne(stored: StoredTask, evaluations: Evaluation[], data: any, now: 
   if (top.deleted_at || top.deleted) return { ...base, status: "skipped", reason: "deleted" };
 
   const current = new Map(evaluations.map(evaluation => [evaluation.id, evaluation]));
-  const weights: any[] = top.task.evaluation_weights;
-  const unpublished = weights.find(weight => !current.has(weight.evaluation_id));
-  if (unpublished) return { ...base, status: "blocked", reason: `evaluation ${unpublished.evaluation_id} is no longer published` };
-  if (weights.every(weight => weight.snapshot_id === current.get(weight.evaluation_id)!.published_snapshot_id))
+  const weights = (top.task.evaluation_weights as EvaluationWeight[]).map(weight => ({
+    ...weight,
+    currentEvaluationId: evaluationAliases.get(weight.evaluation_id) ?? weight.evaluation_id,
+  }));
+  const unpublished = weights.find(weight => !current.has(weight.currentEvaluationId));
+  if (unpublished) return { ...base, status: "blocked", reason: `evaluation ${unpublished.currentEvaluationId} is no longer published` };
+  if (weights.every(weight => weight.evaluation_id === weight.currentEvaluationId
+    && weight.snapshot_id === current.get(weight.currentEvaluationId)!.published_snapshot_id))
     return { ...base, status: "current", reason: "already on the latest data" };
 
   const storedCandidates = new Map<string, any>((top.candidates ?? []).map((candidate: any) => [candidate.model_id, candidate]));
@@ -61,12 +70,20 @@ function planOne(stored: StoredTask, evaluations: Evaluation[], data: any, now: 
     if (!newIds.includes(latest.model_id)) newIds.push(latest.model_id);
   }
 
-  const nextWeights = weights.map(weight => ({
-    evaluation_id: weight.evaluation_id,
-    weight: weight.weight,
-    snapshot_id: current.get(weight.evaluation_id)!.published_snapshot_id,
-    captured_at: current.get(weight.evaluation_id)!.captured_at,
-  }));
+  if (new Set(weights.map(weight => weight.evaluation_id)).size !== weights.length)
+    return { ...base, status: "blocked", reason: "invalid task: Evaluations must be unique" };
+
+  const weightsByEvaluation = new Map<string, EvaluationWeight>();
+  for (const { currentEvaluationId, weight } of weights) {
+    const existing = weightsByEvaluation.get(currentEvaluationId);
+    if (existing) {
+      existing.weight += weight;
+      continue;
+    }
+    const { published_snapshot_id: snapshot_id, captured_at } = current.get(currentEvaluationId)!;
+    weightsByEvaluation.set(currentEvaluationId, { evaluation_id: currentEvaluationId, weight, snapshot_id, captured_at });
+  }
+  const nextWeights = [...weightsByEvaluation.values()];
   const task = {
     ...top.task,
     evaluation_weights: nextWeights,
@@ -109,7 +126,7 @@ function previewOf(task: Record<string, any>, results: any[]) {
 }
 
 /** Compares each candidate's rank per evaluation before and after the move, matching candidates by identity. */
-function compareRanks(top: Record<string, any>, oldEntries: SuitabilityEntry[], results: any[], weights: any[]): CellChanges | null {
+function compareRanks(top: Record<string, any>, oldEntries: SuitabilityEntry[], results: any[], weights: EvaluationWeight[]): CellChanges | null {
   let before: any[];
   try {
     before = calculateSuitability({
@@ -129,6 +146,10 @@ function compareRanks(top: Record<string, any>, oldEntries: SuitabilityEntry[], 
     const identity = result.identity_key ?? masterIdentityKey(result.provider, result.model);
     const key = identityAliases.get(identity) ?? identity;
     const previous = new Map<string, number | null>(result.breakdown.map((item: any) => [item.evaluation_id, item.source_rank ?? null]));
+    for (const [from, to] of evaluationAliases) {
+      const rank = previous.get(from);
+      if (rank !== undefined && !previous.has(to)) previous.set(to, rank);
+    }
     for (const weight of weights) {
       const was = previous.get(weight.evaluation_id) ?? null;
       const now = latestRanks.get(key)?.get(weight.evaluation_id) ?? null;
