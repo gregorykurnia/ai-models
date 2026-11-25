@@ -6,8 +6,11 @@ import { newModelNames, newModelsExpectations, readNewModelsDataset } from "../s
 import { audit as runAudit, auditWorkspace, gptReport, hydrogenReport, neonReport } from "./fixtures/new-models-audit";
 
 const cwd = await auditWorkspace({ after });
-const [dataset] = await Promise.all([readNewModelsDataset(), runAudit(cwd, "--set", "hydrogen"), runAudit(cwd, "--set", "gpt-6.2")]);
-const [audit, gptAudit] = await Promise.all([hydrogenReport, gptReport].map(report => readFile(join(cwd, report), "utf8")));
+const [dataset] = await Promise.all([
+  readNewModelsDataset(), runAudit(cwd, "--set", "hydrogen"), runAudit(cwd, "--set", "gpt-6.2"), runAudit(cwd, "--set", "neon"),
+]);
+// Each audit is regenerated from the bundled data; the dated reports under docs/ stay as written.
+const [audit, gptAudit, neonAudit] = await Promise.all([hydrogenReport, gptReport, neonReport].map(report => readFile(join(cwd, report), "utf8")));
 
 test("browser fixture includes all audit rows and all three merged Briefcase component evaluations", () => {
   const { expected, evaluations } = newModelsExpectations(dataset, audit);
@@ -96,8 +99,6 @@ test("GPT-6.2 browser fixture fails on changed ranks, duplicate rows, and unexpe
     assert.throws(() => newModelsExpectations({ ...dataset, entries }, gptAudit, "gpt-6.2"), error);
   }
 });
-
-const neonAudit = await readFile(new URL(`../${neonReport}`, import.meta.url), "utf8");
 
 test("Neon browser fixture includes four efforts, Business and the full evaluation list", () => {
   const { expected, evaluations } = newModelsExpectations(dataset, neonAudit, "neon");
