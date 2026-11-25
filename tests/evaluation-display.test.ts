@@ -1,6 +1,15 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { evaluationMetricLabel, evaluationScoreDisplay } from "../src/lib/evaluation-display";
+import { evaluationMetricLabel, evaluationScoreDisplay, evaluationTaskCostDisplay } from "../src/lib/evaluation-display";
+
+test("benchmark task costs stay in dollars without losing small nonzero prices", () => {
+  for (const [cost, display] of [
+    [null, "—"], [0, "$0.00"], [0.1, "$0.10"], [0.8848207650595217, "$0.885"],
+    [0.001234, "$0.00123"], [5.265564268428178, "$5.27"],
+  ] as const) {
+    assert.equal(evaluationTaskCostDisplay(cost), display);
+  }
+});
 
 test("Terminal Bench fractions display as percentages with consistent precision without mutating scores", () => {
   for (const [value, expected] of [[0.681818181818182, "68.18%"], [0.59596, "59.60%"], [0, "0.00%"], [1, "100.00%"]] as const) {

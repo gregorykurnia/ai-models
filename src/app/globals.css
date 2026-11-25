@@ -2069,12 +2069,19 @@ a.ui-button:hover {
     font-weight: var(--type-weight-semibold);
   }
 
-  .evaluation-leaderboard[data-evaluation="aa-omniscience-business"] .evaluation-card__score {
+  .evaluation-leaderboard[data-evaluation="aa-omniscience-business"] .evaluation-card__score,
+  .evaluation-leaderboard[data-evaluation="terminal-bench-4-1"] .evaluation-card__score {
     white-space: nowrap;
   }
 
   .evaluation-card .master-card__metrics {
     margin-bottom: 0;
+  }
+
+  .evaluation-card .master-card__metrics > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
 

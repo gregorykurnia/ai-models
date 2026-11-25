@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { mkdir, readFile } from "node:fs/promises";
+import { evaluationTaskCostDisplay } from "../src/lib/evaluation-display.ts";
 import { evaluationTimePerTask, getModelSpeed } from "../src/lib/model-speed.ts";
 import { checkSweAtlasEvaluation, sweAtlasSlug } from "./check-swe-atlas-qna-browser.mjs";
 import { businessSlug, checkBusinessEvaluation } from "./check-omniscience-business-browser.mjs";
@@ -42,8 +43,11 @@ try {
     const terminalBench = slug === "terminal-bench-4-1";
     const sorts = ["time_per_task", "first_answer"];
     const costEntries = new Map();
+    let benchmarkSource;
     if (terminalBench) {
-      const { entries } = JSON.parse(await readFile(new URL("../data/leaderboards.json", import.meta.url), "utf8"));
+      const { entries, evaluations } = JSON.parse(await readFile(new URL("../data/leaderboards.json", import.meta.url), "utf8"));
+      benchmarkSource = evaluations.find(evaluation => evaluation.id === slug).source_url;
+      assert(benchmarkSource);
       for (const entry of entries.filter(entry => entry.evaluation_id === slug)) {
         costEntries.set(JSON.stringify([entry.provider, entry.model]), entry);
       }
@@ -53,7 +57,7 @@ try {
       if (sort === "cost_usd") {
         const entry = costEntries.get(JSON.stringify([provider, model]));
         assert(entry, `${slug}: missing bundled entry for ${provider} / ${model}`);
-        return { raw: entry.cost_usd, display: entry.cost_display ?? "—" };
+        return { raw: entry.cost_usd, display: evaluationTaskCostDisplay(entry.cost_usd) };
       }
       const speed = getModelSpeed(provider, model);
       const raw = sort === "time_per_task" ? evaluationTimePerTask(slug, speed) : speed?.first_answer_s ?? null;
@@ -70,10 +74,14 @@ try {
           const resultText = await card.locator("p[aria-live]").textContent();
           const total = Number(resultText.match(/^[\d,]+/)[0].replaceAll(",", ""));
           pages = Math.ceil(total / 250);
-          const rows = await table.locator("tbody tr").evaluateAll(rows => rows.map(row => Object.fromEntries(Array.from(row.cells, cell => [cell.dataset.column,cell.textContent.trim()]))));
-          for (const cells of rows) {
+          const rows = await table.locator("tbody tr").evaluateAll(rows => rows.map(row => ({
+            cells: Object.fromEntries(Array.from(row.cells, cell => [cell.dataset.column, cell.textContent.trim()])),
+            costLink: row.querySelector('td[data-column="cost_usd"] a')?.getAttribute("href") ?? null,
+          })));
+          for (const { cells, costLink } of rows) {
             const { raw, display } = numericValue(sort, cells.provider, cells.model);
             assert.equal(cells[sort], display, `${slug}: ${cells.model} ${sort}`);
+            if (sort === "cost_usd") assert.equal(costLink, raw === null ? null : benchmarkSource, `${slug}: ${cells.model} cost link`);
             all.push(raw);
           }
           if (current === pages) assert.equal(all.length, total);
@@ -101,6 +109,10 @@ try {
         assert.equal(await card.locator(".evaluation-table-view").isVisible(),false);
         const first=cards.first();
         const metrics=first.locator(".master-card__metrics > div");
+        assert(await metrics.evaluateAll(tiles => {
+          const [left, right] = tiles.slice(0, 2).map(tile => tile.querySelector("dd").getBoundingClientRect());
+          return Math.abs(left.bottom - right.bottom) < 1;
+        }), `${slug}: neighbouring phone tile values align`);
         await page.screenshot({path:`${output}/${slug}-${width}-after.png`});
         for(const metric of [metrics.nth(0),metrics.nth(1)]) {
           const box=await metric.boundingBox();
@@ -112,17 +124,21 @@ try {
         for(const [index, sort] of sorts.entries()) {
           await card.locator("#evaluation-sort").selectOption(sort);
           await page.waitForURL(new RegExp(`sort=${sort}&direction=asc`));
-          const values=await cards.evaluateAll((elements,index)=>elements.map(element=>({model:element.dataset.model,provider:element.dataset.provider,display:element.querySelectorAll("dd")[index].textContent.trim()})),index);
+          const values=await cards.evaluateAll((elements,index)=>elements.map(element=>{
+            const value = element.querySelectorAll("dd")[index];
+            return {model:element.dataset.model,provider:element.dataset.provider,display:value.textContent.trim(),link:value.querySelector("a")?.getAttribute("href")??null};
+          }),index);
           let previous=-Infinity,missing=false;
           for(const row of values) {
             const { raw, display } = numericValue(sort, row.provider, row.model);
             assert.equal(row.display, display, `${slug}: ${row.model} ${sort}`);
+            if (sort === "cost_usd") assert.equal(row.link, raw === null ? null : benchmarkSource, `${slug}: ${row.model} cost link`);
             if(raw===null)missing=true;else {assert(!missing&&previous<=raw);previous=raw;}
           }
         }
         if(terminalBench) {
           await navigate(slug);
-          assert.match(await cards.first().innerText(), /Kimi K3\.1 Pro[\s\S]*68\.18%[\s\S]*Cost \/ task\s+\$5\.27/);
+          assert.match(await cards.first().innerText(), /Kimi K3\.1 Pro[\s\S]*Score: 68\.18%[\s\S]*Cost \/ task\s+\$5\.27/);
         }
       } else {
         const headers=table.locator("th.speed-column");
@@ -157,6 +173,7 @@ try {
           const first = table.locator("tbody tr").first();
           assert.equal(await first.locator('[data-column="model"]').innerText(), "Kimi K3.1 Pro");
           assert.equal(await first.locator('[data-column="score_value"]').innerText(), "68.18%");
+          assert.equal(await table.locator('th[data-column="score_value"] button > span').innerText(), "Score ↕");
           assert.match(await table.locator('th[data-column="cost_usd"]').innerText(), /^Cost per task/);
           assert.equal(await first.locator('[data-column="cost_usd"]').innerText(), "$5.27");
         }

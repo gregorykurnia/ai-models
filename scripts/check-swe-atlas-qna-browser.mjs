@@ -195,7 +195,7 @@ export async function checkSweAtlasMaster(page, base, expect, exportRanks) {
       await search.fill("GPT-6.2 Astra");
       await expect(section.locator(".master-card")).toHaveCount(5);
       await expect(section.locator(".leaderboard-legend")).toContainText("Aggregate uses 9 of the 20 listed evaluations.");
-      await expect(section.locator("#master-search-help")).toHaveText("Separate keywords with commas, e.g. sol, haiku.");
+      await expect(section.locator("#master-search-help")).toHaveText("Separate terms with commas (sol, haiku).");
       await section.evaluate(element => {
         const main = element.closest(".app-main");
         main.scrollTop += element.getBoundingClientRect().top - main.getBoundingClientRect().top - 16;

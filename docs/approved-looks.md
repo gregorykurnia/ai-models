@@ -3,7 +3,7 @@
 - Desktop tables can clip at a column boundary. Their captions show which way to scroll, and master columns can move behind the pinned fields.
 - A phone favorite star is centered in its 44×44 button. The button's left edge aligns with the metric tiles; the glyph's inset preserves the touch area and is intentional.
 - The About-data phone first-screen capture ends partway through the scrolling article. The heading and capture date are whole; the article continues below the viewport.
-- Evaluation cost and timing values are blue links to Artificial Analysis model profiles. Master timing values are plain text.
+- Evaluation timing and Intelligence Index cost links open Artificial Analysis model profiles. Terminal-Bench 4.1 prices link to its benchmark chart. Master timing values are plain text.
 - Tied AA scores keep their shared source rank, so rank links can show the same number for different models.
 - An evaluation phone capture can end partway through the first result card. Its lower metric tiles continue below the viewport.
 - Intelligence Index scores intentionally use four decimal places with tabular figures, as recorded in the November screenshot review.

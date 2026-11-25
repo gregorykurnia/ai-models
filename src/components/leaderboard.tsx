@@ -4,7 +4,7 @@ import {usePathname,useRouter,useSearchParams} from "next/navigation";
 import {flexRender,getCoreRowModel,useReactTable,type ColumnDef} from "@tanstack/react-table";
 import {parseQueryParams,type Entry,type Evaluation,type IntelligenceIndexTaskCost} from "@/lib/contract";
 import {matchesModelSearch,parseModelSearchTerms} from "@/lib/model-search";
-import {evaluationMetricLabel,evaluationScoreDisplay,omniscienceBusinessEvaluationId,terminalBenchEvaluationId} from "@/lib/evaluation-display";
+import {evaluationMetricLabel,evaluationScoreDisplay,evaluationTaskCostDisplay,omniscienceBusinessEvaluationId,terminalBenchEvaluationId} from "@/lib/evaluation-display";
 import {evaluationTimePerTask,evaluationTimePerTaskLabel,formatFirstAnswer,formatTimePerTask,modelSpeedCaptureLabel,type ModelSpeed} from "@/lib/model-speed";
 import {ProviderMultiSelect,providerSelectionLabel} from "@/components/ui/provider-multi-select";
 import {Button, Card, HelperText, Input, Pagination, Select, Table, TableScroll} from "@/components/ui/primitives";
@@ -24,9 +24,13 @@ function SpeedValue({speed,seconds,format}:{speed:ModelSpeed|undefined;seconds:n
   return speed&&seconds!==null?<a href={speed.url} target="_blank" rel="noreferrer" title={`Artificial Analysis profile for ${speed.model} · speed captured ${speed.captured_at}`}>{format(seconds)}</a>:"—";
 }
 
-function CostValue({cost,label,profile,showSourceTitle=false}:{cost:number|null;label?:string|null;profile?:IntelligenceIndexTaskCost;showSourceTitle?:boolean}){
+function CostValue({cost,benchmark,profile,showSourceTitle=false}:{cost:number|null;benchmark?:Evaluation;profile?:IntelligenceIndexTaskCost;showSourceTitle?:boolean}){
   if(cost===null)return "—";
-  const display=label||costFormatter.format(cost);
+  if(benchmark){
+    const display=evaluationTaskCostDisplay(cost);
+    return benchmark.source_url?<a href={benchmark.source_url} target="_blank" rel="noreferrer" title={`${benchmark.display_name} cost chart · captured ${benchmark.captured_at}`}>{display}</a>:display;
+  }
+  const display=costFormatter.format(cost);
   return profile?<a href={profile.url} target="_blank" rel="noreferrer" title={showSourceTitle?`Artificial Analysis profile for ${profile.model} · cost captured ${profile.profile_captured_at}`:undefined}>{display}</a>:display;
 }
 
@@ -35,12 +39,12 @@ function EvaluationCard({entry,evaluation,speed,cost,costProfile}:{entry:Entry;e
   return <li className="master-card evaluation-card" data-model={entry.model} data-provider={entry.provider}>
     <div className="evaluation-card__head">
       <strong>#{entry.source_rank} {entry.model}</strong>
-      <small>{entry.provider} · <span className="evaluation-card__score">{evaluationMetricLabel(evaluation)}: {evaluationScoreDisplay(evaluation,entry)}</span></small>
+      <small>{entry.provider} · <span className="evaluation-card__score">{benchmarkCost?"Score":evaluationMetricLabel(evaluation)}: {evaluationScoreDisplay(evaluation,entry)}</span></small>
     </div>
     <dl className="master-card__metrics">
       <div><dt>{evaluationTimePerTaskLabel(evaluation.id)} (min)</dt><dd><SpeedValue speed={speed} seconds={evaluationTimePerTask(evaluation.id,speed)} format={formatTimePerTask}/></dd></div>
       <div><dt>First Answer (s)</dt><dd><SpeedValue speed={speed} seconds={speed?.first_answer_s??null} format={formatFirstAnswer}/></dd></div>
-      <div><dt>{benchmarkCost?"Cost / task":"Cost / Intelligence Index task"}</dt><dd><CostValue cost={cost} label={benchmarkCost?entry.cost_display:null} profile={costProfile}/></dd></div>
+      <div><dt>{benchmarkCost?"Cost / task":"Cost / Intelligence Index task"}</dt><dd><CostValue cost={cost} benchmark={benchmarkCost?evaluation:undefined} profile={costProfile}/></dd></div>
       {evaluation.has_release_date&&<div><dt>Release date</dt><dd>{entry.release_date_label||"—"}</dd></div>}
     </dl>
     {evaluation.has_confidence_interval&&<p className="evaluation-card__interval">Elo CI: {entry.confidence_interval_display||"—"}</p>}
@@ -92,11 +96,11 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds,costCap
   const rows=useMemo(()=>sorted.slice((page-1)*state.size,page*state.size),[sorted,page,state.size]);
   const columns=useMemo<ColumnDef<Entry>[]>(()=>{const result:ColumnDef<Entry>[]=[
     {accessorKey:"source_rank",header:"Rank"},{accessorKey:"provider",header:"Provider"},{accessorKey:"model",header:"Model"},
-    {accessorKey:"score_value",header:evaluationMetricLabel(evaluation),cell:({row})=>evaluationScoreDisplay(evaluation,row.original)},
+    {accessorKey:"score_value",header:benchmarkCost?"Score":evaluationMetricLabel(evaluation),cell:({row})=>evaluationScoreDisplay(evaluation,row.original)},
     ...(evaluation.has_scoring_status?[{id:"scoring_status",header:"Scoring status",cell:({row}:{row:{original:Entry}})=>row.original.scoring_status||"—"}]:[]),
     ...(evaluation.has_confidence_interval?[{accessorKey:"confidence_interval_display",header:"Elo CI",cell:({row}:{row:{original:Entry}})=>row.original.confidence_interval_display||"—"}]:[]),
     ...(evaluation.has_release_date?[{accessorKey:"release_date_label",header:"Release date",cell:({row}:{row:{original:Entry}})=>row.original.release_date_label||"—"}]:[]),
-    {id:"cost_usd",accessorFn:costUsd,header:benchmarkCost?"Cost per task":"Cost per Intelligence Index task",cell:({row})=><CostValue cost={costUsd(row.original)} label={benchmarkCost?row.original.cost_display:null} profile={taskCosts[row.original.id]} showSourceTitle/>},
+    {id:"cost_usd",accessorFn:costUsd,header:benchmarkCost?"Cost per task":"Cost per Intelligence Index task",cell:({row})=><CostValue cost={costUsd(row.original)} benchmark={benchmarkCost?evaluation:undefined} profile={taskCosts[row.original.id]} showSourceTitle/>},
     {id:"time_per_task",accessorFn:entry=>evaluationTimePerTask(evaluation.id,speeds[entry.id]),header:evaluationTimePerTaskLabel(evaluation.id),cell:({row})=><SpeedValue speed={speeds[row.original.id]} seconds={evaluationTimePerTask(evaluation.id,speeds[row.original.id])} format={formatTimePerTask}/>},
     {id:"first_answer",accessorFn:entry=>speeds[entry.id]?.first_answer_s??null,header:"First Answer",cell:({row})=><SpeedValue speed={speeds[row.original.id]} seconds={speeds[row.original.id]?.first_answer_s??null} format={formatFirstAnswer}/>}
   ];return result.sort((a,b)=>columnOrder.indexOf(columnId(a))-columnOrder.indexOf(columnId(b)));},[evaluation,benchmarkCost,costUsd,taskCosts,speeds]);

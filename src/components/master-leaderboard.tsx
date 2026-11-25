@@ -24,7 +24,7 @@ function MasterModelSearch({value,onCommit}:{value:string;onCommit:(value:string
     const timer=window.setTimeout(()=>onCommit(next),300);
     return()=>window.clearTimeout(timer);
   },[draft,value,onCommit]);
-  return <div className="toolbar-model-search"><label className="text-caption text-secondary font-semibold md:sr-only" htmlFor="master-search">Search models</label><Input id="master-search" aria-describedby="master-search-help" value={draft} placeholder="Search model names…" onChange={event=>setDraft(event.target.value.slice(0,200))}/><HelperText id="master-search-help">Separate keywords with commas, e.g. sol, haiku.</HelperText></div>;
+  return <div className="toolbar-model-search"><label className="text-caption text-secondary font-semibold md:sr-only" htmlFor="master-search">Search models</label><Input id="master-search" aria-describedby="master-search-help" value={draft} placeholder="Search model names…" onChange={event=>setDraft(event.target.value.slice(0,200))}/><HelperText id="master-search-help">Separate terms with commas (sol, haiku).</HelperText></div>;
 }
 
 function speedValue(seconds:number|null|undefined,format:(seconds:number|null|undefined)=>string,unit?:string){
