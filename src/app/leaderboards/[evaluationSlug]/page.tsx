@@ -8,6 +8,7 @@ import Leaderboard from "@/components/leaderboard";
 import { PageHeader } from "@/components/ui/primitives";
 import { intelligenceIndexCostsForEntries,intelligenceIndexCostCaptureLabel } from "@/lib/intelligence-index-costs";
 import { evaluationTimePerTaskLabel,modelSpeedsForEntries,modelSpeedCaptureLabel } from "@/lib/model-speed";
+import { terminalBenchEvaluationId } from "@/lib/evaluation-display";
 
 function ComponentIndexNav({ active, evaluations }: { active: Evaluation; evaluations: Evaluation[] }) {
   const related = evaluations.filter(evaluation => evaluation.metric_group === active.metric_group);
@@ -46,7 +47,8 @@ export default async function Page({ params }: { params: Promise<{ evaluationSlu
   const dataset = await getEvaluationDataset(evaluationSlug);
   if (!dataset) notFound();
   const {evaluations,evaluation,entries} = dataset;
-  const taskCosts = intelligenceIndexCostsForEntries(entries);
+  const benchmarkCost = evaluation.id === terminalBenchEvaluationId;
+  const taskCosts = benchmarkCost ? {} : intelligenceIndexCostsForEntries(entries);
   const speeds = modelSpeedsForEntries(entries);
   const capturedDate = new Date(`${evaluation.captured_at}T00:00:00Z`).toLocaleDateString("en-GB", {
     day: "numeric", month: "short", year: "numeric", timeZone: "UTC",
@@ -62,14 +64,16 @@ export default async function Page({ params }: { params: Promise<{ evaluationSlu
     <p>Artificial Analysis (AA) timings · {modelSpeedCaptureLabel}</p>
     </PageHeader>
     <Suspense fallback={<Loading />}>
-      <Leaderboard entries={entries} evaluation={evaluation} taskCosts={taskCosts} speeds={speeds} costCapturedLabel={intelligenceIndexCostCaptureLabel} />
+      <Leaderboard entries={entries} evaluation={evaluation} taskCosts={taskCosts} speeds={speeds} costCapturedLabel={benchmarkCost ? capturedDate : intelligenceIndexCostCaptureLabel} />
     </Suspense>
     {evaluation.metric_group && <ComponentIndexNav active={evaluation} evaluations={evaluations} />}
     <details className="evaluation-notes panel">
       <summary>Sources and timing notes</summary>
       <div className="evaluation-notes__body">
         <strong>{evaluation.source_title}</strong>
-        <p>Cost per Intelligence Index task uses Artificial Analysis profile values captured {intelligenceIndexCostCaptureLabel}, weighted across the Index evaluations.</p>
+        {benchmarkCost
+          ? <p>Cost per task uses the Artificial Analysis Terminal-Bench 4.1 chart captured {capturedDate}.</p>
+          : <p>Cost per Intelligence Index task uses Artificial Analysis profile values captured {intelligenceIndexCostCaptureLabel}, weighted across the Index evaluations.</p>}
         <p>{evaluationTimePerTaskLabel(evaluation.id)} (minutes) and First Answer (seconds to the first answer token on the creator’s API) use Artificial Analysis values captured {modelSpeedCaptureLabel}. Dashes mean missing values and sort last.</p>
         {evaluation.notes && <p>{evaluation.notes}</p>}
       </div>

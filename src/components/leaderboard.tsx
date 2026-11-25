@@ -4,7 +4,7 @@ import {usePathname,useRouter,useSearchParams} from "next/navigation";
 import {flexRender,getCoreRowModel,useReactTable,type ColumnDef} from "@tanstack/react-table";
 import {parseQueryParams,type Entry,type Evaluation,type IntelligenceIndexTaskCost} from "@/lib/contract";
 import {matchesModelSearch,parseModelSearchTerms} from "@/lib/model-search";
-import {evaluationMetricLabel,evaluationScoreDisplay,omniscienceBusinessEvaluationId} from "@/lib/evaluation-display";
+import {evaluationMetricLabel,evaluationScoreDisplay,omniscienceBusinessEvaluationId,terminalBenchEvaluationId} from "@/lib/evaluation-display";
 import {evaluationTimePerTask,evaluationTimePerTaskLabel,formatFirstAnswer,formatTimePerTask,modelSpeedCaptureLabel,type ModelSpeed} from "@/lib/model-speed";
 import {ProviderMultiSelect,providerSelectionLabel} from "@/components/ui/provider-multi-select";
 import {Button, Card, HelperText, Input, Pagination, Select, Table, TableScroll} from "@/components/ui/primitives";
@@ -24,7 +24,14 @@ function SpeedValue({speed,seconds,format}:{speed:ModelSpeed|undefined;seconds:n
   return speed&&seconds!==null?<a href={speed.url} target="_blank" rel="noreferrer" title={`Artificial Analysis profile for ${speed.model} · speed captured ${speed.captured_at}`}>{format(seconds)}</a>:"—";
 }
 
-function EvaluationCard({entry,evaluation,speed,cost}:{entry:Entry;evaluation:Evaluation;speed:ModelSpeed|undefined;cost:IntelligenceIndexTaskCost|undefined}){
+function CostValue({cost,label,profile,showSourceTitle=false}:{cost:number|null;label?:string|null;profile?:IntelligenceIndexTaskCost;showSourceTitle?:boolean}){
+  if(cost===null)return "—";
+  const display=label||costFormatter.format(cost);
+  return profile?<a href={profile.url} target="_blank" rel="noreferrer" title={showSourceTitle?`Artificial Analysis profile for ${profile.model} · cost captured ${profile.profile_captured_at}`:undefined}>{display}</a>:display;
+}
+
+function EvaluationCard({entry,evaluation,speed,cost,costProfile}:{entry:Entry;evaluation:Evaluation;speed:ModelSpeed|undefined;cost:number|null;costProfile:IntelligenceIndexTaskCost|undefined}){
+  const benchmarkCost=evaluation.id===terminalBenchEvaluationId;
   return <li className="master-card evaluation-card" data-model={entry.model} data-provider={entry.provider}>
     <div className="evaluation-card__head">
       <strong>#{entry.source_rank} {entry.model}</strong>
@@ -33,7 +40,7 @@ function EvaluationCard({entry,evaluation,speed,cost}:{entry:Entry;evaluation:Ev
     <dl className="master-card__metrics">
       <div><dt>{evaluationTimePerTaskLabel(evaluation.id)} (min)</dt><dd><SpeedValue speed={speed} seconds={evaluationTimePerTask(evaluation.id,speed)} format={formatTimePerTask}/></dd></div>
       <div><dt>First Answer (s)</dt><dd><SpeedValue speed={speed} seconds={speed?.first_answer_s??null} format={formatFirstAnswer}/></dd></div>
-      <div><dt>Cost / Intelligence Index task</dt><dd>{cost?<a href={cost.url} target="_blank" rel="noreferrer">{costFormatter.format(cost.cost_usd)}</a>:"—"}</dd></div>
+      <div><dt>{benchmarkCost?"Cost / task":"Cost / Intelligence Index task"}</dt><dd><CostValue cost={cost} label={benchmarkCost?entry.cost_display:null} profile={costProfile}/></dd></div>
       {evaluation.has_release_date&&<div><dt>Release date</dt><dd>{entry.release_date_label||"—"}</dd></div>}
     </dl>
     {evaluation.has_confidence_interval&&<p className="evaluation-card__interval">Elo CI: {entry.confidence_interval_display||"—"}</p>}
@@ -70,15 +77,17 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds,costCap
   const selectedProviderSet=useMemo(()=>new Set(state.provider),[state.provider]);
   const searchTerms=useMemo(()=>parseModelSearchTerms(searchTerm),[searchTerm]);
   const filtered=useMemo(()=>entries.filter(e=>(!selectedProviderSet.size||selectedProviderSet.has(e.provider))&&matchesModelSearch(e.model,searchTerms)),[entries,selectedProviderSet,searchTerms]);
+  const benchmarkCost=evaluation.id===terminalBenchEvaluationId;
+  const costUsd=useCallback((entry:Entry)=>benchmarkCost?entry.cost_usd??null:taskCosts[entry.id]?.cost_usd??null,[benchmarkCost,taskCosts]);
   const sorted=useMemo(()=>[...filtered].sort((a,b)=>{
-    const value=(e:Entry):string|number|null=>allowedSort==="release_date_label"?dateValue(e.release_date_label):allowedSort==="confidence_interval_display"?e.confidence_interval_high_delta:allowedSort==="cost_usd"?taskCosts[e.id]?.cost_usd??null:allowedSort==="time_per_task"?evaluationTimePerTask(evaluation.id,speeds[e.id]):allowedSort==="first_answer"?speeds[e.id]?.first_answer_s??null:e[allowedSort];
+    const value=(e:Entry):string|number|null=>allowedSort==="release_date_label"?dateValue(e.release_date_label):allowedSort==="confidence_interval_display"?e.confidence_interval_high_delta:allowedSort==="cost_usd"?costUsd(e):allowedSort==="time_per_task"?evaluationTimePerTask(evaluation.id,speeds[e.id]):allowedSort==="first_answer"?speeds[e.id]?.first_answer_s??null:e[allowedSort];
     const av=value(a),bv=value(b);if(av===null&&bv!==null)return 1;if(bv===null&&av!==null)return -1;
     let comparison=av===null||bv===null?0:typeof av==="number"&&typeof bv==="number"?av-bv:String(av).localeCompare(String(bv));
     comparison*=state.direction==="desc"?-1:1;
     if(comparison)return comparison;
     if(allowedSort==="source_rank")return a.source_row-b.source_row;
     return a.source_rank-b.source_rank||a.model.localeCompare(b.model)||a.source_row-b.source_row;
-  }),[filtered,allowedSort,state.direction,taskCosts,evaluation.id,speeds]);
+  }),[filtered,allowedSort,state.direction,costUsd,evaluation.id,speeds]);
   const pages=Math.max(1,Math.ceil(sorted.length/state.size)),page=Math.min(state.page,pages);
   const rows=useMemo(()=>sorted.slice((page-1)*state.size,page*state.size),[sorted,page,state.size]);
   const columns=useMemo<ColumnDef<Entry>[]>(()=>{const result:ColumnDef<Entry>[]=[
@@ -87,10 +96,10 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds,costCap
     ...(evaluation.has_scoring_status?[{id:"scoring_status",header:"Scoring status",cell:({row}:{row:{original:Entry}})=>row.original.scoring_status||"—"}]:[]),
     ...(evaluation.has_confidence_interval?[{accessorKey:"confidence_interval_display",header:"Elo CI",cell:({row}:{row:{original:Entry}})=>row.original.confidence_interval_display||"—"}]:[]),
     ...(evaluation.has_release_date?[{accessorKey:"release_date_label",header:"Release date",cell:({row}:{row:{original:Entry}})=>row.original.release_date_label||"—"}]:[]),
-    {id:"cost_usd",accessorFn:entry=>taskCosts[entry.id]?.cost_usd??null,header:"Cost per Intelligence Index task",cell:({row}:{row:{original:Entry}})=>{const cost=taskCosts[row.original.id];return cost?<a href={cost.url} target="_blank" rel="noreferrer" title={`Artificial Analysis profile for ${cost.model} · cost captured ${cost.profile_captured_at}`}>{costFormatter.format(cost.cost_usd)}</a>:"—";}},
+    {id:"cost_usd",accessorFn:costUsd,header:benchmarkCost?"Cost per task":"Cost per Intelligence Index task",cell:({row})=><CostValue cost={costUsd(row.original)} label={benchmarkCost?row.original.cost_display:null} profile={taskCosts[row.original.id]} showSourceTitle/>},
     {id:"time_per_task",accessorFn:entry=>evaluationTimePerTask(evaluation.id,speeds[entry.id]),header:evaluationTimePerTaskLabel(evaluation.id),cell:({row})=><SpeedValue speed={speeds[row.original.id]} seconds={evaluationTimePerTask(evaluation.id,speeds[row.original.id])} format={formatTimePerTask}/>},
     {id:"first_answer",accessorFn:entry=>speeds[entry.id]?.first_answer_s??null,header:"First Answer",cell:({row})=><SpeedValue speed={speeds[row.original.id]} seconds={speeds[row.original.id]?.first_answer_s??null} format={formatFirstAnswer}/>}
-  ];return result.sort((a,b)=>columnOrder.indexOf(columnId(a))-columnOrder.indexOf(columnId(b)));},[evaluation,taskCosts,speeds]);
+  ];return result.sort((a,b)=>columnOrder.indexOf(columnId(a))-columnOrder.indexOf(columnId(b)));},[evaluation,benchmarkCost,costUsd,taskCosts,speeds]);
   const table=useReactTable({data:rows,columns,getCoreRowModel:getCoreRowModel(),manualPagination:true,autoResetPageIndex:false});
   const providers=[...new Set(entries.map(e=>e.provider))].sort();
   const widthForColumn=(column:ColumnDef<Entry>)=>{
@@ -136,7 +145,7 @@ export default function Leaderboard({entries,evaluation,taskCosts,speeds,costCap
       </TableScroll>
     </div>
     <ul className="evaluation-cards" aria-label={`${evaluation.display_name} model results`}>
-      {rows.map(entry=><EvaluationCard key={entry.id} entry={entry} evaluation={evaluation} speed={speeds[entry.id]} cost={taskCosts[entry.id]}/>)}
+      {rows.map(entry=><EvaluationCard key={entry.id} entry={entry} evaluation={evaluation} speed={speeds[entry.id]} cost={costUsd(entry)} costProfile={taskCosts[entry.id]}/>)}
       {rows.length===0&&<li className="empty">No models match these filters. Clear filters to see all entries.</li>}
     </ul>
     <Pagination page={page} pages={pages} onPageChange={nextPage=>update({page:nextPage})} pageSize={state.size} pageSizeOptions={[25,50,100,250]} onPageSizeChange={nextSize=>update({size:nextSize})}/>

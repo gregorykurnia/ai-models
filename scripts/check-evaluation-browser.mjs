@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdir } from "node:fs/promises";
+import { mkdir, readFile } from "node:fs/promises";
 import { evaluationTimePerTask, getModelSpeed } from "../src/lib/model-speed.ts";
 import { checkSweAtlasEvaluation, sweAtlasSlug } from "./check-swe-atlas-qna-browser.mjs";
 import { businessSlug, checkBusinessEvaluation } from "./check-omniscience-business-browser.mjs";
@@ -39,9 +39,29 @@ try {
       await checkSweAtlasEvaluation(page, base);
       continue;
     }
+    const terminalBench = slug === "terminal-bench-4-1";
+    const sorts = ["time_per_task", "first_answer"];
+    const costEntries = new Map();
+    if (terminalBench) {
+      const { entries } = JSON.parse(await readFile(new URL("../data/leaderboards.json", import.meta.url), "utf8"));
+      for (const entry of entries.filter(entry => entry.evaluation_id === slug)) {
+        costEntries.set(JSON.stringify([entry.provider, entry.model]), entry);
+      }
+      sorts.push("cost_usd");
+    }
+    const numericValue = (sort, provider, model) => {
+      if (sort === "cost_usd") {
+        const entry = costEntries.get(JSON.stringify([provider, model]));
+        assert(entry, `${slug}: missing bundled entry for ${provider} / ${model}`);
+        return { raw: entry.cost_usd, display: entry.cost_display ?? "—" };
+      }
+      const speed = getModelSpeed(provider, model);
+      const raw = sort === "time_per_task" ? evaluationTimePerTask(slug, speed) : speed?.first_answer_s ?? null;
+      return { raw, display: raw === null ? "—" : (raw / (sort === "time_per_task" ? 60 : 1)).toFixed(1) };
+    };
     await page.setViewportSize({ width: 1440, height: 1000 });
     // Check complete cohorts, including the 253-row component's second page.
-    if(process.env.CAPTURE_ONLY!=="1") for (const sort of ["time_per_task", "first_answer"]) {
+    if(process.env.CAPTURE_ONLY!=="1") for (const sort of sorts) {
       for (const direction of ["asc", "desc"]) {
         const all = [];
         for (let current = 1, pages = 1; current <= pages; current++) {
@@ -52,16 +72,14 @@ try {
           pages = Math.ceil(total / 250);
           const rows = await table.locator("tbody tr").evaluateAll(rows => rows.map(row => Object.fromEntries(Array.from(row.cells, cell => [cell.dataset.column,cell.textContent.trim()]))));
           for (const cells of rows) {
-            const record = getModelSpeed(cells.provider, cells.model);
-            const seconds = sort === "time_per_task" ? evaluationTimePerTask(slug, record) : record?.first_answer_s ?? null;
-            const display = seconds === null ? "—" : (seconds / (sort === "time_per_task" ? 60 : 1)).toFixed(1);
+            const { raw, display } = numericValue(sort, cells.provider, cells.model);
             assert.equal(cells[sort], display, `${slug}: ${cells.model} ${sort}`);
-            all.push(seconds);
+            all.push(raw);
           }
           if (current === pages) assert.equal(all.length, total);
         }
-        assert(all.some(value => value !== null), `${slug} ${sort}: expected timings`);
-        assert(all.some(value => value === null), `${slug} ${sort}: expected missing timings`);
+        assert(all.some(value => value !== null), `${slug} ${sort}: expected values`);
+        assert(all.some(value => value === null), `${slug} ${sort}: expected missing values`);
         for (let i = 1; i < all.length; i++) {
           assert(all[i - 1] !== null || all[i] === null, `${slug} ${sort}: dash before a value`);
           if (all[i - 1] !== null && all[i] !== null) {
@@ -91,21 +109,20 @@ try {
         await page.screenshot({path:`${output}/${slug}-${width}-after.png`});
         await page.screenshot({path:`${output}/${slug}-${width}-timings.png`});
         await first.screenshot({path:`${output}/${slug}-${width}-timings-crop.png`});
-        for(const sort of ["time_per_task","first_answer"]) {
+        for(const [index, sort] of sorts.entries()) {
           await card.locator("#evaluation-sort").selectOption(sort);
           await page.waitForURL(new RegExp(`sort=${sort}&direction=asc`));
-          const values=await cards.evaluateAll((elements,sort)=>elements.map(element=>({model:element.dataset.model,provider:element.dataset.provider,display:element.querySelectorAll("dd")[sort === "time_per_task"?0:1].textContent.trim()})),sort);
+          const values=await cards.evaluateAll((elements,index)=>elements.map(element=>({model:element.dataset.model,provider:element.dataset.provider,display:element.querySelectorAll("dd")[index].textContent.trim()})),index);
           let previous=-Infinity,missing=false;
           for(const row of values) {
-            const speed=getModelSpeed(row.provider,row.model);
-            const raw=sort==="time_per_task"?evaluationTimePerTask(slug,speed):speed?.first_answer_s??null;
-            assert.equal(row.display,raw===null?"—":(raw/(sort==="time_per_task"?60:1)).toFixed(1));
+            const { raw, display } = numericValue(sort, row.provider, row.model);
+            assert.equal(row.display, display, `${slug}: ${row.model} ${sort}`);
             if(raw===null)missing=true;else {assert(!missing&&previous<=raw);previous=raw;}
           }
         }
-        if(slug==="terminal-bench-4-1") {
+        if(terminalBench) {
           await navigate(slug);
-          assert((await cards.first().textContent()).includes("68.18%"));
+          assert.match(await cards.first().innerText(), /Kimi K3\.1 Pro[\s\S]*68\.18%[\s\S]*Cost \/ task\s+\$5\.27/);
         }
       } else {
         const headers=table.locator("th.speed-column");
@@ -136,7 +153,13 @@ try {
         const overflow=await headers.evaluateAll(elements=>elements.flatMap(header=>Array.from(header.querySelectorAll("span,small,button")).filter(element=>element.scrollWidth>element.clientWidth+1).map(element=>element.textContent)));
         assert.deepEqual(overflow,[]);
         assert(!(await headers.nth(0).textContent()).includes("AA ·"));
-        if(slug==="terminal-bench-4-1")assert.equal(await table.locator("tbody tr").first().locator('[data-column="score_value"]').textContent(),"68.18%");
+        if(terminalBench) {
+          const first = table.locator("tbody tr").first();
+          assert.equal(await first.locator('[data-column="model"]').innerText(), "Kimi K3.1 Pro");
+          assert.equal(await first.locator('[data-column="score_value"]').innerText(), "68.18%");
+          assert.match(await table.locator('th[data-column="cost_usd"]').innerText(), /^Cost per task/);
+          assert.equal(await first.locator('[data-column="cost_usd"]').innerText(), "$5.27");
+        }
         await page.screenshot({path:`${output}/${slug}-${width}-timings.png`});
         const x=boxes[0].x,y=boxes[0].y;
         await page.screenshot({path:`${output}/${slug}-${width}-timings-crop.png`,clip:{x,y,width:boxes[1].x+boxes[1].width-x,height:Math.min(270,1000-y)}});
