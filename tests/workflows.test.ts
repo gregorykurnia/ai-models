@@ -415,7 +415,7 @@ test("the meeting workflow pins each independently checked pick and both runners
     const { pick, runnersUp } = stepPicks(step, personality, workflowModelList, masterRows);
     return [step.id, [pick, ...runnersUp].map(row => row?.model.identity_key)];
   });
-  // Independently checked against the 19 Nov 2026 bundled refresh.
+  // Independently checked against the 25 Nov 2026 bundled refresh.
   assert.deepEqual(picks, [
     ["1", [
       "anthropic\u0000claude opus 5.5 (max with fallback)",
@@ -448,6 +448,12 @@ test("the meeting workflow pins each independently checked pick and both runners
       "anthropic\u0000claude fable 5.2 (max with fallback)",
     ]],
   ]);
+  assert.deepEqual(evaluationRanks("openai\u0000gpt-6.1 sol (max)", [
+    "aa-briefcase-presentation-elo", "aa-briefcase-rubric-score",
+  ], masterRows), {
+    "aa-briefcase-presentation-elo": { rank: 59, cohortSize: 291 },
+    "aa-briefcase-rubric-score": { rank: 36, cohortSize: 291 },
+  });
 });
 
 test("sales proposal registers all 14 source steps and pins the filtered picks", async () => {
@@ -458,7 +464,7 @@ test("sales proposal registers all 14 source steps and pins the filtered picks",
   ]);
 
   const masterRows = await bundledMasterRows();
-  // Independently checked against the 19 Nov 2026 bundled refresh.
+  // Independently checked against the 25 Nov 2026 bundled refresh.
   const checkedPicks: Record<string, string[]> = {
     "0": [
       "Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback)",
@@ -538,6 +544,11 @@ test("sales proposal registers all 14 source steps and pins the filtered picks",
     assert.deepEqual(ranked.map(row => row.model.name), checkedPicks[step.id], step.id);
     assert.equal(new Set(ranked.map(row => familyKey(row.model.identity_key))).size, ranked.length, step.id);
   }
+  assert.deepEqual(evaluationRanks("openai\u0000gpt-6.2 sol (medium)", [
+    "aa-briefcase-presentation-elo",
+  ], masterRows), {
+    "aa-briefcase-presentation-elo": { rank: 37, cohortSize: 291 },
+  });
 });
 
 test("the workflow view links to its detail and preserves raw percentiles and missing ranks", () => {
